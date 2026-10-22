@@ -1,109 +1,86 @@
 # Google Drive / Sheets の接続設定
 
-写真・PDFは指定した個人Google Driveフォルダ、問題・履歴は指定したGoogle Sheetsに保存します。保存には所有者のOAuth接続を使います。家族のログインは別の処理で、奥さま・お子さんにDriveの権限を求めません。サービスアカウントは使用しません。
+写真・PDFは個人Google Driveのアプリ専用フォルダ、問題・履歴は同じアカウントのGoogle Sheetsに保存します。保存には所有者のOAuth接続を使います。家族のログインは別の処理で、奥さま・お子さんにDriveの権限を求めません。サービスアカウントは使用しません。
 
-## 1. 保存先を用意する
+この手順では、所有者が接続を承認した後、専用フォルダと記録シートを**アプリ自身が新規作成**します。`drive.file` はアプリが作成したファイルにアクセスできるため、Google Picker、Picker用APIキー、トークンの手動コピーは不要です。既存のDriveファイルには権限を追加しません。[Driveのファイル単位権限](https://developers.google.com/workspace/drive/api/guides/api-specific-auth)、[Sheets作成APIの権限](https://developers.google.com/workspace/sheets/api/reference/rest/v4/spreadsheets/create)
 
-保存先の所有者アカウントでGoogle Driveを開き、アプリ専用フォルダと、その中に新しいスプレッドシートを作成します。既存の専用フォルダを使っても構いません。共有リンクを公開する必要はありません。
+Googleの `/drive/project/…` は通常の保存フォルダとは限りません。Geminiプロジェクト等のURLを `GOOGLE_DRIVE_FOLDER_ID` に転用しないでください。既存フォルダへの保存が必須の場合は、同じOAuthアプリのGoogle Pickerでそのフォルダを許可する別手順が必要です。
 
-シート内のタブ名を `Events` に変更し、1行目のA〜M列に以下をタブ区切りで貼り付けます。
+## 1. Google Cloudにアプリを登録する
 
-```text
-id	type	actorId	familyId	createdAt	payload1	payload2	payload3	payload4	payload5	payload6	payload7	payload8
-```
-
-以後このタブはアプリ専用です。行の並べ替え・削除・セルの編集はせず、閲覧用の集計は別タブに作ります。イベントの行順が「最初に受け付けた回答」を決めます。バックアップはシートのコピーで取れます。
-
-## 2. Google Cloudにアプリを登録する
-
-1. [Google Cloud Console](https://console.cloud.google.com/)で専用プロジェクトを作成し、**プロジェクト番号**を控えます。
-2. Google Drive API、Google Sheets API、Google Picker APIを有効にします。
+1. 保存先所有者の**個人用Chromeプロフィール**で [Google Cloud Console](https://console.cloud.google.com/)を開き、専用プロジェクトを作成します。
+2. **Google Drive API** と **Google Sheets API** を有効にします。
 3. Google Auth Platformのアプリ情報・対象ユーザー・連絡先を設定します。個人Googleアカウントを含む場合はExternalを選び、テスト中は所有者と利用する家族をテストユーザーに追加します。
-4. Data Accessに `openid`、`https://www.googleapis.com/auth/userinfo.email`、`https://www.googleapis.com/auth/userinfo.profile`、`https://www.googleapis.com/auth/drive.file` を登録します。`drive`や`spreadsheets`全体の権限は不要です。
-5. Web applicationのOAuthクライアントを作ります。JavaScript originsに本番URL、`http://localhost:3000`、セットアップ用の `http://localhost:8765` を登録します。
-6. Authorized redirect URIsに以下を登録します。
-   - `https://YOUR-APP.vercel.app/api/auth/callback/google`
-   - `http://localhost:3000/api/auth/callback/google`
-   - `https://developers.google.com/oauthplayground`
-7. `GOOGLE_CLIENT_ID` と `GOOGLE_CLIENT_SECRET` を控えます。同じプロジェクト内にPicker用APIキーも作り、HTTP referrersを `http://localhost:8765/*`、API制限をGoogle Picker APIに絞ります。このキーは一度の保存先選択にだけ使います。
-
-Externalで公開ステータスがTestingの場合、Driveを含むrefresh tokenは原則7日で期限切れになります。継続運用前にGoogle側でProductionへの切替・必要な確認を済ませ、その後に接続を取得してください。アプリ側の家族許可リストはProductionでも有効です。[Googleのトークン有効期限](https://developers.google.com/identity/protocols/oauth2/)
-
-## 3. 所有者のrefresh tokenを取得する
-
-1. [Google OAuth 2.0 Playground](https://developers.google.com/oauthplayground/)を開き、右上の設定で **Use your own OAuth credentials** を有効にして、手順2のクライアントID・シークレットを入力します。OAuth flowはServer-side、Access typeはOffline、PromptはConsentにします。
-2. Step 1の入力欄に、空白で区切って以下を指定し、Authorize APIsを押します。
+4. Data Accessには `openid`、`https://www.googleapis.com/auth/userinfo.email`、`https://www.googleapis.com/auth/userinfo.profile`、`https://www.googleapis.com/auth/drive.file` を登録します。`drive`や`spreadsheets`全体の権限は不要です。
+5. **Web application** のOAuthクライアントを作ります。Authorized redirect URIsに次を登録します。
 
    ```text
-   openid https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/drive.file
+   https://study-app-opal-eight.vercel.app/api/auth/callback/google
+   http://localhost:8765/oauth/callback
    ```
 
-3. **保存先フォルダを所有するアカウント**を選び、要求された権限を確認して許可します。
-4. Step 2で **Exchange authorization code for tokens** を押します。返された `refresh_token` をVercelの `GOOGLE_DRIVE_REFRESH_TOKEN` に登録します。`access_token` は次のPicker設定で一時的に使います。
-5. トークンのscopeに広い `drive` / `spreadsheets` 権限が混ざっていたら、既存のアプリ連携をGoogleアカウントから取り消して、必要なscopeだけで取り直します。アプリは広すぎる保存用トークンを拒否します。
+   別の本番ドメインを使う場合は1行目を置換します。ローカルのアプリログインも検証する場合だけ `http://localhost:3000/api/auth/callback/google` を追加します。現在のサーバー側OAuth方式ではJavaScript originsやPlayground redirectは不要です。
+6. `GOOGLE_CLIENT_ID` と `GOOGLE_CLIENT_SECRET` を、次の秘密設定ファイルに保存します。チャットやリポジトリに貼り付けません。
 
-Playground既定のクライアントを使ったトークンでは、このアプリの保存権限になりません。必ず**自分のOAuthクライアント**で取得してください。refresh tokenやclient secretはサーバーの環境変数だけに保存し、リポジトリ、HTML、チャット、ブラウザのlocalStorageには保存しません。[GoogleのOffline access](https://developers.google.com/identity/protocols/oauth2/web-server#offline)
+Externalで公開ステータスがTestingの場合、Driveを含むrefresh tokenは原則7日で期限切れになります。継続運用前にGoogle側でProductionへの切替・必要な確認を済ませ、その後に最終的な接続を取得してください。Productionでもアプリ側の家族許可リストは有効です。[Googleのトークン有効期限](https://developers.google.com/identity/protocols/oauth2/)
 
-## 4. Pickerで既存フォルダとシートを許可する
+## 2. このMacに秘密設定ファイルを用意する
 
-**フォルダIDを環境変数に入れるだけでは許可されません。** `drive.file` では、同じアプリのGoogle Pickerで既存のフォルダと既存のスプレッドシートをそれぞれ選択します。フォルダを選んでも、既存のシートまで自動で許可されたとは扱いません。[Driveのファイル単位権限](https://developers.google.com/workspace/drive/api/guides/api-specific-auth)
+プロジェクト直下の `.env.google-client.json` に、次の形式で設定します。`.env*` はGit管理対象外ですが、Googleのファイル共有やクラウド同期が行われる場所には置かないでください。別の秘密フォルダに置き、起動時にそのパスを渡すこともできます。
 
-以下をローカルの空の作業用フォルダに `picker.html` として保存します。コードには秘密値を書かず、ブラウザの入力欄に短期access token・APIキー・プロジェクト番号を入力します。
-
-```html
-<!doctype html><html lang="ja"><meta charset="utf-8">
-<title>学習アプリの保存先を選ぶ</title>
-<p>同じGoogle Cloudプロジェクトの値を入力します。保存はしません。</p>
-<p><label>プロジェクト番号 <input id="project" autocomplete="off"></label></p>
-<p><label>Picker APIキー <input id="apiKey" autocomplete="off"></label></p>
-<p><label>短期access token <input id="token" type="password" autocomplete="off"></label></p>
-<button id="folder" disabled>1. 保存フォルダを選ぶ</button>
-<button id="sheet" disabled>2. 記録スプレッドシートを選ぶ</button>
-<pre id="result"></pre>
-<script>
-function pickerReady() {
-  gapi.load('picker', () => {
-    document.querySelector('#folder').disabled = false;
-    document.querySelector('#sheet').disabled = false;
-  });
+```json
+{
+  "GOOGLE_CLIENT_ID": "YOUR_CLIENT_ID.apps.googleusercontent.com",
+  "GOOGLE_CLIENT_SECRET": "YOUR_CLIENT_SECRET",
+  "GOOGLE_DRIVE_OWNER_EMAIL": "owner@example.com"
 }
-function choose(kind) {
-  const project = document.querySelector('#project').value.trim();
-  const apiKey = document.querySelector('#apiKey').value.trim();
-  const token = document.querySelector('#token').value.trim();
-  if (!project || !apiKey || !token) return alert('3つの値を入力してください。');
-  const view = kind === 'folder'
-    ? new google.picker.DocsView(google.picker.ViewId.FOLDERS)
-        .setIncludeFolders(true).setSelectFolderEnabled(true)
-    : new google.picker.DocsView(google.picker.ViewId.SPREADSHEETS);
-  new google.picker.PickerBuilder().setAppId(project).setDeveloperKey(apiKey)
-    .setOAuthToken(token).setOrigin(location.origin).addView(view)
-    .setCallback(data => {
-      if (data.action === google.picker.Action.PICKED) {
-        const file = data.docs[0];
-        const key = kind === 'folder' ? 'GOOGLE_DRIVE_FOLDER_ID' : 'GOOGLE_SHEETS_ID';
-        document.querySelector('#result').textContent += key + '=' + file.id + '\n';
-      }
-    }).build().setVisible(true);
-}
-document.querySelector('#folder').onclick = () => choose('folder');
-document.querySelector('#sheet').onclick = () => choose('sheet');
-</script>
-<script src="https://apis.google.com/js/api.js?onload=pickerReady" async defer></script>
-</html>
 ```
 
-そのフォルダで次を実行し、[ローカルPicker](http://localhost:8765)をChromeで開きます。Node.jsの標準機能だけを使います。
+実際の保存先所有者のメールに置換し、ファイルを所有者だけが読めるようにします。
 
 ```sh
-node -e 'const http=require("node:http"),fs=require("node:fs");http.createServer((req,res)=>{res.setHeader("Content-Type","text/html; charset=utf-8");res.setHeader("Cache-Control","no-store");res.end(fs.readFileSync("picker.html"));}).listen(8765,"127.0.0.1")'
+chmod 600 .env.google-client.json
+node scripts/setup-google.mjs --config .env.google-client.json
 ```
 
-1→2の順で作成済みの保存先を選び、表示された2つのIDをVercelに登録します。終わったらページを閉じ、ローカルサーバーを停止します。期限切れのaccess tokenはPlaygroundでrefresh tokenから更新できます。**refresh tokenをPicker入力欄へ入れないでください。** [Pickerの公式実装例](https://developers.google.com/workspace/drive/picker/guides/web-picker)
+Google Consoleからダウンロードした `web` 形式のJSONをそのまま渡す方式ではありません。上記3項目の形式に変換してください。すでに安全に設定済みの場合は、同名の3環境変数からも起動できます。秘密値をコマンド引数に渡したり、コマンド履歴へ直接書いたりしないでください。
 
-## 5. Vercelの環境変数
+## 3. 所有者が接続を確認する
 
-Production環境に以下を登録し、再デプロイします。Preview環境も使う場合は、そのURLのOAuth callbackと環境変数も別途設定します。
+個人用Chromeで [セットアップ画面](http://localhost:8765)を開き、表示される所有者メールと作成内容を確認します。「Googleで接続し、専用の保存先を作成する」を押し、指定した所有者のGoogleアカウントで許可します。開始画面の有効期限は10分です。
+
+セットアップは次を実行します。
+
+- `openid`、メール、`drive.file` のみでoffline accessを要求します。家族の通常ログイン設定は変更しません。
+- Googleから返された認証を、state・PKCE・ブラウザ用Cookie・ID tokenの署名／発行元／audience／nonce・本人確認済み所有者メールで検証します。指定と異なるアカウントや広いDrive権限なら、ファイル作成前に停止します。
+- マイドライブに「ひび学習アプリ」フォルダと「ひび学習アプリ・学習記録」を作成し、シートを専用フォルダに移動します。共有リンクは公開しません。
+- `Events` タブのA〜M列に以下の見出しを設定します。
+
+  ```text
+  id type actorId familyId createdAt payload1 payload2 payload3 payload4 payload5 payload6 payload7 payload8
+  ```
+
+接続結果はプロジェクト直下の **`.env.google-setup.json`** に、所有者のみ読み書き可能な `0600` で保存されます。秘密値はブラウザ、標準出力、ログに表示しません。access tokenやID tokenは出力ファイルに保存しません。保存されるrefresh tokenとclient secretは秘密情報です。セットアップはVercelへ自動送信せず、AIも呼び出しません。[GoogleのOffline access](https://developers.google.com/identity/protocols/oauth2/web-server#offline)
+
+完了画面を確認してページを閉じ、ターミナルで `Ctrl+C` を押してローカルサーバーを終了します。成功済みの結果を使って再開・確認する場合は次を使います。起動するだけでは書き込みせず、再開画面のボタンを押してから実行します。
+
+```sh
+node scripts/setup-google.mjs --resume
+```
+
+保存済みフォルダやシートは再作成しません。ファイル作成の通信中に結果不明となった場合は、重複を避けるため自動再実行せず停止します。その場合はDrive側の作成結果を確認してから復旧します。秘密出力ファイルを削除して最初からやり直す操作は、結果の確認後に行ってください。
+
+`Events` はアプリ専用です。行の並べ替え・削除・セルの編集はせず、閲覧用の集計は別タブに作ります。イベントの行順が「最初に受け付けた回答」を決めます。バックアップはシートのコピーで取れます。
+
+セットアップのローカルテストは以下で実行します。GoogleやVercelには接続しません。
+
+```sh
+node --test tests/setup-google.test.mjs
+```
+
+## 4. Vercelの環境変数
+
+`.env.google-setup.json` の `env` 内にある接続値を、明示的な操作でVercelのProduction環境へ登録し、再デプロイします。ファイル全体を表示・チャットへ貼付せず、設定画面または値を標準入力で渡すCLI操作を使ってください。必ず意図したVercelアカウント・チームを確認します。Preview環境も使う場合は、そのURLのOAuth callbackと環境変数も別途設定します。
 
 | 名前 | 値 |
 |---|---|
@@ -113,8 +90,8 @@ Production環境に以下を登録し、再デプロイします。Preview環境
 | `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` | 同じOAuthクライアントの値 |
 | `GOOGLE_DRIVE_REFRESH_TOKEN` | 所有者のrefresh token |
 | `GOOGLE_DRIVE_OWNER_EMAIL` | 所有者のメール。設定するとtokenの所有者と確認済みメールを照合 |
-| `GOOGLE_DRIVE_FOLDER_ID` | Pickerで許可した保存フォルダID |
-| `GOOGLE_SHEETS_ID` | Pickerで許可した記録スプレッドシートID |
+| `GOOGLE_DRIVE_FOLDER_ID` | セットアップで作成した保存フォルダID |
+| `GOOGLE_SHEETS_ID` | セットアップで作成した記録スプレッドシートID |
 | `GOOGLE_SHEETS_EVENTS_TAB` | `Events`（省略時も同じ） |
 | `FAMILY_ID` | `family-primary`（省略時も同じ。運用開始後は変更しない） |
 | `ALLOWED_FAMILY_MEMBERS_JSON` | 下記の形式。実際の家族のメールに置換 |
@@ -127,7 +104,7 @@ Production環境に以下を登録し、再デプロイします。Preview環境
 
 Claude API・Web Push・Vercel Workflowの設定は別途必要です。Google接続の確認中は `AI_GENERATION_ENABLED=false` にしておけます。
 
-## 6. 接続確認と運用上の範囲
+## 5. 接続確認と運用上の範囲
 
 本番URLで保護者としてログインし、問題集を1つ作成、写真を1枚アップロードします。Eventsへの行追加、指定フォルダへの写真追加、認証された原本プレビューを確認します。次に生徒としてログインし、下書き・解答・原本が公開前の画面に出ないことを確認します。
 
