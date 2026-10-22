@@ -52,6 +52,7 @@ export interface StudyController {
     addLibraryPlan(topicId: string): Promise<string | void>;
     generate(topicId: string, targetCount: number, sourceIds?: string[]): void | Promise<void>;
     resumeGeneration(jobId: string): void | Promise<void>;
+    retryGeneration(jobId: string): Promise<void>;
     updateQuestion(id: string, patch: Partial<Question>): void | Promise<void>;
     publish(questionIds: string[], at?: string): void | Promise<void>;
     resetDemo(): void | Promise<void>;

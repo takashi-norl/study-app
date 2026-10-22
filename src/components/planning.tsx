@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { ArrowLeft, ArrowRight, BookOpen, CheckCircle2, CircleHelp, FileImage, FileText, LoaderCircle, MessageCircle, Plus, RefreshCw, Send, Sparkles, Target, Upload } from 'lucide-react';
-import type { LearningPlan, PlanningProposal, PlanningTurn, SourceDocument } from '@/lib/types';
+import type { GenerationJob, LearningPlan, PlanningProposal, PlanningTurn, Question, SourceDocument } from '@/lib/types';
 import type { StudyController, UploadStatus } from './controller';
 import { PlanningWait } from './planning-wait';
 import { PRACTICE_CATEGORIES, QUESTION_COUNTS, LEVEL_OPTIONS, PURPOSE_OPTIONS, SCHEDULE_OPTIONS, DAILY_MINUTES, questionVolumeLabel, buildQuickStart } from '@/lib/quick-start';
@@ -12,6 +12,17 @@ const dateLabel = (date: string) => new Intl.DateTimeFormat('ja-JP', { month: 'n
 const compactVolumeLabel = (count: number) => questionVolumeLabel(count).split('（')[0];
 const targetLabel = (date?: string) => date ? date.replaceAll('-', '/') : '期限は相談して決める';
 function showSection(element: HTMLElement | null) { if (element?.getClientRects().length) element.scrollIntoView({block:'start'}); }
+
+export function latestGenerationJobs(jobs: GenerationJob[]) {
+  const continued = new Set(jobs.flatMap(job => job.retryOfJobId ? [job.retryOfJobId] : []));
+  // One pass handles an arbitrarily long retry chain without recursively following it.
+  return jobs.filter(job => job.status !== 'failed' || !continued.has(job.id));
+}
+
+export function savedTopicQuestionCount(questions: Question[], topicIds: Iterable<string>) {
+  const selected = new Set(topicIds);
+  return new Set(questions.filter(question => selected.has(question.topicId)).map(question => question.id)).size;
+}
 
 export function UploadFeedback({ status }: { status: UploadStatus | null }) {
   if (!status) return null;
@@ -92,7 +103,7 @@ export default function Planning({ c, initialSourceIds, initialRequest, requeste
       <div className={styles.planList}>{plans.map(item=>{
         const owner=c.data.profiles.find(profile=>profile.id===item.ownerId);
         const jobs=c.data.jobs.filter(job=>job.planId===item.id);
-        const completed=jobs.reduce((count,job)=>count+job.generatedCount,0);
+        const completed=savedTopicQuestionCount(c.data.questions,[...c.data.topics.filter(topic=>topic.planId===item.id).map(topic=>topic.id),...jobs.map(job=>job.topicId),...(item.libraryTopicId?[item.libraryTopicId]:[])]);
         const pending=jobs.some(job=>job.status==='queued'||job.status==='running') || c.data.planningTurns.some(turn=>turn.planId===item.id&&(turn.status==='queued'||turn.status==='running'));
         return <button type="button" key={item.id} className={styles.planRow} disabled={navigationBusy} onClick={()=>openPlan(item.id)}><span className="subject-badge">{item.subject}</span><strong>{item.title}</strong><span>{item.testOnly ? 'テスト用 · ' : ''}{owner?.name || '自分'}{completed ? ` · ${completed}問` : ''}</span><small>{pending ? 'AIの処理が進行中' : completed ? '作った問題を確認する' : '提案・相談を続ける'}</small><ArrowRight size={18} /></button>;
       })}</div>
@@ -207,6 +218,8 @@ function NewPlan({ c, sourceIds: initialIds, created, cancel, savingChanged, act
 function PlanConversation({ c, plan, review, openTopic, active, onLocationChange, onOpenPlan, onList, notificationRequest }: { c: StudyController; plan: LearningPlan; review: (topicId?: string, includePublished?: boolean) => void; openTopic: (id: string) => void; active:boolean; onLocationChange?:(label:string)=>void; onOpenPlan:(id:string)=>void; onList:()=>void; notificationRequest?:number }) {
   const [message, setMessage] = useState('');
   const [publishingTopic, setPublishingTopic] = useState<string | null>(null);
+  const [retryingJob, setRetryingJob] = useState<string | null>(null);
+  const [retryAttempt, setRetryAttempt] = useState<string | null>(null);
   const own = plan.ownerId === c.profile.id;
   const turns = c.data.planningTurns.filter(turn => turn.planId === plan.id).sort((a, b) => a.createdAt.localeCompare(b.createdAt));
   const waiting = turns.some(turn => turn.status === 'queued' || turn.status === 'running');
@@ -214,7 +227,7 @@ function PlanConversation({ c, plan, review, openTopic, active, onLocationChange
   const latest = [...turns].reverse().find(turn => turn.status === 'complete');
   const newest = turns.at(-1);
   const topics = c.data.topics.filter(topic => topic.planId === plan.id);
-  const jobs = c.data.jobs.filter(job => job.planId === plan.id || topics.some(topic => topic.id === job.topicId));
+  const jobs = latestGenerationJobs(c.data.jobs.filter(job => job.planId === plan.id || topics.some(topic => topic.id === job.topicId)));
   const activeJob = c.data.jobs.find(job => job.status === 'queued' || job.status === 'running');
   const generating = !!activeJob;
   const activeJobPlanAvailable = !!activeJob?.planId && c.data.plans.some(item=>item.id===activeJob.planId);
@@ -226,11 +239,12 @@ function PlanConversation({ c, plan, review, openTopic, active, onLocationChange
   const previousLatest=useRef(latest?.id);
   const proposals=latest?.proposals??[];
   const activeProposal=Math.min(proposalIndex,Math.max(0,proposals.length-1));
-  const questionCount=jobs.reduce((count,job)=>count+job.generatedCount,0);
+  const questionCount=savedTopicQuestionCount(c.data.questions,[...topics.map(topic=>topic.id),...jobs.map(job=>job.topicId),...(plan.libraryTopicId?[plan.libraryTopicId]:[])]);
   function selectTab(next:'proposals'|'chat'|'questions') { setTab(next); requestAnimationFrame(()=>showSection(sectionTop.current)); }
   useEffect(()=>{if(notificationRequest)selectTab('proposals');},[notificationRequest]);
   useEffect(()=>{if(latest?.id!==previousLatest.current){previousLatest.current=latest?.id;setProposalIndex(0);if(latest?.id)setTab('proposals');}},[latest?.id]);
-  function consultAgain() { if(!message.trim())setMessage('保存した目標と教材に合わせて、新しい問題作成案を提案してください。作成が止まった問題の再開ではなく、改めて作る案を確認したいです。');selectTab('chat'); }
+  function consultAgain() { if(!message.trim())setMessage('保存した目標と教材をもとに、出題内容や難しさを変えた別の問題作成案を提案してください。');selectTab('chat'); }
+  async function retry(jobId:string) { if(c.busy||retryingJob||generating)return;setRetryAttempt(jobId);setRetryingJob(jobId);try{await c.actions.retryGeneration(jobId);}finally{setRetryingJob(null);} }
   const blockedAction = !own ? {message:'ここは閲覧用です。案の変更・作問は、このプランを作った本人が操作できます。',label:'相談の内容を見る',run:()=>selectTab('chat')}
     : waiting ? {message:'この相談への回答を待っています。新しい提案が届くまで作問はできません。',label:'進み具合を見る',run:()=>selectTab('proposals')}
     : activeJob ? {message:activeJob.planId===plan.id?'このプランの問題を作成しています。完了後に別の案も作れます。':`別の問題を作成しています（${activeJob.generatedCount} / ${activeJob.targetCount}問）。今はこの案を確認でき、作問はその処理が終わってから再開できます。`,label:activeJob.planId===plan.id||activeJobPlanAvailable?'作成状況を確認する':'学習プラン一覧へ',run:()=>{if(activeJob.planId===plan.id)selectTab('questions');else if(activeJob.planId&&activeJobPlanAvailable)onOpenPlan(activeJob.planId);else onList();}}
@@ -271,18 +285,25 @@ function PlanConversation({ c, plan, review, openTopic, active, onLocationChange
       const topic = topics.find(item => item.id === job.topicId);
       const personal = !!job.audienceUserId || !!topic?.audienceUserId;
       const test = !!plan.testOnly || !!job.testOnly || !!topic?.testOnly;
-      const practice = test && c.profile.role === 'parent' || personal && c.profile.role === 'student';
+      const parentTest = test && c.profile.role === 'parent';
+      const practiceOwner = parentTest || c.profile.role === 'student' && (job.audienceUserId || topic?.audienceUserId) === c.profile.id;
+      const practice = practiceOwner && c.data.questions.some(question => question.topicId === job.topicId && question.status !== 'archived' && (c.demo && parentTest || question.status === 'published' && !!question.publishedAt && Date.parse(question.publishedAt) <= Date.now() && !question.needsReview));
       const active = job.status === 'queued' || job.status === 'running';
+      const savedCount = Math.max(job.generatedCount, savedTopicQuestionCount(c.data.questions, [job.topicId]));
+      const available = c.data.questions.some(question => question.topicId === job.topicId && question.status !== 'archived' && (c.profile.role === 'parent' || practice));
+      const canConfirmStart = job.status === 'queued' && job.requestedBy === c.profile.id;
+      const canContinue = own && job.requestedBy === c.profile.id && job.status === 'failed' && savedCount < job.targetCount;
       const published = c.data.topics.some(item => item.libraryPublished && item.librarySourceTopicId === job.topicId);
       return <article key={job.id}>
-        <div><strong>{topic?.title || '作成中の問題集'}</strong><p>{active ? '問題を作成しています' : job.status === 'failed' ? '作成が途中で止まりました' : test ? 'テスト用・保護者のみ' : personal ? '自習用' : '下書きの確認待ち'} · {job.generatedCount} / {job.targetCount}問</p>{job.error && <p className="planning-job-error">{job.error}</p>}</div>
-        {active ? <LoaderCircle size={18} className="spin" /> : job.generatedCount > 0 && <button className="button secondary" disabled={c.busy} onClick={() => practice ? openTopic(job.topicId) : review(job.topicId, personal)}>{test && c.profile.role === 'parent' ? '親だけで試す' : personal && c.profile.role === 'student' ? '練習する' : '内容を確認'}<ArrowRight size={15} /></button>}
-        {test && c.profile.role === 'parent' && !active && job.generatedCount > 0 && <div className="job-recovery"><span>{published ? 'ライブラリに公開済みです。学習者が自分のプランに追加できます。' : '公開すると、学習者のライブラリに問題が表示されます。テストの相談・練習記録は公開されません。'}</span>{!published && <button type="button" className="button primary" disabled={c.busy} onClick={() => { setPublishingTopic(job.topicId); void c.actions.publishLibrary(job.topicId); }}><BookOpen size={15} />ライブラリに公開</button>}{publishingTopic === job.topicId && c.error && <div className="flash error" role="alert"><CircleHelp size={17} /><span>{c.error}</span></div>}</div>}
-        {active && own && <div className="job-recovery"><span>画面を閉じても、処理は続きます。</span><button type="button" className="text-button" disabled={c.busy} onClick={() => void c.actions.resumeGeneration(job.id)}><RefreshCw size={14} />進まない場合は再開</button></div>}
+        <div><strong>{topic?.title || '作成中の問題集'}</strong><p role={active ? 'status' : undefined}>{active ? job.status === 'queued' ? '作成の依頼を受け付けました' : '問題を作成しています' : job.status === 'failed' ? '作成が途中で止まりました' : test ? 'テスト用・保護者のみ' : personal ? '自習用' : '下書きの確認待ち'} · {savedCount} / {job.targetCount}問を保存済み</p>{active && <p>10問ずつ保存します。保存した問題から確認できます。</p>}{job.error && <p className="planning-job-error">{job.error}</p>}</div>
+        {available && (practice || c.profile.role === 'parent') && <button type="button" className="button secondary" disabled={c.busy} onClick={() => practice ? openTopic(job.topicId) : review(job.topicId, personal)}>{practice ? parentTest ? '保存した問題を親だけで試す' : '保存した問題を練習する' : '保存した問題を確認する'}<ArrowRight size={15} /></button>}
+        {canContinue && <div className="job-recovery"><span>{generating ? 'ほかの問題を作成中です。その作成が終わると続きを依頼できます。' : savedCount ? `保存した${savedCount}問は残して、同じ条件で残りの作成をAIに依頼します。` : '条件は保存されています。同じ条件で、もう一度作成をAIに依頼できます。'}</span><button type="button" className="button primary" disabled={c.busy || generating || !!retryingJob} onClick={() => void retry(job.id)}><RefreshCw size={15} />{retryingJob === job.id ? '依頼を確認しています' : '同じ条件で続きを作る'}</button>{retryAttempt === job.id && c.error && <div className="flash error" role="alert"><CircleHelp size={17} /><span>{c.error}</span></div>}</div>}
+        {test && c.profile.role === 'parent' && !active && savedCount > 0 && <div className="job-recovery"><span>{published ? 'ライブラリに公開済みです。学習者が自分のプランに追加できます。' : '公開すると、学習者のライブラリに問題が表示されます。テストの相談・練習記録は公開されません。'}</span>{!published && <button type="button" className="button primary" disabled={c.busy} onClick={() => { setPublishingTopic(job.topicId); void c.actions.publishLibrary(job.topicId); }}><BookOpen size={15} />ライブラリに公開</button>}{publishingTopic === job.topicId && c.error && <div className="flash error" role="alert"><CircleHelp size={17} /><span>{c.error}</span></div>}</div>}
+        {active && <div className="job-recovery"><span>{c.sync.error ? '最新の状況を確認できていません。通信が戻ると、保存済みの件数を確認できます。' : 'ほかの画面に移っても、保存済みの問題はここから確認できます。'}</span><button type="button" className="text-button" disabled={c.busy || c.sync.checking} onClick={() => void (canConfirmStart ? c.actions.resumeGeneration(job.id) : c.actions.refreshStatus())}><RefreshCw size={14} />{c.busy || c.sync.checking ? '状況を確認しています' : canConfirmStart ? '開始を確認する' : '最新の状況を確認'}</button></div>}
       </article>;
     })}</section>}
       {!jobs.length&&!plan.libraryTopicId&&<section className={`panel ${styles.emptyCard}`}><BookOpen size={25}/><h2>問題はここにまとまります。</h2><p>「提案」で案を選ぶと、ここから練習・確認できます。</p><button type="button" className="button primary" onClick={()=>selectTab('proposals')}>提案を選ぶ<ArrowRight size={16}/></button></section>}
-      {jobs.some(job=>job.status==='failed')&&<div className={styles.stateHelp}><p>終了した作成依頼は再開できません。保存できた問題はそのまま使えます。追加で作るときは、新しい案を相談してください。</p>{own&&<button type="button" className="text-button" onClick={consultAgain}>新しい案を相談する<ArrowRight size={16}/></button>}</div>}
+      {jobs.some(job=>job.status==='failed')&&own&&<div className={styles.stateHelp}><p>出題内容や難しさを変えたいときは、別の案も相談できます。</p><button type="button" className="text-button" disabled={c.busy} onClick={consultAgain}>条件を変えて相談する<ArrowRight size={16}/></button></div>}
     </div>
   </div>;
 }

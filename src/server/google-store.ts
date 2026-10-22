@@ -54,7 +54,7 @@ const jobSchema = z.object({ id: idSchema, topicId: idSchema, status: z.enum(['q
   targetCount: z.number().int().min(0), generatedCount: z.number().int().min(0), createdAt: isoSchema, error: z.string().optional(),
   audienceUserId: idSchema.optional(), planId: idSchema.optional(), sourceIds: z.array(idSchema).max(20).optional(),
   instructions: z.string().max(4000).optional(), requestedBy: idSchema.optional(), proposalId: idSchema.optional(),
-  turnId: idSchema.optional(), requestId: idSchema.optional(),testOnly:z.boolean().optional() });
+  turnId: idSchema.optional(), requestId: idSchema.optional(), retryOfJobId: idSchema.optional(),testOnly:z.boolean().optional() });
 const planSchema = z.object({
   id: idSchema, ownerId: idSchema, title: z.string().trim().min(1).max(150), subject: subjectSchema,
   goal: z.string().max(4000), difficulty: z.string().max(200), targetDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),

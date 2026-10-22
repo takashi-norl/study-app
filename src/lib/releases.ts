@@ -8,6 +8,16 @@ export interface AppRelease {
 
 // Newest first. This is the source for Settings, public history and update notices.
 export const APP_RELEASES: readonly AppRelease[] = [{
+  version: '0.4.3',
+  date: '2026-10-23',
+  title: '問題を少しずつ保存し、途中から続けられるように',
+  announcement: '作問を10問ずつに分けて保存します。途中で止まった場合も、同じ条件で続きを作れます。',
+  changes: [
+    { title: '長い作問を、10問ずつ保存', description: '一度に作る量を小さくし、作問の応答を待つ時間を調整しました。すべて終わる前でも、保存した問題から確認・練習できます。' },
+    { title: '相談し直さず、同じ条件で続ける', description: '作問が止まったときは「同じ条件で続きを作る」から再依頼できます。教材、作問条件、保存済みの問題を引き継ぎ、残りの分を作ります。再依頼ではAIを利用します。' },
+    { title: '原因と保存状態を分かりやすく', description: '応答の時間切れ、通信の中断、AIサービスの一時的な障害を区別します。再依頼の履歴で問題数が二重に数えられないようにしました。' },
+  ],
+}, {
   version: '0.4.2',
   date: '2026-10-23',
   title: 'AIを待つ間も、進み具合と戻り先を',

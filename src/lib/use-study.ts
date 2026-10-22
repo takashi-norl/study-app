@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { signIn as googleSignIn, signOut as googleSignOut } from 'next-auth/react';
 import type { NewLearningPlan, StudyController, UploadStatus } from '@/components/controller';
-import type { Attempt, LearningPlan, PracticeMode, PracticeSession, Profile, Question, Role, SourceDocument, StudyData, Subject } from './types';
+import type { Attempt, GenerationJob, LearningPlan, PracticeMode, PracticeSession, Profile, Question, Role, SourceDocument, StudyData, Subject } from './types';
 import { createDemoData } from './demo-data';
 import { selectQuestions } from './learning';
 import { clearLocalFiles, loadLocalFile, saveLocalFile } from './local-files';
@@ -364,7 +364,40 @@ export function useStudy():StudyController {
       if(demo)throw new Error('サンプルではAI作問を実行しません。');
       await api(`/api/jobs/${encodeURIComponent(jobId)}/resume`,'POST',{});
       await refresh();
-      setNotice('作問処理の継続を確認しました。保存済みの部分から進めます。');
+      setNotice('保存済みの依頼の開始を確認しました。');
+    });
+  }
+  async function retryGeneration(jobId:string):Promise<void>{
+    await run(async()=>{
+      if(demo)throw new Error('サンプルではAI作問を実行しません。');
+      const job=state.current.jobs.find(item=>item.id===jobId);
+      if(!job||job.requestedBy!==profile.id)throw new Error('ご自身が依頼した問題作成を選んでください。');
+      if(job.status!=='failed'){await refresh();setNotice('最新の作成状況を確認しました。');return;}
+      const key=`retry:${profile.id}:${jobId}`;
+      const requestId=planningRequest(key);
+      const controller=new AbortController();
+      const timeout=setTimeout(()=>controller.abort(),30000);
+      let accepted:{job:GenerationJob;notice?:string};
+      let reconciled=false;
+      try{
+        accepted=await api<{job:GenerationJob;notice?:string}>(`/api/jobs/${encodeURIComponent(jobId)}/retry`,'POST',{requestId},controller.signal);
+      }catch(error){
+        // The server may have accepted the request before the response was lost.
+        // Retain its request ID and reconcile once; never submit another paid request automatically.
+        const fresh=await refresh().catch(()=>undefined);
+        const recovered=fresh?.data.jobs.find(item=>item.retryOfJobId===jobId);
+        if(recovered){accepted={job:recovered,notice:recovered.status==='queued'||recovered.status==='running'?'続きの依頼は受け付け済みです。保存済みの問題を残して進めます。':'続きの作成結果を確認しました。'};reconciled=true;}
+        else{
+          if(controller.signal.aborted||error instanceof TypeError)throw new Error('続きの依頼が受け付けられたか確認できませんでした。接続を確認して、同じボタンでもう一度確認できます。保存済みの問題は残っています。');
+          throw error;
+        }
+      }finally{clearTimeout(timeout);}
+      const next={...state.current,jobs:[...state.current.jobs.filter(item=>item.id!==accepted.job.id),accepted.job]};
+      state.current=next;setData(next);
+      planningRequests.current.delete(key);
+      setNotice(accepted.notice||'同じ条件で続きの作成を受け付けました。保存済みの問題を残して、残りを作ります。');
+      // Keep the confirmed job visible even if this follow-up read loses its connection.
+      if(!reconciled)await refresh().catch(()=>{});
     });
   }
   async function publish(questionIds:string[],at?:string){
@@ -420,7 +453,7 @@ export function useStudy():StudyController {
     });return resultId;
   }
   return {data:demo?demoStudyDataForProfile(data,profile):data,profile,demo,ready,busy,error,notice,uploadStatus,sync,session,currentQuestion,feedback,actions:{
-    refreshStatus,startPractice,answer,nextQuestion,createTopic,uploadSources,createPlan,sendPlanningMessage,resumePlanningTurn,generateProposal,generate,resumeGeneration,updateQuestion,publish,publishLibrary,addLibraryPlan,requestNotifications,
+    refreshStatus,startPractice,answer,nextQuestion,createTopic,uploadSources,createPlan,sendPlanningMessage,resumePlanningTurn,generateProposal,generate,resumeGeneration,retryGeneration,updateQuestion,publish,publishLibrary,addLibraryPlan,requestNotifications,
     switchRole(role:Role){if(!demo)return;setProfile(data.profiles.find(p=>p.role===role)||GUEST);setSession(null);setSessionQuestions([]);setFeedback(null);setError(null);setNotice(null);setUploadStatus(null);},
     finishSession(){setSession(null);setSessionQuestions([]);setFeedback(null);},
     async resetDemo(){if(!demo)return;await run(async()=>{await clearLocalFiles();setData(createDemoData());setSession(null);setFeedback(null);setNotice('サンプルの記録を初期状態に戻しました。');});},

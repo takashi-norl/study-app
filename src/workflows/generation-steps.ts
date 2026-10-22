@@ -1,7 +1,7 @@
 import { FatalError } from 'workflow';
 import type { GenerationJob,Question } from '@/lib/types';
 import { appendEvent,getFullState,getDriveFileMetadata,downloadSourceFile } from '@/server/google-store';
-import { analyzeDocument,generateQuestions,safeGenerationError } from '@/server/generation';
+import { analyzeDocument,generateQuestions,safeGenerationError,assertGenerationCallNotSent } from '@/server/generation';
 import { ApiError,MAX_SOURCE_BYTES,requireGenerationEnabled } from '@/server/config';
 import { canAccessSource } from '@/server/access';
 import { materializeQuestions } from '@/server/generated-batch';
@@ -30,7 +30,8 @@ export async function planBatches(jobId:string) {
   const input=inputFromEvents(jobId,events);
   assertGenerationAccess(data,input);
   const groups=groupSources(sourcesFromState(input,data,events));
-  return {batchCount:plannedBatchCount(input.targetCount,groups.length)};
+  const remaining=Math.max(0,input.targetCount-(data.jobs.find(job=>job.id===jobId)?.generatedCount ?? 0));
+  return {batchCount:plannedBatchCount(remaining,groups.length)};
 }
 planBatches.maxRetries=1;
 
@@ -59,6 +60,7 @@ export async function analyzeSource(jobId:string,sourceId:string) {
   if(events.some(e=>e.id===`source-analysis:${sourceId}` && e.type==='source.analysis')) return;
   try {
     requireGenerationEnabled();
+    assertGenerationCallNotSent(events,{actorId:input.requestedBy,feature:'source-analysis',requestId:`generation:${jobId}:source:${sourceId}`});
     const metadata=await getDriveFileMetadata(source.storagePath);
     if(metadata.appProperties?.sourceId!==source.id || metadata.mimeType!==source.mimeType || Number(metadata.size)<=0 || Number(metadata.size)>MAX_SOURCE_BYTES) throw new ApiError(422,'資料のアップロードが完了していないか、形式・容量が対応していません。');
     const file=await downloadSourceFile(source.storagePath);
@@ -86,6 +88,7 @@ export async function generateBatch(jobId:string,batch:number,totalBatches:numbe
   if(remaining<=0) return {generatedCount:job.generatedCount,added:0};
   try {
     requireGenerationEnabled();
+    assertGenerationCallNotSent(events,{actorId:input.requestedBy,feature:'question-generation',requestId:`generation:${jobId}:batch:${batch}`});
     const groups=groupSources(sourcesFromState(input,data,events));
     const sources=groups.length ? groups[batch%groups.length] : [];
     if(input.sourceIds.length && !sources.length) throw new ApiError(422,'読み取れた資料がありません。');

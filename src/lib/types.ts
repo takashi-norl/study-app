@@ -45,6 +45,7 @@ export interface GenerationJob {
   audienceUserId?: string; planId?: string; sourceIds?: string[];
   instructions?: string; requestedBy?: string; proposalId?: string;
   turnId?: string; requestId?: string;
+  retryOfJobId?: string;
   testOnly?: boolean;
 }
 export interface LearningPlan {

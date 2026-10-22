@@ -67,6 +67,22 @@ export function priceAnthropicUsage(model: string, usage: UsageLike): Pick<AiUsa
 }
 
 export interface AiCallContext { actorId: string; feature: AiFeature; requestId: string }
+/** A question batch includes passages and explanations; other calls keep their existing bound. */
+export function anthropicRequestPolicy(feature: AiFeature): { timeout: number; maxRetries: number } {
+  return { timeout: feature === 'question-generation' ? 180_000 : 90_000, maxRetries: 0 };
+}
+/** Allowlisted operational metadata only; never include provider messages, bodies, headers, or prompts. */
+export function aiFailureDiagnostic(feature: AiFeature, invocationId: string, error: unknown): {
+  feature: AiFeature; invocationId: string; kind: 'timeout' | 'connection' | 'provider' | 'unexpected'; timeoutMs: number; httpStatus?: number;
+} {
+  const kind = error instanceof Anthropic.APIConnectionTimeoutError ? 'timeout'
+    : error instanceof Anthropic.APIConnectionError ? 'connection'
+    : error instanceof Anthropic.APIError ? 'provider' : 'unexpected';
+  const status = error instanceof Anthropic.APIError ? error.status : undefined;
+  return { feature, invocationId, kind, timeoutMs: anthropicRequestPolicy(feature).timeout,
+    ...(typeof status === 'number' && Number.isInteger(status) && status >= 100 && status <= 599 ? { httpStatus: status } : {}),
+  };
+}
 type MessageParams = Anthropic.Messages.MessageCreateParamsNonStreaming;
 export interface AiCallDependencies {
   append: (event: StudyEvent) => Promise<void>;
@@ -79,7 +95,7 @@ export async function trackedAnthropicMessage(context: AiCallContext, params: Me
   let deps = dependencies;
   if (!deps) {
     requireGenerationEnabled();
-    const client = new Anthropic({ apiKey: requiredEnv('ANTHROPIC_API_KEY'), timeout: 90_000, maxRetries: 0 });
+    const client = new Anthropic({ apiKey: requiredEnv('ANTHROPIC_API_KEY'), ...anthropicRequestPolicy(context.feature) });
     deps = { append: appendEvent, create: async input => client.messages.create(input) };
   }
   const requested = aiRequestedSchema.parse({ invocationId: randomUUID(), requestId: context.requestId,
@@ -91,6 +107,7 @@ export async function trackedAnthropicMessage(context: AiCallContext, params: Me
   await deps.append(event('ai.requested', requested));
   let response: Anthropic.Messages.Message;
   try { response = await deps.create(params); } catch (error) {
+    console.error('AI provider call failed', aiFailureDiagnostic(context.feature, requested.invocationId, error));
     const failed: AiUsage = { ...requested, responseId: null, status: 'failed', ...priceAnthropicUsage(params.model, null), unknownReason: 'request-failed' };
     try { await deps.append(event('ai.usage', aiUsageSchema.parse(failed))); } catch { /* The durable receipt still marks this as unresolved. */ }
     throw error;

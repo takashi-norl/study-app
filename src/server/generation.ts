@@ -3,6 +3,8 @@ import Anthropic from '@anthropic-ai/sdk';
 import { z } from 'zod';
 import { ApiError,requiredEnv } from './config';
 import { trackedAnthropicMessage, type AiCallContext } from './ai-usage';
+import type { StudyEvent } from './google-store';
+import { GENERATION_BATCH_SIZE,questionOutputTokenBudget } from './generation-plan';
 
 export const analysisSchema=z.object({text:z.string().min(1).max(18000),learningPoints:z.array(z.string().max(300)).max(80),uncertainties:z.array(z.string().max(300)).max(50)});
 export const generatedQuestionSchema=z.object({
@@ -11,9 +13,17 @@ export const generatedQuestionSchema=z.object({
   learningPoint:z.string().min(1).max(500),sourceIds:z.array(z.string().uuid()).max(20),
   sourceNote:z.string().min(1).max(1800),needsReview:z.boolean(),
 }).refine(q=>new Set(q.choices).size===4,'選択肢の重複');
-export const generatedBatchSchema=z.object({questions:z.array(generatedQuestionSchema).max(20)});
+export const generatedBatchSchema=z.object({questions:z.array(generatedQuestionSchema).max(GENERATION_BATCH_SIZE)});
 
-const questionJsonSchema={type:'object' as const,properties:{questions:{type:'array',maxItems:20,items:{type:'object',additionalProperties:false,properties:{prompt:{type:'string'},choices:{type:'array',items:{type:'string'},minItems:4,maxItems:4},correctIndex:{type:'integer',minimum:0,maximum:3},explanation:{type:'string'},learningPoint:{type:'string'},sourceIds:{type:'array',items:{type:'string'}},sourceNote:{type:'string'},needsReview:{type:'boolean'}},required:['prompt','choices','correctIndex','explanation','learningPoint','sourceIds','sourceNote','needsReview']}}},required:['questions']};
+const questionJsonSchema={type:'object' as const,properties:{questions:{type:'array',maxItems:GENERATION_BATCH_SIZE,items:{type:'object',additionalProperties:false,properties:{prompt:{type:'string'},choices:{type:'array',items:{type:'string'},minItems:4,maxItems:4},correctIndex:{type:'integer',minimum:0,maximum:3},explanation:{type:'string'},learningPoint:{type:'string'},sourceIds:{type:'array',items:{type:'string'}},sourceNote:{type:'string'},needsReview:{type:'boolean'}},required:['prompt','choices','correctIndex','explanation','learningPoint','sourceIds','sourceNote','needsReview']}}},required:['questions']};
+
+/** An uncertain earlier attempt is not a license to spend again under the same batch identity. */
+export function assertGenerationCallNotSent(events: StudyEvent[], context: AiCallContext): void {
+  if(events.some(event=>event.type==='ai.requested'&&event.actorId===context.actorId
+    &&event.payload.feature===context.feature&&event.payload.requestId===context.requestId)) {
+    throw new ApiError(409,'このAI依頼は送信済みですが、保存された結果を確認できません。重複して送らず、今回の処理を終了しました。保存済みの内容は残っています。','GENERATION_RESULT_UNCERTAIN');
+  }
+}
 
 async function callStructured(context:AiCallContext,content:Anthropic.Messages.ContentBlockParam[],name:string,schema:Anthropic.Tool.InputSchema,maxTokens:number,knowledgeMode=false) {
   const response=await trackedAnthropicMessage(context,{
@@ -39,25 +49,30 @@ export async function analyzeDocument(bytes:Uint8Array,mimeType:string,name:stri
 }
 
 export async function generateQuestions(input:{title:string;subject:string;count:number;instructions?:string;sources:{id:string;name:string;text:string}[];existing:string[]},context:AiCallContext) {
+  if(!Number.isInteger(input.count)||input.count<1||input.count>GENERATION_BATCH_SIZE) throw new ApiError(400,'1回の作問は1〜10問で実行してください。','INVALID_BATCH_SIZE');
   const sourceText=JSON.stringify(input.sources);
   const knowledgeMode=input.sources.length===0;
   if(sourceText.length>100000) throw new ApiError(422,'資料の文字数が多いため、問題集を分けて作問してください。','SOURCE_TOO_LARGE');
   return generatedBatchSchema.parse(await callStructured(context,[{type:'text',text:JSON.stringify({
-    request:`「${input.title}」(${input.subject})の4択問題を最大${input.count}問作ってください。指定された学習項目を偏りなく扱い、既存問題と重複しない内容にします。本文を見なくても解けるよう必要な本文・例文を問題文に含めてください。選択肢は明確に正解が1つ、正解位置を偏らせないでください。${knowledgeMode ? "資料なしの自習用として一般知識と自作例文を使います。" : "根拠は資料の記述とページ/段落をsourceNoteに引用/要約し、sourceIdsは与えたIDのみ使ってください。資料が不足するときは水増しせず少ない問題数で返してください。"}曖昧な読み取りや解答はneedsReview=true。prompt/explanationはそれぞれ2400文字以内、choices各600文字以内。`,
+    request:`「${input.title}」(${input.subject})の4択問題を最大${input.count}問作ってください。指定された学習項目を偏りなく扱い、既存問題と重複しない内容にします。本文を見なくても解けるよう必要な本文・例文を問題文に含めてください。選択肢は明確に正解が1つ、正解位置を偏らせないでください。${knowledgeMode ? "資料なしの自習用として一般知識と自作例文を使います。" : "根拠は資料の記述とページ/段落をsourceNoteに引用/要約し、sourceIdsは与えたIDのみ使ってください。資料が不足するときは水増しせず少ない問題数で返してください。"}解説は正解の理由と誤りやすい点が伝わる2〜4文を目安に簡潔にし、必要な根拠は省略しないでください。曖昧な読み取りや解答はneedsReview=true。prompt/explanationはそれぞれ2400文字以内、choices各600文字以内。`,
     arrangement:input.instructions?.slice(0,8000),
     sourcePolicy:knowledgeMode ? '資料なしの一般知識・自作例文から作問してください。sourceIdsは空配列、sourceNoteは「AI作成の練習問題（資料なし）」とし、架空の出典を付けないでください。' : '与えられた資料に基づき、sourceIdsには根拠のある資料IDを必ず含めてください。',
     untrustedSources:input.sources,
     existingPrompts:input.existing,
-  })}],'create_questions',questionJsonSchema,22000,knowledgeMode));
+  })}],'create_questions',questionJsonSchema,questionOutputTokenBudget(input.count),knowledgeMode));
 }
 
 export function safeGenerationError(error:unknown):string {
   if(error instanceof ApiError) return error.message;
-  if(error instanceof z.ZodError) return 'AIの出力に形式の不備がありました。保存できた問題は残しています。資料を絞って再度お試しください。';
+  if(error instanceof z.ZodError) return 'AIの出力に形式の不備があり、今回の分を保存できませんでした。保存済みの内容は残っています。もう一度依頼できます。';
+  if(error instanceof Anthropic.APIConnectionTimeoutError) return 'AIからの応答が制限時間内に届かなかったため、今回の処理を終了しました。保存済みの内容は残っています。もう一度依頼できます。';
+  if(error instanceof Anthropic.APIConnectionError) return 'AIとの通信が途中で切れました。保存済みの内容は残っています。接続を確認して、もう一度依頼してください。';
   if(error instanceof Anthropic.APIError) {
     if(error.status===401 || error.status===403) return 'Claude APIの認証・利用権限を管理者が確認してください。';
     if(error.status===429) return 'Claude APIの利用上限に達しました。しばらく待ってからお試しください。';
-    if(error.status===400 || error.status===413) return 'Claudeで資料を読み取れませんでした。画像の形式・PDFのページ数をご確認ください。';
+    if(error.status===400 || error.status===413 || error.status===422) return 'AIに送る内容を処理できませんでした。資料の形式・量や作問条件をご確認ください。';
+    if(error.status===404) return 'AIモデルの設定を管理者が確認してください。';
+    if(error.status!==undefined && error.status>=500) return 'AIサービス側で一時的なエラーが発生しました。保存済みの内容は残っています。少し待ってから、もう一度依頼してください。';
   }
   return '作問処理が完了しませんでした。保存済みの下書きは残っています。接続と利用設定を確認してお試しください。';
 }

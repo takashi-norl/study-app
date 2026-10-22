@@ -1,4 +1,11 @@
 export interface TextSource { id:string;name:string;text:string }
+export const GENERATION_BATCH_SIZE=10;
+
+/** Allow Japanese passages and explanations without reserving a 20-question response every time. */
+export function questionOutputTokenBudget(count:number) {
+  if(!Number.isInteger(count)||count<1||count>GENERATION_BATCH_SIZE) throw new RangeError('Invalid generation batch size');
+  return Math.max(6000,2000+count*1500);
+}
 
 /** Keep all pages eligible while bounding each Claude request. A long source keeps its original citation ID. */
 export function groupSources(sources:TextSource[],budget=75000):TextSource[][] {
@@ -20,11 +27,11 @@ export function groupSources(sources:TextSource[],budget=75000):TextSource[][] {
 }
 
 export function plannedBatchCount(targetCount:number,groupCount:number) {
-  return Math.max(Math.ceil(targetCount/20),Math.min(groupCount,targetCount));
+  return Math.max(Math.ceil(targetCount/GENERATION_BATCH_SIZE),Math.min(groupCount,targetCount));
 }
 
 export function countForBatch(remaining:number,batch:number,totalBatches:number) {
-  return Math.min(20,Math.max(1,Math.ceil(remaining/Math.max(1,totalBatches-batch))));
+  return Math.min(GENERATION_BATCH_SIZE,Math.max(1,Math.ceil(remaining/Math.max(1,totalBatches-batch))));
 }
 
 export function promptBudget(prompts:string[],budget=20000):string[] {
