@@ -12,12 +12,12 @@
 .history ul { padding-left: 20px; }
 .history ul li { margin-top: 15px; font-size: 14px; line-height: 1.8; color: #4c5c4c; }
 .history ul p { margin: 4px 0 0; color: #6b7566; }
-.notice { display: flex; align-items: flex-start; gap: 12px; border: 1px solid #dce7d1; background: #f1f6eb; border-radius: 14px; padding: 17px 14px 17px 18px; margin-bottom: 22px; color: #527047; }
+.notice { display: flex; align-items: flex-start; gap: 12px; border: 1px solid #dce7d1; background: #f1f6eb; border-radius: 14px; padding: 17px 14px 17px 18px; margin-bottom: 22px; color: #527047; min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
 .notice > svg { flex-shrink: 0; margin-top: 3px; }
 .notice > div { min-width: 0; flex: 1; }
 .notice p { margin: 0; font-size: 13px; line-height: 1.8; }
 .notice p + p { margin-top: 3px; }
-.notice p span { margin-left: 10px; white-space: nowrap; font-size: 11px; color: #7b886e; }
+.notice p span { margin-left: 10px; font-size: 11px; color: #7b886e; }
 .notice small { display: block; font-size: 11px; line-height: 1.8; margin-top: 5px; }
 .actions { display: flex; align-items: center; flex-wrap: wrap; gap: 5px 18px; margin-top: 5px; }
 .actions a, .actions button { background: none; border: none; color: #3f6537; text-decoration: underline; text-underline-offset: 4px; font-size: 13px; font-weight: 600; padding: 8px 0; min-height: 38px; cursor: pointer; }
@@ -25,4 +25,4 @@
 .close { color: #5e7452; width: 40px; height: 40px; display: grid; place-items: center; flex-shrink: 0; border: 0; background: none; border-radius: 8px; cursor: pointer; margin: -7px -5px 0 0; }
 .close:hover { background: #e3ecd9; }
 .close:focus-visible, .details summary:focus-visible, .actions a:focus-visible, .actions button:focus-visible { outline: 2px solid #5b7e48; outline-offset: 3px; }
-@media (max-width: 600px) { .card { padding: 18px; } .heading h2 { font-size: 16px; } .notice { gap: 9px; padding: 14px 10px 14px 13px; } .notice p { font-size: 12px; } .notice > svg { width: 17px; } }
+@media (max-width: 600px) { .card { padding: 18px; } .heading h2 { font-size: 16px; } .notice { gap: 9px; padding: 14px 10px 14px 13px; } .notice p { font-size: 13px; } .notice > svg { width: 17px; } .close { width: 44px; height: 44px; } }

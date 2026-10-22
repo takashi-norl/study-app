@@ -50,3 +50,87 @@
 
 .quick-subheading{font-size:11px;color:#7a896d;margin:15px 0 8px;line-height:1.7}.quick-exam-target{display:flex;align-items:center;gap:13px;flex-wrap:wrap;margin-top:13px}.quick-exam-target>span{font-size:11px;color:#738567}.quick-exam-target .quick-choice-options>button{min-height:38px;padding:7px 13px;font-size:11px}
 @media(max-width:570px){.quick-exam-target .quick-choice-options>button{min-height:42px;font-size:12px}.quick-subheading{margin-top:14px}}
+
+/* Keep the layout within the phone viewport without clipping or disabling zoom. */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+.app-shell,.main-shell,.main-content,.library-detail,.planning-main{min-width:0}
+.main-content>*{min-width:0}
+.library-layout>*,.planning-layout>*,.parent-middle>*,.settings-stack>*{min-width:0;max-width:100%}
+.table-scroll{max-width:100%}
+.page-heading>div,.panel-heading>div,.planning-section-heading>div,.question-meta>span,.choice>span:nth-child(2){min-width:0}
+.plan-summary>p,.proposal-card h3,.question-prompt,.choice>span:nth-child(2),.answer-feedback>p,.source-evidence p,.learning-point{overflow-wrap:anywhere}
+.question-meta{flex-wrap:wrap}
+.question-meta>span{overflow-wrap:anywhere}
+.quick-actions{grid-template-columns:repeat(2,minmax(0,1fr))}
+.quick-actions>button{min-width:0}
+.quick-choice-options.material-options{grid-template-columns:repeat(2,minmax(0,1fr))}
+.material-options>button,.material-options>button>span{min-width:0;overflow-wrap:anywhere}
+
+@media(max-width:1000px){.library-layout,.parent-middle{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:960px){.planning-layout{grid-template-columns:minmax(0,1fr)}}
+
+/* Small editable fields trigger focus zoom in iPhone browsers. Keep pinch zoom available. */
+@media(max-width:760px),(pointer:coarse){
+  .main-content input:not([type=checkbox]):not([type=radio]),.main-content textarea,.main-content select,.source-preview .panel-heading select,.login-card input{font-size:16px;min-width:0;max-width:100%}
+}
+
+@media(max-width:760px){
+  .main-content{padding-left:max(21px,env(safe-area-inset-left));padding-right:max(21px,env(safe-area-inset-right))}
+  .topbar,.demo-strip{padding-left:max(21px,env(safe-area-inset-left));padding-right:max(21px,env(safe-area-inset-right))}
+  .topbar{height:auto;min-height:65px;flex-wrap:wrap;gap:8px;padding-top:10px;padding-bottom:10px}
+  .topbar-right{min-width:0;flex-wrap:wrap;gap:10px}
+  .mobile-nav{padding-left:max(10px,env(safe-area-inset-left));padding-right:max(10px,env(safe-area-inset-right))}
+  .page-footer{margin-left:max(21px,env(safe-area-inset-left));margin-right:max(21px,env(safe-area-inset-right));margin-bottom:calc(73px + env(safe-area-inset-bottom));flex-wrap:wrap}
+  .page-heading{flex-wrap:wrap;align-items:flex-start;gap:14px}
+  .page-heading>div{flex:1 1 100%}
+  .page-heading>.button,.page-heading>.streak-chip{position:static;inset:auto;margin-top:0;max-width:100%}
+  .page-heading>.button{font-size:12px;min-height:44px;padding:10px 14px;white-space:normal;flex:0 1 auto}
+  .page-description,.planning-page-heading .page-description{font-size:13px;max-width:100%;overflow-wrap:anywhere}
+  .stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stat-card{min-width:0}
+  .stat-label{font-size:12px;flex-wrap:wrap;justify-content:flex-start;gap:6px}
+  .stat-card>p{font-size:11px;overflow-wrap:anywhere}
+  .stat-number{overflow-wrap:anywhere}
+  .quick-actions small{white-space:normal;max-width:100%;font-size:11px}
+  .quick-actions strong{font-size:12px}
+  .topic-description{font-size:12px}
+  .under-note{font-size:12px}
+  .planning-intro,.planning-empty,.plan-summary>p{font-size:13px}
+  .plan-summary .planning-section-heading{flex-wrap:wrap}
+  .plan-owner{white-space:normal;overflow-wrap:anywhere}
+  .source-bank-content .planning-section-heading,.quick-source-picker>.planning-section-heading{flex-wrap:wrap}
+  .upload-zone p,.upload-zone .upload-feedback p,.upload-file-name{font-size:12px}
+  .source-bank-content .source-row>a,.planning-source-rows .source-row>a{font-size:12px}
+  .filter-bar>label,.filter-bar select{min-width:0;max-width:100%}
+  .segmented{min-width:0;max-width:100%;flex-wrap:wrap}
+  .settings-panel>div{min-width:0;flex:1 1 200px;overflow-wrap:anywhere}
+  .settings-panel>.button{max-width:100%;white-space:normal}
+}
+
+@media(max-width:570px){
+  .topic-grid{grid-template-columns:minmax(0,1fr)}
+  .topic-card{min-width:0;grid-template-columns:minmax(0,1fr) 90px}
+  .topic-card h3{min-width:0;white-space:normal;overflow-wrap:anywhere}
+  .topic-card-bottom{min-width:0;max-width:100%}
+  .today-panel{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .today-panel>.small{white-space:normal;font-size:11px}
+  .review-layout,.review-editor,.review-queue{min-width:0;max-width:100%}
+  .settings-panel>.button{margin-left:0;font-size:12px;min-height:44px}
+}
+
+@media(max-width:365px){
+  .main-content,.topbar,.demo-strip{padding-left:max(17px,env(safe-area-inset-left));padding-right:max(17px,env(safe-area-inset-right))}
+}
+
+/* Landscape phones retain the sidebar while keeping controls clear of the notch. */
+@media(min-width:761px) and (orientation:landscape) and (pointer:coarse){
+  .app-shell{--landscape-sidebar:224px;--landscape-gutter:44px}
+  .sidebar{left:env(safe-area-inset-left);padding-bottom:max(18px,env(safe-area-inset-bottom))}
+  .main-shell{margin-left:calc(var(--landscape-sidebar) + env(safe-area-inset-left))}
+  .main-content,.topbar{padding-right:max(var(--landscape-gutter),env(safe-area-inset-right))}
+  .demo-strip{padding-right:max(44px,env(safe-area-inset-right))}
+  .page-footer{margin-right:max(var(--landscape-gutter),env(safe-area-inset-right))}
+}
+@media(min-width:761px) and (max-width:1190px) and (orientation:landscape) and (pointer:coarse){
+  .app-shell{--landscape-sidebar:205px;--landscape-gutter:28px}
+}

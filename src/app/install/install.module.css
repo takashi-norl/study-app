@@ -1,4 +1,4 @@
-.page{min-height:100dvh;background:#f7f8f2;color:#334735;padding:28px 18px 30px}
+.page{min-height:100dvh;background:#f7f8f2;color:#334735;padding:28px max(18px,env(safe-area-inset-right)) max(30px,env(safe-area-inset-bottom)) max(18px,env(safe-area-inset-left))}
 .content{max-width:660px;margin:0 auto}
 .brand{display:inline-flex;align-items:center;gap:10px;font-size:21px;font-weight:800;letter-spacing:.04em;color:#426c43}
 .brand>span{width:40px;height:43px;display:flex;align-items:center;justify-content:center;background:#416940;color:white;border-radius:12px}

@@ -8,6 +8,15 @@ export interface AppRelease {
 
 // Newest first. This is the source for Settings, public history and update notices.
 export const APP_RELEASES: readonly AppRelease[] = [{
+  version: '0.2.1',
+  date: '2026-10-23',
+  title: 'iPhoneの画面に、きちんと収まるように',
+  announcement: 'スマホで見出しやボタンが重ならないよう、画面を整えました。',
+  changes: [
+    { title: '通常サイズもMaxも、画面幅に合わせて', description: '長い見出しや問題集の名前を折り返し、操作ボタンと重ならない配置にしました。教材・学習相談・記録もスマホの幅に合わせて調整しました。' },
+    { title: '入力するときも読みやすく', description: 'スマホの入力欄の文字を大きくして、入力時に画面が自動で拡大されにくくしました。指での拡大・縮小は引き続き使えます。' },
+  ],
+}, {
   version: '0.2.0',
   date: '2026-10-23',
   title: '選んで相談、自分に合う練習へ',
