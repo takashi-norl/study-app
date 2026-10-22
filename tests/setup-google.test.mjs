@@ -120,6 +120,9 @@ test('localhost start page rejects hostile host/origin and requires a browser-bo
     assert.equal(page.status, 200);
     assert.equal(page.headers.get('cache-control'), 'no-store');
     assert.equal(page.headers.get('x-frame-options'), 'DENY');
+    // Fetch's Origin-header algorithm turns a native form POST's Origin into
+    // null under no-referrer. Keep a policy compatible with the strict check.
+    assert.equal(page.headers.get('referrer-policy'), 'same-origin');
     assert.ok(!html.includes(config.clientSecret));
     const cookie = page.headers.get('set-cookie').split(';')[0];
     const confirm = /name="confirm" value="([^"]+)"/.exec(html)[1];
@@ -127,11 +130,13 @@ test('localhost start page rejects hostile host/origin and requires a browser-bo
       headers: { Origin: origin, Cookie: cookie, 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams({ confirm: formToken }) });
     assert.equal((await post('https://malicious.example', confirm)).status, 400);
+    assert.equal((await post('null', confirm)).status, 400);
     assert.equal((await post(ORIGIN, 'wrong')).status, 400);
     const concurrentStarts = await Promise.all([post(ORIGIN, confirm), post(ORIGIN, confirm)]);
     assert.deepEqual(concurrentStarts.map((result) => result.status).sort(), [303, 400]);
     const start = concurrentStarts.find((result) => result.status === 303);
     assert.equal(start.status, 303);
+    assert.equal(start.headers.get('referrer-policy'), 'no-referrer');
     const destination = new URL(start.headers.get('location'));
     assert.equal(destination.origin, 'https://accounts.google.com');
     assert.equal(destination.searchParams.get('redirect_uri'), REDIRECT_URI);
@@ -144,6 +149,7 @@ test('localhost start page rejects hostile host/origin and requires a browser-bo
     const forged = await fetch(`${ORIGIN}/oauth/callback?code=untrusted&state=wrong`, {
       headers: { Cookie: cookie } });
     assert.equal(forged.status, 400);
+    assert.equal(forged.headers.get('referrer-policy'), 'no-referrer');
     assert.equal((await post(ORIGIN, confirm)).status, 400);
   } finally {
     server.close(); server.closeAllConnections(); await once(server, 'close');

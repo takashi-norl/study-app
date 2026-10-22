@@ -253,7 +253,10 @@ export async function startSetup(config, { output = OUTPUT, saved, log = console
           <p>アプリが作成したファイルだけを管理する権限（drive.file）を使います。家族の通常ログインに保存権限は追加しません。</p>
           <p>接続情報はこのMacの秘密ファイルに保存します。Vercelへの登録・公開、AIの呼び出しは行いません。</p>
           ${status === 'ready' ? `<form method="post" action="/start"><input type="hidden" name="confirm" value="${startToken}"><button type="submit">${saved ? '保存した設定で再開する' : 'Googleで接続し、専用の保存先を作成する'}</button></form>` : '<p><a href="/status">設定状況を見る</a></p>'}`),
-        { 'Set-Cookie': `hibi_setup=${browserCookie}; HttpOnly; SameSite=Lax; Path=/; Max-Age=600` }); return;
+        // no-referrer makes native form POSTs send Origin:null. Preserve the local
+        // form origin while still withholding a referrer from other origins.
+        { 'Referrer-Policy': 'same-origin',
+          'Set-Cookie': `hibi_setup=${browserCookie}; HttpOnly; SameSite=Lax; Path=/; Max-Age=600` }); return;
       }
       if (request.method === 'POST' && url.pathname === '/start' && !url.search) {
         if (status !== 'ready' || Date.now() >= expiresAt || request.headers.origin !== ORIGIN
