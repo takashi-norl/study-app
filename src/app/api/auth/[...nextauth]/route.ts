@@ -1,0 +1,18 @@
+import NextAuth from 'next-auth';
+import { NextResponse, type NextRequest } from 'next/server';
+import { getAuthOptions } from '@/server/auth';
+import { ApiError } from '@/server/config';
+
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
+async function handler(request: NextRequest, context: { params: Promise<{ nextauth: string[] }> }) {
+  try {
+    // Resolve lazily so a deployment without credentials can still serve its public/demo screen.
+    return await NextAuth(getAuthOptions())(request, { params: await context.params });
+  } catch (error) {
+    if (error instanceof ApiError) return NextResponse.json({ error: error.message, code: error.code }, { status: error.status });
+    return NextResponse.json({ error: 'ログイン処理に失敗しました。', code: 'AUTH_FAILED' }, { status: 500 });
+  }
+}
+export { handler as GET, handler as POST };

@@ -1,0 +1,13 @@
+node_modules/
+.next/
+.vercel/
+.env*
+!.env.example
+coverage/
+*.tsbuildinfo
+.DS_Store
+artifacts/
+
+/.swc
+src/app/.well-known/workflow/
+.workflow-data/

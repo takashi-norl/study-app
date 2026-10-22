@@ -1,0 +1,32 @@
+import { createHash,randomUUID } from 'node:crypto';
+import { z } from 'zod';
+import { requireProfile } from '@/server/auth';
+import { api,readJson } from '@/server/http';
+import { hideQuestionAnswer,stateForProfile } from '@/server/data';
+import { appendEvent,getFullState,getSessionSnapshot } from '@/server/google-store';
+import { ApiError } from '@/server/config';
+import { selectQuestions } from '@/lib/learning';
+import type { PracticeSession } from '@/lib/types';
+export async function POST(request:Request) { return api(async()=>{
+  const {profile}=await requireProfile('student');
+  const input=await readJson(request,z.object({mode:z.enum(['daily','extra','weak']),topicId:z.string().uuid().optional()}));
+  const {data,events}=await getFullState();
+  const open=data.sessions.filter(s=>s.userId===profile.id && s.mode===input.mode && !s.completedAt).sort((a,b)=>b.createdAt.localeCompare(a.createdAt));
+  for(const session of open) {
+    const questions=await getSessionSnapshot(session.id,events);
+    if(questions.length===session.questionIds.length && (!input.topicId || questions.every(q=>q.topicId===input.topicId))) return {session,questions:questions.map(hideQuestionAnswer)};
+  }
+  const safe=stateForProfile(data,profile);
+  const selected=selectQuestions(safe.questions,safe.attempts,safe.exposures,profile.id,input.mode,new Date(),10,input.topicId);
+  if(!selected.length) throw new ApiError(409,'まだ出題できる問題がありません。保護者の公開、または次の復習日をお待ちください。','NO_QUESTIONS');
+  const session:PracticeSession={id:randomUUID(),userId:profile.id,mode:input.mode,questionIds:selected.map(q=>q.id),createdAt:new Date().toISOString()};
+  const questionSnapshots=selected.map(q=>data.questions.find(full=>full.id===q.id && full.version===q.version)!);
+  const history=data.sessions.map(s=>s.id).sort();
+  const slotId=`practice:${createHash('sha256').update(JSON.stringify([profile.id,input.mode,input.topicId || null,history])).digest('hex')}`;
+  await appendEvent({id:slotId,type:'session.created',actorId:profile.id,createdAt:session.createdAt,payload:{...session,questionSnapshots}});
+  const canonical=await getFullState();
+  const winningId=canonical.events.find(e=>e.id===slotId)?.payload.id as string|undefined;
+  const winningSession=canonical.data.sessions.find(s=>s.id===winningId && s.userId===profile.id);
+  if(!winningSession) throw new ApiError(503,'学習セットの保存を確認できませんでした。もう一度お試しください。');
+  return {session:winningSession,questions:(await getSessionSnapshot(winningSession.id,canonical.events)).map(hideQuestionAnswer)};
+},201); }
