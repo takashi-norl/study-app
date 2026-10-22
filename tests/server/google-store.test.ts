@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { foldEvents, getSessionSnapshot, studyDataForProfile, type StudyEvent } from '../../src/server/google-store';
+import { createBoundedSourceStream, foldEvents, getSessionSnapshot, studyDataForProfile, type StudyEvent } from '../../src/server/google-store';
 import { assertStorageGrant, getAuthConfig, getFamilyMembers, getFamilyId } from '../../src/server/env';
 import { getAuthOptions } from '../../src/server/auth';
 import type { Attempt, Profile, Question } from '../../src/lib/types';
@@ -146,6 +146,40 @@ test('storage tokens require the intended app, minimal Drive scope and configure
   assert.throws(() => assertStorageGrant({ ...grant, email: 'different@example.com' }, config));
   assert.throws(() => assertStorageGrant({ ...grant, email_verified: false }, config));
   assert.throws(() => assertStorageGrant({ ...grant, email_verified: 'false' }, config));
+});
+
+test('source streaming supports bodies above 4.5 MB and rejects oversized or truncated transfers', async () => {
+  const total = 5 * 1024 * 1024;
+  const upstream = new ReadableStream<Uint8Array>({ start(controller) {
+    controller.enqueue(new Uint8Array(total)); controller.close();
+  } });
+  const valid = createBoundedSourceStream(upstream, total);
+  const reader = valid.getReader();
+  assert.equal((await reader.read()).value!.byteLength, total);
+  assert.equal((await reader.read()).done, true);
+  let cancelled = false;
+  const excess = new ReadableStream<Uint8Array>({ pull(controller) { controller.enqueue(new Uint8Array(4)); },
+    cancel() { cancelled = true; } });
+  const bounded = createBoundedSourceStream(excess, 3).getReader();
+  await assert.rejects(bounded.read(), /サイズ/);
+  assert.equal(cancelled, true);
+  const short = createBoundedSourceStream(new ReadableStream<Uint8Array>({ start(controller) { controller.close(); } }), 3).getReader();
+  await assert.rejects(short.read(), /途中/);
+  assert.throws(() => createBoundedSourceStream(new ReadableStream(), 10 * 1024 * 1024 + 1));
+});
+
+test('source stream does not eagerly drain Drive and propagates browser cancellation', async () => {
+  let pulls = 0;
+  let cancelled: unknown;
+  const upstream = new ReadableStream<Uint8Array>({
+    pull(controller) { pulls += 1; controller.enqueue(new Uint8Array(1)); },
+    cancel(reason) { cancelled = reason; },
+  });
+  const bounded = createBoundedSourceStream(upstream, 1000);
+  await new Promise<void>((resolve) => setImmediate(resolve));
+  assert.ok(pulls <= 2, 'Only the bounded and upstream stream queues may prefetch');
+  await bounded.cancel('browser-disconnected');
+  assert.equal(cancelled, 'browser-disconnected');
 });
 
 test('Google login requires a verified allowlisted email and a removed member loses session authorization', async () => {

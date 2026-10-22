@@ -2,7 +2,7 @@ import { randomUUID } from 'node:crypto';
 import { z } from 'zod';
 import { requireProfile } from '@/server/auth';
 import { api,readJson } from '@/server/http';
-import { appendEvent,createSourceUpload,getFullState } from '@/server/google-store';
+import { createSourceUpload,getFullState } from '@/server/google-store';
 import { ApiError,MAX_SOURCE_BYTES,SOURCE_MIME_TYPES } from '@/server/config';
 import type { SourceDocument } from '@/lib/types';
 export async function POST(request:Request) { return api(async()=>{
@@ -13,6 +13,6 @@ export async function POST(request:Request) { return api(async()=>{
   const id=randomUUID();
   const result=await createSourceUpload({sourceId:id,...input});
   const source:SourceDocument={id,topicId:input.topicId,name:input.name,mimeType:input.mimeType,storagePath:result.fileId,createdAt:new Date().toISOString()};
-  await appendEvent({id:`source:${id}`,type:'source.created',actorId:profile.id,createdAt:source.createdAt,payload:source});
+  // This metadata is provisional. Only /complete adds a source to the study event log.
   return {source,signedUrl:result.uploadUrl,token:'',path:result.fileId};
 },201); }

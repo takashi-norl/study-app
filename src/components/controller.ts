@@ -19,7 +19,7 @@ export interface StudyController {
     finishSession(): void | Promise<void>;
     createTopic(title: string, subject: Subject, description: string, targetCount: number): Promise<string | void>;
     uploadSources(topicId: string, files: File[]): Promise<void>;
-    generate(topicId: string, targetCount: number): void | Promise<void>;
+    generate(topicId: string, targetCount: number, sourceIds?: string[]): void | Promise<void>;
     resumeGeneration(jobId: string): void | Promise<void>;
     updateQuestion(id: string, patch: Partial<Question>): void | Promise<void>;
     publish(questionIds: string[], at?: string): void | Promise<void>;

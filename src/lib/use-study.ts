@@ -177,17 +177,20 @@ export function useStudy():StudyController {
           const result=await api<{source:SourceDocument;signedUrl:string;token?:string;path?:string}>('/api/sources/upload-token','POST',{topicId,name:file.name,mimeType:file.type,size:file.size});
           const response=await fetch(result.signedUrl,{method:'PUT',headers:{'Content-Type':file.type},body:file});
           if(!response.ok)throw new Error(`${file.name} を保存できませんでした。もう一度お試しください。`);
+          await api('/api/sources/complete','POST',{sourceId:result.source.id,topicId,storagePath:result.path||result.source.storagePath});
         }
       }
       if(!demo)await refresh();
       setNotice(demo?'この端末に教材を保存しました。デモではAIへの送信は行いません。':'教材を保存しました。「問題を生成」で作問を依頼できます。');
     });
   }
-  async function generate(topicId:string,targetCount:number){
+  async function generate(topicId:string,targetCount:number,selectedSourceIds?:string[]){
     await run(async()=>{
       if(demo)throw new Error('サンプルではAI作問を実行しません。レビュー画面で、用意された下書きの編集と公開を試せます。');
-      const sourceIds=data.sources.filter(s=>s.topicId===topicId).map(s=>s.id);
+      const available=data.sources.filter(s=>s.topicId===topicId);
+      const sourceIds=selectedSourceIds ? [...new Set(selectedSourceIds)].filter(id=>available.some(s=>s.id===id)) : available.slice(-20).map(s=>s.id);
       if(!sourceIds.length)throw new Error('先に教材を追加してください。');
+      if(sourceIds.length>20)throw new Error('一度の作問に使う資料は20件まで選んでください。');
       await api('/api/generate','POST',{topicId,sourceIds,targetCount});await refresh();
       setNotice('作問を受け付けました。この画面を閉じても処理は続きます。');
     });

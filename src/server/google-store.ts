@@ -59,7 +59,7 @@ function client(): OAuth2Client {
 }
 
 /** Internal only: no caller can provide an arbitrary host, path or bearer token through an API. */
-async function googleFetch(url: string, init: RequestInit = {}): Promise<Response> {
+async function googleFetch(url: string, init: RequestInit = {}, timeoutMs = 20_000): Promise<Response> {
   const parsed = new URL(url);
   if (parsed.protocol !== 'https:' || !['www.googleapis.com', 'sheets.googleapis.com'].includes(parsed.hostname)) {
     throw new ApiError(500, 'Googleの接続先が不正です。', 'INVALID_GOOGLE_ENDPOINT');
@@ -75,7 +75,7 @@ async function googleFetch(url: string, init: RequestInit = {}): Promise<Respons
         verifiedAccessToken = token.token;
       }
       response = await fetch(url, { ...init, redirect: 'error', cache: 'no-store',
-        signal: AbortSignal.timeout(20_000),
+        signal: AbortSignal.timeout(Math.min(Math.max(timeoutMs, 1), 180_000)),
         headers: { ...Object.fromEntries(new Headers(init.headers)), Authorization: `Bearer ${token.token}` } });
     } catch (error) {
       if (error instanceof ApiError) throw error;
@@ -354,23 +354,69 @@ export async function createSourceUpload(input: {
   return { uploadUrl, fileId };
 }
 
-export async function downloadSourceFile(fileId: string): Promise<{ bytes: Uint8Array; mimeType: string; name: string }> {
+/** Preserve backpressure, cap the actual body, and stop Drive when the client disconnects. */
+export function createBoundedSourceStream(upstream: ReadableStream<Uint8Array>, expectedBytes: number): ReadableStream<Uint8Array> {
+  if (!Number.isSafeInteger(expectedBytes) || expectedBytes <= 0 || expectedBytes > MAX_SOURCE_BYTES) {
+    throw new ApiError(413, '資料のサイズが対応範囲外です。', 'INVALID_SOURCE');
+  }
+  const reader = upstream.getReader();
+  let bytesRead = 0;
+  let closed = false;
+  return new ReadableStream<Uint8Array>({
+    async pull(controller) {
+      try {
+        const result = await reader.read();
+        if (closed) return;
+        if (result.done) {
+          closed = true;
+          if (bytesRead !== expectedBytes) controller.error(new ApiError(502, '資料の転送が途中で終了しました。', 'SOURCE_TRUNCATED'));
+          else controller.close();
+          return;
+        }
+        bytesRead += result.value.byteLength;
+        if (bytesRead > expectedBytes || bytesRead > MAX_SOURCE_BYTES) {
+          closed = true;
+          try { await reader.cancel(); } catch { /* Still report the bounded-body failure. */ }
+          controller.error(new ApiError(413, '資料のサイズが対応範囲を超えました。', 'SOURCE_TOO_LARGE'));
+          return;
+        }
+        controller.enqueue(result.value);
+      } catch {
+        if (closed) return;
+        closed = true;
+        try { await reader.cancel(); } catch { /* The upstream may already be aborted. */ }
+        controller.error(new ApiError(502, '資料を転送できませんでした。再度開いてください。', 'SOURCE_DOWNLOAD_FAILED'));
+      }
+    },
+    async cancel(reason) {
+      closed = true;
+      await reader.cancel(reason);
+    },
+  });
+}
+
+export async function streamSourceFile(fileId: string): Promise<{ stream: ReadableStream<Uint8Array>; mimeType: string; name: string }> {
   const file = await getDriveFileMetadata(fileId);
   const size = Number(file.size);
-  if (!Number.isFinite(size) || size <= 0 || size > MAX_SOURCE_BYTES
+  if (!Number.isSafeInteger(size) || size <= 0 || size > MAX_SOURCE_BYTES
     || !SOURCE_MIME_TYPES.includes(file.mimeType as typeof SOURCE_MIME_TYPES[number])) {
     throw new ApiError(413, '資料のサイズまたは形式が対応範囲外です。', 'INVALID_SOURCE');
   }
-  const response = await googleFetch(`https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`);
+  // Slow mobile previews can take longer than ordinary metadata or Sheets requests.
+  const response = await googleFetch(`https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`, {}, 180_000);
   if (!response.body) throw new ApiError(502, '資料を読み込めません。', 'SOURCE_DOWNLOAD_FAILED');
-  const reader = response.body.getReader();
+  return { stream: createBoundedSourceStream(response.body, size), mimeType: file.mimeType, name: file.name };
+}
+
+export async function downloadSourceFile(fileId: string): Promise<{ bytes: Uint8Array; mimeType: string; name: string }> {
+  const file = await streamSourceFile(fileId);
+  const reader = file.stream.getReader();
   const chunks: Uint8Array[] = [];
   let bytesRead = 0;
   while (true) {
     const result = await reader.read();
     if (result.done) break;
     bytesRead += result.value.byteLength;
-    if (bytesRead > MAX_SOURCE_BYTES) { await reader.cancel(); throw new ApiError(413, '資料のサイズが大きすぎます。', 'SOURCE_TOO_LARGE'); }
     chunks.push(result.value);
   }
   const bytes = new Uint8Array(bytesRead);
