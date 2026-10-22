@@ -1,5 +1,15 @@
 import type { PracticeMode, PracticeSession, Profile, Question, Role, StudyData, Subject } from '@/lib/types';
 
+export interface UploadStatus {
+  topicId: string;
+  fileName: string;
+  current: number;
+  total: number;
+  completed: number;
+  phase: 'preparing' | 'connecting' | 'uploading' | 'confirming' | 'complete' | 'failed';
+  message: string;
+}
+
 export interface StudyController {
   data: StudyData;
   profile: Profile;
@@ -8,6 +18,7 @@ export interface StudyController {
   busy: boolean;
   error: string | null;
   notice: string | null;
+  uploadStatus: UploadStatus | null;
   session: PracticeSession | null;
   currentQuestion: Question | null;
   feedback: { correct: boolean; correctIndex: number; explanation: string } | null;

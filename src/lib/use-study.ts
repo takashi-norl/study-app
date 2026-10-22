@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { signIn as googleSignIn, signOut as googleSignOut } from 'next-auth/react';
-import type { StudyController } from '@/components/controller';
+import type { StudyController, UploadStatus } from '@/components/controller';
 import type { Attempt, PracticeMode, PracticeSession, Profile, Question, Role, SourceDocument, StudyData, Subject } from './types';
 import { createDemoData } from './demo-data';
 import { selectQuestions } from './learning';
@@ -14,11 +14,21 @@ const GUEST:Profile={id:'guest',familyId:'',name:'ゲスト',role:'student'};
 const EMPTY:StudyData={topics:[],sources:[],questions:[],attempts:[],exposures:[],sessions:[],jobs:[],profiles:[]};
 type Feedback=StudyController['feedback'];
 
-async function api<T>(path:string,method='GET',body?:unknown):Promise<T> {
-  const response=await fetch(path,{method,credentials:'same-origin',cache:'no-store',headers:body?{'Content-Type':'application/json'}:undefined,body:body?JSON.stringify(body):undefined});
-  const result=await response.json().catch(()=>({error:'応答を読み取れませんでした。'}));
+async function api<T>(path:string,method='GET',body?:unknown,signal?:AbortSignal):Promise<T> {
+  const response=await fetch(path,{method,signal,credentials:'same-origin',cache:'no-store',headers:body?{'Content-Type':'application/json'}:undefined,body:body?JSON.stringify(body):undefined});
+  const result=await response.json().catch(error=>{if(signal?.aborted)throw error;return {error:'応答を読み取れませんでした。'};});
   if(!response.ok) throw Object.assign(new Error(typeof result.error==='string'?result.error:'処理を完了できませんでした。'),{status:response.status});
   return result as T;
+}
+async function uploadRequest<T>(request:(signal:AbortSignal)=>Promise<T>,timeoutMs=120000):Promise<T> {
+  const controller=new AbortController();
+  const timer=setTimeout(()=>controller.abort(),timeoutMs);
+  try{return await request(controller.signal);}
+  catch(error){
+    if(controller.signal.aborted)throw new Error('通信に時間がかかっているため中断しました。電波のよい場所やWi-Fiで、下の登録済み資料を確認してから未保存の写真を選び直してください。');
+    if(error instanceof TypeError)throw new Error('通信が途切れ、保存を確認できませんでした。接続を確認し、下の登録済み資料にない写真だけを選び直してください。');
+    throw error;
+  }finally{clearTimeout(timer);}
 }
 function uid(){return crypto.randomUUID();}
 function today(date:string){return new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Tokyo'}).format(new Date(date));}
@@ -31,6 +41,7 @@ export function useStudy():StudyController {
   const [busy,setBusy]=useState(false);
   const [error,setError]=useState<string|null>(null);
   const [notice,setNotice]=useState<string|null>(null);
+  const [uploadStatus,setUploadStatus]=useState<UploadStatus|null>(null);
   const [session,setSession]=useState<PracticeSession|null>(null);
   const [sessionQuestions,setSessionQuestions]=useState<Question[]>([]);
   const [index,setIndex]=useState(0);
@@ -40,8 +51,8 @@ export function useStudy():StudyController {
   const state=useRef(data); state.current=data;
   const currentQuestion=session && !session.completedAt ? sessionQuestions[index] ?? null : null;
 
-  async function refresh(){
-    const result=await api<{data:StudyData;profile:Profile}>('/api/state');
+  async function refresh(signal?:AbortSignal){
+    const result=await api<{data:StudyData;profile:Profile}>('/api/state','GET',undefined,signal);
     setData(result.data);setProfile(result.profile);return result;
   }
   async function run(task:()=>Promise<void>){
@@ -166,22 +177,50 @@ export function useStudy():StudyController {
   async function uploadSources(topicId:string,files:File[]){
     await run(async()=>{
       if(!files.length)return;
-      if(files.length>20)throw new Error('一度に追加できる教材は20ファイルまでです。');
-      for(const original of files){
-        const file=await prepareSourceFile(original);
-        if(demo){
-          const source:SourceDocument={id:uid(),topicId,name:file.name,mimeType:file.type,createdAt:new Date().toISOString()};
-          await saveLocalFile(source.id,file);source.previewUrl=URL.createObjectURL(file);
-          setData(d=>({...d,sources:[...d.sources,source]}));
-        }else{
-          const result=await api<{source:SourceDocument;signedUrl:string;token?:string;path?:string}>('/api/sources/upload-token','POST',{topicId,name:file.name,mimeType:file.type,size:file.size});
-          const response=await fetch(result.signedUrl,{method:'PUT',headers:{'Content-Type':file.type},body:file});
-          if(!response.ok)throw new Error(`${file.name} を保存できませんでした。もう一度お試しください。`);
-          await api('/api/sources/complete','POST',{sourceId:result.source.id,topicId,storagePath:result.path||result.source.storagePath});
+      let status:UploadStatus={topicId,fileName:files[0].name,current:1,total:files.length,completed:0,phase:'preparing',message:'写真・PDFを準備しています'};
+      const requestedIds:string[]=[];
+      function progress(patch:Partial<UploadStatus>){status={...status,...patch};setUploadStatus(status);}
+      progress({});
+      try{
+        if(files.length>20)throw new Error('一度に追加できる教材は20ファイルまでです。');
+        for(const [index,original] of files.entries()){
+          progress({fileName:original.name,current:index+1,phase:'preparing',message:'写真・PDFを準備しています'});
+          const file=await prepareSourceFile(original);
+          let source:SourceDocument;
+          if(demo){
+            source={id:uid(),topicId,name:file.name,mimeType:file.type,createdAt:new Date().toISOString()};
+            progress({phase:'uploading',message:'この端末に保存しています'});
+            await saveLocalFile(source.id,file);source.previewUrl=URL.createObjectURL(file);
+          }else{
+            progress({phase:'connecting',message:'保存先に接続しています'});
+            const result=await uploadRequest(signal=>api<{source:SourceDocument;signedUrl:string;path?:string}>('/api/sources/upload-token','POST',{topicId,name:file.name,mimeType:file.type,size:file.size},signal));
+            requestedIds.push(result.source.id);
+            progress({phase:'uploading',message:'写真・PDFをアップロードしています'});
+            const response=await uploadRequest(signal=>fetch(result.signedUrl,{method:'PUT',headers:{'Content-Type':file.type},body:file,signal}));
+            if(!response.ok)throw new Error(`${file.name} を保存できませんでした。下の登録済み資料を確認してから、未保存の写真を選び直してください。`);
+            progress({phase:'confirming',message:'保存を確認しています'});
+            const saved=await uploadRequest(signal=>api<{source:SourceDocument}>('/api/sources/complete','POST',{sourceId:result.source.id,topicId,storagePath:result.path||result.source.storagePath},signal));
+            source={...saved.source,previewUrl:`/api/sources/${encodeURIComponent(saved.source.id)}`};
+          }
+          // Keep each confirmed file visible even if a later file fails.
+          setData(d=>({...d,sources:d.sources.some(s=>s.id===source.id)?d.sources:[...d.sources,source]}));
+          progress({completed:status.completed+1});
         }
+        const message=demo?`${files.length}件をこの端末に保存しました。デモではAIへの送信は行いません。`:`${files.length}件を保存しました。下の「問題の作成を依頼」へ進めます。`;
+        progress({phase:'complete',message});setNotice(message);
+      }catch(error){
+        const message=error instanceof Error?error.message:'教材を保存できませんでした。接続を確認してください。';
+        progress({phase:'failed',message});
+        // A confirmation response can be lost after the server saves the file.
+        // Reconcile once, without automatically re-uploading any photo.
+        if(!demo&&requestedIds.length){
+          try{
+            const fresh=await uploadRequest(signal=>refresh(signal),15000);
+            progress({completed:fresh.data.sources.filter(source=>requestedIds.includes(source.id)).length});
+          }catch{}
+        }
+        throw new Error(message);
       }
-      if(!demo)await refresh();
-      setNotice(demo?'この端末に教材を保存しました。デモではAIへの送信は行いません。':'教材を保存しました。「問題を生成」で作問を依頼できます。');
     });
   }
   async function generate(topicId:string,targetCount:number,selectedSourceIds?:string[]){
@@ -240,7 +279,7 @@ export function useStudy():StudyController {
       await api('/api/push/subscribe','POST',subscription.toJSON());setNotice('新しい問題の通知を有効にしました。');
     });
   }
-  return {data,profile,demo,ready,busy,error,notice,session,currentQuestion,feedback,actions:{
+  return {data,profile,demo,ready,busy,error,notice,uploadStatus,session,currentQuestion,feedback,actions:{
     startPractice,answer,nextQuestion,createTopic,uploadSources,generate,resumeGeneration,updateQuestion,publish,requestNotifications,
     switchRole(role:Role){if(!demo)return;setProfile(data.profiles.find(p=>p.role===role)||GUEST);setSession(null);setFeedback(null);setError(null);setNotice(null);},
     finishSession(){setSession(null);setSessionQuestions([]);setFeedback(null);},

@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { requireGenerationEnabled } from '../../src/server/config';
 import { validatePushEndpoint } from '../../src/server/push';
-import { assertSameOrigin } from '../../src/server/http';
+import { assertSameOrigin, sameOriginForRequest } from '../../src/server/http';
 import { hideQuestionAnswer } from '../../src/server/data';
 import type { Question } from '../../src/lib/types';
 
@@ -36,6 +36,34 @@ test('mutation origin guard rejects cross-site requests, including a matching fo
   assert.doesNotThrow(()=>assertSameOrigin(new Request('https://study.example/api/answer',{headers:{origin:'https://study.example','sec-fetch-site':'same-origin'}})));
   assert.throws(()=>assertSameOrigin(new Request('https://study.example/api/answer',{headers:{origin:'https://attacker.example','sec-fetch-site':'cross-site'}})));
   assert.throws(()=>assertSameOrigin(new Request('https://study.example/api/answer',{headers:{origin:'https://study.example','sec-fetch-site':'cross-site'}})));
+});
+
+test('upload origin uses only a validated browser or request origin',()=>{
+  const original=process.env.NEXT_PUBLIC_APP_URL;
+  try {
+    process.env.NEXT_PUBLIC_APP_URL='https://study.example';
+    assert.equal(sameOriginForRequest(new Request('https://study.example/api/sources/upload-token',{
+      headers:{origin:'https://study.example','sec-fetch-site':'same-origin'},
+    })),'https://study.example');
+    assert.equal(sameOriginForRequest(new Request('https://internal.example/api/sources/upload-token',{
+      headers:{origin:'https://study.example'},
+    })),'https://study.example');
+    assert.equal(sameOriginForRequest(new Request('http://localhost:3000/api/sources/upload-token')),'http://localhost:3000');
+    for(const origin of ['null','https://attacker.example','https://study.example/path','https://user@study.example','https://study.example?x=1']) {
+      assert.throws(()=>sameOriginForRequest(new Request('https://study.example/api/sources/upload-token',{headers:{origin}})),{code:'INVALID_ORIGIN'});
+    }
+    assert.throws(()=>sameOriginForRequest(new Request('https://study.example/api/sources/upload-token',{
+      headers:{origin:'https://study.example','sec-fetch-site':'cross-site'},
+    })),{code:'INVALID_ORIGIN'});
+    // An accidentally malformed configuration must not become a forwarded header.
+    process.env.NEXT_PUBLIC_APP_URL='https://study.example/path';
+    assert.throws(()=>sameOriginForRequest(new Request('https://internal.example/api/sources/upload-token',{
+      headers:{origin:'https://study.example/path'},
+    })),{code:'INVALID_ORIGIN'});
+  } finally {
+    if(original===undefined) delete process.env.NEXT_PUBLIC_APP_URL;
+    else process.env.NEXT_PUBLIC_APP_URL=original;
+  }
 });
 
 test('practice question projection only returns explicitly approved public fields',()=>{

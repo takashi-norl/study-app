@@ -25,5 +25,13 @@
 .job-recovery{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;width:100%;border-top:1px solid #e0e8d6;padding-top:10px;margin-top:3px}.job-recovery>span{font-size:10px;color:#829172}.job-recovery>.text-button{font-size:10px}
 
 .source-row input.source-pick{width:18px;height:18px;min-width:18px;flex:0 0 18px;padding:0;margin:0;accent-color:#245641;cursor:pointer}
+.upload-feedback{margin-top:18px;padding:15px;text-align:left;border:1px solid #d4e1ca;border-radius:9px;background:#f1f6ed;color:#365b38;overflow-wrap:anywhere}
+.upload-feedback-heading{display:flex;gap:8px;align-items:flex-start;font-size:12px;line-height:1.7}
+.upload-feedback-heading>svg{flex:none;margin-top:2px}
+.upload-file-name{display:block;margin:7px 0 11px;font-size:11px;line-height:1.7}
+.upload-zone .upload-feedback p{max-width:none;margin:8px 0 0;font-size:11px;line-height:1.8;color:inherit}
+.upload-feedback.failed{border-color:#e6c8bd;background:#fff2ed;color:#8b4031}
+.upload-feedback .progress-track{margin:10px 0;height:5px}
+@media(max-width:570px){.upload-feedback{padding:12px}.upload-feedback-heading{font-size:12px}.upload-zone .upload-feedback p,.upload-file-name{font-size:11px}}
 
 .login-footer{flex-wrap:wrap}.login-footer nav{display:flex;flex-wrap:wrap;gap:16px}.login-footer nav a{text-decoration:underline;text-underline-offset:3px;font-size:11px}

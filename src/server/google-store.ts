@@ -325,7 +325,7 @@ export async function getDriveFileMetadata(fileId: string): Promise<DriveFileMet
 
 export async function createSourceUpload(input: {
   sourceId: string; topicId: string; name: string; mimeType: string; size: number;
-}): Promise<{ uploadUrl: string; fileId: string }> {
+}, browserOrigin: string): Promise<{ uploadUrl: string; fileId: string }> {
   const config = getDriveConfig();
   if (!SOURCE_MIME_TYPES.includes(input.mimeType as typeof SOURCE_MIME_TYPES[number])
     || !Number.isInteger(input.size) || input.size <= 0 || input.size > MAX_SOURCE_BYTES) {
@@ -340,6 +340,8 @@ export async function createSourceUpload(input: {
   if (!fileId) throw new ApiError(502, 'アップロードの準備に失敗しました。', 'UPLOAD_SETUP_FAILED');
   const response = await googleFetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=resumable&fields=id,name,mimeType,size', {
     method: 'POST', headers: { 'Content-Type': 'application/json; charset=UTF-8',
+      // Drive uses the initiating Origin for CORS on the final browser PUT response.
+      Origin: browserOrigin,
       'X-Upload-Content-Type': input.mimeType, 'X-Upload-Content-Length': String(input.size) },
     body: JSON.stringify({ id: fileId, name: input.name, mimeType: input.mimeType, parents: [config.folderId],
       appProperties: { purpose: 'hibi-study-source', sourceId: input.sourceId, topicId: input.topicId } }),

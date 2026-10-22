@@ -12,6 +12,19 @@ export function assertSameOrigin(request: Request) {
   if (request.headers.get('sec-fetch-site') === 'cross-site') throw new ApiError(403, '別のサイトからの操作は許可されていません。', 'INVALID_ORIGIN');
 }
 
+/** The browser origin may be forwarded to an upload provider only after validation. */
+export function sameOriginForRequest(request: Request): string {
+  assertSameOrigin(request);
+  const origin = request.headers.get('origin') || new URL(request.url).origin;
+  try {
+    const parsed = new URL(origin);
+    if (parsed.origin !== origin || !['http:', 'https:'].includes(parsed.protocol)) throw new Error('Invalid origin');
+  } catch {
+    throw new ApiError(403, 'このページからの操作は許可されていません。', 'INVALID_ORIGIN');
+  }
+  return origin;
+}
+
 export async function readJson<T>(request: Request, schema: z.ZodType<T>): Promise<T> {
   assertSameOrigin(request);
   const length = Number(request.headers.get('content-length') || 0);
