@@ -73,6 +73,17 @@ const planningTurnSchema = z.object({
   status: z.enum(['queued', 'running', 'complete', 'failed']), message: z.string().min(1).max(4000),
   reply: z.string().max(12000).optional(), proposals: z.array(proposalSchema).max(5).optional(),
   createdAt: isoSchema, completedAt: isoSchema.optional(), error: z.string().max(1000).optional(),
+  startedAt: isoSchema.optional(), updatedAt: isoSchema.optional(), workflowRunId: idSchema.optional(),
+  progress: z.object({
+    phase: z.enum(['queued', 'preparing', 'reading_sources', 'thinking', 'saving', 'complete', 'failed']),
+    sourcesCompleted: z.number().int().min(0).max(20), sourcesTotal: z.number().int().min(0).max(20),
+    sourcesRequiringAnalysis: z.number().int().min(0).max(20).optional(),
+    readingSample: z.object({ count: z.number().int().min(1).max(20),
+      minSeconds: z.number().finite().positive(), maxSeconds: z.number().finite().positive(),
+    }).refine(sample => sample.minSeconds <= sample.maxSeconds).optional(),
+  }).refine(progress => progress.sourcesCompleted <= progress.sourcesTotal
+    && (progress.sourcesRequiringAnalysis === undefined || progress.sourcesRequiringAnalysis <= progress.sourcesTotal)
+    && (!progress.readingSample || progress.readingSample.count <= progress.sourcesCompleted)).optional(),
 });
 
 const CELL_CHARS = 40_000;
@@ -369,7 +380,16 @@ export function foldEvents(events: StudyEvent[], profiles: Profile[] = []): Stud
         } else if (previous.planId === turn.planId && previous.version === turn.version
           && previous.status !== 'complete' && previous.status !== 'failed'
           && !(previous.status === 'running' && turn.status === 'queued')) {
-          planningTurns.set(turn.id, { ...turn, message: previous.message, createdAt: previous.createdAt });
+          // An old progress write must not move a newer running phase backwards.
+          if (turn.status === 'running' && turn.updatedAt && previous.updatedAt
+            && Date.parse(turn.updatedAt) < Date.parse(previous.updatedAt)) break;
+          planningTurns.set(turn.id, { ...turn, message: previous.message, createdAt: previous.createdAt,
+            startedAt: previous.startedAt ?? turn.startedAt, updatedAt: turn.updatedAt ?? previous.updatedAt,
+            workflowRunId: previous.workflowRunId ?? turn.workflowRunId,
+            progress: turn.progress ? { ...turn.progress,
+              sourcesRequiringAnalysis: previous.progress?.sourcesRequiringAnalysis ?? turn.progress.sourcesRequiringAnalysis,
+            } : previous.progress,
+          });
         }
         break;
       }

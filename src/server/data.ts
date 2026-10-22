@@ -1,6 +1,7 @@
 import 'server-only';
 import type { Profile,Question,StudyData } from '@/lib/types';
 import { getFullState,studyDataForProfile } from './google-store';
+import { withObservedPlanningProgress } from './planning-progress';
 
 export function hideQuestionAnswer(question:Question):Question {
   return {id:question.id,topicId:question.topicId,prompt:question.prompt,choices:[...question.choices],
@@ -12,5 +13,6 @@ export function stateForProfile(data:StudyData,profile:Profile):StudyData {
   return studyDataForProfile(data,profile);
 }
 export async function loadState(profile:Profile):Promise<StudyData> {
-  return stateForProfile((await getFullState()).data,profile);
+  const {data,events}=await getFullState();
+  return stateForProfile(withObservedPlanningProgress(data,events),profile);
 }

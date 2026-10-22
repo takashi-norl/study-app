@@ -6,6 +6,8 @@ import { appendEvent, getFullState } from '@/server/google-store';
 import { ApiError, requireGenerationEnabled } from '@/server/config';
 import { checkPlanningRequest, paidWorkSlotId, planningMessageSchema } from '@/server/planning';
 import { planningWorkflow } from '@/workflows/planning';
+import { planningProgress } from '@/server/planning-progress';
+import { inspectPlanningRun } from '@/server/planning-status';
 import type { PlanningTurn } from '@/lib/types';
 
 export const maxDuration=300;
@@ -13,20 +15,22 @@ export async function POST(request:Request,context:{params:Promise<{id:string}>}
   const {profile}=await requireProfile();
   const id=z.string().uuid().parse((await context.params).id);
   const input=await readJson(request,planningMessageSchema);
-  const {data}=await getFullState();
+  const {data,events}=await getFullState();
   const {plan,previous}=checkPlanningRequest(data,profile,id,input);
   if(previous) {
-    // A request can lose its response after the queued row is saved but before dispatch.
-    // The durable hook prevents a second paid run if the original dispatch did succeed.
-    if(previous.status==='queued') {
+    const inspected=await inspectPlanningRun(previous);
+    // Only an explicit queued request without an active run can be dispatched again.
+    // A running/unknown result is never repeated; the hook also handles dispatch races.
+    if(inspected.shouldDispatch) {
       requireGenerationEnabled();
       try {await start(planningWorkflow,[previous.id]);}
       catch {throw new ApiError(503,'AI相談の開始を確認できませんでした。同じ内容で再度送信してください。','WORKFLOW_UNAVAILABLE');}
     }
-    return {planId:plan.id,turn:previous};
+    return {planId:plan.id,turn:inspected.turn,notice:inspected.shouldDispatch?'保存済みの相談を受け付けました。進み具合は画面に表示されます。':inspected.notice};
   }
   requireGenerationEnabled();
-  const turn:PlanningTurn={id:input.requestId,planId:plan.id,requestedBy:profile.id,version:plan.version+1,status:'queued',message:input.message,createdAt:new Date().toISOString()};
+  const now=new Date();
+  const turn:PlanningTurn=planningProgress({id:input.requestId,planId:plan.id,requestedBy:profile.id,version:plan.version+1,status:'queued',message:input.message,createdAt:now.toISOString()},plan.sourceIds,events,'queued',now);
   const slotId=paidWorkSlotId(data);
   await appendEvent({id:slotId,type:'planning.turn.upserted',actorId:profile.id,createdAt:turn.createdAt,payload:turn});
   const canonical=await getFullState();

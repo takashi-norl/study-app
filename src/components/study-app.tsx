@@ -17,6 +17,7 @@ import { learnerQuestions } from '@/lib/learner-library';
 import { PersonalProfileProvider, usePersonalProfile } from './personal-profile-context';
 import { PersonalProfilePanel, PersonalEncouragement } from './personal-profile';
 import { AiUsagePanel } from './ai-usage';
+import { PlanningWorkNotice } from './planning-work-notice';
 
 type View = 'home' | 'topics' | 'history' | 'library' | 'review' | 'settings' | 'planning' | 'catalog' | 'menu';
 type SettingsSection = 'index' | 'profile' | 'usage' | 'releases' | 'guide' | 'account' | 'notifications' | 'data';
@@ -73,11 +74,14 @@ export default function StudyApp({ controller: c }: { controller: StudyControlle
   function openReview(topicId = 'all', includePublished = false) { if (uploading || c.session && c.busy) return; setReviewTopic(topicId); setReviewFilter(includePublished ? 'all' : 'draft'); setView('review'); }
   const [planningSources, setPlanningSources] = useState<string[] | undefined>();
   const [planningRequest, setPlanningRequest] = useState(0);
-  function consult(sourceIds: string[]) { if (uploading || c.session && c.busy) return; setPlanningSources(sourceIds); setPlanningRequest(value => value + 1); setView('planning'); }
+  const [requestedPlanId, setRequestedPlanId] = useState<string>();
+  const [planningScreen, setPlanningScreen] = useState<'list'|'new'|'plan'|'sources'>('list');
+  function openPlanById(id: string) { if (uploading || c.session && c.busy) return; setPlanningSources(undefined); setRequestedPlanId(id); setPlanningRequest(value => value + 1); setView('planning'); }
+  function consult(sourceIds: string[]) { if (uploading || c.session && c.busy) return; setRequestedPlanId(undefined); setPlanningSources(sourceIds); setPlanningRequest(value => value + 1); setView('planning'); }
   const parent = c.profile.role === 'parent';
   const student = parent ? c.data.profiles.find(p => p.role === 'student') : c.profile;
   const studentId = student?.id ?? '';
-  useEffect(() => { updateView('home'); setVisited([]); setSettingsSection('index'); setPlanningSources(undefined); setActiveTopic(''); setReviewTopic('all'); setReviewFilter('draft'); }, [c.profile.id, c.profile.role]);
+  useEffect(() => { updateView('home'); setVisited([]); setSettingsSection('index'); setPlanningSources(undefined); setRequestedPlanId(undefined); setActiveTopic(''); setReviewTopic('all'); setReviewFilter('draft'); }, [c.profile.id, c.profile.role]);
   useEffect(() => { window.scrollTo({ top: 0, behavior: 'auto' }); }, [view, c.profile.role, c.currentQuestion?.id, c.session?.completedAt]);
   useEffect(() => {
     if (!uploading) return;
@@ -113,7 +117,7 @@ export default function StudyApp({ controller: c }: { controller: StudyControlle
       <header className="topbar"><div className="mobile-location">{c.session ? <button disabled={c.busy} className="text-button" onClick={() => c.actions.finishSession()}><ArrowLeft size={18} />{c.session.completedAt ? '戻る' : '中断して戻る'}</button> : view !== 'home' ? <button disabled={uploading} className="text-button" onClick={() => setView('home')}><ArrowLeft size={18} />ホーム</button> : <span><Sprout size={20} />ひび学習</span>}<strong>{locationLabel}</strong></div><span className="breadcrumb">{parent ? '保護者のページ' : '学習ルーム'}<ChevronRight size={14} />{locationLabel}</span><div className="topbar-right"><span className="topbar-date">{new Intl.DateTimeFormat('ja-JP', { month: 'long', day: 'numeric', weekday: 'short', timeZone: 'Asia/Tokyo' }).format(new Date())}</span><button className="text-button" onClick={() => openSettings('guide')}><CircleHelp size={17} />使い方</button><button className="icon-button" aria-label="通知の設定" onClick={() => openSettings('notifications')}><Bell size={20} /></button></div></header>
       {c.demo && <div className="demo-strip"><span><span className="demo-dot" />デモ体験中 <span className="demo-detail">— サンプルの問題と学習記録です。データはこのブラウザに保存されます。</span></span><div className="role-switch" aria-label="デモの表示を切り替え"><button className={!parent ? 'selected' : ''} onClick={() => c.actions.switchRole('student')}>生徒</button><button className={parent ? 'selected' : ''} onClick={() => c.actions.switchRole('parent')}>保護者</button></div></div>}
       {uploading && <div className="app-upload-notice" role="status"><Upload size={17} /><span>教材を保存しています（{c.uploadStatus?.completed} / {c.uploadStatus?.total}件）。完了するまでこの画面でお待ちください。</span></div>}
-      <main className="main-content"><AppReleaseNotice busy={c.busy || !!(c.session && !c.session.completedAt) || !!(c.uploadStatus && !['complete', 'failed'].includes(c.uploadStatus.phase))} /><Flash c={c} />
+      <main className="main-content"><AppReleaseNotice busy={c.busy || !!(c.session && !c.session.completedAt) || !!(c.uploadStatus && !['complete', 'failed'].includes(c.uploadStatus.phase))} /><Flash c={c} /><PlanningWorkNotice c={c} onOpenPlan={openPlanById} hidden={!!c.session || (view === 'planning' && planningScreen !== 'list') || uploading} />
         {c.session ? <Practice c={c} /> : <>
           {view === 'home' && (parent ? <ParentHome c={c} student={student} studentId={studentId} navigate={setView} openProfile={() => openSettings('profile')} /> : <StudentHome c={c} studentId={studentId} navigate={setView} openProfile={() => openSettings('profile')} />)}
           {view === 'topics' && <><PageHeading eyebrow="YOUR COLLECTION" title="問題集" description="好きなテーマを選んで、自分のペースで。"><button className="button primary" onClick={() => consult([])}><Sparkles size={17} />問題を作る</button></PageHeading><TopicGrid c={c} studentId={studentId} /></>}
@@ -125,7 +129,7 @@ export default function StudyApp({ controller: c }: { controller: StudyControlle
           {view === 'menu' && <AppMenu c={c} navigate={setView} openSettings={openSettings} />}
         </>}
         {visited.includes('review') && parent && <div hidden={!!c.session || view !== 'review'}><Review c={c} initialTopic={reviewTopic} initialFilter={reviewFilter} /></div>}
-        {visited.includes('planning') && <div hidden={!!c.session || view !== 'planning'}><Planning onLocationChange={setPlanningLocation} c={c} initialSourceIds={planningSources} initialRequest={planningRequest} review={openReview} onBack={() => setView('home')} openTopic={id => { void c.actions.startPractice('daily', id); }} /></div>}
+        {visited.includes('planning') && <div hidden={!!c.session || view !== 'planning'}><Planning active={view === 'planning' && !c.session} requestedPlanId={requestedPlanId} onScreenChange={setPlanningScreen} onLocationChange={setPlanningLocation} c={c} initialSourceIds={planningSources} initialRequest={planningRequest} review={openReview} onBack={() => setView('home')} openTopic={id => { void c.actions.startPractice('daily', id); }} /></div>}
         {visited.includes('settings') && <div hidden={!!c.session || view !== 'settings'}><Settings onLocationChange={setProfileLocation} active={view === 'settings' && !c.session} c={c} section={settingsSection} setSection={setSettingsSection} onCreate={() => consult([])} onHome={() => setView('home')} /></div>}
       </main><footer className="page-footer">ひび学習 v{CURRENT_RELEASE.version} <span>小さな積み重ねを、大きな自信に。</span></footer>
     </div>

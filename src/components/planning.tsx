@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { ArrowLeft, ArrowRight, BookOpen, CheckCircle2, CircleHelp, FileImage, FileText, LoaderCircle, MessageCircle, Plus, RefreshCw, Send, Sparkles, Target, Upload } from 'lucide-react';
 import type { LearningPlan, PlanningProposal, PlanningTurn, SourceDocument } from '@/lib/types';
 import type { StudyController, UploadStatus } from './controller';
+import { PlanningWait } from './planning-wait';
 import { PRACTICE_CATEGORIES, QUESTION_COUNTS, LEVEL_OPTIONS, PURPOSE_OPTIONS, SCHEDULE_OPTIONS, DAILY_MINUTES, questionVolumeLabel, buildQuickStart } from '@/lib/quick-start';
 import styles from './planning-flow.module.css';
 
@@ -57,7 +58,7 @@ export function SourceBank({ c, onConsult }: { c: StudyController; onConsult: (i
   </div>;
 }
 
-export default function Planning({ c, initialSourceIds, initialRequest, review, openTopic, onBack, onLocationChange }: { c: StudyController; initialSourceIds?: string[]; initialRequest: number; review: (topicId?: string, includePublished?: boolean) => void; openTopic: (id: string) => void; onBack?: () => void; onLocationChange?: (label:string) => void }) {
+export default function Planning({ c, initialSourceIds, initialRequest, requestedPlanId, review, openTopic, onBack, onLocationChange, onScreenChange, active = true }: { c: StudyController; initialSourceIds?: string[]; initialRequest: number; requestedPlanId?: string; active?: boolean; review: (topicId?: string, includePublished?: boolean) => void; openTopic: (id: string) => void; onBack?: () => void; onLocationChange?: (label:string) => void; onScreenChange?: (screen: 'list'|'new'|'plan'|'sources') => void }) {
   const top = useRef<HTMLDivElement>(null);
   const [activeId, setActiveId] = useState<string>('');
   const [screen, setScreen] = useState<'list'|'new'|'plan'|'sources'>(initialSourceIds ? 'new' : 'list');
@@ -69,8 +70,9 @@ export default function Planning({ c, initialSourceIds, initialRequest, review, 
   const plans = c.data.plans.filter(item => c.profile.role === 'parent' || item.ownerId === c.profile.id).sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
   const uploading = !!c.uploadStatus && !['complete','failed'].includes(c.uploadStatus.phase);
   const navigationBusy = uploading || savingDraft;
-  useEffect(() => { if (initialSourceIds) { setSourceIds(initialSourceIds); setHasDraft(true); setScreen('new'); setCreationKey(value => value + 1); } }, [initialRequest]);
-  useEffect(() => { showSection(top.current); }, [screen, activeId, initialRequest]);
+  useEffect(() => { if (requestedPlanId) { openPlan(requestedPlanId); } else if (initialSourceIds) { setSourceIds(initialSourceIds); setHasDraft(true); setScreen('new'); setCreationKey(value => value + 1); } }, [initialRequest]);
+  useEffect(() => { if (active) showSection(top.current); }, [screen, activeId, initialRequest, active]);
+  useEffect(() => { onScreenChange?.(screen); }, [screen, onScreenChange]);
   useEffect(() => { if(screen==='list')onLocationChange?.('問題を作る');else if(screen==='sources')onLocationChange?.('教材ストック'); }, [screen,onLocationChange]);
   function newConsultation(ids: string[] = []) { setSourceIds(ids); setHasDraft(true); setScreen('new'); setCreationKey(value => value + 1); }
   function openPlan(id:string) { setActiveId(id); setVisitedIds(current=>current.includes(id) ? current : [...current,id]); setScreen('plan'); }
@@ -97,8 +99,8 @@ export default function Planning({ c, initialSourceIds, initialRequest, review, 
       {!plans.length && <p className="planning-empty">まだプランはありません。「新しく作る」から始められます。</p>}
     </div>
     <div hidden={screen !== 'sources'} className={styles.screen}><SourceBank c={c} onConsult={newConsultation} /></div>
-    <div hidden={screen !== 'new'} className={styles.screen}><NewPlan key={`new-${creationKey}`} c={c} sourceIds={sourceIds} active={screen==='new'} onLocationChange={onLocationChange} savingChanged={setSavingDraft} cancel={()=>setScreen('list')} created={id=>{setHasDraft(false);openPlan(id);}} /></div>
-    {plans.filter(item=>visitedIds.includes(item.id)).map(plan=><div key={plan.id} hidden={screen !== 'plan' || activeId !== plan.id} className={styles.screen}><PlanConversation c={c} plan={plan} active={screen==='plan'&&activeId===plan.id} onLocationChange={onLocationChange} onOpenPlan={openPlan} onList={()=>setScreen('list')} review={review} openTopic={openTopic} /></div>)}
+    <div hidden={screen !== 'new'} className={styles.screen}><NewPlan key={`new-${creationKey}`} c={c} sourceIds={sourceIds} active={active && screen==='new'} onLocationChange={onLocationChange} savingChanged={setSavingDraft} cancel={()=>setScreen('list')} created={id=>{setHasDraft(false);openPlan(id);}} /></div>
+    {plans.filter(item=>visitedIds.includes(item.id)).map(plan=><div key={plan.id} hidden={screen !== 'plan' || activeId !== plan.id} className={styles.screen}><PlanConversation notificationRequest={requestedPlanId === plan.id ? initialRequest : undefined} c={c} plan={plan} active={active && screen==='plan'&&activeId===plan.id} onLocationChange={onLocationChange} onOpenPlan={openPlan} onList={()=>setScreen('list')} review={review} openTopic={openTopic} /></div>)}
     {screen === 'plan' && !plans.some(plan=>plan.id===activeId) && <p role="status" className="planning-empty">学習プランを開いています。</p>}
   </div>;
 }
@@ -202,7 +204,7 @@ function NewPlan({ c, sourceIds: initialIds, created, cancel, savingChanged, act
   </section>;
 }
 
-function PlanConversation({ c, plan, review, openTopic, active, onLocationChange, onOpenPlan, onList }: { c: StudyController; plan: LearningPlan; review: (topicId?: string, includePublished?: boolean) => void; openTopic: (id: string) => void; active:boolean; onLocationChange?:(label:string)=>void; onOpenPlan:(id:string)=>void; onList:()=>void }) {
+function PlanConversation({ c, plan, review, openTopic, active, onLocationChange, onOpenPlan, onList, notificationRequest }: { c: StudyController; plan: LearningPlan; review: (topicId?: string, includePublished?: boolean) => void; openTopic: (id: string) => void; active:boolean; onLocationChange?:(label:string)=>void; onOpenPlan:(id:string)=>void; onList:()=>void; notificationRequest?:number }) {
   const [message, setMessage] = useState('');
   const [publishingTopic, setPublishingTopic] = useState<string | null>(null);
   const own = plan.ownerId === c.profile.id;
@@ -217,7 +219,7 @@ function PlanConversation({ c, plan, review, openTopic, active, onLocationChange
   const generating = !!activeJob;
   const activeJobPlanAvailable = !!activeJob?.planId && c.data.plans.some(item=>item.id===activeJob.planId);
   const owner = c.data.profiles.find(profile => profile.id === plan.ownerId);
-  const [tab,setTab] = useState<'proposals'|'chat'|'questions'>(jobs.length||plan.libraryTopicId?'questions':'proposals');
+  const [tab,setTab] = useState<'proposals'|'chat'|'questions'>(waiting || notificationRequest ? 'proposals' : jobs.length||plan.libraryTopicId?'questions':'proposals');
   const [proposalIndex,setProposalIndex] = useState(0);
   useEffect(()=>{if(active)onLocationChange?.(`学習プラン · ${{proposals:'提案',chat:'相談',questions:'できた問題'}[tab]}`);},[active,tab,onLocationChange]);
   const sectionTop=useRef<HTMLDivElement>(null);
@@ -226,10 +228,11 @@ function PlanConversation({ c, plan, review, openTopic, active, onLocationChange
   const activeProposal=Math.min(proposalIndex,Math.max(0,proposals.length-1));
   const questionCount=jobs.reduce((count,job)=>count+job.generatedCount,0);
   function selectTab(next:'proposals'|'chat'|'questions') { setTab(next); requestAnimationFrame(()=>showSection(sectionTop.current)); }
+  useEffect(()=>{if(notificationRequest)selectTab('proposals');},[notificationRequest]);
   useEffect(()=>{if(latest?.id!==previousLatest.current){previousLatest.current=latest?.id;setProposalIndex(0);if(latest?.id)setTab('proposals');}},[latest?.id]);
   function consultAgain() { if(!message.trim())setMessage('保存した目標と教材に合わせて、新しい問題作成案を提案してください。作成が止まった問題の再開ではなく、改めて作る案を確認したいです。');selectTab('chat'); }
   const blockedAction = !own ? {message:'ここは閲覧用です。案の変更・作問は、このプランを作った本人が操作できます。',label:'相談の内容を見る',run:()=>selectTab('chat')}
-    : waiting ? {message:'この相談への回答を待っています。新しい提案が届くまで作問はできません。',label:'相談の状況を見る',run:()=>selectTab('chat')}
+    : waiting ? {message:'この相談への回答を待っています。新しい提案が届くまで作問はできません。',label:'進み具合を見る',run:()=>selectTab('proposals')}
     : activeJob ? {message:activeJob.planId===plan.id?'このプランの問題を作成しています。完了後に別の案も作れます。':`別の問題を作成しています（${activeJob.generatedCount} / ${activeJob.targetCount}問）。今はこの案を確認でき、作問はその処理が終わってから再開できます。`,label:activeJob.planId===plan.id||activeJobPlanAvailable?'作成状況を確認する':'学習プラン一覧へ',run:()=>{if(activeJob.planId===plan.id)selectTab('questions');else if(activeJob.planId&&activeJobPlanAvailable)onOpenPlan(activeJob.planId);else onList();}}
     : latest&&latest.version!==plan.version ? {message:'この案を出した後に相談が更新されました。最新の条件で再提案してから作成してください。',label:'最新の条件で相談する',run:()=>{if(!message.trim())setMessage('更新した条件に合わせて、改めて問題作成案を提案してください。');selectTab('chat');}} : undefined;
   async function send(event: FormEvent) { event.preventDefault(); if (!own||waiting||c.busy) return; if (message.trim() && await c.actions.sendPlanningMessage(plan.id, message)) {setMessage('');selectTab('proposals');} }
@@ -241,10 +244,10 @@ function PlanConversation({ c, plan, review, openTopic, active, onLocationChange
     </header>
     <div ref={sectionTop} className={styles.detailTop}>
       <div className={styles.detailTabs} role="tablist" aria-label="学習プランの表示">{([{id:'proposals',label:'提案',count:proposals.length},{id:'chat',label:'相談',count:turns.length},{id:'questions',label:'できた問題',count:questionCount}] as const).map(item=><button key={item.id} id={`plan-tab-${plan.id}-${item.id}`} type="button" role="tab" aria-selected={tab===item.id} aria-controls={`plan-panel-${plan.id}-${item.id}`} onClick={()=>selectTab(item.id)}>{item.label}<span>{item.count}</span></button>)}</div>
-      {pending&&<div className={styles.pending} role="status"><LoaderCircle className="spin" size={19}/><div><strong>提案を考えています</strong><p>回答は保存されます。ほかの画面に移っても大丈夫です。</p>{own&&<button type="button" className="text-button" disabled={c.busy} onClick={()=>void c.actions.resumePlanningTurn(pending.id)}><RefreshCw size={14}/>進まない場合は再開</button>}</div></div>}
       {!pending&&newest?.status==='failed'&&<div className="flash error" role="alert"><CircleHelp size={17}/><span>{newest.error||'回答を完了できませんでした。'}<button type="button" className="text-button" onClick={()=>selectTab('chat')}>相談内容を見直す<ArrowRight size={14}/></button></span></div>}
     </div>
     <div id={`plan-panel-${plan.id}-proposals`} aria-labelledby={`plan-tab-${plan.id}-proposals`} role="tabpanel" hidden={tab!=='proposals'} className={styles.screen}>
+      {pending&&<PlanningWait c={c} turn={pending} own={own} onLeave={onList} active={active && tab==='proposals'} />}
       {!!proposals.length&&latest?<>
         <div className={styles.nextStep}><strong>次は、気に入った案から問題を作成。</strong><p>案を選んで内容を確認し、「この案で作る」を押してください。</p></div>
         {latest.version!==plan.version&&<p className={styles.hint}>相談内容が更新されています。最新の回答を待つか、「相談」から案を調整してください。</p>}
@@ -257,6 +260,7 @@ function PlanConversation({ c, plan, review, openTopic, active, onLocationChange
     </div>
     <div id={`plan-panel-${plan.id}-chat`} aria-labelledby={`plan-tab-${plan.id}-chat`} role="tabpanel" hidden={tab!=='chat'} className={styles.screen}>
       <section className={`panel conversation-panel ${styles.chatPanel}`}>
+        {waiting&&<div className={styles.stateHelp}><p>AIの回答待ちです。回答が届くと、次の相談を送れます。</p><button type="button" className="text-button" onClick={()=>selectTab('proposals')}>進み具合を見る<ArrowRight size={15}/></button></div>}
         {own&&<form className="chat-composer" onSubmit={send}><label htmlFor={`message-${plan.id}`}>希望を伝えて、案を調整する</label><textarea id={`message-${plan.id}`} value={message} onChange={event=>setMessage(event.target.value)} disabled={waiting||c.busy} rows={3} maxLength={4000} placeholder="例：少し難しいので基礎から。まずは単語の意味を選ぶ問題にして"/><div className="chat-suggestions">{['もう少しやさしくして','別の聞き方の問題もほしい'].map(text=><button key={text} type="button" disabled={waiting||c.busy} onClick={()=>setMessage(text)}>{text}</button>)}</div>{c.error&&<div className="flash error" role="alert"><CircleHelp size={17}/><span>{c.error}</span></div>}<div className={styles.composerActions}><button type="button" className="text-button" onClick={()=>selectTab('proposals')}><ArrowLeft size={15}/>提案に戻る</button><button type="submit" className="button primary" disabled={c.busy||waiting||!message.trim()}>{c.busy?<LoaderCircle className="spin" size={17}/>:<Send size={17}/>}送信して提案をもらう</button></div></form>}
         <div className={styles.history}><h2>最近の相談</h2>{newest?renderTurn(newest):<p className="planning-empty">まだ相談はありません。ひとこと送って始められます。</p>}{turns.length>1&&<details className={styles.olderTurns}><summary>以前の相談 {turns.length-1}件を見る</summary><div className="conversation-turns">{turns.slice(0,-1).reverse().map(renderTurn)}</div></details>}</div>
       </section>

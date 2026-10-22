@@ -42,6 +42,10 @@ export function useStudy():StudyController {
   const [busy,setBusy]=useState(false);
   const [error,setError]=useState<string|null>(null);
   const [notice,setNotice]=useState<string|null>(null);
+  const [sync,setSync]=useState<StudyController['sync']>({checking:false,lastSyncedAt:null,error:null});
+  const refreshSequence=useRef(0);
+  const statusChecking=useRef(false);
+  const lastSync=useRef(0);
   const [uploadStatus,setUploadStatus]=useState<UploadStatus|null>(null);
   const [session,setSession]=useState<PracticeSession|null>(null);
   const [sessionQuestions,setSessionQuestions]=useState<Question[]>([]);
@@ -54,11 +58,36 @@ export function useStudy():StudyController {
   const currentQuestion=session && !session.completedAt ? sessionQuestions[index] ?? null : null;
 
   async function refresh(signal?:AbortSignal){
-    const result=await api<{data:StudyData;profile:Profile}>('/api/state','GET',undefined,signal);
-    state.current=result.data;setData(result.data);setProfile(result.profile);return result;
+    const sequence=++refreshSequence.current;
+    setSync(previous=>({...previous,checking:true}));
+    const controller=new AbortController();
+    const abort=()=>controller.abort();
+    if(signal?.aborted)abort();else signal?.addEventListener('abort',abort,{once:true});
+    const timeout=setTimeout(abort,15000);
+    try {
+      const result=await api<{data:StudyData;profile:Profile}>('/api/state','GET',undefined,controller.signal);
+      if(sequence===refreshSequence.current){
+        state.current=result.data;setData(result.data);setProfile(result.profile);
+        lastSync.current=Date.now();setSync({checking:false,lastSyncedAt:lastSync.current,error:null});
+      }
+      return result;
+    }catch(error){
+      if(sequence===refreshSequence.current)setSync(previous=>({...previous,checking:false,error:'最新の状況を確認できていません。接続を確認して、もう一度お試しください。'}));
+      if(controller.signal.aborted&&!signal?.aborted)throw new Error('最新の状況の取得に時間がかかっています。依頼は受け付け済みの場合があります。「最新の状態を確認」から確認してください。');
+      throw error;
+    }finally{clearTimeout(timeout);signal?.removeEventListener('abort',abort);}
+  }
+  async function refreshStatus(){
+    if(demo||lock.current||statusChecking.current)return;
+    statusChecking.current=true;
+    try{await refresh();}catch{/* The connection state remains visible without claiming that the AI job stopped. */}
+    finally{statusChecking.current=false;}
   }
   async function run(task:()=>Promise<void>){
     if(lock.current)return;
+    // A read started before this mutation must never replace its local result.
+    refreshSequence.current+=1;
+    setSync(previous=>({...previous,checking:false}));
     lock.current=true;setBusy(true);setError(null);setNotice(null);
     try{await task();}catch(e){setError(e instanceof Error?e.message:'処理を完了できませんでした。');}
     finally{lock.current=false;setBusy(false);}
@@ -102,11 +131,16 @@ export function useStudy():StudyController {
       catch{setError('この端末の保存容量が不足しています。記録を保存できませんでした。');}
     }
   },[data,demo,ready]);
+  const activeAiWork=data.planningTurns.some(turn=>turn.status==='queued'||turn.status==='running')||data.jobs.some(job=>job.status==='queued'||job.status==='running');
   useEffect(()=>{
     if(demo||!ready||profile.id==='guest')return;
-    const timer=setInterval(()=>{if(!lock.current&&document.visibilityState==='visible')void refresh().catch(()=>{});},30000);
-    return()=>clearInterval(timer);
-  },[demo,ready,profile.id]);
+    const interval=activeAiWork?5000:30000;
+    const check=()=>{if(document.visibilityState==='visible'&&Date.now()-lastSync.current>=2000)void refreshStatus();};
+    const timer=setInterval(check,interval);
+    window.addEventListener('focus',check);
+    document.addEventListener('visibilitychange',check);
+    return()=>{clearInterval(timer);window.removeEventListener('focus',check);document.removeEventListener('visibilitychange',check);};
+  },[demo,ready,profile.id,activeAiWork]);
   useEffect(()=>{
     if(!currentQuestion||!session)return;
     const key=`${session.id}:${currentQuestion.id}`;
@@ -293,9 +327,10 @@ export function useStudy():StudyController {
       const plan=state.current.plans.find(item=>item.id===turn?.planId);
       if(!turn||!plan||plan.ownerId!==profile.id)throw new Error('ご自身の相談を選んでください。');
       if(turn.status!=='queued'&&turn.status!=='running'){await refresh();return;}
-      try{await api(`/api/planning/${encodeURIComponent(plan.id)}/messages`,'POST',{requestId:turn.id,expectedVersion:turn.version-1,message:turn.message});}
+      let statusNotice='最新の実行状況を確認しました。';
+      try{const result=await api<{notice?:string}>(`/api/planning/${encodeURIComponent(plan.id)}/messages`,'POST',{requestId:turn.id,expectedVersion:turn.version-1,message:turn.message});statusNotice=result.notice||statusNotice;}
       finally{await refresh();}
-      setNotice('相談の開始状況を確認しました。保存済みの相談から続けます。');
+      setNotice(statusNotice);
     });
   }
   async function generate(topicId:string,targetCount:number,selectedSourceIds?:string[]){
@@ -384,8 +419,8 @@ export function useStudy():StudyController {
       setNotice('自分の学習に追加しました。1回10問ずつ練習できます。');
     });return resultId;
   }
-  return {data:demo?demoStudyDataForProfile(data,profile):data,profile,demo,ready,busy,error,notice,uploadStatus,session,currentQuestion,feedback,actions:{
-    startPractice,answer,nextQuestion,createTopic,uploadSources,createPlan,sendPlanningMessage,resumePlanningTurn,generateProposal,generate,resumeGeneration,updateQuestion,publish,publishLibrary,addLibraryPlan,requestNotifications,
+  return {data:demo?demoStudyDataForProfile(data,profile):data,profile,demo,ready,busy,error,notice,uploadStatus,sync,session,currentQuestion,feedback,actions:{
+    refreshStatus,startPractice,answer,nextQuestion,createTopic,uploadSources,createPlan,sendPlanningMessage,resumePlanningTurn,generateProposal,generate,resumeGeneration,updateQuestion,publish,publishLibrary,addLibraryPlan,requestNotifications,
     switchRole(role:Role){if(!demo)return;setProfile(data.profiles.find(p=>p.role===role)||GUEST);setSession(null);setSessionQuestions([]);setFeedback(null);setError(null);setNotice(null);setUploadStatus(null);},
     finishSession(){setSession(null);setSessionQuestions([]);setFeedback(null);},
     async resetDemo(){if(!demo)return;await run(async()=>{await clearLocalFiles();setData(createDemoData());setSession(null);setFeedback(null);setNotice('サンプルの記録を初期状態に戻しました。');});},

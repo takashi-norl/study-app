@@ -8,6 +8,17 @@ export interface AppRelease {
 
 // Newest first. This is the source for Settings, public history and update notices.
 export const APP_RELEASES: readonly AppRelease[] = [{
+  version: '0.4.2',
+  date: '2026-10-23',
+  title: 'AIを待つ間も、進み具合と戻り先を',
+  announcement: '教材の読み取り件数と経過時間を表示。待つ間はほかの画面へ移り、届いた提案にお知らせから戻れます。',
+  changes: [
+    { title: '実際の進み具合を確認', description: '依頼の受付、教材の読み取り、案の作成、保存の段階と、受付からの経過時間を表示します。教材の件数は、読み取り結果を保存できたものから数えます。' },
+    { title: '読み取り時間の目安を表示', description: '今回の依頼で3件以上の読み取りに成功すると、実際にかかった時間から残りの教材の読み取り時間を見積もります。提案の作成や保存にかかる時間は別です。' },
+    { title: '待つ間は、ほかの画面へ', description: '本人が依頼したAI相談の進行中・完了・失敗を、アプリ内のお知らせで確認できます。届いた提案や回答は、お知らせから該当する学習プランへ戻って読めます。開くか閉じるまで完了のお知らせを残します。' },
+    { title: '最新の状況を確認しやすく', description: 'AIの処理中は、進み具合をより短い間隔で確認します。通信が確認できない状態と処理の失敗を区別し、「実行状況を確認」では有料のAI処理を再実行しません。' },
+  ],
+}, {
   version: '0.4.1',
   date: '2026-10-23',
   title: '今いる場所と、次にできることを明確に',

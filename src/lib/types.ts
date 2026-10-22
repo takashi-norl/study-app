@@ -64,6 +64,15 @@ export interface PlanningTurn {
   status: 'queued' | 'running' | 'complete' | 'failed';
   message: string; reply?: string; proposals?: PlanningProposal[];
   createdAt: string; completedAt?: string; error?: string;
+  startedAt?: string; updatedAt?: string; workflowRunId?: string;
+  progress?: {
+    phase: 'queued' | 'preparing' | 'reading_sources' | 'thinking' | 'saving' | 'complete' | 'failed';
+    sourcesCompleted: number; sourcesTotal: number;
+    /** Number without saved analysis when this turn was accepted; remains fixed. */
+    sourcesRequiringAnalysis?: number;
+    /** Successful request-to-response observations for this turn; not full per-file processing times. */
+    readingSample?: { count: number; minSeconds: number; maxSeconds: number };
+  };
 }
 export interface Profile {
   id: string; familyId: string; name: string; role: Role;

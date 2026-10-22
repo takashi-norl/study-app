@@ -31,10 +31,12 @@ export interface StudyController {
   error: string | null;
   notice: string | null;
   uploadStatus: UploadStatus | null;
+  sync: { checking: boolean; lastSyncedAt: number | null; error: string | null };
   session: PracticeSession | null;
   currentQuestion: Question | null;
   feedback: { correct: boolean; correctIndex: number; explanation: string } | null;
   actions: {
+    refreshStatus(): Promise<void>;
     switchRole(role: Role): void;
     startPractice(mode: PracticeMode, topicId?: string): void | Promise<void>;
     answer(index: number): void | Promise<void>;
