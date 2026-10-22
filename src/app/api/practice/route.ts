@@ -18,7 +18,7 @@ export async function POST(request:Request) { return api(async()=>{
   }
   const safe=stateForProfile(data,profile);
   const selected=selectQuestions(safe.questions,safe.attempts,safe.exposures,profile.id,input.mode,new Date(),10,input.topicId);
-  if(!selected.length) throw new ApiError(409,'まだ出題できる問題がありません。保護者の公開、または次の復習日をお待ちください。','NO_QUESTIONS');
+  if(!selected.length) throw new ApiError(409,'今、出題できる問題はありません。学習相談から問題を作るか、別の問題集や次の復習日に取り組んでみましょう。','NO_QUESTIONS');
   const session:PracticeSession={id:randomUUID(),userId:profile.id,mode:input.mode,questionIds:selected.map(q=>q.id),createdAt:new Date().toISOString()};
   const questionSnapshots=selected.map(q=>data.questions.find(full=>full.id===q.id && full.version===q.version)!);
   const history=data.sessions.map(s=>s.id).sort();

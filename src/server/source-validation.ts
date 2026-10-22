@@ -6,10 +6,11 @@ export interface SourceMetadata {
 }
 
 /** Bind completion to the exact upload capability originally issued by this app. */
-export function assertCompletedSourceMetadata(file:SourceMetadata,expected:{sourceId:string;topicId:string;storagePath:string;folderId:string}) {
+export function assertCompletedSourceMetadata(file:SourceMetadata,expected:{sourceId:string;topicId?:string;ownerId?:string;storagePath:string;folderId:string}) {
   if(file.id!==expected.storagePath || !file.parents?.includes(expected.folderId)
     || file.appProperties?.purpose!=='hibi-study-source'
-    || file.appProperties.sourceId!==expected.sourceId || file.appProperties.topicId!==expected.topicId) {
+    || file.appProperties.sourceId!==expected.sourceId || file.appProperties.topicId!==expected.topicId
+    || (expected.ownerId !== undefined && file.appProperties.ownerId !== expected.ownerId)) {
     throw new ApiError(403,'このアップロードを資料に登録できません。','SOURCE_BINDING_MISMATCH');
   }
   const size=Number(file.size);

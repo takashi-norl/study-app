@@ -2,15 +2,17 @@ import 'server-only';
 import { OAuth2Client } from 'google-auth-library';
 import { z } from 'zod';
 import type {
-  Attempt, Exposure, GenerationJob, PracticeSession, Profile, Question, SourceDocument, StudyData, Topic,
+  Attempt, Exposure, GenerationJob, LearningPlan, PlanningTurn, PracticeSession, Profile, Question, SourceDocument, StudyData, Topic,
 } from '@/lib/types';
 import { ApiError, MAX_SOURCE_BYTES, SOURCE_MIME_TYPES } from './config';
 import { assertStorageGrant, getDriveConfig, getFamilyId, getFamilyMembers, profileForMember } from './env';
+import { canAccessPlan, canAccessQuestion, canAccessSource } from './access';
 
 const EVENT_TYPES = [
   'topic.created', 'source.created', 'question.upserted', 'questions.published', 'session.created',
   'session.completed', 'attempt.recorded', 'exposure.recorded', 'job.upserted', 'push.subscribed',
-  'generation.batch', 'source.analysis',
+  'generation.batch', 'generation.requested', 'source.analysis',
+  'plan.created', 'plan.updated', 'planning.turn.upserted',
 ] as const;
 export type StudyEventType = typeof EVENT_TYPES[number];
 export interface StudyEvent {
@@ -19,15 +21,18 @@ export interface StudyEvent {
 
 const idSchema = z.string().min(1).max(200);
 const isoSchema = z.string().refine((value) => Number.isFinite(Date.parse(value)), 'Invalid date');
+const subjectSchema = z.string().trim().min(1).max(40);
 const questionSchema = z.object({
   id: idSchema, topicId: idSchema, prompt: z.string(), choices: z.array(z.string()).min(2).max(10),
   correctIndex: z.number().int().min(0), explanation: z.string(), learningPoint: z.string(),
   sourceIds: z.array(z.string()), sourceNote: z.string(), status: z.enum(['draft', 'approved', 'published', 'archived']),
   version: z.number().int().min(1), createdAt: isoSchema, publishedAt: isoSchema.optional(), needsReview: z.boolean().optional(),
+  audienceUserId: idSchema.optional(), planId: idSchema.optional(),
 }).refine((question) => question.correctIndex < question.choices.length, 'Invalid answer');
-const topicSchema = z.object({ id: idSchema, title: z.string(), subject: z.enum(['古文', '漢文', '英語']),
-  description: z.string(), createdAt: isoSchema, targetCount: z.number().int().min(0) });
-const sourceSchema = z.object({ id: idSchema, topicId: idSchema, name: z.string(), mimeType: z.string(),
+const topicSchema = z.object({ id: idSchema, title: z.string(), subject: subjectSchema,
+  description: z.string(), createdAt: isoSchema, targetCount: z.number().int().min(0),
+  audienceUserId: idSchema.optional(), planId: idSchema.optional() });
+const sourceSchema = z.object({ id: idSchema, topicId: idSchema.optional(), ownerId: idSchema.optional(), name: z.string(), mimeType: z.string(),
   storagePath: z.string().optional(), previewUrl: z.string().optional(), createdAt: isoSchema });
 const sessionSchema = z.object({ id: idSchema, userId: idSchema, mode: z.enum(['daily', 'extra', 'weak']),
   questionIds: z.array(idSchema).min(1), createdAt: isoSchema, completedAt: isoSchema.optional(),
@@ -37,7 +42,27 @@ const attemptSchema = z.object({ id: idSchema, userId: idSchema, questionId: idS
 const exposureSchema = z.object({ id: idSchema, userId: idSchema, questionId: idSchema, questionVersion: z.number().int().min(1),
   sessionId: idSchema, shownAt: isoSchema });
 const jobSchema = z.object({ id: idSchema, topicId: idSchema, status: z.enum(['queued', 'running', 'review', 'failed']),
-  targetCount: z.number().int().min(0), generatedCount: z.number().int().min(0), createdAt: isoSchema, error: z.string().optional() });
+  targetCount: z.number().int().min(0), generatedCount: z.number().int().min(0), createdAt: isoSchema, error: z.string().optional(),
+  audienceUserId: idSchema.optional(), planId: idSchema.optional(), sourceIds: z.array(idSchema).max(20).optional(),
+  instructions: z.string().max(4000).optional(), requestedBy: idSchema.optional(), proposalId: idSchema.optional(),
+  turnId: idSchema.optional(), requestId: idSchema.optional() });
+const planSchema = z.object({
+  id: idSchema, ownerId: idSchema, title: z.string().trim().min(1).max(150), subject: subjectSchema,
+  goal: z.string().max(4000), difficulty: z.string().max(200), targetDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+  dailyQuestionTarget: z.number().int().min(1).max(100), sourceIds: z.array(idSchema).max(20),
+  version: z.number().int().min(1), createdAt: isoSchema, updatedAt: isoSchema,
+});
+const proposalSchema = z.object({
+  id: idSchema, title: z.string().trim().min(1).max(150), subject: subjectSchema,
+  description: z.string().max(2000), instructions: z.string().max(4000), difficulty: z.string().max(200),
+  targetCount: z.number().int().min(1).max(300), format: z.literal('multiple-choice'), sourceIds: z.array(idSchema).max(20),
+});
+const planningTurnSchema = z.object({
+  id: idSchema, planId: idSchema, requestedBy: idSchema, version: z.number().int().min(1),
+  status: z.enum(['queued', 'running', 'complete', 'failed']), message: z.string().min(1).max(4000),
+  reply: z.string().max(12000).optional(), proposals: z.array(proposalSchema).max(5).optional(),
+  createdAt: isoSchema, completedAt: isoSchema.optional(), error: z.string().max(1000).optional(),
+});
 
 const CELL_CHARS = 40_000;
 const PAYLOAD_CELLS = 8;
@@ -124,6 +149,15 @@ function validateEvent(input: StudyEvent): StudyEvent {
     case 'attempt.recorded': attemptSchema.parse(payload); break;
     case 'exposure.recorded': exposureSchema.parse(payload); break;
     case 'job.upserted': jobSchema.parse(payload); break;
+    case 'generation.requested': {
+      const requested = z.object({ topic: topicSchema, job: jobSchema }).parse(payload);
+      if (requested.topic.id !== requested.job.topicId
+        || requested.topic.audienceUserId !== requested.job.audienceUserId
+        || requested.topic.planId !== requested.job.planId) throw new ApiError(400, '作問する問題集の指定が一致しません。', 'INVALID_GENERATION');
+      break;
+    }
+    case 'plan.created': case 'plan.updated': planSchema.parse(payload); break;
+    case 'planning.turn.upserted': planningTurnSchema.parse(payload); break;
     case 'generation.batch': z.object({ jobId: idSchema, batch: z.number().int().min(0),
       questions: z.array(questionSchema), job: jobSchema }).parse(payload); break;
     case 'source.analysis': z.object({ sourceId: idSchema, text: z.string().max(100_000) }).parse(payload); break;
@@ -201,6 +235,9 @@ export function foldEvents(events: StudyEvent[], profiles: Profile[] = []): Stud
   const attempts = new Map<string, Attempt>();
   const exposures = new Map<string, Exposure>();
   const jobs = new Map<string, GenerationJob>();
+  const plans = new Map<string, LearningPlan>();
+  const planningTurns = new Map<string, PlanningTurn>();
+  const planVersions = new Set<string>();
   const eventIds = new Set<string>();
   const upsertQuestion = (question: Question) => {
     const current = questions.get(question.id);
@@ -246,6 +283,40 @@ export function foldEvents(events: StudyEvent[], profiles: Profile[] = []): Stud
         break;
       }
       case 'job.upserted': jobs.set(payload.id, jobSchema.parse(payload)); break;
+      case 'generation.requested': {
+        const topic = topicSchema.parse(payload.topic);
+        const job = jobSchema.parse(payload.job);
+        if (!topics.has(topic.id) && !jobs.has(job.id)) {
+          topics.set(topic.id, topic);
+          jobs.set(job.id, job);
+        }
+        break;
+      }
+      case 'plan.created': if (!plans.has(payload.id)) plans.set(payload.id, planSchema.parse(payload)); break;
+      case 'plan.updated': {
+        const plan = planSchema.parse(payload);
+        const previous = plans.get(plan.id);
+        if (previous && plan.ownerId === previous.ownerId && plan.version > previous.version) plans.set(plan.id, plan);
+        break;
+      }
+      case 'planning.turn.upserted': {
+        const turn = planningTurnSchema.parse(payload);
+        const plan = plans.get(turn.planId);
+        if (!plan || turn.requestedBy !== plan.ownerId) break;
+        const previous = planningTurns.get(turn.id);
+        if (!previous) {
+          const slot = JSON.stringify([turn.planId, turn.version]);
+          if (turn.status !== 'queued' || turn.version !== plan.version + 1 || planVersions.has(slot)) break;
+          planVersions.add(slot);
+          planningTurns.set(turn.id, turn);
+          plans.set(plan.id, { ...plan, version: turn.version, updatedAt: turn.createdAt });
+        } else if (previous.planId === turn.planId && previous.version === turn.version
+          && previous.status !== 'complete' && previous.status !== 'failed'
+          && !(previous.status === 'running' && turn.status === 'queued')) {
+          planningTurns.set(turn.id, { ...turn, message: previous.message, createdAt: previous.createdAt });
+        }
+        break;
+      }
       case 'generation.batch':
         for (const question of payload.questions) upsertQuestion(questionSchema.parse(question));
         jobs.set(payload.job.id, jobSchema.parse(payload.job));
@@ -262,7 +333,8 @@ export function foldEvents(events: StudyEvent[], profiles: Profile[] = []): Stud
   }
   return { topics: [...topics.values()], sources: [...sources.values()], questions: [...questions.values()],
     attempts: [...attempts.values()], exposures: [...exposures.values()], sessions: [...sessions.values()],
-    jobs: [...jobs.values()], profiles: structuredClone(profiles) };
+    jobs: [...jobs.values()], profiles: structuredClone(profiles),
+    plans: [...plans.values()], planningTurns: [...planningTurns.values()] };
 }
 
 export async function getFullState(): Promise<{ data: StudyData; events: StudyEvent[] }> {
@@ -280,14 +352,21 @@ export function studyDataForProfile(data: StudyData, profile: Profile, now = new
   if (profile.role === 'parent') {
     return { ...data, sources: data.sources.map((source) => ({ ...source, previewUrl: `/api/sources/${encodeURIComponent(source.id)}` })) };
   }
-  const published = data.questions.filter((question) => question.status === 'published'
+  const published = data.questions.filter((question) => canAccessQuestion(question, profile) && question.status === 'published'
     && question.publishedAt && Date.parse(question.publishedAt) <= now.getTime());
   const visibleTopics = new Set(published.map((question) => question.topicId));
-  return { ...data, topics: data.topics.filter((topic) => visibleTopics.has(topic.id)), sources: [], jobs: [], profiles: [profile],
+  const plans = data.plans.filter((plan) => canAccessPlan(plan, profile));
+  const planIds = new Set(plans.map((plan) => plan.id));
+  return { ...data, topics: data.topics.filter((topic) => visibleTopics.has(topic.id) && canAccessQuestion(topic, profile)),
+    sources: data.sources.filter((source) => canAccessSource(source, profile))
+      .map((source) => ({ ...source, previewUrl: `/api/sources/${encodeURIComponent(source.id)}` })),
+    jobs: data.jobs.filter((job) => job.audienceUserId === profile.id), profiles: [profile],
+    plans, planningTurns: data.planningTurns.filter((turn) => planIds.has(turn.planId)),
     questions: published
       .map((question) => ({ id: question.id, topicId: question.topicId, prompt: question.prompt, choices: [...question.choices],
         correctIndex: -1, explanation: '', learningPoint: '', sourceNote: '', sourceIds: [],
-        status: question.status, version: question.version, createdAt: question.createdAt, publishedAt: question.publishedAt })),
+        status: question.status, version: question.version, createdAt: question.createdAt, publishedAt: question.publishedAt,
+        audienceUserId: question.audienceUserId, planId: question.planId, needsReview: question.needsReview })),
     attempts: data.attempts.filter((attempt) => attempt.userId === profile.id),
     exposures: data.exposures.filter((exposure) => exposure.userId === profile.id),
     sessions: data.sessions.filter((session) => session.userId === profile.id).map((session) => ({
@@ -324,14 +403,15 @@ export async function getDriveFileMetadata(fileId: string): Promise<DriveFileMet
 }
 
 export async function createSourceUpload(input: {
-  sourceId: string; topicId: string; name: string; mimeType: string; size: number;
+  sourceId: string; topicId?: string; ownerId: string; name: string; mimeType: string; size: number;
 }, browserOrigin: string): Promise<{ uploadUrl: string; fileId: string }> {
   const config = getDriveConfig();
   if (!SOURCE_MIME_TYPES.includes(input.mimeType as typeof SOURCE_MIME_TYPES[number])
     || !Number.isInteger(input.size) || input.size <= 0 || input.size > MAX_SOURCE_BYTES) {
     throw new ApiError(400, '対応する写真・PDFを10MB以内で選択してください。', 'INVALID_SOURCE');
   }
-  if (!input.name.trim() || input.name.length > 200 || input.sourceId.length > 100 || input.topicId.length > 100) {
+  if (!input.name.trim() || input.name.length > 200 || input.sourceId.length > 100
+    || (input.topicId !== undefined && input.topicId.length > 100) || !input.ownerId || input.ownerId.length > 100) {
     throw new ApiError(400, '資料の名前・指定を確認してください。', 'INVALID_SOURCE');
   }
   const idsResponse = await googleFetch('https://www.googleapis.com/drive/v3/files/generateIds?count=1&space=drive&type=files');
@@ -344,7 +424,7 @@ export async function createSourceUpload(input: {
       Origin: browserOrigin,
       'X-Upload-Content-Type': input.mimeType, 'X-Upload-Content-Length': String(input.size) },
     body: JSON.stringify({ id: fileId, name: input.name, mimeType: input.mimeType, parents: [config.folderId],
-      appProperties: { purpose: 'hibi-study-source', sourceId: input.sourceId, topicId: input.topicId } }),
+      appProperties: { purpose: 'hibi-study-source', sourceId: input.sourceId, topicId: input.topicId, ownerId: input.ownerId } }),
   });
   const uploadUrl = response.headers.get('location');
   if (!uploadUrl) throw new ApiError(502, 'アップロードの準備に失敗しました。', 'UPLOAD_SETUP_FAILED');

@@ -27,3 +27,12 @@ test('incomplete, unsupported or oversized uploads never become registered study
   ]) assert.throws(()=>assertCompletedSourceMetadata(invalid,expected),{code:'SOURCE_UPLOAD_INCOMPLETE'});
   assert.doesNotThrow(()=>assertCompletedSourceMetadata({...valid,mimeType:'application/pdf',size:String(MAX_SOURCE_BYTES)},expected));
 });
+
+test('bank uploads need no topic but retain their source and uploader ownership binding',()=>{
+  const bankExpected={sourceId:'source-id',ownerId:'student-one',storagePath:'drive-file-id',folderId:'private-folder'};
+  const bankFile={...valid,appProperties:{purpose:'hibi-study-source',sourceId:'source-id',ownerId:'student-one'}};
+  assert.doesNotThrow(()=>assertCompletedSourceMetadata(bankFile,bankExpected));
+  assert.throws(()=>assertCompletedSourceMetadata({...bankFile,appProperties:{...bankFile.appProperties,ownerId:'student-two'}},bankExpected),{code:'SOURCE_BINDING_MISMATCH'});
+  assert.throws(()=>assertCompletedSourceMetadata({...bankFile,appProperties:{purpose:'hibi-study-source',sourceId:'source-id'}},bankExpected),{code:'SOURCE_BINDING_MISMATCH'});
+  assert.throws(()=>assertCompletedSourceMetadata({...bankFile,appProperties:{...bankFile.appProperties,topicId:'unexpected-topic'}},bankExpected),{code:'SOURCE_BINDING_MISMATCH'});
+});

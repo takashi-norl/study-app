@@ -1,13 +1,23 @@
 import type { PracticeMode, PracticeSession, Profile, Question, Role, StudyData, Subject } from '@/lib/types';
 
 export interface UploadStatus {
-  topicId: string;
+  topicId?: string;
   fileName: string;
   current: number;
   total: number;
   completed: number;
   phase: 'preparing' | 'connecting' | 'uploading' | 'confirming' | 'complete' | 'failed';
   message: string;
+}
+
+export interface NewLearningPlan {
+  title?: string;
+  subject: string;
+  goal: string;
+  difficulty?: string;
+  targetDate?: string;
+  dailyQuestionTarget?: number;
+  sourceIds: string[];
 }
 
 export interface StudyController {
@@ -29,7 +39,11 @@ export interface StudyController {
     nextQuestion(): void | Promise<void>;
     finishSession(): void | Promise<void>;
     createTopic(title: string, subject: Subject, description: string, targetCount: number): Promise<string | void>;
-    uploadSources(topicId: string, files: File[]): Promise<void>;
+    uploadSources(topicId: string | undefined, files: File[]): Promise<void>;
+    createPlan(input: NewLearningPlan): Promise<string | void>;
+    sendPlanningMessage(planId: string, message: string): Promise<boolean>;
+    resumePlanningTurn(turnId: string): Promise<void>;
+    generateProposal(planId: string, turnId: string, proposalId: string, targetCount: number): Promise<string | void>;
     generate(topicId: string, targetCount: number, sourceIds?: string[]): void | Promise<void>;
     resumeGeneration(jobId: string): void | Promise<void>;
     updateQuestion(id: string, patch: Partial<Question>): void | Promise<void>;
