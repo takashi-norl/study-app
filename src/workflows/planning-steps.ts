@@ -40,7 +40,7 @@ export async function analyzePlanningSource(turnId:string,sourceId:string) {
     const metadata=await getDriveFileMetadata(source.storagePath);
     if(metadata.mimeType!==source.mimeType || Number(metadata.size)<=0 || Number(metadata.size)>MAX_SOURCE_BYTES) throw new ApiError(422,'資料のアップロード完了を確認できません。写真・PDFを再度アップロードしてください。');
     const file=await downloadSourceFile(source.storagePath);
-    const analysis=await analyzeDocument(file.bytes,file.mimeType,source.name);
+    const analysis=await analyzeDocument(file.bytes,file.mimeType,source.name,{actorId:turn.requestedBy,feature:'source-analysis',requestId:`planning:${turnId}:source:${sourceId}`});
     await appendEvent({id:`source-analysis:${sourceId}`,type:'source.analysis',actorId:turn.requestedBy,createdAt:new Date().toISOString(),payload:{sourceId,text:JSON.stringify(analysis)}});
   } catch(error) {throw new FatalError(safeGenerationError(error));}
 }

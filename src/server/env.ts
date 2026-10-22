@@ -11,6 +11,7 @@ const memberSchema = z.object({
   role: z.enum(['parent', 'student']),
 });
 export type FamilyMember = z.infer<typeof memberSchema>;
+const SUPER_USER_EMAIL = 'takashi.oikawa@gmail.com';
 
 export function getFamilyId(): string {
   return process.env.FAMILY_ID?.trim() || 'family-primary';
@@ -31,7 +32,19 @@ export function getFamilyMembers(): FamilyMember[] {
 }
 
 export function profileForMember(member: FamilyMember): Profile {
-  return { id: member.id, name: member.name, role: member.role, familyId: getFamilyId() };
+  const superUser = member.email.trim().toLowerCase() === SUPER_USER_EMAIL;
+  return { id: member.id, name: member.name, role: superUser ? 'parent' : member.role, familyId: getFamilyId(),
+    accessLevel: superUser ? 'superuser' : member.role === 'parent' ? 'manager' : 'learner' };
+}
+
+/** Only use with a profile obtained from the verified Google session, never a request body. */
+export function assertSuperUser(profile: Profile): Profile {
+  const member = getFamilyMembers().find(entry => entry.id === profile.id);
+  if (profile.familyId !== getFamilyId() || member?.email !== SUPER_USER_EMAIL) {
+    throw new ApiError(403, 'この画面はSuper Userだけが利用できます。', 'FORBIDDEN');
+  }
+  // Ignore stale or client-supplied role/accessLevel values and resolve the current allowlist.
+  return profileForMember(member);
 }
 
 export function getAuthConfig() {

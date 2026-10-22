@@ -3,7 +3,7 @@ import { getServerSession, type NextAuthOptions } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 import type { Profile as StudyProfile, Role } from '@/lib/types';
 import { ApiError } from './config';
-import { getAuthConfig, getFamilyMembers, profileForMember } from './env';
+import { assertSuperUser, getAuthConfig, getFamilyMembers, profileForMember } from './env';
 
 declare module 'next-auth' {
   interface Session { profile?: StudyProfile }
@@ -64,4 +64,9 @@ export async function requireProfile(role?: Role): Promise<{ profile: StudyProfi
   if (!session?.profile) throw new ApiError(401, '家族のGoogleアカウントでログインしてください。', 'UNAUTHENTICATED');
   if (role && session.profile.role !== role) throw new ApiError(403, 'この操作を行う権限がありません。', 'FORBIDDEN');
   return { profile: session.profile };
+}
+
+export async function requireSuperUser(): Promise<{ profile: StudyProfile }> {
+  const { profile } = await requireProfile();
+  return { profile: assertSuperUser(profile) };
 }

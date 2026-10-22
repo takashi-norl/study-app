@@ -8,6 +8,8 @@ import type {
 import { ApiError, MAX_SOURCE_BYTES, SOURCE_MIME_TYPES } from './config';
 import { assertStorageGrant, getDriveConfig, getFamilyId, getFamilyMembers, profileForMember } from './env';
 import { canAccessPlan, canAccessQuestion, canAccessSource } from './access';
+import { aiRequestedSchema, aiUsageSchema } from './ai-usage-schema';
+import { personalProfileSavedEventSchema, personalProfileChatRequestedEventSchema, personalProfileChatCompletedEventSchema, personalProfileChatFailedEventSchema } from './personal-profile-schemas';
 
 const EVENT_TYPES = [
   'topic.created', 'source.created', 'question.upserted', 'questions.published', 'session.created',
@@ -16,6 +18,8 @@ const EVENT_TYPES = [
   'plan.created', 'plan.updated', 'planning.turn.upserted',
   'audio.requested', 'audio.ready', 'audio.failed',
   'library.questions', 'library.published', 'library.adopted',
+  'ai.requested', 'ai.usage',
+  'personal-profile.saved', 'personal-profile.chat.requested', 'personal-profile.chat.completed', 'personal-profile.chat.failed',
 ] as const;
 export type StudyEventType = typeof EVENT_TYPES[number];
 export interface StudyEvent {
@@ -140,6 +144,12 @@ function validateEvent(input: StudyEvent): StudyEvent {
   if (metadata.familyId && metadata.familyId !== getFamilyId()) throw new ApiError(403, '別の家族の記録にはアクセスできません。', 'FAMILY_MISMATCH');
   const payload = input.payload;
   switch (metadata.type) {
+    case 'ai.requested': aiRequestedSchema.parse(payload); break;
+    case 'ai.usage': aiUsageSchema.parse(payload); break;
+    case 'personal-profile.saved': personalProfileSavedEventSchema.parse(payload); break;
+    case 'personal-profile.chat.requested': personalProfileChatRequestedEventSchema.parse(payload); break;
+    case 'personal-profile.chat.completed': personalProfileChatCompletedEventSchema.parse(payload); break;
+    case 'personal-profile.chat.failed': personalProfileChatFailedEventSchema.parse(payload); break;
     case 'topic.created': topicSchema.parse(payload); break;
     case 'source.created': sourceSchema.parse(payload); break;
     case 'question.upserted': questionSchema.parse(payload); break;

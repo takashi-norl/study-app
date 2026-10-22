@@ -1,5 +1,6 @@
 export type Subject = string;
 export type Role = 'parent' | 'student';
+export type AccessLevel = 'superuser' | 'manager' | 'learner';
 export type PracticeMode = 'daily' | 'extra' | 'weak';
 export type QuestionStatus = 'draft' | 'approved' | 'published' | 'archived';
 
@@ -66,6 +67,7 @@ export interface PlanningTurn {
 }
 export interface Profile {
   id: string; familyId: string; name: string; role: Role;
+  accessLevel?: AccessLevel;
 }
 export interface StudyData {
   topics: Topic[]; sources: SourceDocument[]; questions: Question[];

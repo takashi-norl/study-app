@@ -8,6 +8,16 @@ export interface AppRelease {
 
 // Newest first. This is the source for Settings, public history and update notices.
 export const APP_RELEASES: readonly AppRelease[] = [{
+  version: '0.3.0',
+  date: '2026-10-23',
+  title: 'あなたに合う、学び方とひとこと',
+  announcement: '目標や好きな声かけをAIと相談して、自分に合うホーム画面にできます。',
+  changes: [
+    { title: '会話でつくる学び方プロフィール', description: '設定から目標・興味・使える時間・声かけの好みを相談できます。AIがまとめた案は、自分で直して保存できます。入力だけでの登録や、後からの変更もできます。' },
+    { title: '自分に合う一言をホームに', description: '保存したプロフィールに合わせて毎日の一言が変わります。学習の目安を達成した日は、ひと息つく声かけに。画面を開くだけではAIを呼びません。' },
+    { title: '管理の役割を分けました', description: 'Super UserとManagerを区別しました。AI利用量と概算料金はSuper Userだけが確認でき、従来の教材・学習管理はManagerも使えます。' },
+  ],
+}, {
   version: '0.2.1',
   date: '2026-10-23',
   title: 'iPhoneの画面に、きちんと収まるように',
