@@ -65,3 +65,33 @@
 @keyframes turn{to{transform:rotate(360deg)}}
 @media(prefers-reduced-motion:reduce){.spin{animation:none}}
 @media(max-width:570px){.card{padding:18px 15px;border-radius:16px}.heading{gap:10px}.heading h2{font-size:17px}.icon{width:36px;height:36px;flex-basis:36px;border-radius:11px}.heading p{font-size:13px}.grid{grid-template-columns:minmax(0,1fr)}.toneOptions{grid-template-columns:minmax(0,1fr)}.tone{padding:12px}.tone small{font-size:12px}.tone strong{font-size:14px}.badge{margin-left:0;margin-top:5px}.message{max-width:100%;padding:12px}.prompt{align-items:flex-start;gap:9px;padding:14px 12px;flex-wrap:wrap}.prompt>svg{margin-top:2px}.prompt>div{flex-basis:calc(100% - 30px)}.prompt .textButton{margin-left:29px}.prompt .dismiss{margin-left:auto}.actions>*{flex:1 1 auto}.chatActions{align-items:flex-end}.chatActions small{font-size:11px}.sectionTitle{font-size:15px}}
+.card{scroll-margin-top:68px}
+.workspaceNav{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;margin:-8px 0 10px}
+.workspaceNav:empty{display:none}
+.workspaceNav .textButton{font-size:13px}
+.olderConversation summary,.messageOptions summary{min-height:44px;display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px;line-height:1.7;color:#607653;padding:8px 0;overflow-wrap:anywhere}
+.olderConversation summary:before,.messageOptions summary:before{content:'＋';font-size:15px;flex-shrink:0}
+.olderConversation[open]>summary:before,.messageOptions[open]>summary:before{content:'−'}
+.olderConversation summary:focus-visible,.messageOptions summary:focus-visible{outline:3px solid #9ccab6;outline-offset:3px}
+.olderConversation>div{display:grid;gap:14px;padding-top:8px}
+.messageOptions{border-top:1px solid #e3e9dd;border-bottom:1px solid #e3e9dd;min-width:0}
+.messageOptions summary span{margin-left:auto;color:#8b977f;font-size:12px;white-space:nowrap}
+.messageOptions>label,.messageOptions>.grid{padding:8px 0 15px}
+.proposalReady{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:16px;margin-top:18px;border-radius:13px;background:#f3f7ed;min-width:0}
+.proposalReady>div{min-width:0}
+.proposalReady strong{font-size:14px;color:#557047}
+.proposalReady p{font-size:12px;line-height:1.7;color:#839175;margin:5px 0 0}
+.proposalReady button{flex-shrink:0}
+.saveActions{display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap;padding-top:13px;border-top:1px solid #e4eadc}
+.saveActions>button{flex:1 1 auto}
+.card .savedButton:disabled{opacity:1;cursor:default;background:#edf4e6;border-color:#dce8d2;color:#547648}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:0 0 18px;min-width:0}
+.steps button{min-height:44px;padding:8px 6px;border:1px solid #e2e9db;border-radius:10px;font-size:12px;line-height:1.6;color:#829173;background:#fafbf7;display:flex;align-items:center;justify-content:center;gap:6px;min-width:0}
+.steps button span{font-size:11px;width:19px;height:19px;border-radius:50%;background:#ebf1e4;display:grid;place-items:center;flex-shrink:0}
+.steps button[aria-current=step]{background:#edf5e8;border-color:#a8bf92;color:#496b3b;font-weight:650}
+.review{margin:0;display:grid;grid-template-columns:110px minmax(0,1fr);gap:10px 16px;border-radius:13px;background:#f6f8f1;padding:16px;font-size:14px;line-height:1.8;min-width:0}
+.review dt{font-size:12px;color:#829174}
+.review dd{margin:0;min-width:0;color:#506347;white-space:pre-wrap;overflow-wrap:anywhere}
+@media(max-width:570px){.workspaceNav{margin-top:-6px}.proposalReady{flex-direction:column;align-items:stretch;padding:14px}.saveActions{position:sticky;bottom:calc(74px + env(safe-area-inset-bottom,0px));z-index:5;gap:8px;padding:12px 0;background:#fff;box-shadow:0 -10px 18px rgba(255,255,255,.94);align-items:stretch}.saveActions>button{font-size:13px;padding-inline:10px}.review{grid-template-columns:76px minmax(0,1fr);gap:8px 10px;padding:12px;font-size:13px;line-height:1.7}.review dt{font-size:11px}.review dd+dt{margin-top:0}.steps button{font-size:11px;gap:4px;padding-inline:4px}.steps button span{width:17px;height:17px;font-size:10px}}
+
+@media(max-width:570px){.confirmedActions{display:grid;grid-template-columns:44px max-content minmax(0,1fr);gap:6px}.confirmedActions .backLabel{display:none}.confirmedActions>button{min-width:0;padding-inline:7px}.confirmedActions>.savedButton{font-size:12px;gap:5px}.confirmedActions>button:last-child{font-size:12px;gap:5px}.confirmedActions>button:last-child svg{flex-shrink:0}}

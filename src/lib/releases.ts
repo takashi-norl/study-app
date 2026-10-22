@@ -8,6 +8,16 @@ export interface AppRelease {
 
 // Newest first. This is the source for Settings, public history and update notices.
 export const APP_RELEASES: readonly AppRelease[] = [{
+  version: '0.4.0',
+  date: '2026-10-23',
+  title: '迷わず、問題づくりから練習へ',
+  announcement: '問題づくりを順番に進める画面に。戻る・次へと、保存済みの状態が分かりやすくなりました。',
+  changes: [
+    { title: 'ひとつずつ進める問題づくり', description: '科目・目的、教材・内容、ペース、確認の4ステップに分けました。選択を保ったまま前のステップへ戻れます。提案・相談・できた問題も、それぞれの画面から開けます。' },
+    { title: '探さずに、次の操作へ', description: 'スマホの下のメニューをホーム・問題を作る・教材または問題集・メニューに整理しました。設定は必要な項目だけ開き、プロフィールの保存後は問題づくりへ進めます。' },
+    { title: '保存できたことが、ひと目で', description: 'プロフィールを保存すると「保存済み」になります。変更があるときだけ保存でき、元の内容に戻した場合も保存済みと分かります。' },
+  ],
+}, {
   version: '0.3.0',
   date: '2026-10-23',
   title: 'あなたに合う、学び方とひとこと',

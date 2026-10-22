@@ -9,7 +9,7 @@ export function SharedLibrary({ c, onAdded, onOpen }: { c: StudyController; onAd
   const parent = c.profile.role === 'parent';
   return <section className={styles.library} aria-label="公開ライブラリ">
     <p className={styles.intro}>{parent ? '公開した問題集です。学習者はここから選んで、自分の学習プランに追加できます。' : '気になる問題集を選んで、自分の学習プランへ。追加すると、毎日の10問にも取り入れます。'}</p>
-    {!topics.length ? <div className="panel empty-state"><BookOpen size={28} /><h3>公開された問題集はまだありません</h3><p>{parent ? 'テスト用の問題を試してから、「ライブラリに公開」で追加できます。' : '問題集が公開されると、ここから選べます。自分で作るときは「学習相談」へ。'}</p></div> : <div className={styles.grid}>{topics.map(topic => {
+    {!topics.length ? <div className="panel empty-state"><BookOpen size={28} /><h3>公開された問題集はまだありません</h3><p>{parent ? 'テスト用の問題を試してから、「ライブラリに公開」で追加できます。' : '問題集が公開されると、ここから選べます。自分で作るときは、画面下の「問題を作る」へ。'}</p></div> : <div className={styles.grid}>{topics.map(topic => {
       const added = c.data.plans.some(plan => plan.ownerId === c.profile.id && plan.libraryTopicId === topic.id);
       return <article className={`panel ${styles.card}`} key={topic.id}>
         <span className="subject-badge">{topic.subject}</span><h2>{topic.title}</h2><p>{topic.description || '10問ずつ、自分のペースで練習できます。'}</p>

@@ -40,6 +40,28 @@ export function defaultPersonalPreferences(): PersonalPreferences {
   return {nickname: '', schoolYear: '', goals: '', interests: '', encouragementStyle: 'gentle', dailyMinutes: 10, enabled: false, personalizedMessages: []};
 }
 
+/** Match the server's normalization while excluding persistence metadata. */
+export function normalizePersonalPreferences(value: PersonalPreferences): PersonalPreferences {
+  return {
+    nickname: value.nickname.trim(), schoolYear: value.schoolYear.trim(),
+    goals: value.goals.trim(), interests: value.interests.trim(),
+    encouragementStyle: value.encouragementStyle, dailyMinutes: value.dailyMinutes,
+    enabled: value.enabled,
+    personalizedMessages: value.personalizedMessages.map(message => message.trim()).filter(Boolean),
+  };
+}
+
+export function personalProfileSaveState(draft: PersonalPreferences, persisted: PersonalPreferences | null, saving = false) {
+  if (saving) return { status: 'saving' as const, label: '保存しています', disabled: true };
+  if (!persisted) return { status: 'new' as const, label: 'プロフィールを保存する', disabled: false };
+  const current = normalizePersonalPreferences(draft);
+  const saved = normalizePersonalPreferences(persisted);
+  const matches = current.dailyMinutes === saved.dailyMinutes && JSON.stringify(current) === JSON.stringify(saved);
+  return matches
+    ? { status: 'saved' as const, label: '保存済み', disabled: true }
+    : { status: 'changed' as const, label: '変更を保存', disabled: false };
+}
+
 /** Reading a saved message never makes an AI request. Progress takes precedence over encouragement. */
 export function personalizedStudyMessage(profile: PersonalProfile | null | undefined, options: {
   fallback?: string; date?: Date; todayAnswers?: number; dailyTarget?: number;
