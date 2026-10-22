@@ -41,7 +41,7 @@ export function SourceBank({ c, onConsult }: { c: StudyController; onConsult: (i
       <div className="panel-heading"><div><h2>教材を、先に保存しておこう。</h2><p>写真やPDFは、何度でも別の問題づくりに使えます。問題集の作成は後からで大丈夫です。</p></div></div>
       <div className={`upload-zone ${dragging ? 'dragging' : ''}`} onDragOver={event => { event.preventDefault(); setDragging(true); }} onDragLeave={() => setDragging(false)} onDrop={event => { event.preventDefault(); setDragging(false); upload(Array.from(event.dataTransfer.files)); }}>
         <span className="upload-symbol"><Upload size={25} /></span><h3>写真・PDFを教材ストックへ</h3><p>教科書、ノート、問題集などを選んでください。</p>
-        <button className="button secondary" disabled={c.busy} onClick={() => input.current?.click()}>{uploading ? <LoaderCircle className="spin" size={17} /> : <Plus size={17} />}{uploading ? '保存しています' : '写真・PDFを選ぶ'}</button>
+        <button className="button secondary" disabled={c.busy} onClick={() => input.current?.click()}>{uploading ? <Upload size={17} /> : <Plus size={17} />}{uploading ? '保存しています' : '写真・PDFを選ぶ'}</button>
         <small>一度に20件まで・PDFは1件10MBまで</small><input ref={input} className="sr-only" type="file" multiple disabled={c.busy} accept="image/*,application/pdf" aria-label="教材ストックに写真やPDFを追加" onChange={event => { upload(Array.from(event.target.files ?? [])); event.target.value = ''; }} />
         <UploadFeedback status={status} />
       </div>
