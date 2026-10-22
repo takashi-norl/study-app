@@ -44,7 +44,7 @@ function preferencesOf(value: PersonalPreferences | null): PersonalPreferences {
     personalizedMessages: [...source.personalizedMessages] };
 }
 
-export function PersonalProfilePanel({ onBack, onDone, doneLabel = '学習に戻る' }: { onBack?(): void; onDone?(): void; doneLabel?: string }) {
+export function PersonalProfilePanel({ onBack, onDone, doneLabel = '学習に戻る', onLocationChange }: { onBack?(): void; onDone?(): void; doneLabel?: string; onLocationChange?(label: string): void }) {
   const { identity, demo, state, loading, busy, error, refresh, sendMessage, savePreferences } = usePersonalProfile();
   const panelRef = useRef<HTMLElement>(null);
   const navigated = useRef(false);
@@ -64,6 +64,9 @@ export function PersonalProfilePanel({ onBack, onDone, doneLabel = '学習に戻
   const formPreferences = normalizePersonalPreferences({ ...draft, personalizedMessages: messageLines.split('\n') });
   const saveState = personalProfileSaveState(formPreferences, state.profile, busy === 'save');
   const confirmed = saveState.status === 'saved';
+  const locationLabel = mode === 'closed' ? 'プロフィール' : mode === 'chat' ? 'プロフィール · 会話' : `プロフィール · ${editorStep + 1}/3`;
+
+  useEffect(() => { onLocationChange?.(locationLabel); }, [locationLabel, onLocationChange]);
 
   useEffect(() => {
     if (navigated.current) panelRef.current?.scrollIntoView({ block: 'start', behavior: 'auto' });
@@ -132,6 +135,7 @@ export function PersonalProfilePanel({ onBack, onDone, doneLabel = '学習に戻
     }
   }
   const latestDraft = [...state.turns].reverse().find(turn => turn.status === 'complete' && turn.draft);
+  const latestDraftIsCurrent = latestDraft?.id === state.turns.at(-1)?.id;
   const preview = state.profile ? personalizedStudyMessage(state.profile) : '';
   function conversationTurn(turn: PersonalProfileTurn) {
     return <div className={styles.turn} key={turn.id}>
@@ -169,7 +173,7 @@ export function PersonalProfilePanel({ onBack, onDone, doneLabel = '学習に戻
     {mode !== 'closed' && <div className={styles.workspace}>
       {mode === 'chat' && <>
         {demo && <p className={styles.caption}>デモでは返信例を表示します。AIへの送信は行いません。</p>}
-        {!loading && !state.aiEnabled && <p className={styles.waiting}>AIへの接続は準備中です。「自分で入力」に進めます。</p>}
+        {!loading && !state.aiEnabled && <div className={styles.aiUnavailable} role="status"><span>いまAIとは会話できません。プロフィールは手入力で保存できます。</span><button type="button" className={styles.textButton} onClick={() => open('manual')}>手入力に進む<ArrowRight size={16} /></button></div>}
         {!state.turns.length && <div className={styles.starters}>{starterMessages.map(item => <button key={item.title} type="button" className={styles.starter} disabled={disabled || !state.aiEnabled} onClick={() => { setMessage(item.message); setChatNotice(''); }}>{item.title}<ArrowRight size={14} /></button>)}</div>}
         {!!state.turns.length && <div className={styles.conversation} aria-label="プロフィールの会話">
           {state.turns.length > 1 && <details className={styles.olderConversation}><summary>これまでの会話（{state.turns.length - 1}件）</summary><div>{state.turns.slice(0, -1).map(conversationTurn)}</div></details>}
@@ -181,11 +185,12 @@ export function PersonalProfilePanel({ onBack, onDone, doneLabel = '学習に戻
           <div className={styles.chatActions}><small>送ると、AIが編集できる案をつくります。</small><button type="submit" className={styles.button} disabled={disabled || !state.aiEnabled || !message.trim()}><Send size={16} />送信</button></div>
         </form>
         {chatNotice && <p className={styles.status} role="status">{chatNotice}</p>}
-        {latestDraft?.draft && <div className={styles.proposalReady}><div><strong>プロフィール案を確認しましょう</strong><p>内容を直して、保存すると反映されます。</p></div><button type="button" className={styles.button} disabled={!!busy} onClick={() => { applyDraft(latestDraft.draft!); setEditorStep(2); changeMode('manual'); }}>プロフィール案を確認<ArrowRight size={16} /></button></div>}
+        {latestDraft?.draft && <div className={styles.proposalReady}><div><strong>{latestDraftIsCurrent ? 'プロフィール案を確認しましょう' : '前回のプロフィール案'}</strong><p>{latestDraftIsCurrent ? '内容を直して、保存すると反映されます。' : 'これは前の会話で作った案です。内容を確認してから保存できます。'}</p></div><button type="button" className={styles.button} disabled={!!busy} onClick={() => { applyDraft(latestDraft.draft!); setEditorStep(2); changeMode('manual'); }}>{latestDraftIsCurrent ? 'プロフィール案を確認' : '前回の案を確認'}<ArrowRight size={16} /></button></div>}
         <div className={styles.actions}><button type="button" className={styles.textButton} onClick={() => open('manual')}><PencilLine size={16} />自分で入力・編集</button></div>
       </>}
       {mode === 'manual' && <>
         <nav className={styles.steps} aria-label="プロフィールの入力手順">{['目標・興味', '声かけ・時間', '確認・保存'].map((label, index) => <button type="button" key={label} aria-current={editorStep === index ? 'step' : undefined} onClick={() => changeStep(index)} disabled={!!busy}><span>{index + 1}</span>{label}</button>)}</nav>
+        {!loading && <div className={styles.editingState} role="status"><span className={confirmed ? styles.confirmedState : styles.unsavedState}>{busy === 'save' ? '保存中' : confirmed ? <><Check size={13} />保存済み</> : '未保存'}</span><small>{busy === 'save' ? '保存が終わるまでお待ちください。' : confirmed ? '変更したときだけ、もう一度保存できます。' : '最後に保存すると、ホームに反映されます。'}</small></div>}
         <form className={styles.editor} onSubmit={event => { if (editorStep < 2) { event.preventDefault(); changeStep(editorStep + 1); } else void save(event); }}>
           {editorStep === 0 && <>
             <div><h3 className={styles.sectionTitle}>目標や好きなことを教えてください</h3><p className={styles.caption}>空欄のままでも進めます。</p></div>

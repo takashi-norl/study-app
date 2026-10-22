@@ -95,3 +95,12 @@
 @media(max-width:570px){.workspaceNav{margin-top:-6px}.proposalReady{flex-direction:column;align-items:stretch;padding:14px}.saveActions{position:sticky;bottom:calc(74px + env(safe-area-inset-bottom,0px));z-index:5;gap:8px;padding:12px 0;background:#fff;box-shadow:0 -10px 18px rgba(255,255,255,.94);align-items:stretch}.saveActions>button{font-size:13px;padding-inline:10px}.review{grid-template-columns:76px minmax(0,1fr);gap:8px 10px;padding:12px;font-size:13px;line-height:1.7}.review dt{font-size:11px}.review dd+dt{margin-top:0}.steps button{font-size:11px;gap:4px;padding-inline:4px}.steps button span{width:17px;height:17px;font-size:10px}}
 
 @media(max-width:570px){.confirmedActions{display:grid;grid-template-columns:44px max-content minmax(0,1fr);gap:6px}.confirmedActions .backLabel{display:none}.confirmedActions>button{min-width:0;padding-inline:7px}.confirmedActions>.savedButton{font-size:12px;gap:5px}.confirmedActions>button:last-child{font-size:12px;gap:5px}.confirmedActions>button:last-child svg{flex-shrink:0}}
+
+.editingState{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:-9px 0 0;min-width:0}
+.editingState>span{display:inline-flex;align-items:center;gap:4px;border-radius:20px;padding:3px 8px;font-size:11px;line-height:1.5;flex-shrink:0}
+.confirmedState{background:#edf5e7;color:#5b7946}
+.unsavedState{background:#f7f0e5;color:#90704b}
+.editingState small{font-size:11px;line-height:1.6;color:#849176}
+.aiUnavailable{display:flex;align-items:center;gap:7px 12px;flex-wrap:wrap;padding:10px 12px;margin:12px 0;background:#f5f7ef;border-radius:11px;font-size:13px;line-height:1.7;color:#6e805f}
+.aiUnavailable>span{flex:1 1 210px;min-width:0}
+.aiUnavailable .textButton{font-size:13px;flex-shrink:0}

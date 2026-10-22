@@ -103,6 +103,11 @@
 .olderTurns { margin-top:20px; }
 .olderTurns>:global(.conversation-turns) { margin-top:14px; }
 .wideAction { margin-top:15px;width:100%;min-height:48px; }
+.stateHelp { padding:12px 14px;margin:12px 0;border:1px solid #e0e7d8;border-radius:10px;background:#f5f8f0; }
+.stateHelp>p { font-size:13px;line-height:1.8;color:#607650;overflow-wrap:anywhere; }
+.stateHelp>button { min-height:40px;margin-top:5px;font-size:13px;white-space:normal;text-align:left; }
+.clarificationReply { white-space:pre-wrap;overflow-wrap:anywhere; }
+.stateError { color:#a0523c!important;font-size:13px;line-height:1.8;overflow-wrap:anywhere; }
 .flow button:focus-visible,.flow summary:focus-visible { outline:3px solid #9bc6ac;outline-offset:3px; }
 @media(max-width:760px) {
   .planList { grid-template-columns:minmax(0,1fr); }

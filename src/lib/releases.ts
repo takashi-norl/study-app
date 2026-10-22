@@ -8,6 +8,17 @@ export interface AppRelease {
 
 // Newest first. This is the source for Settings, public history and update notices.
 export const APP_RELEASES: readonly AppRelease[] = [{
+  version: '0.4.1',
+  date: '2026-10-23',
+  title: '今いる場所と、次にできることを明確に',
+  announcement: '画面の上に現在地、操作のそばに次の進み方を表示。待ち時間や保存の状態も分かりやすくしました。',
+  changes: [
+    { title: '今どこにいるか、いつでも確認', description: '問題づくりのステップ、提案・相談・できた問題、プロフィールの入力段階を画面上部に表示します。戻り先と次の操作が分かるようにしました。' },
+    { title: '進めないときも、次の操作へ', description: 'AIの回答待ち、ほかの問題を作成中、案の更新待ち、閲覧専用などの理由を表示します。回答が質問だけだった場合も、その内容を読んで相談を続けられます。' },
+    { title: '保存や追加の結果を確認', description: 'プロフィールの未保存・保存中・保存済みを表示します。ライブラリから追加した問題はその場で練習へ。教材の追加後にも、問題づくりへの進み方を表示します。' },
+    { title: '自分のペースで、区切りをつける', description: '練習の最後は、終わるか追加で取り組むかを選べます。今日の10問が終わったホームには、学習記録へのボタンを表示します。' },
+  ],
+}, {
   version: '0.4.0',
   date: '2026-10-23',
   title: '迷わず、問題づくりから練習へ',

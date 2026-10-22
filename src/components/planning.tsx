@@ -18,7 +18,7 @@ export function UploadFeedback({ status }: { status: UploadStatus | null }) {
   return <div className={`upload-feedback ${status.phase}`} role={status.phase === 'failed' ? 'alert' : 'status'}>
     <div className="upload-feedback-heading">{pending ? <LoaderCircle size={18} className="spin" /> : status.phase === 'failed' ? <CircleHelp size={18} /> : <CheckCircle2 size={18} />}<strong>{status.phase === 'failed' ? 'アップロードを中断しました' : status.phase === 'complete' ? '教材の追加が完了しました' : `${status.current} / ${status.total}件目 · ${status.message}`}</strong></div>
     {status.phase !== 'complete' && <span className="upload-file-name">{status.fileName}</span>}
-    {pending ? <><div className="progress-track" role="progressbar" aria-label="保存した教材の数" aria-valuenow={status.completed} aria-valuemin={0} aria-valuemax={status.total}><span style={{ width: `${status.completed / status.total * 100}%` }} /></div><p>{status.completed} / {status.total}件を保存済みです。この画面を開いたままお待ちください。</p></> : <><p>{status.message}</p>{status.phase === 'failed' && <p>保存を確認できた教材は{status.completed}件です。下の一覧にない教材だけ選び直してください。</p>}</>}
+    {pending ? <><div className="progress-track" role="progressbar" aria-label="保存した教材の数" aria-valuenow={status.completed} aria-valuemin={0} aria-valuemax={status.total}><span style={{ width: `${status.completed / status.total * 100}%` }} /></div><p>{status.completed} / {status.total}件を保存済みです。この画面を開いたままお待ちください。</p></> : <><p>{status.message}</p>{status.phase === 'failed' && <p>保存を確認できた教材は{status.completed}件です。下の一覧にない教材だけ選び直してください。</p>}{status.phase === 'complete' && <p>次は、使う教材を一覧で選んで問題づくりへ進めます。</p>}</>}
   </div>;
 }
 
@@ -57,7 +57,7 @@ export function SourceBank({ c, onConsult }: { c: StudyController; onConsult: (i
   </div>;
 }
 
-export default function Planning({ c, initialSourceIds, initialRequest, review, openTopic, onBack }: { c: StudyController; initialSourceIds?: string[]; initialRequest: number; review: (topicId?: string, includePublished?: boolean) => void; openTopic: (id: string) => void; onBack?: () => void }) {
+export default function Planning({ c, initialSourceIds, initialRequest, review, openTopic, onBack, onLocationChange }: { c: StudyController; initialSourceIds?: string[]; initialRequest: number; review: (topicId?: string, includePublished?: boolean) => void; openTopic: (id: string) => void; onBack?: () => void; onLocationChange?: (label:string) => void }) {
   const top = useRef<HTMLDivElement>(null);
   const [activeId, setActiveId] = useState<string>('');
   const [screen, setScreen] = useState<'list'|'new'|'plan'|'sources'>(initialSourceIds ? 'new' : 'list');
@@ -71,13 +71,14 @@ export default function Planning({ c, initialSourceIds, initialRequest, review, 
   const navigationBusy = uploading || savingDraft;
   useEffect(() => { if (initialSourceIds) { setSourceIds(initialSourceIds); setHasDraft(true); setScreen('new'); setCreationKey(value => value + 1); } }, [initialRequest]);
   useEffect(() => { showSection(top.current); }, [screen, activeId, initialRequest]);
+  useEffect(() => { if(screen==='list')onLocationChange?.('問題を作る');else if(screen==='sources')onLocationChange?.('教材ストック'); }, [screen,onLocationChange]);
   function newConsultation(ids: string[] = []) { setSourceIds(ids); setHasDraft(true); setScreen('new'); setCreationKey(value => value + 1); }
   function openPlan(id:string) { setActiveId(id); setVisitedIds(current=>current.includes(id) ? current : [...current,id]); setScreen('plan'); }
   return <div ref={top} className={styles.flow}>
     <div className={styles.navigation}>
       {screen === 'list' ? onBack && <button type="button" className="text-button" onClick={onBack}><ArrowLeft size={17} />ホームへ</button>
         : <button type="button" className="text-button" disabled={navigationBusy} onClick={()=>setScreen('list')}><ArrowLeft size={17} />学習プラン一覧へ</button>}
-      {screen === 'new' && <span>選択は戻っても残ります</span>}
+      {screen === 'new' && <span>選択はこの画面内に保持<br/>再読み込みすると消えます</span>}
     </div>
     <div hidden={screen !== 'list'} className={styles.screen}>
       <div className="page-heading"><div><p className="eyebrow">YOUR NEXT STEP</p><h1>問題を作る</h1><p className="page-description">条件を選ぶ → 提案を確認 → 問題を作成。</p></div></div>
@@ -96,15 +97,16 @@ export default function Planning({ c, initialSourceIds, initialRequest, review, 
       {!plans.length && <p className="planning-empty">まだプランはありません。「新しく作る」から始められます。</p>}
     </div>
     <div hidden={screen !== 'sources'} className={styles.screen}><SourceBank c={c} onConsult={newConsultation} /></div>
-    <div hidden={screen !== 'new'} className={styles.screen}><NewPlan key={`new-${creationKey}`} c={c} sourceIds={sourceIds} savingChanged={setSavingDraft} cancel={()=>setScreen('list')} created={id=>{setHasDraft(false);openPlan(id);}} /></div>
-    {plans.filter(item=>visitedIds.includes(item.id)).map(plan=><div key={plan.id} hidden={screen !== 'plan' || activeId !== plan.id} className={styles.screen}><PlanConversation c={c} plan={plan} review={review} openTopic={openTopic} /></div>)}
+    <div hidden={screen !== 'new'} className={styles.screen}><NewPlan key={`new-${creationKey}`} c={c} sourceIds={sourceIds} active={screen==='new'} onLocationChange={onLocationChange} savingChanged={setSavingDraft} cancel={()=>setScreen('list')} created={id=>{setHasDraft(false);openPlan(id);}} /></div>
+    {plans.filter(item=>visitedIds.includes(item.id)).map(plan=><div key={plan.id} hidden={screen !== 'plan' || activeId !== plan.id} className={styles.screen}><PlanConversation c={c} plan={plan} active={screen==='plan'&&activeId===plan.id} onLocationChange={onLocationChange} onOpenPlan={openPlan} onList={()=>setScreen('list')} review={review} openTopic={openTopic} /></div>)}
     {screen === 'plan' && !plans.some(plan=>plan.id===activeId) && <p role="status" className="planning-empty">学習プランを開いています。</p>}
   </div>;
 }
 
-function NewPlan({ c, sourceIds: initialIds, created, cancel, savingChanged }: { c: StudyController; sourceIds: string[]; created: (id: string) => void; cancel?: () => void; savingChanged: (saving: boolean) => void }) {
+function NewPlan({ c, sourceIds: initialIds, created, cancel, savingChanged, active, onLocationChange }: { c: StudyController; sourceIds: string[]; created: (id: string) => void; cancel?: () => void; savingChanged: (saving: boolean) => void; active: boolean; onLocationChange?: (label:string)=>void }) {
   const [step, setStep] = useState(0);
   const stepHeading = useRef<HTMLHeadingElement>(null);
+  useEffect(()=>{if(active)onLocationChange?.(`問題を作る · ${step+1}/4`);},[step,active,onLocationChange]);
   const [subject, setSubject] = useState<string>(PRACTICE_CATEGORIES[0].subject);
   const [materialMode, setMaterialMode] = useState<'ai' | 'sources'>(initialIds.length ? 'sources' : 'ai');
   const [purpose, setPurpose] = useState('日々の練習');
@@ -200,7 +202,7 @@ function NewPlan({ c, sourceIds: initialIds, created, cancel, savingChanged }: {
   </section>;
 }
 
-function PlanConversation({ c, plan, review, openTopic }: { c: StudyController; plan: LearningPlan; review: (topicId?: string, includePublished?: boolean) => void; openTopic: (id: string) => void }) {
+function PlanConversation({ c, plan, review, openTopic, active, onLocationChange, onOpenPlan, onList }: { c: StudyController; plan: LearningPlan; review: (topicId?: string, includePublished?: boolean) => void; openTopic: (id: string) => void; active:boolean; onLocationChange?:(label:string)=>void; onOpenPlan:(id:string)=>void; onList:()=>void }) {
   const [message, setMessage] = useState('');
   const [publishingTopic, setPublishingTopic] = useState<string | null>(null);
   const own = plan.ownerId === c.profile.id;
@@ -211,10 +213,13 @@ function PlanConversation({ c, plan, review, openTopic }: { c: StudyController; 
   const newest = turns.at(-1);
   const topics = c.data.topics.filter(topic => topic.planId === plan.id);
   const jobs = c.data.jobs.filter(job => job.planId === plan.id || topics.some(topic => topic.id === job.topicId));
-  const generating = c.data.jobs.some(job => job.status === 'queued' || job.status === 'running');
+  const activeJob = c.data.jobs.find(job => job.status === 'queued' || job.status === 'running');
+  const generating = !!activeJob;
+  const activeJobPlanAvailable = !!activeJob?.planId && c.data.plans.some(item=>item.id===activeJob.planId);
   const owner = c.data.profiles.find(profile => profile.id === plan.ownerId);
   const [tab,setTab] = useState<'proposals'|'chat'|'questions'>(jobs.length||plan.libraryTopicId?'questions':'proposals');
   const [proposalIndex,setProposalIndex] = useState(0);
+  useEffect(()=>{if(active)onLocationChange?.(`学習プラン · ${{proposals:'提案',chat:'相談',questions:'できた問題'}[tab]}`);},[active,tab,onLocationChange]);
   const sectionTop=useRef<HTMLDivElement>(null);
   const previousLatest=useRef(latest?.id);
   const proposals=latest?.proposals??[];
@@ -222,6 +227,11 @@ function PlanConversation({ c, plan, review, openTopic }: { c: StudyController; 
   const questionCount=jobs.reduce((count,job)=>count+job.generatedCount,0);
   function selectTab(next:'proposals'|'chat'|'questions') { setTab(next); requestAnimationFrame(()=>showSection(sectionTop.current)); }
   useEffect(()=>{if(latest?.id!==previousLatest.current){previousLatest.current=latest?.id;setProposalIndex(0);if(latest?.id)setTab('proposals');}},[latest?.id]);
+  function consultAgain() { if(!message.trim())setMessage('保存した目標と教材に合わせて、新しい問題作成案を提案してください。作成が止まった問題の再開ではなく、改めて作る案を確認したいです。');selectTab('chat'); }
+  const blockedAction = !own ? {message:'ここは閲覧用です。案の変更・作問は、このプランを作った本人が操作できます。',label:'相談の内容を見る',run:()=>selectTab('chat')}
+    : waiting ? {message:'この相談への回答を待っています。新しい提案が届くまで作問はできません。',label:'相談の状況を見る',run:()=>selectTab('chat')}
+    : activeJob ? {message:activeJob.planId===plan.id?'このプランの問題を作成しています。完了後に別の案も作れます。':`別の問題を作成しています（${activeJob.generatedCount} / ${activeJob.targetCount}問）。今はこの案を確認でき、作問はその処理が終わってから再開できます。`,label:activeJob.planId===plan.id||activeJobPlanAvailable?'作成状況を確認する':'学習プラン一覧へ',run:()=>{if(activeJob.planId===plan.id)selectTab('questions');else if(activeJob.planId&&activeJobPlanAvailable)onOpenPlan(activeJob.planId);else onList();}}
+    : latest&&latest.version!==plan.version ? {message:'この案を出した後に相談が更新されました。最新の条件で再提案してから作成してください。',label:'最新の条件で相談する',run:()=>{if(!message.trim())setMessage('更新した条件に合わせて、改めて問題作成案を提案してください。');selectTab('chat');}} : undefined;
   async function send(event: FormEvent) { event.preventDefault(); if (!own||waiting||c.busy) return; if (message.trim() && await c.actions.sendPlanningMessage(plan.id, message)) {setMessage('');selectTab('proposals');} }
   function renderTurn(turn:PlanningTurn) { return <div className="conversation-turn" key={turn.id}><div className="chat-bubble user"><span>{owner?.name||'自分'} · {dateLabel(turn.createdAt)}</span>{turn.message.startsWith('この選択から、')?<details><summary>選んだ条件からの依頼</summary><p>{turn.message}</p></details>:<p>{turn.message}</p>}</div>{turn.status==='complete'?<div className="chat-bubble assistant"><span><Sparkles size={14}/>AIの回答{c.demo&&'（サンプル）'}</span><p>{turn.reply}</p>{turn.id!==latest?.id&&!!turn.proposals?.length&&<small>この回答の作問案は以前のものです。「提案」に最新の案があります。</small>}</div>:turn.status==='failed'?<div className="flash error" role="alert"><CircleHelp size={17}/><span>{turn.error||'回答を完了できませんでした。内容を確認して、もう一度相談できます。'}</span></div>:<p className={styles.hint}>返信を準備しています。</p>}</div>; }
   return <div className={styles.conversation}>
@@ -239,10 +249,10 @@ function PlanConversation({ c, plan, review, openTopic }: { c: StudyController; 
         <div className={styles.nextStep}><strong>次は、気に入った案から問題を作成。</strong><p>案を選んで内容を確認し、「この案で作る」を押してください。</p></div>
         {latest.version!==plan.version&&<p className={styles.hint}>相談内容が更新されています。最新の回答を待つか、「相談」から案を調整してください。</p>}
         {proposals.length>1&&<div className={styles.proposalPicker} aria-label="問題作成案を選ぶ">{proposals.map((proposal,index)=><button type="button" key={proposal.id} aria-pressed={activeProposal===index} onClick={()=>setProposalIndex(index)}><span>案 {index+1}</span><strong>{proposal.title}</strong></button>)}</div>}
-        {proposals.map((proposal,index)=><div key={`${latest.id}:${proposal.id}`} hidden={activeProposal!==index} className={styles.screen}><ProposalCard c={c} plan={plan} turn={latest} proposal={proposal} canGenerate={own&&!waiting&&!generating&&latest.version===plan.version} onGenerated={()=>selectTab('questions')}/></div>)}
+        {proposals.map((proposal,index)=><div key={`${latest.id}:${proposal.id}`} hidden={activeProposal!==index} className={styles.screen}><ProposalCard c={c} plan={plan} turn={latest} proposal={proposal} canGenerate={own&&!waiting&&!generating&&latest.version===plan.version} onGenerated={()=>selectTab('questions')} blockedAction={blockedAction}/></div>)}
         {latest.reply&&<details className={styles.replyDetails}><summary>AIの説明・学習の進め方を見る</summary><p>{latest.reply}</p></details>}
         {own&&<p className={styles.hint}>{plan.testOnly?'テスト用の問題は保護者だけが試せます。あとでライブラリに公開できます。':c.profile.role==='student'?'自分で作った問題はすぐ練習できます。保護者も内容と記録を確認できます。':'作成後、内容を確認してから学習者へ公開できます。'}</p>}
-      </>:!pending&&<section className={`panel ${styles.emptyCard}`}><Sparkles size={25}/><h2>このプランの提案をもらおう。</h2><p>希望を伝えると、作れる問題の案が届きます。</p>{own&&<button type="button" className="button primary" disabled={c.busy||waiting} onClick={()=>{setMessage('保存した目標と教材に合わせて、最初の問題作成案を提案してください。');selectTab('chat');}}>AIに相談する<ArrowRight size={16}/></button>}</section>}
+      </>:!pending&&<section className={`panel ${styles.emptyCard}`}><Sparkles size={25}/><h2>{latest?.reply?'AIからの回答を確認しよう。':'このプランの提案をもらおう。'}</h2>{latest?.reply?<p className={styles.clarificationReply}>{latest.reply}</p>:<p>条件は保存済みです。相談を送ると、作れる問題の案が届きます。</p>}{c.error&&!latest?.reply&&<p className={styles.stateError} role="alert">{c.error}</p>}{own?<button type="button" className="button primary" disabled={c.busy||waiting} onClick={()=>{if(!message.trim()&&!latest?.reply)setMessage('保存した目標と教材に合わせて、最初の問題作成案を提案してください。');selectTab('chat');}}>{latest?.reply?'回答・希望を伝える':'相談内容を確認して送る'}<ArrowRight size={16}/></button>:<p className={styles.hint}>返信は、このプランを作った本人のアカウントから行えます。</p>}</section>}
       {jobs.length>0&&<button type="button" className={`button secondary ${styles.wideAction}`} onClick={()=>selectTab('questions')}><BookOpen size={17}/>できた問題を確認する<ArrowRight size={16}/></button>}
     </div>
     <div id={`plan-panel-${plan.id}-chat`} aria-labelledby={`plan-tab-${plan.id}-chat`} role="tabpanel" hidden={tab!=='chat'} className={styles.screen}>
@@ -268,12 +278,12 @@ function PlanConversation({ c, plan, review, openTopic }: { c: StudyController; 
       </article>;
     })}</section>}
       {!jobs.length&&!plan.libraryTopicId&&<section className={`panel ${styles.emptyCard}`}><BookOpen size={25}/><h2>問題はここにまとまります。</h2><p>「提案」で案を選ぶと、ここから練習・確認できます。</p><button type="button" className="button primary" onClick={()=>selectTab('proposals')}>提案を選ぶ<ArrowRight size={16}/></button></section>}
-      {jobs.some(job=>job.status==='failed')&&own&&<button type="button" className={`button secondary ${styles.wideAction}`} onClick={()=>selectTab('proposals')}>提案を確認して作り直す<ArrowRight size={16}/></button>}
+      {jobs.some(job=>job.status==='failed')&&<div className={styles.stateHelp}><p>終了した作成依頼は再開できません。保存できた問題はそのまま使えます。追加で作るときは、新しい案を相談してください。</p>{own&&<button type="button" className="text-button" onClick={consultAgain}>新しい案を相談する<ArrowRight size={16}/></button>}</div>}
     </div>
   </div>;
 }
 
-function ProposalCard({ c, plan, turn, proposal, canGenerate, onGenerated }: { c: StudyController; plan: LearningPlan; turn: PlanningTurn; proposal: PlanningProposal; canGenerate: boolean; onGenerated: () => void }) {
+function ProposalCard({ c, plan, turn, proposal, canGenerate, onGenerated, blockedAction }: { c: StudyController; plan: LearningPlan; turn: PlanningTurn; proposal: PlanningProposal; canGenerate: boolean; onGenerated: () => void; blockedAction?: {message:string;label:string;run:()=>void} }) {
   const [count, setCount] = useState(proposal.targetCount);
   const [comment, setComment] = useState('');
   const [attempted, setAttempted] = useState(false);
@@ -293,6 +303,7 @@ function ProposalCard({ c, plan, turn, proposal, canGenerate, onGenerated }: { c
   }
   return <article className={`panel proposal-card ${styles.proposalCard}`}><div className="planning-section-heading"><span className="subject-badge">{proposal.subject}</span><span>{proposal.difficulty} · 四択</span></div><h3>{proposal.title}</h3><p>{proposal.description}</p><details><summary>出題内容・アレンジ</summary><p>{proposal.instructions}</p></details>
     <div className="proposal-bottom"><label>作る分量<select value={count} disabled={disabled} onChange={event => setCount(Number(event.target.value))}>{options.map(value => <option key={value} value={value}>{compactVolumeLabel(value)}</option>)}</select></label>{own && <button className="button primary" disabled={disabled || hasComment} onClick={async () => { setAttempted(true); setLocalBusy(true); try { if (await c.actions.generateProposal(plan.id, turn.id, proposal.id, count)) { setAttempted(false); onGenerated(); } } finally { setLocalBusy(false); } }}><Sparkles size={17} />この案で作る</button>}</div>
+    {blockedAction?<div className={styles.stateHelp}><p>{blockedAction.message}</p><button type="button" className="text-button" onClick={blockedAction.run}>{blockedAction.label}<ArrowRight size={15}/></button></div>:(c.busy||localBusy)&&<p className={styles.hint} role="status">依頼の保存状況を確認しています。重ねて送信せず、そのままお待ちください。</p>}
     {own && <details className={`proposal-comment ${styles.proposalComment}`}><summary>コメントで案を調整する <span>任意</span></summary><label htmlFor={`proposal-comment-${proposal.id}`}>変えたいところがあれば <span>任意</span></label><textarea id={`proposal-comment-${proposal.id}`} value={comment} onChange={event => setComment(event.target.value)} disabled={disabled} rows={2} maxLength={2000} placeholder="例：意味を選ぶだけでなく、文中の空欄を埋める問題もほしい" />{hasComment && <><p className="quick-choice-note">コメントを反映した案を確認してから、作成できます。</p><button type="button" className="button secondary" disabled={disabled} onClick={() => void revise()}>{localBusy ? <LoaderCircle className="spin" size={16} /> : <RefreshCw size={16} />}コメントを反映して再提案</button></>}</details>}
     {hasComment && <p className={styles.hint}>コメントを入力中です。上の「コメントで案を調整する」から再提案を依頼してください。</p>}
     {attempted && c.error && <div className="flash error proposal-error" role="alert"><CircleHelp size={17} /><span>{c.error}</span></div>}

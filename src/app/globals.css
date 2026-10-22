@@ -169,3 +169,8 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 }
 
 .source-preview-toggle{display:flex;gap:8px;align-items:center;cursor:pointer;padding:18px;font-weight:600;min-height:52px}.source-preview-toggle::after{content:"＋";margin-left:auto}.source-preview[open]>.source-preview-toggle::after{content:"−"}.optional-profile.text-button{margin-bottom:18px;min-height:36px;font-size:12px}
+
+/* A state should explain the available next action without adding another screen. */
+.action-hint{padding:11px 13px;border-radius:9px;background:#f1f5ec;color:#506b43;font-size:12px;line-height:1.8;margin:15px 0 8px}
+.daily-extra{display:block;min-height:44px;width:100%;margin-top:6px;text-decoration:underline;text-underline-offset:4px;color:#e2eddd;font-size:12px}
+@media(max-width:760px){.result-actions{flex-direction:column}.mobile-location>strong{font-size:12px}.action-hint{font-size:12px}.daily-card-body p{font-size:12px}}
