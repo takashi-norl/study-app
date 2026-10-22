@@ -1,0 +1,25 @@
+.page {
+  min-height: 100dvh;
+  background: #f7f8f2;
+  padding: 40px 24px 64px;
+  color: #344535;
+}
+
+.content { max-width: 760px; margin: 0 auto; }
+.brand { display: inline-block; font-size: 21px; font-weight: 700; color: #477143; }
+.card { margin-top: 32px; padding: 40px; background: #fff; border: 1px solid #e4e9dd; border-radius: 18px; }
+.card h1 { font-size: 27px; line-height: 1.5; color: #365a3d; }
+.updated { margin: 8px 0 26px; color: #66735f; font-size: 12px; }
+.card h2 { margin: 28px 0 10px; font-size: 17px; line-height: 1.6; }
+.card p:not(.updated), .card li { font-size: 14px; line-height: 1.9; }
+.card p + p { margin-top: 12px; }
+.card ul { padding-left: 22px; }
+.card li + li { margin-top: 8px; }
+.footer { display: flex; flex-wrap: wrap; gap: 16px 24px; margin-top: 24px; font-size: 13px; }
+.footer a { color: #477143; text-decoration: underline; text-underline-offset: 4px; }
+
+@media (max-width: 570px) {
+  .page { padding: 26px 18px 40px; }
+  .card { margin-top: 24px; padding: 26px 22px; border-radius: 14px; }
+  .card h1 { font-size: 23px; }
+}

@@ -25,3 +25,5 @@
 .job-recovery{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;width:100%;border-top:1px solid #e0e8d6;padding-top:10px;margin-top:3px}.job-recovery>span{font-size:10px;color:#829172}.job-recovery>.text-button{font-size:10px}
 
 .source-row input.source-pick{width:18px;height:18px;min-width:18px;flex:0 0 18px;padding:0;margin:0;accent-color:#245641;cursor:pointer}
+
+.login-footer{flex-wrap:wrap}.login-footer nav{display:flex;flex-wrap:wrap;gap:16px}.login-footer nav a{text-decoration:underline;text-underline-offset:3px;font-size:11px}
