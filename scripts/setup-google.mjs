@@ -43,8 +43,14 @@ export function validateConfig(input) {
 
 export function validateGrant(info, identity, config, expectedNonce) {
   const scopes = Array.isArray(info.scopes) ? info.scopes : [];
-  if (info.aud !== config.clientId || !scopes.includes(SCOPES[2]) || scopes.some((scope) => !ALLOWED_SCOPES.has(scope))) {
-    fail('このアプリの drive.file 権限だけで接続してください。広いDrive権限は受け付けません。');
+  if (info.aud !== config.clientId) {
+    fail('別のアプリへの接続情報です。Googleクライアントの設定を確認し、このセットアップの開始画面から接続し直してください。');
+  }
+  if (!scopes.includes(SCOPES[2])) {
+    fail('教材を保存する権限（drive.file）が許可されていません。接続し直し、Googleの許可画面で「このアプリで使用するファイル」の権限にチェックを入れて続行してください。');
+  }
+  if (scopes.some((scope) => !ALLOWED_SCOPES.has(scope))) {
+    fail('このアプリに不要な権限が含まれています。Googleアカウントでこのアプリへの既存の接続を確認し、drive.fileと本人確認の権限だけで接続し直してください。');
   }
   if (identity?.aud !== config.clientId || identity?.email_verified !== true
     || identity?.email?.toLowerCase() !== config.ownerEmail

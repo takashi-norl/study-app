@@ -22,6 +22,9 @@ test('only the intended Google client, verified owner and narrow grant are accep
     { ...info, scopes: [...SCOPES, 'https://www.googleapis.com/auth/drive'] },
     { ...info, scopes: [...SCOPES, 'https://www.googleapis.com/auth/spreadsheets'] },
   ]) assert.throws(() => validateGrant(invalid, identity, config, 'nonce'));
+  assert.throws(() => validateGrant({ ...info, aud: 'other' }, identity, config, 'nonce'), /別のアプリへの接続情報/);
+  assert.throws(() => validateGrant({ ...info, scopes: ['openid', 'email'] }, identity, config, 'nonce'), /権限（drive.file）が許可されていません/);
+  assert.throws(() => validateGrant({ ...info, scopes: [...SCOPES, 'https://www.googleapis.com/auth/drive'] }, identity, config, 'nonce'), /不要な権限が含まれています/);
   for (const invalid of [
     { ...identity, aud: 'other' }, { ...identity, email: 'someone@example.com' },
     { ...identity, email_verified: false }, { ...identity, nonce: 'other' },
