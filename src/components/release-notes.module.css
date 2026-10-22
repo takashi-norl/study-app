@@ -1,0 +1,28 @@
+.card { padding: 24px; }
+.heading h2 { font-size: 18px; color: #294139; margin: 0 0 7px; }
+.heading p { font-size: 13px; color: #697665; margin: 0; line-height: 1.8; }
+.comment { color: #52654c; font-size: 14px; line-height: 1.8; margin: 14px 0; }
+.details summary { color: #45633d; font-size: 14px; font-weight: 600; cursor: pointer; min-height: 44px; padding: 10px 0; }
+.history { list-style: none; padding: 0; margin: 20px 0 0; }
+.history > li + li { border-top: 1px solid #e5eadd; margin-top: 28px; padding-top: 26px; }
+.meta { display: flex; gap: 8px 14px; align-items: center; flex-wrap: wrap; font-size: 12px; color: #728068; }
+.meta > strong { color: #38563b; font-size: 16px; }
+.meta > span { border-radius: 5px; padding: 2px 7px; color: #547445; background: #eef4e5; font-size: 11px; }
+.history h3 { color: #36543e; font-size: 18px; line-height: 1.7; margin: 12px 0 16px; }
+.history ul { padding-left: 20px; }
+.history ul li { margin-top: 15px; font-size: 14px; line-height: 1.8; color: #4c5c4c; }
+.history ul p { margin: 4px 0 0; color: #6b7566; }
+.notice { display: flex; align-items: flex-start; gap: 12px; border: 1px solid #dce7d1; background: #f1f6eb; border-radius: 14px; padding: 17px 14px 17px 18px; margin-bottom: 22px; color: #527047; }
+.notice > svg { flex-shrink: 0; margin-top: 3px; }
+.notice > div { min-width: 0; flex: 1; }
+.notice p { margin: 0; font-size: 13px; line-height: 1.8; }
+.notice p + p { margin-top: 3px; }
+.notice p span { margin-left: 10px; white-space: nowrap; font-size: 11px; color: #7b886e; }
+.notice small { display: block; font-size: 11px; line-height: 1.8; margin-top: 5px; }
+.actions { display: flex; align-items: center; flex-wrap: wrap; gap: 5px 18px; margin-top: 5px; }
+.actions a, .actions button { background: none; border: none; color: #3f6537; text-decoration: underline; text-underline-offset: 4px; font-size: 13px; font-weight: 600; padding: 8px 0; min-height: 38px; cursor: pointer; }
+.actions button:disabled { opacity: .5; cursor: default; }
+.close { color: #5e7452; width: 40px; height: 40px; display: grid; place-items: center; flex-shrink: 0; border: 0; background: none; border-radius: 8px; cursor: pointer; margin: -7px -5px 0 0; }
+.close:hover { background: #e3ecd9; }
+.close:focus-visible, .details summary:focus-visible, .actions a:focus-visible, .actions button:focus-visible { outline: 2px solid #5b7e48; outline-offset: 3px; }
+@media (max-width: 600px) { .card { padding: 18px; } .heading h2 { font-size: 16px; } .notice { gap: 9px; padding: 14px 10px 14px 13px; } .notice p { font-size: 12px; } .notice > svg { width: 17px; } }

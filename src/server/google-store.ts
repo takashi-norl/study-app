@@ -1,4 +1,5 @@
 import 'server-only';
+import { randomUUID } from 'node:crypto';
 import { OAuth2Client } from 'google-auth-library';
 import { z } from 'zod';
 import type {
@@ -13,6 +14,8 @@ const EVENT_TYPES = [
   'session.completed', 'attempt.recorded', 'exposure.recorded', 'job.upserted', 'push.subscribed',
   'generation.batch', 'generation.requested', 'source.analysis',
   'plan.created', 'plan.updated', 'planning.turn.upserted',
+  'audio.requested', 'audio.ready', 'audio.failed',
+  'library.questions', 'library.published', 'library.adopted',
 ] as const;
 export type StudyEventType = typeof EVENT_TYPES[number];
 export interface StudyEvent {
@@ -28,12 +31,14 @@ const questionSchema = z.object({
   sourceIds: z.array(z.string()), sourceNote: z.string(), status: z.enum(['draft', 'approved', 'published', 'archived']),
   version: z.number().int().min(1), createdAt: isoSchema, publishedAt: isoSchema.optional(), needsReview: z.boolean().optional(),
   audienceUserId: idSchema.optional(), planId: idSchema.optional(),
+  testOnly:z.boolean().optional(),
 }).refine((question) => question.correctIndex < question.choices.length, 'Invalid answer');
 const topicSchema = z.object({ id: idSchema, title: z.string(), subject: subjectSchema,
   description: z.string(), createdAt: isoSchema, targetCount: z.number().int().min(0),
-  audienceUserId: idSchema.optional(), planId: idSchema.optional() });
+  audienceUserId: idSchema.optional(), planId: idSchema.optional(),testOnly:z.boolean().optional(),
+  libraryPublished:z.boolean().optional(),librarySourceTopicId:idSchema.optional() });
 const sourceSchema = z.object({ id: idSchema, topicId: idSchema.optional(), ownerId: idSchema.optional(), name: z.string(), mimeType: z.string(),
-  storagePath: z.string().optional(), previewUrl: z.string().optional(), createdAt: isoSchema });
+  storagePath: z.string().optional(), previewUrl: z.string().optional(), createdAt: isoSchema,testOnly:z.boolean().optional() });
 const sessionSchema = z.object({ id: idSchema, userId: idSchema, mode: z.enum(['daily', 'extra', 'weak']),
   questionIds: z.array(idSchema).min(1), createdAt: isoSchema, completedAt: isoSchema.optional(),
   questionSnapshots: z.array(questionSchema).min(1) });
@@ -45,11 +50,13 @@ const jobSchema = z.object({ id: idSchema, topicId: idSchema, status: z.enum(['q
   targetCount: z.number().int().min(0), generatedCount: z.number().int().min(0), createdAt: isoSchema, error: z.string().optional(),
   audienceUserId: idSchema.optional(), planId: idSchema.optional(), sourceIds: z.array(idSchema).max(20).optional(),
   instructions: z.string().max(4000).optional(), requestedBy: idSchema.optional(), proposalId: idSchema.optional(),
-  turnId: idSchema.optional(), requestId: idSchema.optional() });
+  turnId: idSchema.optional(), requestId: idSchema.optional(),testOnly:z.boolean().optional() });
 const planSchema = z.object({
   id: idSchema, ownerId: idSchema, title: z.string().trim().min(1).max(150), subject: subjectSchema,
   goal: z.string().max(4000), difficulty: z.string().max(200), targetDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
   dailyQuestionTarget: z.number().int().min(1).max(100), sourceIds: z.array(idSchema).max(20),
+  requestedQuestionCount: z.number().int().min(1).max(300).optional(),
+  testOnly:z.boolean().optional(),libraryTopicId:idSchema.optional(),
   version: z.number().int().min(1), createdAt: isoSchema, updatedAt: isoSchema,
 });
 const proposalSchema = z.object({
@@ -153,14 +160,37 @@ function validateEvent(input: StudyEvent): StudyEvent {
       const requested = z.object({ topic: topicSchema, job: jobSchema }).parse(payload);
       if (requested.topic.id !== requested.job.topicId
         || requested.topic.audienceUserId !== requested.job.audienceUserId
+        || !!requested.topic.testOnly !== !!requested.job.testOnly
         || requested.topic.planId !== requested.job.planId) throw new ApiError(400, '作問する問題集の指定が一致しません。', 'INVALID_GENERATION');
       break;
     }
     case 'plan.created': case 'plan.updated': planSchema.parse(payload); break;
+    case 'library.questions': {
+      const batch=z.object({topicId:idSchema,questions:z.array(questionSchema).min(1).max(300)}).parse(payload);
+      if(batch.questions.some(question=>question.topicId!==batch.topicId || question.testOnly || question.audienceUserId || question.planId || question.sourceIds.length || question.status!=='published')) throw new ApiError(400,'ライブラリへの公開内容を確認してください。','INVALID_LIBRARY');
+      break;
+    }
+    case 'library.published': {
+      const published=z.object({sourceTopicId:idSchema,topic:topicSchema,questionIds:z.array(idSchema).min(1).max(300)}).parse(payload);
+      if(!published.topic.libraryPublished || published.topic.testOnly || published.topic.audienceUserId || published.topic.planId
+        || published.topic.librarySourceTopicId!==published.sourceTopicId
+        || new Set(published.questionIds).size!==published.questionIds.length) {
+        throw new ApiError(400,'ライブラリへの公開内容を確認してください。','INVALID_LIBRARY');
+      }
+      break;
+    }
+    case 'library.adopted': {
+      const plan=planSchema.parse(payload);
+      if(!plan.libraryTopicId || plan.testOnly || plan.sourceIds.length) throw new ApiError(400,'ライブラリの追加内容を確認してください。','INVALID_LIBRARY');
+      break;
+    }
     case 'planning.turn.upserted': planningTurnSchema.parse(payload); break;
     case 'generation.batch': z.object({ jobId: idSchema, batch: z.number().int().min(0),
       questions: z.array(questionSchema), job: jobSchema }).parse(payload); break;
     case 'source.analysis': z.object({ sourceId: idSchema, text: z.string().max(100_000) }).parse(payload); break;
+    case 'audio.requested': z.object({cacheKey:z.string().regex(/^[a-f0-9]{64}$/),requestToken:z.string().uuid(),characters:z.number().int().min(1).max(1500)}).strict().parse(payload); break;
+    case 'audio.ready': z.object({cacheKey:z.string().regex(/^[a-f0-9]{64}$/),requestToken:z.string().uuid(),fileId:idSchema}).strict().parse(payload); break;
+    case 'audio.failed': z.object({cacheKey:z.string().regex(/^[a-f0-9]{64}$/),requestToken:z.string().uuid()}).strict().parse(payload); break;
     case 'push.subscribed': z.object({ userId: idSchema, subscription: z.object({ endpoint: z.string().url(),
       keys: z.object({ auth: z.string(), p256dh: z.string() }) }).nullable() }).parse(payload); break;
   }
@@ -236,6 +266,7 @@ export function foldEvents(events: StudyEvent[], profiles: Profile[] = []): Stud
   const exposures = new Map<string, Exposure>();
   const jobs = new Map<string, GenerationJob>();
   const plans = new Map<string, LearningPlan>();
+  const libraryQuestions=new Map<string,Question>();
   const planningTurns = new Map<string, PlanningTurn>();
   const planVersions = new Set<string>();
   const eventIds = new Set<string>();
@@ -293,6 +324,21 @@ export function foldEvents(events: StudyEvent[], profiles: Profile[] = []): Stud
         break;
       }
       case 'plan.created': if (!plans.has(payload.id)) plans.set(payload.id, planSchema.parse(payload)); break;
+      case 'library.questions': for(const item of payload.questions) {if(!libraryQuestions.has(item.id)) libraryQuestions.set(item.id,questionSchema.parse(item));} break;
+      case 'library.published': {
+        const topic=topicSchema.parse(payload.topic);
+        const published=payload.questionIds.map((id:string)=>libraryQuestions.get(id)) as (Question|undefined)[];
+        if(!topics.has(topic.id) && published.every(question=>question?.topicId===topic.id)) {
+          topics.set(topic.id,topic);
+          for(const question of published) upsertQuestion(question!);
+        }
+        break;
+      }
+      case 'library.adopted': {
+        const plan=planSchema.parse(payload);
+        if(topics.get(plan.libraryTopicId!)?.libraryPublished && ![...plans.values()].some(item=>item.ownerId===plan.ownerId && item.libraryTopicId===plan.libraryTopicId)) plans.set(plan.id,plan);
+        break;
+      }
       case 'plan.updated': {
         const plan = planSchema.parse(payload);
         const previous = plans.get(plan.id);
@@ -322,7 +368,8 @@ export function foldEvents(events: StudyEvent[], profiles: Profile[] = []): Stud
         jobs.set(payload.job.id, jobSchema.parse(payload.job));
         break;
       // Analyses and subscriptions remain available only to server callers through the event log.
-      case 'source.analysis': case 'push.subscribed': case 'session.completed': break;
+      case 'source.analysis': case 'push.subscribed': case 'session.completed':
+      case 'audio.requested': case 'audio.ready': case 'audio.failed': break;
     }
   }
   for (const session of sessions.values()) {
@@ -352,21 +399,25 @@ export function studyDataForProfile(data: StudyData, profile: Profile, now = new
   if (profile.role === 'parent') {
     return { ...data, sources: data.sources.map((source) => ({ ...source, previewUrl: `/api/sources/${encodeURIComponent(source.id)}` })) };
   }
-  const published = data.questions.filter((question) => canAccessQuestion(question, profile) && question.status === 'published'
+  const accessibleTopics=new Map(data.topics.filter(topic=>canAccessQuestion(topic,profile)).map(topic=>[topic.id,topic]));
+  const adopted=new Set(data.plans.filter(plan=>plan.ownerId===profile.id && !plan.testOnly).map(plan=>plan.libraryTopicId).filter(Boolean));
+  const published = data.questions.filter((question) => canAccessQuestion(question, profile) && accessibleTopics.has(question.topicId)
+    && (!accessibleTopics.get(question.topicId)?.libraryPublished || adopted.has(question.topicId)) && question.status === 'published'
     && question.publishedAt && Date.parse(question.publishedAt) <= now.getTime());
   const visibleTopics = new Set(published.map((question) => question.topicId));
   const plans = data.plans.filter((plan) => canAccessPlan(plan, profile));
   const planIds = new Set(plans.map((plan) => plan.id));
-  return { ...data, topics: data.topics.filter((topic) => visibleTopics.has(topic.id) && canAccessQuestion(topic, profile)),
+  return { ...data, topics: data.topics.filter((topic) => (visibleTopics.has(topic.id) || topic.libraryPublished) && canAccessQuestion(topic, profile))
+      .map(({librarySourceTopicId:_privateSource,...topic})=>topic),
     sources: data.sources.filter((source) => canAccessSource(source, profile))
       .map((source) => ({ ...source, previewUrl: `/api/sources/${encodeURIComponent(source.id)}` })),
-    jobs: data.jobs.filter((job) => job.audienceUserId === profile.id), profiles: [profile],
+    jobs: data.jobs.filter((job) => !job.testOnly && job.audienceUserId === profile.id && accessibleTopics.has(job.topicId)), profiles: [profile],
     plans, planningTurns: data.planningTurns.filter((turn) => planIds.has(turn.planId)),
     questions: published
       .map((question) => ({ id: question.id, topicId: question.topicId, prompt: question.prompt, choices: [...question.choices],
         correctIndex: -1, explanation: '', learningPoint: '', sourceNote: '', sourceIds: [],
         status: question.status, version: question.version, createdAt: question.createdAt, publishedAt: question.publishedAt,
-        audienceUserId: question.audienceUserId, planId: question.planId, needsReview: question.needsReview })),
+        audienceUserId: question.audienceUserId, planId: question.planId, needsReview: question.needsReview,testOnly:question.testOnly })),
     attempts: data.attempts.filter((attempt) => attempt.userId === profile.id),
     exposures: data.exposures.filter((exposure) => exposure.userId === profile.id),
     sessions: data.sessions.filter((session) => session.userId === profile.id).map((session) => ({
@@ -505,4 +556,48 @@ export async function downloadSourceFile(fileId: string): Promise<{ bytes: Uint8
   let offset = 0;
   for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.byteLength; }
   return { bytes, mimeType: file.mimeType, name: file.name };
+}
+
+export const MAX_AUDIO_BYTES=2*1024*1024;
+function requireAudioCacheKey(cacheKey:string) {
+  if(!/^[a-f0-9]{64}$/.test(cacheKey)) throw new ApiError(400,'音声の指定が不正です。','INVALID_AUDIO');
+}
+
+/** Audio shares the existing app-owned folder and narrow drive.file grant, never public sharing. */
+export async function downloadAudioCache(fileId:string,cacheKey:string):Promise<Uint8Array> {
+  requireDriveFileId(fileId);requireAudioCacheKey(cacheKey);
+  const response=await googleFetch(`https://www.googleapis.com/drive/v3/files/${fileId}?fields=id,mimeType,size,parents,appProperties,trashed`);
+  const file=await response.json() as DriveFileMetadata & {trashed?:boolean};
+  const size=Number(file.size);
+  if(file.trashed || !file.parents?.includes(getDriveConfig().folderId) || file.appProperties?.purpose!=='hibi-study-audio'
+    || file.appProperties.cacheKey!==cacheKey || file.mimeType!=='audio/mpeg' || !Number.isSafeInteger(size) || size<1 || size>MAX_AUDIO_BYTES) {
+    throw new ApiError(403,'この音声にはアクセスできません。','AUDIO_ACCESS_DENIED');
+  }
+  const media=await googleFetch(`https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`);
+  if(!media.body) throw new ApiError(502,'音声を読み込めません。','AUDIO_UNAVAILABLE');
+  return new Uint8Array(await new Response(createBoundedSourceStream(media.body,size)).arrayBuffer());
+}
+
+export async function saveAudioCache(cacheKey:string,bytes:Uint8Array):Promise<string> {
+  requireAudioCacheKey(cacheKey);
+  if(!bytes.byteLength || bytes.byteLength>MAX_AUDIO_BYTES) throw new ApiError(413,'音声が長すぎます。','AUDIO_TOO_LARGE');
+  const ids=await googleFetch('https://www.googleapis.com/drive/v3/files/generateIds?count=1&space=drive&type=files');
+  const fileId=((await ids.json()) as {ids?:string[]}).ids?.[0];
+  if(!fileId) throw new ApiError(502,'音声の保存を準備できません。','AUDIO_CACHE_FAILED');
+  requireDriveFileId(fileId);
+  const boundary=`hibi_audio_${randomUUID().replaceAll('-','')}`;
+  const metadata={id:fileId,name:`音声-${cacheKey.slice(0,12)}.mp3`,mimeType:'audio/mpeg',parents:[getDriveConfig().folderId],
+    appProperties:{purpose:'hibi-study-audio',cacheKey}};
+  const body=Buffer.concat([Buffer.from(`--${boundary}\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n${JSON.stringify(metadata)}\r\n--${boundary}\r\nContent-Type: audio/mpeg\r\n\r\n`),Buffer.from(bytes),Buffer.from(`\r\n--${boundary}--\r\n`)]);
+  try {
+    const saved=await googleFetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id',{
+      method:'POST',headers:{'Content-Type':`multipart/related; boundary=${boundary}`},body,
+    });
+    const result=await saved.json() as {id?:string};
+    if(result.id!==fileId) throw new ApiError(502,'音声の保存を確認できません。','AUDIO_CACHE_FAILED');
+  } catch(error) {
+    // A retried create can return 409 after the first upload succeeded. Verify the preassigned file.
+    try {await downloadAudioCache(fileId,cacheKey);return fileId;} catch {throw error;}
+  }
+  return fileId;
 }

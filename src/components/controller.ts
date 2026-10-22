@@ -17,6 +17,8 @@ export interface NewLearningPlan {
   difficulty?: string;
   targetDate?: string;
   dailyQuestionTarget?: number;
+  requestedQuestionCount?: number;
+  testOnly?: boolean;
   sourceIds: string[];
 }
 
@@ -44,6 +46,8 @@ export interface StudyController {
     sendPlanningMessage(planId: string, message: string): Promise<boolean>;
     resumePlanningTurn(turnId: string): Promise<void>;
     generateProposal(planId: string, turnId: string, proposalId: string, targetCount: number): Promise<string | void>;
+    publishLibrary(topicId: string): Promise<string | void>;
+    addLibraryPlan(topicId: string): Promise<string | void>;
     generate(topicId: string, targetCount: number, sourceIds?: string[]): void | Promise<void>;
     resumeGeneration(jobId: string): void | Promise<void>;
     updateQuestion(id: string, patch: Partial<Question>): void | Promise<void>;

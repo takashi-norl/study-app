@@ -21,6 +21,19 @@ test('a plan accepts optional sources and arbitrary school subjects, but rejects
   assert.equal(createPlanSchema.safeParse({subject:'英語',goal:'目標',sourceIds:Array(21).fill(sourceId)}).success,false);
 });
 
+test('requested total survives plan validation and AI context while old plans remain valid',()=>{
+  const basic={subject:'英語',goal:'語彙を増やす'};
+  assert.equal(createPlanSchema.parse(basic).requestedQuestionCount,undefined);
+  const input=createPlanSchema.parse({...basic,requestedQuestionCount:100});
+  assert.equal(input.requestedQuestionCount,100);
+  for(const requestedQuestionCount of [0,301,10.5]) assert.equal(createPlanSchema.safeParse({...basic,requestedQuestionCount}).success,false);
+  const data=state();
+  data.plans[0].requestedQuestionCount=100;
+  const context=buildPlanningContext(data,[],data.plans[0],turn,student,now);
+  assert.equal(context.plan.requestedQuestionCount,100);
+  assert.equal(context.plan.dailyQuestionTarget,10);
+});
+
 test('parents can inspect a child plan but cannot write; other students cannot discover it',()=>{
   assert.equal(requireOwnedPlan(state(),student,plan.id).id,plan.id);
   assert.throws(()=>requireOwnedPlan(state(),parent,plan.id),{code:'PLAN_READ_ONLY'});

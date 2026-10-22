@@ -15,6 +15,16 @@ const turn=(id:string,planId:string,ownerId:string):PlanningTurn=>({id,planId,re
 const topic=(id:string,audienceUserId?:string):Topic=>({id,title:'科学の基礎',subject:'理科',description:'',createdAt:time,targetCount:10,audienceUserId});
 const question=(id:string,topicId:string,audienceUserId?:string):Question=>({id,topicId,prompt:'資料なしの確認問題',choices:['A','B','C','D'],correctIndex:1,explanation:'PRIVATE_ANSWER',learningPoint:'確認',sourceIds:[],sourceNote:'一般知識に基づくAI生成',status:'published',version:1,createdAt:time,publishedAt:time,needsReview:true,audienceUserId});
 
+test('requested question totals survive saved events and student projection alongside legacy plans',()=>{
+  const legacy=plan('legacy-plan',student.id);
+  const selected={...plan('selected-plan',student.id),requestedQuestionCount:100};
+  const data=foldEvents([event('legacy','plan.created',legacy),event('selected','plan.created',selected)],[parent,student]);
+  const visible=studyDataForProfile(data,student,new Date(time));
+  assert.equal(visible.plans[0].requestedQuestionCount,undefined);
+  assert.equal(visible.plans[1].requestedQuestionCount,100);
+  assert.equal(visible.plans[1].dailyQuestionTarget,10);
+});
+
 test('legacy sources stay parent-only; students see only their own bank and plans',()=>{
   const events:StudyEvent[]=[];
   for(const [id,ownerId] of [['legacy',undefined],['parent-source',parent.id],['own-source',student.id],['other-source',other.id]] as const) {

@@ -19,7 +19,7 @@ export function materializeQuestions(candidates: Candidate[], input: {
     questions.push({ ...candidate, id: randomUUID(), topicId: input.job.topicId, version: 1,
       sourceNote: sources.size ? candidate.sourceNote : 'AI作成の自習問題（資料なし）',
       status: selfStudy ? 'published' : 'draft', needsReview: !selfStudy, createdAt: input.createdAt,
-      publishedAt: selfStudy ? input.createdAt : undefined, audienceUserId: input.job.audienceUserId, planId: input.job.planId });
+      publishedAt: selfStudy ? input.createdAt : undefined, audienceUserId: input.job.audienceUserId, planId: input.job.planId,testOnly:input.job.testOnly });
   }
   return questions;
 }

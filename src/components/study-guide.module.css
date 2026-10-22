@@ -1,0 +1,11 @@
+.guide { padding: 24px; }
+.heading { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; color: #587d49; }
+.heading h2 { margin: 0 0 5px; font-size: 18px; color: #294139; }
+.heading p { margin: 0; font-size: 14px; color: #78816e; }
+.guide video { display: block; width: 100%; max-width: 390px; height: auto; aspect-ratio: 9 / 16; border-radius: 18px; background: #f5f7ef; }
+.guide details { margin-top: 18px; font-size: 14px; line-height: 1.9; color: #57675b; }
+.guide summary { cursor: pointer; font-weight: 600; }
+.guide ol { padding-left: 22px; margin-bottom: 0; }
+.guide li + li { margin-top: 8px; }
+.libraryNote { font-size: 14px; line-height: 1.9; color: #64765e; margin: 18px 0 0; }
+@media (max-width: 600px) { .guide { padding: 18px; } }

@@ -3,11 +3,12 @@ import { randomUUID } from 'node:crypto';
 import { start } from 'workflow/api';
 import type { GenerationJob, Profile, StudyData, Topic } from '@/lib/types';
 import { ApiError, MAX_SOURCE_BYTES, requireGenerationEnabled } from './config';
-import { canAccessSource } from './access';
+import { canAccessSource,canAccessQuestion } from './access';
 import { appendEvent, getDriveFileMetadata, getFullState } from './google-store';
 import { paidWorkSlotId } from './planning';
 import { currentProposal, generationReplay, type GenerationSelection } from './proposal-selection';
 import { generationWorkflow } from '@/workflows/generate';
+import { assertQuestionEditable } from './library';
 
 export interface GenerationRequest {
   topic: Topic; newTopic?: boolean; sourceIds: string[]; targetCount: number;
@@ -44,7 +45,12 @@ export async function requestGeneration(profile: Profile, input: GenerationReque
   const previous = await resumeGenerationRequest(data,profile,{...input,title:input.topic.title});
   if (previous) return previous;
   requireGenerationEnabled();
-  if(input.planId) currentProposal(data,profile,input.planId,{expectedVersion:input.expectedVersion!,turnId:input.turnId!,proposalId:input.proposalId!});
+  assertQuestionEditable(input.topic);
+  if(!canAccessQuestion(input.topic,profile)) throw new ApiError(403,'この問題集にはアクセスできません。','FORBIDDEN');
+  if(input.planId) {
+    const {plan}=currentProposal(data,profile,input.planId,{expectedVersion:input.expectedVersion!,turnId:input.turnId!,proposalId:input.proposalId!});
+    if(!!plan.testOnly!==!!input.topic.testOnly) throw new ApiError(403,'テスト用の設定が一致しません。','FORBIDDEN');
+  }
   if (profile.role === 'student' && (!input.planId || input.topic.audienceUserId !== profile.id)) throw new ApiError(403, '自分の学習相談から作問してください。', 'FORBIDDEN');
   if (input.topic.planId && (!input.planId || input.topic.planId !== input.planId || !data.plans.some(plan=>plan.id===input.topic.planId && plan.ownerId===profile.id))) throw new ApiError(403,'この相談から作問できるのは本人だけです。','FORBIDDEN');
   if (!input.newTopic && !data.topics.some(topic => topic.id === input.topic.id)) throw new ApiError(404, '問題集が見つかりません。');
@@ -61,7 +67,7 @@ export async function requestGeneration(profile: Profile, input: GenerationReque
   const now = new Date().toISOString();
   const job: GenerationJob = { id: randomUUID(), topicId: input.topic.id, status: 'queued', targetCount: input.targetCount,
     generatedCount: 0, createdAt: now, sourceIds, requestedBy: profile.id, requestId: input.requestId,
-    planId: input.planId, turnId: input.turnId, proposalId: input.proposalId, instructions: input.instructions, audienceUserId: input.topic.audienceUserId };
+    planId: input.planId, turnId: input.turnId, proposalId: input.proposalId, instructions: input.instructions, audienceUserId: input.topic.audienceUserId,testOnly:input.topic.testOnly };
   const slotId = paidWorkSlotId(data);
   // One row claims paid work and creates its set; a losing request leaves no empty set.
   await appendEvent({ id: slotId, type: input.newTopic ? 'generation.requested' : 'job.upserted', actorId: profile.id,

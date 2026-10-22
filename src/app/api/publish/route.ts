@@ -8,6 +8,7 @@ import { ApiError } from '@/server/config';
 import { pushConfigured } from '@/server/push';
 import { publicationNotificationWorkflow } from '@/workflows/notify';
 import type { Question } from '@/lib/types';
+import { assertOrdinaryPublication } from '@/server/library';
 export async function POST(request:Request) { return api(async()=>{
   const {profile}=await requireProfile('parent');
   const input=await readJson(request,z.object({questionIds:z.array(z.string().uuid()).min(1).max(300),publishedAt:z.string().datetime({offset:true}).optional()}));
@@ -19,6 +20,7 @@ export async function POST(request:Request) { return api(async()=>{
   const questions:Question[]=ids.map(id=>{
     const question=data.questions.find(q=>q.id===id);
     if(!question) throw new ApiError(404,'選択した問題が見つかりません。');
+    assertOrdinaryPublication(question,data.topics.find(topic=>topic.id===question.topicId));
     if(question.status!=='approved' || question.needsReview) throw new ApiError(409,'原本・正解・解説を確認して承認した問題のみ公開できます。','REVIEW_REQUIRED');
     return {...question,status:'published',version:question.version+1,publishedAt};
   });

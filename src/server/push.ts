@@ -3,6 +3,13 @@ import webpush from 'web-push';
 import type { PushSubscription } from 'web-push';
 import { appendEvent,getFullState } from './google-store';
 import { ApiError,requiredEnv } from './config';
+import { mayPracticeQuestion } from './practice-access';
+import type { Profile,StudyData } from '@/lib/types';
+
+export function notificationQuestions(data:StudyData,profile:Profile,questionIds:string[],now=new Date()) {
+  return data.questions.filter(question=>questionIds.includes(question.id) && question.status==='published' && question.publishedAt
+    && Date.parse(question.publishedAt)<=now.getTime() && mayPracticeQuestion(data,profile,question));
+}
 
 export function pushConfigured() {
   return !!(process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY && process.env.VAPID_PRIVATE_KEY && process.env.VAPID_SUBJECT);
@@ -34,9 +41,12 @@ export async function notifyPublished(questionIds:string[]) {
   webpush.setVapidDetails(requiredEnv('VAPID_SUBJECT'),requiredEnv('NEXT_PUBLIC_VAPID_PUBLIC_KEY'),requiredEnv('VAPID_PRIVATE_KEY'));
   let sent=0,failed=0;
   for(const [userId,subscription] of subscriptions) {
+    const recipient=data.profiles.find(profile=>profile.id===userId && profile.role==='student');
+    const visible=recipient ? notificationQuestions(data,recipient,questionIds) : [];
+    if(!visible.length) continue;
     try {
       validatePushEndpoint(subscription.endpoint);
-      await webpush.sendNotification(subscription,JSON.stringify({title:'新しい問題が届きました',body:`${available.length}問が追加されました。今日の10問から始めよう。`,url:'/',tag:'hibi-new-questions'}),{TTL:24*60*60,timeout:10000});
+      await webpush.sendNotification(subscription,JSON.stringify({title:'新しい問題が届きました',body:`${visible.length}問が追加されました。今日の10問から始めよう。`,url:'/',tag:'hibi-new-questions'}),{TTL:24*60*60,timeout:10000});
       sent++;
     } catch(error) {
       failed++;

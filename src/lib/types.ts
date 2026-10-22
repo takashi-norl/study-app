@@ -7,10 +7,12 @@ export interface Topic {
   id: string; title: string; subject: Subject; description: string;
   createdAt: string; targetCount: number;
   audienceUserId?: string; planId?: string;
+  testOnly?: boolean; libraryPublished?: boolean; librarySourceTopicId?: string;
 }
 export interface SourceDocument {
   id: string; topicId?: string; ownerId?: string; name: string; mimeType: string;
   storagePath?: string; previewUrl?: string; createdAt: string;
+  testOnly?: boolean;
 }
 export interface Question {
   id: string; topicId: string; prompt: string; choices: string[];
@@ -19,6 +21,7 @@ export interface Question {
   version: number; createdAt: string; publishedAt?: string;
   needsReview?: boolean;
   audienceUserId?: string; planId?: string;
+  testOnly?: boolean;
 }
 export interface Attempt {
   id: string; userId: string; questionId: string; questionVersion: number;
@@ -41,10 +44,13 @@ export interface GenerationJob {
   audienceUserId?: string; planId?: string; sourceIds?: string[];
   instructions?: string; requestedBy?: string; proposalId?: string;
   turnId?: string; requestId?: string;
+  testOnly?: boolean;
 }
 export interface LearningPlan {
   id: string; ownerId: string; title: string; subject: Subject;
   goal: string; difficulty: string; targetDate?: string; dailyQuestionTarget: number;
+  requestedQuestionCount?: number;
+  testOnly?: boolean; libraryTopicId?: string;
   sourceIds: string[]; version: number; createdAt: string; updatedAt: string;
 }
 export interface PlanningProposal {
