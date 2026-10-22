@@ -10,7 +10,6 @@ export function materializeQuestions(candidates: Candidate[], input: {
   const normalize = (text: string) => text.normalize('NFKC').replace(/\s+/g, '').toLowerCase();
   const seen = new Set(input.prior.map(question => normalize(question.prompt)));
   const sources = new Set(input.sourceIds);
-  const selfStudy = !!input.job.audienceUserId && input.job.audienceUserId === input.job.requestedBy;
   const questions: Question[] = [];
   for (const candidate of candidates) {
     if (questions.length >= input.count || seen.has(normalize(candidate.prompt))
@@ -18,8 +17,8 @@ export function materializeQuestions(candidates: Candidate[], input: {
     seen.add(normalize(candidate.prompt));
     questions.push({ ...candidate, id: randomUUID(), topicId: input.job.topicId, version: 1,
       sourceNote: sources.size ? candidate.sourceNote : 'AI作成の自習問題（資料なし）',
-      status: selfStudy ? 'published' : 'draft', needsReview: !selfStudy, createdAt: input.createdAt,
-      publishedAt: selfStudy ? input.createdAt : undefined, audienceUserId: input.job.audienceUserId, planId: input.job.planId,testOnly:input.job.testOnly });
+      status: 'published', needsReview: false, aiGenerated: true, ownerId: input.job.requestedBy, createdAt: input.createdAt,
+      publishedAt: input.createdAt, audienceUserId: input.job.audienceUserId, planId: input.job.planId,testOnly:input.job.testOnly });
   }
   return questions;
 }

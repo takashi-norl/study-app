@@ -8,7 +8,7 @@ import { createDemoData } from './demo-data';
 import { selectQuestions } from './learning';
 import { clearLocalFiles, loadLocalFile, saveLocalFile } from './local-files';
 import { prepareSourceFile } from './source-files';
-import { addDemoLibraryPlan, addDemoPlanningTurn, demoPracticeQuestions, demoSessionAllowed, demoSessionQuestions, demoStudyDataForProfile, generateDemoProposal, publishDemoLibrary, type DemoPracticeSession } from './demo-access';
+import { addDemoLibraryPlan, addDemoPlanningTurn, demoPracticeQuestions, demoSessionAllowed, demoSessionQuestions, demoStudyDataForProfile, generateDemoProposal, publishDemoLibrary, requestDemoLibraryPublication, type DemoPracticeSession } from './demo-access';
 
 const KEY='hibi-study-demo-v1';
 const GUEST:Profile={id:'guest',familyId:'',name:'ゲスト',role:'student'};
@@ -317,7 +317,7 @@ export function useStudy():StudyController {
         const result=await api<{topic:{id:string}}>(`/api/planning/${encodeURIComponent(planId)}/generate`,'POST',{requestId,expectedVersion:plan.version,turnId,proposalId,targetCount});
         topicId=result.topic.id;
       }finally{await refresh();}
-      setNotice(plan.testOnly?'テスト用の問題作成を受け付けました。管理者だけが確認・練習できます。':profile.role==='student'?'自習問題の作成を受け付けました。できた問題から自分の問題集に追加されます。':'問題の作成を受け付けました。できた下書きはレビューから確認できます。');
+      setNotice('問題作成を受け付けました。できた問題はプライベートに保存され、そのまま練習できます。');
     });return topicId;
   }
   async function resumePlanningTurn(turnId:string):Promise<void>{
@@ -335,7 +335,7 @@ export function useStudy():StudyController {
   }
   async function generate(topicId:string,targetCount:number,selectedSourceIds?:string[]){
     await run(async()=>{
-      if(demo)throw new Error('サンプルではAI作問を実行しません。レビュー画面で、用意された下書きの編集と公開を試せます。');
+      if(demo)throw new Error('サンプルではAI作問を実行しません。ライブラリで、用意された問題の練習・編集・共有を試せます。');
       const available=data.sources;
       const sourceIds=selectedSourceIds ? [...new Set(selectedSourceIds)].filter(id=>available.some(s=>s.id===id)) : available.slice(-20).map(s=>s.id);
       if(!sourceIds.length)throw new Error('先に教材を追加してください。');
@@ -356,7 +356,7 @@ export function useStudy():StudyController {
       }else{
         await api(`/api/questions/${encodeURIComponent(id)}`,'PATCH',{...patch,expectedVersion:question.version});await refresh();
       }
-      setNotice(question.testOnly?'テスト用の変更を保存しました。管理者だけが確認・練習できます。':patch.status==='approved'?'問題を承認しました。公開すると学習画面に追加されます。':'変更を下書きに保存しました。確認してから公開してください。');
+      setNotice('変更を保存しました。プライベートの練習に反映されます。パブリックの内容は、問題集を公開し直すと更新されます。');
     });
   }
   async function resumeGeneration(jobId:string){
@@ -395,7 +395,7 @@ export function useStudy():StudyController {
       const next={...state.current,jobs:[...state.current.jobs.filter(item=>item.id!==accepted.job.id),accepted.job]};
       state.current=next;setData(next);
       planningRequests.current.delete(key);
-      setNotice(accepted.notice||'同じ条件で続きの作成を受け付けました。保存済みの問題を残して、残りを作ります。');
+      setNotice(accepted.job.status==='queued'||accepted.job.status==='running'?'同じ条件で続きを依頼しました。保存済みの教材と問題を引き継ぎました。':accepted.notice||'続きの作成結果を確認しました。');
       // Keep the confirmed job visible even if this follow-up read loses its connection.
       if(!reconciled)await refresh().catch(()=>{});
     });
@@ -436,8 +436,20 @@ export function useStudy():StudyController {
         const result=await api<{topic:{id:string}}>('/api/library/publish','POST',{topicId});
         resultId=result.topic.id;await refresh();
       }
-      setNotice('ライブラリに公開しました。本人が学習に追加すると練習できます。テスト用の原本は管理者だけに残ります。');
+      setNotice('登録ユーザー向けのパブリックに公開しました。元の問題集と教材・相談履歴はプライベートに残ります。');
     });return resultId;
+  }
+  async function requestLibraryPublication(topicId:string):Promise<boolean>{
+    let sent=false;
+    await run(async()=>{
+      if(demo){
+        const result=requestDemoLibraryPublication(state.current,profile,topicId);
+        state.current=result.data;setData(result.data);
+      }else{
+        await api('/api/library/request-publication','POST',{topicId});await refresh();
+      }
+      sent=true;setNotice('管理者に公開を依頼しました。待つ間もプライベートで練習できます。');
+    });return sent;
   }
   async function addLibraryPlan(topicId:string):Promise<string|void>{
     let resultId:string|undefined;
@@ -453,7 +465,7 @@ export function useStudy():StudyController {
     });return resultId;
   }
   return {data:demo?demoStudyDataForProfile(data,profile):data,profile,demo,ready,busy,error,notice,uploadStatus,sync,session,currentQuestion,feedback,actions:{
-    refreshStatus,startPractice,answer,nextQuestion,createTopic,uploadSources,createPlan,sendPlanningMessage,resumePlanningTurn,generateProposal,generate,resumeGeneration,retryGeneration,updateQuestion,publish,publishLibrary,addLibraryPlan,requestNotifications,
+    refreshStatus,startPractice,answer,nextQuestion,createTopic,uploadSources,createPlan,sendPlanningMessage,resumePlanningTurn,generateProposal,generate,resumeGeneration,retryGeneration,updateQuestion,publish,publishLibrary,requestLibraryPublication,addLibraryPlan,requestNotifications,
     switchRole(role:Role){if(!demo)return;setProfile(data.profiles.find(p=>p.role===role)||GUEST);setSession(null);setSessionQuestions([]);setFeedback(null);setError(null);setNotice(null);setUploadStatus(null);},
     finishSession(){setSession(null);setSessionQuestions([]);setFeedback(null);},
     async resetDemo(){if(!demo)return;await run(async()=>{await clearLocalFiles();setData(createDemoData());setSession(null);setFeedback(null);setNotice('サンプルの記録を初期状態に戻しました。');});},

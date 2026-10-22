@@ -8,6 +8,16 @@ export interface AppRelease {
 
 // Newest first. This is the source for Settings, public history and update notices.
 export const APP_RELEASES: readonly AppRelease[] = [{
+  version: '0.5.0',
+  date: '2026-10-23',
+  title: '自分用の問題から、みんなのライブラリへ',
+  announcement: '作った問題はプライベートライブラリですぐ練習。共有したい問題集は、まとめて公開・公開依頼できます。',
+  changes: [
+    { title: '作ったら、そのまま練習', description: '自分で作った問題はプライベートライブラリに保存します。1問ずつ承認する必要はなく、できた分から練習できます。内容の確認・修正は必要なときに行えます。' },
+    { title: '問題集単位で、共有する', description: 'ManagerとSuper Userは、問題集をパブリックライブラリに公開できます。一般ユーザーは公開を依頼でき、管理者がその依頼から公開します。パブリックは、このアプリの登録ユーザー向けです。' },
+    { title: '元の教材と相談は、そのまま手元に', description: '公開するのは共有用にコピーした問題と解説です。元の教材や相談履歴は公開版に添付しません。プライベートの内容は、本人と管理者が確認できます。' },
+  ],
+}, {
   version: '0.4.3',
   date: '2026-10-23',
   title: '問題を少しずつ保存し、途中から続けられるように',

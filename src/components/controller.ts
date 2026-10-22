@@ -49,6 +49,7 @@ export interface StudyController {
     resumePlanningTurn(turnId: string): Promise<void>;
     generateProposal(planId: string, turnId: string, proposalId: string, targetCount: number): Promise<string | void>;
     publishLibrary(topicId: string): Promise<string | void>;
+    requestLibraryPublication(topicId: string): Promise<boolean>;
     addLibraryPlan(topicId: string): Promise<string | void>;
     generate(topicId: string, targetCount: number, sourceIds?: string[]): void | Promise<void>;
     resumeGeneration(jobId: string): void | Promise<void>;

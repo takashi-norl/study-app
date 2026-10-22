@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { createDemoData } from '../src/lib/demo-data';
-import { addDemoLibraryPlan, addDemoPlanningTurn, demoPracticeQuestions, demoSessionAllowed, demoSessionQuestions, demoStudyDataForProfile, generateDemoProposal, publishDemoLibrary } from '../src/lib/demo-access';
+import { addDemoLibraryPlan, addDemoPlanningTurn, demoPracticeQuestions, demoSessionAllowed, demoSessionQuestions, demoStudyDataForProfile, generateDemoProposal, publishDemoLibrary, requestDemoLibraryPublication } from '../src/lib/demo-access';
 import type { LearningPlan, StudyData } from '../src/lib/types';
 
 const now = '2024-01-20T12:00:00.000Z';
@@ -34,13 +34,13 @@ test('parent test plans, questions, sources, jobs and conversations stay absent 
   assert.ok(visible.jobs.every(item => !item.testOnly));
   assert.equal(visible.sessions.length, 0);
   assert.equal(visible.attempts.length, 0);
-  assert.equal(demoStudyDataForProfile(data, parent), data);
+  assert.equal(demoStudyDataForProfile(data, parent).questions.length, data.questions.length);
 });
 
 test('parent practice requires an explicit test topic and mixed or other-user sessions cannot resume', () => {
   const { data, parent, student, topic } = fixture();
-  assert.throws(() => demoPracticeQuestions(data, parent), /テスト用/);
-  assert.throws(() => demoPracticeQuestions(data, parent, 'topic-english'), /テスト用/);
+  assert.ok(demoPracticeQuestions(data,parent).every(question=>question.testOnly));
+  assert.throws(() => demoPracticeQuestions(data, parent, 'topic-english'), /ご自身/);
   const available = demoPracticeQuestions(data, parent, topic.id);
   assert.equal(available.length, 10);
   assert.ok(available.every(question => question.testOnly && question.topicId === topic.id));
@@ -90,14 +90,14 @@ test('publishing makes an independent library clone without private source or co
 test('library questions enter practice only after the learner adopts them; repeated adoption is idempotent', () => {
   const { data, parent, student, topic, id } = fixture();
   const published = publishDemoLibrary(data, parent, topic.id, now, id);
-  assert.equal(demoPracticeQuestions(published.data, student, published.topic.id).length, 0);
+  assert.throws(()=>demoPracticeQuestions(published.data, student, published.topic.id),/追加済み/);
   const added = addDemoLibraryPlan(published.data, student, published.topic.id, now, id);
   assert.equal(added.plan.libraryTopicId, published.topic.id);
   assert.equal(added.plan.ownerId, student.id);
   assert.deepEqual(added.plan.sourceIds, []);
   assert.equal(demoPracticeQuestions(added.data, student, published.topic.id).length, 10);
   assert.equal(addDemoLibraryPlan(added.data, student, published.topic.id, now, id).plan.id, added.plan.id);
-  assert.throws(() => addDemoLibraryPlan(published.data, parent, published.topic.id), /学習者/);
+  assert.equal(addDemoLibraryPlan(published.data,parent,published.topic.id).plan.ownerId,parent.id);
   assert.throws(() => addDemoLibraryPlan(published.data, student, topic.id), /見つかりません/);
 });
 

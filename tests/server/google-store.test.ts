@@ -85,8 +85,8 @@ test('student projection strips answer, original-source and frozen-snapshot deta
   // Even accidental inclusion of the server-only field must not survive the public projection.
   Object.assign(data.sessions[0], { questionSnapshots: [q] });
   const projected = studyDataForProfile(data, student, new Date(time));
-  assert.equal(projected.questions.length, 1);
-  assert.equal(projected.topics.length, 1);
+  assert.equal(projected.questions.length, 4); // All saved own private questions are immediately usable.
+  assert.equal(projected.topics.length, 2); // Own empty sets remain navigable.
   assert.equal(projected.topics[0].id, 't');
   assert.equal(projected.questions[0].correctIndex, -1);
   assert.equal(projected.questions[0].explanation, '');

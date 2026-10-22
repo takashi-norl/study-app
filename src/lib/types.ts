@@ -9,6 +9,9 @@ export interface Topic {
   createdAt: string; targetCount: number;
   audienceUserId?: string; planId?: string;
   testOnly?: boolean; libraryPublished?: boolean; librarySourceTopicId?: string;
+  ownerId?: string;
+  publicationRequest?: { requestedBy: string; requestedAt: string; revision: string; sequence: number };
+  currentSourceRevision?: string; publishedSourceRevision?: string; libraryRevision?: string;
 }
 export interface SourceDocument {
   id: string; topicId?: string; ownerId?: string; name: string; mimeType: string;
@@ -21,6 +24,7 @@ export interface Question {
   sourceIds: string[]; sourceNote: string; status: QuestionStatus;
   version: number; createdAt: string; publishedAt?: string;
   needsReview?: boolean;
+  ownerId?: string; aiGenerated?: boolean;
   audienceUserId?: string; planId?: string;
   testOnly?: boolean;
 }

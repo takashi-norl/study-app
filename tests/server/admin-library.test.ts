@@ -7,7 +7,7 @@ import { assertPlanMode,learningSummary } from '../../src/server/planning';
 import { materializeQuestions } from '../../src/server/generated-batch';
 import { assertGenerationAccess } from '../../src/server/proposal-selection';
 import { assertPracticeTopic,authorizedPracticeSession,mayPracticeQuestion,mayResumePracticeQuestions } from '../../src/server/practice-access';
-import { assertOrdinaryPublication,assertQuestionEditable,prepareLibraryAdoption,prepareLibraryPublication } from '../../src/server/library';
+import { assertOrdinaryPublication,assertQuestionEditable,prepareLibraryAdoption,prepareLibraryPublication,prepareLibraryPublicationRequest } from '../../src/server/library';
 import { authorizedAudioText } from '../../src/server/audio';
 import { notificationQuestions } from '../../src/server/push';
 import { canAccessSource } from '../../src/server/access';
@@ -46,10 +46,10 @@ test('test mode is parent-only, survives generation serialization and is invisib
   assert.equal(notificationQuestions(data,student,[question.id],new Date(now)).length,0);
 });
 
-test('parents can practice only explicit test sets in their own sessions; tests never enter student practice, audio or growth',async()=>{
+test('parents can rehearse test sets in their own sessions; tests never enter student practice, audio or growth',async()=>{
   const {data,events}=fixture();
   assert.doesNotThrow(()=>assertPracticeTopic(data,otherParent,topic.id));
-  assert.throws(()=>assertPracticeTopic(data,parent),{code:'TEST_PRACTICE_ONLY'});
+  assert.doesNotThrow(()=>assertPracticeTopic(data,parent));
   assert.throws(()=>assertPracticeTopic(data,student,topic.id),{code:'TOPIC_NOT_FOUND'});
   assert.equal(mayPracticeQuestion(data,student,question),false);
   assert.equal(mayResumePracticeQuestions(data,parent,[question]),true);
@@ -99,11 +99,11 @@ test('explicit library publication is idempotent, atomic and sanitized; adoption
   assert.equal(adopted.questions.find(q=>q.id===question.id)?.testOnly,true);
 });
 
-test('library publication cannot copy unfinished, unreviewed or another student private sets',()=>{
+test('library publication accepts saved drafts but rejects unfinished generation or an unrequested student set',()=>{
   const {data}=fixture();
   assert.throws(()=>prepareLibraryPublication({...data,jobs:[{...job,status:'running'}]},parent,topic.id),{code:'GENERATION_ACTIVE'});
-  assert.throws(()=>prepareLibraryPublication({...data,questions:[{...question,status:'draft'}]},parent,topic.id),{code:'REVIEW_REQUIRED'});
-  assert.throws(()=>prepareLibraryPublication({...data,plans:[{...plan,ownerId:student.id}]},parent,topic.id),{code:'LIBRARY_ADMIN_SET_ONLY'});
+  assert.equal(prepareLibraryPublication({...data,questions:[{...question,status:'draft',needsReview:true}]},parent,topic.id).publishedCount,1);
+  assert.throws(()=>prepareLibraryPublication({...data,plans:[{...plan,ownerId:student.id}]},parent,topic.id),{code:'LIBRARY_REQUEST_REQUIRED'});
   assert.throws(()=>prepareLibraryPublication(data,{...parent,familyId:'other-family'},topic.id),{code:'LIBRARY_PUBLISH_FORBIDDEN'});
   const changed=prepareLibraryPublication({...data,questions:[{...question,version:2}]},parent,topic.id);
   assert.notEqual(changed.topic.id,prepareLibraryPublication(data,parent,topic.id).topic.id);

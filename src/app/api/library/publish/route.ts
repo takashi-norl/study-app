@@ -14,7 +14,13 @@ export async function POST(request:Request) {return api(async()=>{
   const prior=data.topics.find(topic=>topic.id===prepared.topic.id && topic.libraryPublished);
   if(prior) return {topic:prior,publishedCount:prior.targetCount};
   // Staged question rows are invisible until the final manifest exists; each row has a stable id.
-  for(const event of prepared.events) await appendEvents([event]);
+  for(const event of prepared.events) {
+    if(event.type==='library.published') {
+      const latest=prepareLibraryPublication((await getFullState()).data,profile,topicId);
+      if(latest.topic.id!==prepared.topic.id) throw new ApiError(409,'公開の準備中に問題集が更新されました。内容を確認してもう一度公開してください。','LIBRARY_VERSION_CHANGED');
+    }
+    await appendEvents([event]);
+  }
   const canonical=(await getFullState()).data.topics.find(topic=>topic.id===prepared.topic.id && topic.libraryPublished);
   if(!canonical) throw new ApiError(503,'公開の保存を確認できませんでした。同じ操作で再試行してください。','LIBRARY_SAVE_FAILED');
   return {topic:canonical,publishedCount:canonical.targetCount};

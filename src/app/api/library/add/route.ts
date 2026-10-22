@@ -6,7 +6,7 @@ import { prepareLibraryAdoption } from '@/server/library';
 import { ApiError } from '@/server/config';
 
 export async function POST(request:Request) {return api(async()=>{
-  const {profile}=await requireProfile('student');
+  const {profile}=await requireProfile();
   const {topicId}=await readJson(request,z.object({topicId:z.string().uuid()}).strict());
   const {data}=await getFullState();
   const prepared=prepareLibraryAdoption(data,profile,topicId);

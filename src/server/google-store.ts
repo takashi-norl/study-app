@@ -8,6 +8,8 @@ import type {
 import { ApiError, MAX_SOURCE_BYTES, SOURCE_MIME_TYPES } from './config';
 import { assertStorageGrant, getDriveConfig, getFamilyId, getFamilyMembers, profileForMember } from './env';
 import { canAccessPlan, canAccessQuestion, canAccessSource } from './access';
+import { asPracticeQuestion, isPracticeReadyQuestion, topicOwnerId } from '@/lib/library-policy';
+import { libraryRevision } from './library';
 import { aiRequestedSchema, aiUsageSchema } from './ai-usage-schema';
 import { personalProfileSavedEventSchema, personalProfileChatRequestedEventSchema, personalProfileChatCompletedEventSchema, personalProfileChatFailedEventSchema } from './personal-profile-schemas';
 
@@ -17,7 +19,7 @@ const EVENT_TYPES = [
   'generation.batch', 'generation.requested', 'source.analysis',
   'plan.created', 'plan.updated', 'planning.turn.upserted',
   'audio.requested', 'audio.ready', 'audio.failed',
-  'library.questions', 'library.published', 'library.adopted',
+  'library.questions', 'library.published', 'library.adopted', 'library.publication-requested',
   'ai.requested', 'ai.usage',
   'personal-profile.saved', 'personal-profile.chat.requested', 'personal-profile.chat.completed', 'personal-profile.chat.failed',
 ] as const;
@@ -34,13 +36,15 @@ const questionSchema = z.object({
   correctIndex: z.number().int().min(0), explanation: z.string(), learningPoint: z.string(),
   sourceIds: z.array(z.string()), sourceNote: z.string(), status: z.enum(['draft', 'approved', 'published', 'archived']),
   version: z.number().int().min(1), createdAt: isoSchema, publishedAt: isoSchema.optional(), needsReview: z.boolean().optional(),
-  audienceUserId: idSchema.optional(), planId: idSchema.optional(),
+  audienceUserId: idSchema.optional(), planId: idSchema.optional(), ownerId:idSchema.optional(), aiGenerated:z.boolean().optional(),
   testOnly:z.boolean().optional(),
 }).refine((question) => question.correctIndex < question.choices.length, 'Invalid answer');
 const topicSchema = z.object({ id: idSchema, title: z.string(), subject: subjectSchema,
   description: z.string(), createdAt: isoSchema, targetCount: z.number().int().min(0),
   audienceUserId: idSchema.optional(), planId: idSchema.optional(),testOnly:z.boolean().optional(),
-  libraryPublished:z.boolean().optional(),librarySourceTopicId:idSchema.optional() });
+  libraryPublished:z.boolean().optional(),librarySourceTopicId:idSchema.optional(), ownerId:idSchema.optional(),
+  publicationRequest:z.object({requestedBy:idSchema,requestedAt:isoSchema,revision:z.string().length(64),sequence:z.number().int().positive()}).optional(),
+  currentSourceRevision:z.string().length(64).optional(),publishedSourceRevision:z.string().length(64).optional(),libraryRevision:z.string().length(64).optional() });
 const sourceSchema = z.object({ id: idSchema, topicId: idSchema.optional(), ownerId: idSchema.optional(), name: z.string(), mimeType: z.string(),
   storagePath: z.string().optional(), previewUrl: z.string().optional(), createdAt: isoSchema,testOnly:z.boolean().optional() });
 const sessionSchema = z.object({ id: idSchema, userId: idSchema, mode: z.enum(['daily', 'extra', 'weak']),
@@ -186,14 +190,19 @@ function validateEvent(input: StudyEvent): StudyEvent {
       break;
     }
     case 'plan.created': case 'plan.updated': planSchema.parse(payload); break;
+    case 'library.publication-requested': {
+      const pending=z.object({sourceTopicId:idSchema,requestedBy:idSchema,requestedAt:isoSchema,revision:z.string().length(64),sequence:z.number().int().positive()}).strict().parse(payload);
+      if(pending.requestedBy!==metadata.actorId) throw new ApiError(400,'公開依頼者が一致しません。','INVALID_LIBRARY');
+      break;
+    }
     case 'library.questions': {
       const batch=z.object({topicId:idSchema,questions:z.array(questionSchema).min(1).max(300)}).parse(payload);
-      if(batch.questions.some(question=>question.topicId!==batch.topicId || question.testOnly || question.audienceUserId || question.planId || question.sourceIds.length || question.status!=='published')) throw new ApiError(400,'ライブラリへの公開内容を確認してください。','INVALID_LIBRARY');
+      if(batch.questions.some(question=>question.topicId!==batch.topicId || question.testOnly || question.audienceUserId || question.ownerId || question.planId || question.sourceIds.length || question.status!=='published')) throw new ApiError(400,'ライブラリへの公開内容を確認してください。','INVALID_LIBRARY');
       break;
     }
     case 'library.published': {
       const published=z.object({sourceTopicId:idSchema,topic:topicSchema,questionIds:z.array(idSchema).min(1).max(300)}).parse(payload);
-      if(!published.topic.libraryPublished || published.topic.testOnly || published.topic.audienceUserId || published.topic.planId
+      if(!published.topic.libraryPublished || published.topic.testOnly || published.topic.audienceUserId || published.topic.ownerId || published.topic.publicationRequest || published.topic.planId
         || published.topic.librarySourceTopicId!==published.sourceTopicId
         || new Set(published.questionIds).size!==published.questionIds.length) {
         throw new ApiError(400,'ライブラリへの公開内容を確認してください。','INVALID_LIBRARY');
@@ -301,7 +310,7 @@ export function foldEvents(events: StudyEvent[], profiles: Profile[] = []): Stud
     eventIds.add(event.id);
     const payload = event.payload;
     switch (event.type) {
-      case 'topic.created': if (!topics.has(payload.id)) topics.set(payload.id, topicSchema.parse(payload)); break;
+      case 'topic.created': if (!topics.has(payload.id)) topics.set(payload.id, { ...topicSchema.parse(payload), ownerId:payload.ownerId ?? payload.audienceUserId ?? event.actorId }); break;
       case 'source.created': if (!sources.has(payload.id)) sources.set(payload.id, sourceSchema.parse(payload)); break;
       case 'question.upserted': upsertQuestion(questionSchema.parse(payload)); break;
       case 'questions.published': for (const question of payload.questions) upsertQuestion(questionSchema.parse(question)); break;
@@ -339,12 +348,18 @@ export function foldEvents(events: StudyEvent[], profiles: Profile[] = []): Stud
         const topic = topicSchema.parse(payload.topic);
         const job = jobSchema.parse(payload.job);
         if (!topics.has(topic.id) && !jobs.has(job.id)) {
-          topics.set(topic.id, topic);
+          topics.set(topic.id, { ...topic, ownerId:topic.ownerId ?? job.requestedBy ?? topic.audienceUserId ?? event.actorId });
           jobs.set(job.id, job);
         }
         break;
       }
       case 'plan.created': if (!plans.has(payload.id)) plans.set(payload.id, planSchema.parse(payload)); break;
+      case 'library.publication-requested': {
+        const topic=topics.get(payload.sourceTopicId);
+        const ownerId=plans.get(topic?.planId ?? '')?.ownerId ?? topic?.ownerId ?? [...jobs.values()].find(job=>job.topicId===topic?.id)?.requestedBy ?? topic?.audienceUserId;
+        if(topic && !topic.libraryPublished && !topic.testOnly && ownerId===event.actorId && payload.sequence===(topic.publicationRequest?.sequence ?? 0)+1) topics.set(topic.id,{...topic,publicationRequest:{requestedBy:payload.requestedBy,requestedAt:payload.requestedAt,revision:payload.revision,sequence:payload.sequence}});
+        break;
+      }
       case 'library.questions': for(const item of payload.questions) {if(!libraryQuestions.has(item.id)) libraryQuestions.set(item.id,questionSchema.parse(item));} break;
       case 'library.published': {
         const topic=topicSchema.parse(payload.topic);
@@ -408,6 +423,22 @@ export function foldEvents(events: StudyEvent[], profiles: Profile[] = []): Stud
       .sort((a, b) => Date.parse(a) - Date.parse(b)).at(-1);
     else delete session.completedAt;
   }
+  // Ownership is derived without changing legacy audience/provenance fields used by active workflows.
+  const materialized={topics:[...topics.values()],plans:[...plans.values()],jobs:[...jobs.values()]} as StudyData;
+  for(const topic of topics.values()) {
+    if(topic.libraryPublished) continue;
+    topic.ownerId=plans.get(topic.planId ?? '')?.ownerId ?? topicOwnerId(materialized,topic);
+    topic.currentSourceRevision=libraryRevision(topic,[...questions.values()]);
+    const publicVersions=[...topics.values()].filter(item=>item.libraryPublished && item.librarySourceTopicId===topic.id);
+    topic.publishedSourceRevision=publicVersions.find(item=>item.libraryRevision===topic.currentSourceRevision)?.libraryRevision ?? publicVersions.at(-1)?.libraryRevision;
+  }
+  for(const question of questions.values()) {
+    const topic=topics.get(question.topicId);
+    if(topic && !topic.libraryPublished) {
+      question.ownerId=topic.ownerId;
+      if([...jobs.values()].some(job=>job.topicId===topic.id)) question.aiGenerated=question.aiGenerated ?? true;
+    }
+  }
   return { topics: [...topics.values()], sources: [...sources.values()], questions: [...questions.values()],
     attempts: [...attempts.values()], exposures: [...exposures.values()], sessions: [...sessions.values()],
     jobs: [...jobs.values()], profiles: structuredClone(profiles),
@@ -432,22 +463,21 @@ export function studyDataForProfile(data: StudyData, profile: Profile, now = new
   const accessibleTopics=new Map(data.topics.filter(topic=>canAccessQuestion(topic,profile)).map(topic=>[topic.id,topic]));
   const adopted=new Set(data.plans.filter(plan=>plan.ownerId===profile.id && !plan.testOnly).map(plan=>plan.libraryTopicId).filter(Boolean));
   const published = data.questions.filter((question) => canAccessQuestion(question, profile) && accessibleTopics.has(question.topicId)
-    && (!accessibleTopics.get(question.topicId)?.libraryPublished || adopted.has(question.topicId)) && question.status === 'published'
-    && question.publishedAt && Date.parse(question.publishedAt) <= now.getTime());
+    && (!accessibleTopics.get(question.topicId)?.libraryPublished || adopted.has(question.topicId)) && isPracticeReadyQuestion(question,now));
   const visibleTopics = new Set(published.map((question) => question.topicId));
   const plans = data.plans.filter((plan) => canAccessPlan(plan, profile));
   const planIds = new Set(plans.map((plan) => plan.id));
-  return { ...data, topics: data.topics.filter((topic) => (visibleTopics.has(topic.id) || topic.libraryPublished) && canAccessQuestion(topic, profile))
+  return { ...data, topics: data.topics.filter((topic) => (visibleTopics.has(topic.id) || topic.libraryPublished || topic.ownerId===profile.id) && canAccessQuestion(topic, profile))
       .map(({librarySourceTopicId:_privateSource,...topic})=>topic),
     sources: data.sources.filter((source) => canAccessSource(source, profile))
       .map((source) => ({ ...source, previewUrl: `/api/sources/${encodeURIComponent(source.id)}` })),
-    jobs: data.jobs.filter((job) => !job.testOnly && job.audienceUserId === profile.id && accessibleTopics.has(job.topicId)), profiles: [profile],
+    jobs: data.jobs.filter((job) => !job.testOnly && (job.requestedBy === profile.id || job.audienceUserId === profile.id) && accessibleTopics.has(job.topicId)), profiles: [profile],
     plans, planningTurns: data.planningTurns.filter((turn) => planIds.has(turn.planId)),
-    questions: published
+    questions: published.map(asPracticeQuestion)
       .map((question) => ({ id: question.id, topicId: question.topicId, prompt: question.prompt, choices: [...question.choices],
         correctIndex: -1, explanation: '', learningPoint: '', sourceNote: '', sourceIds: [],
         status: question.status, version: question.version, createdAt: question.createdAt, publishedAt: question.publishedAt,
-        audienceUserId: question.audienceUserId, planId: question.planId, needsReview: question.needsReview,testOnly:question.testOnly })),
+        ownerId:question.ownerId,aiGenerated:question.aiGenerated,audienceUserId: question.audienceUserId, planId: question.planId, needsReview: question.needsReview,testOnly:question.testOnly })),
     attempts: data.attempts.filter((attempt) => attempt.userId === profile.id),
     exposures: data.exposures.filter((exposure) => exposure.userId === profile.id),
     sessions: data.sessions.filter((session) => session.userId === profile.id).map((session) => ({

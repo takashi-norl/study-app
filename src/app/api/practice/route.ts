@@ -6,6 +6,7 @@ import { hideQuestionAnswer,stateForProfile } from '@/server/data';
 import { appendEvent,getFullState,getSessionSnapshot } from '@/server/google-store';
 import { ApiError } from '@/server/config';
 import { selectQuestions } from '@/lib/learning';
+import { asPracticeQuestion, isPracticeReadyQuestion } from '@/lib/library-policy';
 import type { PracticeSession } from '@/lib/types';
 import { assertPracticeTopic,authorizedPracticeSession,mayPracticeQuestion,mayResumePracticeQuestions } from '@/server/practice-access';
 export async function POST(request:Request) { return api(async()=>{
@@ -19,8 +20,8 @@ export async function POST(request:Request) { return api(async()=>{
     if(questions.length===session.questionIds.length && mayResumePracticeQuestions(data,profile,questions) && (!input.topicId || questions.every(q=>q.topicId===input.topicId))) return {session,questions:questions.map(hideQuestionAnswer)};
   }
   const safe=stateForProfile(data,profile);
-  const available=safe.questions.filter(question=>question.status==='published' && !!question.publishedAt && Date.parse(question.publishedAt)<=Date.now() && mayPracticeQuestion(data,profile,question));
-  const selected=selectQuestions(available,profile.role==='parent' ? [] : safe.attempts,safe.exposures,profile.id,profile.role==='parent' ? 'extra' : input.mode,new Date(),10,input.topicId);
+  const available=safe.questions.filter(question=>isPracticeReadyQuestion(question) && mayPracticeQuestion(data,profile,question)).map(asPracticeQuestion);
+  const selected=selectQuestions(available,safe.attempts,safe.exposures,profile.id,input.mode,new Date(),10,input.topicId);
   if(!selected.length) throw new ApiError(409,'今、出題できる問題はありません。学習相談から問題を作るか、別の問題集や次の復習日に取り組んでみましょう。','NO_QUESTIONS');
   const session:PracticeSession={id:randomUUID(),userId:profile.id,mode:input.mode,questionIds:selected.map(q=>q.id),createdAt:new Date().toISOString()};
   const questionSnapshots=selected.map(q=>data.questions.find(full=>full.id===q.id && full.version===q.version)!);

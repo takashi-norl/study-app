@@ -5,6 +5,8 @@ import { ArrowLeft, ArrowRight, BookOpen, CheckCircle2, CircleHelp, FileImage, F
 import type { GenerationJob, LearningPlan, PlanningProposal, PlanningTurn, Question, SourceDocument } from '@/lib/types';
 import type { StudyController, UploadStatus } from './controller';
 import { PlanningWait } from './planning-wait';
+import { SetSharingActions } from './question-library';
+import { isPracticeReadyQuestion, mayPracticeLibraryTopic } from '@/lib/library-policy';
 import { PRACTICE_CATEGORIES, QUESTION_COUNTS, LEVEL_OPTIONS, PURPOSE_OPTIONS, SCHEDULE_OPTIONS, DAILY_MINUTES, questionVolumeLabel, buildQuickStart } from '@/lib/quick-start';
 import styles from './planning-flow.module.css';
 
@@ -217,7 +219,6 @@ function NewPlan({ c, sourceIds: initialIds, created, cancel, savingChanged, act
 
 function PlanConversation({ c, plan, review, openTopic, active, onLocationChange, onOpenPlan, onList, notificationRequest }: { c: StudyController; plan: LearningPlan; review: (topicId?: string, includePublished?: boolean) => void; openTopic: (id: string) => void; active:boolean; onLocationChange?:(label:string)=>void; onOpenPlan:(id:string)=>void; onList:()=>void; notificationRequest?:number }) {
   const [message, setMessage] = useState('');
-  const [publishingTopic, setPublishingTopic] = useState<string | null>(null);
   const [retryingJob, setRetryingJob] = useState<string | null>(null);
   const [retryAttempt, setRetryAttempt] = useState<string | null>(null);
   const own = plan.ownerId === c.profile.id;
@@ -268,7 +269,7 @@ function PlanConversation({ c, plan, review, openTopic, active, onLocationChange
         {proposals.length>1&&<div className={styles.proposalPicker} aria-label="問題作成案を選ぶ">{proposals.map((proposal,index)=><button type="button" key={proposal.id} aria-pressed={activeProposal===index} onClick={()=>setProposalIndex(index)}><span>案 {index+1}</span><strong>{proposal.title}</strong></button>)}</div>}
         {proposals.map((proposal,index)=><div key={`${latest.id}:${proposal.id}`} hidden={activeProposal!==index} className={styles.screen}><ProposalCard c={c} plan={plan} turn={latest} proposal={proposal} canGenerate={own&&!waiting&&!generating&&latest.version===plan.version} onGenerated={()=>selectTab('questions')} blockedAction={blockedAction}/></div>)}
         {latest.reply&&<details className={styles.replyDetails}><summary>AIの説明・学習の進め方を見る</summary><p>{latest.reply}</p></details>}
-        {own&&<p className={styles.hint}>{plan.testOnly?'テスト用の問題は保護者だけが試せます。あとでライブラリに公開できます。':c.profile.role==='student'?'自分で作った問題はすぐ練習できます。保護者も内容と記録を確認できます。':'作成後、内容を確認してから学習者へ公開できます。'}</p>}
+        {own&&<p className={styles.hint}>{plan.testOnly?'テスト用の問題は保護者だけが試せます。あとでライブラリに公開できます。':c.profile.role==='student'?'自分で作った問題はすぐ練習できます。保護者も内容と記録を確認できます。':'作った問題はプライベートに保存され、そのまま練習できます。共有するときだけ問題集単位で公開します。'}</p>}
       </>:!pending&&<section className={`panel ${styles.emptyCard}`}><Sparkles size={25}/><h2>{latest?.reply?'AIからの回答を確認しよう。':'このプランの提案をもらおう。'}</h2>{latest?.reply?<p className={styles.clarificationReply}>{latest.reply}</p>:<p>条件は保存済みです。相談を送ると、作れる問題の案が届きます。</p>}{c.error&&!latest?.reply&&<p className={styles.stateError} role="alert">{c.error}</p>}{own?<button type="button" className="button primary" disabled={c.busy||waiting} onClick={()=>{if(!message.trim()&&!latest?.reply)setMessage('保存した目標と教材に合わせて、最初の問題作成案を提案してください。');selectTab('chat');}}>{latest?.reply?'回答・希望を伝える':'相談内容を確認して送る'}<ArrowRight size={16}/></button>:<p className={styles.hint}>返信は、このプランを作った本人のアカウントから行えます。</p>}</section>}
       {jobs.length>0&&<button type="button" className={`button secondary ${styles.wideAction}`} onClick={()=>selectTab('questions')}><BookOpen size={17}/>できた問題を確認する<ArrowRight size={16}/></button>}
     </div>
@@ -283,22 +284,19 @@ function PlanConversation({ c, plan, review, openTopic, active, onLocationChange
       {plan.libraryTopicId&&own&&<section className={`panel ${styles.emptyCard}`}><BookOpen size={25}/><h2>ライブラリから追加した問題</h2><button type="button" className="button primary" disabled={c.busy} onClick={()=>openTopic(plan.libraryTopicId!)}>追加した問題を練習<ArrowRight size={16}/></button></section>}
     {!!jobs.length && <section className="panel planning-jobs"><h2>この相談から作った問題</h2>{jobs.map(job => {
       const topic = topics.find(item => item.id === job.topicId);
-      const personal = !!job.audienceUserId || !!topic?.audienceUserId;
       const test = !!plan.testOnly || !!job.testOnly || !!topic?.testOnly;
-      const parentTest = test && c.profile.role === 'parent';
-      const practiceOwner = parentTest || c.profile.role === 'student' && (job.audienceUserId || topic?.audienceUserId) === c.profile.id;
-      const practice = practiceOwner && c.data.questions.some(question => question.topicId === job.topicId && question.status !== 'archived' && (c.demo && parentTest || question.status === 'published' && !!question.publishedAt && Date.parse(question.publishedAt) <= Date.now() && !question.needsReview));
+      const practice = !!topic && mayPracticeLibraryTopic(c.data,c.profile,topic) && c.data.questions.some(question => question.topicId === job.topicId && isPracticeReadyQuestion(question));
       const active = job.status === 'queued' || job.status === 'running';
       const savedCount = Math.max(job.generatedCount, savedTopicQuestionCount(c.data.questions, [job.topicId]));
       const available = c.data.questions.some(question => question.topicId === job.topicId && question.status !== 'archived' && (c.profile.role === 'parent' || practice));
       const canConfirmStart = job.status === 'queued' && job.requestedBy === c.profile.id;
       const canContinue = own && job.requestedBy === c.profile.id && job.status === 'failed' && savedCount < job.targetCount;
-      const published = c.data.topics.some(item => item.libraryPublished && item.librarySourceTopicId === job.topicId);
       return <article key={job.id}>
-        <div><strong>{topic?.title || '作成中の問題集'}</strong><p role={active ? 'status' : undefined}>{active ? job.status === 'queued' ? '作成の依頼を受け付けました' : '問題を作成しています' : job.status === 'failed' ? '作成が途中で止まりました' : test ? 'テスト用・保護者のみ' : personal ? '自習用' : '下書きの確認待ち'} · {savedCount} / {job.targetCount}問を保存済み</p>{active && <p>10問ずつ保存します。保存した問題から確認できます。</p>}{job.error && <p className="planning-job-error">{job.error}</p>}</div>
-        {available && (practice || c.profile.role === 'parent') && <button type="button" className="button secondary" disabled={c.busy} onClick={() => practice ? openTopic(job.topicId) : review(job.topicId, personal)}>{practice ? parentTest ? '保存した問題を親だけで試す' : '保存した問題を練習する' : '保存した問題を確認する'}<ArrowRight size={15} /></button>}
+        <div><strong>{topic?.title || '作成中の問題集'}</strong><p role={active ? 'status' : undefined}>{active ? job.status === 'queued' ? '作成の依頼を受け付けました' : '問題を作成しています' : job.status === 'failed' ? '作成が途中で止まりました' : test ? 'プライベート・テスト用' : 'プライベート'} · {savedCount} / {job.targetCount}問を保存済み</p>{active && <p>10問ずつ保存します。保存した問題から確認できます。</p>}{job.error && <p className="planning-job-error">{job.error}</p>}</div>
+        {practice && <button type="button" className="button primary" disabled={c.busy} onClick={() => openTopic(job.topicId)}>10問練習する<ArrowRight size={15}/></button>}
+        {available && c.profile.role === 'parent' && <button type="button" className="text-button" onClick={()=>review(job.topicId,true)}>内容を見る・編集<ArrowRight size={15}/></button>}
         {canContinue && <div className="job-recovery"><span>{generating ? 'ほかの問題を作成中です。その作成が終わると続きを依頼できます。' : savedCount ? `保存した${savedCount}問は残して、同じ条件で残りの作成をAIに依頼します。` : '条件は保存されています。同じ条件で、もう一度作成をAIに依頼できます。'}</span><button type="button" className="button primary" disabled={c.busy || generating || !!retryingJob} onClick={() => void retry(job.id)}><RefreshCw size={15} />{retryingJob === job.id ? '依頼を確認しています' : '同じ条件で続きを作る'}</button>{retryAttempt === job.id && c.error && <div className="flash error" role="alert"><CircleHelp size={17} /><span>{c.error}</span></div>}</div>}
-        {test && c.profile.role === 'parent' && !active && savedCount > 0 && <div className="job-recovery"><span>{published ? 'ライブラリに公開済みです。学習者が自分のプランに追加できます。' : '公開すると、学習者のライブラリに問題が表示されます。テストの相談・練習記録は公開されません。'}</span>{!published && <button type="button" className="button primary" disabled={c.busy} onClick={() => { setPublishingTopic(job.topicId); void c.actions.publishLibrary(job.topicId); }}><BookOpen size={15} />ライブラリに公開</button>}{publishingTopic === job.topicId && c.error && <div className="flash error" role="alert"><CircleHelp size={17} /><span>{c.error}</span></div>}</div>}
+        {topic && <div className="job-sharing"><SetSharingActions c={c} topic={topic}/></div>}
         {active && <div className="job-recovery"><span>{c.sync.error ? '最新の状況を確認できていません。通信が戻ると、保存済みの件数を確認できます。' : 'ほかの画面に移っても、保存済みの問題はここから確認できます。'}</span><button type="button" className="text-button" disabled={c.busy || c.sync.checking} onClick={() => void (canConfirmStart ? c.actions.resumeGeneration(job.id) : c.actions.refreshStatus())}><RefreshCw size={14} />{c.busy || c.sync.checking ? '状況を確認しています' : canConfirmStart ? '開始を確認する' : '最新の状況を確認'}</button></div>}
       </article>;
     })}</section>}

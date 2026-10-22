@@ -31,7 +31,7 @@ test('learner-owned practice is immediately available and private without enteri
   assert.equal(own.status, 'published'); assert.equal(own.audienceUserId, student.id); assert.equal(own.publishedAt, now); assert.equal(own.needsReview, false);
   for (const parentJob of [{ ...job, requestedBy: parent.id, audienceUserId: undefined }, { ...job, requestedBy: parent.id }]) {
     const draft = materializeQuestions([candidate], { job: parentJob, sourceIds: [], prior: [], count: 10, createdAt: now })[0];
-    assert.equal(draft.status, 'draft'); assert.equal(draft.publishedAt, undefined); assert.equal(draft.needsReview, true);
+    assert.equal(draft.status, 'published'); assert.equal(draft.publishedAt, now); assert.equal(draft.ownerId,parent.id); assert.equal(draft.aiGenerated,true);
   }
 });
 

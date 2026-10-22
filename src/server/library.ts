@@ -5,10 +5,26 @@ import { ApiError } from './config';
 import type { StudyEvent } from './google-store';
 import { canAccessQuestion } from './access';
 import { getFamilyId } from './env';
+import { topicOwnerId } from '@/lib/library-policy';
 
 const hash=(input:unknown)=>createHash('sha256').update(JSON.stringify(input)).digest('hex');
 function stableId(input:unknown):string {
   const hex=hash(input);return `${hex.slice(0,8)}-${hex.slice(8,12)}-5${hex.slice(13,16)}-a${hex.slice(17,20)}-${hex.slice(20,32)}`;
+}
+
+export function libraryRevision(topic:Topic, questions:Question[]):string {
+  return hash([topic.id,topic.title,topic.subject,topic.description,questions.filter(question=>question.topicId===topic.id && question.status!=='archived').sort((a,b)=>a.id.localeCompare(b.id)).map(question=>[question.id,question.version])]);
+}
+
+export function prepareLibraryPublicationRequest(data:StudyData,profile:Profile,topicId:string,now=new Date()):{topic:Topic;request:NonNullable<Topic['publicationRequest']>;event?:StudyEvent} {
+  const topic=data.topics.find(item=>item.id===topicId && !item.libraryPublished && !item.testOnly);
+  if(profile.familyId!==getFamilyId() || !topic || topicOwnerId(data,topic)!==profile.id) throw new ApiError(403,'自分の非公開の問題集から公開を依頼してください。','LIBRARY_REQUEST_FORBIDDEN');
+  if(data.jobs.some(job=>job.topicId===topicId && ['queued','running'].includes(job.status))) throw new ApiError(409,'作問が終わってから公開を依頼してください。','GENERATION_ACTIVE');
+  if(!data.questions.some(question=>question.topicId===topic.id && question.status!=='archived')) throw new ApiError(409,'問題が保存されてから公開を依頼してください。','LIBRARY_EMPTY');
+  const revision=libraryRevision(topic,data.questions);
+  if(topic.publicationRequest?.revision===revision) return {topic,request:topic.publicationRequest};
+  const request={requestedBy:profile.id,requestedAt:now.toISOString(),revision,sequence:(topic.publicationRequest?.sequence ?? 0)+1};
+  return {topic:{...topic,publicationRequest:request},request,event:{id:`library-request:${hash([topic.id,profile.id,request.sequence])}`,type:'library.publication-requested',actorId:profile.id,createdAt:request.requestedAt,payload:{sourceTopicId:topic.id,...request}}};
 }
 
 /** Publication is an explicit sanitized copy. The original test set and its private sources are untouched. */
@@ -16,18 +32,18 @@ export function prepareLibraryPublication(data:StudyData,profile:Profile,topicId
   if(profile.role!=='parent' || profile.familyId!==getFamilyId()) throw new ApiError(403,'公開は管理者だけが行えます。','LIBRARY_PUBLISH_FORBIDDEN');
   const source=data.topics.find(topic=>topic.id===topicId && !topic.libraryPublished);
   if(!source || !canAccessQuestion(source,profile)) throw new ApiError(404,'公開する問題集が見つかりません。','TOPIC_NOT_FOUND');
-  if(source.planId && !data.plans.some(plan=>plan.id===source.planId && data.profiles.some(member=>member.id===plan.ownerId && member.role==='parent'))) throw new ApiError(403,'管理者が作った問題集を選んでください。','LIBRARY_ADMIN_SET_ONLY');
+  const ownerId=topicOwnerId(data,source);
+  const owner=data.profiles.find(member=>member.id===ownerId && member.familyId===profile.familyId);
+  if(!owner || (owner.role==='student' && (source.testOnly || source.publicationRequest?.requestedBy!==ownerId || source.publicationRequest?.revision!==libraryRevision(source,data.questions)))) throw new ApiError(403,'学習者の問題集は、本人の公開依頼後に公開できます。','LIBRARY_REQUEST_REQUIRED');
   if(data.jobs.some(job=>job.topicId===topicId && (job.status==='queued' || job.status==='running'))) throw new ApiError(409,'作問が終わってから公開してください。','GENERATION_ACTIVE');
   const original=data.questions.filter(question=>question.topicId===topicId && question.status!=='archived').sort((a,b)=>a.id.localeCompare(b.id));
-  if(!original.length || original.length>300 || original.some(question=>!['approved','published'].includes(question.status) || question.needsReview)) {
-    throw new ApiError(409,'問題の内容を確認してからライブラリに公開してください。','REVIEW_REQUIRED');
-  }
-  const revision=hash([topicId,source.title,source.subject,source.description,original.map(question=>[question.id,question.version])]);
+  if(!original.length || original.length>300) throw new ApiError(409,'保存済みの問題が1〜300問ある問題集を選んでください。','LIBRARY_EMPTY');
+  const revision=libraryRevision(source,original);
   const id=stableId(['library',revision]);const createdAt=now.toISOString();
-  const topic:Topic={id,title:source.title,subject:source.subject,description:source.description,createdAt,targetCount:original.length,libraryPublished:true,librarySourceTopicId:topicId};
+  const topic:Topic={id,title:source.title,subject:source.subject,description:source.description,createdAt,targetCount:original.length,libraryPublished:true,librarySourceTopicId:topicId,libraryRevision:revision};
   const questions:Question[]=original.map(question=>({id:stableId(['library-question',revision,question.id]),topicId:id,
     prompt:question.prompt,choices:[...question.choices],correctIndex:question.correctIndex,explanation:question.explanation,learningPoint:question.learningPoint,
-    sourceIds:[],sourceNote:'ライブラリの学習問題',status:'published',needsReview:false,version:1,createdAt,publishedAt:createdAt}));
+    sourceIds:[],sourceNote:question.aiGenerated ? 'AIが作成した学習問題です。気になる点は管理者へお知らせください。' : 'ライブラリの学習問題',status:'published',needsReview:question.needsReview,aiGenerated:question.aiGenerated,version:1,createdAt,publishedAt:createdAt}));
   const events:StudyEvent[]=[];let batch:Question[]=[];
   const flush=()=>{if(batch.length) events.push({id:`library-questions:${id}:${events.length}`,type:'library.questions',actorId:profile.id,createdAt,payload:{topicId:id,questions:batch}});batch=[];};
   for(const question of questions) {if(batch.length && JSON.stringify([...batch,question]).length>230000) flush();batch.push(question);}
@@ -37,7 +53,7 @@ export function prepareLibraryPublication(data:StudyData,profile:Profile,topicId
 }
 
 export function prepareLibraryAdoption(data:StudyData,profile:Profile,topicId:string,now=new Date()):{plan:LearningPlan;event?:StudyEvent} {
-  if(profile.role!=='student' || profile.familyId!==getFamilyId()) throw new ApiError(403,'自分の学習への追加は学習者のアカウントで行ってください。','LIBRARY_ADOPT_STUDENT_ONLY');
+  if(profile.familyId!==getFamilyId()) throw new ApiError(403,'ご家族のアカウントで追加してください。','LIBRARY_ADOPT_FORBIDDEN');
   const topic=data.topics.find(topic=>topic.id===topicId && topic.libraryPublished && !topic.testOnly && canAccessQuestion(topic,profile));
   if(!topic) throw new ApiError(404,'ライブラリの問題集が見つかりません。','LIBRARY_NOT_FOUND');
   const previous=data.plans.find(plan=>plan.ownerId===profile.id && !plan.testOnly && plan.libraryTopicId===topicId);

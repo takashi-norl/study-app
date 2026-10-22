@@ -10,6 +10,6 @@ export function canAccessPlan(plan: Pick<LearningPlan, 'ownerId'|'testOnly'>, pr
   return profile.role === 'parent' || (!plan.testOnly && plan.ownerId === profile.id);
 }
 
-export function canAccessQuestion(question: Pick<Question, 'audienceUserId'|'testOnly'>, profile: Profile): boolean {
-  return profile.role === 'parent' || (!question.testOnly && (!question.audienceUserId || question.audienceUserId === profile.id));
+export function canAccessQuestion(question: Pick<Question, 'audienceUserId'|'testOnly'|'ownerId'>, profile: Profile): boolean {
+  return profile.role === 'parent' || (!question.testOnly && (question.ownerId ? question.ownerId === profile.id : !question.audienceUserId || question.audienceUserId === profile.id));
 }

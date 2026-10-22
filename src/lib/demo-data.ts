@@ -65,7 +65,7 @@ export function createDemoData(now = new Date()): StudyData {
     ['topic-kanbun', '漢文の読み方入門', '漢文', '返り点と基本句形を、ひとつずつ確かめよう。', KANBUN],
   ];
   const topics: Topic[] = topicSpecs.map(([id, title, subject, description, examples]) => ({
-    id, title, subject, description, createdAt, targetCount: examples.length,
+    id, title, subject, description, ownerId:'student-demo', createdAt, targetCount: examples.length,
   }));
   const questions: Question[] = topicSpecs.flatMap(([topicId, , , , examples]) => examples.map((example, index) => {
     const [prompt, answer, distractors, explanation, learningPoint] = example;

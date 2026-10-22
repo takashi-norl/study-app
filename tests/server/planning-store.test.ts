@@ -58,8 +58,8 @@ test('private published AI questions are usable only by their student while pare
   }
   const data=foldEvents(events,[parent,student,other]);
   const visible=studyDataForProfile(data,student,new Date(time));
-  assert.deepEqual(visible.questions.map(q=>q.id),['q-family','q-own']);
-  assert.deepEqual(visible.topics.map(t=>t.id),['family','own']);
+  assert.deepEqual(visible.questions.map(q=>q.id),['q-own']);
+  assert.deepEqual(visible.topics.map(t=>t.id),['own']);
   assert.equal(visible.questions.find(q=>q.id==='q-own')?.needsReview,true);
   assert.equal(JSON.stringify(visible).includes('PRIVATE_ANSWER'),false);
   assert.equal(studyDataForProfile(data,parent,new Date(time)).questions.length,3);
