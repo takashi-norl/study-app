@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { z } from 'zod';
 import { VOCABULARY_IMPORT_FILE_BYTES, vocabularyImportBundleSchema, vocabularyImportReceiptSchema, vocabularyImportResponseSchema, type VocabularyImportBundle, type VocabularyImportReceipt } from '@/lib/vocabulary-import';
+import { runVocabularyImportQueue } from '@/lib/vocabulary-import-queue';
 import styles from './vocabulary-import.module.css';
 
 const receiptSchema = z.object({ batchId: z.string(), sha256: z.string(), audio: vocabularyImportReceiptSchema });
@@ -89,7 +90,7 @@ export default function VocabularyImport({ receiptScope }: { receiptScope: strin
     setPreparing(true); setError(''); setMessage('ファイルの内容を確認しています。'); setSelection([]);
     try {
       if (files.length > 1000) throw new Error('一度に選べるファイルは1,000件までです。');
-      const next: Selection[] = [], seen = new Set<string>();
+      const next: Selection[] = [], seen = new Set<string>(), seenAudio = new Set<string>();
       let count = 0;
       for (const file of files) {
         const bundle = await readBundle(file);
@@ -98,7 +99,9 @@ export default function VocabularyImport({ receiptScope }: { receiptScope: strin
         for (const clip of clips) {
           const key = `${bundle.batchId}|${clip.wordId}`;
           if (seen.has(key)) throw new Error('同じ単語が複数のファイルにあります。重複するファイルを外してください。');
+          if (seenAudio.has(clip.cacheKey)) throw new Error('同じ音声が複数のファイルにあります。重複するファイルを外してください。');
           seen.add(key);
+          seenAudio.add(clip.cacheKey);
         }
         count += clips.length;
         if (count > 7500) throw new Error('一度に取り込める音声は7,500語までです。');
@@ -112,33 +115,50 @@ export default function VocabularyImport({ receiptScope }: { receiptScope: strin
   async function start() {
     if (busyRef.current || !selection.length || !hydrated) return;
     busyRef.current = true; stopRef.current = false; setBusy(true); setError(''); setMessage('');
+    const attemptedKeys = new Set<string>(), activeWords = new Set<string>();
     try {
       for (const item of selection) {
         if (stopRef.current) break;
         const bundle = await readBundle(item.file);
-        for (const clip of bundle.clips) {
-          if (stopRef.current) break;
-          const key = keyOf(bundle.batchId, clip);
-          if (receiptsRef.current[key]) continue;
-          setActive(clip.wordId);
-          const response = await fetch('/api/admin/vocabulary-import', {
-            method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ schemaVersion: 2, batchId: bundle.batchId, clips: [clip] }),
-            signal: AbortSignal.timeout(180_000),
-          });
-          const body: unknown = await response.json();
-          if (!response.ok) throw new Error(typeof body === 'object' && body && 'error' in body && typeof body.error === 'string' ? body.error : '保存を確認できませんでした。再開すると保存先を確認します。');
-          const imported = vocabularyImportResponseSchema.parse(body);
-          const audio = imported.audio[0];
-          if (imported.batchId !== bundle.batchId || audio.wordId !== clip.wordId || audio.cacheKey !== clip.cacheKey) throw new Error('保存結果が一致しません。処理を止めました。');
-          const receipt: Receipt = { batchId: bundle.batchId, sha256: clip.sha256, audio };
-          receiptsRef.current = { ...receiptsRef.current, [key]: receipt }; setReceipts(receiptsRef.current);
-          try { await saveReceipt(receiptScope, receipt); }
-          catch { setWarning('このブラウザに進捗を保存できません。取込結果を保存してから画面を閉じてください。'); }
-        }
+        await runVocabularyImportQueue({
+          items: bundle.clips, attemptedKeys,
+          cacheKey: clip => clip.cacheKey,
+          isCommitted: clip => !!receiptsRef.current[keyOf(bundle.batchId, clip)],
+          shouldStop: () => stopRef.current,
+          perform: async clip => {
+            activeWords.add(clip.wordId); setActive(Array.from(activeWords).join('・'));
+            try {
+              const response = await fetch('/api/admin/vocabulary-import', {
+                method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ schemaVersion: 2, batchId: bundle.batchId, clips: [clip] }),
+                signal: AbortSignal.timeout(180_000),
+              });
+              const body: unknown = await response.json();
+              if (!response.ok) throw new Error(typeof body === 'object' && body && 'error' in body && typeof body.error === 'string' ? body.error : '保存を確認できませんでした。再開すると保存先を確認します。');
+              const imported = vocabularyImportResponseSchema.parse(body);
+              const audio = imported.audio[0];
+              if (imported.batchId !== bundle.batchId || audio.wordId !== clip.wordId || audio.cacheKey !== clip.cacheKey) throw new Error('保存結果が一致しません。処理を止めました。');
+              const receipt: Receipt = { batchId: bundle.batchId, sha256: clip.sha256, audio };
+              // Read the current ref after the response, so out-of-order completions merge.
+              const key = keyOf(bundle.batchId, clip);
+              receiptsRef.current = { ...receiptsRef.current, [key]: receipt }; setReceipts(receiptsRef.current);
+              try { await saveReceipt(receiptScope, receipt); }
+              catch {
+                setWarning('このブラウザに進捗を保存できません。取込結果を保存してから画面を閉じてください。');
+                throw new Error('音声は保存できましたが、進捗を記録できないため停止しました。取込結果を保存してから続けてください。');
+              }
+            } catch (failure) {
+              setMessage('新しい保存を止めています。送信済みの音声の結果を確認してから停止します。');
+              throw failure;
+            } finally {
+              activeWords.delete(clip.wordId); setActive(Array.from(activeWords).join('・'));
+            }
+          },
+        });
       }
       setMessage(stopRef.current ? '一時停止しました。同じ画面から続きの保存を再開できます。' : '選んだ音声を保存しました。取込結果を保存してください。');
     } catch (failure) {
+      setMessage('');
       setError(failure instanceof Error && failure.name !== 'TimeoutError' && failure.name !== 'TypeError' ? failure.message : '通信が中断しました。保存済みの音声は残っています。「保存を再開」で続けられます。');
     } finally { busyRef.current = false; setBusy(false); setActive(''); }
   }
@@ -161,7 +181,7 @@ export default function VocabularyImport({ receiptScope }: { receiptScope: strin
       {busy && <p role="status">{active} を保存しています。画面を開いたままお待ちください。</p>}
       <div className={styles.actions}>
         <button className="button primary" type="button" disabled={!total || busy || preparing || !hydrated || completed === total} onClick={() => void start()}>{busy ? '保存しています' : total > 0 && completed === total ? '保存済み' : completed ? '保存を再開' : 'Google Driveへ保存'}</button>
-        {busy && <button className="button secondary" type="button" onClick={() => { stopRef.current = true; setMessage('現在の1語を保存してから停止します。'); }}>一時停止</button>}
+        {busy && <button className="button secondary" type="button" onClick={() => { stopRef.current = true; setMessage('送信済みの音声を保存してから停止します。'); }}>一時停止</button>}
       </div>
       <p className={styles.note}>中断した場合も、同じファイルを選ぶと保存済みの続きから再開できます。</p>
     </section>
