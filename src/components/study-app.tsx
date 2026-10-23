@@ -261,6 +261,8 @@ function AppMenu({ c, navigate, openSettings }: { c: StudyController; navigate: 
     {c.profile.role === 'parent' && <MenuRow icon={<ListChecks size={23} />} title="一覧レビュー" description="問題の傾向・順番・正解を見渡して編集" onClick={() => navigate('review')} />}
     {c.profile.role === 'parent' && <MenuRow icon={<Eye size={23} />} title="ユーザーとして見る" description="対象の学習者を選び、見える問題と解き方を確認" onClick={() => navigate('preview')} />}
     <MenuRow icon={<Target size={23} />} title="学習プラン" description="中間テストなどのタグでまとめ、進み具合を確認" onClick={() => navigate('projects')} />
+    {c.profile.role === 'parent' && !c.demo && <Link className="menu-row" href="/admin/eiken-samples"><BookOpen size={23} /><span><strong>英検の問題・音声サンプル</strong><small>2級・準1級のReading / Listening / Writingを試す</small></span><ChevronRight size={18} /></Link>}
+    {c.profile.role === 'parent' && !c.demo && <Link className="menu-row" href="/admin/vocabulary-samples"><BookMarked size={23} /><span><strong>ボキャブラリーマラソンの見本</strong><small>単語と例文3つを聞いて、使い方を練習</small></span><ChevronRight size={18} /></Link>}
     <MenuRow icon={<BookMarked size={23} />} title="パブリックライブラリ" description="登録ユーザーに共有された問題集を自分の学習に追加" onClick={() => navigate('catalog')} />
     <MenuRow icon={<CalendarDays size={23} />} title="学習の記録" description="正答率・苦手・取り組んだ日を確認" onClick={() => navigate('history')} />
     <MenuRow icon={<Settings2 size={23} />} title="設定" description="プロフィール・通知・アカウント" onClick={() => openSettings()} />
@@ -285,7 +287,7 @@ function Settings({ c, section, setSection, onCreate, onHome, active, onLocation
   return <>
     {section !== 'profile' && <><div className="section-back"><button className="text-button" onClick={() => section === 'index' ? onHome() : setSection('index')}><ArrowLeft size={17} />{section === 'index' ? 'ホームに戻る' : '設定一覧に戻る'}</button></div>
     <PageHeading eyebrow="YOUR PREFERENCES" title={titles[section]} description={section === 'index' ? '変更したい項目を選んでください。' : ''} /></>}
-    {section === 'index' && <div className="task-menu">{entries.map(item => <MenuRow key={item.id} {...item} onClick={() => setSection(item.id)} />)}</div>}
+    {section === 'index' && <div className="task-menu">{entries.map(item => <MenuRow key={item.id} {...item} onClick={() => setSection(item.id)} />)}{c.profile.role === 'parent' && !c.demo && <><Link className="menu-row" href="/admin/eiken-samples"><BookOpen size={23}/><span><strong>英検の問題・音声サンプル</strong><small>読む・聞く・書くを試す</small></span><ChevronRight size={18}/></Link><Link className="menu-row" href="/admin/vocabulary-samples"><BookMarked size={23}/><span><strong>ボキャブラリーマラソンの見本</strong><small>単語と例文3つを音声で確認</small></span><ChevronRight size={18}/></Link></>}</div>}
     {(profileVisited || section === 'profile') && <div hidden={section !== 'profile'}><PersonalProfilePanel onLocationChange={onLocationChange} onDone={onCreate} doneLabel="問題を作るへ進む" onBack={() => setSection('index')} /></div>}
     <div className="settings-stack">
       {section === 'usage' && c.profile.accessLevel === 'superuser' && <AiUsagePanel profile={c.profile} demo={c.demo} />}

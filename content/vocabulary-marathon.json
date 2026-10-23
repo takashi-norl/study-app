@@ -1,0 +1,448 @@
+{
+  "version": "1",
+  "createdAt": "2026-10-23",
+  "levelNote": "2級の基礎固め・準1級対策を想定したオリジナル見本です。級は学習の目安で、公式の級別語彙リストや難易度実測に基づく認定ではありません。",
+  "sources": [
+    { "title": "Cambridge Dictionary: avoid（発音・用法の確認）", "url": "https://dictionary.cambridge.org/us/dictionary/english/avoid" },
+    { "title": "Cambridge Dictionary: afford（発音・用法の確認）", "url": "https://dictionary.cambridge.org/dictionary/english/afford" },
+    { "title": "Cambridge Dictionary: contribute（発音の確認）", "url": "https://dictionary.cambridge.org/pronunciation/english/contribute" },
+    { "title": "Cambridge Dictionary: contribute to（用法の確認）", "url": "https://dictionary.cambridge.org/dictionary/english/contribute-to" },
+    { "title": "Cambridge Dictionary: reluctant（発音・用法の確認）", "url": "https://dictionary.cambridge.org/dictionary/english/reluctant" },
+    { "title": "Cambridge Dictionary: undermine（発音・用法の確認）", "url": "https://dictionary.cambridge.org/dictionary/english/undermine" },
+    { "title": "Cambridge Dictionary: plausible（発音・用法の確認）", "url": "https://dictionary.cambridge.org/dictionary/english/plausible" }
+  ],
+  "entries": [
+    {
+      "id": "avoid",
+      "level": "2級",
+      "word": "avoid",
+      "ipa": "/əˈvɔɪd/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "動詞",
+      "definition": "To keep away from something or act so that an unwanted thing does not happen.",
+      "meaning": "避ける・〜しないようにする",
+      "usageTip": "avoid + 名詞 / 動詞の-ing形。avoid to do とはしません。「場所を避ける」「行動を控える」「問題が起こらないようにする」に使えます。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "場所を避ける",
+          "text": "On rainy days, I avoid the path beside the river because it gets slippery.",
+          "translation": "雨の日は滑りやすくなるので、川沿いの道を避けています。"
+        },
+        {
+          "id": "example-2",
+          "context": "行動を控える",
+          "text": "Mina avoids checking messages while she studies, so she can focus on one task.",
+          "translation": "ミナは一つのことに集中できるように、勉強中はメッセージを確認しないようにしています。"
+        },
+        {
+          "id": "example-3",
+          "context": "問題を未然に防ぐ",
+          "text": "Please label each file clearly to avoid confusion when the group combines its work.",
+          "translation": "グループの作業をまとめる際に混乱しないよう、各ファイルに分かりやすい名前を付けてください。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "avoid-usage",
+          "type": "usage",
+          "prompt": "avoid を使った、文法・意味ともに自然な文を1つ選んでください。",
+          "choices": [
+            "I avoid to leave my homework until Sunday night.",
+            "I avoid leaving my homework until Sunday night.",
+            "I avoid my homework from leaving until Sunday night.",
+            "I avoid for leaving my homework until Sunday night."
+          ],
+          "correctIndex": 1,
+          "explanation": "正解は2。avoid leaving で「残しておくことを避ける」。avoid の後に行動を置くときは-ing形です。1の to leave、4の for leaving はこの構文では使いません。3の avoid A from doing は prevent A from doing との混同で、宿題が自分で立ち去るという不自然な形にもなっています。"
+        },
+        {
+          "id": "avoid-context",
+          "type": "context",
+          "prompt": "空欄に最も合う語を選んでください。\nThe school opened a second entrance to _____ long lines at the gate.",
+          "choices": [
+            "avoid",
+            "announce",
+            "accept",
+            "measure"
+          ],
+          "correctIndex": 0,
+          "explanation": "正解は1。入口を増やす目的は「長い列ができるのを避ける」ことなので avoid が合います。announce は発表する、accept は受け入れる、measure は測る。入口を増やすという行動と、その目的のつながりを考えます。"
+        },
+        {
+          "id": "avoid-paraphrase",
+          "type": "paraphrase",
+          "prompt": "次の文に最も近い意味の英文を選んでください。\nRen changed the subject to avoid arguing with his brother.",
+          "choices": [
+            "Ren changed the subject because the argument had already ended.",
+            "Ren changed the subject to make his brother start an argument.",
+            "Ren changed the subject so that they would not have an argument.",
+            "Ren changed the subject because he had forgotten his brother's opinion."
+          ],
+          "correctIndex": 2,
+          "explanation": "正解は3。「言い争いにならないように」話題を変えた、という目的を表します。1の『すでに終わった』、4の『意見を忘れた』は述べられていません。2は口論を始めさせるという逆の目的です。avoid は嫌なことが起こる前の行動にも使えます。"
+        }
+      ]
+    },
+    {
+      "id": "afford",
+      "level": "2級",
+      "word": "afford",
+      "ipa": "/əˈfɔːd/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "動詞",
+      "definition": "To have the money or time for something, or be able to do it without serious trouble.",
+      "meaning": "〜する余裕がある・〜を買う余裕がある",
+      "usageTip": "can/could afford + 名詞 / to do が基本。お金だけでなく、時間や失敗による損失にも使います。can't afford to fail は「失敗するわけにはいかない」。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "お金の余裕",
+          "text": "By buying a used bicycle, I could afford a helmet and lights as well.",
+          "translation": "中古の自転車を買うことで、ヘルメットとライトも買う余裕ができました。"
+        },
+        {
+          "id": "example-2",
+          "context": "時間の余裕",
+          "text": "We have only twenty minutes, so we can't afford to wait for the next bus.",
+          "translation": "あと20分しかないので、次のバスを待っている余裕はありません。"
+        },
+        {
+          "id": "example-3",
+          "context": "失敗するわけにはいかない",
+          "text": "The lab has only one sample left; we cannot afford to damage it.",
+          "translation": "研究室には試料が一つしか残っていないので、それを傷つけるわけにはいきません。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "afford-usage",
+          "type": "usage",
+          "prompt": "afford を使った、文法・意味ともに自然な文を1つ選んでください。",
+          "choices": [
+            "We can't afford buying another printer this month.",
+            "We can't afford for another printer this month.",
+            "We can't afford to buy another printer this month.",
+            "We can't afford us another printer this month."
+          ],
+          "correctIndex": 2,
+          "explanation": "正解は3。can afford to buy で「買う余裕がある」。この意味では afford の後は to buy または買う物の名詞です。1の buying、2の for another printer、4の us another printer はこの構文に合いません。avoid doing と afford to do の違いにも注目します。"
+        },
+        {
+          "id": "afford-context",
+          "type": "context",
+          "prompt": "空欄に最も合う語を選んでください。\nThe club has forty dollars left, but the room costs seventy dollars. It cannot _____ the rent without extra money.",
+          "choices": [
+            "deserve",
+            "replace",
+            "record",
+            "afford"
+          ],
+          "correctIndex": 3,
+          "explanation": "正解は4。手元のお金が料金に足りないため「賃料を払う余裕がない」となります。deserve は〜に値する、replace は取り替える、record は記録する。cannot afford the rent のように、afford のすぐ後に費用を表す名詞も置けます。"
+        },
+        {
+          "id": "afford-paraphrase",
+          "type": "paraphrase",
+          "prompt": "次の文に最も近い意味の英文を選んでください。\nWith the interview starting in five minutes, I can't afford to lose my notes.",
+          "choices": [
+            "Losing my notes now could cause a serious problem for me.",
+            "My notes cost too much money for me to buy them again.",
+            "I have enough time to rewrite my notes before the interview.",
+            "I am not allowed to take any notes into the interview."
+          ],
+          "correctIndex": 0,
+          "explanation": "正解は1。ここでの can't afford to lose は「なくすと困るので、なくすわけにはいかない」。必ずしも金額の話ではありません。2の購入費、4の持ち込み禁止は書かれていません。3の『書き直す時間が十分ある』は、直前なので失えないという文脈と合いません。"
+        }
+      ]
+    },
+    {
+      "id": "contribute",
+      "level": "2級",
+      "word": "contribute",
+      "ipa": "/kənˈtrɪb.juːt/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "動詞",
+      "definition": "To give something as part of a shared effort, or be one factor that brings about a result.",
+      "meaning": "提供する・貢献する・一因となる",
+      "usageTip": "contribute something to ...（〜を提供する）と contribute to ...（〜に貢献する／〜の一因となる）。結果は良いこととは限りません。to は前置詞なので後ろは名詞や-ing形です。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "考えを持ち寄る",
+          "text": "It took weeks to finish the mural, and every student contributed at least one idea.",
+          "translation": "壁画の完成には何週間もかかりましたが、生徒は全員、少なくとも一つのアイデアを出しました。"
+        },
+        {
+          "id": "example-2",
+          "context": "物を提供する",
+          "text": "The bakery contributes bread to a local shelter every Friday.",
+          "translation": "そのパン屋は毎週金曜日に、地域のシェルターへパンを提供しています。"
+        },
+        {
+          "id": "example-3",
+          "context": "悪い結果の一因にもなる",
+          "text": "Poor lighting can contribute to accidents on this road.",
+          "translation": "照明の不十分さが、この道路での事故の一因になることがあります。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "contribute-usage",
+          "type": "usage",
+          "prompt": "contribute を使った、文法・意味ともに自然な文を1つ選んでください。",
+          "choices": [
+            "Our club contributed to buy new books for the library.",
+            "Our club contributed the library with money for new books.",
+            "Our club contributed money the library for new books.",
+            "Our club contributed money to the library for new books."
+          ],
+          "correctIndex": 3,
+          "explanation": "正解は4。contribute money to the library で「図書館にお金を提供する」。2は provide the library with money との混同、3は提供先の前の to が必要です。1で『本を買うことに貢献した』と言うなら contribute to buying とします。ここで to は前置詞で、不定詞の to ではありません。"
+        },
+        {
+          "id": "contribute-context",
+          "type": "context",
+          "prompt": "空欄に最も合う語を選んでください。\nTraffic was already heavy. The roadworks _____ to the delays by closing one lane.",
+          "choices": [
+            "objected",
+            "contributed",
+            "referred",
+            "apologized"
+          ],
+          "correctIndex": 1,
+          "explanation": "正解は2。工事で一車線が閉鎖され、遅れを生む要因が加わったので contributed to が合います。objected to は反対した、referred to は言及した、apologized は謝罪した。contribute は、遅れのような望ましくない結果にも使います。"
+        },
+        {
+          "id": "contribute-paraphrase",
+          "type": "paraphrase",
+          "prompt": "次の文に最も近い意味の英文を選んでください。\nRegular feedback contributed to the team's improvement.",
+          "choices": [
+            "The team improved only because it received regular feedback.",
+            "The team's improvement made regular feedback unnecessary.",
+            "Regular feedback was one of the things that helped the team improve.",
+            "Regular feedback prevented the team from making any progress."
+          ],
+          "correctIndex": 2,
+          "explanation": "正解は3。contributed to は「改善を助ける一因になった」で、唯一の原因とは限りません。1の only は言い過ぎです。2の不要になったという関係はなく、4の進歩を妨げたは逆の内容です。"
+        }
+      ]
+    },
+    {
+      "id": "reluctant",
+      "level": "準1級",
+      "word": "reluctant",
+      "ipa": "/rɪˈlʌk.tənt/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "形容詞",
+      "definition": "Not willing or eager to do something, often because of doubts or worries.",
+      "meaning": "気が進まない・ためらっている",
+      "usageTip": "be reluctant to do が基本。「できない」ではなく「やりたくない／気が進まない」。ためらいながら結局行う場合にも使え、完全な拒否とは限りません。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "失敗が不安でためらう",
+          "text": "I was reluctant to speak in the debate because I was worried about making a mistake.",
+          "translation": "間違えるのが心配で、討論で発言することに気が進みませんでした。"
+        },
+        {
+          "id": "example-2",
+          "context": "好ましくない選択に消極的",
+          "text": "The store owner was reluctant to raise prices, but the cost of materials had increased.",
+          "translation": "店主は値上げに消極的でしたが、材料費が上がっていました。"
+        },
+        {
+          "id": "example-3",
+          "context": "慎重に承認をためらう",
+          "text": "The committee remained reluctant to approve the plan until it saw stronger evidence.",
+          "translation": "委員会は、もっと確かな根拠を見るまでは計画の承認をためらっていました。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "reluctant-usage",
+          "type": "usage",
+          "prompt": "reluctant を使って「公表するのに気が進まない」を自然に表す文を選んでください。",
+          "choices": [
+            "The team was reluctant to publish the figures before checking them.",
+            "The team was reluctant publishing the figures before checking them.",
+            "The team reluctant to publish the figures before checking them.",
+            "The team was reluctance to publish the figures before checking them."
+          ],
+          "correctIndex": 0,
+          "explanation": "正解は1。be reluctant to publish で「公表するのをためらう」。2は to publish、3は形容詞 reluctant の前に was が必要です。4の reluctance は名詞なので、showed reluctance to publish など別の形にします。"
+        },
+        {
+          "id": "reluctant-context",
+          "type": "context",
+          "prompt": "空欄に最も合う語を選んでください。\nNora felt nervous about speaking on live radio, so she was _____ to accept the invitation at first.",
+          "choices": [
+            "eager",
+            "eligible",
+            "reluctant",
+            "determined"
+          ],
+          "correctIndex": 2,
+          "explanation": "正解は3。生放送への不安があるので、最初は引き受けることをためらった、とつながります。eager は意欲的、determined は決意しているで、この so の流れに合いません。eligible は資格・条件を満たすことで、本人の気持ちとは別です。"
+        },
+        {
+          "id": "reluctant-paraphrase",
+          "type": "paraphrase",
+          "prompt": "次の文に最も近い意味の英文を選んでください。\nThe council was reluctant to introduce the new fee.",
+          "choices": [
+            "The council was legally unable to introduce the new fee.",
+            "The council did not really want to introduce the new fee.",
+            "The council had already refused to introduce the new fee permanently.",
+            "The council was strongly committed to introducing the new fee immediately."
+          ],
+          "correctIndex": 1,
+          "explanation": "正解は2。reluctant は意思・気持ちの消極性を表します。1の法的に不可能、3の恒久的に拒否した、までは分かりません。4はすぐに導入しようとする強い意思で逆です。気が進まなくても、後で導入する可能性は残っています。"
+        }
+      ]
+    },
+    {
+      "id": "undermine",
+      "level": "準1級",
+      "word": "undermine",
+      "ipa": "/ˌʌn.dəˈmaɪn/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "動詞",
+      "definition": "To make confidence, trust, authority, or support for an idea weaker.",
+      "meaning": "徐々に弱める・損なう・根拠を揺るがす",
+      "usageTip": "undermine confidence / trust / an argument。目に見える物の破壊だけでなく、自信・信頼・主張の土台を弱めるイメージです。必ずしも完全に壊すことではありません。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "人の自信を損なう",
+          "text": "Mocking every idea can undermine a student's confidence, even when the comments are meant as jokes.",
+          "translation": "冗談のつもりでも、アイデアを毎回からかうと、生徒の自信を損なうことがあります。"
+        },
+        {
+          "id": "example-2",
+          "context": "社会の信頼を損なう",
+          "text": "When a company hides mistakes, it can undermine customers' trust.",
+          "translation": "企業がミスを隠すと、顧客の信頼を損なうことがあります。"
+        },
+        {
+          "id": "example-3",
+          "context": "主張の説得力を弱める",
+          "text": "The new evidence undermined the claim that the river was safe to swim in.",
+          "translation": "その新たな証拠は、その川で泳いでも安全だという主張の説得力を弱めました。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "undermine-usage",
+          "type": "usage",
+          "prompt": "undermine を使った、文法・意味ともに自然な文を1つ選んでください。",
+          "choices": [
+            "The fake reviews undermined customers to trust the website.",
+            "The fake reviews undermined to customers' trust in the website.",
+            "The fake reviews undermined customers' trust in the website.",
+            "The fake reviews undermined that customers trust the website."
+          ],
+          "correctIndex": 2,
+          "explanation": "正解は3。undermine の目的語に customers' trust（顧客の信頼）を直接置きます。1の undermine 人 to do、2の undermine to 名詞、4の undermine that 節は、この意味の構文として不適切です。『偽のレビューが信頼を損なった』と考えます。"
+        },
+        {
+          "id": "undermine-context",
+          "type": "context",
+          "prompt": "空欄に最も合う語を選んでください。\nThe mayor promised to release all the documents but then hid several reports. This decision was likely to _____ public trust.",
+          "choices": [
+            "restore",
+            "express",
+            "justify",
+            "undermine"
+          ],
+          "correctIndex": 3,
+          "explanation": "正解は4。公開の約束を破って報告書を隠すと、市民の信頼が弱まると考えられます。restore は回復するで逆方向、express は表す、justify は正当化するです。隠す行為と信頼への影響をつなげて判断します。"
+        },
+        {
+          "id": "undermine-paraphrase",
+          "type": "paraphrase",
+          "prompt": "次の文から言えることとして、最も適切なものを選んでください。\nThe experiment produced evidence that undermined the theory.",
+          "choices": [
+            "The evidence made the theory less convincing.",
+            "The evidence proved that every part of the theory was false.",
+            "The evidence made the theory more widely accepted.",
+            "The evidence had no effect on how convincing the theory was."
+          ],
+          "correctIndex": 0,
+          "explanation": "正解は1。undermined は理論の支えを弱めた、つまり説得力を下げたという意味です。2の『全ての部分が誤りだと証明した』までは含みません。3の支持が広まった、4の影響がなかったとも逆です。"
+        }
+      ]
+    },
+    {
+      "id": "plausible",
+      "level": "準1級",
+      "word": "plausible",
+      "ipa": "/ˈplɑː.zə.bəl/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "形容詞",
+      "definition": "Reasonable enough to be believed, although it has not necessarily been proved true.",
+      "meaning": "もっともらしい・ありそうな・納得できそうな",
+      "usageTip": "a plausible explanation / theory / link。筋が通っていて信じられそう、という段階です。true（真実）や proven（証明済み）とは区別します。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "事情の説明を評価する",
+          "text": "The locked gate was a plausible explanation for the late delivery, but we still asked the driver what had happened.",
+          "translation": "門が施錠されていたことは配達の遅れのもっともらしい説明でしたが、それでも運転手に何があったのか聞きました。"
+        },
+        {
+          "id": "example-2",
+          "context": "うわさが本当らしく聞こえる",
+          "text": "At first, the rumor sounded plausible because it matched the school's recent announcements.",
+          "translation": "学校の最近の発表と一致していたため、そのうわさは最初、本当らしく聞こえました。"
+        },
+        {
+          "id": "example-3",
+          "context": "仮説を検証する前の段階",
+          "text": "Researchers proposed a plausible link between the two events, then designed a study to test it.",
+          "translation": "研究者たちは二つの出来事にありそうな関連を提案し、それを検証する研究を計画しました。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "plausible-usage",
+          "type": "usage",
+          "prompt": "plausible を使った、文法・意味ともに自然な文を1つ選んでください。",
+          "choices": [
+            "The witness was plausible to explain why the door was open.",
+            "The witness gave a plausible explanation, though it had not yet been checked.",
+            "The witness explained plausible why the door was open.",
+            "The witness gave a plausibly explanation, though it had not yet been checked."
+          ],
+          "correctIndex": 1,
+          "explanation": "正解は2。形容詞 plausible が explanation を修飾し、『未確認だが筋の通った説明』となります。1の be plausible to explain はこの意味で使いません。3は explained を修飾するなら副詞 plausibly、4は explanation を修飾するので形容詞 plausible が必要です。"
+        },
+        {
+          "id": "plausible-context",
+          "type": "context",
+          "prompt": "空欄に最も合う語を選んでください。\nNo one has checked the security camera yet, but a power failure is a _____ explanation for why the lights went out.",
+          "choices": [
+            "proven",
+            "reluctant",
+            "plausible",
+            "generous"
+          ],
+          "correctIndex": 2,
+          "explanation": "正解は3。停電は消灯の理由として筋が通りますが、まだ確認されていないので plausible が合います。proven は証明済みで、本文からは言えません。reluctant は人などが気乗りしないこと、generous は気前がよい・十分なことで、この explanation の評価に合いません。"
+        },
+        {
+          "id": "plausible-paraphrase",
+          "type": "paraphrase",
+          "prompt": "次の文に最も近い意味の英文を選んでください。\nHer explanation sounded plausible, so we decided to investigate it.",
+          "choices": [
+            "Her explanation was obviously impossible, so we rejected it immediately.",
+            "Her explanation had already been proved correct, so no further checks were needed.",
+            "Her explanation was too confusing to understand, so we stopped discussing it.",
+            "Her explanation seemed believable, so we decided to check whether it was true."
+          ],
+          "correctIndex": 3,
+          "explanation": "正解は4。plausible は『信じられそう』なので、本当か調べる余地があります。1の明らかに不可能、3の理解不能ではありません。2はすでに証明済みで調査不要としており、investigate するという原文とも合いません。"
+        }
+      ]
+    }
+  ]
+}

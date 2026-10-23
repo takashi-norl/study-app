@@ -1,0 +1,184 @@
+{
+  "version": "1",
+  "createdAt": "2026-10-23",
+  "sources": [
+    {
+      "title": "日本英語検定協会：2級の試験構成",
+      "url": "https://www.eiken.or.jp/eiken/en/grades/grade_2/"
+    },
+    {
+      "title": "日本英語検定協会：準1級の試験構成",
+      "url": "https://www.eiken.or.jp/eiken/en/grades/grade_p1/"
+    },
+    {
+      "title": "2026年度 第2回 2級 問題冊子（形式確認のみ）",
+      "url": "https://www.eiken.or.jp/eiken/exam/kakomon/2026-2-1ji_2kyu.pdf"
+    },
+    {
+      "title": "2026年度 第2回 準1級 問題冊子（形式確認のみ）",
+      "url": "https://www.eiken.or.jp/eiken/exam/kakomon/2026-2-1ji_p1kyu.pdf"
+    }
+  ],
+  "samples": [
+    {
+      "id": "grade2-reading",
+      "level": "2級",
+      "skill": "Reading",
+      "title": "学校の修理カフェ",
+      "instructions": "英文を読み、質問の答えとして最も適切なものを1つ選んでください。",
+      "formatNote": "品質確認用の短縮読解（本文104語・1設問）です。本試験の長文全体の長さを再現したものではありません。",
+      "question": "Why does the school want to connect the repair cafe with classroom lessons?",
+      "explanation": "正解は2。最後の2文が根拠です。修理を通じて電気の仕組みを理解した生徒の例から、授業の内容が実生活でどう役立つかを実感させたいと読み取れます。1の『置き換える』、3の『あらゆる機器を修理する訓練』、4の『ボランティア削減』は書かれていません。",
+      "passage": "Last spring, a high school opened a monthly repair cafe. Students brought broken objects, such as lamps and school bags, and worked with local volunteers to repair them. At first, the teachers expected the project mainly to reduce waste. However, they noticed another benefit. Students who rarely spoke during regular lessons began asking questions and explaining their ideas. One student, who had struggled with science, said that repairing a lamp helped her understand how electricity works. The school now plans to connect the cafe with classroom lessons. The teachers believe that practical activities can help students see why the things they study are useful.",
+      "choices": [
+        "To replace science lessons with repair work.",
+        "To show students how school subjects can be used in real life.",
+        "To train students to repair every kind of electrical device.",
+        "To reduce the number of volunteers needed at the cafe."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "grade2-listening",
+      "level": "2級",
+      "skill": "Listening",
+      "title": "博物館に行く前に",
+      "instructions": "最初は英文を見ずに音声を聞き、質問の答えを1つ選んでください。聞いた後で台本・解説を確認できます。",
+      "formatNote": "男女対話・1設問のオリジナル見本です。声の自然さと聞き取りやすさを確認してください。",
+      "question": "What will the woman do?",
+      "explanation": "正解は3。男性がバスを調べてほしいと頼み、女性が『夕食後に経路を送る』と答えています。チケットを予約するのは男性、参加するのは土曜午後2時の回です。Friday evening は予約期限なので、訪問日と取り違えないようにします。",
+      "script": [
+        {
+          "speaker": "female",
+          "text": "Are we still going to the science museum on Saturday?"
+        },
+        {
+          "speaker": "male",
+          "text": "Yes, but the morning tour is full. There's another one at two, and we can still get tickets."
+        },
+        {
+          "speaker": "female",
+          "text": "That works for me. Should we buy them when we arrive?"
+        },
+        {
+          "speaker": "male",
+          "text": "The website says we need to book by Friday evening. I'll do that tonight. Could you check which bus we should take?"
+        },
+        {
+          "speaker": "female",
+          "text": "Sure. I'll send you the route after dinner."
+        },
+        {
+          "speaker": "male",
+          "text": "Question. What will the woman do?"
+        }
+      ],
+      "choices": [
+        "Book tickets for a morning tour.",
+        "Ask the museum to change its schedule.",
+        "Find out how to get to the museum by bus.",
+        "Meet the man at the museum on Friday."
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "grade2-writing",
+      "level": "2級",
+      "skill": "Writing",
+      "title": "学校で実用的な技能を学ぶ",
+      "instructions": "あなたの意見と理由2つを、80〜100語の英語で書いてください。観点は参考です。別の観点から書いてもかまいません。",
+      "formatNote": "意見論述の見本です。モデル解答は88語。実際のWritingには別途、英文要約もあります。この見本は要約を含みません。",
+      "question": "Do you think high schools should give students more opportunities to learn practical skills, such as cooking and repairing things?",
+      "explanation": "意見→理由1『自立した生活』と具体例→理由2『自信』と具体例→結論、という流れです。賛成が唯一の正解ではありません。反対でも、問いに答え、2つの理由を一貫して説明できれば成立します。",
+      "points": [
+        "Daily life",
+        "Confidence",
+        "Study time"
+      ],
+      "wordRange": [
+        80,
+        100
+      ],
+      "modelAnswer": "I think high schools should offer more chances to learn practical skills. First, these skills help students become more independent. For example, students who can cook simple meals will find it easier to take care of themselves when they leave home. Second, practical activities can build confidence. Finishing a difficult task, such as repairing a broken bag, shows students that they can solve problems through effort. Although academic subjects are important, practical lessons also prepare young people for their future. Therefore, schools should include more of these activities.",
+      "rubric": [
+        "問いに対する意見が明確か",
+        "異なる理由を2つ説明しているか",
+        "主張・理由・結論がつながっているか",
+        "適切な語彙・文法で80〜100語を目安に書けているか"
+      ]
+    },
+    {
+      "id": "pre1-reading",
+      "level": "準1級",
+      "skill": "Reading",
+      "title": "採用支援ソフトの落とし穴",
+      "instructions": "英文を読み、質問の答えとして最も適切なものを1つ選んでください。",
+      "formatNote": "品質確認用の短縮読解（本文165語・1設問）です。本試験の長文全体の長さを再現したものではありません。",
+      "question": "What is the main lesson of the company's experience?",
+      "explanation": "正解は1。過去の社員データに大学の偏りがあると、その偏りを学んだソフトも特定大学の出身者を優遇します。結論の reproduce earlier preferences が preserve old biases の言い換えです。ソフトを使うだけでは公平性は保証されず、データと判断の検証が必要だという要旨です。2は出身大学と能力を不当に一般化、3は『全員採用』という極端化、4は本文にない解決策です。",
+      "passage": "A company introduced software to help select applicants for job interviews. The system learned from the records of employees who had performed well in the past. Managers expected it to make recruitment faster and more consistent. Initially, the software appeared successful: it processed applications quickly and recommended candidates with familiar qualifications.\n\nAn independent review, however, revealed a problem. Because most employees in the training data had attended a small group of universities, the system tended to favor applicants from those institutions. It sometimes rejected people with relevant experience simply because their educational backgrounds were less common in the data.\n\nRather than abandoning the software, the company changed how it was used. Staff members began examining a sample of rejected applications, and the system's recommendations were regularly checked for unfair patterns. The case illustrates that automating a decision does not necessarily remove human bias. Unless the information used to build a system is carefully examined, technology may reproduce earlier preferences while making them harder to notice.",
+      "choices": [
+        "Recruitment software can preserve old biases if its data and decisions are not examined.",
+        "Applicants from less familiar universities usually need more work experience.",
+        "Automated recruitment is useful only when every application is accepted.",
+        "Using the same qualifications for all jobs makes recruitment fair."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "pre1-listening",
+      "level": "準1級",
+      "skill": "Listening",
+      "title": "町の暑さ対策の実験",
+      "instructions": "最初は英文を見ずに音声を聞き、質問の答えを1つ選んでください。聞いた後で台本・解説を確認できます。",
+      "formatNote": "説明文・1設問の短い品質確認用見本です。本試験のPart 2は1本文につき2設問ですが、この見本は1設問です。",
+      "question": "Why has the city postponed its wider tree-planting program?",
+      "explanation": "正解は4。木陰で気温は下がった一方、ベンチの少なさと歩きにくい歩道が利用を妨げていました。そこで、先に座る場所と歩行環境を改善することにしています。Although 以降で『冷却には成功したが、利用には別の障害がある』という対比をつかむのがポイント。1は実験結果を逆転、2は住民の意見を排除しておらず、3の撤去予定はありません。",
+      "script": [
+        {
+          "speaker": "female",
+          "text": "A coastal city recently tested a new way to reduce summer heat. Instead of immediately planting trees throughout the city, officials began with a small trial in two neighborhoods. One received additional street trees, while the other kept its existing layout. Sensors recorded temperatures, and residents reported how comfortable they felt outdoors. The results were encouraging, but they also revealed an unexpected limitation. Although the shaded streets were noticeably cooler, many residents avoided them because there were few benches and the pavements were difficult to walk on. The city has therefore postponed a wider planting program. It will first improve seating and pedestrian access in the trial area, then collect more feedback. Officials say the aim is not simply to lower temperatures, but to create public spaces that people can actually use."
+        },
+        {
+          "speaker": "male",
+          "text": "Question. Why has the city postponed its wider tree-planting program?"
+        }
+      ],
+      "choices": [
+        "It found that the new trees had failed to lower temperatures.",
+        "It wants to replace residents' opinions with more temperature measurements.",
+        "It plans to remove the trees from the trial neighborhoods.",
+        "It needs to address other obstacles that prevent people from using the cooler streets."
+      ],
+      "correctIndex": 3
+    },
+    {
+      "id": "pre1-writing",
+      "level": "準1級",
+      "skill": "Writing",
+      "title": "公共交通を無料にするべきか",
+      "instructions": "4つの観点から2つを選び、120〜150語の英語で意見を書いてください。導入・本論・結論を意識してください。",
+      "formatNote": "意見論述の見本です。モデル解答は132語。実際のWritingには別途、英文要約もあります。この見本は要約を含みません。",
+      "question": "Should local governments provide free public transportation for all residents?",
+      "explanation": "Public spending と Service quality の2観点を使用。費用→税収・他サービスへの影響、品質→便数・信頼性・通勤の利便性、という因果を示しています。全面無料に反対しつつ、必要な人への割引という代案を示す論述です。賛成の論述でも、選んだ2観点で一貫して支えられれば成立します。",
+      "points": [
+        "Environmental impact",
+        "Public spending",
+        "Access to employment",
+        "Service quality"
+      ],
+      "wordRange": [
+        120,
+        150
+      ],
+      "modelAnswer": "I do not think local governments should make public transportation free for all residents. Instead, they should offer discounts to people who need financial support.\n\nFirst, public spending must be considered. Removing fares would reduce an important source of revenue, so governments might have to cut other essential services or raise taxes. Targeted discounts could help vulnerable residents at a lower cost.\n\nSecond, service quality matters more than price for many passengers. Even a free bus is not useful if it rarely arrives on time or does not reach a person's workplace. Investing in frequent, reliable services would make public transportation a more attractive alternative to driving.\n\nFor these reasons, limited public funds should support affordable fares for those in need and better services for everyone, rather than free travel for all.",
+      "rubric": [
+        "問いに対する立場が明確か",
+        "提示された4観点のうち2つを使っているか",
+        "理由に因果や具体例があり、結論まで一貫しているか",
+        "語彙・文法が適切で120〜150語を目安に書けているか"
+      ]
+    }
+  ]
+}
+

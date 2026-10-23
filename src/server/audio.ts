@@ -8,6 +8,7 @@ import { ApiError } from './config';
 import { appendEvent, downloadAudioCache, getFullState, getSessionSnapshot, loadEvents, MAX_AUDIO_BYTES, saveAudioCache, type StudyEvent } from './google-store';
 import { getFamilyId } from './env';
 import { mayPracticeQuestion } from './practice-access';
+import type { AudioSegment } from './audio-segments';
 
 export const audioRequestSchema=z.discriminatedUnion('part',[
   z.object({questionId:z.string().uuid(),sessionId:z.string().uuid().optional(),part:z.literal('prompt')}).strict(),
@@ -63,7 +64,7 @@ export function audioRecord(events:StudyEvent[],cacheKey:string) {
   if(!request) return undefined;
   const ready=events.find(event=>event.type==='audio.ready' && event.payload.cacheKey===cacheKey && event.payload.requestToken===request.payload.requestToken);
   const failed=events.find(event=>event.type==='audio.failed' && event.payload.cacheKey===cacheKey && event.payload.requestToken===request.payload.requestToken);
-  return {request,fileId:ready?.payload.fileId as string|undefined,failed:!!failed};
+  return {request,fileId:ready?.payload.fileId as string|undefined,segments:ready?.payload.segments as AudioSegment[]|undefined,failed:!!failed};
 }
 
 /** Official API: https://elevenlabs.io/docs/api-reference/text-to-speech/convert . No automatic paid retries. */

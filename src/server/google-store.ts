@@ -12,6 +12,7 @@ import { asPracticeQuestion, isPracticeReadyQuestion, topicOwnerId } from '@/lib
 import { libraryRevision } from './library';
 import { planningSamplesSchema, planningSampleSchema } from './planning-samples';
 import { aiRequestedSchema, aiUsageSchema } from './ai-usage-schema';
+import { audioSegmentsSchema } from './audio-segments';
 import { personalProfileSavedEventSchema, personalProfileChatRequestedEventSchema, personalProfileChatCompletedEventSchema, personalProfileChatFailedEventSchema } from './personal-profile-schemas';
 import { planTagsSchema, planTagsUpdatedEventSchema } from './plan-tags';
 
@@ -227,7 +228,7 @@ function validateEvent(input: StudyEvent): StudyEvent {
       questions: z.array(questionSchema), job: jobSchema }).parse(payload); break;
     case 'source.analysis': z.object({ sourceId: idSchema, text: z.string().max(100_000) }).parse(payload); break;
     case 'audio.requested': z.object({cacheKey:z.string().regex(/^[a-f0-9]{64}$/),requestToken:z.string().uuid(),characters:z.number().int().min(1).max(1500)}).strict().parse(payload); break;
-    case 'audio.ready': z.object({cacheKey:z.string().regex(/^[a-f0-9]{64}$/),requestToken:z.string().uuid(),fileId:idSchema}).strict().parse(payload); break;
+    case 'audio.ready': z.object({cacheKey:z.string().regex(/^[a-f0-9]{64}$/),requestToken:z.string().uuid(),fileId:idSchema,segments:audioSegmentsSchema.optional()}).strict().parse(payload); break;
     case 'audio.failed': z.object({cacheKey:z.string().regex(/^[a-f0-9]{64}$/),requestToken:z.string().uuid()}).strict().parse(payload); break;
     case 'push.subscribed': z.object({ userId: idSchema, subscription: z.object({ endpoint: z.string().url(),
       keys: z.object({ auth: z.string(), p256dh: z.string() }) }).nullable() }).parse(payload); break;
