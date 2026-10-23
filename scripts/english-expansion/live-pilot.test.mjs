@@ -140,3 +140,73 @@ test('live activation requires exact bounded historical coverage before provider
   config.historicalCommitments = receipt; config.expenseCoverage = 'all-costs-settled'; await put(configPath, config);
   await assert.rejects(dispatchPilotWorkWithMockSdk(options, sdk), /receipt is incomplete/); assert.equal(getCounts(), 0);
 }));
+
+// New benchmark cases still use the same network-disabled on-disk fixture and spending gates.
+const { generationWorkV3, reviewWorkV3 } = await import('./prompts-v3.mjs');
+const { generationWorkV2 } = await import('./prompts-v2.mjs');
+const { parseVersionedGeneration } = await import('./work-versions.mjs');
+async function installBenchmark(f) {
+  const work = generationWorkV3([f.target], { id: 'quality-generation-one', createdAt: date });
+  f.config.qualityBenchmark = { schemaVersion: 1, promptVersion: 'v3', model: PRICING_POLICY.model, effort: 'high', maxUnits: 1, maxPaidRequests: 2,
+    unitId: f.target.id, seedSha256: hashContent(f.target), generationWorkId: work.id, generationWorkSha256: hashContent(work), reviewWorkId: 'quality-review-one' };
+  await put(f.configPath, f.config); return work;
+}
+test('v3 needs explicit enabled benchmark; invalid/mismatched new work stops before preflight', async () => fixture(async f => {
+  const work = generationWorkV3([f.target], { id: 'quality-generation-one', createdAt: date });
+  await assert.rejects(dispatchPilotWorkWithMockSdk({ ...f.options, work }, f.sdk), /requires an exact/);
+  await installBenchmark(f);
+  f.config.enabled = false; await put(f.configPath, f.config);
+  await assert.rejects(dispatchPilotWorkWithMockSdk({ ...f.options, work }, f.sdk), /receipt is incomplete/);
+  f.config.enabled = true; await put(f.configPath, f.config);
+  const invalid = [f.options.work, generationWorkV2([f.target], { id: 'new-v2', createdAt: date }),
+    generationWorkV3([f.target], { id: 'wrong-id', createdAt: date }), generationWorkV3([f.target], { id: work.id, createdAt: '2026-10-24T00:01:00.000Z' })];
+  for (const candidate of invalid) await assert.rejects(dispatchPilotWorkWithMockSdk({ ...f.options, work: candidate }, f.sdk), /exact one-seed|exact authorized/);
+  assert.equal(f.getCounts(), 0); assert.equal(f.getCalls(), 0);
+}));
+test('benchmark allows exactly its generated whole card review and saved raw replay, no new other work', async () => fixture(async f => {
+  const work = await installBenchmark(f), options = { ...f.options, work };
+  await dispatchPilotWorkWithMockSdk(options, f.sdk);
+  const raw = await json(join(options.output, 'requests', work.id, 'response.json'));
+  const [unit] = parseVersionedGeneration(raw.response, work);
+  const changed = structuredClone(unit); changed.senses[0].meaningJa = '変更された説明';
+  await put(join(options.output, 'drafts', changed.id, `${hashContent(changed)}.json`), { contentSha256: hashContent(changed), unit: changed });
+  const changedReview = reviewWorkV3([changed], { id: 'quality-review-one', createdAt: date });
+  await assert.rejects(dispatchPilotWorkWithMockSdk({ ...options, work: changedReview }, f.sdk), /exact generated whole card/);
+  const review = reviewWorkV3([unit], { id: 'quality-review-one', createdAt: date });
+  const result = await dispatchPilotWorkWithMockSdk({ ...options, work: review }, f.sdk);
+  assert.deepEqual(result.approved, [unit.id]); assert.equal(f.getCalls(), 2);
+  assert.equal((await dispatchPilotWorkWithMockSdk(options, f.sdk)).replayed, true);
+  assert.equal((await dispatchPilotWorkWithMockSdk({ ...options, work: review }, f.sdk)).replayed, true);
+  await assert.rejects(dispatchPilotWorkWithMockSdk({ ...options, work: reviewWorkV3([unit], { id: 'review-again', createdAt: date }) }, f.sdk), /exact one-seed/);
+  assert.equal(f.getCalls(), 2); assert.equal(f.getCounts(), 2);
+}));
+test('benchmark cannot regenerate a seed already sent under v1 or v2; legacy raw replay remains free', async () => {
+  for (const builder of [generationWork, generationWorkV2]) await fixture(async f => {
+    const old = builder([f.target], { id: 'old-generation', createdAt: date });
+    await dispatchPilotWorkWithMockSdk({ ...f.options, work: old }, f.sdk);
+    const work = await installBenchmark(f);
+    await assert.rejects(dispatchPilotWorkWithMockSdk({ ...f.options, work }, f.sdk), /already has generation evidence/);
+    assert.equal((await dispatchPilotWorkWithMockSdk({ ...f.options, work: old }, f.sdk)).replayed, true);
+    assert.equal(f.getCalls(), 1); assert.equal(f.getCounts(), 1);
+  });
+});
+test('unknown v3 response cannot be retried by replay or another ID and retains full reservation', async () => fixture(async f => {
+  const work = await installBenchmark(f); f.setCreate(async () => { throw new Error('network failed'); });
+  await assert.rejects(dispatchPilotWorkWithMockSdk({ ...f.options, work }, f.sdk), /outcome is unknown/);
+  await assert.rejects(dispatchPilotWorkWithMockSdk({ ...f.options, work }, f.sdk), /no saved response/);
+  const other = generationWorkV3([f.target], { id: 'another-id', createdAt: date });
+  await assert.rejects(dispatchPilotWorkWithMockSdk({ ...f.options, work: other }, f.sdk), /exact one-seed/);
+  const ledger = await json(join(f.options.output, 'ledger.json'));
+  assert.equal(ledger.calls[0].status, 'uncertain'); assert.equal(ledger.calls[0].reservedUsd, 0.3);
+  assert.equal(f.getCalls(), 1); assert.equal(f.getCounts(), 1);
+}));
+test('benchmark review still obeys the ten historical calls cap', async () => fixture(async f => {
+  const work = await installBenchmark(f); await dispatchPilotWorkWithMockSdk({ ...f.options, work }, f.sdk);
+  const raw = await json(join(f.options.output, 'requests', work.id, 'response.json')), [unit] = parseVersionedGeneration(raw.response, work);
+  const path = join(f.options.output, 'ledger.json'), ledger = await json(path);
+  for (let i = 0; i < 9; i++) ledger.calls.push({ id: `prior-${i}`, stage: 'review', unitIds: [`other-${i}`], status: 'complete', reservedUsd: 0.1, actualUsd: 0.01 });
+  await put(path, ledger);
+  const review = reviewWorkV3([unit], { id: 'quality-review-one', createdAt: date });
+  await assert.rejects(dispatchPilotWorkWithMockSdk({ ...f.options, work: review }, f.sdk), /ten total/);
+  assert.equal(f.getCounts(), 1); assert.equal(f.getCalls(), 1);
+}));

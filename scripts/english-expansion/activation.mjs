@@ -6,11 +6,12 @@ import { SPENDING_FENCE_PROTOCOL } from '../shared-spending-fence.mjs';
 import { assertPricingFresh, PRICING_POLICY_SHA256 } from './anthropic-adapter.mjs';
 import { validateHistoricalCommitments } from './historical-costs.mjs';
 import { hashContent, validateSeed } from './schema.mjs';
+import { validateQualityBenchmark } from './prompts-v3.mjs';
 import { validateRepairAuthority } from './pilot-repair.mjs';
 import { validateEditorialAuthority } from './pilot-editorial.mjs';
 
 export const REPO_ROOT = fileURLToPath(new URL('../../', import.meta.url));
-const scripts = ['shared-spending-fence.mjs', ...['canonical-policy', 'catalog-policy', 'holds', 'schema', 'structural-forms'].map(name => `vocabulary-batch/${name}.mjs`), ...['activation', 'anthropic-adapter', 'prompts', 'prompts-v2', 'work-versions', 'pilot-repair', 'pilot-editorial', 'pilot-editorial-cli', 'live-pilot', 'dispatcher', 'store', 'budget', 'historical-costs', 'schema', 'canonical-families', 'registry', 'loaders', 'audio-adapter', 'allocation'].map(name => `english-expansion/${name}.mjs`)];
+const scripts = ['shared-spending-fence.mjs', ...['canonical-policy', 'catalog-policy', 'holds', 'schema', 'structural-forms'].map(name => `vocabulary-batch/${name}.mjs`), ...['activation', 'anthropic-adapter', 'prompts', 'prompts-v2', 'prompts-v3', 'work-versions', 'pilot-repair', 'pilot-editorial', 'pilot-editorial-cli', 'live-pilot', 'dispatcher', 'store', 'budget', 'historical-costs', 'schema', 'canonical-families', 'registry', 'loaders', 'audio-adapter', 'allocation'].map(name => `english-expansion/${name}.mjs`)];
 export function integrationFiles(runtimeDirectory) {
   return [...['production.mjs', 'run.mjs'].map(name => ({ id: `phase-one/${name}`, path: join(runtimeDirectory, name) })),
     ...scripts.map(name => ({ id: `scripts/${name}`, path: join(REPO_ROOT, 'scripts', name) }))];
@@ -49,6 +50,7 @@ export async function verifyIntegration(options, now = new Date()) {
   }
   assertPricingFresh(now);
   const seeds = validateReviewedSeeds(config.inventory?.source, config.inventory?.review);
+  if (config.qualityBenchmark !== undefined) validateQualityBenchmark(config.qualityBenchmark, seeds);
   if (!config.canonicalAudit?.proposal || !config.canonicalAudit?.review) throw new Error('Canonical-family audit must precede live expansion.');
   return { config, configSha256: hashContent(config), seeds, cashPurchases: config.cashPurchases, historicalCommitments: config.historicalCommitments, canonicalAudit: config.canonicalAudit };
 }

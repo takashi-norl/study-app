@@ -18,7 +18,7 @@ export function assertPricingFresh(now = new Date()) {
 export function validateProviderParams(params) {
   const allowed = new Set(['model', 'max_tokens', 'system', 'messages', 'output_config', 'service_tier', 'inference_geo']);
   if (!params || Object.keys(params).some(key => !allowed.has(key)) || params.model !== PRICING_POLICY.model || params.service_tier !== 'standard_only' || params.inference_geo !== 'global' || !Number.isInteger(params.max_tokens) || params.max_tokens < 1 || params.max_tokens > PRICING_POLICY.maxOutputTokens) throw new Error('Unsupported provider parameters or unverified model.');
-  if (!params.output_config?.format || params.output_config.format.type !== 'json_schema' || !['low', 'medium'].includes(params.output_config.effort) || Object.keys(params.output_config).some(key => !['effort', 'format'].includes(key))) throw new Error('Reviewed structured-output and effort settings are required.');
+  if (!params.output_config?.format || params.output_config.format.type !== 'json_schema' || !['low', 'medium', 'high'].includes(params.output_config.effort) || Object.keys(params.output_config).some(key => !['effort', 'format'].includes(key))) throw new Error('Reviewed structured-output and effort settings are required.');
   if (typeof params.system !== 'string' || params.messages?.length !== 1 || params.messages[0].role !== 'user' || typeof params.messages[0].content !== 'string' || JSON.stringify(params).length > 2_000_000) throw new Error('Unexpected provider prompt structure.');
   // No prompt caching or external tools in the bounded pilot.
   if (JSON.stringify(params).includes('"cache_control"')) throw new Error('Cache-write requests are not enabled in this pricing policy.');

@@ -6,6 +6,7 @@ import { TARGET_ALLOCATION } from './allocation.mjs';
 import { reserveExpansionRequest } from './budget.mjs';
 import { boundedRequest, inspectPhaseOneGate } from './dispatcher.mjs';
 import { checkedVersionedWork, parseVersionedGeneration, parseVersionedReview } from './work-versions.mjs';
+import { validateQualityBenchmark } from './prompts-v3.mjs';
 import { assertOnlyTestsChanged, assertSingleRepairDispatch, inspectRepairEvidence, assertRepairAwareReview } from './pilot-repair.mjs';
 import { assertEditorialAuthorityPresent, assertEditorialAwareReview } from './pilot-editorial.mjs';
 import { classifyCandidates } from './registry.mjs';
@@ -16,6 +17,29 @@ function checkedWork(work) {
   const expected = checkedVersionedWork(work);
   boundedRequest({ ...work, reservedUsd: 1 }); // Identity, bounds and credential-free params.
   return expected;
+}
+async function assertQualityBenchmarkDispatch(output, config, seeds, work, ledger) {
+  if (config.qualityBenchmark === undefined) {
+    if (work.promptVersion === 'v3') throw new Error('New v3 work requires an exact one-seed quality benchmark authority.');
+    return;
+  }
+  const benchmark = validateQualityBenchmark(config.qualityBenchmark, seeds);
+  const expectedId = work.stage === 'generation' ? benchmark.generationWorkId : benchmark.reviewWorkId;
+  if (work.promptVersion !== 'v3' || work.kind || work.id !== expectedId || work.unitIds.length !== 1 || work.unitIds[0] !== benchmark.unitId || work.params.model !== benchmark.model || work.params.output_config.effort !== benchmark.effort) throw new Error('Only the exact one-seed v3 benchmark generation/review may be newly dispatched.');
+  const generations = ledger.calls.filter(call => call.stage === 'generation' && call.unitIds.includes(benchmark.unitId));
+  if (work.stage === 'generation') {
+    if (hashContent(work) !== benchmark.generationWorkSha256 || hashContent(work.seeds[0]) !== benchmark.seedSha256) throw new Error('Benchmark generation differs from its exact authorized work/seed hash.');
+    if (generations.length) throw new Error('Benchmark seed already has generation evidence; a new version is not retry permission.');
+    return;
+  }
+  const generation = generations[0];
+  if (generations.length !== 1 || generation.id !== benchmark.generationWorkId || generation.status !== 'complete' || generation.accountingHold || !Number.isFinite(generation.actualUsd)) throw new Error('Benchmark review requires its sole settled authorized generation.');
+  const saved = await readJson(join(output, 'requests', generation.id, 'work.json'));
+  const raw = await readJson(join(output, 'requests', generation.id, 'response.json'));
+  const sourceWork = checkedVersionedWork(saved.work);
+  if (hashContent(sourceWork) !== benchmark.generationWorkSha256 || raw.requestId !== generation.id || raw.requestHash !== generation.requestHash || hashContent(raw.response) !== generation.responseHash) throw new Error('Benchmark generation evidence changed.');
+  const units = parseVersionedGeneration(raw.response, sourceWork);
+  if (units.length !== 1 || units[0].id !== benchmark.unitId || hashContent(units[0]) !== hashContent(work.units[0])) throw new Error('Benchmark review must use its exact generated whole card.');
 }
 async function finishSaved(lease, request, work, raw, adapter) {
   if (raw.requestId !== request.id || raw.requestHash !== request.requestHash) throw new Error('Saved raw response is bound to different provider inputs.');
@@ -80,7 +104,6 @@ async function pilotAction(options, adapterFactory) {
     if (work.stage === 'review' && approval.config.pilotEditorial) await assertEditorialAwareReview(lease.output, approval.config.pilotRepair, approval.config.pilotEditorial, work);
     const repair = work.kind === 'tests-only-repair' ? await inspectRepairEvidence(lease.output, approval.config.pilotRepair, work, { allowApprovedReplacement: Boolean(prior) }) : null;
     if (repair && !prior) assertSingleRepairDispatch(ledger, work, repair);
-    const adapter = adapterFactory(); // No credentials/network constructed before actual completion gate.
     if (prior) {
       const savedWork = await readJson(join(lease.output, 'requests', work.id, 'work.json'));
       if (hashContent(savedWork.work) !== hashContent(work) || savedWork.quote.pricingPolicySha256 !== PRICING_POLICY_SHA256) throw new Error('Saved work or historical pricing policy changed; do not resend.');
@@ -88,15 +111,18 @@ async function pilotAction(options, adapterFactory) {
       if (request.requestHash !== prior.requestHash || request.reservedUsd !== prior.reservedUsd || request.repairOf !== prior.repairOf || request.repairPlanSha256 !== prior.repairPlanSha256) throw new Error('Existing request differs from saved work.');
       const raw = await readOptionalJson(join(lease.output, 'requests', work.id, 'response.json'));
       if (!raw) throw new Error('Existing request has no saved response. Outcome may be unknown; never resend automatically.');
+      const adapter = adapterFactory(); // Historical raw replay performs no provider submission.
       return { ...await finishSaved(lease, request, work, raw, adapter), replayed: true };
     }
-    if (approval.config.pilotRepair && work.promptVersion !== 'v2') throw new Error('New requests require the reviewed v2 quality prompt; historical work can only replay saved raw.');
+    await assertQualityBenchmarkDispatch(lease.output, approval.config, registered.pilot.seeds, work, ledger);
+    if (approval.config.qualityBenchmark === undefined && approval.config.pilotRepair && work.promptVersion !== 'v2') throw new Error('New requests require the reviewed v2 quality prompt; historical work can only replay saved raw.');
     if (work.stage === 'review' && approval.config.pilotRepair && !approval.config.pilotEditorial) await assertRepairAwareReview(lease.output, approval.config.pilotRepair, work, ledger);
     if (ledger.calls.some(call => call.accountingHold)) throw new Error('An accounting hold blocks further spending.');
     if (ledger.calls.length >= 10) throw new Error('Initial pilot is limited to ten total generation/review submissions.');
     if (!repair && ledger.calls.some(call => call.stage === work.stage && call.unitIds.some(id => work.unitIds.includes(id)))) throw new Error('These units already have a request for this stage. Reconcile saved evidence; a new ID is not retry permission.');
     // Read-only preflight follows the gate. Generation remains prohibited until
     // all reserve/request evidence has been fsynced and the gate rechecked.
+    const adapter = adapterFactory(); // No credentials or provider preflight before all dispatch authority checks.
     const quote = await adapter.quote(work.params), expectedQuote = quoteInput(work.params, quote.countedInputTokens);
     if (hashContent(quote) !== hashContent(expectedQuote)) throw new Error('Provider quote differs from the verified conservative pricing policy.');
     const request = { ...boundedRequest({ ...work, reservedUsd: quote.reservedUsd }), ...(repair ? { repairOf: repair.plan.sourceRequestId, repairPlanSha256: repair.planSha256 } : {}) };
