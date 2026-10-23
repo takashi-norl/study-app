@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "reviewedBy": "/root",
+  "reviewedAt": "2026-10-23T19:56:22.117195+00:00",
+  "independentReviewer": "/root/bulk_audio_assets",
+  "proposalSha256": "b8d0ac2b2f5e43fa75f31c2aa7bc4f5c40048e5b3f658daa8d339893a2138235",
+  "patches": [
+    {
+      "wordId": "vocab-cause",
+      "beforeContentSha256": "a25bcf6ca2114e9bd9bc9b624fa9b5730e114b3e9e0df16468a9977fccebee33",
+      "afterContentSha256": "80c10e40f74c05deb6d35be30d9956875e76eb9d3a78cc985164c7d9f95f95cc",
+      "operations": [
+        {
+          "mode": "context",
+          "field": "alternatives",
+          "removeExactAnswer": "reason",
+          "before": [
+            {
+              "answer": "reason",
+              "explanation": "理由を表す一般的な語で、自然に使えます。"
+            },
+            {
+              "answer": "source",
+              "explanation": "問題の発生源というニュアンスです。"
+            }
+          ],
+          "after": [
+            {
+              "answer": "source",
+              "explanation": "問題の発生源というニュアンスです。"
+            }
+          ]
+        },
+        {
+          "mode": "recall",
+          "field": "alternatives",
+          "removeExactAnswer": "reason",
+          "before": [
+            {
+              "answer": "reason",
+              "explanation": "理由を表す一般的な語で、自然に使えます。"
+            },
+            {
+              "answer": "source",
+              "explanation": "問題の発生源というニュアンスです。"
+            }
+          ],
+          "after": [
+            {
+              "answer": "source",
+              "explanation": "問題の発生源というニュアンスです。"
+            }
+          ]
+        }
+      ],
+      "reasonJa": "この空所は of the delay を保持するため reason は直接置換できない。reason for the delay への書換えが必要。",
+      "sourceReference": "https://dictionary.cambridge.org/grammar/british-grammar/reason"
+    },
+    {
+      "wordId": "vocab-pending",
+      "beforeContentSha256": "d554a6c9608d041bf72b58d68c318189597fd05708176ef17dd36df7afc32663",
+      "afterContentSha256": "f2b25bf4dfa8b3564d9a7ef1a2f10a8f591032b90bebdf34fa2571d3144a3f02",
+      "operations": [
+        {
+          "mode": "context",
+          "field": "alternatives",
+          "removeExactAnswer": "awaiting a decision",
+          "before": [
+            {
+              "answer": "unresolved",
+              "explanation": "問題が解決していない点を強調する。"
+            },
+            {
+              "answer": "undecided",
+              "explanation": "決定が出ていない点を言う、一般的な語。"
+            },
+            {
+              "answer": "awaiting a decision",
+              "explanation": "結果を待つ状況を説明的に表す。"
+            }
+          ],
+          "after": [
+            {
+              "answer": "unresolved",
+              "explanation": "問題が解決していない点を強調する。"
+            },
+            {
+              "answer": "undecided",
+              "explanation": "決定が出ていない点を言う、一般的な語。"
+            }
+          ]
+        },
+        {
+          "mode": "recall",
+          "field": "alternatives",
+          "removeExactAnswer": "awaiting a decision",
+          "before": [
+            {
+              "answer": "unresolved",
+              "explanation": "問題が解決していない点を強調する。"
+            },
+            {
+              "answer": "undecided",
+              "explanation": "決定が出ていない点を言う、一般的な語。"
+            },
+            {
+              "answer": "awaiting a decision",
+              "explanation": "結果を待つ状況を説明的に表す。"
+            }
+          ],
+          "after": [
+            {
+              "answer": "unresolved",
+              "explanation": "問題が解決していない点を強調する。"
+            },
+            {
+              "answer": "undecided",
+              "explanation": "決定が出ていない点を言う、一般的な語。"
+            }
+          ]
+        }
+      ],
+      "reasonJa": "直接置換すると The decision ... is still awaiting a decision となり、決定自体が決定を待つ不自然な自己反復になる。My loan application is still awaiting a decision と主語を変更する場合の表現であり、この空所の代替ではない。",
+      "sourceReference": "https://www.oxfordlearnersdictionaries.com/us/definition/english/pending_2"
+    }
+  ]
+}

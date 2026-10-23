@@ -5,11 +5,13 @@ import { fileURLToPath } from 'node:url';
 import { hashVocabularyEntry, GRADES, normalizeLemma } from './vocabulary-batch/schema.mjs';
 import { assertDispositionContent, isPublicCandidate, publicCatalogGroups } from './vocabulary-batch/catalog-policy.mjs';
 import { preserveVocabularyAudio } from './vocabulary-catalog-export-lib.ts';
+import { applyVocabularyExportCorrections } from './vocabulary-export-corrections.mjs';
 
 const args=process.argv.slice(2), source=args[0];
 if(!source||!source.startsWith('/'))throw Error('Usage: node scripts/vocabulary-catalog-export.mjs /absolute/asset-folder [--write]');
 const write=args.includes('--write'), repo=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const target=join(repo,'content','vocabulary-generated');
+const corrections=JSON.parse(await readFile(join(repo,'content','vocabulary-editorial-corrections.json'),'utf8'));
 const manifest=JSON.parse(await readFile(join(source,'manifest.json'),'utf8'));
 const frozen=JSON.parse(await readFile(join(source,'frozen-100.json'),'utf8'));
 if(hashVocabularyEntry(frozen)!==manifest.frozenSha256)throw Error('Frozen assets changed.');
@@ -26,7 +28,7 @@ for(const grade of Object.keys(GRADES)){
    assertDispositionContent(seed,item);
    if(!isPublicCandidate(seed))continue;
    if(existing.has(normalizeLemma(item.entry.word))||approved.has(item.entry.id))throw Error('Duplicate approved entry.');
-   approved.set(item.entry.id,item.entry);
+   approved.set(item.entry.id,applyVocabularyExportCorrections(item.entry,corrections));
   }
  }
 }
