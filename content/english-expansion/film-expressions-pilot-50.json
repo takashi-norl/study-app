@@ -1,0 +1,4337 @@
+{
+  "schemaVersion": 1,
+  "id": "film-expressions-pilot-50-v1",
+  "createdAt": "2026-10-23T15:04:07.233693Z",
+  "titleJa": "映画・ドラマにつながる、使う場面で覚える50表現",
+  "status": "draft-pending-independent-review",
+  "publicationStatus": "unpublished",
+  "counts": {
+    "uniqueExpressions": 50,
+    "senseCards": 50,
+    "originalExamples": 100,
+    "questions": 0,
+    "audioClips": 0
+  },
+  "contentPolicy": {
+    "originalityJa": "英語の定義、日本語の説明、例文はこの教材向けに新規作成。映画・ドラマの台詞、字幕、登場人物、筋書きは転載していない。",
+    "sourceUseJa": "一次辞書は語義・構文・使用域の確認に参照した。参照先の辞書文や例文を教材の本文として転記していない。",
+    "levelNoteJa": "2級・準1級から映画会話へつなぐ編集上の練習目安。公式出題語彙、頻度順位、CEFRの認定を表すものではない。",
+    "scopeJa": "この50件は、一つの表現につき一つの指定語義を扱う。別の語義を誤答とするには文脈条件が必要。",
+    "safetyContextJa": "侮蔑語や露骨な罵語は含めず、犯罪の賛美・実行手順を扱わない。口語の丁寧さや相手への配慮を明記する。",
+    "assessmentStatusJa": "例文付き教材の下書き。四択問題、独立レビュー、音声は未作成で、まだ学習者に公開しない。"
+  },
+  "genres": [
+    {
+      "id": "crime-suspense",
+      "labelJa": "犯罪・サスペンス",
+      "pilotCount": 9,
+      "focusJa": "手がかり、推論、証言、隠された情報。行為の手順ではなく読解・会話理解を扱う。"
+    },
+    {
+      "id": "romance-urban",
+      "labelJa": "恋愛・都市の日常",
+      "pilotCount": 9,
+      "focusJa": "関係の変化、気持ち、誤解、境界線。親切と恋愛感情を混同しない。"
+    },
+    {
+      "id": "science-fiction",
+      "labelJa": "SF・技術",
+      "pilotCount": 8,
+      "focusJa": "通信、資源、故障、引き継ぎ。架空世界の固有語より再利用できる一般表現を優先。"
+    },
+    {
+      "id": "comedy",
+      "labelJa": "コメディー",
+      "pilotCount": 8,
+      "focusJa": "比喩、勘違い、冗談の意図。皮肉は音調と相手との関係をセットで扱う。"
+    },
+    {
+      "id": "action",
+      "labelJa": "アクション・冒険",
+      "pilotCount": 8,
+      "focusJa": "注意、移動、協力、時間制約。危険な行動の指南は扱わない。"
+    },
+    {
+      "id": "street-dialogue",
+      "labelJa": "くだけた仲間同士の会話",
+      "pilotCount": 8,
+      "focusJa": "スラングを含む一般的な口語。特定の民族・階層・犯罪集団の言葉と一括りにしない。"
+    }
+  ],
+  "deduplication": {
+    "checkedAt": "2026-10-23T15:04:07.233693Z",
+    "indexedBaseEntries": 3287,
+    "knownAuthoredPhrases": 114,
+    "normalization": "lowercase, typographic-apostrophe normalization, trim, collapse spaces",
+    "exactExistingHeadwordMatches": [],
+    "exactExistingPhraseMatches": [],
+    "limitationJa": "現在の公開用インデックスと既存の著作済み句ノードに対する完全一致確認。進行中の7,500件すべてとの意味・別表記の重複確認は、完成後にもう一度行う。"
+  },
+  "entries": [
+    {
+      "id": "film-expr-add-up",
+      "expression": "add up",
+      "senseId": "make-sense",
+      "kind": "phrasal-verb",
+      "primaryGenreId": "crime-suspense",
+      "genreIds": [
+        "crime-suspense",
+        "comedy"
+      ],
+      "meaningEn": "To fit the known facts in a believable or logical way.",
+      "meaningJa": "話や説明のつじつまが合う",
+      "usage": {
+        "register": "informal",
+        "dialect": "widely-used",
+        "pattern": "A story / explanation / account adds up; something does not add up.",
+        "noteJa": "この語義では目的語を取らない。金額などを「合計する」用法とは分ける。",
+        "socialContextJa": "説明の矛盾を疑うときに使う。つじつまが合わないことだけで、誰かのうそだと断定しない。",
+        "neutralAlternative": "make sense",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-add-up-ex1",
+          "text": "The guard said he never left the desk, but his story did not add up.",
+          "meaningJa": "警備員は机を離れていないと言ったが、その話はつじつまが合わなかった。",
+          "contextJa": "架空の事件で証言を検討する。"
+        },
+        {
+          "id": "film-expr-add-up-ex2",
+          "text": "Once we found the missing page, the whole explanation added up.",
+          "meaningJa": "なくなっていたページが見つかると、説明全体のつじつまが合った。",
+          "contextJa": "学校の記録にあった食い違いが解ける。"
+        }
+      ],
+      "domainIds": [
+        "logic-reasoning",
+        "communication"
+      ],
+      "prerequisiteLemmas": [
+        "add",
+        "story",
+        "explain"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "prefer-neutral-alternative-in-formal-essays"
+      },
+      "sourceReferences": [
+        {
+          "title": "Oxford Learner’s Dictionaries: add up",
+          "url": "https://www.oxfordlearnersdictionaries.com/definition/english/add-up",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-story",
+          "word": "story",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-explain",
+          "word": "explain",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [
+          "add"
+        ],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-rule-out",
+      "expression": "rule out",
+      "senseId": "exclude-a-possibility",
+      "kind": "phrasal-verb",
+      "primaryGenreId": "crime-suspense",
+      "genreIds": [
+        "crime-suspense",
+        "science-fiction"
+      ],
+      "meaningEn": "To decide that a possibility should no longer be considered.",
+      "meaningJa": "可能性や候補を除外する",
+      "usage": {
+        "register": "neutral",
+        "dialect": "widely-used",
+        "pattern": "rule out something / rule something out; rule it out",
+        "noteJa": "代名詞は rule it out。cannot rule out は「あり得ないとは言えない」で、起こりそうだという断定ではない。",
+        "socialContextJa": "調査や議論で候補を絞る言い方。証拠に見合う確実さで使う。",
+        "neutralAlternative": "exclude that possibility",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-rule-out-ex1",
+          "text": "The timestamp ruled out the theory that the photo was taken that morning.",
+          "meaningJa": "時刻の記録から、その写真がその朝に撮られたという説は除外された。",
+          "contextJa": "架空の写真の撮影時刻を調べる。"
+        },
+        {
+          "id": "film-expr-rule-out-ex2",
+          "text": "We cannot rule out a faulty sensor until we test it.",
+          "meaningJa": "センサーを試すまでは、故障の可能性を除外できない。",
+          "contextJa": "科学部で測定値の原因を考える。"
+        }
+      ],
+      "domainIds": [
+        "logic-reasoning",
+        "science"
+      ],
+      "prerequisiteLemmas": [
+        "rule",
+        "possible",
+        "test"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "check-the-specific-context"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: rule out",
+          "url": "https://dictionary.cambridge.org/dictionary/english/rule-out-the-possibility",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-rule",
+          "word": "rule",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-possible",
+          "word": "possible",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-test",
+          "word": "test",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-cover-up",
+      "expression": "cover up",
+      "senseId": "conceal-wrongdoing",
+      "kind": "phrasal-verb",
+      "primaryGenreId": "crime-suspense",
+      "genreIds": [
+        "crime-suspense",
+        "romance-urban"
+      ],
+      "meaningEn": "To hide information so that a mistake or wrongdoing is not discovered.",
+      "meaningJa": "失敗や不正が知られないように隠す",
+      "usage": {
+        "register": "informal",
+        "dialect": "widely-used",
+        "pattern": "cover up a mistake / cover a mistake up; cover it up",
+        "noteJa": "ここでは布などで「覆う」意味ではない。動詞は二語、名詞 cover-up は通常ハイフン付き。",
+        "socialContextJa": "不正を隠す行為を批判的に描写する表現。単に個人情報を非公開にすることとは区別する。",
+        "neutralAlternative": "conceal the wrongdoing",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-cover-up-ex1",
+          "text": "The report accused the director of trying to cover up the missing funds.",
+          "meaningJa": "その報告書は、理事長が資金の紛失を隠そうとしたと指摘した。",
+          "contextJa": "架空の団体について調査報告を読む。"
+        },
+        {
+          "id": "film-expr-cover-up-ex2",
+          "text": "Rather than cover up the error, the student corrected the data and explained what had happened.",
+          "meaningJa": "その生徒は誤りを隠さず、データを訂正して経緯を説明した。",
+          "contextJa": "実験結果の誤記に責任を持って対応する。"
+        }
+      ],
+      "domainIds": [
+        "law",
+        "society",
+        "education"
+      ],
+      "prerequisiteLemmas": [
+        "cover",
+        "mistake",
+        "hide"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "prefer-neutral-alternative-in-formal-essays"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: cover up",
+          "url": "https://dictionary.cambridge.org/dictionary/english/cover-up",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-mistake",
+          "word": "mistake",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-hide",
+          "word": "hide",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [
+          "cover"
+        ],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-tip-someone-off",
+      "expression": "tip someone off",
+      "senseId": "give-warning-or-inside-information",
+      "kind": "phrasal-verb",
+      "primaryGenreId": "crime-suspense",
+      "genreIds": [
+        "crime-suspense",
+        "romance-urban"
+      ],
+      "meaningEn": "To give someone advance warning or information that others may not have.",
+      "meaningJa": "人に事前の情報を知らせる・そっと警告する",
+      "usage": {
+        "register": "informal",
+        "dialect": "widely-used",
+        "pattern": "tip someone off about something / tip someone off that ...; tip them off",
+        "noteJa": "目的語は off の前後に置けるが、代名詞は tip them off。情報提供は秘密の場合が多いが、必ず悪い目的とは限らない。",
+        "socialContextJa": "内々の情報を知らせる場面。公開情報を普通に連絡する場合は tell / inform が無難。",
+        "neutralAlternative": "give someone advance information",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-tip-someone-off-ex1",
+          "text": "A visitor tipped the curator off about a suspicious label on the painting.",
+          "meaningJa": "来館者が学芸員に、絵のラベルに不審な点があると知らせた。",
+          "contextJa": "架空の美術館で疑問点を伝える。"
+        },
+        {
+          "id": "film-expr-tip-someone-off-ex2",
+          "text": "My sister tipped me off that the last bus would leave earlier than usual.",
+          "meaningJa": "姉が、最終バスがいつもより早く出ると事前に教えてくれた。",
+          "contextJa": "帰宅前に役立つ情報をもらう。"
+        }
+      ],
+      "domainIds": [
+        "communication",
+        "travel"
+      ],
+      "prerequisiteLemmas": [
+        "tip",
+        "warn",
+        "information"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "prefer-neutral-alternative-in-formal-essays"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: tip someone off",
+          "url": "https://dictionary.cambridge.org/dictionary/english/tip-off",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-tip",
+          "word": "tip",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-warn",
+          "word": "warn",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-information",
+          "word": "information",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-track-down",
+      "expression": "track down",
+      "senseId": "find-after-searching",
+      "kind": "phrasal-verb",
+      "primaryGenreId": "crime-suspense",
+      "genreIds": [
+        "crime-suspense",
+        "science-fiction"
+      ],
+      "meaningEn": "To find a person or thing after making an effort to search.",
+      "meaningJa": "探し回って人や物を見つけ出す",
+      "usage": {
+        "register": "neutral",
+        "dialect": "widely-used",
+        "pattern": "track down someone / something; track them / it down",
+        "noteJa": "単に位置を追跡し続ける track と違い、探した末に見つけることに焦点がある。",
+        "socialContextJa": "失くした物、資料、人の所在を探す文脈。実在の人の私生活を追う行為を勧める意味ではない。",
+        "neutralAlternative": "locate after a search",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-track-down-ex1",
+          "text": "The librarian tracked down the journal mentioned in the old letter.",
+          "meaningJa": "司書は、古い手紙に出ていた雑誌を探し出した。",
+          "contextJa": "謎の手がかりとなる資料を探す。"
+        },
+        {
+          "id": "film-expr-track-down-ex2",
+          "text": "After checking three shops, we finally tracked down the right cable.",
+          "meaningJa": "店を三軒調べて、ようやく合うケーブルを見つけた。",
+          "contextJa": "学校の発表に必要な部品を探す。"
+        }
+      ],
+      "domainIds": [
+        "education",
+        "technology"
+      ],
+      "prerequisiteLemmas": [
+        "track",
+        "find",
+        "search"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "check-the-specific-context"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: track down",
+          "url": "https://dictionary.cambridge.org/dictionary/english-portuguese/track-down",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-find",
+          "word": "find",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [
+          "track",
+          "search"
+        ],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-get-away-with",
+      "expression": "get away with",
+      "senseId": "avoid-consequences-for-wrongdoing",
+      "kind": "phrasal-verb",
+      "primaryGenreId": "crime-suspense",
+      "genreIds": [
+        "crime-suspense",
+        "comedy"
+      ],
+      "meaningEn": "To do something wrong without receiving the expected punishment or criticism.",
+      "meaningJa": "悪いことをしても処罰や非難を受けずに済む",
+      "usage": {
+        "register": "informal",
+        "dialect": "widely-used",
+        "pattern": "get away with something / doing something",
+        "noteJa": "with の後は名詞か動名詞。目的語を句の途中に移せない。「逃走する」だけの get away と区別する。",
+        "socialContextJa": "不公平や無責任さを批判するときにも使う。処罰を免れる方法を示す表現ではない。",
+        "neutralAlternative": "avoid consequences for doing something wrong",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-get-away-with-ex1",
+          "text": "The character thought he could get away with lying, but the final letter exposed him.",
+          "meaningJa": "その登場人物はうそをついても逃げ切れると思ったが、最後の手紙でばれた。",
+          "contextJa": "架空の物語の結末を説明する。"
+        },
+        {
+          "id": "film-expr-get-away-with-ex2",
+          "text": "Copying a classmate’s work is unfair, even if someone gets away with it.",
+          "meaningJa": "たとえ見つからずに済む人がいても、友達の課題を写すのは不公平だ。",
+          "contextJa": "学習上の公正さについて話す。"
+        }
+      ],
+      "domainIds": [
+        "law",
+        "education",
+        "society"
+      ],
+      "prerequisiteLemmas": [
+        "get",
+        "wrong",
+        "punish"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "prefer-neutral-alternative-in-formal-essays"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: get away with",
+          "url": "https://dictionary.cambridge.org/dictionary/english/get-away-with",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-get",
+          "word": "get",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [
+          "wrong",
+          "punish"
+        ],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-in-the-dark",
+      "expression": "in the dark",
+      "senseId": "uninformed",
+      "kind": "idiom",
+      "primaryGenreId": "crime-suspense",
+      "genreIds": [
+        "crime-suspense",
+        "romance-urban"
+      ],
+      "meaningEn": "Without the information needed to understand what is happening.",
+      "meaningJa": "事情を知らされていない・何も分からない状態で",
+      "usage": {
+        "register": "informal",
+        "dialect": "widely-used",
+        "pattern": "be in the dark about something; keep / leave someone in the dark about something",
+        "noteJa": "この語義の dark は照明ではなく情報不足を表す。keep は知らせない状態を続けることを示す。",
+        "socialContextJa": "連絡不足を伝えるのに使える。相手を責めず、必要な情報を具体的に頼むと伝わりやすい。",
+        "neutralAlternative": "not informed about the situation",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-in-the-dark-ex1",
+          "text": "The audience is kept in the dark about the caller’s identity until the final scene.",
+          "meaningJa": "観客は最後の場面まで電話の主が誰かを知らされない。",
+          "contextJa": "架空のサスペンスの構成を話す。"
+        },
+        {
+          "id": "film-expr-in-the-dark-ex2",
+          "text": "I am still in the dark about where our class is meeting tomorrow.",
+          "meaningJa": "明日のクラスの集合場所を、私はまだ知らされていない。",
+          "contextJa": "集合場所の連絡を確認する。"
+        }
+      ],
+      "domainIds": [
+        "communication",
+        "media",
+        "education"
+      ],
+      "prerequisiteLemmas": [
+        "dark",
+        "know",
+        "information"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "prefer-neutral-alternative-in-formal-essays"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: in the dark",
+          "url": "https://dictionary.cambridge.org/dictionary/english/in-the-dark",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-dark",
+          "word": "dark",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-know",
+          "word": "know",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-information",
+          "word": "information",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-on-the-run",
+      "expression": "on the run",
+      "senseId": "evading-capture",
+      "kind": "idiom",
+      "primaryGenreId": "crime-suspense",
+      "genreIds": [
+        "crime-suspense"
+      ],
+      "meaningEn": "Moving from place to place while trying not to be caught.",
+      "meaningJa": "捕まらないように逃亡して",
+      "usage": {
+        "register": "informal",
+        "dialect": "widely-used",
+        "pattern": "be / remain on the run; on the run from someone",
+        "noteJa": "ここでは逃亡の意味。eat on the run のような「忙しく移動しながら」の別義と分ける。",
+        "socialContextJa": "物語や報道で状況を理解するための表現。逃亡を英雄的な行為として扱わない。",
+        "neutralAlternative": "trying to avoid capture",
+        "recognitionFirst": true
+      },
+      "examples": [
+        {
+          "id": "film-expr-on-the-run-ex1",
+          "text": "At the start of the story, the escaped prisoner has been on the run for two days.",
+          "meaningJa": "物語の冒頭では、脱走した囚人は二日間逃亡している。",
+          "contextJa": "架空の物語の導入を説明する。"
+        },
+        {
+          "id": "film-expr-on-the-run-ex2",
+          "text": "The final chapter reveals why the suspect went on the run instead of answering the questions.",
+          "meaningJa": "最終章で、容疑者が質問に答えず逃亡した理由が明らかになる。",
+          "contextJa": "人物の行動理由を読み取る。"
+        }
+      ],
+      "domainIds": [
+        "law",
+        "media"
+      ],
+      "prerequisiteLemmas": [
+        "run",
+        "escape",
+        "catch"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "prefer-neutral-alternative-in-formal-essays"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: on the run",
+          "url": "https://dictionary.cambridge.org/us/dictionary/english/on-the-run",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-run",
+          "word": "run",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-escape",
+          "word": "escape",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-catch",
+          "word": "catch",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-red-herring",
+      "expression": "red herring",
+      "senseId": "misleading-distraction",
+      "kind": "idiom",
+      "primaryGenreId": "crime-suspense",
+      "genreIds": [
+        "crime-suspense",
+        "comedy"
+      ],
+      "meaningEn": "A detail or argument that draws attention away from the relevant issue.",
+      "meaningJa": "本題や真相から注意をそらす情報・見せかけの手がかり",
+      "usage": {
+        "register": "neutral",
+        "dialect": "widely-used",
+        "pattern": "a red herring; turn out to be a red herring",
+        "noteJa": "単なる誤答ではなく、考える方向をそらす要素。意図的に置かれる場合も、そうでない場合もある。",
+        "socialContextJa": "謎解きだけでなく、議論で関係の薄い話題が中心になるときにも使う。",
+        "neutralAlternative": "a misleading distraction",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-red-herring-ex1",
+          "text": "The muddy boots seemed important, but they were a red herring.",
+          "meaningJa": "泥の付いた靴は重要そうだったが、真相とは関係のない手がかりだった。",
+          "contextJa": "架空の推理小説を振り返る。"
+        },
+        {
+          "id": "film-expr-red-herring-ex2",
+          "text": "The poster’s color was a red herring in a debate about whether the information was accurate.",
+          "meaningJa": "情報の正確さを議論しているのに、ポスターの色の話は論点をそらすものだった。",
+          "contextJa": "学校で議論の焦点を確認する。"
+        }
+      ],
+      "domainIds": [
+        "logic-reasoning",
+        "media"
+      ],
+      "prerequisiteLemmas": [
+        "red",
+        "clue",
+        "argument"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "appropriate-for-analytical-writing-when-the-distraction-is-explained"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: red herring",
+          "url": "https://dictionary.cambridge.org/dictionary/english/red-herring",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-clue",
+          "word": "clue",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-argument",
+          "word": "argument",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [
+          "red"
+        ],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-hit-it-off",
+      "expression": "hit it off",
+      "senseId": "immediate-mutual-liking",
+      "kind": "idiom",
+      "primaryGenreId": "romance-urban",
+      "genreIds": [
+        "romance-urban"
+      ],
+      "meaningEn": "To quickly feel comfortable with and like another person when you meet.",
+      "meaningJa": "初対面などですぐに気が合う",
+      "usage": {
+        "register": "informal",
+        "dialect": "widely-used",
+        "pattern": "Two people hit it off; hit it off with someone",
+        "noteJa": "it は固定して使う。恋愛に限らず、友人や同級生同士にも使える。",
+        "socialContextJa": "双方が打ち解ける感じを表す。仲良くなったことが交際を意味するとは限らない。",
+        "neutralAlternative": "get along well from the start",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-hit-it-off-ex1",
+          "text": "Mina and her new roommate hit it off while unpacking their books.",
+          "meaningJa": "ミナと新しいルームメートは本を箱から出しながら、すぐに意気投合した。",
+          "contextJa": "架空の学生寮で初めて会う。"
+        },
+        {
+          "id": "film-expr-hit-it-off-ex2",
+          "text": "I hoped to hit it off with the exchange student, but we were both too shy to speak at first.",
+          "meaningJa": "交換留学生とすぐに打ち解けたかったが、最初は二人とも恥ずかしくて話せなかった。",
+          "contextJa": "新しい友人との出会いを振り返る。"
+        }
+      ],
+      "domainIds": [
+        "relationships",
+        "education"
+      ],
+      "prerequisiteLemmas": [
+        "hit",
+        "meet",
+        "friend"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "prefer-neutral-alternative-in-formal-essays"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: hit it off",
+          "url": "https://dictionary.cambridge.org/dictionary/essential-british-english/hit",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-meet",
+          "word": "meet",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-friend",
+          "word": "friend",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [
+          "hit"
+        ],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-ask-someone-out",
+      "expression": "ask someone out",
+      "senseId": "invite-on-a-date",
+      "kind": "phrasal-verb",
+      "primaryGenreId": "romance-urban",
+      "genreIds": [
+        "romance-urban"
+      ],
+      "meaningEn": "To invite someone to go somewhere with you as a possible romantic date.",
+      "meaningJa": "人をデートに誘う",
+      "usage": {
+        "register": "neutral",
+        "dialect": "widely-used",
+        "pattern": "ask someone out; ask them out; ask someone out for coffee",
+        "noteJa": "この試作ではデートの語義を扱う。ask someone は質問・依頼にも使うが、out が加わると意味が変わる。",
+        "socialContextJa": "誘いは相手が断れるもの。断られた後に繰り返し迫ることを前提にしない。",
+        "neutralAlternative": "invite someone on a date",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-ask-someone-out-ex1",
+          "text": "Ren asked Aya out for coffee, and she said she would prefer to stay friends.",
+          "meaningJa": "レンがアヤをコーヒーのデートに誘うと、彼女は友達のままでいたいと言った。",
+          "contextJa": "架空の登場人物が相手の返事を受け止める。"
+        },
+        {
+          "id": "film-expr-ask-someone-out-ex2",
+          "text": "Before asking him out, she checked that he was not already seeing someone.",
+          "meaningJa": "彼をデートに誘う前に、彼女は彼に交際相手がいないか確認した。",
+          "contextJa": "恋愛ドラマの会話を理解する。"
+        }
+      ],
+      "domainIds": [
+        "relationships",
+        "communication"
+      ],
+      "prerequisiteLemmas": [
+        "ask",
+        "invite",
+        "date"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "check-the-specific-context"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: ask someone out",
+          "url": "https://dictionary.cambridge.org/dictionary/english/ask-out",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-ask",
+          "word": "ask",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-invite",
+          "word": "invite",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [
+          "date"
+        ],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-break-up",
+      "expression": "break up",
+      "senseId": "end-a-romantic-relationship",
+      "kind": "phrasal-verb",
+      "primaryGenreId": "romance-urban",
+      "genreIds": [
+        "romance-urban"
+      ],
+      "meaningEn": "To end a romantic relationship.",
+      "meaningJa": "恋人との関係を終える・別れる",
+      "usage": {
+        "register": "neutral",
+        "dialect": "widely-used",
+        "pattern": "A couple breaks up; break up with someone",
+        "noteJa": "人を目的語にするなら break up with。break someone up は同じ形ではない。物を分解する別義と区別する。",
+        "socialContextJa": "別れの理由や責任を決めつけない。日常の意見の食い違いだけで必ず別れるという意味ではない。",
+        "neutralAlternative": "end the relationship",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-break-up-ex1",
+          "text": "They broke up before moving to different cities, but they still respected each other.",
+          "meaningJa": "二人は別々の街へ引っ越す前に別れたが、その後も互いを尊重していた。",
+          "contextJa": "架空のドラマで関係の変化を説明する。"
+        },
+        {
+          "id": "film-expr-break-up-ex2",
+          "text": "The message did not say that she wanted to break up with him; she only needed time to think.",
+          "meaningJa": "そのメッセージは彼と別れたいという意味ではなく、考える時間が必要だというものだった。",
+          "contextJa": "メッセージの意図を読み違えない。"
+        }
+      ],
+      "domainIds": [
+        "relationships",
+        "communication"
+      ],
+      "prerequisiteLemmas": [
+        "break",
+        "relationship",
+        "end"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "check-the-specific-context"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: break up",
+          "url": "https://dictionary.cambridge.org/us/dictionary/english/break-up",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-break",
+          "word": "break",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-end",
+          "word": "end",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [
+          "relationship"
+        ],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-make-up",
+      "expression": "make up",
+      "senseId": "reconcile",
+      "kind": "phrasal-verb",
+      "primaryGenreId": "romance-urban",
+      "genreIds": [
+        "romance-urban",
+        "comedy"
+      ],
+      "meaningEn": "To become friendly again after an argument.",
+      "meaningJa": "けんかの後で仲直りする",
+      "usage": {
+        "register": "informal",
+        "dialect": "widely-used",
+        "pattern": "Two people make up; make up with someone",
+        "noteJa": "仲直りの語義では make up with。make something up は「作り話をする」など別の意味になる。",
+        "socialContextJa": "謝罪や話し合いによる関係修復を表す。相手に即座の許しを要求する表現として使わない。",
+        "neutralAlternative": "reconcile after the argument",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-make-up-ex1",
+          "text": "The sisters made up after each explained why she had been upset.",
+          "meaningJa": "姉妹は、それぞれ腹を立てた理由を説明した後で仲直りした。",
+          "contextJa": "架空の家族の口論が解ける。"
+        },
+        {
+          "id": "film-expr-make-up-ex2",
+          "text": "I want to make up with my friend, but I should apologize properly first.",
+          "meaningJa": "友達と仲直りしたいが、まずきちんと謝るべきだ。",
+          "contextJa": "関係を直すための次の行動を考える。"
+        }
+      ],
+      "domainIds": [
+        "relationships",
+        "communication"
+      ],
+      "prerequisiteLemmas": [
+        "make",
+        "friend",
+        "apologize"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "prefer-neutral-alternative-in-formal-essays"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: make up",
+          "url": "https://dictionary.cambridge.org/us/dictionary/english/make-up",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-make",
+          "word": "make",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-friend",
+          "word": "friend",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-apologize",
+          "word": "apologize",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-lead-someone-on",
+      "expression": "lead someone on",
+      "senseId": "give-misleading-romantic-hope",
+      "kind": "phrasal-verb",
+      "primaryGenreId": "romance-urban",
+      "genreIds": [
+        "romance-urban"
+      ],
+      "meaningEn": "To encourage someone to expect a romantic relationship that you do not intend to have.",
+      "meaningJa": "交際する気がないのに期待を持たせる",
+      "usage": {
+        "register": "informal",
+        "dialect": "widely-used",
+        "pattern": "lead someone on; lead them on; past: led",
+        "noteJa": "この試作は恋愛の語義に限定する。単に親切にしたことが、必ず lead someone on に当たるわけではない。",
+        "socialContextJa": "相手の意図を決めつけやすい批判的な表現。親切さと交際の約束を区別する。",
+        "neutralAlternative": "give someone false romantic expectations",
+        "recognitionFirst": true
+      },
+      "examples": [
+        {
+          "id": "film-expr-lead-someone-on-ex1",
+          "text": "He admitted that promising a future together had led her on.",
+          "meaningJa": "彼は、一緒の将来を約束したことで彼女に期待を持たせてしまったと認めた。",
+          "contextJa": "架空の人物が自分の言動を振り返る。"
+        },
+        {
+          "id": "film-expr-lead-someone-on-ex2",
+          "text": "I do not want to lead him on, so I will explain that I only want to be friends.",
+          "meaningJa": "彼に期待を持たせたくないので、友達でいたいだけだと伝えるつもりだ。",
+          "contextJa": "相手に誤解されないよう意思を伝える。"
+        }
+      ],
+      "domainIds": [
+        "relationships",
+        "communication"
+      ],
+      "prerequisiteLemmas": [
+        "lead",
+        "expect",
+        "promise"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "prefer-neutral-alternative-in-formal-essays"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: lead someone on",
+          "url": "https://dictionary.cambridge.org/dictionary/english/lead-on",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-lead",
+          "word": "lead",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-expect",
+          "word": "expect",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-promise",
+          "word": "promise",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-stand-someone-up",
+      "expression": "stand someone up",
+      "senseId": "deliberately-fail-to-attend-an-arranged-meeting",
+      "kind": "phrasal-verb",
+      "primaryGenreId": "romance-urban",
+      "genreIds": [
+        "romance-urban",
+        "comedy"
+      ],
+      "meaningEn": "To deliberately fail to meet someone after agreeing to do so, especially for a date.",
+      "meaningJa": "会う約束をしたのに、わざと現れず待ちぼうけにする",
+      "usage": {
+        "register": "informal",
+        "dialect": "widely-used",
+        "pattern": "stand someone up; stand them up; past: stood",
+        "noteJa": "この用法では人を目的語にする。stand up は単独なら「立ち上がる」。事故などによる遅刻を自動的にこの表現で断定しない。",
+        "socialContextJa": "非難を含むことが多い。話し手がこの表現を使っただけで、相手の意図が客観的に証明されるわけではない。事情が不明なら、まず did not arrive と状況を述べる。",
+        "neutralAlternative": "deliberately fail to attend the agreed meeting",
+        "recognitionFirst": true
+      },
+      "examples": [
+        {
+          "id": "film-expr-stand-someone-up-ex1",
+          "text": "She realized he had stood her up when he admitted he had chosen another party instead.",
+          "meaningJa": "彼が別のパーティーを選んだと認めたとき、彼女はわざと待ちぼうけにされたと分かった。",
+          "contextJa": "架空のデートの約束が破られる。"
+        },
+        {
+          "id": "film-expr-stand-someone-up-ex2",
+          "text": "In the comedy, the character stands his date up because he is too embarrassed to admit he forgot her name.",
+          "meaningJa": "その喜劇では、登場人物が相手の名前を忘れたと言い出せず、デートの約束をすっぽかす。",
+          "contextJa": "架空の人物の失礼な行動を説明する。"
+        }
+      ],
+      "domainIds": [
+        "relationships",
+        "communication"
+      ],
+      "prerequisiteLemmas": [
+        "stand",
+        "meet",
+        "promise"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "prefer-neutral-alternative-in-formal-essays"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: stand someone up",
+          "url": "https://dictionary.cambridge.org/dictionary/english/stand-up",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-stand",
+          "word": "stand",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-meet",
+          "word": "meet",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-promise",
+          "word": "promise",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-open-up",
+      "expression": "open up",
+      "senseId": "share-personal-feelings",
+      "kind": "phrasal-verb",
+      "primaryGenreId": "romance-urban",
+      "genreIds": [
+        "romance-urban"
+      ],
+      "meaningEn": "To begin sharing personal thoughts or feelings more freely.",
+      "meaningJa": "心を開いて気持ちや悩みを話す",
+      "usage": {
+        "register": "informal",
+        "dialect": "widely-used",
+        "pattern": "open up to someone about something",
+        "noteJa": "to は話す相手、about は話題。この語義では open someone up の形にしない。",
+        "socialContextJa": "本人が話したい範囲を尊重する。打ち明けることを強制する意味ではない。",
+        "neutralAlternative": "talk about personal feelings",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-open-up-ex1",
+          "text": "After several quiet walks, he began to open up to his sister about school.",
+          "meaningJa": "何度か静かに散歩するうちに、彼は学校のことを姉に打ち明け始めた。",
+          "contextJa": "安心できる相手と話す。"
+        },
+        {
+          "id": "film-expr-open-up-ex2",
+          "text": "The new student did not open up immediately, and nobody pushed her to.",
+          "meaningJa": "新入生はすぐには心を開かなかったが、誰も無理に話させようとはしなかった。",
+          "contextJa": "新しい環境で距離感を大切にする。"
+        }
+      ],
+      "domainIds": [
+        "relationships",
+        "education",
+        "communication"
+      ],
+      "prerequisiteLemmas": [
+        "open",
+        "feel",
+        "talk"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "prefer-neutral-alternative-in-formal-essays"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: open up",
+          "url": "https://dictionary.cambridge.org/dictionary/english/open-up",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-open",
+          "word": "open",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-feel",
+          "word": "feel",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-talk",
+          "word": "talk",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-get-over",
+      "expression": "get over",
+      "senseId": "recover-from-an-upsetting-experience",
+      "kind": "phrasal-verb",
+      "primaryGenreId": "romance-urban",
+      "genreIds": [
+        "romance-urban"
+      ],
+      "meaningEn": "To gradually feel better after an upsetting experience.",
+      "meaningJa": "つらい出来事から気持ちを立て直す・乗り越える",
+      "usage": {
+        "register": "informal",
+        "dialect": "widely-used",
+        "pattern": "get over something; get over it",
+        "noteJa": "get it over とはしない。この試作は精神的な回復の語義で、病気の回復などは別に扱う。",
+        "socialContextJa": "回復の速さは人による。Get over it! は「いつまでも気にするな」という冷たい響きになりやすい。",
+        "neutralAlternative": "recover emotionally from it",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-get-over-ex1",
+          "text": "It took her a while to get over the disappointment of missing the final performance.",
+          "meaningJa": "最後の公演に出られなかった落胆から立ち直るまで、彼女には少し時間がかかった。",
+          "contextJa": "架空の演劇部の出来事を振り返る。"
+        },
+        {
+          "id": "film-expr-get-over-ex2",
+          "text": "He was beginning to get over the argument, but he still wanted an honest conversation.",
+          "meaningJa": "彼は口論のショックから立ち直りつつあったが、まだ率直に話し合いたかった。",
+          "contextJa": "感情の回復と問題の解決を区別する。"
+        }
+      ],
+      "domainIds": [
+        "relationships",
+        "education"
+      ],
+      "prerequisiteLemmas": [
+        "get",
+        "recover",
+        "disappoint"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "prefer-neutral-alternative-in-formal-essays"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: get over",
+          "url": "https://dictionary.cambridge.org/us/dictionary/english/be-get-over",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-get",
+          "word": "get",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-recover",
+          "word": "recover",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [
+          "disappoint"
+        ],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-on-the-same-wavelength",
+      "expression": "on the same wavelength",
+      "senseId": "think-in-a-similar-way",
+      "kind": "idiom",
+      "primaryGenreId": "romance-urban",
+      "genreIds": [
+        "romance-urban",
+        "science-fiction"
+      ],
+      "meaningEn": "Able to understand one another easily because of similar ways of thinking.",
+      "meaningJa": "考え方や感覚が近く、互いに理解しやすい",
+      "usage": {
+        "register": "informal",
+        "dialect": "widely-used",
+        "pattern": "be on the same wavelength; on the same wavelength as someone",
+        "noteJa": "あらゆる意見が一致するという意味ではなく、話の意図や感覚が通じやすいことを表す。",
+        "socialContextJa": "友達、チームメート、恋人などに使える。人の優劣を判定する言い方ではない。",
+        "neutralAlternative": "understand each other’s way of thinking",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-on-the-same-wavelength-ex1",
+          "text": "We suggested the same ending, so I knew we were on the same wavelength.",
+          "meaningJa": "同じ結末を提案したので、私たちは感覚が合うのだと分かった。",
+          "contextJa": "友人と脚本のオリジナル案を考える。"
+        },
+        {
+          "id": "film-expr-on-the-same-wavelength-ex2",
+          "text": "The partners disagreed about the budget but were on the same wavelength about the project’s purpose.",
+          "meaningJa": "二人は予算では意見が違ったが、企画の目的については考え方が通じ合っていた。",
+          "contextJa": "学校の共同企画について話す。"
+        }
+      ],
+      "domainIds": [
+        "relationships",
+        "communication",
+        "education"
+      ],
+      "prerequisiteLemmas": [
+        "same",
+        "think",
+        "understand"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "prefer-neutral-alternative-in-formal-essays"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: on the same wavelength",
+          "url": "https://dictionary.cambridge.org/us/dictionary/english/on-the-same-wavelength",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-same",
+          "word": "same",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-think",
+          "word": "think",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-understand",
+          "word": "understand",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-lose-contact-with",
+      "expression": "lose contact with",
+      "senseId": "stop-being-able-to-communicate",
+      "kind": "collocation",
+      "primaryGenreId": "science-fiction",
+      "genreIds": [
+        "science-fiction",
+        "action"
+      ],
+      "meaningEn": "To stop communicating with someone or something, sometimes because a connection fails.",
+      "meaningJa": "人や機器との連絡・通信が途絶える",
+      "usage": {
+        "register": "neutral",
+        "dialect": "widely-used",
+        "pattern": "lose contact with someone / something; past: lost",
+        "noteJa": "with の後が連絡相手。lose touch with は人間関係が疎遠になる話にもよく使われるが、ここでは通信断を中心に扱う。",
+        "socialContextJa": "通信の状態を述べる表現。通信断だけで相手に事故が起きたとは断定できない。",
+        "neutralAlternative": "lose the communication link with",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-lose-contact-with-ex1",
+          "text": "The control room lost contact with the probe as it passed behind the moon.",
+          "meaningJa": "探査機が月の裏側に回ると、管制室は探査機との通信が途絶えた。",
+          "contextJa": "架空の宇宙探査の場面。"
+        },
+        {
+          "id": "film-expr-lose-contact-with-ex2",
+          "text": "We lost contact with the other hiking group when their radio battery died.",
+          "meaningJa": "相手の無線機の電池が切れると、もう一方の登山グループと連絡が取れなくなった。",
+          "contextJa": "物語の中で通信状態を説明する。"
+        }
+      ],
+      "domainIds": [
+        "technology",
+        "science",
+        "travel"
+      ],
+      "prerequisiteLemmas": [
+        "lose",
+        "contact",
+        "communicate"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "check-the-specific-context"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: lose contact with",
+          "url": "https://dictionary.cambridge.org/dictionary/english/lose-contact-with",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-lose",
+          "word": "lose",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-contact",
+          "word": "contact",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [
+          "communicate"
+        ],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-shut-down",
+      "expression": "shut down",
+      "senseId": "stop-a-machine-operating",
+      "kind": "phrasal-verb",
+      "primaryGenreId": "science-fiction",
+      "genreIds": [
+        "science-fiction"
+      ],
+      "meaningEn": "To stop a machine or system from operating, or for it to stop operating.",
+      "meaningJa": "機械やシステムを停止させる・機械やシステムが停止する",
+      "usage": {
+        "register": "neutral",
+        "dialect": "widely-used",
+        "pattern": "A system shuts down; shut down a system / shut a system down; shut it down",
+        "noteJa": "代名詞は shut it down。stop working と違って、故障だけでなく正常な停止操作にも使う。",
+        "socialContextJa": "機器の停止について使う。人の意見を封じる shut someone down は別の語義。",
+        "neutralAlternative": "stop the system",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-shut-down-ex1",
+          "text": "The engineer shut the damaged robot down before checking its arm.",
+          "meaningJa": "技術者は、損傷したロボットの腕を調べる前に停止させた。",
+          "contextJa": "架空の宇宙船で機器を点検する。"
+        },
+        {
+          "id": "film-expr-shut-down-ex2",
+          "text": "The school’s display system shut down automatically at six.",
+          "meaningJa": "学校の表示システムは六時に自動停止した。",
+          "contextJa": "日常のシステム運用を説明する。"
+        }
+      ],
+      "domainIds": [
+        "technology",
+        "science",
+        "education"
+      ],
+      "prerequisiteLemmas": [
+        "shut",
+        "system",
+        "stop"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "check-the-specific-context"
+      },
+      "sourceReferences": [
+        {
+          "title": "Oxford Learner’s Dictionaries: shut down",
+          "url": "https://www.oxfordlearnersdictionaries.com/definition/english/shut-down",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-system",
+          "word": "system",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-stop",
+          "word": "stop",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [
+          "shut"
+        ],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-run-out-of",
+      "expression": "run out of",
+      "senseId": "have-no-supply-left",
+      "kind": "phrasal-verb",
+      "primaryGenreId": "science-fiction",
+      "genreIds": [
+        "science-fiction",
+        "action"
+      ],
+      "meaningEn": "To reach a point where none of a needed supply remains.",
+      "meaningJa": "必要なものを使い切る・切らす",
+      "usage": {
+        "register": "neutral",
+        "dialect": "widely-used",
+        "pattern": "A person / group runs out of something; a supply runs out",
+        "noteJa": "We ran out of water と The water ran out を区別する。of の後は名詞。",
+        "socialContextJa": "資源、時間、アイデアなどに使える。run out 単独の「走って外へ出る」とは文脈で区別する。",
+        "neutralAlternative": "have no more of something left",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-run-out-of-ex1",
+          "text": "The crew turned back before they ran out of fuel.",
+          "meaningJa": "乗組員たちは燃料を使い切る前に引き返した。",
+          "contextJa": "架空の探査で余裕を持って帰還する。"
+        },
+        {
+          "id": "film-expr-run-out-of-ex2",
+          "text": "We ran out of time before we could test the final model.",
+          "meaningJa": "最後の模型を試す前に時間がなくなった。",
+          "contextJa": "科学部の制作時間を振り返る。"
+        }
+      ],
+      "domainIds": [
+        "science",
+        "technology",
+        "education"
+      ],
+      "prerequisiteLemmas": [
+        "run",
+        "time",
+        "fuel"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "check-the-specific-context"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: run out of",
+          "url": "https://dictionary.cambridge.org/dictionary/english/run-out",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-run",
+          "word": "run",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-time",
+          "word": "time",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-fuel",
+          "word": "fuel",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-in-the-loop",
+      "expression": "in the loop",
+      "senseId": "included-in-relevant-information",
+      "kind": "idiom",
+      "primaryGenreId": "science-fiction",
+      "genreIds": [
+        "science-fiction",
+        "romance-urban"
+      ],
+      "meaningEn": "Included among the people who receive relevant information about a shared activity.",
+      "meaningJa": "関係する情報が共有される輪の中に入って",
+      "usage": {
+        "register": "informal",
+        "dialect": "widely-used",
+        "pattern": "be in the loop; keep someone in the loop about something",
+        "noteJa": "keep someone in the loop は、変更などを引き続き知らせること。すべてを決める権限があるとは限らない。",
+        "socialContextJa": "共同作業の連絡に使う。秘密や個人情報を無制限に共有する要求ではない。",
+        "neutralAlternative": "keep someone informed",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-in-the-loop-ex1",
+          "text": "Keep the navigation team in the loop if the landing time changes.",
+          "meaningJa": "着陸時刻が変わったら、航行担当チームにも継続して知らせてください。",
+          "contextJa": "架空の宇宙船で予定を共有する。"
+        },
+        {
+          "id": "film-expr-in-the-loop-ex2",
+          "text": "Please keep me in the loop about any changes to our presentation.",
+          "meaningJa": "発表に変更があれば、私にも知らせてください。",
+          "contextJa": "学校のグループ発表を準備する。"
+        }
+      ],
+      "domainIds": [
+        "communication",
+        "education",
+        "technology"
+      ],
+      "prerequisiteLemmas": [
+        "loop",
+        "inform",
+        "team"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "prefer-neutral-alternative-in-formal-essays"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: in the loop",
+          "url": "https://dictionary.cambridge.org/us/dictionary/english-chinese-simplified/be-in-the-loop-be-out-of-the-loop",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-inform",
+          "word": "inform",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-team",
+          "word": "team",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [
+          "loop"
+        ],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-beyond-repair",
+      "expression": "beyond repair",
+      "senseId": "too-damaged-to-repair",
+      "kind": "collocation",
+      "primaryGenreId": "science-fiction",
+      "genreIds": [
+        "science-fiction"
+      ],
+      "meaningEn": "Damaged so badly that it cannot be restored by repair.",
+      "meaningJa": "修理できないほど壊れて",
+      "usage": {
+        "register": "neutral",
+        "dialect": "widely-used",
+        "pattern": "be damaged / broken beyond repair; be beyond repair",
+        "noteJa": "「修理が難しい」より強い。単に不具合が出た段階で、修理不能だと決めつける表現ではない。",
+        "socialContextJa": "この試作では物や機器について使う。人の価値や回復可能性を表すラベルにはしない。",
+        "neutralAlternative": "too badly damaged to fix",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-beyond-repair-ex1",
+          "text": "The scanner was beyond repair, so the crew used a spare.",
+          "meaningJa": "スキャナーは修理不能だったので、乗組員は予備を使った。",
+          "contextJa": "架空の船内で点検後の判断を伝える。"
+        },
+        {
+          "id": "film-expr-beyond-repair-ex2",
+          "text": "The technician confirmed that the flooded camera was damaged beyond repair.",
+          "meaningJa": "技術者は、水没したカメラが修理できないほど損傷していると確認した。",
+          "contextJa": "機器の状態について専門家の判断を伝える。"
+        }
+      ],
+      "domainIds": [
+        "technology",
+        "science"
+      ],
+      "prerequisiteLemmas": [
+        "repair",
+        "damage",
+        "fix"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "check-the-specific-context"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: beyond repair",
+          "url": "https://dictionary.cambridge.org/us/dictionary/english/repair",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-damage",
+          "word": "damage",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-fix",
+          "word": "fix",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [
+          "repair"
+        ],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-out-of-range",
+      "expression": "out of range",
+      "senseId": "beyond-effective-reach",
+      "kind": "collocation",
+      "primaryGenreId": "science-fiction",
+      "genreIds": [
+        "science-fiction"
+      ],
+      "meaningEn": "Too far away for a signal or device to reach or detect.",
+      "meaningJa": "信号や機器が届く範囲の外で",
+      "usage": {
+        "register": "neutral",
+        "dialect": "widely-used",
+        "pattern": "be / move out of range of a transmitter or sensor",
+        "noteJa": "この試作は距離・通信範囲の意味。価格帯や数値の範囲を外れる用法は別に扱う。",
+        "socialContextJa": "何の到達範囲なのかを示すと分かりやすい。out of range だけで機器の故障とは限らない。",
+        "neutralAlternative": "beyond the device’s effective reach",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-out-of-range-ex1",
+          "text": "The rover moved out of range of the base station, and the signal disappeared.",
+          "meaningJa": "探査車が基地局の通信範囲の外へ出ると、信号が途絶えた。",
+          "contextJa": "架空の惑星探査で通信距離を説明する。"
+        },
+        {
+          "id": "film-expr-out-of-range-ex2",
+          "text": "My headphones stopped playing when I walked out of range of the tablet.",
+          "meaningJa": "タブレットの接続範囲の外まで歩くと、ヘッドホンの再生が止まった。",
+          "contextJa": "日常の無線接続の状態を説明する。"
+        }
+      ],
+      "domainIds": [
+        "technology",
+        "science",
+        "daily-life"
+      ],
+      "prerequisiteLemmas": [
+        "range",
+        "signal",
+        "reach"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "check-the-specific-context"
+      },
+      "sourceReferences": [
+        {
+          "title": "Oxford Learner’s Dictionaries: out of range",
+          "url": "https://www.oxfordlearnersdictionaries.com/definition/american_english/range_1",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-range",
+          "word": "range",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-signal",
+          "word": "signal",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-reach",
+          "word": "reach",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-take-over",
+      "expression": "take over",
+      "senseId": "assume-control-or-a-role",
+      "kind": "phrasal-verb",
+      "primaryGenreId": "science-fiction",
+      "genreIds": [
+        "science-fiction",
+        "action"
+      ],
+      "meaningEn": "To begin controlling something or carrying out a role previously held by another.",
+      "meaningJa": "管理や役割を引き継ぐ・代わって担当する",
+      "usage": {
+        "register": "neutral",
+        "dialect": "widely-used",
+        "pattern": "take over a task / take a task over; take it over; take over from someone",
+        "noteJa": "take over from は前の担当者を示す。引き継ぎは協力的な場合もあり、必ず「乗っ取る」ではない。",
+        "socialContextJa": "責任を交代する場面で使える。強制的に支配する意味かどうかは周囲の文脈で判断する。",
+        "neutralAlternative": "assume responsibility for the role",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-take-over-ex1",
+          "text": "The second pilot took over from the captain while she checked the warning light.",
+          "meaningJa": "機長が警告灯を確認する間、副操縦士が操縦を引き継いだ。",
+          "contextJa": "架空の飛行場面で役割を交代する。"
+        },
+        {
+          "id": "film-expr-take-over-ex2",
+          "text": "Can you take over the rehearsal while I help the new members?",
+          "meaningJa": "私が新入部員を手伝う間、リハーサルの進行を引き継いでもらえる？",
+          "contextJa": "学校の演劇部で担当を頼む。"
+        }
+      ],
+      "domainIds": [
+        "technology",
+        "education",
+        "communication"
+      ],
+      "prerequisiteLemmas": [
+        "take",
+        "control",
+        "responsibility"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "check-the-specific-context"
+      },
+      "sourceReferences": [
+        {
+          "title": "Oxford Learner’s Dictionaries: take over",
+          "url": "https://www.oxfordlearnersdictionaries.com/definition/english/take-over",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-take",
+          "word": "take",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-control",
+          "word": "control",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "responsibility",
+          "word": "responsibility",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-go-haywire",
+      "expression": "go haywire",
+      "senseId": "malfunction-unpredictably",
+      "kind": "idiom",
+      "primaryGenreId": "science-fiction",
+      "genreIds": [
+        "science-fiction",
+        "comedy"
+      ],
+      "meaningEn": "To suddenly behave in an uncontrolled or faulty way.",
+      "meaningJa": "突然おかしな動きをする・制御がきかなくなる",
+      "usage": {
+        "register": "informal",
+        "dialect": "widely-used",
+        "pattern": "A machine / system goes haywire; past: went haywire",
+        "noteJa": "haywire はここでは状態を表す。具体的に何が壊れたかまでは説明していない。",
+        "socialContextJa": "機器や計画の不調をくだけて表す。この教材では人の精神状態を決めつける言い方として使わない。",
+        "neutralAlternative": "malfunction unpredictably",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-go-haywire-ex1",
+          "text": "The station’s clock went haywire and displayed a different year every second.",
+          "meaningJa": "基地の時計がおかしくなり、毎秒違う年を表示した。",
+          "contextJa": "架空の宇宙基地の軽いトラブルを描く。"
+        },
+        {
+          "id": "film-expr-go-haywire-ex2",
+          "text": "Our slideshow went haywire and skipped straight to the final page.",
+          "meaningJa": "スライド表示が急におかしくなって、最後のページまで飛んでしまった。",
+          "contextJa": "学校の発表中の不具合を説明する。"
+        }
+      ],
+      "domainIds": [
+        "technology",
+        "education"
+      ],
+      "prerequisiteLemmas": [
+        "go",
+        "system",
+        "wrong"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "prefer-neutral-alternative-in-formal-essays"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: go haywire",
+          "url": "https://dictionary.cambridge.org/dictionary/english/haywire",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-go",
+          "word": "go",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-system",
+          "word": "system",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [
+          "wrong"
+        ],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-pull-someones-leg",
+      "expression": "pull someone’s leg",
+      "senseId": "tease-with-an-untrue-story",
+      "kind": "idiom",
+      "primaryGenreId": "comedy",
+      "genreIds": [
+        "comedy"
+      ],
+      "meaningEn": "To jokingly try to make someone believe something untrue.",
+      "meaningJa": "冗談で人をからかう・うそを本気にさせようとする",
+      "usage": {
+        "register": "informal",
+        "dialect": "widely-used",
+        "pattern": "pull someone’s leg; Are you pulling my leg?",
+        "noteJa": "足を物理的に引っ張る意味とは文脈で区別する。冗談のつもりでも相手が傷つくことはある。",
+        "socialContextJa": "軽い冗談に使う。心配させる重大なうそを正当化する表現ではない。",
+        "neutralAlternative": "joke with someone by pretending something is true",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-pull-someones-leg-ex1",
+          "text": "When Leo said the cafeteria had hired a robot chef, I thought he was pulling my leg.",
+          "meaningJa": "レオが食堂でロボットの料理人を雇ったと言ったので、私はからかわれていると思った。",
+          "contextJa": "架空の学校の変わったうわさを聞く。"
+        },
+        {
+          "id": "film-expr-pull-someones-leg-ex2",
+          "text": "I was only pulling your leg about the extra homework; there is no extra assignment.",
+          "meaningJa": "追加の宿題の話はからかっただけだよ。追加の課題はない。",
+          "contextJa": "誤解を残さないよう冗談だったと伝える。"
+        }
+      ],
+      "domainIds": [
+        "communication",
+        "education"
+      ],
+      "prerequisiteLemmas": [
+        "pull",
+        "leg",
+        "joke"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "prefer-neutral-alternative-in-formal-essays"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: pull someone’s leg",
+          "url": "https://dictionary.cambridge.org/us/dictionary/english/pull-leg",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-pull",
+          "word": "pull",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-leg",
+          "word": "leg",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [
+          "joke"
+        ],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-no-kidding",
+      "expression": "no kidding",
+      "senseId": "emphasize-truth",
+      "kind": "conversational-formula",
+      "primaryGenreId": "comedy",
+      "genreIds": [
+        "comedy"
+      ],
+      "meaningEn": "Used to emphasize that you are serious and what you say is true.",
+      "meaningJa": "冗談ではなく・本当に",
+      "usage": {
+        "register": "informal",
+        "dialect": "widely-used",
+        "pattern": "No kidding, ...; ..., no kidding.",
+        "noteJa": "このカードは「本当に」と念押しする用法。返事の No kidding? や皮肉の意味は、音調と状況を別に教える必要がある。",
+        "socialContextJa": "親しい会話向け。正式な説明では seriously / in fact など、意図に合う表現を使う。",
+        "neutralAlternative": "I am serious",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-no-kidding-ex1",
+          "text": "No kidding, the school play sold out in ten minutes.",
+          "meaningJa": "本当の話だけど、学校の演劇の券は十分で売り切れた。",
+          "contextJa": "意外な出来事を本当だと強調する。"
+        },
+        {
+          "id": "film-expr-no-kidding-ex2",
+          "text": "I found the missing key inside my shoe, no kidding.",
+          "meaningJa": "なくした鍵が靴の中にあったんだ。冗談じゃなくて。",
+          "contextJa": "おかしな出来事を友人に話す。"
+        }
+      ],
+      "domainIds": [
+        "communication",
+        "daily-life",
+        "education"
+      ],
+      "prerequisiteLemmas": [
+        "kid",
+        "true",
+        "serious"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "prefer-neutral-alternative-in-formal-essays"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: no kidding",
+          "url": "https://dictionary.cambridge.org/dictionary/english/no-kidding",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-kid",
+          "word": "kid",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-true",
+          "word": "true",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-serious",
+          "word": "serious",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-give-someone-a-break",
+      "expression": "give someone a break",
+      "senseId": "stop-criticizing-or-pressuring",
+      "kind": "idiom",
+      "primaryGenreId": "comedy",
+      "genreIds": [
+        "comedy",
+        "street-dialogue"
+      ],
+      "meaningEn": "To stop criticizing or putting pressure on someone for a while.",
+      "meaningJa": "人への批判やプレッシャーをいったんやめる・大目に見る",
+      "usage": {
+        "register": "informal",
+        "dialect": "widely-used",
+        "pattern": "give someone a break; Give me a break.",
+        "noteJa": "休憩時間を与える文字通りの意味とは別。Give me a break! は、言い方によって強い不満やあきれを示す。",
+        "socialContextJa": "他人への思いやりを促すときにも使うが、目上の人への直言ではぶっきらぼうに響き得る。",
+        "neutralAlternative": "please be more understanding",
+        "recognitionFirst": true
+      },
+      "examples": [
+        {
+          "id": "film-expr-give-someone-a-break-ex1",
+          "text": "Give Nao a break; this is her first time operating the lights.",
+          "meaningJa": "ナオを大目に見てあげて。照明を担当するのは初めてなんだ。",
+          "contextJa": "舞台の練習で仲間をかばう。"
+        },
+        {
+          "id": "film-expr-give-someone-a-break-ex2",
+          "text": "I know I mixed up the names, but give me a break—I have only just arrived.",
+          "meaningJa": "名前を間違えたのは分かっているけど、大目に見てよ。着いたばかりなんだから。",
+          "contextJa": "架空の気まずい自己紹介で軽く弁明する。"
+        }
+      ],
+      "domainIds": [
+        "communication",
+        "relationships",
+        "education"
+      ],
+      "prerequisiteLemmas": [
+        "give",
+        "break",
+        "criticize"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "prefer-neutral-alternative-in-formal-essays"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: give someone a break",
+          "url": "https://dictionary.cambridge.org/us/dictionary/english/give-a-break",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-give",
+          "word": "give",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-break",
+          "word": "break",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-criticize",
+          "word": "criticize",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-get-the-wrong-end-of-the-stick",
+      "expression": "get the wrong end of the stick",
+      "senseId": "misunderstand",
+      "kind": "idiom",
+      "primaryGenreId": "comedy",
+      "genreIds": [
+        "comedy"
+      ],
+      "meaningEn": "To misunderstand what a person or situation means.",
+      "meaningJa": "話や状況を取り違える・勘違いする",
+      "usage": {
+        "register": "informal",
+        "dialect": "mainly-UK",
+        "pattern": "get the wrong end of the stick; past: got",
+        "noteJa": "長い決まり文句として覚える。stick の端を実際につかむ話ではない。",
+        "socialContextJa": "主にイギリス英語のくだけた表現。相手を責めず、自分の誤解を認める形でも使える。",
+        "neutralAlternative": "misunderstand the situation",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-get-the-wrong-end-of-the-stick-ex1",
+          "text": "I got the wrong end of the stick and brought a cake to what was actually a rehearsal.",
+          "meaningJa": "私は勘違いして、実はリハーサルだった集まりにケーキを持ってきた。",
+          "contextJa": "架空の集まりの目的を取り違える。"
+        },
+        {
+          "id": "film-expr-get-the-wrong-end-of-the-stick-ex2",
+          "text": "You have got the wrong end of the stick; the fee is for the whole team, not each player.",
+          "meaningJa": "勘違いしているよ。その料金は選手一人ずつではなく、チーム全体の分だ。",
+          "contextJa": "参加費の誤解を訂正する。"
+        }
+      ],
+      "domainIds": [
+        "communication",
+        "sports",
+        "daily-life"
+      ],
+      "prerequisiteLemmas": [
+        "get",
+        "wrong",
+        "understand"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "prefer-neutral-alternative-in-formal-essays"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: get the wrong end of the stick",
+          "url": "https://dictionary.cambridge.org/dictionary/english/get-the-wrong-end-of-the-stick",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-get",
+          "word": "get",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-understand",
+          "word": "understand",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [
+          "wrong"
+        ],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-spill-the-beans",
+      "expression": "spill the beans",
+      "senseId": "reveal-a-secret",
+      "kind": "idiom",
+      "primaryGenreId": "comedy",
+      "genreIds": [
+        "comedy",
+        "crime-suspense"
+      ],
+      "meaningEn": "To reveal information that was being kept secret.",
+      "meaningJa": "秘密をばらす",
+      "usage": {
+        "register": "informal",
+        "dialect": "widely-used",
+        "pattern": "spill the beans about something; spill the beans on a plan",
+        "noteJa": "うっかり漏らす場合にも、意図的に教える場合にも使う。豆をこぼす文字通りの意味ではない。",
+        "socialContextJa": "軽い秘密やサプライズの話に合う。秘密の種類によっては深刻な問題なので、何でも冗談扱いしない。",
+        "neutralAlternative": "reveal the secret",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-spill-the-beans-ex1",
+          "text": "The surprise party stayed secret until the youngest cousin spilled the beans.",
+          "meaningJa": "いちばん年下のいとこがばらすまで、サプライズパーティーは秘密のままだった。",
+          "contextJa": "架空の家族の準備が思わぬところで知られる。"
+        },
+        {
+          "id": "film-expr-spill-the-beans-ex2",
+          "text": "Do not spill the beans about the ending; I have only read the first chapter.",
+          "meaningJa": "結末をばらさないで。まだ最初の章しか読んでいないんだ。",
+          "contextJa": "友人にネタばれを避けてもらう。"
+        }
+      ],
+      "domainIds": [
+        "communication",
+        "relationships",
+        "media"
+      ],
+      "prerequisiteLemmas": [
+        "spill",
+        "secret",
+        "reveal"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "prefer-neutral-alternative-in-formal-essays"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: spill the beans",
+          "url": "https://dictionary.cambridge.org/dictionary/english/spill-the-beans",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-secret",
+          "word": "secret",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [
+          "spill",
+          "reveal"
+        ],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-a-long-shot",
+      "expression": "a long shot",
+      "senseId": "attempt-with-low-chance-of-success",
+      "kind": "idiom",
+      "primaryGenreId": "comedy",
+      "genreIds": [
+        "comedy",
+        "crime-suspense"
+      ],
+      "meaningEn": "An attempt or possibility that is unlikely to succeed.",
+      "meaningJa": "成功する見込みの低い試み・可能性",
+      "usage": {
+        "register": "informal",
+        "dialect": "widely-used",
+        "pattern": "be a long shot; It is a long shot, but ...",
+        "noteJa": "見込みが低いという意味で、不可能という断定ではない。映像のロングショットや遠距離のシュートとは別義。",
+        "socialContextJa": "期待値を控えめに伝える表現。成功率の数値を示す言い方ではない。",
+        "neutralAlternative": "an unlikely possibility",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-a-long-shot-ex1",
+          "text": "Asking the famous singer to visit our tiny club was a long shot, but we sent a polite invitation.",
+          "meaningJa": "有名歌手に小さな部へ来てもらうのは望み薄だったが、丁寧な招待状を送った。",
+          "contextJa": "架空の学校で大きな希望を持つ。"
+        },
+        {
+          "id": "film-expr-a-long-shot-ex2",
+          "text": "It is a long shot, but the lost umbrella might still be at the station.",
+          "meaningJa": "望みは薄いけれど、なくした傘がまだ駅にあるかもしれない。",
+          "contextJa": "なくし物を探す選択肢を考える。"
+        }
+      ],
+      "domainIds": [
+        "logic-reasoning",
+        "education",
+        "travel"
+      ],
+      "prerequisiteLemmas": [
+        "long",
+        "chance",
+        "success"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "prefer-neutral-alternative-in-formal-essays"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: a long shot",
+          "url": "https://dictionary.cambridge.org/us/dictionary/english/long-shot",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-long",
+          "word": "long",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-chance",
+          "word": "chance",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-success",
+          "word": "success",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-make-a-fool-of-oneself",
+      "expression": "make a fool of oneself",
+      "senseId": "embarrass-oneself",
+      "kind": "idiom",
+      "primaryGenreId": "comedy",
+      "genreIds": [
+        "comedy"
+      ],
+      "meaningEn": "To behave in a way that makes you feel or appear foolish.",
+      "meaningJa": "ばかなことをして恥をかく",
+      "usage": {
+        "register": "informal",
+        "dialect": "widely-used",
+        "pattern": "make a fool of myself / yourself / himself / herself / ourselves / themselves",
+        "noteJa": "自分のことを言うなら主語に合う再帰代名詞を使う。make a fool of someone else は他人をばかにする・だます意味になり得る。",
+        "socialContextJa": "恥ずかしさの表現であり、失敗した人に価値がないという意味ではない。人を見下すラベルにはしない。",
+        "neutralAlternative": "embarrass oneself",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-make-a-fool-of-oneself-ex1",
+          "text": "He worried that he would make a fool of himself by forgetting the opening line.",
+          "meaningJa": "彼は冒頭のせりふを忘れて恥をかくのではないかと心配した。",
+          "contextJa": "架空の初舞台で緊張する。"
+        },
+        {
+          "id": "film-expr-make-a-fool-of-oneself-ex2",
+          "text": "I made a fool of myself by waving at someone who was waving to the person behind me.",
+          "meaningJa": "自分の後ろの人に手を振っていた相手に手を振り返してしまい、恥をかいた。",
+          "contextJa": "日常の小さな勘違いを自分で話す。"
+        }
+      ],
+      "domainIds": [
+        "communication",
+        "relationships",
+        "arts-culture"
+      ],
+      "prerequisiteLemmas": [
+        "make",
+        "fool",
+        "embarrass"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "prefer-neutral-alternative-in-formal-essays"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: make a fool of oneself",
+          "url": "https://dictionary.cambridge.org/us/dictionary/english/make-a-fool-of",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-make",
+          "word": "make",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [
+          "fool",
+          "embarrass"
+        ],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-out-of-the-blue",
+      "expression": "out of the blue",
+      "senseId": "unexpectedly",
+      "kind": "idiom",
+      "primaryGenreId": "comedy",
+      "genreIds": [
+        "comedy",
+        "romance-urban"
+      ],
+      "meaningEn": "Suddenly and without being expected.",
+      "meaningJa": "思いがけず・突然",
+      "usage": {
+        "register": "informal",
+        "dialect": "widely-used",
+        "pattern": "happen / arrive / call / appear out of the blue",
+        "noteJa": "青い色や空から出ることが必要な表現ではない。驚きの内容はよいことにも悪いことにもなり得る。",
+        "socialContextJa": "予期していなかった知らせや再会に使える。理由が存在しない、という意味ではない。",
+        "neutralAlternative": "unexpectedly",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-out-of-the-blue-ex1",
+          "text": "An old classmate called out of the blue and asked if I still had our concert recording.",
+          "meaningJa": "昔の同級生が突然電話してきて、私たちの演奏会の録音をまだ持っているかと聞いた。",
+          "contextJa": "思いがけない再会のきっかけ。"
+        },
+        {
+          "id": "film-expr-out-of-the-blue-ex2",
+          "text": "Out of the blue, the quietest member suggested turning the play into a musical.",
+          "meaningJa": "思いがけず、いちばんおとなしい部員が劇をミュージカルにしようと提案した。",
+          "contextJa": "学校の企画会議で意外な案が出る。"
+        }
+      ],
+      "domainIds": [
+        "communication",
+        "relationships",
+        "arts-culture"
+      ],
+      "prerequisiteLemmas": [
+        "blue",
+        "sudden",
+        "expect"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "prefer-neutral-alternative-in-formal-essays"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: out of the blue",
+          "url": "https://dictionary.cambridge.org/us/dictionary/english/out-of-the-blue",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-blue",
+          "word": "blue",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-expect",
+          "word": "expect",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [
+          "sudden"
+        ],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-hold-on",
+      "expression": "hold on",
+      "senseId": "wait-a-moment",
+      "kind": "phrasal-verb",
+      "primaryGenreId": "action",
+      "genreIds": [
+        "action",
+        "comedy"
+      ],
+      "meaningEn": "To wait briefly before doing or saying more.",
+      "meaningJa": "ちょっと待つ",
+      "usage": {
+        "register": "informal",
+        "dialect": "widely-used",
+        "pattern": "Hold on a moment / a second; hold on while ...",
+        "noteJa": "この試作では待つ意味。hold on to something の「つかまる」とは分ける。",
+        "socialContextJa": "急いで話を止めるときにも使う。丁寧に頼むなら Could you wait a moment? が使える。",
+        "neutralAlternative": "please wait a moment",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-hold-on-ex1",
+          "text": "Hold on a second; the guide is checking whether the path is open.",
+          "meaningJa": "ちょっと待って。ガイドが道を通れるか確認している。",
+          "contextJa": "架空の冒険で確認が終わるまで待つ。"
+        },
+        {
+          "id": "film-expr-hold-on-ex2",
+          "text": "Could you hold on while I find the correct timetable?",
+          "meaningJa": "正しい時刻表を見つけるまで、少し待ってもらえますか。",
+          "contextJa": "旅行の相談で情報を確認する。"
+        }
+      ],
+      "domainIds": [
+        "communication",
+        "travel"
+      ],
+      "prerequisiteLemmas": [
+        "hold",
+        "wait",
+        "moment"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "prefer-neutral-alternative-in-formal-essays"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: hold on",
+          "url": "https://dictionary.cambridge.org/dictionary/english/hold-on",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-hold",
+          "word": "hold",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-wait",
+          "word": "wait",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-moment",
+          "word": "moment",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-watch-out",
+      "expression": "watch out",
+      "senseId": "be-alert-to-danger",
+      "kind": "phrasal-verb",
+      "primaryGenreId": "action",
+      "genreIds": [
+        "action"
+      ],
+      "meaningEn": "To be alert because something dangerous or harmful may happen.",
+      "meaningJa": "危険に気をつける",
+      "usage": {
+        "register": "neutral",
+        "dialect": "widely-used",
+        "pattern": "Watch out!; watch out for something",
+        "noteJa": "watch out for の後に危険の対象を置く。watch a film のような「見る」とは別の働き。",
+        "socialContextJa": "差し迫った危険では短い警告が自然。特定の人の属性を危険扱いする言い方にはしない。",
+        "neutralAlternative": "be careful",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-watch-out-ex1",
+          "text": "Watch out! There is a loose board near the edge of the bridge.",
+          "meaningJa": "気をつけて！橋の端の近くに、外れかけた板がある。",
+          "contextJa": "架空の冒険場面で具体的な危険を知らせる。"
+        },
+        {
+          "id": "film-expr-watch-out-ex2",
+          "text": "Watch out for cyclists when you step off the bus.",
+          "meaningJa": "バスを降りるときは自転車に気をつけて。",
+          "contextJa": "身近な移動で注意を促す。"
+        }
+      ],
+      "domainIds": [
+        "travel",
+        "transport",
+        "communication"
+      ],
+      "prerequisiteLemmas": [
+        "watch",
+        "careful",
+        "danger"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "check-the-specific-context"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: watch out",
+          "url": "https://dictionary.cambridge.org/dictionary/english/watch-out",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-careful",
+          "word": "careful",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-danger",
+          "word": "danger",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [
+          "watch"
+        ],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-back-someone-up",
+      "expression": "back someone up",
+      "senseId": "support-a-person-or-their-account",
+      "kind": "phrasal-verb",
+      "primaryGenreId": "action",
+      "genreIds": [
+        "action",
+        "crime-suspense",
+        "street-dialogue"
+      ],
+      "meaningEn": "To support a person, including by confirming that their account is true.",
+      "meaningJa": "人を支える・人の説明が正しいと裏付ける",
+      "usage": {
+        "register": "informal",
+        "dialect": "widely-used",
+        "pattern": "back someone up; back them up; back someone up on a point",
+        "noteJa": "代名詞は back them up。データのバックアップや車の後退とは語義を分ける。",
+        "socialContextJa": "人やその説明を支持する表現。その説明が客観的に真実だと保証するわけではない。証言について使う場合は、誰が何を支持しているのかを文脈で確かめる。",
+        "neutralAlternative": "support someone’s account",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-back-someone-up-ex1",
+          "text": "The other climber backed her up when she explained that the route had been closed.",
+          "meaningJa": "もう一人の登山者も、その道は閉鎖されていたという彼女の説明が正しいと証言した。",
+          "contextJa": "架空の救助後の聞き取りで事実を確認する。"
+        },
+        {
+          "id": "film-expr-back-someone-up-ex2",
+          "text": "I was at the meeting, so I can back you up about what was agreed.",
+          "meaningJa": "私も会議にいたから、合意した内容について君の説明を裏付けられる。",
+          "contextJa": "学校の打ち合わせの記録を確認する。"
+        }
+      ],
+      "domainIds": [
+        "communication",
+        "logic-reasoning",
+        "education"
+      ],
+      "prerequisiteLemmas": [
+        "back",
+        "support",
+        "true"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "prefer-neutral-alternative-in-formal-essays"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: back someone up",
+          "url": "https://dictionary.cambridge.org/dictionary/english/back-up",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-support",
+          "word": "support",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-true",
+          "word": "true",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [
+          "back"
+        ],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-get-out-of-the-way",
+      "expression": "get out of the way",
+      "senseId": "move-aside",
+      "kind": "idiom",
+      "primaryGenreId": "action",
+      "genreIds": [
+        "action"
+      ],
+      "meaningEn": "To move aside so that someone or something can pass.",
+      "meaningJa": "通り道からどく",
+      "usage": {
+        "register": "neutral",
+        "dialect": "widely-used",
+        "pattern": "get out of the way of someone / something",
+        "noteJa": "get a task out of the way は「用事を先に済ませる」という別の形と意味。",
+        "socialContextJa": "Get out of the way! は切迫した警告になり得るが、普段の依頼なら Could you move aside, please? が丁寧。",
+        "neutralAlternative": "move aside, please",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-get-out-of-the-way-ex1",
+          "text": "The hikers got out of the way so the rescue team could carry the stretcher through.",
+          "meaningJa": "救助隊が担架を運べるよう、登山者たちは道をあけた。",
+          "contextJa": "架空の救助場面で通路を確保する。"
+        },
+        {
+          "id": "film-expr-get-out-of-the-way-ex2",
+          "text": "I got out of the way when I saw the delivery cart coming down the narrow hall.",
+          "meaningJa": "狭い廊下を配達用の台車が来るのを見て、私は脇によけた。",
+          "contextJa": "身近な場面で通り道をあける。"
+        }
+      ],
+      "domainIds": [
+        "travel",
+        "transport",
+        "daily-life"
+      ],
+      "prerequisiteLemmas": [
+        "get",
+        "way",
+        "move"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "check-the-specific-context"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: get out of the way",
+          "url": "https://dictionary.cambridge.org/us/dictionary/english/get-out-of",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-get",
+          "word": "get",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-move",
+          "word": "move",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [
+          "way"
+        ],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-cut-to-the-chase",
+      "expression": "cut to the chase",
+      "senseId": "get-to-the-main-point",
+      "kind": "idiom",
+      "primaryGenreId": "action",
+      "genreIds": [
+        "action",
+        "street-dialogue"
+      ],
+      "meaningEn": "To move directly to the main point instead of discussing less important details.",
+      "meaningJa": "細かい前置きを省いて本題に入る",
+      "usage": {
+        "register": "informal",
+        "dialect": "widely-used",
+        "pattern": "cut to the chase; Let me cut to the chase.",
+        "noteJa": "文字通りの追跡場面でなくても使える。結論だけ伝えて根拠を無視してよいという意味ではない。",
+        "socialContextJa": "相手に言うと急かす響きになることがある。自分の説明を短くする前置きとして使いやすい。",
+        "neutralAlternative": "let me get to the main point",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-cut-to-the-chase-ex1",
+          "text": "Let me cut to the chase: we need a different route before sunset.",
+          "meaningJa": "単刀直入に言うと、日没前に別のルートが必要だ。",
+          "contextJa": "架空の冒険で相談の要点をまとめる。"
+        },
+        {
+          "id": "film-expr-cut-to-the-chase-ex2",
+          "text": "With only a minute left, she cut to the chase and explained what help the club needed.",
+          "meaningJa": "残り一分しかなかったので、彼女は本題に入り、部に必要な支援を説明した。",
+          "contextJa": "学校で短い説明時間を使う。"
+        }
+      ],
+      "domainIds": [
+        "communication",
+        "education",
+        "travel"
+      ],
+      "prerequisiteLemmas": [
+        "cut",
+        "point",
+        "explain"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "prefer-neutral-alternative-in-formal-essays"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: cut to the chase",
+          "url": "https://dictionary.cambridge.org/dictionary/english/cut-to-the-chase",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-cut",
+          "word": "cut",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-explain",
+          "word": "explain",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [
+          "point"
+        ],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-against-the-clock",
+      "expression": "against the clock",
+      "senseId": "under-a-tight-time-limit",
+      "kind": "idiom",
+      "primaryGenreId": "action",
+      "genreIds": [
+        "action",
+        "science-fiction"
+      ],
+      "meaningEn": "With very little time available before a deadline.",
+      "meaningJa": "時間に追われて・制限時間に間に合わせようとして",
+      "usage": {
+        "register": "informal",
+        "dialect": "widely-used",
+        "pattern": "work / race against the clock",
+        "noteJa": "around the clock は「昼夜を通して」で別の表現。against the clock は締め切りとの競争に焦点がある。",
+        "socialContextJa": "時間制約を表すが、無理な長時間作業を勧めるものではない。",
+        "neutralAlternative": "under severe time pressure",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-against-the-clock-ex1",
+          "text": "The crew worked against the clock to repair the radio before the next scheduled call.",
+          "meaningJa": "乗組員たちは次の定時連絡に間に合わせるため、時間に追われながら無線機を修理した。",
+          "contextJa": "架空の船で通信を復旧する。"
+        },
+        {
+          "id": "film-expr-against-the-clock-ex2",
+          "text": "We were racing against the clock to finish the exhibition labels before the doors opened.",
+          "meaningJa": "開場前に展示ラベルを仕上げようと、私たちは時間と競争していた。",
+          "contextJa": "文化祭の準備を振り返る。"
+        }
+      ],
+      "domainIds": [
+        "technology",
+        "education",
+        "arts-culture"
+      ],
+      "prerequisiteLemmas": [
+        "clock",
+        "time",
+        "deadline"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "prefer-neutral-alternative-in-formal-essays"
+      },
+      "sourceReferences": [
+        {
+          "title": "Oxford Learner’s Dictionaries: against the clock",
+          "url": "https://www.oxfordlearnersdictionaries.com/us/definition/english/clock_1",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-clock",
+          "word": "clock",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-time",
+          "word": "time",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-deadline",
+          "word": "deadline",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-keep-an-eye-on",
+      "expression": "keep an eye on",
+      "senseId": "watch-or-look-after",
+      "kind": "idiom",
+      "primaryGenreId": "action",
+      "genreIds": [
+        "action",
+        "romance-urban"
+      ],
+      "meaningEn": "To watch something or someone so that you notice changes or can look after them.",
+      "meaningJa": "様子を見ておく・気を配って見守る",
+      "usage": {
+        "register": "informal",
+        "dialect": "widely-used",
+        "pattern": "keep an eye on someone / something",
+        "noteJa": "常に凝視することを意味するとは限らない。on の後に注意を向ける対象を置く。",
+        "socialContextJa": "頼まれた荷物や作業中の状態など、妥当な範囲で見守る言い方。人の私生活を監視することを勧めない。",
+        "neutralAlternative": "watch or look after",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-keep-an-eye-on-ex1",
+          "text": "Keep an eye on the water level while I check the pump.",
+          "meaningJa": "私がポンプを確認する間、水位を見ていて。",
+          "contextJa": "架空の船内で役割を分担する。"
+        },
+        {
+          "id": "film-expr-keep-an-eye-on-ex2",
+          "text": "Could you keep an eye on my bag while I refill my bottle?",
+          "meaningJa": "ボトルに水を入れてくる間、かばんを見ていてもらえる？",
+          "contextJa": "友人に短い間だけ荷物を頼む。"
+        }
+      ],
+      "domainIds": [
+        "communication",
+        "daily-life",
+        "technology"
+      ],
+      "prerequisiteLemmas": [
+        "keep",
+        "eye",
+        "watch"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "prefer-neutral-alternative-in-formal-essays"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: keep an eye on",
+          "url": "https://dictionary.cambridge.org/us/dictionary/english/keep-an-eye-on",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-keep",
+          "word": "keep",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-eye",
+          "word": "eye",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [
+          "watch"
+        ],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-make-it",
+      "expression": "make it",
+      "senseId": "reach-a-place-or-event-successfully",
+      "kind": "idiom",
+      "primaryGenreId": "action",
+      "genreIds": [
+        "action",
+        "romance-urban"
+      ],
+      "meaningEn": "To successfully reach a place or attend an event, often despite difficulty.",
+      "meaningJa": "目的地や予定の場にたどり着く・間に合う・参加できる",
+      "usage": {
+        "register": "informal",
+        "dialect": "widely-used",
+        "pattern": "make it to a place / event; make it in time; cannot make it",
+        "noteJa": "このカードは到着・参加の語義。成功者になる・生き延びるなどの別義を混ぜて判定しない。",
+        "socialContextJa": "行けるかどうかを伝える日常表現。締め切りが明示されていない場合、必ず「時間に間に合う」とは限らない。",
+        "neutralAlternative": "manage to arrive or attend",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-make-it-ex1",
+          "text": "Despite the storm, the group made it to the shelter before dark.",
+          "meaningJa": "嵐にもかかわらず、一行は暗くなる前に避難小屋へたどり着いた。",
+          "contextJa": "架空の冒険で無事に目的地へ着く。"
+        },
+        {
+          "id": "film-expr-make-it-ex2",
+          "text": "I cannot make it to rehearsal today, but I will send you my notes.",
+          "meaningJa": "今日はリハーサルに行けないけれど、メモは送るね。",
+          "contextJa": "学校の予定に参加できないと伝える。"
+        }
+      ],
+      "domainIds": [
+        "travel",
+        "education",
+        "communication"
+      ],
+      "prerequisiteLemmas": [
+        "make",
+        "arrive",
+        "attend"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "prefer-neutral-alternative-in-formal-essays"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: make it",
+          "url": "https://dictionary.cambridge.org/dictionary/english/make",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-make",
+          "word": "make",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-arrive",
+          "word": "arrive",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-attend",
+          "word": "attend",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-my-bad",
+      "expression": "my bad",
+      "senseId": "acknowledge-a-small-mistake",
+      "kind": "conversational-formula",
+      "primaryGenreId": "street-dialogue",
+      "genreIds": [
+        "street-dialogue",
+        "comedy"
+      ],
+      "meaningEn": "A casual way to admit that a mistake was your fault.",
+      "meaningJa": "自分のミスだったと気軽に認める「ごめん、自分のせい」",
+      "usage": {
+        "register": "very-informal",
+        "dialect": "widely-used",
+        "pattern": "My bad.; ..., my bad.",
+        "noteJa": "bad を名詞のように使う決まり文句。通常の作文で my mistake の代わりに広く使うものではない。",
+        "socialContextJa": "友達同士の小さなミスに合う。重大な迷惑や正式な謝罪には軽すぎることがある。",
+        "neutralAlternative": "that was my mistake; I am sorry",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-my-bad-ex1",
+          "text": "My bad—I sent you the old rehearsal schedule.",
+          "meaningJa": "ごめん、自分のミス。古いリハーサル日程を送っちゃった。",
+          "contextJa": "友人への軽い連絡ミスを訂正する。"
+        },
+        {
+          "id": "film-expr-my-bad-ex2",
+          "text": "That is your notebook, not mine. My bad.",
+          "meaningJa": "それは僕のじゃなくて君のノートだね。ごめん、勘違いした。",
+          "contextJa": "学校で持ち物を取り違える。"
+        }
+      ],
+      "domainIds": [
+        "communication",
+        "education",
+        "daily-life"
+      ],
+      "prerequisiteLemmas": [
+        "bad",
+        "mistake",
+        "sorry"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "prefer-neutral-alternative-in-formal-essays"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: my bad",
+          "url": "https://dictionary.cambridge.org/us/dictionary/english/my-bad",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-mistake",
+          "word": "mistake",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-sorry",
+          "word": "sorry",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [
+          "bad"
+        ],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-no-sweat",
+      "expression": "no sweat",
+      "senseId": "no-difficulty",
+      "kind": "conversational-formula",
+      "primaryGenreId": "street-dialogue",
+      "genreIds": [
+        "street-dialogue",
+        "comedy"
+      ],
+      "meaningEn": "A casual way to say that doing something will be easy or will not be a problem.",
+      "meaningJa": "お安いご用・問題ないよ",
+      "usage": {
+        "register": "informal",
+        "dialect": "widely-used",
+        "pattern": "No sweat.; ..., no sweat.",
+        "noteJa": "汗をかかないという身体的な説明ではなく、依頼などへの軽い返答として使う。",
+        "socialContextJa": "友達の頼みを気軽に受ける場面向け。他人の深刻な悩みを軽く否定する返事にはしない。",
+        "neutralAlternative": "that will not be a problem",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-no-sweat-ex1",
+          "text": "Can you bring one extra chair? No sweat—I will get it now.",
+          "meaningJa": "椅子をもう一つ持ってきてくれる？ いいよ、今取ってくる。",
+          "contextJa": "準備を手伝う短い会話。"
+        },
+        {
+          "id": "film-expr-no-sweat-ex2",
+          "text": "I can show you how to use the projector, no sweat.",
+          "meaningJa": "プロジェクターの使い方なら、気軽に教えられるよ。",
+          "contextJa": "学校で友人を手伝う。"
+        }
+      ],
+      "domainIds": [
+        "communication",
+        "education",
+        "daily-life"
+      ],
+      "prerequisiteLemmas": [
+        "sweat",
+        "easy",
+        "problem"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "prefer-neutral-alternative-in-formal-essays"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: no sweat",
+          "url": "https://dictionary.cambridge.org/dictionary/english/no-sweat",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-sweat",
+          "word": "sweat",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-easy",
+          "word": "easy",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-problem",
+          "word": "problem",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-cut-someone-some-slack",
+      "expression": "cut someone some slack",
+      "senseId": "judge-less-harshly",
+      "kind": "idiom",
+      "primaryGenreId": "street-dialogue",
+      "genreIds": [
+        "street-dialogue",
+        "romance-urban"
+      ],
+      "meaningEn": "To judge someone less harshly because their circumstances are difficult.",
+      "meaningJa": "事情を考えて人への要求や批判を少し緩める",
+      "usage": {
+        "register": "informal",
+        "dialect": "widely-used",
+        "pattern": "cut someone some slack; cut them some slack",
+        "noteJa": "slack はここでは余裕を与える比喩。cut some slack someone という順序にはしない。",
+        "socialContextJa": "事情への配慮を頼む表現。危険な行動や不正を無条件で認める意味ではない。",
+        "neutralAlternative": "make some allowance for their circumstances",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-cut-someone-some-slack-ex1",
+          "text": "Cut him some slack; he joined the team yesterday and has not learned every routine yet.",
+          "meaningJa": "少し大目に見てあげて。彼は昨日チームに入ったばかりで、手順を全部覚えていないんだ。",
+          "contextJa": "新しい部員に配慮する。"
+        },
+        {
+          "id": "film-expr-cut-someone-some-slack-ex2",
+          "text": "She asked the group to cut her some slack while she recovered from a busy exam week.",
+          "meaningJa": "忙しい試験週間の疲れが取れるまで、少し余裕を持たせてほしいと彼女はグループに頼んだ。",
+          "contextJa": "負担について仲間に率直に伝える。"
+        }
+      ],
+      "domainIds": [
+        "communication",
+        "relationships",
+        "education"
+      ],
+      "prerequisiteLemmas": [
+        "cut",
+        "allow",
+        "circumstance"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "prefer-neutral-alternative-in-formal-essays"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: cut someone some slack",
+          "url": "https://dictionary.cambridge.org/dictionary/english/cut-some-slack",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-cut",
+          "word": "cut",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-allow",
+          "word": "allow",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [
+          "circumstance"
+        ],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-give-someone-a-hard-time",
+      "expression": "give someone a hard time",
+      "senseId": "criticize-or-tease-unpleasantly",
+      "kind": "idiom",
+      "primaryGenreId": "street-dialogue",
+      "genreIds": [
+        "street-dialogue",
+        "comedy"
+      ],
+      "meaningEn": "To make things unpleasant for someone through criticism, teasing, or difficult treatment.",
+      "meaningJa": "人を責めたりからかったりして嫌な思いをさせる",
+      "usage": {
+        "register": "informal",
+        "dialect": "widely-used",
+        "pattern": "give someone a hard time about / over something",
+        "noteJa": "have a hard time は自分が苦労すること。give someone a hard time は相手に苦労や不快さを与えること。",
+        "socialContextJa": "軽いからかいか強い嫌がらせかは文脈次第。相手が嫌がるからかいを普通の友情だと決めつけない。",
+        "neutralAlternative": "criticize or tease someone",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-give-someone-a-hard-time-ex1",
+          "text": "The others gave him a hard time about missing the easy shot, so the captain asked them to stop.",
+          "meaningJa": "簡単なシュートを外したことで皆が彼をからかったので、主将がやめるよう言った。",
+          "contextJa": "部活動で仲間への接し方を考える。"
+        },
+        {
+          "id": "film-expr-give-someone-a-hard-time-ex2",
+          "text": "Please do not give her a hard time over one spelling mistake.",
+          "meaningJa": "つづりを一つ間違えただけで、彼女を責めないで。",
+          "contextJa": "学校で過剰な批判を止める。"
+        }
+      ],
+      "domainIds": [
+        "communication",
+        "relationships",
+        "sports"
+      ],
+      "prerequisiteLemmas": [
+        "give",
+        "hard",
+        "criticize"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "prefer-neutral-alternative-in-formal-essays"
+      },
+      "sourceReferences": [
+        {
+          "title": "Oxford Learner’s Dictionaries: give someone a hard time",
+          "url": "https://www.oxfordlearnersdictionaries.com/definition/english/time_1",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-give",
+          "word": "give",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-hard",
+          "word": "hard",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-criticize",
+          "word": "criticize",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-have-someones-back",
+      "expression": "have someone’s back",
+      "senseId": "be-ready-to-support-or-defend",
+      "kind": "idiom",
+      "primaryGenreId": "street-dialogue",
+      "genreIds": [
+        "street-dialogue",
+        "action"
+      ],
+      "meaningEn": "To be ready to support or defend someone when they need help.",
+      "meaningJa": "困ったときに人を支える・味方でいる",
+      "usage": {
+        "register": "informal",
+        "dialect": "mainly-US",
+        "pattern": "have someone’s back; have got someone’s back",
+        "noteJa": "have someone back は「人に戻ってきてもらう」など別の形。所有格を落とさない。",
+        "socialContextJa": "親しい人に支援を伝える言い方。間違った行為まで無条件にかばうことを意味する必要はない。",
+        "neutralAlternative": "be there to support someone",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-have-someones-back-ex1",
+          "text": "If the presentation becomes difficult, I have your back and can explain the next diagram.",
+          "meaningJa": "発表で困ったら、私が支えて次の図を説明できるよ。",
+          "contextJa": "学校の共同発表で助け合う。"
+        },
+        {
+          "id": "film-expr-have-someones-back-ex2",
+          "text": "She knew her teammates had her back when she reported the unfair treatment.",
+          "meaningJa": "不公平な扱いを報告したとき、彼女はチームメートが味方でいてくれると分かっていた。",
+          "contextJa": "架空のチームで問題を相談する。"
+        }
+      ],
+      "domainIds": [
+        "relationships",
+        "communication",
+        "education"
+      ],
+      "prerequisiteLemmas": [
+        "have",
+        "back",
+        "support"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "prefer-neutral-alternative-in-formal-essays"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: have someone’s back",
+          "url": "https://dictionary.cambridge.org/dictionary/english/have-got-back",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-support",
+          "word": "support",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [
+          "have",
+          "back"
+        ],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-mess-with",
+      "expression": "mess with",
+      "senseId": "tamper-with-an-object",
+      "kind": "phrasal-verb",
+      "primaryGenreId": "street-dialogue",
+      "genreIds": [
+        "street-dialogue",
+        "science-fiction"
+      ],
+      "meaningEn": "To handle or change something carelessly, especially when it should be left alone.",
+      "meaningJa": "物や設定を不用意にいじる",
+      "usage": {
+        "register": "informal",
+        "dialect": "mainly-US",
+        "pattern": "mess with something; do not mess with it",
+        "noteJa": "このカードは物をいじる語義。mess with someone は人にちょっかいを出すなど別義で、威圧的にも響く。",
+        "socialContextJa": "くだけた注意の言い方。丁寧な依頼なら Please leave the settings as they are. のように具体的に伝える。",
+        "neutralAlternative": "tamper with something; change it carelessly",
+        "recognitionFirst": true
+      },
+      "examples": [
+        {
+          "id": "film-expr-mess-with-ex1",
+          "text": "Please do not mess with the sound settings; we have just finished testing them.",
+          "meaningJa": "音の設定をむやみにいじらないで。今、確認が終わったところなんだ。",
+          "contextJa": "学校の舞台準備で設定を保つ。"
+        },
+        {
+          "id": "film-expr-mess-with-ex2",
+          "text": "Someone had messed with the model’s wheels, and it no longer rolled straight.",
+          "meaningJa": "誰かが模型の車輪をいじってしまい、まっすぐ転がらなくなっていた。",
+          "contextJa": "架空の制作中の小さなトラブル。"
+        }
+      ],
+      "domainIds": [
+        "technology",
+        "education",
+        "daily-life"
+      ],
+      "prerequisiteLemmas": [
+        "mess",
+        "change",
+        "careful"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "prefer-neutral-alternative-in-formal-essays"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: mess with",
+          "url": "https://dictionary.cambridge.org/us/dictionary/english/mess-with",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-mess",
+          "word": "mess",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-change",
+          "word": "change",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-careful",
+          "word": "careful",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-call-the-shots",
+      "expression": "call the shots",
+      "senseId": "make-the-important-decisions",
+      "kind": "idiom",
+      "primaryGenreId": "street-dialogue",
+      "genreIds": [
+        "street-dialogue",
+        "crime-suspense"
+      ],
+      "meaningEn": "To be the person who controls a situation and makes its important decisions.",
+      "meaningJa": "主導権を握り、重要な決定をする",
+      "usage": {
+        "register": "informal",
+        "dialect": "widely-used",
+        "pattern": "call the shots; Who calls the shots?",
+        "noteJa": "この語義で shots は銃撃を指していない。正式な役職がなくても、実際に決める人に使える。",
+        "socialContextJa": "権限関係をくだけて表す。協力関係では「誰が偉いか」より担当と合意を具体的に確認するとよい。",
+        "neutralAlternative": "make the key decisions",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-call-the-shots-ex1",
+          "text": "The producer paid for the show, but the director called the shots on stage.",
+          "meaningJa": "公演費を出したのはプロデューサーだったが、舞台上の決定をしたのは演出家だった。",
+          "contextJa": "架空の舞台制作で役割を説明する。"
+        },
+        {
+          "id": "film-expr-call-the-shots-ex2",
+          "text": "In our group, no one person calls all the shots; we agree on the major decisions together.",
+          "meaningJa": "私たちの班では一人がすべてを決めるのではなく、大事なことは一緒に合意する。",
+          "contextJa": "学校の共同作業の進め方を説明する。"
+        }
+      ],
+      "domainIds": [
+        "communication",
+        "arts-culture",
+        "education"
+      ],
+      "prerequisiteLemmas": [
+        "call",
+        "decide",
+        "control"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "prefer-neutral-alternative-in-formal-essays"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: call the shots",
+          "url": "https://dictionary.cambridge.org/dictionary/english/call-the-shots",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-call",
+          "word": "call",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-decide",
+          "word": "decide",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-control",
+          "word": "control",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    },
+    {
+      "id": "film-expr-play-it-cool",
+      "expression": "play it cool",
+      "senseId": "appear-calm-despite-strong-feelings",
+      "kind": "idiom",
+      "primaryGenreId": "street-dialogue",
+      "genreIds": [
+        "street-dialogue",
+        "romance-urban",
+        "comedy"
+      ],
+      "meaningEn": "To act calm and controlled even when you feel excited or nervous.",
+      "meaningJa": "内心は興奮や緊張があっても、落ち着いて振る舞う",
+      "usage": {
+        "register": "informal",
+        "dialect": "widely-used",
+        "pattern": "play it cool; tried to play it cool",
+        "noteJa": "it は固定する。気持ちが本当に冷めているとは限らず、外に見せる態度について述べる。",
+        "socialContextJa": "緊張を落ち着ける場面に使える。相手を不安にさせる恋愛の駆け引きを推奨するものではない。",
+        "neutralAlternative": "act calm despite feeling nervous or excited",
+        "recognitionFirst": false
+      },
+      "examples": [
+        {
+          "id": "film-expr-play-it-cool-ex1",
+          "text": "She tried to play it cool when her story won the prize, but she could not stop smiling.",
+          "meaningJa": "自分の物語が賞を取ると、彼女は落ち着いて振る舞おうとしたが、笑顔を隠せなかった。",
+          "contextJa": "架空の学校の表彰場面。"
+        },
+        {
+          "id": "film-expr-play-it-cool-ex2",
+          "text": "I was nervous before the audition, so I took a breath and tried to play it cool.",
+          "meaningJa": "オーディション前に緊張したので、一呼吸置いて落ち着いて振る舞おうとした。",
+          "contextJa": "舞台に出る前の気持ちを話す。"
+        }
+      ],
+      "domainIds": [
+        "communication",
+        "arts-culture",
+        "education"
+      ],
+      "prerequisiteLemmas": [
+        "play",
+        "cool",
+        "calm"
+      ],
+      "examBridge": {
+        "practiceTargets": [
+          "2級",
+          "準1級"
+        ],
+        "skills": [
+          "listening",
+          "reading",
+          "contextual-vocabulary"
+        ],
+        "mappingBasis": "editorial-practice-suitability-not-official-exam-vocabulary",
+        "writingUse": "prefer-neutral-alternative-in-formal-essays"
+      },
+      "sourceReferences": [
+        {
+          "title": "Cambridge Dictionary: play it cool",
+          "url": "https://dictionary.cambridge.org/us/dictionary/english/play-it-cool",
+          "checkedAt": "2026-10-23",
+          "scope": "meaning-pattern-register; definitions and examples below are newly authored"
+        }
+      ],
+      "baseLinks": [
+        {
+          "wordId": "vocab-cool",
+          "word": "cool",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        },
+        {
+          "wordId": "vocab-calm",
+          "word": "calm",
+          "relationship": "prerequisite-lemma-not-phrase-equivalence"
+        }
+      ],
+      "baseLinkResolution": {
+        "unresolvedLemmas": [
+          "play"
+        ],
+        "policy": "Unresolved prerequisites are not broken links; resolve against the completed base before publication."
+      }
+    }
+  ]
+}

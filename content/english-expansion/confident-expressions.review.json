@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "sourceFile": "content/english-expansion/confident-expressions.json",
+  "sourceSha256": "03417b53fd0bd7a76a9d35d5abb2104ca6d4ce3216a19b545cca1524e8100122",
+  "reviewer": "/root/bulk_audio_assets",
+  "reviewedAt": "2026-10-23T15:07:26.591459Z",
+  "scope": "Independent review of meanings, English examples, Japanese translations, register, intended audience and social-context notes for the draft seed only.",
+  "verdict": "approved-seed",
+  "publicationApproval": false,
+  "counts": {
+    "surfaceCards": 50,
+    "originalExamples": 100,
+    "canonicalLexicalUnits": 49,
+    "crossCollectionProvisionalCanonicalLexicalUnits": 96
+  },
+  "approvedIds": [
+    "confident-count-me-in",
+    "confident-im-game",
+    "confident-youre-on",
+    "confident-give-it-a-shot",
+    "confident-make-it-happen",
+    "confident-ive-got-this",
+    "confident-im-on-it",
+    "confident-leave-it-with-me",
+    "confident-take-it-from-here",
+    "confident-one-step-at-a-time",
+    "confident-ive-got-your-back",
+    "confident-youve-got-this",
+    "confident-in-this-together",
+    "confident-rooting-for-you",
+    "confident-you-nailed-it",
+    "confident-good-call",
+    "confident-way-to-go",
+    "confident-nice-one",
+    "confident-means-a-lot",
+    "confident-owe-you-one",
+    "confident-fair-enough",
+    "confident-see-your-point",
+    "confident-where-youre-coming-from",
+    "confident-agree-to-disagree",
+    "confident-heres-how-i-see-it",
+    "confident-to-be-fair",
+    "confident-for-what-its-worth",
+    "confident-correct-me-if-im-wrong",
+    "confident-let-me-clarify",
+    "confident-build-on-that",
+    "confident-hold-that-thought",
+    "confident-bear-with-me",
+    "confident-get-this-straight",
+    "confident-walk-me-through",
+    "confident-back-on-track",
+    "confident-same-page",
+    "confident-call-it-a-day",
+    "confident-keep-you-posted",
+    "confident-your-call",
+    "confident-no-rush",
+    "confident-no-sweat",
+    "confident-my-bad",
+    "confident-that-ones-on-me",
+    "confident-rain-check",
+    "confident-maybe-next-time",
+    "confident-easier-said-than-done",
+    "confident-famous-last-words",
+    "confident-plot-twist",
+    "confident-what-are-the-odds",
+    "confident-dont-tempt-me"
+  ],
+  "materialContentIssues": [],
+  "canonicalMappings": [
+    {
+      "entryIds": [
+        "confident-ive-got-this",
+        "confident-youve-got-this"
+      ],
+      "canonicalConstruction": "have got this",
+      "reason": "Perspective variants are useful learning cards but one lexical construction."
+    },
+    {
+      "entryIds": [
+        "confident-ive-got-your-back",
+        "film-expr-have-someones-back"
+      ],
+      "canonicalConstruction": "have someone's back",
+      "reason": "Same support / defend sense across the two seed collections."
+    },
+    {
+      "entryIds": [
+        "confident-no-sweat",
+        "film-expr-no-sweat"
+      ],
+      "canonicalConstruction": "no sweat",
+      "reason": "Same no-difficulty expression across the two seed collections."
+    },
+    {
+      "entryIds": [
+        "confident-my-bad",
+        "film-expr-my-bad"
+      ],
+      "canonicalConstruction": "my bad",
+      "reason": "Same casual admission of a mistake across the two seed collections."
+    }
+  ],
+  "notes": [
+    "The phrase title describes an editorial collection; using these phrases does not guarantee popularity, confidence, or a particular social impression.",
+    "The none offensiveness labels are compatible with the stated no-slur definition. Context can still make expressions sarcastic, dismissive or inappropriate; relevant notes are present.",
+    "Have (got) someone’s back is mainly US informal in the checked Cambridge entry; an explicit regional note would improve precision.",
+    "For I’ve got this, treating have + got as an idiomatic expression of present ability avoids suggesting an ordinary completed-action reading.",
+    "The casual/formal labels are the collection’s broad pedagogical categories, not exclusive linguistic-register classifications. Individual notes explicitly allow overlap."
+  ],
+  "sourceCoverage": {
+    "entriesWithStoredReferences": 9,
+    "entriesWithoutStoredReferences": 41,
+    "allEntriesIndividuallySourceVerified": false,
+    "reviewSpotChecks": [
+      {
+        "title": "Cambridge Dictionary: you're on",
+        "url": "https://dictionary.cambridge.org/dictionary/english/you-re-on"
+      },
+      {
+        "title": "Cambridge Dictionary: no sweat",
+        "url": "https://dictionary.cambridge.org/dictionary/english/no-sweat"
+      },
+      {
+        "title": "Cambridge Dictionary: way to go",
+        "url": "https://dictionary.cambridge.org/dictionary/english/way-to-go"
+      },
+      {
+        "title": "Cambridge Dictionary: have (got) someone's back",
+        "url": "https://dictionary.cambridge.org/dictionary/english/have-got-back"
+      }
+    ]
+  },
+  "qualityLimitations": [
+    "This approves the text seed, not question answer keys, audio delivery, pronunciation, prosody, or application integration.",
+    "No corpus-frequency, CEFR certification, official exam-alignment, or universal US/UK usage claims were verified.",
+    "The 49 / 96 canonical counts are provisional editorial deduplication across these two current seed files; the full 7,500 base and future inventories still need semantic deduplication.",
+    "Forty-one entries currently have empty stored sourceReferences arrays; the receipt does not claim dictionary verification of all 50.",
+    "Any source revision invalidates this exact-file SHA256 receipt until rechecked."
+  ]
+}

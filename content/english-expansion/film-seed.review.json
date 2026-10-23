@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "sourceFile": "content/english-expansion/film-expressions-pilot-50.json",
+  "sourceSha256": "9964e68938538336b4f6e30942cf60ce3ca898067d5a42d629d874dd9d21f546",
+  "relatedSources": [
+    {
+      "sourceFile": "content/english-expansion/film-series-plan.json",
+      "sourceSha256": "6625c017df9970828395ceb41145724178ec3e10b7ac78224c935742db68f8f2",
+      "reviewScope": "Offline expansion plan: counts, sequencing, budget gates, canonical deduplication, original-content policy, and draft/publication boundaries."
+    }
+  ],
+  "reviewer": "/root/catalog_library_integration",
+  "reviewedAt": "2026-10-23T15:15:40.450Z",
+  "scope": "Independent reading of all 50 specified senses, 100 English examples and Japanese translations, patterns, register/context notes, and the associated offline expansion plan. Exact source-file hash binds this seed-only verdict.",
+  "verdict": "approved-seed",
+  "publicationApproval": false,
+  "counts": {
+    "surfaceCards": 50,
+    "canonicalLexicalUnitsWithinCollection": 50,
+    "originalExamples": 100,
+    "questions": 0,
+    "audioClips": 0,
+    "crossCollectionProvisionalCanonicalLexicalUnits": 96
+  },
+  "approvedIds": [
+    "film-expr-add-up",
+    "film-expr-rule-out",
+    "film-expr-cover-up",
+    "film-expr-tip-someone-off",
+    "film-expr-track-down",
+    "film-expr-get-away-with",
+    "film-expr-in-the-dark",
+    "film-expr-on-the-run",
+    "film-expr-red-herring",
+    "film-expr-hit-it-off",
+    "film-expr-ask-someone-out",
+    "film-expr-break-up",
+    "film-expr-make-up",
+    "film-expr-lead-someone-on",
+    "film-expr-stand-someone-up",
+    "film-expr-open-up",
+    "film-expr-get-over",
+    "film-expr-on-the-same-wavelength",
+    "film-expr-lose-contact-with",
+    "film-expr-shut-down",
+    "film-expr-run-out-of",
+    "film-expr-in-the-loop",
+    "film-expr-beyond-repair",
+    "film-expr-out-of-range",
+    "film-expr-take-over",
+    "film-expr-go-haywire",
+    "film-expr-pull-someones-leg",
+    "film-expr-no-kidding",
+    "film-expr-give-someone-a-break",
+    "film-expr-get-the-wrong-end-of-the-stick",
+    "film-expr-spill-the-beans",
+    "film-expr-a-long-shot",
+    "film-expr-make-a-fool-of-oneself",
+    "film-expr-out-of-the-blue",
+    "film-expr-hold-on",
+    "film-expr-watch-out",
+    "film-expr-back-someone-up",
+    "film-expr-get-out-of-the-way",
+    "film-expr-cut-to-the-chase",
+    "film-expr-against-the-clock",
+    "film-expr-keep-an-eye-on",
+    "film-expr-make-it",
+    "film-expr-my-bad",
+    "film-expr-no-sweat",
+    "film-expr-cut-someone-some-slack",
+    "film-expr-give-someone-a-hard-time",
+    "film-expr-have-someones-back",
+    "film-expr-mess-with",
+    "film-expr-call-the-shots",
+    "film-expr-play-it-cool"
+  ],
+  "materialContentIssues": [],
+  "resolvedFindings": [
+    {
+      "entryId": "film-expr-in-the-dark",
+      "finding": "The slash-separated pattern mixed intransitive be with keep/leave plus an object.",
+      "resolution": "Separated be in the dark from keep/leave someone in the dark."
+    },
+    {
+      "entryId": "film-expr-shut-down",
+      "finding": "Japanese definition repeated the same form; the neutral alternative added safety not entailed by shut down.",
+      "resolution": "Japanese now distinguishes stopping a system from a system stopping; removed safely."
+    },
+    {
+      "entryId": "film-expr-back-someone-up",
+      "finding": "The social-context note incorrectly treated supporting an account as a guarantee that it is true.",
+      "resolution": "Now explicitly distinguishes support from objective truth of the account."
+    },
+    {
+      "entryId": "film-expr-make-a-fool-of-oneself",
+      "finding": "Japanese return-wave wording could be mistaken for turning around.",
+      "resolution": "Added the explicit hand-wave wording."
+    },
+    {
+      "entryId": "film-expr-red-herring",
+      "finding": "Informal label and blanket formal-essay avoidance were too restrictive for this standard analytical expression.",
+      "resolution": "Changed to neutral and allowed analytical writing when the distraction is explained."
+    }
+  ],
+  "notes": [
+    "The intentional stand-someone-up sense is supported by both checked Cambridge and Oxford entries. A new context note makes clear that a speaker using the expression does not prove another person’s intent.",
+    "Plan targets of 20,000–30,000 include the existing 7,500. Actual remaining budget remains unknown; the plan does not authorize additional spending or claim all target audio is affordable.",
+    "Seed genre IDs romance-urban and street-dialogue are editorial pilot labels and require explicit mapping to the final unified expansion schema before ingestion."
+  ],
+  "canonicalMappings": [
+    {
+      "entryIds": [
+        "film-expr-have-someones-back",
+        "confident-ive-got-your-back"
+      ],
+      "canonicalConstruction": "have someone's back"
+    },
+    {
+      "entryIds": [
+        "film-expr-no-sweat",
+        "confident-no-sweat"
+      ],
+      "canonicalConstruction": "no sweat"
+    },
+    {
+      "entryIds": [
+        "film-expr-my-bad",
+        "confident-my-bad"
+      ],
+      "canonicalConstruction": "my bad"
+    }
+  ],
+  "structuralChecks": {
+    "uniqueIds": true,
+    "uniqueExampleTexts": true,
+    "genreCountsMatch": true,
+    "canonicalDomainIds": true,
+    "storedBaseLinksResolveAndMatch": true,
+    "resolvedBaseLinks": 117,
+    "explicitUnresolvedPrerequisites": 33,
+    "indexedBaseEntriesAtReview": 4552
+  },
+  "sourceCoverage": {
+    "entriesWithStoredReferences": 50,
+    "allEntriesIndividuallyReopenedByReviewer": false,
+    "reviewSpotChecks": [
+      {
+        "title": "Cambridge Dictionary: red herring",
+        "url": "https://dictionary.cambridge.org/dictionary/english/red-herring"
+      },
+      {
+        "title": "Oxford Advanced Learner’s Dictionary: red herring",
+        "url": "https://www.oxfordlearnersdictionaries.com/definition/english/red-herring"
+      },
+      {
+        "title": "Cambridge Dictionary: stand someone up",
+        "url": "https://dictionary.cambridge.org/us/dictionary/english/stand-up?topic=humour-and-humorous"
+      },
+      {
+        "title": "Oxford Advanced Learner’s Dictionary: stand up",
+        "url": "https://www.oxfordlearnersdictionaries.com/definition/english/stand-up_2"
+      }
+    ]
+  },
+  "qualityLimitations": [
+    "Approves only this original text seed and offline plan, not completed production units, MCQs, pronunciation, prosody, audio, app integration, or learner publication.",
+    "Two examples per seed are intentionally fewer than the full expansion production schema requires; an adapter and the remaining learning content are still necessary.",
+    "The provisional 96 cross-collection units follow the four canonical mappings in this receipt and the confident-expressions receipt, not a claim that these are 96 new units absent from the entire 7,500-word base.",
+    "All 33 unresolved prerequisites remain explicit text until resolved; semantic/alias deduplication against the completed base and final registry is still required.",
+    "Dictionary references are present for all 50 author entries; this independent review reread the full authored content but spot-checked selected primary dictionary entries, not every reference URL.",
+    "No corpus-frequency ranking, certified CEFR level, or official Eiken alignment is claimed.",
+    "A source-file change invalidates the corresponding exact-file hash approval until rechecked."
+  ]
+}

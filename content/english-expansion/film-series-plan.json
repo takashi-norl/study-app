@@ -1,0 +1,224 @@
+{
+  "schemaVersion": 1,
+  "id": "film-series-expansion-plan-v1",
+  "createdAt": "2026-10-23T15:04:07.233693Z",
+  "titleJa": "試験英語から映画・ドラマへつなぐ語彙・表現拡張計画",
+  "status": "proposed-offline-curriculum",
+  "dependsOn": {
+    "existingBaseTarget": 7500,
+    "startCondition": "既存7,500語の制作・検証・保全を優先してから、有料の追加制作に進む。"
+  },
+  "target": {
+    "minimumUniqueLexicalUnits": 20000,
+    "stretchUniqueLexicalUnits": 30000,
+    "includesExisting7500": true,
+    "interpretationJa": "20,000〜30,000は既存7,500を含む総数として設計。追加分だけで20,000〜30,000とする場合は別計画として再見積もりする。",
+    "countingRuleJa": "見出し語・定型表現の正規化IDを一つとして数える。活用形、別綴り、ジャンル違い、同一表現の別義カード、音声違いでは水増ししない。"
+  },
+  "budget": {
+    "currency": "JPY",
+    "originalTotalCap": 100000,
+    "additionalCap": 0,
+    "actualSpent": null,
+    "actualRemaining": null,
+    "requiresActualLedgerReconciliation": true,
+    "policyJa": "既存制作分を含む元の総額10万円以内。現在の累計支出・未確定予約額・為替・契約残高を親ワークフローの台帳で照合するまで、新たな有料生成を予約しない。",
+    "feasibilityJa": "この計画は全20,000〜30,000件の音声化が10万円に収まる保証ではない。残額に応じてテキスト先行、音声対象の絞り込み、段階停止を行う。",
+    "currentTaskSpend": 0,
+    "currentTaskExternalPaidCalls": 0,
+    "audioRuleJa": "既存音声をキャッシュIDで再利用し、同じ例文をジャンル別に再生成しない。未承認テキストや小さな表記修正のために音声を先行生成しない。"
+  },
+  "priorities": [
+    {
+      "order": 0,
+      "nameJa": "既存の試験対策を完成させる",
+      "totalUniqueTarget": 7500,
+      "newUniqueUnits": 0,
+      "scopeJa": "3級〜準1級の既存資産、学習・四択テスト・復習、音声の保存と再利用を安定させる。",
+      "paidGenerationGate": "既存台帳とレビュー・音声進捗に従う"
+    },
+    {
+      "order": 1,
+      "nameJa": "試験と会話をつなぐ基礎表現",
+      "totalUniqueTarget": 10000,
+      "newUniqueUnits": 2500,
+      "scopeJa": "多義語、句動詞、よく使う言い換え、会話の意図。今回の50表現を含め、ジャンル横断で使えるものを先に。",
+      "paidGenerationGate": "7,500件の完了確認、試作50の独立レビュー、残予算確認"
+    },
+    {
+      "order": 2,
+      "nameJa": "1級も含む高度な語彙と読解",
+      "totalUniqueTarget": 15000,
+      "newUniqueUnits": 5000,
+      "scopeJa": "社会・科学・文化・心理・論証の語彙。1級と大学受験の高度な読解へ編集上の対応付けを行い、映画専用語へ偏らせない。",
+      "paidGenerationGate": "優先度1の重複・学習結果を確認し、残予算内でロット予約"
+    },
+    {
+      "order": 3,
+      "nameJa": "6ジャンルを厚くする",
+      "totalUniqueTarget": 20000,
+      "newUniqueUnits": 5000,
+      "scopeJa": "関係性、推理、技術、ユーモア、移動、くだけた会話。話し手の意図と使用域を理解する問題を増やす。",
+      "paidGenerationGate": "需要のあるジャンルを優先し、品質と残予算を確認"
+    },
+    {
+      "order": 4,
+      "nameJa": "需要に合わせた拡張",
+      "totalUniqueTarget": 25000,
+      "newUniqueUnits": 5000,
+      "optional": true,
+      "scopeJa": "学習者の未知語履歴から不足が確認できた語義・表現を採用。頭数を満たすだけの珍語は追加しない。",
+      "paidGenerationGate": "実際の需要と未確定費用を含む残予算がある場合のみ"
+    },
+    {
+      "order": 5,
+      "nameJa": "追加ジャンルと専門的な表現",
+      "totalUniqueTarget": 30000,
+      "newUniqueUnits": 5000,
+      "optional": true,
+      "scopeJa": "重複を除いた追加需要がある場合に限る。地域差・古さ・強い口調を確認し、認識用の表現と使用練習を区別する。",
+      "paidGenerationGate": "元の総額10万円を超えないことが確認できた範囲のみ"
+    }
+  ],
+  "genres": [
+    {
+      "id": "crime-suspense",
+      "labelJa": "犯罪・サスペンス",
+      "pilotCount": 9,
+      "focusJa": "手がかり、推論、証言、隠された情報。行為の手順ではなく読解・会話理解を扱う。"
+    },
+    {
+      "id": "romance-urban",
+      "labelJa": "恋愛・都市の日常",
+      "pilotCount": 9,
+      "focusJa": "関係の変化、気持ち、誤解、境界線。親切と恋愛感情を混同しない。"
+    },
+    {
+      "id": "science-fiction",
+      "labelJa": "SF・技術",
+      "pilotCount": 8,
+      "focusJa": "通信、資源、故障、引き継ぎ。架空世界の固有語より再利用できる一般表現を優先。"
+    },
+    {
+      "id": "comedy",
+      "labelJa": "コメディー",
+      "pilotCount": 8,
+      "focusJa": "比喩、勘違い、冗談の意図。皮肉は音調と相手との関係をセットで扱う。"
+    },
+    {
+      "id": "action",
+      "labelJa": "アクション・冒険",
+      "pilotCount": 8,
+      "focusJa": "注意、移動、協力、時間制約。危険な行動の指南は扱わない。"
+    },
+    {
+      "id": "street-dialogue",
+      "labelJa": "くだけた仲間同士の会話",
+      "pilotCount": 8,
+      "focusJa": "スラングを含む一般的な口語。特定の民族・階層・犯罪集団の言葉と一括りにしない。"
+    }
+  ],
+  "lexicalModel": {
+    "stableIds": {
+      "lexicalUnit": "film-expr-<stable-slug>",
+      "sense": "<lexicalUnitId>:<senseId>",
+      "example": "<lexicalUnitId>-ex<number>"
+    },
+    "singleAssetMultipleTags": true,
+    "entryFields": [
+      "expression",
+      "senseId",
+      "meaningEn",
+      "meaningJa",
+      "usage",
+      "examples",
+      "domainIds",
+      "genreIds",
+      "baseLinks",
+      "examBridge",
+      "sourceReferences"
+    ],
+    "morphologyJa": "活用・所有格・代名詞スロットは同じ語彙単位に紐付ける。separable / inseparable、目的語位置、過去形は語義ごとに管理する。",
+    "relationsJa": "類義語は語義と文脈の条件付きで紐付ける。たとえば give someone a break と cut someone some slack は近いが、使える全場面が同じとは扱わない。",
+    "baseMappingJa": "既存の単語IDを前提知識として参照する。部品の単語を知ることと句全体の意味が分かることは別に記録する。未解決のリンクは公開前に解消する。",
+    "retaggingJa": "英検・入試・TOEIC・TOEFL・IELTS・ジャンルは同じ語彙資産への編集上のビュー。試験固有の課題や採点基準は、タグ付けだけで完成とはしない。"
+  },
+  "registerAndContext": {
+    "registerTags": [
+      "neutral",
+      "informal",
+      "very-informal"
+    ],
+    "dialectTags": [
+      "widely-used",
+      "mainly-US",
+      "mainly-UK"
+    ],
+    "requiredNotes": [
+      "relationship between speakers",
+      "specific intended sense",
+      "polite alternative",
+      "possible bluntness or sarcasm",
+      "recognition-first when applicable"
+    ],
+    "streetDialoguePolicyJa": "ギャング作品に出る語も、一律に「ギャング英語」としない。一般口語と犯罪に特有の語を分け、今回の試作は一般口語を中心にする。民族・地域・階層と乱暴さを結び付けない。",
+    "excludedFromPilot": [
+      "explicit slurs",
+      "explicit profanity",
+      "instructions for crime or violence",
+      "glorification of criminal conduct"
+    ],
+    "fictionPolicyJa": "犯罪・危機の場面は語義理解のための架空の短い状況に限定し、実行手順や危険な行動の成功談を教材の売りにしない。"
+  },
+  "originalContentPolicy": {
+    "examplesPerPilotEntry": 2,
+    "minimumIndependentScenes": 2,
+    "allowedJa": "一次辞書で語義や構文を確認し、例文と説明は新規に書く。普遍的で架空の学校・生活・物語場面を使う。",
+    "notAllowedJa": "映画・ドラマの台詞、字幕、脚本、固有キャラクターの決めぜりふをコピーしない。作品名付きの再現素材や俳優の声の模倣はこの計画に含めない。",
+    "futureLicensedInputsJa": "字幕や脚本を将来参照する場合も、権利と許可された利用範囲を確認してから別途導入する。今回は取り込まない。",
+    "sourceRetentionJa": "確認した辞書のURLと確認日を保持し、定義の転載や辞書音声の複製は行わない。"
+  },
+  "learningFlow": {
+    "setSize": 10,
+    "sequenceJa": [
+      "複数の表現を、意味・場面・例文で学ぶ",
+      "学んだセットを混ぜた四択で確認する",
+      "意味だけでなく意図・自然な用法・使用域を問う",
+      "誤答や調べた語を間隔を空けて再出題する"
+    ],
+    "testModes": [
+      "meaning-choice",
+      "context-cloze-choice",
+      "speaker-intent-choice",
+      "appropriate-register-choice"
+    ],
+    "runtimeGrading": "deterministic-answer-key; no paid AI call per answer",
+    "answerFeedbackJa": "正解と解説に加え、全選択肢の意味と、同じ文脈で使える言い換えを表示する。類義語を文脈なしで誤答にしない。",
+    "audioPolicyJa": "承認済みテキストのみ。表現と例文を再生でき、声の複数パネルは設けず利用可能な声を再生時に選ぶ。既存の音声の品質・キャッシュ規約を維持する。",
+    "pragmaticsAudioJa": "皮肉・驚き・怒りなど音調が意味を左右する項目は、音声を作成して確認できるまで音調テストを公開しない。"
+  },
+  "releaseGates": [
+    "Canonical-ID and semantic deduplication against the completed base and all existing phrases.",
+    "Independent content review of every sense, example, translation, pattern, register note, and source reference.",
+    "Independent review of single-correct-answer MCQs; plausible synonyms must not become arbitrary wrong answers.",
+    "No publication of draft, held, or superseded items; content hash binds approval to the exact revision.",
+    "Resolve base links and validate all domain IDs using the canonical taxonomy.",
+    "Reserve projected paid costs against the shared original budget before any paid request; do not repeat uncertain requests.",
+    "Generate audio after text approval; verify the audio corresponds to the approved text and store durable receipts."
+  ],
+  "pilot": {
+    "file": "film-expressions-pilot-50.json",
+    "uniqueExpressions": 50,
+    "originalExamples": 100,
+    "questions": 0,
+    "audioClips": 0,
+    "reviewStatus": "pending-independent-review"
+  },
+  "qualityLimitationsJa": [
+    "この50表現は編集上の選定であり、作品横断の出現頻度を測ったランキングではない。",
+    "一つの表現の全語義・全地域差を網羅していない。",
+    "級との対応は練習の提案であり、英検の公式出題範囲ではない。",
+    "独立レビュー・テスト問題・音声・アプリ組み込みは未完了。",
+    "20,000〜30,000件の最終内訳と音声範囲は、既存制作の実支出と品質検証後に確定する。"
+  ]
+}
