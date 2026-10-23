@@ -16,7 +16,7 @@ function fixture() {
   data = { ...data, plans: [...data.plans, plan], sources: [{ id: 'private-source', ownerId: parent.id, name: 'private-note.jpg', mimeType: 'image/jpeg', storagePath: 'private-drive-file', testOnly: true, createdAt: now }] };
   data = addDemoPlanningTurn(data, parent, plan.id, '親だけが見るコメント', now, id);
   const turn = data.planningTurns.at(-1)!;
-  const result = generateDemoProposal(data, parent, plan.id, turn.id, turn.proposals![0].id, 100, now, id);
+  const result = generateDemoProposal(data, parent, plan.id, turn.id, turn.proposals![0].id, 100, now, id, {approveSamples:true});
   return { data: result.data, parent, student, plan, topic: result.topic, id };
 }
 
@@ -42,7 +42,7 @@ test('parent practice requires an explicit test topic and mixed or other-user se
   assert.ok(demoPracticeQuestions(data,parent).every(question=>question.testOnly));
   assert.throws(() => demoPracticeQuestions(data, parent, 'topic-english'), /ご自身/);
   const available = demoPracticeQuestions(data, parent, topic.id);
-  assert.equal(available.length, 10);
+  assert.equal(available.length, 100);
   assert.ok(available.every(question => question.testOnly && question.topicId === topic.id));
   const session = { id: 'test-session', userId: parent.id, mode: 'daily' as const, questionIds: available.map(question => question.id), questionSnapshots: available, createdAt: now };
   assert.equal(demoSessionAllowed(session, available, parent), true);
@@ -64,7 +64,7 @@ test('publishing makes an independent library clone without private source or co
   assert.equal(result.topic.libraryPublished, true);
   assert.notEqual(result.topic.id, topic.id);
   const clones = result.data.questions.filter(question => question.topicId === result.topic.id);
-  assert.equal(clones.length, 10);
+  assert.equal(clones.length, 100);
   for (const question of clones) {
     assert.equal(question.testOnly, undefined);
     assert.equal(question.planId, undefined);
@@ -95,7 +95,7 @@ test('library questions enter practice only after the learner adopts them; repea
   assert.equal(added.plan.libraryTopicId, published.topic.id);
   assert.equal(added.plan.ownerId, student.id);
   assert.deepEqual(added.plan.sourceIds, []);
-  assert.equal(demoPracticeQuestions(added.data, student, published.topic.id).length, 10);
+  assert.equal(demoPracticeQuestions(added.data, student, published.topic.id).length, 100);
   assert.equal(addDemoLibraryPlan(added.data, student, published.topic.id, now, id).plan.id, added.plan.id);
   assert.equal(addDemoLibraryPlan(published.data,parent,published.topic.id).plan.ownerId,parent.id);
   assert.throws(() => addDemoLibraryPlan(published.data, student, topic.id), /見つかりません/);
@@ -106,7 +106,7 @@ test('demo consultation and generation are labelled samples, bounded, and reject
   const turn = data.planningTurns.at(-1)!;
   assert.match(turn.reply!, /AIには送信しておらず/);
   assert.match(turn.reply!, /内容には反映されません/);
-  assert.equal(topic.targetCount, 10);
+  assert.equal(topic.targetCount, 100);
   assert.ok(data.questions.filter(question => question.topicId === topic.id).every(question => /サンプル/.test(question.sourceNote)));
   const updated = addDemoPlanningTurn(data, parent, plan.id, '追加のコメント', now, id);
   assert.throws(() => generateDemoProposal(updated, parent, plan.id, turn.id, turn.proposals![0].id, 10, now, id), /最新/);

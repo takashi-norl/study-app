@@ -50,24 +50,32 @@ export interface GenerationJob {
   instructions?: string; requestedBy?: string; proposalId?: string;
   turnId?: string; requestId?: string;
   retryOfJobId?: string;
+  approvedSamples?: PlanningSample[]; approvedSampleVersion?: number; approvedInstructions?: string;
+  dailyQuestionTarget?: number; plannedDays?: number;
   testOnly?: boolean;
 }
 export interface LearningPlan {
   id: string; ownerId: string; title: string; subject: Subject;
   goal: string; difficulty: string; targetDate?: string; dailyQuestionTarget: number;
   requestedQuestionCount?: number;
+  sampleFirst?: boolean; arrangedFromTopicId?: string; arrangementExamples?: PlanningSample[]; arrangementInstructions?: string; plannedDays?: number;
   testOnly?: boolean; libraryTopicId?: string;
   sourceIds: string[]; version: number; createdAt: string; updatedAt: string;
+}
+export interface PlanningSample {
+  prompt: string; choices: string[]; correctIndex: number; explanation: string; learningPoint: string;
+  sourceIds: string[]; sourceNote: string; needsReview: boolean;
 }
 export interface PlanningProposal {
   id: string; title: string; subject: Subject; description: string;
   instructions: string; difficulty: string; targetCount: number;
   format: 'multiple-choice'; sourceIds: string[];
+  samples?: PlanningSample[];
 }
 export interface PlanningTurn {
   id: string; planId: string; requestedBy: string; version: number;
   status: 'queued' | 'running' | 'complete' | 'failed';
-  message: string; reply?: string; proposals?: PlanningProposal[];
+  message: string; reply?: string; proposals?: PlanningProposal[]; samplePreview?: boolean;
   createdAt: string; completedAt?: string; error?: string;
   startedAt?: string; updatedAt?: string; workflowRunId?: string;
   progress?: {

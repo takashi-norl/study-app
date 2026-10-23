@@ -12,7 +12,7 @@ import { StudyGuide } from './study-guide';
 import { ReleaseNotesCard } from './release-history';
 import { ReleaseNotice } from './release-notice';
 import { CURRENT_RELEASE } from '@/lib/releases';
-import { QuestionLibrary } from './question-library';
+import { ArrangeTopicButton, QuestionLibrary } from './question-library';
 import { asPracticeQuestion, isPracticeReadyQuestion, topicOwnerId } from '@/lib/library-policy';
 import { learnerQuestions } from '@/lib/learner-library';
 import { PersonalProfileProvider, usePersonalProfile } from './personal-profile-context';
@@ -126,7 +126,7 @@ export default function StudyApp({ controller: c }: { controller: StudyControlle
 
           {view === 'menu' && <AppMenu c={c} navigate={setView} openSettings={openSettings} />}
         </>}
-        {visited.includes('review') && parent && <div hidden={!!c.session || view !== 'review'}><Review c={c} initialTopic={reviewTopic} initialFilter={reviewFilter} onBack={()=>setView(parent ? 'library' : 'topics')} /></div>}
+        {visited.includes('review') && parent && <div hidden={!!c.session || view !== 'review'}><Review c={c} initialTopic={reviewTopic} initialFilter={reviewFilter} onOpenPlan={openPlanById} onBack={()=>setView(parent ? 'library' : 'topics')} /></div>}
         {visited.includes('planning') && <div hidden={!!c.session || view !== 'planning'}><Planning active={view === 'planning' && !c.session} requestedPlanId={requestedPlanId} onScreenChange={setPlanningScreen} onLocationChange={setPlanningLocation} c={c} initialSourceIds={planningSources} initialRequest={planningRequest} review={openReview} onBack={() => setView('home')} openTopic={id => { void c.actions.startPractice('daily', id); }} /></div>}
         {visited.includes('settings') && <div hidden={!!c.session || view !== 'settings'}><Settings onLocationChange={setProfileLocation} active={view === 'settings' && !c.session} c={c} section={settingsSection} setSection={setSettingsSection} onCreate={() => consult([])} onHome={() => setView('home')} /></div>}
       </main><footer className="page-footer">ひび学習 v{CURRENT_RELEASE.version} <span>小さな積み重ねを、大きな自信に。</span></footer>
@@ -216,14 +216,14 @@ function Materials({ c, onCreate, review, consult, onOpenPlan }: { c: StudyContr
   return <><PageHeading eyebrow="YOUR LIBRARY" title="ライブラリ" description="問題集を使う・共有する。元の教材もここに保存できます。"><button className="button primary" onClick={onCreate}><Sparkles size={17} />問題を作る</button></PageHeading><div className="planning-tabs" role="tablist" aria-label="問題集と教材"><button type="button" role="tab" aria-selected={tab === 'banks'} className={tab === 'banks' ? 'active' : ''} onClick={() => setTab('banks')}>問題集</button><button type="button" role="tab" aria-selected={tab === 'stock'} className={tab === 'stock' ? 'active' : ''} onClick={() => setTab('stock')}>教材ストック</button></div>{tab === 'stock' ? <SourceBank c={c} onConsult={consult} /> : <QuestionLibrary c={c} onCreate={onCreate} onEdit={id=>review(id,true)} onOpenPlan={onOpenPlan}/>}</>;
 }
 
-function Review({ c, initialTopic = 'all', onBack }: { c: StudyController; initialTopic?: string; initialFilter?: string; onBack: () => void }) {
+function Review({ c, initialTopic = 'all', onBack, onOpenPlan }: { c: StudyController; initialTopic?: string; initialFilter?: string; onBack: () => void; onOpenPlan:(id:string)=>void }) {
   const [topicId, setTopicId] = useState(initialTopic);
   const [selectedId, setSelectedId] = useState('');
   const [showArchived, setShowArchived] = useState(false);
   useEffect(() => { setTopicId(initialTopic); setSelectedId(''); }, [initialTopic]);
   const questions = c.data.questions.filter(q => (topicId === 'all' || q.topicId === topicId) && (showArchived || q.status !== 'archived'));
   const selected = questions.find(q => q.id === selectedId) ?? questions[0];
-  return <><button type="button" className="text-button editor-back" onClick={onBack}><ArrowLeft size={17}/>ライブラリへ戻る</button><PageHeading eyebrow="EDIT WHEN NEEDED" title="問題の編集" description="気になる問題だけ、あとから直せます。保存済みの問題はそのまま練習できます。" />
+  return <><button type="button" className="text-button editor-back" onClick={onBack}><ArrowLeft size={17}/>ライブラリへ戻る</button><PageHeading eyebrow="EDIT WHEN NEEDED" title="問題の編集" description="気になる問題だけ、あとから直せます。作り方を変えるときは、元を残してアレンジできます。">{selected&&<ArrangeTopicButton c={c} topicId={selected.topicId} onCreated={onOpenPlan}/>}</PageHeading>
     <div className="review-toolbar"><div className="filter-bar"><label><span className="sr-only">編集する問題集</span><select value={topicId} onChange={e => setTopicId(e.target.value)}><option value="all">すべての問題集</option>{c.data.topics.map(t => { const owner = c.data.profiles.find(profile => profile.id === topicOwnerId(c.data, t)); return <option key={t.id} value={t.id}>{t.title} — {t.libraryPublished ? 'パブリック' : `プライベート${owner ? ` · ${owner.name}` : ''}`}</option>; })}</select></label><button type="button" className="text-button" aria-pressed={showArchived} onClick={()=>setShowArchived(value=>!value)}>{showArchived ? '使える問題だけ表示' : '非表示の問題も表示'}</button></div></div>
     {!selected ? <div className="panel"><Empty icon={<BookOpen size={30} />} title="この範囲には問題がありません">問題を作成すると、必要なときにここから編集できます。</Empty></div> : <div className="compact-review"><label className="question-picker">問題を選ぶ（{questions.length}問）<select value={selected.id} onChange={event=>setSelectedId(event.target.value)}>{questions.map((question,index)=><option key={question.id} value={question.id}>{index+1}. {question.prompt.slice(0,100)}</option>)}</select></label><QuestionEditor key={selected.id + ':' + selected.version} c={c} question={selected} /></div>}</>;
 }

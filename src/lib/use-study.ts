@@ -8,7 +8,7 @@ import { createDemoData } from './demo-data';
 import { selectQuestions } from './learning';
 import { clearLocalFiles, loadLocalFile, saveLocalFile } from './local-files';
 import { prepareSourceFile } from './source-files';
-import { addDemoLibraryPlan, addDemoPlanningTurn, demoPracticeQuestions, demoSessionAllowed, demoSessionQuestions, demoStudyDataForProfile, generateDemoProposal, publishDemoLibrary, requestDemoLibraryPublication, type DemoPracticeSession } from './demo-access';
+import { addDemoLibraryPlan, addDemoPlanningTurn, arrangeDemoTopic, demoPracticeQuestions, demoSessionAllowed, demoSessionQuestions, demoStudyDataForProfile, generateDemoProposal, publishDemoLibrary, requestDemoLibraryPublication, type DemoPracticeSession } from './demo-access';
 
 const KEY='hibi-study-demo-v1';
 const GUEST:Profile={id:'guest',familyId:'',name:'ゲスト',role:'student'};
@@ -272,7 +272,7 @@ export function useStudy():StudyController {
       if(demo){
         if(input.testOnly&&profile.role!=='parent')throw new Error('テスト用の作成は管理者だけが利用できます。');
         const now=new Date().toISOString();
-        const plan:LearningPlan={...input,id:uid(),ownerId:profile.id,title:input.title?.trim()||input.goal.trim().slice(0,45),goal:input.goal.trim(),difficulty:input.difficulty||'相談して決めたい',dailyQuestionTarget:input.dailyQuestionTarget||10,version:1,createdAt:now,updatedAt:now};
+        const plan:LearningPlan={...input,sampleFirst:true,id:uid(),ownerId:profile.id,title:input.title?.trim()||input.goal.trim().slice(0,45),goal:input.goal.trim(),difficulty:input.difficulty||'相談して決めたい',dailyQuestionTarget:input.dailyQuestionTarget||10,version:1,createdAt:now,updatedAt:now};
         const next={...state.current,plans:[...state.current.plans,plan]};state.current=next;setData(next);planId=plan.id;
       }else{
         const result=await api<{plan:LearningPlan}>('/api/planning','POST',input);
@@ -302,23 +302,42 @@ export function useStudy():StudyController {
       setNotice('相談を受け付けました。回答はここに保存され、画面を閉じても確認できます。');
     });return sent;
   }
-  async function generateProposal(planId:string,turnId:string,proposalId:string,targetCount:number):Promise<string|void>{
+  async function generateProposal(planId:string,turnId:string,proposalId:string,targetCount:number,schedule?:{dailyQuestionTarget:number;plannedDays:number}):Promise<string|void>{
     let topicId:string|undefined;
     await run(async()=>{
       if(demo){
-        const result=generateDemoProposal(state.current,profile,planId,turnId,proposalId,targetCount);
+        const result=generateDemoProposal(state.current,profile,planId,turnId,proposalId,targetCount,new Date().toISOString(),uid,{approveSamples:true,...schedule});
         state.current=result.data;setData(result.data);topicId=result.topic.id;
         setNotice(`操作確認用のサンプルを${result.topic.targetCount}問用意しました。AIによる作問ではありません。`);return;
       }
       const plan=state.current.plans.find(p=>p.id===planId);
       if(!plan||plan.ownerId!==profile.id)throw new Error('ご自身の相談を選んでください。');
-      const requestId=planningRequest(`generate:${planId}:${plan.version}:${turnId}:${proposalId}:${targetCount}`);
+      const requestId=planningRequest(`generate:${planId}:${plan.version}:${turnId}:${proposalId}:${targetCount}:${schedule?.dailyQuestionTarget??''}:${schedule?.plannedDays??''}`);
       try{
-        const result=await api<{topic:{id:string}}>(`/api/planning/${encodeURIComponent(planId)}/generate`,'POST',{requestId,expectedVersion:plan.version,turnId,proposalId,targetCount});
+        const result=await api<{topic:{id:string}}>(`/api/planning/${encodeURIComponent(planId)}/generate`,'POST',{requestId,expectedVersion:plan.version,turnId,proposalId,targetCount,approveSamples:true,...schedule});
         topicId=result.topic.id;
       }finally{await refresh();}
       setNotice('問題作成を受け付けました。できた問題はプライベートに保存され、そのまま練習できます。');
     });return topicId;
+  }
+  async function arrangeTopic(topicId:string):Promise<string|void>{
+    let planId:string|undefined;
+    await run(async()=>{
+      if(demo){const result=arrangeDemoTopic(state.current,profile,topicId);state.current=result.data;setData(result.data);planId=result.plan.id;}
+      else{
+        const key=`arrange:${profile.id}:${topicId}`;
+        const requestId=planningRequest(key);
+        const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),30000);
+        try{
+          const result=await api<{plan:LearningPlan}>('/api/planning/arrange','POST',{topicId,requestId},controller.signal);
+          planId=result.plan.id;planningRequests.current.delete(key);
+          const next={...state.current,plans:[...state.current.plans.filter(plan=>plan.id!==result.plan.id),result.plan]};state.current=next;setData(next);
+          await refresh().catch(()=>{});
+        }catch(error){if(controller.signal.aborted||error instanceof TypeError)throw new Error('アレンジ用の相談を保存できたか確認できませんでした。接続を確認して、同じボタンでもう一度確認できます。');throw error;}
+        finally{clearTimeout(timeout);}
+      }
+      setNotice('アレンジ用の相談を用意しました。元の問題集は変わりません。希望を送ると、まず試作3問を作ります。');
+    });return planId;
   }
   async function resumePlanningTurn(turnId:string):Promise<void>{
     await run(async()=>{
@@ -465,7 +484,7 @@ export function useStudy():StudyController {
     });return resultId;
   }
   return {data:demo?demoStudyDataForProfile(data,profile):data,profile,demo,ready,busy,error,notice,uploadStatus,sync,session,currentQuestion,feedback,actions:{
-    refreshStatus,startPractice,answer,nextQuestion,createTopic,uploadSources,createPlan,sendPlanningMessage,resumePlanningTurn,generateProposal,generate,resumeGeneration,retryGeneration,updateQuestion,publish,publishLibrary,requestLibraryPublication,addLibraryPlan,requestNotifications,
+    refreshStatus,startPractice,answer,nextQuestion,createTopic,uploadSources,createPlan,sendPlanningMessage,resumePlanningTurn,generateProposal,arrangeTopic,generate,resumeGeneration,retryGeneration,updateQuestion,publish,publishLibrary,requestLibraryPublication,addLibraryPlan,requestNotifications,
     switchRole(role:Role){if(!demo)return;setProfile(data.profiles.find(p=>p.role===role)||GUEST);setSession(null);setSessionQuestions([]);setFeedback(null);setError(null);setNotice(null);setUploadStatus(null);},
     finishSession(){setSession(null);setSessionQuestions([]);setFeedback(null);},
     async resetDemo(){if(!demo)return;await run(async()=>{await clearLocalFiles();setData(createDemoData());setSession(null);setFeedback(null);setNotice('サンプルの記録を初期状態に戻しました。');});},

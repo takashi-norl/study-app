@@ -1,16 +1,9 @@
-import { z } from 'zod';
 import { requireProfile } from '@/server/auth';
-import { api, readJson } from '@/server/http';
-import { getFullState } from '@/server/google-store';
+import { api } from '@/server/http';
 import { ApiError } from '@/server/config';
-import { requestGeneration } from '@/server/generation-request';
 
-export const maxDuration = 300;
-export async function POST(request: Request) { return api(async () => {
-  const { profile } = await requireProfile('parent');
-  const input = await readJson(request, z.object({ topicId: z.string().uuid(), sourceIds: z.array(z.string().uuid()).min(1).max(20), targetCount: z.number().int().min(1).max(300) }));
-  const { data } = await getFullState();
-  const topic = data.topics.find(topic => topic.id === input.topicId);
-  if (!topic) throw new ApiError(404, '問題集が見つかりません。');
-  return requestGeneration(profile, { topic, sourceIds: input.sourceIds, targetCount: input.targetCount });
-}, 202); }
+/** Legacy direct generation cannot bypass the sample approval step. Existing job recovery has its own routes. */
+export async function POST() {return api(async()=>{
+  await requireProfile('parent');
+  throw new ApiError(409,'まず「問題を作る」で3問のサンプルを確認してください。既存の問題集は「アレンジ」から新しい相談を始められます。','SAMPLE_APPROVAL_REQUIRED');
+});}

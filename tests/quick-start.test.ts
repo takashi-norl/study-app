@@ -82,3 +82,13 @@ test('a full optional comment remains saved even before any AI conversation, wit
   assert.ok(result.plan.goal.length<=4000);
   assert.ok(result.message.length<=4000);
 });
+
+
+test('sample-first start leaves bulk volume undecided until actual sample approval',()=>{
+  const {totalQuestions:_legacy,...input}=base;
+  const result=buildQuickStart(input);
+  assert.equal(result.plan.requestedQuestionCount,undefined);
+  assert.match(result.plan.goal,/まず3問のサンプル/);
+  assert.match(result.message,/全体の分量はまだ決めない/);
+  assert.doesNotMatch(result.message,/計100問|10問×10回/);
+});

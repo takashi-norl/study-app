@@ -24,6 +24,13 @@ test('cached materials, unknown legacy metadata and different source counts do n
   assert.equal(planningTimeEstimate(current, samples.map(item => ({ ...item, progress: { ...item.progress!, sourcesTotal: 20 } }))), null);
   assert.equal(planningTimeEstimate(current, samples.map(item => ({ ...item, progress: { ...item.progress!, sourcesRequiringAnalysis: 1 } }))), null);
 });
+test('sample previews use their own measured completions, not older proposal-only timings', () => {
+  const current = { ...turn('current'), samplePreview: true as const };
+  const previous = [turn('a', 1), turn('b', 2), turn('c', 3)];
+  assert.equal(planningTimeEstimate(current, previous), null);
+  assert.deepEqual(planningTimeEstimate(current, previous.map(item => ({ ...item, samplePreview: true }))), { lower: 50, upper: 50, count: 3 });
+  assert.equal(planningTimeEstimate(turn('legacy'), previous.map(item => ({ ...item, samplePreview: true }))), null);
+});
 test('a long active reading job is not marked stuck when saved progress is recent', () => {
   const current = { ...turn('current'), status: 'running' as const, createdAt: new Date(now - 12 * 60000).toISOString(), updatedAt: new Date(now - 30000).toISOString() };
   const state = planningWaitState(current, [], now);

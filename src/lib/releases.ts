@@ -8,6 +8,16 @@ export interface AppRelease {
 
 // Newest first. This is the source for Settings, public history and update notices.
 export const APP_RELEASES: readonly AppRelease[] = [{
+  version: '0.6.0',
+  date: '2026-10-23',
+  title: 'まず3問で相談してから、必要な分だけ',
+  announcement: '最初はサンプル3問。AIと調整して形式が決まってから、何問・何日分を作るか選べます。',
+  changes: [
+    { title: '3問を見て、聞き方を調整', description: '最初の相談で、提案と実際のサンプル3問を作ります。「穴埋め中心に」「解説を短く」などと伝えて、サンプルで確かめられます。' },
+    { title: '分量は、形式が決まってから', description: 'サンプルの形式に納得したら、総問題数、または日数と1日の問題数を選びます。最後の作成ボタンを押すまでは、まとめて作問しません。確定したサンプルを参考に、10問ずつ保存します。' },
+    { title: '今ある問題から、別のアレンジへ', description: 'ライブラリと問題の編集画面から、AIとアレンジを相談できます。元の問題や学習記録を残し、別のプライベート問題集として試せます。' },
+  ],
+}, {
   version: '0.5.0',
   date: '2026-10-23',
   title: '自分用の問題から、みんなのライブラリへ',

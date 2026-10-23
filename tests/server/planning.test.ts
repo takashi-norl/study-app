@@ -116,7 +116,7 @@ test('planning context uses only chosen sources and this plan history, caps exce
 });
 
 test('AI proposals can use general knowledge but never invent source IDs or unsupported formats',()=>{
-  const proposal={title:'語彙10問',subject:'英語',description:'基礎を確認',instructions:'一般的な高校英語の語彙',difficulty:'基礎',targetCount:10,format:'multiple-choice',sourceIds:[]};
+  const proposal={title:'語彙10問',subject:'英語',description:'基礎を確認',instructions:'一般的な高校英語の語彙',difficulty:'基礎',targetCount:10,format:'multiple-choice',sourceIds:[],samples:Array.from({length:3},(_,i)=>({prompt:`Select word ${i+1}.`,choices:['apple','pear','cat','dog'],correctIndex:0,explanation:'Apple is a fruit.',learningPoint:'Vocabulary',sourceIds:[],sourceNote:'AI sample without sources',needsReview:false}))};
   const result=validatePlanningReply({reply:'AIによる案です。',proposals:[proposal]},plan,turn.id);
   assert.equal(result.proposals[0].id,`${turn.id}:0`);assert.deepEqual(result.proposals[0].sourceIds,[]);
   assert.throws(()=>validatePlanningReply({reply:'案',proposals:[{...proposal,sourceIds:[sourceId]}]},plan,turn.id),{code:'INVALID_AI_SOURCE'});

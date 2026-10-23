@@ -47,7 +47,8 @@ export interface StudyController {
     createPlan(input: NewLearningPlan): Promise<string | void>;
     sendPlanningMessage(planId: string, message: string): Promise<boolean>;
     resumePlanningTurn(turnId: string): Promise<void>;
-    generateProposal(planId: string, turnId: string, proposalId: string, targetCount: number): Promise<string | void>;
+    generateProposal(planId: string, turnId: string, proposalId: string, targetCount: number, schedule?: { dailyQuestionTarget: number; plannedDays: number }): Promise<string | void>;
+    arrangeTopic(topicId: string): Promise<string | void>;
     publishLibrary(topicId: string): Promise<string | void>;
     requestLibraryPublication(topicId: string): Promise<boolean>;
     addLibraryPlan(topicId: string): Promise<string | void>;

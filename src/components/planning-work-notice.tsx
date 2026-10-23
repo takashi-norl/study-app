@@ -58,7 +58,7 @@ function pendingDetail(turn: PlanningTurn, connectionError: boolean) {
   if (!progress) return '相談画面で進み具合を確認できます';
   const phase = {
     queued: '開始を待っています', preparing: '準備中', reading_sources: '教材を確認中',
-    thinking: '案を作成中', saving: '回答を保存中', complete: '完了', failed: '結果をご確認ください',
+    thinking: turn.samplePreview ? 'サンプル3問を作成中' : '案を作成中', saving: '回答を保存中', complete: '完了', failed: '結果をご確認ください',
   }[progress.phase];
   if (progress.sourcesTotal > 0) {
     const completed = Math.max(0, Math.min(progress.sourcesTotal, progress.sourcesCompleted));
@@ -103,8 +103,9 @@ function ScopedPlanningWorkNotice({ c, storageKey, onOpenPlan, hidden }: {
   const pending = isPending(turn);
   const failed = turn.status === 'failed';
   const hasProposals = !!turn.proposals?.length;
-  const title = pending ? 'AIの依頼を受け付けました' : failed ? '回答を完了できませんでした' : hasProposals ? '提案が届きました' : 'AIから回答が届きました';
-  const action = pending ? '状況を見る' : failed ? '実行結果を確認' : hasProposals ? '提案を見る' : '回答を見る';
+  const hasSamples = turn.proposals?.some(proposal => proposal.samples?.length === 3);
+  const title = pending ? 'AIの依頼を受け付けました' : failed ? '回答を完了できませんでした' : hasSamples ? 'サンプル3問が届きました' : hasProposals ? '提案が届きました' : 'AIから回答が届きました';
+  const action = pending ? '状況を見る' : failed ? '実行結果を確認' : hasSamples ? 'サンプルを見る' : hasProposals ? '提案を見る' : '回答を見る';
   const plan = plans.find(item => item.id === turn.planId)!;
   const Icon = pending ? Clock3 : failed ? CircleHelp : CircleCheck;
 

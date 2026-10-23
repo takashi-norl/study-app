@@ -18,6 +18,7 @@ export function planningTimeEstimate(turn: PlanningTurn, history: PlanningTurn[]
   const progress = turn.progress;
   if (!progress || progress.sourcesRequiringAnalysis === undefined) return null;
   const samples = history.filter(item => item.id !== turn.id && item.status === 'complete' && item.completedAt &&
+    !!item.samplePreview === !!turn.samplePreview &&
     item.progress?.sourcesTotal === progress.sourcesTotal &&
     item.progress?.sourcesRequiringAnalysis === progress.sourcesRequiringAnalysis &&
     Date.parse(item.completedAt) <= Date.parse(turn.createdAt) &&

@@ -5,10 +5,10 @@ type Candidate = Pick<Question, 'prompt' | 'choices' | 'correctIndex' | 'explana
 
 /** Keep provenance and private practice policy independent of claims in AI output. */
 export function materializeQuestions(candidates: Candidate[], input: {
-  job: GenerationJob; sourceIds: string[]; prior: Question[]; count: number; createdAt: string;
+  job: GenerationJob; sourceIds: string[]; prior: Question[]; count: number; createdAt: string; excludedPrompts?: string[];
 }): Question[] {
   const normalize = (text: string) => text.normalize('NFKC').replace(/\s+/g, '').toLowerCase();
-  const seen = new Set(input.prior.map(question => normalize(question.prompt)));
+  const seen = new Set([...input.prior.map(question => normalize(question.prompt)),...(input.excludedPrompts ?? []).map(normalize)]);
   const sources = new Set(input.sourceIds);
   const questions: Question[] = [];
   for (const candidate of candidates) {

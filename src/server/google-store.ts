@@ -10,6 +10,7 @@ import { assertStorageGrant, getDriveConfig, getFamilyId, getFamilyMembers, prof
 import { canAccessPlan, canAccessQuestion, canAccessSource } from './access';
 import { asPracticeQuestion, isPracticeReadyQuestion, topicOwnerId } from '@/lib/library-policy';
 import { libraryRevision } from './library';
+import { planningSamplesSchema, planningSampleSchema } from './planning-samples';
 import { aiRequestedSchema, aiUsageSchema } from './ai-usage-schema';
 import { personalProfileSavedEventSchema, personalProfileChatRequestedEventSchema, personalProfileChatCompletedEventSchema, personalProfileChatFailedEventSchema } from './personal-profile-schemas';
 
@@ -58,23 +59,26 @@ const jobSchema = z.object({ id: idSchema, topicId: idSchema, status: z.enum(['q
   targetCount: z.number().int().min(0), generatedCount: z.number().int().min(0), createdAt: isoSchema, error: z.string().optional(),
   audienceUserId: idSchema.optional(), planId: idSchema.optional(), sourceIds: z.array(idSchema).max(20).optional(),
   instructions: z.string().max(4000).optional(), requestedBy: idSchema.optional(), proposalId: idSchema.optional(),
-  turnId: idSchema.optional(), requestId: idSchema.optional(), retryOfJobId: idSchema.optional(),testOnly:z.boolean().optional() });
+  turnId: idSchema.optional(), requestId: idSchema.optional(), retryOfJobId: idSchema.optional(),testOnly:z.boolean().optional(),
+  approvedSamples:planningSamplesSchema.optional(),approvedSampleVersion:z.number().int().positive().optional(),approvedInstructions:z.string().min(1).max(4000).optional(),
+  dailyQuestionTarget:z.number().int().min(1).max(100).optional(),plannedDays:z.number().int().min(1).max(300).optional() });
 const planSchema = z.object({
   id: idSchema, ownerId: idSchema, title: z.string().trim().min(1).max(150), subject: subjectSchema,
   goal: z.string().max(4000), difficulty: z.string().max(200), targetDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
   dailyQuestionTarget: z.number().int().min(1).max(100), sourceIds: z.array(idSchema).max(20),
   requestedQuestionCount: z.number().int().min(1).max(300).optional(),
   testOnly:z.boolean().optional(),libraryTopicId:idSchema.optional(),
+  sampleFirst:z.boolean().optional(),arrangedFromTopicId:idSchema.optional(),arrangementExamples:z.array(planningSampleSchema).max(3).optional(),arrangementInstructions:z.string().max(4000).optional(),plannedDays:z.number().int().min(1).max(300).optional(),
   version: z.number().int().min(1), createdAt: isoSchema, updatedAt: isoSchema,
 });
 const proposalSchema = z.object({
   id: idSchema, title: z.string().trim().min(1).max(150), subject: subjectSchema,
   description: z.string().max(2000), instructions: z.string().max(4000), difficulty: z.string().max(200),
-  targetCount: z.number().int().min(1).max(300), format: z.literal('multiple-choice'), sourceIds: z.array(idSchema).max(20),
+  targetCount: z.number().int().min(1).max(300), format: z.literal('multiple-choice'), sourceIds: z.array(idSchema).max(20), samples:planningSamplesSchema.optional(),
 });
 const planningTurnSchema = z.object({
   id: idSchema, planId: idSchema, requestedBy: idSchema, version: z.number().int().min(1),
-  status: z.enum(['queued', 'running', 'complete', 'failed']), message: z.string().min(1).max(4000),
+  samplePreview:z.boolean().optional(),status: z.enum(['queued', 'running', 'complete', 'failed']), message: z.string().min(1).max(4000),
   reply: z.string().max(12000).optional(), proposals: z.array(proposalSchema).max(5).optional(),
   createdAt: isoSchema, completedAt: isoSchema.optional(), error: z.string().max(1000).optional(),
   startedAt: isoSchema.optional(), updatedAt: isoSchema.optional(), workflowRunId: idSchema.optional(),
@@ -182,11 +186,12 @@ function validateEvent(input: StudyEvent): StudyEvent {
     case 'exposure.recorded': exposureSchema.parse(payload); break;
     case 'job.upserted': jobSchema.parse(payload); break;
     case 'generation.requested': {
-      const requested = z.object({ topic: topicSchema, job: jobSchema }).parse(payload);
+      const requested = z.object({ topic: topicSchema, job: jobSchema, updatedPlan:planSchema.optional() }).parse(payload);
       if (requested.topic.id !== requested.job.topicId
         || requested.topic.audienceUserId !== requested.job.audienceUserId
         || !!requested.topic.testOnly !== !!requested.job.testOnly
         || requested.topic.planId !== requested.job.planId) throw new ApiError(400, '作問する問題集の指定が一致しません。', 'INVALID_GENERATION');
+      if(requested.updatedPlan && (requested.updatedPlan.id!==requested.job.planId || requested.updatedPlan.ownerId!==requested.job.requestedBy)) throw new ApiError(400,'学習プランの作成者が一致しません。','INVALID_GENERATION');
       break;
     }
     case 'plan.created': case 'plan.updated': planSchema.parse(payload); break;
@@ -350,6 +355,11 @@ export function foldEvents(events: StudyEvent[], profiles: Profile[] = []): Stud
         if (!topics.has(topic.id) && !jobs.has(job.id)) {
           topics.set(topic.id, { ...topic, ownerId:topic.ownerId ?? job.requestedBy ?? topic.audienceUserId ?? event.actorId });
           jobs.set(job.id, job);
+          if(payload.updatedPlan) {
+            const updated=planSchema.parse(payload.updatedPlan);
+            const previous=plans.get(updated.id);
+            if(previous && previous.ownerId===updated.ownerId && updated.version===previous.version+1) plans.set(updated.id,updated);
+          }
         }
         break;
       }
@@ -398,7 +408,7 @@ export function foldEvents(events: StudyEvent[], profiles: Profile[] = []): Stud
           // An old progress write must not move a newer running phase backwards.
           if (turn.status === 'running' && turn.updatedAt && previous.updatedAt
             && Date.parse(turn.updatedAt) < Date.parse(previous.updatedAt)) break;
-          planningTurns.set(turn.id, { ...turn, message: previous.message, createdAt: previous.createdAt,
+          planningTurns.set(turn.id, { ...turn, message: previous.message, createdAt: previous.createdAt,samplePreview:previous.samplePreview,
             startedAt: previous.startedAt ?? turn.startedAt, updatedAt: turn.updatedAt ?? previous.updatedAt,
             workflowRunId: previous.workflowRunId ?? turn.workflowRunId,
             progress: turn.progress ? { ...turn.progress,

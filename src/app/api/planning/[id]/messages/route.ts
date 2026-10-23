@@ -30,7 +30,7 @@ export async function POST(request:Request,context:{params:Promise<{id:string}>}
   }
   requireGenerationEnabled();
   const now=new Date();
-  const turn:PlanningTurn=planningProgress({id:input.requestId,planId:plan.id,requestedBy:profile.id,version:plan.version+1,status:'queued',message:input.message,createdAt:now.toISOString()},plan.sourceIds,events,'queued',now);
+  const turn:PlanningTurn=planningProgress({id:input.requestId,planId:plan.id,requestedBy:profile.id,version:plan.version+1,status:'queued',samplePreview:true,message:input.message,createdAt:now.toISOString()},plan.sourceIds,events,'queued',now);
   const slotId=paidWorkSlotId(data);
   await appendEvent({id:slotId,type:'planning.turn.upserted',actorId:profile.id,createdAt:turn.createdAt,payload:turn});
   const canonical=await getFullState();

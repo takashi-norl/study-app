@@ -28,7 +28,7 @@ export interface QuickStartInput {
   materialMode:'ai'|'sources';
   focus:string;
   difficulty:string;
-  totalQuestions:number;
+  totalQuestions?:number;
   sourceIds:string[];
   purpose?:string;
   schedule?:string;
@@ -38,7 +38,7 @@ export interface QuickStartInput {
   targetDate?:string;
 }
 export type QuickStartPlan = Pick<LearningPlan,'title'|'subject'|'goal'|'difficulty'|'targetDate'|'dailyQuestionTarget'|'sourceIds'> & {
-  requestedQuestionCount:number;
+  requestedQuestionCount?:number;
 };
 
 /** Turn tap selections into a saved plan and the first consultation, without requiring a title or free text. */
@@ -56,7 +56,7 @@ export function buildQuickStart(input:QuickStartInput):{plan:QuickStartPlan;mess
   if(focus.length>100 || difficulty.length>200 || purpose.length>40 || schedule.length>40 || examTarget.length>100 || comment.length>2000) throw new Error('コメントや選択内容を短くしてください。');
   if(!Number.isInteger(minutesPerDay) || minutesPerDay<1 || minutesPerDay>180) throw new Error('1日の学習時間を選んでください。');
   if(input.materialMode!=='ai' && input.materialMode!=='sources') throw new Error('問題のもとを選んでください。');
-  const volume=questionVolumeLabel(input.totalQuestions);
+  const volume=input.totalQuestions === undefined ? undefined : questionVolumeLabel(input.totalQuestions);
   const sourceIds=input.materialMode==='sources' ? [...new Set(input.sourceIds)] : [];
   if(input.materialMode==='sources' && (input.sourceIds.length>20 || !sourceIds.length || sourceIds.some(id=>!id.trim()))) {
     throw new Error('教材ストックから1〜20件を選んでください。');
@@ -71,14 +71,14 @@ export function buildQuickStart(input:QuickStartInput):{plan:QuickStartPlan;mess
     : schedule==='身につくまで'
       ? `期限を決めず、身につくまで1日${minutesPerDay}分を目安に取り組む。初回の理解と別日の復習成績、誤答の減少を分けて確かめる。`
       : `${schedule}をかけて、1日${minutesPerDay}分を目安に取り組む。新しい問題と日を空けた復習を組み合わせる。`;
-  const goal=`進学校の高校1年を目安に、${purposeLabel}に向けて練習する。${sourceDescription}、${subject}の${focus==='おまかせ' ? '理解を確認できる内容' : focus}を${effectiveDifficulty}で練習する。${timing}${volume}を用意し、1回10問を目安に取り組む。${comment ? `\n追加の希望：${comment}` : ''}`;
+  const goal=`進学校の高校1年を目安に、${purposeLabel}に向けて練習する。${sourceDescription}、${subject}の${focus==='おまかせ' ? '理解を確認できる内容' : focus}を${effectiveDifficulty}で練習する。${timing}${volume ? `${volume}を用意し、1回10問を目安に取り組む。` : 'まず3問のサンプルで出し方と難しさを確かめる。作る総数はサンプルを見てから決める。'}${comment ? `\n追加の希望：${comment}` : ''}`;
   const plan:QuickStartPlan={title,subject,goal,difficulty:effectiveDifficulty,targetDate,
-    dailyQuestionTarget:10,sourceIds,requestedQuestionCount:input.totalQuestions};
+    dailyQuestionTarget:10,sourceIds,...(input.totalQuestions === undefined ? {} : {requestedQuestionCount:input.totalQuestions})};
   const message=[
-    'この選択から、まずおすすめの問題作成案を提案してください。問題は提案を選んでから作ります。',
-    `学習者：進学校の高校1年を目安にする\n科目：${subject}\n目的：${purposeLabel}\n問題のもと：${input.materialMode==='sources' ? '選択した教材' : 'AIにおまかせ（資料なし）'}\n練習する内容：${focus}\n難しさ：${effectiveDifficulty}\n使える期間：${schedule}${schedule==='あと1時間' ? '' : `\n1日の目安：${minutesPerDay}分`}\n問題数：${volume}`,
+    'この選択から、まずおすすめの問題作成案を提案してください。選んだ案で3問のサンプルを作り、出題方法と難しさを相談してから総数を決めます。',
+    `学習者：進学校の高校1年を目安にする\n科目：${subject}\n目的：${purposeLabel}\n問題のもと：${input.materialMode==='sources' ? '選択した教材' : 'AIにおまかせ（資料なし）'}\n練習する内容：${focus}\n難しさ：${effectiveDifficulty}\n使える期間：${schedule}${schedule==='あと1時間' ? '' : `\n1日の目安：${minutesPerDay}分`}\n問題数：${volume ?? 'まず3問のサンプル。全体の分量はまだ決めない'}`,
     schedule==='あと1時間' ? '残り1時間の対策です。最も大切な要点と誤答しやすい点を優先して、まず10問を解き、間違いを確認する時間を確保する案にしてください。作る総数と今回解く数を区別し、大量の問題をすべてこの1時間で終えられるとは約束しないでください。'
-      : schedule==='身につくまで' ? `締め切りは設定せず、内容が身につくことを目標にしてください。1日${minutesPerDay}分を目安に、初回の理解と別日の復習、誤答の減少を分けて確認できる到達基準を提案してください。一度の正解や同日の反復だけで「完全にマスター」と断定しないでください。選択した問題数は今回作る分です。結果を見て次の練習を相談する形にし、無制限の自動作問・自動実行を約束しないでください。`
+      : schedule==='身につくまで' ? `締め切りは設定せず、内容が身につくことを目標にしてください。1日${minutesPerDay}分を目安に、初回の理解と別日の復習、誤答の減少を分けて確認できる到達基準を提案してください。一度の正解や同日の反復だけで「完全にマスター」と断定しないでください。${volume ? '選択した問題数は今回作る分です。' : '作る総数はサンプルを見てから決めます。'}結果を見て次の練習を相談する形にし、無制限の自動作問・自動実行を約束しないでください。`
         : `1日${minutesPerDay}分の中で新しい問題・解説の確認・日を空けた復習を配分してください。1か月なら週ごとの目安も示し、全体の問題を一度で解く前提にしないでください。`,
     'タイトルは内容から付けてください。選択済みの内容で提案し、名前や目標の入力を必須にしないでください。後からコメントで範囲・難しさ・問題数を調整できる案にしてください。',
     input.materialMode==='sources' ? '選んだ教材の範囲と読み取れた内容を使ってください。問題数に対して内容が足りなければ、その理由と作れる範囲を提案してください。' : '資料は使わず、一般的な学習内容から作ってください。',
