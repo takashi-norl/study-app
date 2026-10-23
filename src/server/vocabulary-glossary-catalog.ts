@@ -43,8 +43,17 @@ const foundation: [string, string[], string, string, string, string][] = [
   ['so that', [], '〜するように・〜できるように', 'Used before a clause to explain an intended result or purpose.', 'Speak clearly so that everyone can understand the announcement.', '全員がお知らせを理解できるようにはっきり話そう。'],
 ];
 
+// The 50 verbs in this fixed catalogue are regular; admit doubles its final consonant.
+// Keep inflections attached to the same history entry instead of creating separate weak words.
+function verbForms(word: string): string[] {
+  const third = /[^aeiou]y$/.test(word) ? `${word.slice(0, -1)}ies` : /(?:s|sh|ch|x|z|o)$/.test(word) ? `${word}es` : `${word}s`;
+  const past = word === 'admit' ? 'admitted' : /[^aeiou]y$/.test(word) ? `${word.slice(0, -1)}ied` : word.endsWith('e') ? `${word}d` : `${word}ed`;
+  const ing = word === 'admit' ? 'admitting' : word.endsWith('e') ? `${word.slice(0, -1)}ing` : `${word}ing`;
+  return [third, past, ing];
+}
+
 export const glossaryEntries: GlossaryEntry[] = [
-  ...vocabularyEntries.map(entry => ({ id: entry.id, term: entry.word, aliases: [], meaning: entry.meaning,
+  ...vocabularyEntries.map(entry => ({ id: entry.id, term: entry.word, aliases: entry.partOfSpeech === '動詞' ? verbForms(entry.word) : [], meaning: entry.meaning,
     definition: entry.definition, level: `${entry.level}を目安`, examples: entry.examples.map(({ text, translation }) => ({ text, translation })), relatedIds: [] })),
   ...foundation.map(([term, aliases, meaning, definition, text, translation]) => ({
     id: `basic-${term.replaceAll(' ', '-')}`, term, aliases, meaning, definition, level: '基礎の単語・表現',

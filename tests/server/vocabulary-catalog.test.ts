@@ -47,4 +47,5 @@ test('glossary connects foundation phrases and catalog words without duplicate a
   assert.equal(new Set(keys).size, keys.length, 'An alias must resolve to exactly one entry');
   assert.ok(glossaryEntries.every(entry => entry.relatedIds.every(id => glossaryEntries.some(item => item.id === id))));
   assert.equal(matchGlossaryTerms('We left early in order to avoid rain.', glossaryEntries).filter(part => part.entryId).length, 2);
+  assert.deepEqual(matchGlossaryTerms('She achieved her goal and admitted the mistake, justifying her choice.', glossaryEntries).filter(part => part.entryId).map(part => part.entryId), ['achieve', 'admit', 'justify']);
 });
