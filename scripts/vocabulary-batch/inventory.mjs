@@ -1,4 +1,5 @@
 import { join } from 'node:path';
+import { baseCount } from './holds.mjs';
 import { readJson } from './storage.mjs';
 import { GRADES, normalizeLemma, validInventoryCandidates } from './schema.mjs';
 import { responseCost, structuredResult } from './provider.mjs';
@@ -67,7 +68,7 @@ export function inventoryChunkSize(state, grade) {
 /** The caller writes this whole checkpoint atomically while holding the output lock. */
 export function applyInventoryRound(state, { grade, round, needed, requestId, result, domainIds }) {
   if (!GRADES[grade] || round !== (state.inventoryRounds[grade] ?? 0) || requestId !== `inventory-${grade}-${String(round).padStart(4, '0')}` || state.inventoryReceipts?.[requestId]) throw new Error('Inventory round was already consumed or has a mismatched identity.');
-  const remaining = GRADES[grade].target - state.words.filter(item => item.grade === grade).length;
+  const remaining = GRADES[grade].target - baseCount(state.words, grade);
   if (!Number.isInteger(needed) || needed < 1 || needed > Math.min(inventoryChunkSize(state, grade), remaining)) throw new Error('Inventory round exceeds its remaining target or chunk bound.');
   const known = new Set(state.words.map(item => normalizeLemma(item.word)));
   const ids = new Set(state.words.map(item => item.id));

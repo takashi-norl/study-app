@@ -3,6 +3,7 @@ import { readdir } from 'node:fs/promises';
 import { join } from 'node:path';
 import { atomicJson, readJson } from './storage.mjs';
 import { hashVocabularyEntry } from './schema.mjs';
+import { requestTouchesHeldInventory } from './holds.mjs';
 import { HARD_TEXT_CAP_USD, PRICES, messageParams, tokenCountParams, responseCost, structuredResult } from './provider.mjs';
 
 export class BatchQueued extends Error { constructor(id) { super(`Queued${id}for batch submission.`); this.code = 'BATCH_QUEUED'; } }
@@ -45,9 +46,10 @@ export async function submitBatch(output, { budgetUsd = 100, maxRequests = MAX_B
   if (ledger.calls.some(item => item.status !== 'complete')) throw new Error('Collect or reconcile the outstanding provider request before another paid submission.');
   const known = new Set(ledger.calls.map(item => item.id));
   const candidates = [];
+  const inventory = await readJson(join(output, 'manifest.json'), { words: [] });
   for (const file of await files(join(output, 'prepared'))) {
     const candidate = await readJson(join(output, 'prepared', file));
-    if (!known.has(candidate.id)) candidates.push(candidate);
+    if (!known.has(candidate.id) && !requestTouchesHeldInventory(candidate, inventory.words)) candidates.push(candidate);
   }
   // Finish checking material already generated before spending on more first drafts.
   candidates.sort((a, b) => Number(b.id.startsWith('review-')) - Number(a.id.startsWith('review-')) || a.id.localeCompare(b.id));

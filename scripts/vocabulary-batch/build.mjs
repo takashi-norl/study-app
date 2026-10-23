@@ -2,13 +2,15 @@
 import { readFile } from 'node:fs/promises';
 import { dirname, isAbsolute, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { GRADES, hashVocabularyEntry, inventorySchema, generationSchema, reviewSchema, jsonSchema, normalizeLemma, validateGeneratedBatch, materializeEntry, validateReview } from './schema.mjs';
+import { GRADES, hashVocabularyEntry, generationSchema, reviewSchema, jsonSchema, normalizeLemma, validateGeneratedBatch, materializeEntry, validateReview } from './schema.mjs';
 import { atomicJson, readJson, withLock } from './storage.mjs';
 import { createProvider, HARD_TEXT_CAP_USD, PRICES } from './provider.mjs';
 import { planningProvider, submitBatch, collectBatches, MAX_BATCH_REQUESTS } from './batches.mjs';
 import { salvageResponses } from './salvage.mjs';
 import { applyInventoryRound, inventoryChunkSize, savedInventoryResult } from './inventory.mjs';
 import { activeGenerationGroups, preparedGenerationGroups } from './groups.mjs';
+import { baseCount, isBaseCandidate } from './holds.mjs';
+import { futureInventoryRequestSchema, inventoryFocusForRound, INVENTORY_QUALITY_INSTRUCTIONS, auditInventoryCandidates } from './inventory-quality.mjs';
 
 const REPO = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const DOMAIN_TAGS = JSON.parse(await readFile(join(REPO, 'content/vocabulary-knowledge/taxonomy.json'), 'utf8')).domains.map(({id, labelJa}) => ({id, labelJa}));
@@ -51,24 +53,24 @@ async function initialize(output) {
 }
 async function status(output) {
   const state = await loadManifest(output), ledger = await readJson(join(output, 'ledger.json'), { calls: [] });
-  console.log(JSON.stringify({ target: 7500, inventory: state.words.length, preserved: state.words.filter(item => item.frozen).length, approvedNew: state.words.filter(item => item.status === 'approved').length, rejectedNew: state.words.filter(item => item.status === 'rejected').length,
-    grades: Object.fromEntries(Object.keys(GRADES).map(grade => [grade, { target: GRADES[grade].target, inventoried: state.words.filter(item => item.grade === grade).length, approvedOrPreserved: state.words.filter(item => item.grade === grade && ['approved', 'preserved'].includes(item.status)).length }])),
+  console.log(JSON.stringify({ target: 7500, inventory: baseCount(state.words), registeredIncludingHeld: state.words.length, heldInventory: state.words.filter(item => !isBaseCandidate(item)).length, preserved: state.words.filter(item => item.frozen).length, approvedNew: state.words.filter(item => item.status === 'approved').length, rejectedNew: state.words.filter(item => item.status === 'rejected').length,
+    grades: Object.fromEntries(Object.keys(GRADES).map(grade => [grade, { target: GRADES[grade].target, inventoried: baseCount(state.words, grade), approvedOrPreserved: state.words.filter(item => item.grade === grade && ['approved', 'preserved'].includes(item.status)).length }])),
     textUsd: ledger.calls.filter(call => call.status === 'complete').reduce((sum, call) => sum + call.actualUsd, 0), uncertain: ledger.calls.filter(call => call.status !== 'complete').map(call => ({ id: call.id, status: call.status, reservedUsd: call.reservedUsd })), capUsd: HARD_TEXT_CAP_USD,
     audio: 'No audio calls are made by this tool. Approved immutable text assets may be consumed by the separate audio builder.' }, null, 2));
 }
 async function inventory(output, options, provider) {
   const state = await loadManifest(output); const limit = boundedInteger(options['max-calls'], 1);
   for (let step = 0; step < limit; step++) {
-    const grade = Object.keys(GRADES).find(key => (!options.grade || options.grade === key) && state.words.filter(item => item.grade === key).length < GRADES[key].target);
+    const grade = Object.keys(GRADES).find(key => (!options.grade || options.grade === key) && baseCount(state.words, key) < GRADES[key].target);
     if (!grade) { console.log('Requested grade inventory targets reached.'); break; }
-    const needed = Math.min(inventoryChunkSize(state, grade), GRADES[grade].target - state.words.filter(item => item.grade === grade).length);
+    const needed = Math.min(inventoryChunkSize(state, grade), GRADES[grade].target - baseCount(state.words, grade));
     const round = state.inventoryRounds[grade] ?? 0; const requestId = `inventory-${grade}-${String(round).padStart(4, '0')}`;
     let result = await savedInventoryResult(output, requestId);
     if (!result && !provider) { console.log('No saved result for the next inventory round. Offline recovery made no provider request.'); break; }
     if (!result) {
       try {
-        await provider(requestId, { system: SYSTEM, toolName: 'inventory_words', schema: jsonSchema(inventorySchema), maxTokens: 10000,
-      prompt: JSON.stringify({ task: `Propose exactly${needed} additional useful English lemmas for a ${GRADES[grade].label}-oriented cumulative vocabulary catalog. This grade band is incremental: NEVER duplicate any existing word. Include frequent basic/function words appropriate to this band; balance everyday life, school, society, work, science, arts, environment and abstract ideas. No proper names, inflected forms, numeric items or obscure filler. Single-word lemmas only; multiword idioms will be a separate expansion. Grade3 band includes foundations below grade3. A lemma appears once even when it has multiple senses. Give one main POS and a concise Japanese meaning. Do not invent official frequency/grade claims.`, gradeEstimate: GRADES[grade].label, allowedDomainTags: DOMAIN_TAGS, domainPolicy: 'Use only canonical domain IDs in domains. Choose specific supported senses, not every conceivable association.', excludedLemmas: state.words.map(item => item.word).sort() }) });
+        await provider(requestId, { system: SYSTEM, toolName: 'inventory_words', schema: jsonSchema(futureInventoryRequestSchema(DOMAIN_TAGS.map(item => item.id))), maxTokens: 10000,
+      prompt: JSON.stringify({ task: `Propose up to${needed} additional useful English lemmas for a ${GRADES[grade].label}-oriented cumulative vocabulary catalog. This grade band is incremental: NEVER duplicate any existing word. Include frequent basic/function words appropriate to this band; balance everyday life, school, society, work, science, arts, environment and abstract ideas. No proper names, inflected forms, numeric items or obscure filler. Single-word lemmas only; multiword idioms will be a separate expansion. Grade3 band includes foundations below grade3. A lemma appears once even when it has multiple senses. Give one main POS and a concise Japanese meaning. Do not invent official frequency/grade claims.`, gradeEstimate: GRADES[grade].label, qualityInstructions: INVENTORY_QUALITY_INSTRUCTIONS, focus: inventoryFocusForRound(round, DOMAIN_TAGS.map(item => item.id)), allowedDomainTags: DOMAIN_TAGS, domainPolicy: 'Use only canonical domain IDs in domains. Choose specific supported senses, not every conceivable association.', excludedLemmas: state.words.map(item => item.word).sort() }) });
       } catch (error) {
         if (error.code !== 'INVALID_STRUCTURED_RESULT') throw error;
         // The provider has already saved and priced this response. Recover exact objects
@@ -77,10 +79,12 @@ async function inventory(output, options, provider) {
       result = await savedInventoryResult(output, requestId);
       if (!result) throw new Error('Provider result was not saved; cannot checkpoint inventory.');
     }
+    const quality = auditInventoryCandidates(result.value, { knownLemmas: new Set(state.words.map(item => item.word)), domainIds: DOMAIN_TAGS.map(item => item.id), needed });
     const summary = applyInventoryRound(state, { grade, round, needed, requestId, result, domainIds: DOMAIN_TAGS.map(item => item.id) });
+    summary.qualityAudit = quality;
     await saveState(output, state);
-    console.log(`${GRADES[grade].label}: added${summary.added}/${needed}; totalinventory${state.words.length}/7500. Checkpoint saved.${summary.truncated ? ` Recovered complete objects from truncated output; next chunk${summary.nextChunkSize}.` : ''}`);
-    if (!summary.added) throw new Error('Inventory returned no new usable lemmas. Consumed receipt checkpointed; stopped instead of spending repeatedly on duplicates.');
+    console.log(`${GRADES[grade].label}: added${summary.added}/${needed}; totalinventory${baseCount(state.words)}/7500. Checkpoint saved.${summary.truncated ? ` Recovered complete objects from truncated output; next chunk${summary.nextChunkSize}.` : ''}`);
+    if (quality.action === 'stop-for-inventory-review') throw new Error('Inventory novelty is too low. Consumed receipt checkpointed; stop and review before another paid request.');
   }
 }
 function reviewFields(entry) {
@@ -90,7 +94,7 @@ async function build(output, options, provider, repairing = false) {
   const state = await loadManifest(output), limit = boundedInteger(options['max-batches'], 1);
   const preparedGroups = await preparedGenerationGroups(output);
   const queued = new Set();
-  const eligible = item => !queued.has(item.id) && (repairing ? item.status === 'rejected' && (item.attempt ?? 0) < 2 : ['inventoried', 'salvaged'].includes(item.status));
+  const eligible = item => isBaseCandidate(item) && !queued.has(item.id) && (repairing ? item.status === 'rejected' && (item.attempt ?? 0) < 2 : ['inventoried', 'salvaged'].includes(item.status));
   for (let number = 0; number < limit; number++) {
     const grade = Object.keys(GRADES).find(key => (!options.grade || options.grade === key) && state.words.some(item => item.grade === key && eligible(item)));
     if (!grade) { console.log('No unbuilt inventory in the selected grades. Approved/rejected assets are retained; no paid repeats.'); break; }
