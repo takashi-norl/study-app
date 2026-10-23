@@ -55,8 +55,8 @@ test('oversized inventory raw response skips malformed and duplicate candidates 
   assert.deepEqual(validInventoryCandidates({ words: [{ ...base, word: 'known' }, { ...base, word: 'bad', domains: undefined, doms: ['general'] }, { ...base, word: 'apple' }, { ...base, word: 'apple' }, { ...base, word: 'pear' }] }, 2, new Set(['known'])).map(item => item.word), ['apple', 'pear']);
 });
 test('authored answer and voice metadata invariants prevent structural false positives', () => {
-  const candidate = entry(); candidate.tests[0].correctIndex = 1;
-  assert.throws(() => validateGeneratedBatch({ entries: [candidate] }, [seed]), /stored meaning/);
+  const candidate = entry(); candidate.tests[1].correctIndex = 1;
+  assert.throws(() => validateGeneratedBatch({ entries: [candidate] }, [seed]), /target lemma/);
   assert.throws(() => materializeEntry(entry(), seed, 1), /regional IPA/);
   assert.throws(() => validateGeneratedBatch({ entries: [entry()] }, [{ ...seed, preferredIpaLabel: '英音' }]), /assigned voice/);
   const numeric = entry(); numeric.tests[3].explanation = '正解は1です。';

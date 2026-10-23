@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "series": [
+    {
+      "id": "reading-domains-pilot-v1",
+      "title": "分野で読む英語・最初の12編",
+      "file": "pilot-v1.json",
+      "reviewStatus": "approved",
+      "publicationStatus": "unpublished",
+      "passageCount": 12,
+      "questionCount": 48,
+      "levels": [
+        "2級",
+        "準1級"
+      ],
+      "domainIds": [
+        "medical",
+        "travel",
+        "business",
+        "technology",
+        "politics",
+        "economics"
+      ]
+    },
+    {
+      "id": "reading-domains-volume2-v1",
+      "title": "分野で読む英語・広がる34編",
+      "file": "volume2-v1.json",
+      "reviewStatus": "approved",
+      "publicationStatus": "unpublished",
+      "passageCount": 34,
+      "questionCount": 136,
+      "levels": [
+        "2級",
+        "準1級"
+      ],
+      "domainIds": [
+        "daily-life",
+        "education",
+        "work",
+        "finance",
+        "science",
+        "health",
+        "environment",
+        "transport",
+        "law",
+        "society",
+        "communication",
+        "arts-culture",
+        "sports",
+        "food",
+        "relationships",
+        "media",
+        "logic-reasoning"
+      ]
+    }
+  ]
+}

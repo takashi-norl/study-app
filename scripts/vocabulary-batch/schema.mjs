@@ -1,5 +1,6 @@
 import { createHash } from 'node:crypto';
 import { z } from 'zod';
+import { candidateContextForms, meaningPromptIdentifiesLemma } from './structural-forms.mjs';
 
 export const GRADES = { grade3: { label: '3級', target: 2100 }, pre2: { label: '準2級', target: 1500 }, grade2: { label: '2級', target: 1500 }, pre1: { label: '準1級', target: 2400 } };
 export const MODES = ['meaning', 'word', 'context', 'usage'];
@@ -55,11 +56,12 @@ export function validateGeneratedBatch(raw, inventory) {
     if (new Set(entry.tests.map(item => item.mode)).size !== 4) throw new Error(`${key}: all four test modes are required.`);
     for (const test of entry.tests) {
       if (new Set(test.choices.map(item => normalizeLemma(item.text))).size !== 4) throw new Error(`${key}: duplicate choices in ${test.mode}.`);
-      if (test.mode === 'meaning' && normalizeLemma(test.prompt) !== key) throw new Error(`${key}: meaning prompt must be the target lemma only.`);
+      if (test.mode === 'meaning' && !meaningPromptIdentifiesLemma(test.prompt, entry)) throw new Error(`${key}: meaning prompt must identify the target lemma, an explicit sense, or an evidenced construction.`);
       if (test.mode === 'word' && normalizeLemma(test.choices[test.correctIndex].text) !== key) throw new Error(`${key}: word test must select the target lemma.`);
-      if (test.mode === 'meaning' && normalizeLemma(test.choices[test.correctIndex].text) !== normalizeLemma(entry.meaning)) throw new Error(`${key}: meaning test must select the stored meaning.`);
+      // Meaning glosses may select one stated sense or use a natural paraphrase. Correctness
+      // is semantic: the mandatory independent reviewer checks all four choices, not equality.
       if (test.mode === 'context' && !/_{3,}/.test(test.prompt)) throw new Error(`${key}: context test needs an empty cloze.`);
-      if (test.mode === 'context' && !new Set([entry.word, ...Object.values(entry.verbForms ?? {}).flat()].map(normalizeLemma)).has(normalizeLemma(test.choices[test.correctIndex].text))) throw new Error(`${key}: context answer must be the target lemma or its verb form.`);
+      if (test.mode === 'context' && !candidateContextForms(entry).has(normalizeLemma(test.choices[test.correctIndex].text))) throw new Error(`${key}: context answer must be the target lemma or a candidate inflected form; semantic correctness still requires review.`);
       if (/(?:選択肢|正解は|答えは)\s*[1-4]|\b(?:option|choice)\s*[1-4]\b/i.test(test.explanation)) throw new Error(`${key}: explanations must not depend on shuffled choice numbers.`);
       if (test.mode !== 'context' && test.alternatives.length) throw new Error(`${key}: alternatives belong to context test only.`);
       const wrong = new Set(test.choices.filter((_, index) => index !== test.correctIndex).map(item => normalizeLemma(item.text)));

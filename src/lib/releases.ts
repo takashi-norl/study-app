@@ -8,6 +8,15 @@ export interface AppRelease {
 
 // Newest first. This is the source for Settings, public history and update notices.
 export const APP_RELEASES: readonly AppRelease[] = [{
+  version: '0.12.1',
+  date: '2026-10-23',
+  title: '単語教材を413語に',
+  announcement: '管理者向けの単語教材に3級の313語を追加しました。意味・例文・4種類の選択問題で学べます。音声は保存できたものから順次反映します。',
+  changes: [
+    { title: '3級の単語教材を追加', description: '既存の2級・準1級100語に、AIの点検を終えた3級313語を追加しました。各単語に意味、3つの例文、4種類の選択問題があります。' },
+    { title: '単語と例文の音声を保存', description: '新しい教材の発音と例文の音声を順次保存します。保存後は何度聞いても音声を生成し直しません。' },
+  ],
+}, {
   version: '0.12.0',
   date: '2026-10-23',
   title: '選ぶとすぐに、正解と解説へ',
