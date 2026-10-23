@@ -1,0 +1,332 @@
+// Original teaching content and assessments. References support usage, not copied exercises.
+// Level targets are editorial estimates, not official CEFR or examination mappings.
+// This source is a draft pending independent review; it does not publish or call an API.
+const cambridge = (title, slug) => ({ title: `Cambridge English Grammar Today: ${title}`, url: `https://dictionary.cambridge.org/grammar/british-grammar/${slug}` });
+const sources = {
+  time: { title: 'British Council: Prepositions of time — at, in, on', url: 'https://learnenglish.britishcouncil.org/grammar/a1-a2-grammar/prepositions-of-time-at-in-on' },
+  place: cambridge('At, on and in (place)', 'at-on-and-in-place'),
+  to: cambridge('To', 'to'), for: cambridge('For', 'for'), by: cambridge('By', 'by'), with: cambridge('With', 'with'),
+  duration: { title: 'British Council: How long', url: 'https://learnenglish.britishcouncil.org/free-resources/grammar/english-grammar-reference/how-long' },
+  during: cambridge('During or for?', 'during-or-for'), until: cambridge('Until', 'until'),
+  movement: cambridge('Across, over or through?', 'across'), over: cambridge('Over', 'over'),
+  between: { title: 'MLA Style Center: Choosing Between', url: 'https://style.mla.org/choosing-between/' },
+  betweenDictionary: { title: 'Cambridge Dictionary: between', url: 'https://dictionary.cambridge.org/dictionary/english/between' },
+  above: { title: 'Cambridge English Grammar Today: Above or over? (publisher excerpt)', url: 'https://assets.cambridge.org/97805217/31751/excerpt/9780521731751_excerpt.pdf' },
+  below: cambridge('Below', 'below'), about: cambridge('About', 'about'),
+  verbs: { title: 'British Council: Verbs and prepositions', url: 'https://learnenglish.britishcouncil.org/free-resources/grammar/b1-b2/verbs-prepositions' },
+  school: { title: 'Cambridge Dictionary: school', url: 'https://dictionary.cambridge.org/us/dictionary/english/school' },
+};
+const ex = (text, meaningJa, contextJa) => ({ text, meaningJa, contextJa });
+const contrast = (leftEnglish, rightEnglish, noteJa) => ({ leftEnglish, rightEnglish, noteJa });
+const c = (text, feedbackJa) => ({ text, feedbackJa });
+const q = (type, scenarioJa, prompt, choices, correctIndex, explanationJa, focusJa) => ({ type, scenarioJa, prompt, choices, correctIndex, explanationJa, focusJa });
+function unit(key, fields) {
+  const id = `prepositions-${key}`;
+  return { id, series: 'prepositions', ...fields,
+    examples: fields.examples.map((example, index) => ({ id: `${id}-ex${index + 1}`, ...example })),
+    questions: fields.questions.map((question, index) => ({ id: `${id}-q${index + 1}`, ...question })),
+  };
+}
+
+export const lessons = [
+  unit('time-at-on-in', {
+    titleJa: '時刻・日付・期間を伝える at / on / in', levelTargets: ['A2', 'B1', 'B2'],
+    goalJa: '試験日程や予定を正確に読み、開始時刻・日付・期間を区別する。',
+    conceptJa: 'at は時刻、on は曜日や日付、in は月・年・季節などに使うのが基本です。「点・面・中」というイメージは手がかりであり、すべての表現を決める規則ではありません。',
+    commonTrapJa: 'Friday morning のように曜日が付く朝は on。in two weeks は通常「2週間後」で、2週間の滞在期間とは違います。',
+    usageNotes: ['in the morning と on Monday morning をまとまりで覚えます。', 'at the weekend は主に英国、on the weekend は主に米国の自然な言い方です。', 'at night は夜の活動一般、in the night はある夜の間の出来事によく使います。文脈によって重なる場合もあります。'],
+    examples: [
+      ex('The science talk starts at half past four.', '科学の講演は4時半に始まります。', '開始時刻を案内する'),
+      ex('Our final presentation is on Wednesday morning.', '最終発表は水曜の午前です。', '曜日付きの時間帯'),
+      ex('The exchange students will arrive in September.', '交換留学生は9月に到着します。', '到着する月'),
+      ex('I will send you my revised essay in two days.', '修正した作文を2日後に送ります。', '今から先の時点'),
+    ],
+    contrasts: [
+      contrast('We read in the evening.', 'We read on Thursday evening.', '一般的な時間帯には in、曜日で特定した時間帯には on を使います。'),
+      contrast('They will stay for three weeks.', 'They will return in three weeks.', 'for は滞在の長さ、in は通常、今から帰ってくるまでの時間を示します。'),
+    ],
+    questions: [
+      q('context', '討論会の開始は午後3時ちょうどです。', 'The debate begins ___ 3 p.m.', [c('at', '時刻を示す at が合います。'), c('on', 'on は曜日・日付で使うのが基本です。'), c('in', 'ここは月や時間帯ではなく時刻です。'), c('for', '開始時刻にはこの形の for は使いません。')], 0, '時計で示せる開始時刻には at。at 3 p.m. で「午後3時に」です。', '時計の時刻'),
+      q('context', '試験は金曜の朝に始まります。', 'The exam begins ___ Friday morning.', [c('in', '曜日の付かない in the morning と区別します。'), c('at', 'at はこの曜日付き表現には合いません。'), c('on', '曜日を含む朝には on を使います。'), c('since', 'since は継続の起点などを表します。')], 2, 'Friday が morning を特定しているので on Friday morning です。', '曜日付きの時間帯'),
+      q('meaning', '先生の返事を待っています。', 'What does “I will return your essay in a week” normally mean?', [c('The teacher will keep returning it for a whole week.', '継続期間を述べた文ではありません。'), c('The teacher expects to return it one week from now.', '今から1週間後の予定です。'), c('The teacher returned it a week ago.', '過去の出来事ではありません。'), c('The teacher will return it every week.', '繰り返しの予定ではありません。')], 1, '未来の予定で in + 期間 は、通常「今からその期間がたった時」を表します。', 'in + 期間の未来の意味'),
+      q('usage', '英国と米国の友達が週末の予定を話しています。', 'Which statement about “at the weekend” and “on the weekend” is accurate?', [c('Only “at the weekend” is standard English.', '米国では on the weekend も一般的です。'), c('Only “on the weekend” is standard English.', '英国では at the weekend が一般的です。'), c('They always refer to different days.', '必ず別の日を指すわけではありません。'), c('Both are standard; their frequency differs by variety.', '地域差があり、どちらも自然に使われます。')], 3, '英米差のある表現を片方だけ誤りにしないことが大切です。曜日や時刻の違いではありません。', '自然な地域差を認める'),
+      q('intent', '9月のどの日かは未定ですが、研修を始めます。', 'Which sentence gives only the month of the planned start?', [c('The course starts in September.', '開始する月だけを示しています。'), c('The course starts on September 12.', '具体的な日付まで指定しています。'), c('The course starts at nine.', '時刻を指定しています。'), c('The course lasts for September and October.', '開始だけでなく期間を述べています。')], 0, 'in September は月を示します。on + 日付や at + 時刻と情報の細かさを区別しましょう。', '予定の情報量'),
+      q('meaning', '夜の習慣と、昨夜の出来事を比べます。', 'Which explanation is most accurate?', [c('“At night” always means midnight exactly.', '真夜中ちょうどという意味ではありません。'), c('“In the night” can only describe daytime.', '夜の間の出来事に使えます。'), c('“At night” often describes night-time generally; “in the night” can locate an event within a night.', '一般的な夜と、その夜の中の出来事という違いです。'), c('The two expressions can never overlap in use.', '文脈によっては重なるので断定できません。')], 2, '決まり文句と文脈を一緒に読みます。イメージだけで絶対的な使い分けにしないようにしましょう。', '一般的な時間帯と具体的な出来事'),
+    ], domainIds: ['education', 'daily-life'], sourceReferences: [sources.time, sources.for],
+  }),
+  unit('place-at-on-in', {
+    titleJa: '場所をどの視点で示す？ at / on / in', levelTargets: ['A2', 'B1', 'B2'],
+    goalJa: '場所を待ち合わせ地点・内部・表面として伝え分ける。',
+    conceptJa: 'at は地点や活動の場所、in は範囲の内部、on は表面への接触が基本の手がかりです。同じ建物でも話し手の視点で at と in の両方が自然になることがあります。',
+    commonTrapJa: 'at the library だけでは「建物の外」と断定できません。in the library は内部にいることをはっきり示します。',
+    usageNotes: ['at a conference は参加する活動の場を示せます。', '完全な番地には at、都市など広い範囲には in が一般的です。', 'on an island や on a floor など、表面の図だけでは説明しきれない慣用もあります。'],
+    examples: [
+      ex('Meet me at the east gate after the exam.', '試験後に東門で待ち合わせましょう。', '待ち合わせ地点'),
+      ex('The spare batteries are in the locked drawer.', '予備の電池は鍵のかかった引き出しの中です。', '閉じた場所の内部'),
+      ex('A blue sticker is on the cover of my notebook.', 'ノートの表紙に青いシールが貼ってあります。', '表面への接触'),
+      ex('Several students asked questions at the climate conference.', '気候の会議で、何人かの生徒が質問しました。', '活動が行われる場'),
+    ],
+    contrasts: [
+      contrast('Mina is at the museum.', 'Mina is in the museum.', 'at はその場所にいるという捉え方、in は建物の内部を明示します。at から屋外だとは言えません。'),
+      contrast('There is a label on the box.', 'There is a label in the box.', '表面に貼られているのか、箱の中に入っているのかが変わります。'),
+    ],
+    questions: [
+      q('context', '鍵は袋の内側に入っていて、表面にも隣にもありません。', 'The key is ___ the bag.', [c('on', '表面にあるという意味になります。'), c('in', '内側に入っているという場面です。'), c('beside', '袋の隣という意味です。'), c('under', '袋の下という意味です。')], 1, '内部にあることを示す in を選びます。物の大きさではなく位置関係が手がかりです。', '内部の位置'),
+      q('context', '観察用の容器の外側の表面に、印を付けます。', 'Put a red mark ___ the outside surface of the container.', [c('in', 'ここでは表面への印で、内部ではありません。'), c('under', '表面の下ではありません。'), c('behind', '裏側という位置指定ではありません。'), c('on', '表面に印を付けるので on です。')], 3, 'on the surface で表面上にあることを示します。', '表面への接触'),
+      q('meaning', '友達から “I am at the library” と届きました。', 'What can you safely understand from this message alone?', [c('The friend is definitely outside the building.', 'at だけでは屋外と断定できません。'), c('The friend is definitely studying medicine.', '学んでいる内容は分かりません。'), c('The library is the friend’s stated location, but the exact spot is not given.', '場所は分かりますが、内部のどこかまでは不明です。'), c('The friend has never entered the library.', '過去の行動は述べていません。')], 2, 'at は場所を地点として示せます。建物の内外や部屋番号まで勝手に補わない読み方が大切です。', '文から言えることの範囲'),
+      q('context', '通知書に、家の番地を含む正確な住所を書きます。', 'She lives ___ 18 Willow Road.', [c('at', '番地まで示した住所には at が自然です。'), c('on', '通りだけなら on を使えますが、この番地表現では at が基本です。'), c('into', '移動先の内部を表す形です。'), c('through', '通過を表し、住所には合いません。')], 0, 'at + 番地を含む住所、in + 都市などを区別します。', '正確な住所'),
+      q('meaning', 'レポートに “I met two researchers at a conference” とあります。', 'What does “at a conference” identify here?', [c('The surface on which the researchers stood.', '物理的な表面の説明ではありません。'), c('The event at which the meeting happened.', '出会いが起きた催しを示しています。'), c('The researchers’ permanent home.', '居住地は示していません。'), c('The date when the conference was cancelled.', '中止や日付の情報はありません。')], 1, 'at は住所だけでなく、出来事が起きた活動の場にも使います。', '活動の場としての at'),
+      q('intent', '図書館の建物に入り、外ではなく中にいると明確に伝えたい場面です。', 'Which message states this most explicitly?', [c('I am near the library.', '近くにいるだけで、内部とは言えません。'), c('I am by the library.', 'そばにいるという表現です。'), c('I am going to the library.', '向かっていることを述べています。'), c('I am inside the library.', '建物の内部と明示しています。')], 3, 'in や inside は内部を示します。at も使える場面ですが、今回は内部であることを明確にする意図を選びます。', '伝える意図で表現を選ぶ'),
+    ], domainIds: ['education', 'science', 'daily-life'], sourceReferences: [sources.place],
+  }),
+  unit('to-for', {
+    titleJa: '届け先・受益者・目的を分ける to / for', levelTargets: ['A2', 'B1', 'B2'],
+    goalJa: '誰に届けるのか、誰のためなのか、何をする目的なのかを読み分ける。',
+    conceptJa: 'to は到達先や受け手、for は受益者・用途を示すことがあります。ただし動詞との組合せも重要です。動詞の前の to は不定詞で、前置詞の to と区別します。',
+    commonTrapJa: '「〜のために」を常に for + 動詞の原形にしないこと。行動の目的は to + 動詞、道具の用途は for + 動名詞などで表せます。',
+    usageNotes: ['give/send something to someone と buy/make something for someone を例文ごと覚えます。', 'send it to the teacher は送付先、prepare it for the teacher は誰向けに準備するかを示します。', 'for + -ing は道具の用途などに使えますが、あらゆる目的表現で to 不定詞と置き換えられるわけではありません。'],
+    examples: [
+      ex('I sent the survey results to our teacher.', '調査結果を先生に送りました。', '情報の送付先'),
+      ex('We made a large-print guide for visitors with poor eyesight.', '目が見えにくい来場者のために、大きな文字の案内を作りました。', '使う人のために準備する'),
+      ex('The class visited the river to collect water samples.', 'クラスは水の試料を集めるために川を訪れました。', '行動の目的'),
+      ex('This narrow brush is for cleaning the tubes.', 'この細いブラシは管を洗うためのものです。', '道具の用途'),
+    ],
+    contrasts: [
+      contrast('I wrote a letter to my brother.', 'I wrote a letter for my brother.', 'to は兄弟を宛先にする読み、for は兄弟のために・代わりに書く読みができます。'),
+      contrast('We went outside to measure the temperature.', 'We used a sensor for measuring the temperature.', '行動の目的と、道具の用途をそれぞれ違う形で表しています。'),
+    ],
+    questions: [
+      q('intent', '先生が宛先となるように、レポートをメールで送りました。', 'Which sentence clearly identifies the teacher as the recipient?', [c('I received the report from the teacher.', '先生から受け取ったことになります。'), c('I sent the report about the teacher.', '先生を話題にしたレポートという意味です。'), c('I sent the report to the teacher.', 'to が送付先を示します。'), c('I kept the report for the teacher.', '先生のために保管したので、送ったとは言えません。')], 2, 'send something to someone は送り先を示す形です。', '送付先の to'),
+      q('context', '新入生が使えるように、案内冊子を作りました。', 'We made a guide ___ new students.', [c('for', '誰の役に立つためかを示します。'), c('to', 'make a guide to + 人ではこの受益者の意味になりません。'), c('from', '新入生を材料や出所のように扱う形です。'), c('into', '変化先を表すため、意図に合いません。')], 0, 'make something for someone で、その人のために作ることを表します。', '受益者の for'),
+      q('usage', 'データを比較する目的で、グラフを描きます。', 'Which sentence states that purpose naturally?', [c('We drew a graph for compare the data.', 'for の直後に原形 compare は置けません。'), c('We drew a graph to comparing the data.', '目的の to 不定詞には原形を使います。'), c('We drew a graph for to compare the data.', '標準的なこの目的表現では for to と重ねません。'), c('We drew a graph to compare the data.', '目的を to + 原形で表せます。')], 3, 'この to compare は不定詞です。「比較するために」という行動の目的を示します。', '目的の to 不定詞'),
+      q('context', 'このクリップは紙をまとめる用途のものです。', 'This clip is for ___ loose pages together.', [c('hold', '前置詞 for の後ではこの原形は使いません。'), c('holding', '用途を for + -ing で表しています。'), c('held', 'ここでは過去形・過去分詞は合いません。'), c('holds', '主語のない三人称単数形は置けません。')], 1, 'for holding ... は道具の用途を表します。to hold ... という別の形も可能ですが、空欄の前は for と決まっています。', '固定された文型に合う形'),
+      q('meaning', '友達が “I wrote the email for Ken because his arm was in a cast” と言いました。', 'What is the most likely meaning of “for Ken” here?', [c('Ken received the email and no one else could.', 'for だけで宛先は決まりません。'), c('Ken wrote the email for the speaker.', '書いた人が逆になっています。'), c('The speaker wrote it on Ken’s behalf.', 'けがをした Ken の代わりに書いたという意味です。'), c('The email was only about Ken’s hobbies.', '内容の話題を示す for ではありません。')], 2, 'for someone はその人のために、またはその人に代わってという読みができます。ここでは腕のけがが手がかりです。', 'for の代行の意味'),
+      q('meaning', '学校の案内文にある2つの to を比べます。', 'Which explanation of “We walked to the pond to observe insects” is correct?', [c('The first “to” introduces a destination; the second introduces a purpose with a verb.', 'pond という名詞と observe という動詞を区別します。'), c('Both uses introduce a person receiving a gift.', '受け手の人は出てきません。'), c('The first “to” must be replaced by “for”.', 'walked to the pond は自然な到達先の表現です。'), c('Both uses are followed by nouns naming destinations.', 'observe は動詞です。')], 0, '最初は前置詞の to、後ろは目的を表す to 不定詞です。同じつづりでも働きが違います。', '前置詞と不定詞を区別する'),
+    ], domainIds: ['education', 'communication', 'science'], sourceReferences: [sources.to, sources.for],
+  }),
+  unit('by-with', {
+    titleJa: '方法・道具・行為者を区別する by / with', levelTargets: ['A2', 'B1', 'B2'],
+    goalJa: '実験手順や制作の説明で、誰が・何を使い・どう行ったかを伝える。',
+    conceptJa: 'by + -ing は方法、with + 道具 は使用した物を示せます。受動態の by は行為者を示すこともあります。「by は人、with は物」という単純な分け方ではありません。',
+    commonTrapJa: 'with my sister は姉妹と一緒に、by my sister は受動態などでは姉妹によって。人が続くから同じ意味とは限りません。',
+    usageNotes: ['連絡方法には by email などの慣用表現があります。', '行為者は人に限りません。The roof was damaged by the storm. のように原因も示せます。', 'with は道具だけでなく、同行者や備えている物も示します。文全体で役割を判断します。'],
+    examples: [
+      ex('We compared the samples by placing them under the same lamp.', '同じランプの下に置く方法で試料を比較しました。', '実験の方法'),
+      ex('Aya marked the starting line with a piece of chalk.', 'Aya はチョークでスタートラインを引きました。', '使用した道具'),
+      ex('The poster was designed by the art club.', 'そのポスターは美術部によってデザインされました。', '制作した人たち'),
+      ex('I checked the results with a classmate.', 'クラスメートと一緒に結果を確認しました。', '一緒に取り組む相手'),
+    ],
+    contrasts: [
+      contrast('The model was built by Emi.', 'The model was built with wooden sticks.', 'by は作った人、with は使った材料を示しています。'),
+      contrast('I solved the problem by drawing a diagram.', 'I drew the diagram with a ruler.', 'by は取り組んだ方法、with は具体的な道具です。'),
+    ],
+    questions: [
+      q('context', '温度を測る方法として、センサーを水に入れます。', 'We measured the temperature ___ placing a sensor in the water.', [c('with', 'この動作の方法には by + -ing を使います。'), c('by', 'どのように測ったかを示す形です。'), c('to', 'この位置の to + placing は合いません。'), c('from', '方法ではなく出所などを示す語です。')], 1, 'by placing ... で測定の方法を表します。', '方法の by + -ing'),
+      q('context', '具体的な道具として定規を使います。', 'Draw a straight line ___ a ruler.', [c('by', 'ここは行為者や交通手段ではなく道具です。'), c('from', '定規が線の出所だという意図ではありません。'), c('into', '定規の中への移動ではありません。'), c('with', '使う道具を with で示せます。')], 3, 'with a ruler は、定規を使ってという意味です。', '具体的な道具の with'),
+      q('meaning', '作品の説明に “The mural was painted by volunteers” とあります。', 'What role do the volunteers have?', [c('They are the people who painted the mural.', '受動態の by が行為者を示します。'), c('They are the paint used on the wall.', '人を材料として説明していません。'), c('They are the wall beneath the painting.', '場所を示していません。'), c('They are necessarily the people who bought the mural.', '購入したかどうかは分かりません。')], 0, '受動態の後の by volunteers は、描いた人を示しています。', '受動態の行為者'),
+      q('meaning', '“I revised the essay with my teacher” という学習記録です。', 'What does “with my teacher” most naturally tell you?', [c('The teacher was absent during the revision.', 'with はこの場面で一緒にいる相手を示します。'), c('Only the teacher revised it while the speaker did nothing.', '話し手の関与を否定する情報はありません。'), c('The teacher took part in revising it with the speaker.', '一緒に取り組んだ相手を示しています。'), c('The essay was sent to the teacher by post.', '送付方法の話ではありません。')], 2, 'with + 人 は共同で取り組む相手を表せます。受動態の by + 人 とは役割が違います。', '同行・共同作業の with'),
+      q('meaning', '紙で郵送する代わりに “Please send your answer by email” と案内されています。', 'What does “by email” specify?', [c('The person who must write the answer.', '回答を書く人ではなく送信方法を示します。'), c('The communication method to use for sending the answer.', 'メールという連絡手段を指定しています。'), c('The exact deadline for the answer.', 'by Friday などとは違い、期限を示していません。'), c('The topic that the answer must discuss.', 'メールについて書くという話題の指定ではありません。')], 1, '連絡方法の by email はまとまりで覚えます。この by は締切や行為者ではなく手段を示します。', '連絡手段の慣用表現'),
+      q('usage', 'by は人にしか使えないと思い込んでいないか確認します。', 'Which statement about “The fence was damaged by the wind” is accurate?', [c('It is wrong because “by” can only introduce people.', '風などの原因も by で示せます。'), c('It means the fence was next to the wind.', 'この受動態では場所の意味ではありません。'), c('It means someone used the wind as a writing tool.', '道具の説明ではありません。'), c('The by-phrase identifies the cause of the damage.', '損傷を起こした原因を示しています。')], 3, 'by を「人」、with を「物」と丸暗記すると誤ります。受動態と原因の関係を読み取りましょう。', '単純な人・物の規則を避ける'),
+    ], domainIds: ['science', 'education', 'arts-culture'], sourceReferences: [sources.by, sources.with],
+  }),
+  unit('since-for-during', {
+    titleJa: '起点・長さ・出来事の間：since / for / during', levelTargets: ['A2', 'B1', 'B2'],
+    goalJa: '学習歴や調査の期間を、開始点・継続時間・出来事の枠に分けて説明する。',
+    conceptJa: 'since は継続の起点、for は長さ、during は出来事や期間の中で起きることを示します。during だけで、その出来事が期間中ずっと続いたとは限りません。',
+    commonTrapJa: 'during two hours と機械的に数値を置かず、長さなら for two hours。「授業中に」は during the lesson、節を続けるなら while we were studying です。',
+    usageNotes: ['現在までの継続は have lived ... since ... など、現在完了と組み合わせます。', 'for は過去・現在・未来の期間にも使え、現在完了専用ではありません。', 'during + 名詞句 と while + 主語・動詞 を区別します。'],
+    examples: [
+      ex('I have kept a reading journal since April.', '4月から読書記録を付けています。', '始めた時点から現在まで'),
+      ex('The students observed the insects for forty minutes.', '生徒たちは40分間、昆虫を観察しました。', '観察した長さ'),
+      ex('The lights went out during the presentation.', '発表の途中で照明が消えました。', '出来事が起きた時間の枠'),
+      ex('We will borrow the equipment for three days.', 'その機材を3日間借りる予定です。', '未来の利用期間'),
+    ],
+    contrasts: [
+      contrast('She has studied Spanish since January.', 'She has studied Spanish for six months.', 'since はいつから、for はどれだけの長さかを示します。'),
+      contrast('He visited the town during the summer.', 'He stayed in the town for the summer.', 'during は夏という時間の枠、for はここでは夏の間の滞在期間を示します。'),
+    ],
+    questions: [
+      q('context', '昨年9月に始めて、今も毎週ボランティアを続けています。', 'I have volunteered here ___ last September.', [c('for', 'September は期間の長さではなく起点です。'), c('during', '現在までの継続の起点を表す形ではありません。'), c('since', '開始点から今までの継続を示します。'), c('until', '終点ではなく始まった時点の話です。')], 2, 'have volunteered ... since ... で、開始した時点から今までの継続を述べています。', '継続の起点'),
+      q('context', '昨日の観察は開始から終了まで45分でした。', 'The observation lasted ___ forty-five minutes.', [c('for', '継続した時間の長さを表します。'), c('since', '長さではなく起点を示す語です。'), c('during', 'ここで測っている長さには for を使います。'), c('by', '締切や変化量の表現ではありません。')], 0, 'for forty-five minutes は観察が続いた長さです。for は過去の出来事にも使えます。', '数値で示す期間'),
+      q('meaning', '“A phone rang during the lecture” という記録です。', 'What does this sentence establish?', [c('The phone rang for the entire lecture.', 'during だけで全時間とは言えません。'), c('The phone rang before the lecture began.', '講演の時間内です。'), c('The phone rang only after the lecture ended.', '終了後という意味ではありません。'), c('The ringing happened while the lecture was in progress.', '講演中に起きたことを示します。')], 3, 'during は出来事が起きた時間の枠を示します。鳴っていた長さはこの文からは分かりません。', 'during が保証しない情報'),
+      q('usage', '読書していた間に、外で雨が降り始めました。', 'Which sentence connects the two clauses naturally?', [c('It began to rain during I was reading.', 'during の後にはこの形の節を直接置けません。'), c('It began to rain while I was reading.', 'while の後に主語と動詞を続けられます。'), c('It began to rain for I was reading.', '同時進行を示す意図の表現になりません。'), c('It began to rain by I was reading.', 'by の後にこの節は置けません。')], 1, 'while I was reading は節です。during my reading session のように名詞句にすれば during も使えます。', '名詞句と節の違い'),
+      q('intent', '調査員は冬のどこかで来ましたが、滞在期間は不明です。', 'Which sentence gives that limited information?', [c('The researcher stayed for the whole winter.', '冬の全期間という追加情報を含みます。'), c('The researcher has stayed since winter began.', '今までの継続を含みます。'), c('The researcher visited during the winter.', '冬の中で訪れたことだけを示します。'), c('The researcher stayed for exactly ninety days.', '滞在期間を具体的に決めています。')], 2, '期間の枠を示す during と、長さを明示する for を情報量で読み分けます。', '不明な期間を勝手に補わない'),
+      q('meaning', '“The lab will use the room for two weeks” と書かれています。', 'What does “for two weeks” describe?', [c('How long the planned use will last.', '未来の利用期間の長さです。'), c('The exact date when the room was built.', '建設日ではありません。'), c('A point two weeks after the room closes.', '未来の一点を示す in とは違います。'), c('The person who owns the room.', '人のためにという for ではありません。')], 0, 'for は長さを示すので、未来の予定にも自然に使えます。', '時制に依存しない期間の for'),
+    ], domainIds: ['education', 'science', 'daily-life'], sourceReferences: [sources.duration, sources.during, { title: 'Cambridge English Grammar Today: Conjunctions — time', url: 'https://dictionary.cambridge.org/grammar/british-grammar/conjunctions-time' }],
+  }),
+  unit('until-by', {
+    titleJa: '「まで」と「までに」を読み分ける until / by', levelTargets: ['A2', 'B1', 'B2'],
+    goalJa: '提出期限・利用可能時間・開始制限を取り違えず、必要な行動を判断する。',
+    conceptJa: 'by はそれより遅くない締切、until は状態や動作が続く終点を表すのが基本です。not ... until は「その時までは起きない」となるため、否定の有無も見ます。',
+    commonTrapJa: 'Submit it by Friday は早く出してもよい一方、Do not submit it until Friday は金曜より前に出さないという指示です。',
+    usageNotes: ['by five は5時より前の完了も含みます。5時ちょうどだけを指定する at five と区別します。', 'stay/wait/remain open など、続く状態には until が使いやすい形です。', '日付だけの締切は時刻が曖昧な場合があるため、実際の案内では by 5 p.m. on Friday のように明確にします。'],
+    examples: [
+      ex('Please upload your essay by five on Friday.', '金曜の5時までに作文をアップロードしてください。', '提出の締切'),
+      ex('The study room will remain open until nine tonight.', '自習室は今夜9時まで開いています。', '利用できる状態の終点'),
+      ex('Do not turn the page until the recording stops.', '録音が止まるまではページをめくらないでください。', '行動を始めてよい時点'),
+      ex('By the time the discussion began, everyone had read the article.', '討論が始まる時には、全員がその記事を読んでいました。', '別の出来事より先の完了'),
+    ],
+    contrasts: [
+      contrast('Finish the experiment by four.', 'Continue the experiment until four.', '完了の締切と、続ける終点の違いです。'),
+      contrast('You may submit it by Monday.', 'You must not submit it until Monday.', '前者は月曜より前も可能。後者は月曜より前の提出を禁止しています。'),
+    ],
+    questions: [
+      q('intent', '午後6時より早く到着してもよく、6時が最終期限です。', 'Which instruction expresses that deadline?', [c('Arrive at six exactly.', '6時ちょうどに限定しています。'), c('Arrive by six.', '6時以前の到着を含みます。'), c('Do not arrive until six.', '6時より前の到着を避ける指示です。'), c('Wait until six before leaving home.', '出発を待つ指示で、到着期限ではありません。')], 1, 'by six は「遅くとも6時までに」。早めの到着を妨げません。', '締切は早い完了を含む'),
+      q('context', '部屋を今から4時まで続けて使えますが、その時に退出します。', 'You may keep using the room ___ four, but you must leave then.', [c('since', '開始点を示す語ではこの未来の終点を表せません。'), c('for', 'four という時刻は時間の長さではありません。'), c('by', '利用を続ける終点には until が合います。'), c('until', '使い続けられる終点を示しています。')], 3, 'keep using という継続の終点を until four で示します。', '状態が続く終点'),
+      q('meaning', '“The results were not announced until Tuesday” とあります。', 'Which interpretation matches the sentence?', [c('The results were announced on Tuesday, not before.', '否定と until によって、それ以前ではないと分かります。'), c('The results were announced every day before Tuesday.', '繰り返し発表したという意味ではありません。'), c('The results had to be announced earlier than Tuesday.', '火曜より前とは反対の内容です。'), c('The results could never be announced.', '永遠に発表しないという意味ではありません。')], 0, 'not ... until は、その時になって初めて起きるという読みになります。', 'not ... until の読解'),
+      q('meaning', '“By the time I reached the classroom, the test had started” と言われました。', 'What was already true when the speaker reached the classroom?', [c('The speaker had already completed the test.', '話し手が解き終わったとは書かれていません。'), c('The classroom had closed for the summer.', '夏休みの情報はありません。'), c('The test had begun.', '到着時には試験開始済みです。'), c('The teacher was waiting to start after the speaker left.', '開始は到着より前です。')], 2, 'by the time の後の出来事を基準に、それ以前の完了を読み取ります。', '基準時点までの完了'),
+      q('intent', '作文は金曜から受け付けます。木曜以前には送らないでほしい場面です。', 'Which instruction communicates the opening restriction?', [c('Submit it by Friday.', '金曜までにという締切で、早い提出を許します。'), c('Do not submit it until Friday.', '金曜より前には提出しないという指示です。'), c('Keep a copy until Friday.', 'コピーを保存する期間の指示です。'), c('You submitted it on Friday.', '過去の報告で、今後の制限ではありません。')], 1, '締切を伝える by と、早すぎる開始を避ける not ... until を区別します。', '開始制限と締切の違い'),
+      q('context', '自習は8時まで続けてよく、その後8時10分までに部屋を空けます。', 'You can study here ___ eight, but leave the room ___ ten past eight.', [c('by / until', '継続の終点と退出の締切が逆です。'), c('since / for', 'この2つの時刻には合いません。'), c('for / since', '長さと起点の指定ではありません。'), c('until / by', '学習の終点と退出の締切を区別できます。')], 3, 'study の継続には until、leave の完了期限には by を使います。', '2つの時間関係を同時に読む'),
+    ], domainIds: ['education', 'daily-life'], sourceReferences: [sources.until, sources.by],
+  }),
+  unit('across-through-over', {
+    titleJa: '横切る・中を通る・越える across / through / over', levelTargets: ['B1', 'B2'],
+    goalJa: '経路の描写や長文中の移動を、周囲の空間との関係で読み取る。',
+    conceptJa: 'across は一方から反対側、through は内部を通る経路、over は上方を越える動きなどを示します。橋を渡る意味などでは across と over が重なることもあります。',
+    commonTrapJa: 'across と over を常に正反対としないこと。空間のどこを通ったかを、地形や目的語と一緒に判断します。',
+    usageNotes: ['through a tunnel はトンネルの内部を通る経路です。', 'across the country は全国の多くの場所に広がる意味にもなります。', 'over には移動だけでなく、覆う・数値を超える意味もあるため、動詞と目的語を一緒に読みます。'],
+    examples: [
+      ex('We walked across the courtyard to the science building.', '中庭を横切って理科棟へ歩きました。', '一方から反対側へ'),
+      ex('The cycle path goes through a short tunnel.', 'その自転車道は短いトンネルの中を通ります。', '内部を通る経路'),
+      ex('A bird flew over the fence and landed beside the pond.', '鳥は柵の上を越えて飛び、池のそばに降りました。', '上方を越える動き'),
+      ex('Schools across the region shared their survey results.', '地域の各地の学校が調査結果を共有しました。', '広い範囲への分布'),
+    ],
+    contrasts: [
+      contrast('The path runs through the hill in a tunnel.', 'The path runs over the hill.', '内部を貫く経路なのか、丘の上を越える経路なのかが変わります。'),
+      contrast('We walked across the footbridge to the opposite bank.', 'We walked over the footbridge to the opposite bank.', '歩道橋を渡って反対岸へ行く文脈では両方が自然です。over が常に橋の上空を飛ぶことを意味するわけではありません。'),
+    ],
+    questions: [
+      q('context', '歩行者はトンネルに入り、内部を通って向こう側に出ました。', 'The walkers went ___ the tunnel.', [c('above', '上空の経路ではありません。'), c('beside', 'トンネルの横を通ったのではありません。'), c('through', '内部を通過する経路です。'), c('past', '入口などを通り過ぎただけではありません。')], 2, '周囲をトンネルに囲まれた経路を through で表します。', '内部を通る経路'),
+      q('context', '船は川のこちら側の岸から、反対側の岸へ進みました。', 'The boat carried the students ___ the river.', [c('across', '一方の岸から反対岸への移動です。'), c('along', '川に沿って進む別の経路です。'), c('into', '川に入ることだけを示します。'), c('under', '川の下を通る場面ではありません。')], 0, 'across は両側のあるものを横切る経路を表せます。', '反対側への移動'),
+      q('intent', '鳥は柵に開いた穴を通らず、柵の高さより上を通過しました。', 'Which description matches the route?', [c('The bird flew through a hole in the fence.', '穴の内部を通る別の経路です。'), c('The bird stayed beside the fence.', '移動して越えたことを述べていません。'), c('The bird landed inside the fence post.', '柵の柱の内部という別の場所です。'), c('The bird flew over the fence.', '柵の上を越える経路を示しています。')], 3, 'この場面では高さが重要なので over。through は内部を通る別の経路になります。', '高さを越える動き'),
+      q('meaning', '教育の記事に “libraries across the country” とあります。', 'What does “across the country” mean here?', [c('Only one library at the national border.', '一つの国境沿いの図書館だけではありません。'), c('Libraries in many parts of the country.', '国内の各地への広がりを示します。'), c('Libraries travelling on a train.', '建物が移動している意味ではありません。'), c('Only libraries under the ground.', '地下という位置の説明ではありません。')], 1, 'across は移動以外に、地域内の分布や広がりも表します。', '分布の across'),
+      q('usage', '川にかかった歩道橋を渡り、反対岸へ歩いて行くという場面です。', 'How should you judge “walk across the footbridge” and “walk over the footbridge”?', [c('“Over” must mean flying above the bridge.', '橋を歩いて渡る意味でも使えます。'), c('“Across” always means staying at the starting point.', '反対側への移動を表せます。'), c('Both can describe crossing the bridge; context matters.', 'この文脈では両方が自然です。'), c('Neither can describe walking.', 'どちらも歩く動作と組み合わせられます。')], 2, '橋を渡る場面では across と over が使えます。どんな場所でも常に交換できるという規則にはせず、経路と対象を一緒に読みます。', '自然な代替表現を認める'),
+      q('meaning', '“The road goes through the forest” と案内されています。', 'Which feature of the route is highlighted?', [c('The route passes within the forest.', '森の内部を進む点が示されています。'), c('The route remains far outside the forest.', '内部という意味と合いません。'), c('The route travels above every treetop.', '木々の上空とは述べていません。'), c('The route ends before reaching any trees.', '森に入らないという意味ではありません。')], 0, 'through は、森や群衆など周囲にものがある場所の内部を通る経路にも使えます。', '空間の内部に注目する'),
+    ], domainIds: ['travel', 'transport', 'environment', 'education'], sourceReferences: [sources.movement, sources.over, { title: 'Cambridge Dictionary: over — across from one side to the other', url: 'https://dictionary.cambridge.org/us/dictionary/english/over' }],
+  }),
+  unit('between-among', {
+    titleJa: '個別の関係と集団の中：between / among', levelTargets: ['B1', 'B2', 'C1'],
+    goalJa: '人数だけに頼らず、境界・個別の関係・集団への所属を読み分ける。',
+    conceptJa: 'between は区別できる対象どうしの関係や間、among は集団の一員・集団に囲まれた状態などに使います。「2つなら between、3つ以上なら必ず among」という規則ではありません。',
+    commonTrapJa: 'between the three regions のような形も自然です。分配などでは between と among の両方が可能な場合があり、数だけで一方を誤答にしません。',
+    usageNotes: ['between A and B は2つの対象の間を明確に示します。', 'among the finalists は決勝進出者という集団に含まれることを示します。', '個別の境界や相互関係には、対象が3つ以上でも between を使えます。'],
+    examples: [
+      ex('A narrow path runs between the library and the gym.', '図書館と体育館の間に細い道があります。', '区別できる2つの建物の間'),
+      ex('The agreement between the three schools covers shared equipment.', '3校間の協定は機材の共同利用を扱っています。', '3つの学校それぞれの関係'),
+      ex('Our school was among the finalists in the science contest.', '私たちの学校は科学コンテストの決勝進出校の一つでした。', '集団の一員'),
+      ex('I found my notes among a pile of old worksheets.', '古いプリントの山の中に、自分のノートを見つけました。', 'まとまりの中に混じる'),
+    ],
+    contrasts: [
+      contrast('There are strong links between the three schools.', 'There is excitement among the students.', '学校どうしの個別の関係と、生徒の集団内にある雰囲気を区別しています。'),
+      contrast('The money was divided between the four clubs.', 'The money was divided among the four clubs.', '分配の場面では両方が可能です。4団体という数だけで between を排除しません。'),
+    ],
+    questions: [
+      q('context', '2つの指定された建物に挟まれた位置にあります。', 'The garden lies ___ the hall and the library.', [c('among', '2つを個別に挙げてその間を示す形では between を使います。'), c('between', 'hall と library の間という位置です。'), c('through', '通過経路の説明ではありません。'), c('during', '時間の表現ではありません。')], 1, 'between A and B で、区別できる2つのものの間を示します。', '2つの対象の間'),
+      q('meaning', '“Mai was among the students selected for the exchange” とあります。', 'What is established about Mai?', [c('She selected every other student herself.', '選考を担当したとは書かれていません。'), c('She was the only student selected.', '唯一とは述べていません。'), c('She was standing exactly between two desks.', '物理的な位置ではありません。'), c('She was one of the selected students.', '選ばれた集団に含まれています。')], 3, 'among は集団の一員であることも表します。', '所属・包含の among'),
+      q('usage', '3つの地域それぞれの協力関係を論じる作文です。', 'Which claim about “cooperation between the three regions” is accurate?', [c('It can be natural because the regions are treated as distinct parties.', '個別の相手どうしの関係として自然です。'), c('It is always wrong because there are three regions.', '3つ以上でも between を使えます。'), c('It means only two regions exist.', '対象の数を2つに変える意味ではありません。'), c('It describes a region inside a single person.', '相互関係の表現です。')], 0, 'between を2つだけに限定する暗記法は不十分です。別々に捉えた当事者間の関係を示せます。', '3つ以上に使う between'),
+      q('meaning', '“A few damaged pages were hidden among the documents” とあります。', 'Where were the damaged pages?', [c('Outside the building where the documents were kept.', '建物の外とは書かれていません。'), c('At a time earlier than the documents were written.', '時間関係ではありません。'), c('Within the collection of documents.', '書類のまとまりの中に混じっていました。'), c('Exactly halfway between two named cities.', '都市間の位置ではありません。')], 2, 'among は書類などの集団・まとまりの中にも使えます。', 'まとまりの中に混じる'),
+      q('usage', '助成金を4つの部活動に分けたという同じ状況です。', 'Which judgment is appropriate?', [c('“Divided between four clubs” must be rejected solely because there are four.', '数だけでは誤りと判断できません。'), c('Both “divided between four clubs” and “divided among four clubs” can be natural.', '分配では両方を使える場合があります。'), c('“Among” means that none of the clubs received money.', '受け取らなかったという意味ではありません。'), c('“Between” changes four clubs into two clubs.', '対象の数を変える語ではありません。')], 1, '同じ意味で自然な選択肢を無理に対立させません。分配では両方が可能です。', '複数の自然な表現'),
+      q('meaning', '学校間の協力を論じる文章に “boundaries between the districts” とあります。', 'What relation does “between” identify?', [c('The number of residents inside each house.', '住民の数ではありません。'), c('The mood shared by all students.', '集団の気分ではありません。'), c('The dates when every district was founded.', '設立の日付ではありません。'), c('The lines separating one district from another.', '個別の地区を隔てる境界です。')], 3, '地区がいくつあっても、個別の地区を分ける境界として between を使えます。', '個別の境界関係'),
+    ], domainIds: ['education', 'society', 'politics'], sourceReferences: [sources.between, sources.betweenDictionary],
+  }),
+  unit('above-over-below-under', {
+    titleJa: '上下・覆う関係・基準値：above / over / below / under', levelTargets: ['B1', 'B2', 'C1'],
+    goalJa: '位置と数値の比較を読み分け、図表や説明文を正確に理解する。',
+    conceptJa: 'above/below は基準より高い・低い関係、over/under は上下関係に加えて覆う・隠れる関係にも使えます。位置関係では意味が重なることもあり、図のイメージだけで唯一の正解にはできません。',
+    commonTrapJa: 'over には「上方」だけでなく「覆って」「数値を超えて」もあります。above average は「平均より上」であり「全員より上」ではありません。',
+    usageNotes: ['数値や基準との比較では above average / below average のようなまとまりを使います。', 'under eighteen は18歳未満です。人数を数える over sixty responses は60件を超えることを表し、ちょうど60件は含みません。', 'put a cover over ... は覆う関係です。above ... としただけでは接触や被覆は示せません。'],
+    examples: [
+      ex('A small window is above the classroom door.', '教室のドアより高い位置に小さな窓があります。', '高さの位置関係'),
+      ex('We put a cloth over the model to keep off the dust.', 'ほこりを防ぐために模型に布をかぶせました。', '覆う関係'),
+      ex('The blue line falls below the predicted value.', '青い線は予測値より下になります。', 'グラフの基準との比較'),
+      ex('The class finished the practice test in under twenty minutes.', 'クラスは20分未満で練習テストを終えました。', '時間が上限に届かない'),
+    ],
+    contrasts: [
+      contrast('A cloth hangs above the display.', 'A cloth lies over the display.', '前者は上方の位置、後者は展示を覆う読みになります。高さだけでは覆っているとは言えません。'),
+      contrast('The score was below the class average.', 'The score was under fifty.', '平均という基準と、50という具体的な数値の上限を、それぞれ比較しています。'),
+    ],
+    questions: [
+      q('intent', '模型をほこりから守るため、布で覆います。', 'Which instruction clearly asks someone to cover the model?', [c('Put a cloth over the model.', '布をかぶせて覆う意図です。'), c('Hang a cloth far above the model.', '離れた上方では覆う指示と異なります。'), c('Place the model beside a cloth.', '模型の隣に布があるだけです。'), c('Remove the cloth from the model.', '覆いを取り外す反対の行動です。')], 0, 'over は覆う関係を表せます。above は上方の位置を示しても、覆うことまでは保証しません。', '覆う over'),
+      q('meaning', '摂氏で測った温度の記録に “three degrees below zero” とあります。', 'Which value is described?', [c('3°C', 'ゼロより上の値です。'), c('0°C', 'ゼロそのものではありません。'), c('−3°C', '摂氏ゼロ度より3度低い値です。'), c('30°C', '桁も上下関係も違います。')], 2, 'below zero はゼロより低いことを示します。ここでは摂氏の温度なので −3°C です。基準・差・単位を一緒に読みます。', '基準値より低い'),
+      q('meaning', '参加条件は “students under eighteen” です。年齢以外の条件は考えません。', 'Which student meets this age condition?', [c('A student who is eighteen.', '18歳ちょうどは未満に含まれません。'), c('A student who is seventeen.', '18歳未満なので年齢条件を満たします。'), c('A student who is nineteen.', '18歳を超えています。'), c('A student who is twenty.', '18歳未満ではありません。')], 1, 'under eighteen は18歳未満です。「以下」と読み替えないようにします。', '未満と以下の区別'),
+      q('meaning', '調査報告に “over sixty responses” とあります。', 'Which number is consistent with that description?', [c('Exactly sixty.', 'ちょうど60は「60を超える」に含まれません。'), c('Fifty-nine.', '60に届いていません。'), c('Six.', '数の大きさが違います。'), c('Sixty-one.', '60を超えています。')], 3, '数の前の over は more than を表せます。上下の位置ではありません。', '数値を超える over'),
+      q('meaning', '図には “The shelf is above the desk” とだけ書かれています。', 'Which conclusion is justified by “above” alone?', [c('The shelf is at a higher level than the desk.', '高い位置にあることを示します。'), c('The shelf is touching the desktop.', '接触は保証されません。'), c('The shelf completely covers the desk.', '覆っているとは限りません。'), c('The shelf is lower than the desk.', '上下が逆です。')], 0, 'above は高さの関係を示します。接触や覆う範囲までは読み足しません。', '位置表現からの過剰な推測を避ける'),
+      q('meaning', '作文の評価について “Your score is above the class average” と言われました。', 'What does this statement actually tell you?', [c('The score is the highest in the class.', '平均より上でも最高とは限りません。'), c('Every other student received the same score.', '他の点数の分布は分かりません。'), c('The score is higher than the class mean.', 'クラス平均を上回っています。'), c('The score is lower than the class mean.', 'above と反対の意味です。')], 2, '比較基準は average です。最高点・合格点など別の基準と混同しないことが読解でも重要です。', '比較の基準を保つ'),
+    ], domainIds: ['education', 'science', 'logic-reasoning'], sourceReferences: [sources.above, sources.below, sources.over, cambridge('Under', 'under')],
+  }),
+  unit('about-on', {
+    titleJa: '話題と専門的なテーマ：about / on', levelTargets: ['B1', 'B2', 'C1'],
+    goalJa: '話題を伝える表現を選び、動詞の型と文章の調子にも注意する。',
+    conceptJa: 'about と on はどちらも話題を示せます。on は専門的・焦点を絞った論述でよく使われますが、about が誤りになるわけではありません。組み合わせる名詞や動詞によって選び方が変わります。',
+    commonTrapJa: 'discuss the issue は自然ですが、標準的なこの他動詞の型に about を足しません。talk about the issue とは型が異なります。',
+    usageNotes: ['a book about ... と a paper on ... の傾向を知りつつ、常に排他的なルールにはしません。', 'worry about ... や excited about ... は語の組合せとして覚えます。', 'about fifty は「約50」という数量の表現で、話題を示す前置詞の用法とは区別します。'],
+    examples: [
+      ex('We talked about the problems caused by food waste.', '食品廃棄が引き起こす問題について話しました。', '会話の話題'),
+      ex('The class read a research paper on urban bird populations.', 'クラスは都市の鳥の個体数に関する研究論文を読みました。', '焦点を絞った専門テーマ'),
+      ex('I am worried about the reliability of this source.', 'この情報源が信頼できるか心配しています。', '心配の対象'),
+      ex('The essay discusses several ways to reduce packaging.', 'その作文は包装を減らすいくつかの方法を論じています。', 'discuss の目的語を直接続ける'),
+    ],
+    contrasts: [
+      contrast('We read a book about ocean life.', 'We read a paper on coral reproduction.', '一般的な話題と専門的な焦点という傾向がありますが、about/on の交換が常に不可能という意味ではありません。'),
+      contrast('We talked about the results.', 'We discussed the results.', 'talk about + 話題 と discuss + 目的語。動詞に合わせて前置詞の有無が変わります。'),
+    ],
+    questions: [
+      q('usage', '標準的な英作文で、交通政策について論じたと書きたい場面です。', 'Which sentence uses “discuss” in its standard transitive pattern?', [c('We discussed about the transport policy.', 'この型では about を足しません。'), c('We discussed the transport policy.', 'discuss の直後に目的語を置けます。'), c('We discussed on the transport policy.', 'この型では on を足しません。'), c('We discussed to the transport policy.', '政策を to の相手にする形ではありません。')], 1, 'discuss something と talk about something をそれぞれの型で覚えます。', '動詞ごとの前置詞の有無'),
+      q('context', '参考文献の信頼性を心配しています。', 'I am worried ___ the accuracy of the report.', [c('to', 'この worried の対象には about を使います。'), c('on', '専門テーマの on を機械的に移せません。'), c('into', '移動の意味ではありません。'), c('about', '心配している対象を表します。')], 3, 'worried about ... をまとまりとして使います。どの語の後かも大切です。', 'worried about の組合せ'),
+      q('usage', 'レポートの題材は学校給食です。', 'Which claim about “a report on school meals” and “a report about school meals” is most accurate?', [c('Both can be natural; “on” often suggests a focused treatment of the subject.', '両方が可能で、on には焦点を絞る傾向があります。'), c('“About” is always wrong in every academic text.', '学術的文章でも about は使えます。'), c('“On” always means the report is physically lying on food.', 'ここでは話題を示す読みです。'), c('The two phrases necessarily name different school subjects.', '必ず題材が違うわけではありません。')], 0, '文体の傾向と文法的な可否は別です。自然な about を単純に誤答にしません。', '傾向と絶対規則の違い'),
+      q('meaning', '“The lecture on renewable energy attracted many students” とあります。', 'What is the function of “on renewable energy”?', [c('It gives the exact date of the lecture.', '日付ではありません。'), c('It identifies the surface supporting the speaker.', '物理的な表面ではありません。'), c('It identifies the subject of the lecture.', '講演のテーマを示しています。'), c('It states how long the lecture lasted.', '継続時間ではありません。')], 2, 'on は表面だけでなく、講演や文章のテーマにも使われます。', '話題を示す on'),
+      q('meaning', 'アンケートの説明に “About eighty students replied” とあります。', 'What does “about eighty” mean?', [c('Exactly eight students.', '数も正確さも違います。'), c('Approximately eighty students.', '約80人という概数です。'), c('A discussion concerning the number eighty.', '話題の about ではありません。'), c('More than eight hundred students.', '桁を増やす意味ではありません。')], 1, '数量の前の about は「およそ」。同じ語でも文中の働きが変わります。', '概数の about'),
+      q('intent', '2人の生徒が昼休みに、進路の希望について話しました。', 'Which sentence states that conversation naturally?', [c('They talked the careers they hoped to pursue.', 'この話題を直接目的語にする型は合いません。'), c('They talked to the careers they hoped to pursue.', '話しかける相手として careers は合いません。'), c('They talked into the careers they hoped to pursue.', 'このままでは意図した話題表現になりません。'), c('They talked about the careers they hoped to pursue.', '会話の話題を about で示しています。')], 3, 'talk about は話題、talk to は話す相手を示します。文脈の役割を見て選びます。', '会話の話題と相手'),
+    ], domainIds: ['education', 'environment', 'communication', 'science'], sourceReferences: [sources.about],
+  }),
+  unit('verb-preposition-patterns', {
+    titleJa: '動詞とセットで使う前置詞', levelTargets: ['B1', 'B2', 'C1'],
+    goalJa: '依存・同意・謝罪・反対などの関係を、動詞の型に沿って正確に書く。',
+    conceptJa: 'depend on、listen to のような組合せは、空間のイメージだけでは決まりません。誰に・何について・何の理由で、という役割と一緒に句として覚えます。',
+    commonTrapJa: 'apologize to 人 for 行為 の2つの役割を逆にしないこと。object to の to は前置詞なので、動詞を続けるなら -ing 形にします。',
+    usageNotes: ['agree with a person/opinion と agree on a plan は、相手や合意内容への焦点が違います。', 'listen to ...、depend on ...、reply to ... を、自分が書ける短い文で覚えます。', '同じ動詞でも別の意味や文型があるので、前置詞を一つの訳語だけで機械的に選ばないようにします。'],
+    examples: [
+      ex('The length of the experiment depends on the available equipment.', '実験の長さは、使える機材によって決まります。', '条件への依存'),
+      ex('I apologized to my group for losing the interview notes.', '聞き取りのメモをなくしたことを、班の仲間に謝りました。', '謝る相手と理由'),
+      ex('The committee agreed on a new recycling plan.', '委員会は新しいリサイクル計画について合意しました。', '合意した内容'),
+      ex('Some students objected to sharing their personal data.', '個人データを共有することに反対する生徒もいました。', '前置詞の後の動名詞'),
+    ],
+    contrasts: [
+      contrast('I agree with Nao.', 'We agreed on a date for the interview.', '人の考えに同意することと、具体的な合意内容を決めることを区別します。'),
+      contrast('She apologized to the teacher.', 'She apologized for interrupting.', '謝罪の相手と、謝罪する理由をそれぞれ示しています。'),
+    ],
+    questions: [
+      q('context', '野外調査をするかどうかは天気に左右されます。', 'Our decision will depend ___ the weather.', [c('of', 'この動詞の標準的な組合せではありません。'), c('to', 'depend to という形では使いません。'), c('on', 'depend on は条件に左右される意味です。'), c('with', '同行者を示す場面ではありません。')], 2, 'depend on ... は読解・英作文でよく使うまとまりです。', 'depend on'),
+      q('context', 'レポートの遅れについて、先生に謝りました。', 'I apologized ___ the teacher ___ submitting the report late.', [c('to / for', '相手は to、謝る理由は for です。'), c('for / to', '相手と理由の役割が逆です。'), c('on / with', 'この謝罪の文型には合いません。'), c('with / of', 'この謝罪の文型には合いません。')], 0, 'apologize to someone for doing something で、相手と行為を両方伝えられます。', '相手と理由を分ける'),
+      q('meaning', '“I agree with Mina about the need for quieter study spaces” と言いました。', 'What does the speaker mean?', [c('Mina has agreed to do all the speaker’s work.', '仕事を引き受けたとは述べていません。'), c('The speaker is standing physically beside Mina.', '物理的な位置の with ではありません。'), c('The speaker refuses to hear Mina’s opinion.', '同意と反対の内容です。'), c('The speaker shares Mina’s opinion on this issue.', 'この論点で Mina と同じ考えです。')], 3, 'agree with + 人 は、その人の意見への同意を表せます。', '意見への同意'),
+      q('context', '授業の前に、録音された説明の内容に注意して耳を傾けます。', 'Please listen ___ the recorded instructions before you begin.', [c('at', 'listen のこの対象には to を使います。'), c('to', '聞く対象を示す組合せです。'), c('into', 'この聞く対象を導く形ではありません。'), c('of', 'この形では対象を導けません。')], 1, 'listen to the instructions は説明に耳を傾けることです。listen for は音が聞こえるか注意を払う別の意味になり得ます。', 'listen to と意味の違い'),
+      q('context', '個人情報を本人の同意なく集めることに反対しています。', 'They object to ___ personal data without permission.', [c('collect', 'ここで to は不定詞の印ではありません。'), c('collected', '動名詞が必要な位置です。'), c('collecting', '前置詞 to の後に動名詞を置きます。'), c('collects', 'この位置に三人称単数形は置けません。')], 2, 'object to + 名詞・動名詞。to があれば常に原形とは限りません。', '前置詞 to の後の -ing'),
+      q('context', '学校への問い合わせに、まだ返信がありません。', 'The school has not replied ___ my email yet.', [c('to', 'reply to + 連絡・質問が自然な型です。'), c('of', 'この返信の対象には使いません。'), c('into', '内部への移動ではありません。'), c('at', 'ここは地点の指定ではありません。')], 0, 'reply to an email というまとまりを使います。前置詞の基本イメージだけではなく、動詞の型も確かめます。', 'reply to'),
+    ], domainIds: ['education', 'communication', 'society', 'science'], sourceReferences: [sources.verbs, sources.to],
+  }),
+  unit('travel-institutions', {
+    titleJa: '交通手段・到着・学校生活の定番表現', levelTargets: ['A2', 'B1', 'B2'],
+    goalJa: '移動手段と乗車中の場所、到着先、学校や自宅での活動を区別する。',
+    conceptJa: 'by train は移動手段、on the train はその電車に乗っている場所を示します。go to school、arrive at school、go home など、動詞と名詞の組合せごとの慣用も必要です。',
+    commonTrapJa: 'go to と同じつもりで arrive to としないこと。また「乗り物の内部だから必ず in」ではなく、on a bus / in a car などの慣用を覚えます。',
+    usageNotes: ['手段としては by train / by bus。特定の乗り物を示すと on the train / in my father’s car などになります。', '到着先は通常 arrive in + 都市・国、arrive at + 駅・建物など。go home では to を入れません。', '学校で学ぶ意味の at school / in school は地域や文脈で両方が使えます。冠詞のない形を単なる建物の内部だけと決め付けません。'],
+    examples: [
+      ex('The class travelled to the museum by train.', 'クラスは電車で博物館へ行きました。', '移動手段'),
+      ex('I reviewed my notes on the train.', '電車の中でノートを見直しました。', '乗車中の場所'),
+      ex('We arrived at the station before the other group.', '私たちは別の班より先に駅に着きました。', '到着地点'),
+      ex('I went home after the meeting and finished my essay there.', '会議の後に帰宅し、そこで作文を仕上げました。', 'home への移動'),
+    ],
+    contrasts: [
+      contrast('We went there by bus.', 'We talked on the bus.', '交通手段を示す by bus と、特定のバスに乗車中の on the bus を区別します。'),
+      contrast('I learned this at school.', 'I learned this in school.', 'どちらも学校での学習を表せます。地域や文脈による違いがあり、一方を一律に誤りにしません。'),
+    ],
+    questions: [
+      q('context', '移動手段として、電車を使ったと説明します。', 'We travelled to the exhibition ___ train.', [c('on', '手段をこの無冠詞の形で示すなら by train です。'), c('by', '電車という移動手段を表します。'), c('in', '特定の乗り物の内部を述べる形ではありません。'), c('with', 'この移動手段の慣用表現には使いません。')], 1, 'by train は冠詞を付けずに移動手段を述べる形です。', '交通手段の by'),
+      q('context', '乗車している特定の電車の中で、ノートを読み返しています。', 'I am rereading my notes ___ the train.', [c('by', '電車のそばという別の位置にも読めます。'), c('under', '電車の下という意味になります。'), c('over', '上を越える場面ではありません。'), c('on', '電車に乗車中の場所として自然です。')], 3, 'on the train が通常の乗車中の表現です。「内部だから必ず in」とは判断しません。', '特定の乗り物に乗っている場所'),
+      q('context', '都市への到着と、その後の待ち合わせ地点への到着を説明します。', 'We arrived ___ Kyoto in the morning and ___ the meeting point at noon.', [c('in / at', '都市は in、待ち合わせ地点は at が合います。'), c('to / to', 'arrive は go to と同じ形にしません。'), c('on / in', 'この都市と地点の組合せには合いません。'), c('for / by', '到着先を示す形ではありません。')], 0, 'arrive in + 都市、arrive at + 地点という基本形を使います。', 'arrive と場所の組合せ'),
+      q('usage', '部活動が終わったので帰宅した、と標準的な英文で書きます。', 'Which sentence is natural?', [c('I went to home after practice.', 'この副詞的な home の前には to を置きません。'), c('I went at home after practice.', '移動の go と at home の組合せでは合いません。'), c('I went home after practice.', 'go home で帰宅することを表せます。'), c('I went in home after practice.', 'この形では自然な帰宅の表現になりません。')], 2, 'home は go home の形で直接続けられます。go to my house のような名詞句とは区別します。', '前置詞を置かない go home'),
+      q('usage', '学校で習った内容を話す英米の生徒の発言を比べます。', 'Which statement about “I learned it at school” and “I learned it in school” is accurate?', [c('“In school” must mean the speaker is physically inside a wall.', '学習や在学を表す使い方もあります。'), c('Both can describe learning at school; variety and context affect the choice.', 'どちらも学習の場として使えます。'), c('“At school” is always wrong in British English.', '英国でも自然に使われます。'), c('The expressions necessarily mean opposite things.', '反対の意味とは限りません。')], 1, '自然な地域差を認めます。前置詞だけで建物内か屋外かを断定しません。', '学校という活動と地域差'),
+      q('intent', '父親の車の座席に座って帰宅しました。車の屋根には乗っていません。', 'Which sentence describes that journey naturally?', [c('I went home on my father’s car.', '通常は車の外側の上という読みになります。'), c('I went home by my father’s car.', 'この特定の車を示す形では in が自然です。'), c('I went home under my father’s car.', '車の下という意味になります。'), c('I went home in my father’s car.', '特定の車の中に乗って帰る形です。')], 3, 'by car は手段、in my father’s car は具体的な車に乗っていることを表します。', '手段と具体的な乗り物を分ける'),
+    ], domainIds: ['education', 'travel', 'transport', 'daily-life'], sourceReferences: [sources.by, sources.place, sources.school, cambridge('Word patterns: arrive somewhere', 'word-patterns-arrive-somewhere'), cambridge('Prepositions: home', 'prepositions-home')],
+  }),
+];

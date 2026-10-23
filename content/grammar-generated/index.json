@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "courseId": "english-grammar-foundations-v1",
+  "titleJa": "英検・大学受験の英文法と表現",
+  "file": "series-v1.json",
+  "reviewStatus": "approved",
+  "publicationStatus": "unpublished",
+  "counts": {
+    "lessons": 36,
+    "examples": 144,
+    "questions": 216
+  },
+  "series": [
+    {
+      "id": "grammar",
+      "titleJa": "文法で読み解く・書く",
+      "lessonIds": [
+        "grammar-present-simple-continuous",
+        "grammar-past-simple-continuous",
+        "grammar-present-perfect-past",
+        "grammar-present-perfect-continuous",
+        "grammar-future-forms",
+        "grammar-zero-first-conditionals",
+        "grammar-second-third-conditionals",
+        "grammar-passive",
+        "grammar-relative-clauses",
+        "grammar-articles-countability",
+        "grammar-modal-meaning",
+        "grammar-reported-speech"
+      ]
+    },
+    {
+      "id": "prepositions",
+      "titleJa": "前置詞の使い分け",
+      "lessonIds": [
+        "prepositions-time-at-on-in",
+        "prepositions-place-at-on-in",
+        "prepositions-to-for",
+        "prepositions-by-with",
+        "prepositions-since-for-during",
+        "prepositions-until-by",
+        "prepositions-across-through-over",
+        "prepositions-between-among",
+        "prepositions-above-over-below-under",
+        "prepositions-about-on",
+        "prepositions-verb-preposition-patterns",
+        "prepositions-travel-institutions"
+      ]
+    },
+    {
+      "id": "verbs",
+      "titleJa": "基本動詞・句動詞の使い分け",
+      "lessonIds": [
+        "verbs-get-change",
+        "verbs-get-done",
+        "verbs-get-across",
+        "verbs-take-core",
+        "verbs-take-off",
+        "verbs-break-through",
+        "verbs-work-out",
+        "verbs-turn-out",
+        "verbs-put-off",
+        "verbs-bring-up",
+        "verbs-come-up-with",
+        "verbs-make-do"
+      ]
+    }
+  ]
+}
