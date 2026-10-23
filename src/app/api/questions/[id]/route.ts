@@ -5,9 +5,10 @@ import { api,readJson } from '@/server/http';
 import { appendEvent,getFullState } from '@/server/google-store';
 import { ApiError } from '@/server/config';
 import type { Question } from '@/lib/types';
+import { assertOwnQuestion } from '@/server/access';
 import { assertQuestionEditable } from '@/server/library';
 export async function PATCH(request:Request,context:{params:Promise<{id:string}>}) { return api(async()=>{
-  const {profile}=await requireProfile('parent');
+  const {profile}=await requireProfile();
   const {id}=await context.params;
   z.string().uuid().parse(id);
   const input=await readJson(request,z.object({
@@ -18,8 +19,7 @@ export async function PATCH(request:Request,context:{params:Promise<{id:string}>
     expectedVersion:z.number().int().positive().optional(),
   }).refine(value=>Object.keys(value).length>0));
   const {data}=await getFullState();
-  const old=data.questions.find(q=>q.id===id);
-  if(!old) throw new ApiError(404,'問題が見つかりません。');
+  const old=assertOwnQuestion(data,profile,id);
   assertQuestionEditable(data.topics.find(topic=>topic.id===old.topicId));
   if(input.expectedVersion!==undefined && input.expectedVersion!==old.version) throw new ApiError(409,'別の画面で更新されました。読み込み直して確認してください。','VERSION_CONFLICT');
   const choices=input.choices ?? old.choices;

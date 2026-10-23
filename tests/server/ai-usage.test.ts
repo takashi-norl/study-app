@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import type Anthropic from '@anthropic-ai/sdk';
-import { priceAnthropicUsage, summarizeAiUsage, trackedAnthropicMessage } from '../../src/server/ai-usage';
+import { priceAnthropicUsage, summarizeAiUsage, summarizeOperationalAiUsage, trackedAnthropicMessage } from '../../src/server/ai-usage';
 import { aiRequestedSchema, aiUsageSchema } from '../../src/server/ai-usage-schema';
 import { assertSuperUser, getFamilyId, getFamilyMembers, profileForMember } from '../../src/server/env';
 import { getAuthOptions } from '../../src/server/auth';
@@ -128,7 +128,7 @@ test('Super User is only the verified allowlisted owner; Manager/student cannot 
     process.env.GOOGLE_CLIENT_ID = 'test-client'; process.env.GOOGLE_CLIENT_SECRET = 'test-secret';
     const profiles = getFamilyMembers().map(profileForMember);
     assert.equal(profiles[0].accessLevel, 'superuser');
-    assert.equal(profiles[1].accessLevel, 'manager');
+    assert.equal(profiles[1].accessLevel, 'learner');
     assert.equal(profiles[2].accessLevel, 'learner');
     assert.equal(assertSuperUser(profiles[0]).id, 'super');
     for (const profile of profiles.slice(1)) {
@@ -146,4 +146,22 @@ test('Super User is only the verified allowlisted owner; Manager/student cannot 
   } finally {
     for (const key of keys) { if (previous[key] === undefined) delete process.env[key]; else process.env[key] = previous[key]; }
   }
+});
+
+
+test('operational usage includes every account but never identifies or breaks down a participant', async () => {
+  const events: StudyEvent[] = [];
+  for (const actorId of ['PRIVATE_STUDENT', 'PRIVATE_OPERATOR']) {
+    await trackedAnthropicMessage({ ...context, actorId }, params, {
+      append: async event => { events.push({ ...event, createdAt: '2026-10-23T00:00:00Z' }); },
+      create: async () => ({ ...response, id: `msg_${actorId}` }),
+    });
+  }
+  events.push({ id: 'private-feedback', actorId: 'PRIVATE_STUDENT', type: 'feedback.submitted', createdAt: '2026-10-23T00:00:00Z',
+    payload: { userId: 'PRIVATE_STUDENT', category: '困った', message: 'PRIVATE_CONTENT', version: '0.15.0' } });
+  const summary = summarizeOperationalAiUsage(events, new Date('2026-10-23T12:00:00Z'));
+  assert.equal(summary.monthly.requests, 2);
+  assert.equal(summary.monthly.estimatedUsd, 0.01545);
+  assert.deepEqual(summary.byUser, []);
+  assert.doesNotMatch(JSON.stringify(summary), /PRIVATE_|actorId|userId|msg_|logical-request/);
 });

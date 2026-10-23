@@ -14,15 +14,12 @@ export function mayPracticeQuestion(data:StudyData,profile:Profile,question:Ques
 export function assertPracticeTopic(data:StudyData,profile:Profile,topicId?:string):void {
   const topic=data.topics.find(item=>item.id===topicId);
   if(topicId && (!topic || !canAccessQuestion(topic,profile))) throw new ApiError(404,'問題集が見つかりません。','TOPIC_NOT_FOUND');
-  if(topic?.libraryPublished && !data.plans.some(plan=>plan.ownerId===profile.id && !plan.testOnly && plan.libraryTopicId===topic.id)) {
-    throw new ApiError(403,'先にライブラリから自分の学習に追加してください。','LIBRARY_NOT_ADOPTED');
-  }
-  if(topic && !mayPracticeLibraryTopic(data,profile,topic)) throw new ApiError(403,'ご自身の非公開の問題集か、追加済みの公開問題集を選んでください。','PRIVATE_PRACTICE_OWNER_ONLY');
+  if(topic && !mayPracticeLibraryTopic(data,profile,topic)) throw new ApiError(403,'自分の問題集を選んでください。','PRIVATE_PRACTICE_OWNER_ONLY');
 }
 
 export function mayResumePracticeQuestions(data:StudyData,profile:Profile,questions:Question[]):boolean {
   return questions.every(question=>mayPracticeQuestion(data,profile,question)
-    && (profile.role!=='parent' || data.questions.some(current=>current.id===question.id && current.version===question.version && isPracticeReadyQuestion(current))));
+    && data.questions.some(current=>current.id===question.id && current.version===question.version && isPracticeReadyQuestion(current)));
 }
 
 export async function authorizedPracticeSession(data:StudyData,events:StudyEvent[],profile:Profile,sessionId:string) {

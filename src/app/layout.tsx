@@ -3,7 +3,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'ひび学習 | 少しずつ、できるに変わる。',
-  description: '家族で育てる問題集。今日の10問と、忘れないための復習。',
+  description: '自分の教材で、今日の10問。写真・PDFから作る問題と、自分のペースの復習。',
   manifest: '/manifest.webmanifest',
   appleWebApp: { capable: true, statusBarStyle: 'default', title: 'ひび学習' },
   icons: { icon: '/icon.svg', apple: '/apple-touch-icon.png' },

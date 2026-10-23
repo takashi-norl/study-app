@@ -8,6 +8,16 @@ export interface AppRelease {
 
 // Newest first. This is the source for Settings, public history and update notices.
 export const APP_RELEASES: readonly AppRelease[] = [{
+  version: '0.15.0',
+  date: '2026-10-23',
+  title: '自分の教材で、自分のペースで',
+  announcement: '教材・問題・学習記録を本人専用にしました。自分で作り、確かめて、学ぶ流れをシンプルに。テスト利用の感想も送れます。',
+  changes: [
+    { title: '自分だけの学習スペース', description: '写真・PDF、作った問題、学習プラン、AIとの相談、成績は本人だけが確認できます。共有・公開・配布と、他の利用者として見る機能は終了しました。保存済みの自分の問題集は引き続き学べます。' },
+    { title: '確かめて、直して、学べる', description: '作った問題は一覧で傾向を確認し、正解や解説を自分で編集できます。用意された共通教材から始めることもできます。' },
+    { title: '招待制で試して、感想を届ける', description: '招待されたGoogleアカウントで参加できます。設定から感想・不具合を送信でき、教材や学習記録は自動添付しません。運営のWeb画面は学習アプリと分けました。料金は未定で、課金は始めていません。' },
+  ],
+}, {
   version: '0.14.0',
   date: '2026-10-23',
   title: '一問ごとに、気持ちのいい手ごたえを',

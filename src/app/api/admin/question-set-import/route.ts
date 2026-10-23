@@ -1,4 +1,4 @@
-import { requireProfile } from '@/server/auth';
+import { requireSuperUser } from '@/server/auth';
 import { api, readJson } from '@/server/http';
 import { questionSetImportSchema } from '@/lib/question-set-import';
 import { appendEvents, getFullState } from '@/server/google-store';
@@ -8,7 +8,7 @@ import { ApiError } from '@/server/config';
 export const maxDuration=180;
 export async function POST(request:Request) {
   return api(async()=>{
-    const {profile}=await requireProfile('parent');
+    const {profile}=await requireSuperUser();
     const input=await readJson(request,questionSetImportSchema);
     const before=await getFullState();
     const prepared=prepareQuestionSetImport(before.data,before.events,profile,input);

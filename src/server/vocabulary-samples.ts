@@ -34,18 +34,18 @@ export async function vocabularyPreview(profile: Profile, batchId = LEGACY_VOCAB
       ...(record?.fileId && record.segments ? { segments: record.segments } : {}),
     };
   });
-  return { entries, audio, batchId, batches: vocabularyBatchIndex(), canPrepareAudio: batchId === LEGACY_VOCABULARY_BATCH };
+  return { entries, audio, batchId, batches: vocabularyBatchIndex(), canPrepareAudio: profile.accessLevel === 'superuser' && batchId === LEGACY_VOCABULARY_BATCH };
 }
 
 /** A fixed catalog and an append-only reservation prevent arbitrary text and repeat paid requests. */
 export async function prepareVocabularyAudio(profile: Profile, wordId: string, catalogBuild = false) {
   assertSampleAccess(profile);
-  if (catalogBuild) assertSuperUser(profile);
+  assertSuperUser(profile);
   const spec = vocabularyAudioSpec(vocabularyEntry(wordId));
   const events = await loadEvents();
   const previous = audioRecord(events, spec.cacheKey);
   if (previous?.fileId && previous.segments) return { ready: true };
-  if (previous) throw new ApiError(409, previous.failed ? '準備に失敗しています。管理者が状況を確認します。' : '音声を準備中です。「状況を確認」から確認できます。', previous.failed ? 'SAMPLE_AUDIO_FAILED' : 'AUDIO_PENDING');
+  if (previous) throw new ApiError(409, previous.failed ? '準備に失敗しています。運営者が状況を確認します。' : '音声を準備中です。「状況を確認」から確認できます。', previous.failed ? 'SAMPLE_AUDIO_FAILED' : 'AUDIO_PENDING');
   requiredEnv('ELEVENLABS_API_KEY');
   if (catalogBuild) checkVocabularyBuildQuota(events, entries.map(vocabularyAudioSpec), spec.cacheKey);
   else checkAudioQuota(events, spec.characters);

@@ -1,6 +1,8 @@
 # Google Drive / Sheets の接続設定
 
-写真・PDFは個人Google Driveのアプリ専用フォルダ、問題・履歴は同じアカウントのGoogle Sheetsに保存します。保存には所有者のOAuth接続を使います。家族のログインは別の処理で、奥さま・お子さんにDriveの権限を求めません。サービスアカウントは使用しません。
+現在は本人専用の招待制アプリです。運営用Web画面はSuper Userだけが利用できます。以下の `ALLOWED_FAMILY_MEMBERS_JSON` / `FAMILY_ID` / 内部の役割名は既存環境との互換用で、利用者同士を連携する機能ではありません。新規テスト利用者の招待は `/admin/invitations` から行います。
+
+写真・PDFは個人Google Driveのアプリ専用フォルダ、問題・履歴は同じアカウントのGoogle Sheetsに保存します。保存には所有者のOAuth接続を使います。利用者のログインは別の処理で、利用者にDriveの権限を求めません。サービスアカウントは使用しません。
 
 この手順では、所有者が接続を承認した後、専用フォルダと記録シートを**アプリ自身が新規作成**します。`drive.file` はアプリが作成したファイルにアクセスできるため、Google Picker、Picker用APIキー、トークンの手動コピーは不要です。既存のDriveファイルには権限を追加しません。[Driveのファイル単位権限](https://developers.google.com/workspace/drive/api/guides/api-specific-auth)、[Sheets作成APIの権限](https://developers.google.com/workspace/sheets/api/reference/rest/v4/spreadsheets/create)
 
@@ -10,7 +12,7 @@ Googleの `/drive/project/…` は通常の保存フォルダとは限りませ�
 
 1. 保存先所有者の**個人用Chromeプロフィール**で [Google Cloud Console](https://console.cloud.google.com/)を開き、専用プロジェクトを作成します。
 2. **Google Drive API** と **Google Sheets API** を有効にします。
-3. Google Auth Platformのアプリ情報・対象ユーザー・連絡先を設定します。個人Googleアカウントを含む場合はExternalを選び、テスト中は所有者と利用する家族をテストユーザーに追加します。
+3. Google Auth Platformのアプリ情報・対象ユーザー・連絡先を設定します。個人Googleアカウントを含む場合はExternalを選び、テスト中は所有者とテスト利用するアカウントをテストユーザーに追加します。
 4. Data Accessには `openid`、`https://www.googleapis.com/auth/userinfo.email`、`https://www.googleapis.com/auth/userinfo.profile`、`https://www.googleapis.com/auth/drive.file` を登録します。`drive`や`spreadsheets`全体の権限は不要です。
 5. **Web application** のOAuthクライアントを作ります。Authorized redirect URIsに次を登録します。
 
@@ -22,7 +24,7 @@ Googleの `/drive/project/…` は通常の保存フォルダとは限りませ�
    別の本番ドメインを使う場合は1行目を置換します。ローカルのアプリログインも検証する場合だけ `http://localhost:3000/api/auth/callback/google` を追加します。現在のサーバー側OAuth方式ではJavaScript originsやPlayground redirectは不要です。
 6. `GOOGLE_CLIENT_ID` と `GOOGLE_CLIENT_SECRET` を、次の秘密設定ファイルに保存します。チャットやリポジトリに貼り付けません。
 
-Externalで公開ステータスがTestingの場合、Driveを含むrefresh tokenは原則7日で期限切れになります。継続運用前にGoogle側でProductionへの切替・必要な確認を済ませ、その後に最終的な接続を取得してください。Productionでもアプリ側の家族許可リストは有効です。[Googleのトークン有効期限](https://developers.google.com/identity/protocols/oauth2/)
+Externalで公開ステータスがTestingの場合、Driveを含むrefresh tokenは原則7日で期限切れになります。継続運用前にGoogle側でProductionへの切替・必要な確認を済ませ、その後に最終的な接続を取得してください。Productionでもアプリ側の既存登録・招待制限は有効です。[Googleのトークン有効期限](https://developers.google.com/identity/protocols/oauth2/)
 
 ## 2. このMacに秘密設定ファイルを用意する
 

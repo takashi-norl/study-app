@@ -3,6 +3,7 @@ import test from 'node:test';
 import { createBoundedSourceStream, foldEvents, getSessionSnapshot, studyDataForProfile, type StudyEvent } from '../../src/server/google-store';
 import { assertStorageGrant, getAuthConfig, getFamilyMembers, getFamilyId } from '../../src/server/env';
 import { getAuthOptions } from '../../src/server/auth';
+import { resolveRegisteredMember } from '../../src/server/beta-membership';
 import type { Attempt, Profile, Question } from '../../src/lib/types';
 
 const time = '2026-10-22T00:00:00Z';
@@ -70,7 +71,7 @@ test('different families are rejected and duplicate exposure rows do not increas
   assert.throws(() => studyDataForProfile(data, { ...student, familyId: 'another-family' }));
 });
 
-test('student projection strips answer, original-source and frozen-snapshot details and other students records', () => {
+test('owner authoring retains answers while hiding foreign sources, frozen snapshots and other users records', () => {
   const data = foldEvents([event('q', 'question.upserted', q), event('s', 'session.created', session),
     event('a', 'attempt.recorded', answer),
     event('draft', 'question.upserted', { ...q, id: 'draft', status: 'draft' }),
@@ -88,16 +89,16 @@ test('student projection strips answer, original-source and frozen-snapshot deta
   assert.equal(projected.questions.length, 4); // All saved own private questions are immediately usable.
   assert.equal(projected.topics.length, 2); // Own empty sets remain navigable.
   assert.equal(projected.topics[0].id, 't');
-  assert.equal(projected.questions[0].correctIndex, -1);
-  assert.equal(projected.questions[0].explanation, '');
-  assert.equal(projected.questions[0].sourceNote, '');
+  assert.equal(projected.questions[0].correctIndex, 0);
+  assert.equal(projected.questions[0].explanation, q.explanation);
+  assert.equal(projected.questions[0].sourceNote, q.sourceNote);
   assert.deepEqual(projected.questions[0].sourceIds, []);
   assert.equal(projected.sources.length, 0);
   assert.equal(projected.jobs.length, 0);
   assert.equal(projected.sessions.length, 1);
   assert.equal(projected.attempts.length, 1);
   assert.equal(JSON.stringify(projected).includes('questionSnapshots'), false);
-  assert.equal(JSON.stringify(projected).includes('Private source'), false);
+  assert.equal(JSON.stringify(projected.sources).includes('Private source'), false);
   assert.equal(data.questions[0].correctIndex, 0);
 });
 
@@ -192,7 +193,7 @@ test('Google login requires a verified allowlisted email and a removed member lo
     process.env.GOOGLE_CLIENT_ID = 'test-client';
     process.env.GOOGLE_CLIENT_SECRET = 'test-secret';
     process.env.ALLOWED_FAMILY_MEMBERS_JSON = JSON.stringify([parent, child]);
-    const callbacks = getAuthOptions().callbacks!;
+    const callbacks = getAuthOptions({ resolveMember: (email, subject) => resolveRegisteredMember(email, subject, { load: async () => [] }) }).callbacks!;
     const signIn = callbacks.signIn!;
     const args = { user: { id: 'google-subject' }, account: { provider: 'google', type: 'oauth' as const, providerAccountId: 'google-subject' } };
     assert.equal(await signIn({ ...args, profile: { email: child.email, email_verified: false } as any }), false);

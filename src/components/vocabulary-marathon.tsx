@@ -224,7 +224,7 @@ function WordAudio({ entry, clips, example, stopKey, busy, canPrepare, onPrepare
   </section>;
 }
 
-export default function VocabularyMarathon({ entries, audio, preparation, glossary, batchId = 'legacy-100', canPrepareAudio = true }: { entries: VocabularyEntry[]; audio: VocabularyAudio[]; preparation?: ReactNode; glossary: GlossaryEntry[]; batchId?: string; canPrepareAudio?: boolean }) {
+export default function VocabularyMarathon({ entries, audio, preparation, glossary, batchId = 'legacy-100', canPrepareAudio = false, operations = false }: { entries: VocabularyEntry[]; audio: VocabularyAudio[]; preparation?: ReactNode; glossary: GlossaryEntry[]; batchId?: string; canPrepareAudio?: boolean; operations?: boolean }) {
   const levels = VOCABULARY_LEVELS.filter(level => entries.some(entry => entry.level === level));
   const [level, setLevel] = useState<VocabularyEntry['level']>(levels[0] ?? '2級');
   const [groupIndex, setGroupIndex] = useState(0);
@@ -361,7 +361,7 @@ export default function VocabularyMarathon({ entries, audio, preparation, glossa
     } finally { setBusyWord(null); }
   };
 
-  if (!entry || !example) return <main className={styles.page}><Link className={styles.back} href="/admin/eiken-samples"><ArrowLeft size={18} />英検サンプルへ</Link><p>単語セットを準備しています。</p></main>;
+  if (!entry || !example) return <main className={styles.page}><Link className={styles.back} href={operations ? "/admin/eiken-samples" : "/learn/eiken"}><ArrowLeft size={18} />英検の教材へ</Link><p>単語セットを準備しています。</p></main>;
 
   const nextLevel = levels[levels.indexOf(level) + 1];
   const nextSet = groupIndex < groups.length - 1 ? { level, index: groupIndex + 1 } : nextLevel ? { level: nextLevel, index: 0 } : undefined;
@@ -373,11 +373,11 @@ export default function VocabularyMarathon({ entries, audio, preparation, glossa
 
   return <VocabularyGlossaryProvider entries={glossary}><main className={styles.page}>
     <header className={styles.header}>
-      <Link className={styles.back} href="/"><ArrowLeft size={17} aria-hidden="true" />ホーム</Link>
-      <Link className={styles.back} href="/admin/eiken-samples">英検サンプル<ArrowRight size={16} aria-hidden="true" /></Link>
+      <Link className={styles.back} href={operations ? "/admin" : "/"}><ArrowLeft size={17} aria-hidden="true" />{operations ? "運営画面へ" : "ホーム"}</Link>
+      <Link className={styles.back} href={operations ? "/admin/eiken-samples" : "/learn/eiken"}>英検の教材<ArrowRight size={16} aria-hidden="true" /></Link>
     </header>
     <div className={styles.intro}>
-      <div><p className={styles.eyebrow}>管理者用サンプル</p><span className={styles.progress}>{modeInfo.shortLabel} · {finishedSets}セット確認</span></div>
+      <div><p className={styles.eyebrow}>{operations ? "運営用の教材確認" : "用意された教材"}</p><span className={styles.progress}>{modeInfo.shortLabel} · {finishedSets}セット確認</span></div>
       <h1>ボキャブラリーマラソン</h1>
       <p>10語を学ぶ → 混ぜてテスト → 苦手をもう一度</p>
     </div>
@@ -489,10 +489,10 @@ export default function VocabularyMarathon({ entries, audio, preparation, glossa
         </div>}
       </section>}
     </article>
-    <p className={styles.previewNote}>管理者だけが見られる試作です。学習者には未公開で、成績には記録しません。このタブでセットを切り替えても回答は残りますが、再読み込みや終了でリセットされます。</p>
+    <p className={styles.previewNote}>回答はこのタブ内だけで、通常の学習記録には含まれません。同じ教材のセットを切り替えても回答は残りますが、別の教材への切り替え・再読み込み・終了でリセットされます。</p>
     <footer className={styles.footer}>
       {stage === 'learn' ? <>
-        {learningIndex > 0 ? <button type="button" className={styles.previous} onClick={() => moveLearningWord(learningIndex - 1)}><ArrowLeft size={17} aria-hidden="true" />前の単語</button> : isReview && resultReady ? <button type="button" className={styles.previous} onClick={finishTest}><ArrowLeft size={17} aria-hidden="true" />結果へ戻る</button> : <Link className={styles.previous} href="/admin/eiken-samples"><ArrowLeft size={17} aria-hidden="true" />サンプル一覧</Link>}
+        {learningIndex > 0 ? <button type="button" className={styles.previous} onClick={() => moveLearningWord(learningIndex - 1)}><ArrowLeft size={17} aria-hidden="true" />前の単語</button> : isReview && resultReady ? <button type="button" className={styles.previous} onClick={finishTest}><ArrowLeft size={17} aria-hidden="true" />結果へ戻る</button> : <Link className={styles.previous} href={operations ? "/admin/eiken-samples" : "/learn/eiken"}><ArrowLeft size={17} aria-hidden="true" />英検の教材</Link>}
         <button type="button" className={styles.primary} onClick={nextLearn}>{learningIndex < learningEntries.length - 1 ? '次の単語' : testLabel}<ArrowRight size={18} aria-hidden="true" /></button>
         <p>{learningIndex + 1} / {learningEntries.length}語目 · {modeInfo.shortLabel}でまとめてテストできます</p>
       </> : stage === 'test' && test && item ? <>

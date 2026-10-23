@@ -1,11 +1,10 @@
 import type { GenerationJob, LearningPlan, PlanningSample, PlanningTurn, PracticeSession, Profile, Question, StudyData, Topic } from './types';
 
 import { asPracticeQuestion, isPracticeReadyQuestion, mayPracticeLibraryTopic, topicOwnerId } from './library-policy';
-import { arrangementScopeSummary, normalizePlanTags, ownPlanTagsForTopic } from './plan-organization';
+import { arrangementScopeSummary, ownPlanTagsForTopic } from './plan-organization';
 import type { LibraryDeliveryInput, LibraryDeliveryResult } from './library-delivery';
 
 export type DemoPracticeSession = PracticeSession & { questionSnapshots?: Question[] };
-type DemoTopic = Topic & { demoLibraryRevision?: string };
 
 export function demoSessionQuestions(session: PracticeSession, current: Question[]): Question[] {
   const snapshots = (session as DemoPracticeSession).questionSnapshots;
@@ -13,186 +12,114 @@ export function demoSessionQuestions(session: PracticeSession, current: Question
   return session.questionIds.map(id => source.find(question => question.id === id)).filter((question): question is Question => !!question);
 }
 
-function demoRevision(data: StudyData,topic: Topic) {
-  return JSON.stringify([topic.id,topic.title,topic.subject,topic.description,data.questions.filter(q=>q.topicId===topic.id && q.status!=='archived').map(q=>[q.id,q.version]).sort()]);
-}
-function normalizeDemoLibrary(data: StudyData): StudyData {
-  const topics=data.topics.map(topic=>topic.libraryPublished ? topic : {...topic,ownerId:topicOwnerId(data,topic) ?? data.profiles.find(p=>p.role==='student')?.id,currentSourceRevision:demoRevision(data,topic),publishedSourceRevision:data.topics.find(t=>t.libraryPublished && t.librarySourceTopicId===topic.id && t.libraryRevision===demoRevision(data,topic))?.libraryRevision ?? data.topics.filter(t=>t.libraryPublished && t.librarySourceTopicId===topic.id).at(-1)?.libraryRevision});
-  return {...data,topics,questions:data.questions.map(q=>({...q,ownerId:topics.find(t=>t.id===q.topicId)?.ownerId}))};
+function normalizeDemoOwnership(data: StudyData): StudyData {
+  const topics = data.topics.map(topic => ({ ...topic, ownerId: topicOwnerId(data, topic) }));
+  return { ...data, topics, questions: data.questions.map(question => ({ ...question,
+    ownerId: question.ownerId ?? topics.find(topic => topic.id === question.topicId)?.ownerId })) };
 }
 
-function testIds(data: StudyData) {
-  const plans = new Set(data.plans.filter(plan => plan.testOnly).map(plan => plan.id));
-  const topics = new Set(data.topics.filter(topic => topic.testOnly || (topic.planId && plans.has(topic.planId))).map(topic => topic.id));
-  const questions = new Set(data.questions.filter(question => question.testOnly || topics.has(question.topicId) || (question.planId && plans.has(question.planId))).map(question => question.id));
-  return { plans, topics, questions };
-}
-
-/** Demo keeps one local family store, but the learner sees only their own allowed view. */
+/** All roles see their own workspace; legacy public and other people's records stay private. */
 export function demoStudyDataForProfile(data: StudyData, profile: Profile): StudyData {
-  data=normalizeDemoLibrary(data);
-  if (profile.role === 'parent') return data;
-  const hidden = testIds(data);
-  const plans = data.plans.filter(plan => !hidden.plans.has(plan.id) && plan.ownerId === profile.id);
+  data = normalizeDemoOwnership(data);
+  const testAllowed = (item: { testOnly?: boolean }) => !item.testOnly || profile.accessLevel === 'superuser';
+  const plans = data.plans.filter(plan => plan.ownerId === profile.id && !plan.libraryTopicId && testAllowed(plan));
   const planIds = new Set(plans.map(plan => plan.id));
-  const topics = data.topics.filter(topic => !hidden.topics.has(topic.id) && (topic.libraryPublished || topicOwnerId(data,topic) === profile.id))
-    .map(({ librarySourceTopicId: _privateOrigin, demoLibraryRevision: _privateRevision, ...topic }: DemoTopic) => topic);
+  const topics = data.topics.filter(topic => !topic.libraryPublished && topicOwnerId(data, topic) === profile.id
+    && (!topic.audienceUserId || topic.audienceUserId === profile.id) && testAllowed(topic));
   const topicIds = new Set(topics.map(topic => topic.id));
-  const adopted = new Set(plans.filter(plan => plan.libraryTopicId).map(plan => plan.libraryTopicId));
-  const library = new Set(topics.filter(topic => topic.libraryPublished).map(topic => topic.id));
-  const questions = data.questions.filter(question => !hidden.questions.has(question.id) && topicIds.has(question.topicId)
-    && (!library.has(question.topicId) || adopted.has(question.topicId))
-    && (!question.ownerId || question.ownerId === profile.id) && isPracticeReadyQuestion(question));
+  const sources = data.sources.filter(source => testAllowed(source) && (source.ownerId === profile.id
+    || !source.ownerId && !!source.topicId && topicIds.has(source.topicId)));
+  const sourceIds = new Set(sources.map(source => source.id));
+  const questions = data.questions.filter(question => topicIds.has(question.topicId)
+    && (!question.ownerId || question.ownerId === profile.id)
+    && (!question.audienceUserId || question.audienceUserId === profile.id)
+    && (!question.planId || planIds.has(question.planId)) && testAllowed(question));
   const questionIds = new Set(questions.map(question => question.id));
   return {
-    ...data, topics, plans,
-    questions: questions.map(asPracticeQuestion).map(question => ({ ...question, correctIndex: -1, explanation: '', learningPoint: '', sourceIds: [], sourceNote: '' })),
-    planningTurns: data.planningTurns.filter(turn => planIds.has(turn.planId)),
-    sources: data.sources.filter(source => !source.testOnly && source.ownerId === profile.id && (!source.topicId || !hidden.topics.has(source.topicId))),
-    jobs: data.jobs.filter(job => !job.testOnly && !hidden.topics.has(job.topicId) && (!job.planId || !hidden.plans.has(job.planId)) && job.requestedBy === profile.id),
+    topics, plans: plans.map(plan => ({ ...plan, sourceIds: plan.sourceIds.filter(id => sourceIds.has(id)) })),
+    questions: questions.map(question => ({ ...question, choices: [...question.choices], sourceIds: question.sourceIds.filter(id => sourceIds.has(id)) })),
+    planningTurns: data.planningTurns.filter(turn => planIds.has(turn.planId) && turn.requestedBy === profile.id),
+    sources,
+    jobs: data.jobs.filter(job => topicIds.has(job.topicId) && (!job.planId || planIds.has(job.planId)) && job.requestedBy === profile.id && testAllowed(job)),
     attempts: data.attempts.filter(attempt => attempt.userId === profile.id && questionIds.has(attempt.questionId)),
     exposures: data.exposures.filter(exposure => exposure.userId === profile.id && questionIds.has(exposure.questionId)),
     sessions: data.sessions.filter(session => session.userId === profile.id && session.questionIds.every(id => questionIds.has(id)))
       .map(({ questionSnapshots: _privateSnapshots, ...session }: DemoPracticeSession) => session),
+    profiles: data.profiles.filter(member => member.id === profile.id),
   };
 }
 
-/** Private practice belongs to its owner; parents can also rehearse isolated test sets. */
+/** Editing may show the owner's answers; practice reveals them only after a recorded answer. */
+export function demoPracticeQuestionView(question: Question, answered: boolean): Question {
+  return { ...question, correctIndex: answered ? question.correctIndex : -1,
+    explanation: answered ? question.explanation : '', learningPoint: answered ? question.learningPoint : '', sourceIds: [], sourceNote: '' };
+}
+
+export function updateDemoQuestion(data: StudyData, profile: Profile, id: string, patch: Partial<Question>, now = new Date().toISOString()): StudyData {
+  const question = demoStudyDataForProfile(data, profile).questions.find(item => item.id === id);
+  if (!question) throw new Error('自分の問題を選んでください。');
+  const choices = (patch.choices ?? question.choices).map(choice => choice.trim());
+  const correctIndex = patch.correctIndex ?? question.correctIndex;
+  const prompt = (patch.prompt ?? question.prompt).trim();
+  const explanation = (patch.explanation ?? question.explanation).trim();
+  if (!prompt || prompt.length > 6000 || !explanation || explanation.length > 6000 || choices.length < 2 || choices.length > 6
+    || choices.some(choice => !choice || choice.length > 2000) || new Set(choices).size !== choices.length
+    || !Number.isInteger(correctIndex) || correctIndex < 0 || correctIndex >= choices.length
+    || (patch.learningPoint ?? question.learningPoint).length > 1000 || (patch.sourceNote ?? question.sourceNote).length > 3000) throw new Error('問題文・選択肢・正解・解説を確認してください。');
+  const status = patch.status === 'archived' ? 'archived' : question.testOnly ? 'published' : patch.status === 'approved' ? 'approved' : 'draft';
+  const needsReview = question.testOnly ? false : patch.needsReview ?? (status === 'draft' ? true : question.needsReview);
+  if (status === 'approved' && needsReview) throw new Error('原本・正解・解説を確認してから確認済みにしてください。');
+  const normalize = (value: string) => value.normalize('NFKC').replace(/\s+/g, '').toLowerCase();
+  if (data.questions.some(item => item.id !== id && item.topicId === question.topicId && normalize(item.prompt) === normalize(prompt))) throw new Error('同じ問題文がこの問題集に登録されています。');
+  // Only content is editable. IDs, owner, source links and audience cannot be rewritten through a patch.
+  return { ...data, questions: data.questions.map(item => item.id === id ? { ...item, prompt, choices, correctIndex, explanation,
+    learningPoint: patch.learningPoint ?? item.learningPoint, sourceNote: patch.sourceNote ?? item.sourceNote,
+    status, needsReview, publishedAt: status === 'published' ? now : undefined, version: item.version + 1 } : item) };
+}
+
+/** Saved private questions belong to their owner, regardless of the old role label. */
 export function demoPracticeQuestions(data: StudyData, profile: Profile, topicId?: string): Question[] {
-  data=normalizeDemoLibrary(data);
-  const topic=data.topics.find(item=>item.id===topicId);
-  if(topicId && (!topic || !mayPracticeLibraryTopic(data,profile,topic))) throw new Error('ご自身の問題集か、追加済みの公開問題集を選んでください。');
-  return data.questions.filter(question=>(!topicId || question.topicId===topicId) && isPracticeReadyQuestion(question)
-    && data.topics.some(topic=>topic.id===question.topicId && mayPracticeLibraryTopic(data,profile,topic))
-    && (profile.role==='parent' || !question.testOnly)).map(asPracticeQuestion);
+  data = normalizeDemoOwnership(data);
+  const own = demoStudyDataForProfile(data, profile);
+  const topic = own.topics.find(item => item.id === topicId);
+  if (topicId && (!topic || !mayPracticeLibraryTopic(data, profile, topic))) throw new Error('ご自身の問題集を選んでください。');
+  return own.questions.filter(question => (!topicId || question.topicId === topicId) && isPracticeReadyQuestion(question)
+    && own.topics.some(topic => topic.id === question.topicId && mayPracticeLibraryTopic(data, profile, topic))).map(asPracticeQuestion);
 }
 
 export function demoSessionAllowed(session: PracticeSession, questions: Question[], profile: Profile): boolean {
   const allowed = new Set(questions.map(question => question.id));
   if (session.userId !== profile.id || !session.questionIds.length || !session.questionIds.every(id => allowed.has(id))) return false;
-  if (profile.role === 'parent') {
-    const snapshots = (session as DemoPracticeSession).questionSnapshots;
-    return !!snapshots && snapshots.length === session.questionIds.length && snapshots.every(snapshot => {
-      const current = questions.find(question => question.id === snapshot.id);
-      return !!current && isPracticeReadyQuestion(current) && current.version === snapshot.version;
-    });
-  }
-  return true;
+  const snapshots = (session as DemoPracticeSession).questionSnapshots;
+  if (!snapshots) return !questions.some(question => session.questionIds.includes(question.id) && question.testOnly);
+  return snapshots.length === session.questionIds.length && new Set(snapshots.map(question => question.id)).size === session.questionIds.length && snapshots.every(snapshot => {
+    const current = questions.find(question => question.id === snapshot.id);
+    return session.questionIds.includes(snapshot.id) && !!current && isPracticeReadyQuestion(current) && current.version === snapshot.version;
+  });
 }
 
-export function publishDemoLibrary(data: StudyData, profile: Profile, topicId: string, now = new Date().toISOString(), createId = () => crypto.randomUUID()): { data: StudyData; topic: Topic } {
-  if (profile.role !== 'parent') throw new Error('管理者だけがライブラリへ公開できます。');
-  data=normalizeDemoLibrary(data);
-  const original = data.topics.find(topic => topic.id === topicId && !topic.libraryPublished);
-  const owner = data.profiles.find(item => item.id === original?.ownerId);
-  if(owner && owner.familyId!==profile.familyId) throw new Error('ご家族の問題集を選んでください。');
-  if (!original || !owner || (owner.role==='student' && (original.testOnly || original.publicationRequest?.revision!==original.currentSourceRevision))) throw new Error('学習者の問題集は本人の公開依頼後に公開できます。');
-  if(data.jobs.some(job=>job.topicId===topicId && ['queued','running'].includes(job.status))) throw new Error('作問が終わってから公開してください。');
-  const originals = data.questions.filter(question => question.topicId === original.id && question.status !== 'archived');
-  if (!originals.length) throw new Error('公開できる問題がまだありません。');
-  const revision = demoRevision(data,original);
-  const previous = data.topics.find(topic => topic.libraryPublished && topic.librarySourceTopicId === original.id && (topic as DemoTopic).demoLibraryRevision === revision);
-  if (previous) return { data, topic: previous };
-  const topic: DemoTopic = { id: createId(), title: original.title, subject: original.subject, questionTemplate:original.questionTemplate, description: original.description,
-    targetCount: originals.length, createdAt: now, libraryPublished: true, librarySourceTopicId: original.id, demoLibraryRevision: revision, libraryRevision: revision };
-  const questions: Question[] = originals.map(question => ({ id: createId(), topicId: topic.id, prompt: question.prompt,
-    choices: [...question.choices], correctIndex: question.correctIndex, explanation: question.explanation, learningPoint: question.learningPoint,
-    sourceIds: [], sourceNote: 'ライブラリに公開された問題です。', status: 'published', needsReview: question.needsReview, aiGenerated: question.aiGenerated, version: 1, createdAt: now, publishedAt: now }));
-  return { data: normalizeDemoLibrary({ ...data, topics: [...data.topics, topic], questions: [...data.questions, ...questions] }), topic };
-}
-
-export function requestDemoLibraryPublication(data: StudyData,profile: Profile,topicId: string,now=new Date().toISOString()) {
-  data=normalizeDemoLibrary(data);
-  const original=data.topics.find(topic=>topic.id===topicId && !topic.libraryPublished && !topic.testOnly && topic.ownerId===profile.id);
-  if(!original) throw new Error('自分の非公開の問題集から公開を依頼してください。');
-  if(data.jobs.some(job=>job.topicId===topicId && ['queued','running'].includes(job.status))) throw new Error('作問が終わってから公開を依頼してください。');
-  if(!data.questions.some(q=>q.topicId===topicId && q.status!=='archived')) throw new Error('問題が保存されてから公開を依頼してください。');
-  const request=original.publicationRequest?.revision===original.currentSourceRevision ? original.publicationRequest : {requestedBy:profile.id,requestedAt:now,revision:original.currentSourceRevision!,sequence:(original.publicationRequest?.sequence ?? 0)+1};
-  const topic={...original,publicationRequest:request};
-  return {data:{...data,topics:data.topics.map(item=>item.id===topicId ? topic : item)},topic,request};
-}
-
-export function addDemoLibraryPlan(data: StudyData, profile: Profile, topicId: string, now = new Date().toISOString(), createId = () => crypto.randomUUID()): { data: StudyData; plan: LearningPlan } {
-  const topic = data.topics.find(item => item.id === topicId && item.libraryPublished && !item.testOnly && !item.audienceUserId);
-  if (!topic) throw new Error('ライブラリの問題集が見つかりません。');
-  const previous = data.plans.find(plan => plan.ownerId === profile.id && plan.libraryTopicId === topic.id && !plan.testOnly);
-  if (previous) return { data, plan: previous };
-  const plan: LearningPlan = { id: createId(), ownerId: profile.id, title: topic.title, subject: topic.subject, questionTemplate:topic.questionTemplate,
-    goal: `${topic.title}を、1回10問ずつ練習する。`, difficulty: '解いてから調整する', dailyQuestionTarget: 10,
-    requestedQuestionCount: topic.targetCount, libraryTopicId: topic.id, sourceIds: [], version: 1, createdAt: now, updatedAt: now };
-  return { data: { ...data, plans: [...data.plans, plan] }, plan };
-}
-
-/** Demo delivery copies only practice content, never source files or the original private conversation. */
-export async function deliverDemoTopic(data: StudyData, profile: Profile, input: LibraryDeliveryInput,
-  now = new Date().toISOString()): Promise<LibraryDeliveryResult & { data: StudyData }> {
-  const actor = data.profiles.find(member => member.id === profile.id && member.familyId === profile.familyId && member.role === 'parent');
-  const learner = data.profiles.find(member => member.id === input.learnerId && member.familyId === profile.familyId && member.role === 'student');
-  if (profile.role !== 'parent' || !actor || !learner) throw new Error('管理者から、ご家族の学習者を選んで追加してください。');
-  if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(input.requestId)) throw new Error('追加の依頼番号を確認できませんでした。');
-  const projectName = input.projectName?.trim() ?? '';
-  if (input.projectName !== undefined && !projectName) throw new Error('プロジェクト名を入力してください。');
-  const tags = normalizePlanTags(projectName ? [projectName] : []);
-  const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(JSON.stringify([profile.id, input.topicId, learner.id, tags])));
-  const fingerprint = Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, '0')).join('');
-  const prefix = `demo-delivery-${input.requestId}-`;
-  const planId = `${prefix}${fingerprint}`;
-  const previous = data.plans.find(plan => plan.id.startsWith(prefix));
-  if (previous) {
-    if (previous.id !== planId || previous.ownerId !== learner.id) throw new Error('この依頼は別の追加に使われています。内容を確認してください。');
-    const topic = data.topics.find(item => item.planId === previous.id && item.ownerId === learner.id);
-    const deliveredCount = data.questions.filter(question => question.topicId === topic?.id).length;
-    if (!topic || !deliveredCount) throw new Error('追加の保存を確認できませんでした。');
-    return { data, plan: previous, topic, deliveredCount };
-  }
-  const original = data.topics.find(topic => topic.id === input.topicId);
-  const originalPlan = original?.planId ? data.plans.find(plan => plan.id === original.planId) : undefined;
-  if (!original || original.testOnly || originalPlan?.testOnly) throw new Error('テスト用ではない問題集を選んでください。');
-  if (!original.libraryPublished && !data.profiles.some(member => member.id === topicOwnerId(data, original) && member.familyId === profile.familyId)) {
-    throw new Error('ご家族の問題集を選んでください。');
-  }
-  if (data.jobs.some(job => job.topicId === original.id && ['queued', 'running'].includes(job.status))) throw new Error('作問が終わってから追加してください。');
-  const originals = data.questions.filter(question => question.topicId === original.id && question.status !== 'archived');
-  if (!originals.length || originals.length > 300 || originals.some(question => question.testOnly || data.plans.some(plan => plan.id === question.planId && plan.testOnly))) throw new Error('テスト用ではない保存済みの問題が1〜300問ある問題集を選んでください。');
-  const familyMembers = new Set(data.profiles.filter(member => member.familyId === profile.familyId).map(member => member.id));
-  if (originals.some(question => question.ownerId && !familyMembers.has(question.ownerId) || question.audienceUserId && !familyMembers.has(question.audienceUserId))) throw new Error('この問題集の配布範囲を確認できません。');
-  if (new Set(originals.map(question => question.id)).size !== originals.length || originals.some(question => !question.prompt.trim() || question.prompt.length > 6000
-    || question.choices.length < 2 || question.choices.length > 10 || question.choices.some(choice => !choice.trim() || choice.length > 2000)
-    || new Set(question.choices.map(choice => choice.trim())).size !== question.choices.length
-    || !Number.isInteger(question.correctIndex) || question.correctIndex < 0 || question.correctIndex >= question.choices.length
-    || !question.explanation.trim() || question.explanation.length > 6000 || question.learningPoint.length > 1000)) throw new Error('問題文・選択肢・正解・解説を確認してから追加してください。');
-  if (data.plans.filter(plan => plan.ownerId === learner.id).length >= 100) throw new Error('学習プランは1人100件までです。');
-  const title = original.title.slice(0, 150);
-  const plan: LearningPlan = { id: planId, ownerId: learner.id, title, subject: original.subject, questionTemplate:original.questionTemplate, tags,
-    goal: `「${title}」を1回10問ずつ練習し、間違えた内容を復習する。`, difficulty: '標準', dailyQuestionTarget: 10,
-    requestedQuestionCount: originals.length, sourceIds: [], version: 1, createdAt: now, updatedAt: now };
-  const topic: Topic = { id: `${planId}-topic`, ownerId: learner.id, audienceUserId: learner.id, planId, title,
-    subject: original.subject, questionTemplate:original.questionTemplate, description: '管理者から届けられた練習問題です。', targetCount: originals.length, createdAt: now };
-  const questions: Question[] = originals.map((question, index) => ({ id: `${planId}-question-${index + 1}`, topicId: topic.id,
-    ownerId: learner.id, audienceUserId: learner.id, planId, prompt: question.prompt, choices: [...question.choices],
-    correctIndex: question.correctIndex, explanation: question.explanation, learningPoint: question.learningPoint,
-    sourceIds: [], sourceNote: '管理者から届けられた練習問題です。', status: 'published', needsReview: question.needsReview,
-    aiGenerated: question.aiGenerated, version: 1, createdAt: now, publishedAt: now }));
-  return { data: { ...data, plans: [...data.plans, plan], topics: [...data.topics, topic], questions: [...data.questions, ...questions] },
-    plan, topic, deliveredCount: questions.length };
-}
+const PRIVATE_STUDY_ONLY = '公開・共有・配布は利用できません。自分の問題として練習してください。';
+export function publishDemoLibrary(_data: StudyData, _profile: Profile, _topicId: string, _now?: string, _createId?: () => string): never { throw new Error(PRIVATE_STUDY_ONLY); }
+export function requestDemoLibraryPublication(_data: StudyData, _profile: Profile, _topicId: string, _now?: string): never { throw new Error(PRIVATE_STUDY_ONLY); }
+export function addDemoLibraryPlan(_data: StudyData, _profile: Profile, _topicId: string, _now?: string, _createId?: () => string): never { throw new Error(PRIVATE_STUDY_ONLY); }
+export async function deliverDemoTopic(_data: StudyData, _profile: Profile, _input: LibraryDeliveryInput, _now?: string): Promise<LibraryDeliveryResult & { data: StudyData }> { throw new Error(PRIVATE_STUDY_ONLY); }
 
 function demoSamples(data: StudyData, plan: LearningPlan): PlanningSample[] {
-  const topicIds = new Set(data.topics.filter(topic => topic.subject === plan.subject && !topic.libraryPublished && !topic.testOnly).map(topic=>topic.id));
-  const source = plan.arrangementExamples?.length ? plan.arrangementExamples : data.questions.filter(question=>topicIds.has(question.topicId)&&question.status!=='archived');
+  const topicIds = new Set(data.topics.filter(topic => topic.subject === plan.subject && !topic.libraryPublished && !topic.testOnly && topicOwnerId(data, topic) === plan.ownerId).map(topic=>topic.id));
+  const source = plan.arrangementExamples?.length ? plan.arrangementExamples : data.questions.filter(question=>topicIds.has(question.topicId)&&question.status!=='archived'&&(!question.ownerId||question.ownerId===plan.ownerId)&&(!question.audienceUserId||question.audienceUserId===plan.ownerId));
   const fallback: PlanningSample[] = [
     {prompt:'この画面の試作3問は、何を確かめるためのもの？',choices:['出し方と難しさ','試験の合否','学校の成績','他の人の点数'],correctIndex:0,explanation:'少ない問題で出し方を確かめてから、まとめて作る数を選びます。',learningPoint:'試作を見てから分量を決める',sourceIds:[],sourceNote:'操作確認用の例題です。',needsReview:false},
-    {prompt:'サンプルの出し方を変えたいときは？',choices:['コメントで希望を伝える','最初に300問作る','元の教材を消す','公開し直す'],correctIndex:0,explanation:'調整するボタンから希望を送って、変更後の3問を確認します。デモでは用意済みの例題を表示します。',learningPoint:'少しずつ調整する',sourceIds:[],sourceNote:'操作確認用の例題です。',needsReview:false},
+    {prompt:'サンプルの出し方を変えたいときは？',choices:['コメントで希望を伝える','最初に300問作る','元の教材を消す','関係のない問題を増やす'],correctIndex:0,explanation:'調整するボタンから希望を送って、変更後の3問を確認します。デモでは用意済みの例題を表示します。',learningPoint:'少しずつ調整する',sourceIds:[],sourceNote:'操作確認用の例題です。',needsReview:false},
     {prompt:'7日分、1日10問でまとめて作る問題数は？',choices:['70問','17問','7問','100問'],correctIndex:0,explanation:'7日 × 10問で70問です。試作3問は、新しく作る総数には含みません。',learningPoint:'日数と1日の問数で計算する',sourceIds:[],sourceNote:'操作確認用の例題です。',needsReview:false},
   ];
   return Array.from({length:3},(_,index)=>{const item=source[index%Math.max(1,source.length)]??fallback[index];return {prompt:item.prompt,choices:[...item.choices],correctIndex:item.correctIndex,explanation:item.explanation,learningPoint:item.learningPoint,sourceIds:[],sourceNote:'操作確認用の例題です。AIへの送信や教材の読み取りはしていません。',needsReview:false};});
 }
 
 export function arrangeDemoTopic(data: StudyData, profile: Profile, topicId: string, now = new Date().toISOString(), createId = () => crypto.randomUUID()): {data:StudyData;plan:LearningPlan} {
-  data=normalizeDemoLibrary(data);
+  data=normalizeDemoOwnership(data);
   const topic=data.topics.find(item=>item.id===topicId);
-  if(!topic || profile.role!=='parent' && (!topic.libraryPublished && topicOwnerId(data,topic)!==profile.id || topic.testOnly)) throw new Error('利用できる問題集からアレンジしてください。');
-  const questions=data.questions.filter(question=>question.topicId===topic.id&&question.status!=='archived');
+  if(!topic || topic.libraryPublished || topicOwnerId(data,topic)!==profile.id || !mayPracticeLibraryTopic(data, profile, topic)) throw new Error('利用できる問題集からアレンジしてください。');
+  const questions=demoStudyDataForProfile(data, profile).questions.filter(question=>question.topicId===topic.id&&question.status!=='archived');
   if(!questions.length) throw new Error('問題が保存されてからアレンジできます。');
   const plan:LearningPlan={id:createId(),ownerId:profile.id,title:`${topic.title}のアレンジ`.slice(0,150),subject:topic.subject,questionTemplate:topic.questionTemplate,
     tags:ownPlanTagsForTopic(data,profile,topic),
@@ -204,7 +131,7 @@ export function arrangeDemoTopic(data: StudyData, profile: Profile, topicId: str
 /** Demonstrate the workflow with clearly labelled examples; no model or source analysis runs. */
 export function addDemoPlanningTurn(data: StudyData, profile: Profile, planId: string, message: string, now = new Date().toISOString(), createId = () => crypto.randomUUID()): StudyData {
   const plan = data.plans.find(item => item.id === planId && item.ownerId === profile.id);
-  if (!plan || (plan.testOnly && profile.role !== 'parent')) throw new Error('ご自身の相談を選んでください。');
+  if (!plan || (plan.testOnly && profile.accessLevel !== 'superuser')) throw new Error('ご自身の相談を選んでください。');
   if (!message.trim()) throw new Error('相談したいことを入力してください。');
   const id = createId();
   const updated = { ...plan, version: plan.version + 1, updatedAt: now };
@@ -220,7 +147,7 @@ export function generateDemoProposal(data: StudyData, profile: Profile, planId: 
   const plan = data.plans.find(item => item.id === planId && item.ownerId === profile.id);
   const turn = data.planningTurns.find(item => item.id === turnId && item.planId === planId && item.version === plan?.version && item.status === 'complete');
   const proposal = turn?.proposals?.find(item => item.id === proposalId);
-  if (!plan || !proposal || (plan.testOnly && profile.role !== 'parent')) throw new Error('最新のサンプル提案を選んでください。');
+  if (!plan || !proposal || (plan.testOnly && profile.accessLevel !== 'superuser')) throw new Error('最新のサンプル提案を選んでください。');
   if (!Number.isInteger(targetCount) || targetCount < 1 || targetCount > 300) throw new Error('問題数を確認してください。');
   if(!approval?.approveSamples || proposal.samples?.length!==3) throw new Error('最新の試作3問を確認してから、まとめて作成してください。');
   if(approval.plannedDays!==undefined && (!Number.isInteger(approval.plannedDays)||approval.plannedDays<1||!Number.isInteger(approval.dailyQuestionTarget)||approval.dailyQuestionTarget!<1||approval.plannedDays*approval.dailyQuestionTarget! !==targetCount)) throw new Error('日数と1日の問題数を確認してください。');
@@ -229,14 +156,14 @@ export function generateDemoProposal(data: StudyData, profile: Profile, planId: 
   if (previousTopic) return { data, topic: previousTopic };
   const originals = Array.from({length:targetCount},(_,index)=>proposal.samples![index%3]);
   const topic: Topic = { id: createId(), ownerId:profile.id, title: proposal.title, subject: plan.subject, questionTemplate:plan.questionTemplate, description: '操作確認用のサンプル。AIが作成した問題ではありません。',
-    targetCount: originals.length, createdAt: now, planId: plan.id, ...(plan.testOnly ? { testOnly: true } : {}), ...(profile.role === 'student' ? { audienceUserId: profile.id } : {}) };
+    targetCount: originals.length, createdAt: now, planId: plan.id, ...(plan.testOnly ? { testOnly: true } : {}), audienceUserId: profile.id };
   const published = true;
   const questions: Question[] = originals.map(original => ({ ...original, id: createId(), ownerId:profile.id, topicId: topic.id, planId: plan.id,
     sourceIds: [], sourceNote: '操作確認用に用意されたサンプルです。教材やコメントからAIが生成した問題ではありません。',
     version: 1, createdAt: now, status: published ? 'published' : 'draft', needsReview: !published, publishedAt: published ? now : undefined,
-    ...(plan.testOnly ? { testOnly: true } : {}), ...(profile.role === 'student' ? { audienceUserId: profile.id } : {}) }));
+    ...(plan.testOnly ? { testOnly: true } : {}), audienceUserId: profile.id }));
   const job: GenerationJob = { id: createId(), topicId: topic.id, planId: plan.id, questionTemplate:plan.questionTemplate, turnId, proposalId, requestedBy: profile.id,
     status: 'review', targetCount: questions.length, generatedCount: questions.length, createdAt: now, approvedSamples:proposal.samples,approvedSampleVersion:turn!.version,dailyQuestionTarget:approval.dailyQuestionTarget,plannedDays:approval.plannedDays,
-    ...(plan.testOnly ? { testOnly: true } : {}), ...(profile.role === 'student' ? { audienceUserId: profile.id } : {}) };
+    ...(plan.testOnly ? { testOnly: true } : {}), audienceUserId: profile.id };
   return { data: { ...data, plans:data.plans.map(item=>item.id===plan.id?{...item,version:item.version+1,updatedAt:now,requestedQuestionCount:targetCount,...(approval.dailyQuestionTarget?{dailyQuestionTarget:approval.dailyQuestionTarget}:{}),...(approval.plannedDays?{plannedDays:approval.plannedDays}:{})}:item), topics: [...data.topics, topic], questions: [...data.questions, ...questions], jobs: [...data.jobs, job] }, topic };
 }
