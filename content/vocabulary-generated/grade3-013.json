@@ -1964,6 +1964,191 @@
       }
     },
     {
+      "id": "vocab-bottom",
+      "word": "bottom",
+      "level": "3級",
+      "ipa": "ˈbɑːtəm",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "the lowest part or surface of something",
+      "meaning": "底、一番下の部分",
+      "usageTip": "the bottom of + 名詞 の形でよく使う。ページや階段など位置を示すときは at the bottom of、容器の中の底は in the bottom of も使える。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "台所",
+          "text": "There is a little sugar left at the bottom of the jar.",
+          "translation": "瓶の底に砂糖が少し残っている。"
+        },
+        {
+          "id": "example-2",
+          "context": "学校",
+          "text": "Please write your name at the bottom of the page.",
+          "translation": "ページの一番下に名前を書いてください。"
+        },
+        {
+          "id": "example-3",
+          "context": "階段",
+          "text": "I waited for my brother at the bottom of the stairs.",
+          "translation": "私は階段の下で弟を待った。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "bottom",
+          "choices": [
+            {
+              "text": "底、一番下の部分",
+              "meaning": "the lowest part"
+            },
+            {
+              "text": "端、縁",
+              "meaning": "edge"
+            },
+            {
+              "text": "真ん中",
+              "meaning": "middle"
+            },
+            {
+              "text": "表面の飾り",
+              "meaning": "surface decoration"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "bottom は物の一番下の部分を表す名詞です。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "底、一番下の部分",
+          "choices": [
+            {
+              "text": "corner",
+              "meaning": "角"
+            },
+            {
+              "text": "side",
+              "meaning": "側面"
+            },
+            {
+              "text": "top",
+              "meaning": "上部"
+            },
+            {
+              "text": "bottom",
+              "meaning": "底"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "一番下の部分を指す語は bottom です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 箱の一番下に鍵が落ちている。\nThe key is at the ___ of the box.",
+          "choices": [
+            {
+              "text": "price",
+              "meaning": "価格"
+            },
+            {
+              "text": "bottom",
+              "meaning": "底"
+            },
+            {
+              "text": "habit",
+              "meaning": "習慣"
+            },
+            {
+              "text": "result",
+              "meaning": "結果"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "箱の下の部分という意味になるのは bottom だけです。",
+          "alternatives": [
+            {
+              "answer": "base",
+              "explanation": "base は土台を強調し、箱の内側の底には少し不自然です。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "bottom を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I found the coin on bottom the bag.",
+              "meaning": "誤り:語順と冠詞の誤り。"
+            },
+            {
+              "text": "I found the coin at bottom of bag.",
+              "meaning": "誤り:冠詞 the が抜けている。"
+            },
+            {
+              "text": "I found the coin at the bottom of the bag.",
+              "meaning": "バッグの底でコインを見つけた。"
+            },
+            {
+              "text": "I found the coin to the bottom the bag.",
+              "meaning": "誤り:前置詞の誤りで of が抜けている。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "at the bottom of the bag が標準形です。the と of を省くと不自然になります。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 箱の一番下に鍵が落ちている。\nThe key is at the ___ of the box.",
+        "answers": [
+          "bottom"
+        ],
+        "explanation": "箱の下の部分という意味になるのは bottom だけです。",
+        "alternatives": [
+          {
+            "answer": "base",
+            "explanation": "base は土台を強調し、箱の内側の底には少し不自然です。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "bottomを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "There is a little sugar left at the bottom of the jar.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-bottom-usage",
+          "type": "usage",
+          "prompt": "bottom を正しく使った文を選んでください。",
+          "choices": [
+            "I found the coin on bottom the bag.",
+            "I found the coin at bottom of bag.",
+            "I found the coin at the bottom of the bag.",
+            "I found the coin to the bottom the bag."
+          ],
+          "correctIndex": 2,
+          "explanation": "at the bottom of the bag が標準形です。the と of を省くと不自然になります。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "daily-life"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-wealthy",
       "word": "wealthy",
       "level": "3級",
@@ -5232,6 +5417,217 @@
       }
     },
     {
+      "id": "vocab-download",
+      "word": "download",
+      "level": "3級",
+      "ipa": "ˈdaʊnˌloʊd",
+      "ipaLabel": "米音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "download"
+        ],
+        "past": [
+          "downloaded"
+        ],
+        "pastParticiple": [
+          "downloaded"
+        ],
+        "presentParticiple": [
+          "downloading"
+        ],
+        "thirdPersonSingular": [
+          "downloads"
+        ]
+      },
+      "definition": "to copy a file or program from the internet to your own device",
+      "meaning": "ダウンロードする",
+      "usageTip": "download + ファイル/アプリ、または download A from B の形で使う。保存先の機器には onto や to を使う。送る方向は upload。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "スマホ",
+          "text": "I need to download this app before the trip starts.",
+          "translation": "旅行が始まる前にこのアプリをダウンロードする必要がある。"
+        },
+        {
+          "id": "example-2",
+          "context": "学校",
+          "text": "Students can download the reading list from the school website.",
+          "translation": "生徒は学校のウェブサイトから読書リストをダウンロードできる。"
+        },
+        {
+          "id": "example-3",
+          "context": "旅行",
+          "text": "She downloaded a map onto her phone for offline use.",
+          "translation": "彼女はオフラインで使えるよう、地図をスマホにダウンロードした。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "download",
+          "choices": [
+            {
+              "text": "削除する",
+              "meaning": "消す"
+            },
+            {
+              "text": "印刷する",
+              "meaning": "紙に出す"
+            },
+            {
+              "text": "充電する",
+              "meaning": "電気をためる"
+            },
+            {
+              "text": "ダウンロードする",
+              "meaning": "ネットからデータを取り込む"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "download はネット上のファイルを自分の機器へ取り込むことです。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "ダウンロードする",
+          "choices": [
+            {
+              "text": "download",
+              "meaning": "ダウンロードする"
+            },
+            {
+              "text": "delete",
+              "meaning": "削除する"
+            },
+            {
+              "text": "install",
+              "meaning": "インストールする"
+            },
+            {
+              "text": "upload",
+              "meaning": "アップロードする"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "取り込む方向は download、送る方向は upload です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "旅行前の場面: 飛行機の中で見るため、映画をタブレットに入れておく。\nBefore the flight, I'll ___ some movies to my tablet.",
+          "choices": [
+            {
+              "text": "swim",
+              "meaning": "泳ぐ"
+            },
+            {
+              "text": "download",
+              "meaning": "ダウンロードする"
+            },
+            {
+              "text": "borrow",
+              "meaning": "借りる"
+            },
+            {
+              "text": "whisper",
+              "meaning": "ささやく"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "映画をタブレットに取り込むので download が合います。",
+          "alternatives": [
+            {
+              "answer": "save",
+              "explanation": "保存する意味で、ネットから取り込む動作は含みません。"
+            },
+            {
+              "answer": "copy",
+              "explanation": "複製する意味で、ネットからとは限りません。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "download を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I downloaded the file to the website.",
+              "meaning": "誤り:取り込み元の前置詞が違い、送る方向になる。"
+            },
+            {
+              "text": "I downloaded at the file from website.",
+              "meaning": "誤り:不要な at があり the も抜けている。"
+            },
+            {
+              "text": "I downloading the file from the website.",
+              "meaning": "誤り:動詞の形が違う。"
+            },
+            {
+              "text": "I downloaded the file from the website.",
+              "meaning": "私はウェブサイトからそのファイルをダウンロードした。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "取り込み元は from で示します。to the website だと送る方向になってしまいます。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "旅行前の場面: 飛行機の中で見るため、映画をタブレットに入れておく。\nBefore the flight, I'll ___ some movies to my tablet.",
+        "answers": [
+          "download"
+        ],
+        "explanation": "映画をタブレットに取り込むので download が合います。",
+        "alternatives": [
+          {
+            "answer": "save",
+            "explanation": "保存する意味で、ネットから取り込む動作は含みません。"
+          },
+          {
+            "answer": "copy",
+            "explanation": "複製する意味で、ネットからとは限りません。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "downloadを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I need to download this app before the trip starts.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-download-usage",
+          "type": "usage",
+          "prompt": "download を正しく使った文を選んでください。",
+          "choices": [
+            "I downloaded the file to the website.",
+            "I downloaded at the file from website.",
+            "I downloading the file from the website.",
+            "I downloaded the file from the website."
+          ],
+          "correctIndex": 3,
+          "explanation": "取り込み元は from で示します。to the website だと送る方向になってしまいます。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "technology",
+          "media"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-upload",
       "word": "upload",
       "level": "3級",
@@ -5437,6 +5833,200 @@
         "domains": [
           "technology",
           "media"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-privacy",
+      "word": "privacy",
+      "level": "3級",
+      "ipa": "ˈpraɪvəsi",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "the state of being free from being watched or disturbed, and of keeping personal matters secret",
+      "meaning": "プライバシー、私生活",
+      "usageTip": "不可算名詞なので a privacy とは言わない。protect / respect / invade someone's privacy の形でよく使う。in private（人目のない所で）は別の定型表現。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "家庭",
+          "text": "Teenagers often want more privacy in their own rooms.",
+          "translation": "十代の若者は自分の部屋でもっとプライバシーを求めることが多い。"
+        },
+        {
+          "id": "example-2",
+          "context": "技術",
+          "text": "The app explains how it protects your privacy online.",
+          "translation": "そのアプリはオンラインでどうプライバシーを守るかを説明している。"
+        },
+        {
+          "id": "example-3",
+          "context": "職場",
+          "text": "Employees expect their medical records to be kept confidential out of respect for their privacy.",
+          "translation": "従業員は、プライバシーへの配慮から医療記録が秘密に保たれることを期待する。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "privacy",
+          "choices": [
+            {
+              "text": "競争",
+              "meaning": "相手と争うこと"
+            },
+            {
+              "text": "約束",
+              "meaning": "取り決め"
+            },
+            {
+              "text": "プライバシー",
+              "meaning": "他人に干渉されない私生活"
+            },
+            {
+              "text": "天気",
+              "meaning": "気象状態"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "privacy は他人に見られたり干渉されたりしない私生活のことです。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "プライバシー、私生活",
+          "choices": [
+            {
+              "text": "privacy",
+              "meaning": "プライバシー"
+            },
+            {
+              "text": "dialect",
+              "meaning": "方言"
+            },
+            {
+              "text": "fashion",
+              "meaning": "流行"
+            },
+            {
+              "text": "weather",
+              "meaning": "天気"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "個人の私的な領域を指す語は privacy です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面：ホテルの客室に入る前の注意書き。\nPlease knock first so that guests' ___ is respected.",
+          "choices": [
+            {
+              "text": "dialect",
+              "meaning": "方言"
+            },
+            {
+              "text": "fashion",
+              "meaning": "流行"
+            },
+            {
+              "text": "weather",
+              "meaning": "天気"
+            },
+            {
+              "text": "privacy",
+              "meaning": "プライバシー"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "ノックは客の私生活を尊重するためなので privacy が合います。",
+          "alternatives": [
+            {
+              "answer": "comfort",
+              "explanation": "快適さを重視する言い方で、私的空間の尊重とは少し違います。"
+            },
+            {
+              "answer": "space",
+              "explanation": "個人の空間という意味で近いが、権利としての響きは弱いです。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "privacy を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I need a privacy to change clothes.",
+              "meaning": "誤り:不可算名詞に a を付けている。"
+            },
+            {
+              "text": "She invaded to my privacy.",
+              "meaning": "誤り:invade は他動詞で to は不要。"
+            },
+            {
+              "text": "He lives in a privacy house.",
+              "meaning": "誤り:名詞を形容詞のように使っている。"
+            },
+            {
+              "text": "The law helps protect people's privacy.",
+              "meaning": "法律は人々のプライバシーを守る助けになる。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "privacy は不可算名詞で protect の目的語になります。他は冠詞、前置詞、品詞の誤りです。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面：ホテルの客室に入る前の注意書き。\nPlease knock first so that guests' ___ is respected.",
+        "answers": [
+          "privacy"
+        ],
+        "explanation": "ノックは客の私生活を尊重するためなので privacy が合います。",
+        "alternatives": [
+          {
+            "answer": "comfort",
+            "explanation": "快適さを重視する言い方で、私的空間の尊重とは少し違います。"
+          },
+          {
+            "answer": "space",
+            "explanation": "個人の空間という意味で近いが、権利としての響きは弱いです。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "privacyを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Teenagers often want more privacy in their own rooms.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-privacy-usage",
+          "type": "usage",
+          "prompt": "privacy を正しく使った文を選んでください。",
+          "choices": [
+            "I need a privacy to change clothes.",
+            "She invaded to my privacy.",
+            "He lives in a privacy house.",
+            "The law helps protect people's privacy."
+          ],
+          "correctIndex": 3,
+          "explanation": "privacy は不可算名詞で protect の目的語になります。他は冠詞、前置詞、品詞の誤りです。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "law",
+          "technology"
         ],
         "gradeEstimate": "3級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -5825,6 +6415,217 @@
         "domains": [
           "communication",
           "society"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-translate",
+      "word": "translate",
+      "level": "3級",
+      "ipa": "trænzˈleɪt",
+      "ipaLabel": "英音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "translate"
+        ],
+        "past": [
+          "translated"
+        ],
+        "pastParticiple": [
+          "translated"
+        ],
+        "presentParticiple": [
+          "translating"
+        ],
+        "thirdPersonSingular": [
+          "translates"
+        ]
+      },
+      "definition": "to change words from one language into another while keeping the meaning",
+      "meaning": "翻訳する",
+      "usageTip": "translate A into B（AをBに翻訳する）の形が基本。translate from A into B とも言う。主に書かれた文に使い、口頭の通訳は interpret。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "学習",
+          "text": "Can you translate this email into Japanese for me?",
+          "translation": "このメールを日本語に翻訳してくれますか。"
+        },
+        {
+          "id": "example-2",
+          "context": "仕事",
+          "text": "She translates technical manuals for a software company.",
+          "translation": "彼女はソフトウェア会社の技術マニュアルを翻訳している。"
+        },
+        {
+          "id": "example-3",
+          "context": "読書",
+          "text": "The novel was translated from French into twelve languages.",
+          "translation": "その小説はフランス語から12の言語に翻訳された。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "translate",
+          "choices": [
+            {
+              "text": "防ぐ",
+              "meaning": "起こらないようにする"
+            },
+            {
+              "text": "育てる",
+              "meaning": "成長させる"
+            },
+            {
+              "text": "届ける",
+              "meaning": "運ぶ"
+            },
+            {
+              "text": "翻訳する",
+              "meaning": "別の言語に直す"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "translate は文を別の言語に直すことです。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "翻訳する",
+          "choices": [
+            {
+              "text": "protect",
+              "meaning": "守る"
+            },
+            {
+              "text": "translate",
+              "meaning": "翻訳する"
+            },
+            {
+              "text": "borrow",
+              "meaning": "借りる"
+            },
+            {
+              "text": "repair",
+              "meaning": "修理する"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "言語を別の言語に直す動詞は translate です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面：英語の手紙を日本語にしてほしい。\nCould you ___ this letter into Japanese?",
+          "choices": [
+            {
+              "text": "translate",
+              "meaning": "翻訳する"
+            },
+            {
+              "text": "borrow",
+              "meaning": "借りる"
+            },
+            {
+              "text": "repair",
+              "meaning": "修理する"
+            },
+            {
+              "text": "cancel",
+              "meaning": "取り消す"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "into Japanese が続くので、翻訳を表す translate が合います。",
+          "alternatives": [
+            {
+              "answer": "put",
+              "explanation": "put into Japanese で言い換えられるが、ややくだけた表現です。"
+            },
+            {
+              "answer": "render",
+              "explanation": "文語的で硬く、日常会話ではあまり使いません。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "translate を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "She translated me the document.",
+              "meaning": "誤り:translate は二重目的語の文型を取らない。"
+            },
+            {
+              "text": "I translated at English yesterday.",
+              "meaning": "誤り:不要な前置詞 at がある。"
+            },
+            {
+              "text": "He translated the report into Spanish.",
+              "meaning": "彼は報告書をスペイン語に翻訳した。"
+            },
+            {
+              "text": "They translated about the report Spanish.",
+              "meaning": "誤り:不要な about があり、into が抜けている。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "translate A into B が標準形で、目的語を直接取ります。他は文型や前置詞の誤りです。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面：英語の手紙を日本語にしてほしい。\nCould you ___ this letter into Japanese?",
+        "answers": [
+          "translate"
+        ],
+        "explanation": "into Japanese が続くので、翻訳を表す translate が合います。",
+        "alternatives": [
+          {
+            "answer": "put",
+            "explanation": "put into Japanese で言い換えられるが、ややくだけた表現です。"
+          },
+          {
+            "answer": "render",
+            "explanation": "文語的で硬く、日常会話ではあまり使いません。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "translateを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Can you translate this email into Japanese for me?",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-translate-usage",
+          "type": "usage",
+          "prompt": "translate を正しく使った文を選んでください。",
+          "choices": [
+            "She translated me the document.",
+            "I translated at English yesterday.",
+            "He translated the report into Spanish.",
+            "They translated about the report Spanish."
+          ],
+          "correctIndex": 2,
+          "explanation": "translate A into B が標準形で、目的語を直接取ります。他は文型や前置詞の誤りです。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "communication",
+          "education"
         ],
         "gradeEstimate": "3級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -7216,6 +8017,200 @@
         "domains": [
           "arts-culture",
           "media"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-grain",
+      "word": "grain",
+      "level": "3級",
+      "ipa": "ɡreɪn",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "The seeds of cereal crops such as wheat, rice or corn, or a single small seed or particle of such a crop.",
+      "meaning": "穀物、穀粒",
+      "usageTip": "穀物全般を指すときは不可算で grain。一粒は a grain of rice のように言う。種類を数えるときは grains とも言える。ここでは穀物の意味を扱う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "農業",
+          "text": "Farmers in this region grow grain such as wheat and barley.",
+          "translation": "この地域の農家は小麦や大麦などの穀物を育てている。"
+        },
+        {
+          "id": "example-2",
+          "context": "食生活",
+          "text": "Whole grain bread is a common choice for breakfast.",
+          "translation": "全粒穀物のパンは朝食によく選ばれる。"
+        },
+        {
+          "id": "example-3",
+          "context": "貯蔵",
+          "text": "The village stores grain in a large building for the winter.",
+          "translation": "その村は冬に備えて大きな建物に穀物を貯蔵している。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "grain",
+          "choices": [
+            {
+              "text": "果物",
+              "meaning": "木や植物になる甘い食べ物"
+            },
+            {
+              "text": "穀物",
+              "meaning": "小麦や米などの作物"
+            },
+            {
+              "text": "肉",
+              "meaning": "動物の食用部分"
+            },
+            {
+              "text": "調味料",
+              "meaning": "味付けに使うもの"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "grain は小麦や米などの穀物、またはその粒を指す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "穀物、穀粒",
+          "choices": [
+            {
+              "text": "flour",
+              "meaning": "小麦粉"
+            },
+            {
+              "text": "soup",
+              "meaning": "スープ"
+            },
+            {
+              "text": "fruit",
+              "meaning": "果物"
+            },
+            {
+              "text": "grain",
+              "meaning": "穀物"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "穀物そのものは grain。flour は穀物を挽いた粉である。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 農家が小麦や米を収穫して倉庫に入れる。\nThe farmers stored the ___ in a dry building after the harvest.",
+          "choices": [
+            {
+              "text": "furniture",
+              "meaning": "家具"
+            },
+            {
+              "text": "traffic",
+              "meaning": "交通量"
+            },
+            {
+              "text": "grain",
+              "meaning": "穀物"
+            },
+            {
+              "text": "weather",
+              "meaning": "天気"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "収穫後に乾いた建物へ貯蔵するのは穀物が自然。",
+          "alternatives": [
+            {
+              "answer": "crops",
+              "explanation": "crops は作物全般を指し、穀物に限らない。"
+            },
+            {
+              "answer": "wheat",
+              "explanation": "小麦に限定した言い方になる。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "穀物の意味で grain を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "We bought three grain at the market.",
+              "meaning": "市場で穀物を3つ買った。(数え方の誤り)"
+            },
+            {
+              "text": "The grain are growing very quickly now.",
+              "meaning": "穀物が今とても早く育っている。(動詞の一致の誤り)"
+            },
+            {
+              "text": "Many grain is grown in this area.",
+              "meaning": "この地域では多くの穀物が育てられている。(文法の誤り)"
+            },
+            {
+              "text": "The farmers sold all their grain last week.",
+              "meaning": "農家は先週穀物をすべて売った。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "穀物全般を表す grain は不可算名詞として使う。three grain は単位が不明で、grain の複数扱いも不自然。the grain are や many grain is は数と動詞の一致が合わない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 農家が小麦や米を収穫して倉庫に入れる。\nThe farmers stored the ___ in a dry building after the harvest.",
+        "answers": [
+          "grain"
+        ],
+        "explanation": "収穫後に乾いた建物へ貯蔵するのは穀物が自然。",
+        "alternatives": [
+          {
+            "answer": "crops",
+            "explanation": "crops は作物全般を指し、穀物に限らない。"
+          },
+          {
+            "answer": "wheat",
+            "explanation": "小麦に限定した言い方になる。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "grainを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Farmers in this region grow grain such as wheat and barley.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-grain-usage",
+          "type": "usage",
+          "prompt": "穀物の意味で grain を正しく使った文を選びなさい。",
+          "choices": [
+            "We bought three grain at the market.",
+            "The grain are growing very quickly now.",
+            "Many grain is grown in this area.",
+            "The farmers sold all their grain last week."
+          ],
+          "correctIndex": 3,
+          "explanation": "穀物全般を表す grain は不可算名詞として使う。three grain は単位が不明で、grain の複数扱いも不自然。the grain are や many grain is は数と動詞の一致が合わない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "food",
+          "environment"
         ],
         "gradeEstimate": "3級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -8934,6 +9929,192 @@
       }
     },
     {
+      "id": "vocab-ambulance",
+      "word": "ambulance",
+      "level": "3級",
+      "ipa": "ˈæmbjʊləns",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "A vehicle that carries sick or injured people to hospital quickly.",
+      "meaning": "救急車",
+      "usageTip": "call an ambulance（救急車を呼ぶ）、in an ambulance（救急車で）、by ambulance（救急車で）が基本。可算名詞なので冠詞が必要。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "事故",
+          "text": "Someone called an ambulance as soon as the cyclist fell.",
+          "translation": "自転車の人が転ぶとすぐに、誰かが救急車を呼びました。"
+        },
+        {
+          "id": "example-2",
+          "context": "街中",
+          "text": "The ambulance could not move because the road was full of cars.",
+          "translation": "道路が車でいっぱいで、救急車は進めませんでした。"
+        },
+        {
+          "id": "example-3",
+          "context": "病院",
+          "text": "He was taken to hospital in an ambulance after the fall.",
+          "translation": "彼は転倒の後、救急車で病院に運ばれました。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "ambulance",
+          "choices": [
+            {
+              "text": "消防車",
+              "meaning": "火を消す車"
+            },
+            {
+              "text": "パトカー",
+              "meaning": "警察の車"
+            },
+            {
+              "text": "救急車",
+              "meaning": "病人やけが人を運ぶ車"
+            },
+            {
+              "text": "霊柩車",
+              "meaning": "遺体を運ぶ車"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "ambulance は病人やけが人を病院へ運ぶ救急車。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "救急車",
+          "choices": [
+            {
+              "text": "nutrition",
+              "meaning": "栄養"
+            },
+            {
+              "text": "ambulance",
+              "meaning": "救急車"
+            },
+            {
+              "text": "stock",
+              "meaning": "株式、在庫"
+            },
+            {
+              "text": "surgery",
+              "meaning": "手術"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "救急車は ambulance。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: おじいさんが道で倒れたので、すぐに呼んだ。\nWe quickly called an ___ when the old man collapsed.",
+          "choices": [
+            {
+              "text": "mortgage",
+              "meaning": "住宅ローン"
+            },
+            {
+              "text": "nutrition",
+              "meaning": "栄養"
+            },
+            {
+              "text": "ambulance",
+              "meaning": "救急車"
+            },
+            {
+              "text": "stock",
+              "meaning": "株式、在庫"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "人が倒れたときに呼ぶものとして自然なのは救急車。an に続く形にも合う。",
+          "alternatives": [
+            {
+              "answer": "ambulance crew",
+              "explanation": "救急隊員を指す言い方で、an に続く形にも合うが、車そのものではなく人に焦点がある。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "救急車で病院に運ばれた、という意味で正しい文を選びなさい。",
+          "choices": [
+            {
+              "text": "He was taken to hospital in an ambulance.",
+              "meaning": "彼は救急車で病院に運ばれた。"
+            },
+            {
+              "text": "He was taken to hospital with ambulance.",
+              "meaning": "彼は救急車で病院に運ばれた。(前置詞・冠詞の誤り)"
+            },
+            {
+              "text": "He was taken to hospital at an ambulance.",
+              "meaning": "彼は救急車で病院に運ばれた。(前置詞の誤り)"
+            },
+            {
+              "text": "He was taken to hospital on ambulance.",
+              "meaning": "彼は救急車で病院に運ばれた。(前置詞・冠詞の誤り)"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "乗り物の中で運ばれる意味では in an ambulance と言う。ほかは前置詞や冠詞が不自然で、by ambulance なら冠詞なしになる。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: おじいさんが道で倒れたので、すぐに呼んだ。\nWe quickly called an ___ when the old man collapsed.",
+        "answers": [
+          "ambulance"
+        ],
+        "explanation": "人が倒れたときに呼ぶものとして自然なのは救急車。an に続く形にも合う。",
+        "alternatives": [
+          {
+            "answer": "ambulance crew",
+            "explanation": "救急隊員を指す言い方で、an に続く形にも合うが、車そのものではなく人に焦点がある。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "ambulanceを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Someone called an ambulance as soon as the cyclist fell.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-ambulance-usage",
+          "type": "usage",
+          "prompt": "救急車で病院に運ばれた、という意味で正しい文を選びなさい。",
+          "choices": [
+            "He was taken to hospital in an ambulance.",
+            "He was taken to hospital with ambulance.",
+            "He was taken to hospital at an ambulance.",
+            "He was taken to hospital on ambulance."
+          ],
+          "correctIndex": 0,
+          "explanation": "乗り物の中で運ばれる意味では in an ambulance と言う。ほかは前置詞や冠詞が不自然で、by ambulance なら冠詞なしになる。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "medical",
+          "transport"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-mortgage",
       "word": "mortgage",
       "level": "3級",
@@ -9510,6 +10691,217 @@
           ],
           "correctIndex": 0,
           "explanation": "consumer prices は「消費者物価」という自然な表現。他の文は品詞や意味が合っていない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "economics",
+          "business"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-export",
+      "word": "export",
+      "level": "3級",
+      "ipa": "ɪkˈspɔːrt",
+      "ipaLabel": "米音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "export"
+        ],
+        "past": [
+          "exported"
+        ],
+        "pastParticiple": [
+          "exported"
+        ],
+        "presentParticiple": [
+          "exporting"
+        ],
+        "thirdPersonSingular": [
+          "exports"
+        ]
+      },
+      "definition": "To send goods to another country to be sold.",
+      "meaning": "輸出する",
+      "usageTip": "export A to B の形で使う。動詞は第2音節に強勢、名詞の export は第1音節に強勢が置かれる。反対語は import。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "ビジネス",
+          "text": "The company exports fresh fruit to several countries in Asia.",
+          "translation": "その会社はアジアのいくつかの国に新鮮な果物を輸出している。"
+        },
+        {
+          "id": "example-2",
+          "context": "ニュース",
+          "text": "Japan exports many cars and machine parts around the world.",
+          "translation": "日本は多くの自動車や機械部品を世界中に輸出している。"
+        },
+        {
+          "id": "example-3",
+          "context": "地域産業",
+          "text": "Our town hopes to export its handmade tea to Europe.",
+          "translation": "私たちの町は手作りのお茶をヨーロッパに輸出したいと考えている。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "export",
+          "choices": [
+            {
+              "text": "輸入する",
+              "meaning": "外国から商品を買い入れる"
+            },
+            {
+              "text": "輸出する",
+              "meaning": "商品を外国へ送って売る"
+            },
+            {
+              "text": "修理する",
+              "meaning": "壊れた物を直す"
+            },
+            {
+              "text": "展示する",
+              "meaning": "物を見せるために並べる"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "export は商品を外国へ送って売ること。輸入は import である。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "輸出する",
+          "choices": [
+            {
+              "text": "import",
+              "meaning": "輸入する"
+            },
+            {
+              "text": "repair",
+              "meaning": "修理する"
+            },
+            {
+              "text": "borrow",
+              "meaning": "借りる"
+            },
+            {
+              "text": "export",
+              "meaning": "輸出する"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "外国へ商品を送り出して売ることは export という。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 国内で作った製品を外国へ売る計画。\nThe factory plans to ___ electric bikes to Canada next year.",
+          "choices": [
+            {
+              "text": "import",
+              "meaning": "輸入する"
+            },
+            {
+              "text": "delete",
+              "meaning": "削除する"
+            },
+            {
+              "text": "export",
+              "meaning": "輸出する"
+            },
+            {
+              "text": "borrow",
+              "meaning": "借りる"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "工場がカナダへ売るので export が合う。import だと逆方向になる。",
+          "alternatives": [
+            {
+              "answer": "sell",
+              "explanation": "売ることを広く表すが、海外向けという点は明示しない。"
+            },
+            {
+              "answer": "ship",
+              "explanation": "船などで送る行為に焦点があり、売買の意味は弱い。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "「その農場はタイに米を輸出している」という意味で export を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "The farm exports rice for Thailand.",
+              "meaning": "その農場はタイのために米を輸出する。(前置詞の誤り)"
+            },
+            {
+              "text": "The farm exports rice at Thailand.",
+              "meaning": "その農場はタイで米を輸出する。(前置詞の誤り)"
+            },
+            {
+              "text": "The farm exports rice in Thailand.",
+              "meaning": "その農場はタイの中で米を輸出する。(前置詞の誤り)"
+            },
+            {
+              "text": "The farm exports rice to Thailand.",
+              "meaning": "その農場はタイに米を輸出している。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "輸出先を示すときは export A to B の形で to を使う。for、at、in では送り先の意味にならない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 国内で作った製品を外国へ売る計画。\nThe factory plans to ___ electric bikes to Canada next year.",
+        "answers": [
+          "export"
+        ],
+        "explanation": "工場がカナダへ売るので export が合う。import だと逆方向になる。",
+        "alternatives": [
+          {
+            "answer": "sell",
+            "explanation": "売ることを広く表すが、海外向けという点は明示しない。"
+          },
+          {
+            "answer": "ship",
+            "explanation": "船などで送る行為に焦点があり、売買の意味は弱い。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "exportを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The company exports fresh fruit to several countries in Asia.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-export-usage",
+          "type": "usage",
+          "prompt": "「その農場はタイに米を輸出している」という意味で export を正しく使った文を選びなさい。",
+          "choices": [
+            "The farm exports rice for Thailand.",
+            "The farm exports rice at Thailand.",
+            "The farm exports rice in Thailand.",
+            "The farm exports rice to Thailand."
+          ],
+          "correctIndex": 3,
+          "explanation": "輸出先を示すときは export A to B の形で to を使う。for、at、in では送り先の意味にならない。"
         }
       ],
       "metadata": {
@@ -11303,6 +12695,199 @@
       }
     },
     {
+      "id": "vocab-bitter",
+      "word": "bitter",
+      "level": "3級",
+      "ipa": "ˈbɪt̬ɚ",
+      "ipaLabel": "米音",
+      "partOfSpeech": "形容詞",
+      "definition": "Having a sharp, unpleasant taste that is not sweet.",
+      "meaning": "苦い",
+      "usageTip": "コーヒー、薬、お茶などの味に使う。taste bitter のように taste の後は形容詞を置く。比喩的に「つらい」の意味もあるが、ここでは味の意味を扱う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "食事",
+          "text": "This coffee is too bitter for me without sugar.",
+          "translation": "このコーヒーは砂糖なしだと私には苦すぎる。"
+        },
+        {
+          "id": "example-2",
+          "context": "健康",
+          "text": "The medicine tasted bitter, so the child refused it.",
+          "translation": "その薬は苦かったので、子どもは飲むのを嫌がった。"
+        },
+        {
+          "id": "example-3",
+          "context": "料理",
+          "text": "Some green vegetables have a slightly bitter flavor.",
+          "translation": "緑の野菜には少し苦い風味のものがある。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "bitter",
+          "choices": [
+            {
+              "text": "甘い",
+              "meaning": "砂糖のような味"
+            },
+            {
+              "text": "塩辛い",
+              "meaning": "塩の味が強い"
+            },
+            {
+              "text": "苦い",
+              "meaning": "不快な鋭い味"
+            },
+            {
+              "text": "熱い",
+              "meaning": "温度が高い"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "bitter は味が苦いことを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "苦い",
+          "choices": [
+            {
+              "text": "sweet",
+              "meaning": "甘い"
+            },
+            {
+              "text": "fresh",
+              "meaning": "新鮮な"
+            },
+            {
+              "text": "bitter",
+              "meaning": "苦い"
+            },
+            {
+              "text": "soft",
+              "meaning": "柔らかい"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "味が苦いは bitter。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: お茶が苦すぎたので、蜂蜜を足した。\nThe tea was so ___ that I added honey.",
+          "choices": [
+            {
+              "text": "sweet",
+              "meaning": "甘い"
+            },
+            {
+              "text": "cheap",
+              "meaning": "安い"
+            },
+            {
+              "text": "bitter",
+              "meaning": "苦い"
+            },
+            {
+              "text": "round",
+              "meaning": "丸い"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "蜂蜜を足した理由として自然なのは、お茶が苦かったこと。",
+          "alternatives": [
+            {
+              "answer": "strong",
+              "explanation": "濃くて味が強いという意味で、苦さまでは示さない。"
+            },
+            {
+              "answer": "harsh",
+              "explanation": "きつい味を表せるが、bitter ほど一般的ではない。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "bitter を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "The coffee tastes bitterly.",
+              "meaning": "そのコーヒーは苦く味がする。(副詞の誤り)"
+            },
+            {
+              "text": "The coffee tastes bitter.",
+              "meaning": "そのコーヒーは苦い味がする。"
+            },
+            {
+              "text": "The coffee tastes of bitterly.",
+              "meaning": "そのコーヒーは苦くの味がする。(語形の誤り)"
+            },
+            {
+              "text": "The coffee is tasting bitterness.",
+              "meaning": "そのコーヒーは苦味を味わっている。(語形・動詞の誤り)"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "taste の後には状態を表す形容詞 bitter を置く。副詞 bitterly や名詞 bitterness は合わない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: お茶が苦すぎたので、蜂蜜を足した。\nThe tea was so ___ that I added honey.",
+        "answers": [
+          "bitter"
+        ],
+        "explanation": "蜂蜜を足した理由として自然なのは、お茶が苦かったこと。",
+        "alternatives": [
+          {
+            "answer": "strong",
+            "explanation": "濃くて味が強いという意味で、苦さまでは示さない。"
+          },
+          {
+            "answer": "harsh",
+            "explanation": "きつい味を表せるが、bitter ほど一般的ではない。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "bitterを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "This coffee is too bitter for me without sugar.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-bitter-usage",
+          "type": "usage",
+          "prompt": "bitter を正しく使った文を選びなさい。",
+          "choices": [
+            "The coffee tastes bitterly.",
+            "The coffee tastes bitter.",
+            "The coffee tastes of bitterly.",
+            "The coffee is tasting bitterness."
+          ],
+          "correctIndex": 1,
+          "explanation": "taste の後には状態を表す形容詞 bitter を置く。副詞 bitterly や名詞 bitterness は合わない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "food"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-slice",
       "word": "slice",
       "level": "3級",
@@ -12292,6 +13877,394 @@
         "domains": [
           "politics",
           "media"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-debris",
+      "word": "debris",
+      "level": "3級",
+      "ipa": "/dəˈbriː/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "scattered broken pieces or rubbish left after something has been destroyed",
+      "meaning": "瓦礫、破片のごみ",
+      "usageTip": "不可算名詞なので a debris や debrises は不可。a lot of debris や piles of debris の形で使う。災害・事故・宇宙ごみなどに用いる。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "災害後",
+          "text": "Workers removed the debris from the road after the storm.",
+          "translation": "作業員は嵐の後、道路から瓦礫を取り除いた。"
+        },
+        {
+          "id": "example-2",
+          "context": "宇宙",
+          "text": "Scientists track small pieces of space debris around the Earth.",
+          "translation": "科学者たちは地球の周りの小さな宇宙ごみを追跡している。"
+        },
+        {
+          "id": "example-3",
+          "context": "事故",
+          "text": "Broken glass and other debris covered the street after the accident.",
+          "translation": "事故の後、割れたガラスなどの破片が通りを覆っていた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "debris",
+          "choices": [
+            {
+              "text": "瓦礫、破片のごみ",
+              "meaning": "debris の意味"
+            },
+            {
+              "text": "世論調査",
+              "meaning": "poll の意味"
+            },
+            {
+              "text": "岸",
+              "meaning": "shore の意味"
+            },
+            {
+              "text": "避難所",
+              "meaning": "shelter の意味"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "debris は壊れた後に散らばった破片や残骸を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "瓦礫、破片のごみ",
+          "choices": [
+            {
+              "text": "cliff",
+              "meaning": "崖"
+            },
+            {
+              "text": "debris",
+              "meaning": "瓦礫、破片のごみ"
+            },
+            {
+              "text": "poll",
+              "meaning": "世論調査"
+            },
+            {
+              "text": "shelter",
+              "meaning": "避難所"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "壊れたものの破片が散らばった状態は debris である。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "洪水の後、町で片付けをしている場面。 Volunteers helped clear the ___ left by the flood.",
+          "choices": [
+            {
+              "text": "poll",
+              "meaning": "世論調査"
+            },
+            {
+              "text": "cliff",
+              "meaning": "崖"
+            },
+            {
+              "text": "shore",
+              "meaning": "岸"
+            },
+            {
+              "text": "debris",
+              "meaning": "瓦礫、破片のごみ"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "洪水が残して片付ける対象になるのは debris である。",
+          "alternatives": [
+            {
+              "answer": "rubble",
+              "explanation": "rubble は特に壊れた建物の石やレンガの山を指す。"
+            },
+            {
+              "answer": "wreckage",
+              "explanation": "wreckage は事故で壊れた車や飛行機などの残骸を指す。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "debris の使い方が正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "There were many debrises on the beach after the storm.",
+              "meaning": "誤り:不可算名詞に複数形 -es をつけている"
+            },
+            {
+              "text": "There was a debris on the beach after the storm.",
+              "meaning": "誤り:不可算名詞に a をつけている"
+            },
+            {
+              "text": "There was a lot of debris on the beach after the storm.",
+              "meaning": "嵐の後、浜辺に多くの瓦礫があった。"
+            },
+            {
+              "text": "There were two debris on the beach after the storm.",
+              "meaning": "誤り:数詞で数えている"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "debris は不可算名詞なので、a lot of debris と量で表すのが自然。他は数えられる名詞として扱っている。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "洪水の後、町で片付けをしている場面。 Volunteers helped clear the ___ left by the flood.",
+        "answers": [
+          "debris"
+        ],
+        "explanation": "洪水が残して片付ける対象になるのは debris である。",
+        "alternatives": [
+          {
+            "answer": "rubble",
+            "explanation": "rubble は特に壊れた建物の石やレンガの山を指す。"
+          },
+          {
+            "answer": "wreckage",
+            "explanation": "wreckage は事故で壊れた車や飛行機などの残骸を指す。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "debrisを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Workers removed the debris from the road after the storm.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-debris-usage",
+          "type": "usage",
+          "prompt": "debris の使い方が正しい文を選んでください。",
+          "choices": [
+            "There were many debrises on the beach after the storm.",
+            "There was a debris on the beach after the storm.",
+            "There was a lot of debris on the beach after the storm.",
+            "There were two debris on the beach after the storm."
+          ],
+          "correctIndex": 2,
+          "explanation": "debris は不可算名詞なので、a lot of debris と量で表すのが自然。他は数えられる名詞として扱っている。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "C1",
+        "domains": [
+          "environment",
+          "society"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-cliff",
+      "word": "cliff",
+      "level": "3級",
+      "ipa": "/klɪf/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a high, steep face of rock, often beside the sea",
+      "meaning": "崖",
+      "usageTip": "on the cliff は崖の上、at the foot of the cliff は崖のふもと。the edge of a cliff や a cliff top の形もよく使う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "旅行",
+          "text": "We walked along the edge of the cliff and watched the waves below.",
+          "translation": "私たちは崖の縁に沿って歩き、下の波を眺めた。"
+        },
+        {
+          "id": "example-2",
+          "context": "自然",
+          "text": "Seabirds build their nests on the steep cliff near the lighthouse.",
+          "translation": "海鳥は灯台の近くの険しい崖に巣を作る。"
+        },
+        {
+          "id": "example-3",
+          "context": "安全",
+          "text": "Please stay behind the fence because the cliff is very dangerous.",
+          "translation": "崖はとても危険なので、柵の後ろにいてください。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "cliff",
+          "choices": [
+            {
+              "text": "岸",
+              "meaning": "shore の意味"
+            },
+            {
+              "text": "避難所",
+              "meaning": "shelter の意味"
+            },
+            {
+              "text": "世論調査",
+              "meaning": "poll の意味"
+            },
+            {
+              "text": "崖",
+              "meaning": "cliff の意味"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "cliff は高く急な岩の斜面や崖を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "崖",
+          "choices": [
+            {
+              "text": "cliff",
+              "meaning": "崖"
+            },
+            {
+              "text": "debris",
+              "meaning": "瓦礫"
+            },
+            {
+              "text": "poll",
+              "meaning": "世論調査"
+            },
+            {
+              "text": "shelter",
+              "meaning": "避難所"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "高く急な岩場の端は cliff である。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "海沿いの高い岩場で景色を見る場面。 From the top of the ___, we could see the whole bay.",
+          "choices": [
+            {
+              "text": "poll",
+              "meaning": "世論調査"
+            },
+            {
+              "text": "cliff",
+              "meaning": "崖"
+            },
+            {
+              "text": "debris",
+              "meaning": "瓦礫"
+            },
+            {
+              "text": "shelter",
+              "meaning": "避難所"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "高い場所から湾を見渡せる、top of the に続く語として cliff が合う。",
+          "alternatives": [
+            {
+              "answer": "hill",
+              "explanation": "hill は丘で、急な岩の斜面という意味は弱い。"
+            },
+            {
+              "answer": "mountain",
+              "explanation": "mountain は山で、海沿いの崖より規模が大きい。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "cliff の使い方が正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "The path runs along the cliff above the sea.",
+              "meaning": "その道は海を見下ろす崖沿いを通っている。"
+            },
+            {
+              "text": "The path runs along to the cliff above the sea.",
+              "meaning": "誤り:along の後に不要な to"
+            },
+            {
+              "text": "The path runs a cliff above the sea.",
+              "meaning": "誤り:前置詞がない"
+            },
+            {
+              "text": "The path runs cliffs the sea above.",
+              "meaning": "誤り:語順が不自然"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "run along the cliff で崖沿いに続く道を表せる。他は前置詞や語順が誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "海沿いの高い岩場で景色を見る場面。 From the top of the ___, we could see the whole bay.",
+        "answers": [
+          "cliff"
+        ],
+        "explanation": "高い場所から湾を見渡せる、top of the に続く語として cliff が合う。",
+        "alternatives": [
+          {
+            "answer": "hill",
+            "explanation": "hill は丘で、急な岩の斜面という意味は弱い。"
+          },
+          {
+            "answer": "mountain",
+            "explanation": "mountain は山で、海沿いの崖より規模が大きい。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "cliffを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "We walked along the edge of the cliff and watched the waves below.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-cliff-usage",
+          "type": "usage",
+          "prompt": "cliff の使い方が正しい文を選んでください。",
+          "choices": [
+            "The path runs along the cliff above the sea.",
+            "The path runs along to the cliff above the sea.",
+            "The path runs a cliff above the sea.",
+            "The path runs cliffs the sea above."
+          ],
+          "correctIndex": 0,
+          "explanation": "run along the cliff で崖沿いに続く道を表せる。他は前置詞や語順が誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "environment",
+          "travel"
         ],
         "gradeEstimate": "3級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -13891,6 +15864,200 @@
       }
     },
     {
+      "id": "vocab-paragraph",
+      "word": "paragraph",
+      "level": "3級",
+      "ipa": "/ˈpærəɡrɑːf/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "a section of writing that usually deals with one main idea and starts on a new line",
+      "meaning": "段落",
+      "usageTip": "文章の区切りを指す。the first paragraph、write a paragraph、in the last paragraph のように使う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "作文",
+          "text": "Each paragraph in your essay should focus on one main idea.",
+          "translation": "エッセイの各段落は一つの主な考えに焦点を当てるべきだ。"
+        },
+        {
+          "id": "example-2",
+          "context": "読解",
+          "text": "Please read the second paragraph and underline the key words.",
+          "translation": "第二段落を読んで、キーワードに線を引いてください。"
+        },
+        {
+          "id": "example-3",
+          "context": "記事",
+          "text": "The writer explains the problem clearly in the opening paragraph.",
+          "translation": "筆者は冒頭の段落でその問題を明確に説明している。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "paragraph",
+          "choices": [
+            {
+              "text": "見出し",
+              "meaning": "タイトル"
+            },
+            {
+              "text": "辞書",
+              "meaning": "言葉を調べる本"
+            },
+            {
+              "text": "句読点",
+              "meaning": "文章の記号"
+            },
+            {
+              "text": "段落",
+              "meaning": "文章の区切り"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "paragraph は文章をまとまりごとに区切った段落のこと。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "段落",
+          "choices": [
+            {
+              "text": "paragraph",
+              "meaning": "段落"
+            },
+            {
+              "text": "passport",
+              "meaning": "パスポート"
+            },
+            {
+              "text": "parcel",
+              "meaning": "小包"
+            },
+            {
+              "text": "pattern",
+              "meaning": "模様"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "文章の段落を表す英語は paragraph である。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "作文の授業で、書き出しの部分を直すよう言われた場面。 Your teacher asked you to rewrite the first ___ of your essay.",
+          "choices": [
+            {
+              "text": "ticket",
+              "meaning": "切符"
+            },
+            {
+              "text": "paragraph",
+              "meaning": "段落"
+            },
+            {
+              "text": "neighbor",
+              "meaning": "隣人"
+            },
+            {
+              "text": "engine",
+              "meaning": "エンジン"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "essay の最初の部分を書き直すので、段落を表す paragraph が適切。",
+          "alternatives": [
+            {
+              "answer": "section",
+              "explanation": "section はより大きな区切りにも使え、段落より広い印象になる。"
+            },
+            {
+              "answer": "sentence",
+              "explanation": "sentence は一文だけを指すので、範囲が狭くなる。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "paragraph を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "She read the paragraph of the story twice.",
+              "meaning": "誤り:of の使い方が不自然"
+            },
+            {
+              "text": "He paragraphs the page to the end.",
+              "meaning": "誤り:名詞を動詞として使っている"
+            },
+            {
+              "text": "I wrote a paragraph on five lines.",
+              "meaning": "誤り:前置詞が不自然"
+            },
+            {
+              "text": "The last paragraph summarizes the main point.",
+              "meaning": "最後の段落が要点をまとめている。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "paragraph は名詞で、最後の段落が要点をまとめるという使い方が自然。他は前置詞や品詞の使い方が誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "作文の授業で、書き出しの部分を直すよう言われた場面。 Your teacher asked you to rewrite the first ___ of your essay.",
+        "answers": [
+          "paragraph"
+        ],
+        "explanation": "essay の最初の部分を書き直すので、段落を表す paragraph が適切。",
+        "alternatives": [
+          {
+            "answer": "section",
+            "explanation": "section はより大きな区切りにも使え、段落より広い印象になる。"
+          },
+          {
+            "answer": "sentence",
+            "explanation": "sentence は一文だけを指すので、範囲が狭くなる。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "paragraphを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Each paragraph in your essay should focus on one main idea.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-paragraph-usage",
+          "type": "usage",
+          "prompt": "paragraph を正しく使った文を選んでください。",
+          "choices": [
+            "She read the paragraph of the story twice.",
+            "He paragraphs the page to the end.",
+            "I wrote a paragraph on five lines.",
+            "The last paragraph summarizes the main point."
+          ],
+          "correctIndex": 3,
+          "explanation": "paragraph は名詞で、最後の段落が要点をまとめるという使い方が自然。他は前置詞や品詞の使い方が誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "education",
+          "media"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-syllable",
       "word": "syllable",
       "level": "3級",
@@ -14485,6 +16652,192 @@
         "domains": [
           "media",
           "arts-culture"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-journal",
+      "word": "journal",
+      "level": "3級",
+      "ipa": "/ˈdʒɜːnəl/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a serious magazine for a specialist subject, or a daily written record of events",
+      "meaning": "雑誌、学術誌、日誌",
+      "usageTip": "学術分野では a medical journal のように専門誌を指す。個人の日記的な記録にも使い、keep a journal で日誌をつける。一般向け雑誌は magazine が普通。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "研究",
+          "text": "Her study appeared in a respected scientific journal.",
+          "translation": "彼女の研究は権威ある科学誌に掲載された。"
+        },
+        {
+          "id": "example-2",
+          "context": "旅行",
+          "text": "He kept a journal during his trip across Europe.",
+          "translation": "彼はヨーロッパ旅行中、日誌をつけていた。"
+        },
+        {
+          "id": "example-3",
+          "context": "大学",
+          "text": "Students must read two journal articles before the seminar.",
+          "translation": "学生はゼミの前に学術誌の論文を2本読まなければならない。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "journal",
+          "choices": [
+            {
+              "text": "学術誌、日誌",
+              "meaning": "専門誌や日々の記録"
+            },
+            {
+              "text": "旅行鞄",
+              "meaning": "荷物入れ"
+            },
+            {
+              "text": "広告",
+              "meaning": "宣伝"
+            },
+            {
+              "text": "天気",
+              "meaning": "気象"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "journal は専門誌や日々の記録を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "学術誌、日誌",
+          "choices": [
+            {
+              "text": "melody",
+              "meaning": "旋律"
+            },
+            {
+              "text": "quote",
+              "meaning": "引用"
+            },
+            {
+              "text": "sketch",
+              "meaning": "スケッチ"
+            },
+            {
+              "text": "journal",
+              "meaning": "学術誌、日誌"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "学術誌や日誌を表す語は journal。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "研究者が論文を専門誌に投稿する場面。 The researcher sent her paper to a medical ___.",
+          "choices": [
+            {
+              "text": "journal",
+              "meaning": "学術誌"
+            },
+            {
+              "text": "melody",
+              "meaning": "旋律"
+            },
+            {
+              "text": "sketch",
+              "meaning": "下絵"
+            },
+            {
+              "text": "quote",
+              "meaning": "引用"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "medical journal で医学の専門誌を表す。",
+          "alternatives": [
+            {
+              "answer": "magazine",
+              "explanation": "一般向け雑誌を指し、学術論文の投稿先としては一般的でない。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "「日誌をつける」という意味で journal を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "I made a journal about my trip every night.",
+              "meaning": "誤り:make a journal は日誌をつける意味にならない"
+            },
+            {
+              "text": "She does a journal about her daily life.",
+              "meaning": "誤り:do a journal は不自然"
+            },
+            {
+              "text": "She keeps a journal about her daily life.",
+              "meaning": "彼女は日常の日誌をつけている。"
+            },
+            {
+              "text": "He holds a journal every night.",
+              "meaning": "誤り:hold は日誌をつける意味にならない"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "日誌をつけるは keep a journal という決まった組み合わせ。make、do、hold ではこの意味にならない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "研究者が論文を専門誌に投稿する場面。 The researcher sent her paper to a medical ___.",
+        "answers": [
+          "journal"
+        ],
+        "explanation": "medical journal で医学の専門誌を表す。",
+        "alternatives": [
+          {
+            "answer": "magazine",
+            "explanation": "一般向け雑誌を指し、学術論文の投稿先としては一般的でない。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "journalを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Her study appeared in a respected scientific journal.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-journal-usage",
+          "type": "usage",
+          "prompt": "「日誌をつける」という意味で journal を正しく使った文を選びなさい。",
+          "choices": [
+            "I made a journal about my trip every night.",
+            "She does a journal about her daily life.",
+            "She keeps a journal about her daily life.",
+            "He holds a journal every night."
+          ],
+          "correctIndex": 2,
+          "explanation": "日誌をつけるは keep a journal という決まった組み合わせ。make、do、hold ではこの意味にならない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "media",
+          "science"
         ],
         "gradeEstimate": "3級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -16818,5 +19171,2414 @@
       }
     }
   ],
-  "audio": []
+  "audio": [
+    {
+      "wordId": "vocab-immune",
+      "cacheKey": "4b3ce6186e714eed0f13f38951a05ac67c2a311f1c7b51311da492d56f31d951",
+      "fileId": "1imdoXhuDezThGXNCVmmYVnAXt_kEqPM6",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.1204999999999998
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.169,
+          "endSeconds": 5.4395
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.4879999999999995,
+          "endSeconds": 8.7595
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.808000000000002,
+          "endSeconds": 12.632
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-indicate",
+      "cacheKey": "4d4d9ee9a5280e614cb3360f57f62b4dee94909dbcaa68fa48c2f7a9688c32c0",
+      "fileId": "1Pym4k7YdxyhowmMtNgnTutFiQ_ald8sZ",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8474999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.855,
+          "endSeconds": 3.8720000000000003
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.106,
+          "endSeconds": 7.239
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.403,
+          "endSeconds": 10.31
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-influence",
+      "cacheKey": "e5ff9bd5b7118eeea1eb8be121b9396f75a3f0ee2df6e0f434c8a4bc0d3cb6d1",
+      "fileId": "1mMg2iRuWaNO8WDTxKMYvul7eRmkpcOXq",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.1435
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.1920000000000002,
+          "endSeconds": 4.0115
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.0115,
+          "endSeconds": 7.3665
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.3665,
+          "endSeconds": 10.403
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-inquiry",
+      "cacheKey": "5450b6277418f2dc55455510218705c6b8ba1e09eb1a8b025f0b0a24ba67e582",
+      "fileId": "1TJYqodcGtybHK96-w-vLUMJ8preGH-gO",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.0274999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0274999999999999,
+          "endSeconds": 4.151
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.385,
+          "endSeconds": 8.261
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.425,
+          "endSeconds": 11.981
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-insight",
+      "cacheKey": "47cc87029bbf2cdba9dddb268ccbec75ade9f40435596cfddd073bc50b7468a7",
+      "fileId": "1U_2isOQWiEKYpw5iLhuuil4QWosrDuPg",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.0505
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0990000000000002,
+          "endSeconds": 4.359999999999999
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.466,
+          "endSeconds": 7.6339999999999995
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.74,
+          "endSeconds": 11.981
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-mild",
+      "cacheKey": "f0560ffad307d55ae5b95105e8a107e4dc1ce611715a7b2d1085f516ed0d2b1b",
+      "fileId": "1mj0K-J4tWSLsaA3-61aWnyksPH9C8hOQ",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.72
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.728,
+          "endSeconds": 3.895
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.92,
+          "endSeconds": 7.3549999999999995
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.519,
+          "endSeconds": 11.331
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-hygiene",
+      "cacheKey": "8318a1fc6b91ca498a77f1b390e1e51fdf3fb458392f0f3d2886f925dd0211fa",
+      "fileId": "1GEbfRxBKR0YWa0lpVXBi41Uo1F-ZpHZV",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9575
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0059999999999998,
+          "endSeconds": 4.330500000000001
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.338,
+          "endSeconds": 7.587
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.612,
+          "endSeconds": 10.96
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-optimistic",
+      "cacheKey": "256f2936af11cc1321290cd246f79e92d6c9afad014c5195e4395027db18ec6a",
+      "fileId": "1tqPYZwrHbsrLXSJCgiFFEUUfFsf_M0EP",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9870000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9870000000000001,
+          "endSeconds": 5.265
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.499,
+          "endSeconds": 9.328999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 9.493,
+          "endSeconds": 12.91
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-portion",
+      "cacheKey": "9febbfde38f9227f980fe65854a5dfceb25e5aaa7786018f5d8bd4dbb9667e3b",
+      "fileId": "1d9GL9DNQZm4T88zVharkdrNahA7ZUUGr",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8825000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.89,
+          "endSeconds": 4.3245000000000005
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.373,
+          "endSeconds": 6.994999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.02,
+          "endSeconds": 10.077
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-reliable",
+      "cacheKey": "a96993819e879b6cbaa67b3d90cd1d049af424677008c3293f4f67dd3393d2cc",
+      "fileId": "1AYFmLKBDmK_CQNNbtm7aJ3SdWoSJGuLZ",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9810000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.4129999999999998,
+          "endSeconds": 5.834
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.998,
+          "endSeconds": 9.596
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 9.83,
+          "endSeconds": 13.793
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-wealthy",
+      "cacheKey": "5b5193bc22b729eb2baddb8e1834bb79a806950777513b6218453142c8b2cf51",
+      "fileId": "116c2N6SncHXE72Te6N2x10NJqnUr5bf-",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.865
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0990000000000002,
+          "endSeconds": 3.7910000000000004
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.8970000000000002,
+          "endSeconds": 7.146
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.31,
+          "endSeconds": 10.728
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-signal",
+      "cacheKey": "52b74121babb37cf2cf9a486a435abbbe7a70ae9a08e927cad721f377e5122e7",
+      "fileId": "1xJkyw1iazfGoxtUq50sAmHLbTSiJwc9v",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.987
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.995,
+          "endSeconds": 4.4175
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.443,
+          "endSeconds": 7.029999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.055,
+          "endSeconds": 10.728
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-provider",
+      "cacheKey": "e805315450d15620d890701583290990b490fcf32b80787602b7080e09ee5bfd",
+      "fileId": "1ZV4qemGBgBV6TIuXkH0zjr7-gQ1_DwZs",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.004
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.436,
+          "endSeconds": 4.778
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.012,
+          "endSeconds": 8.301
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.309000000000001,
+          "endSeconds": 11.238
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-shortage",
+      "cacheKey": "ce15599e3dc1a49680641df42932e9c5b174675b35be6df705b917ffa332cae3",
+      "fileId": "1hLycofOIByRQ7ykBR2drxAVqGmV9HteB",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.0855000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.1110000000000002,
+          "endSeconds": 4.0169999999999995
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.0249999999999995,
+          "endSeconds": 7.401
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.426,
+          "endSeconds": 10.913
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-enormous",
+      "cacheKey": "0ce0cf051850d56528b57477ef1d8fc95bfe2f76441a5c63a2c0f5dae42b142e",
+      "fileId": "1G-pIpXelNdBNhMM8IXuolIZIwkdO5wxb",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9115
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9369999999999999,
+          "endSeconds": 3.988
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.2219999999999995,
+          "endSeconds": 7.494
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.728,
+          "endSeconds": 11.053
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-tropical",
+      "cacheKey": "c0a5fcdd0fda3cd734fd69d6f3d256b0d8fd9af788b693efb15d5e7971f9f250",
+      "fileId": "1ZT-ZmKQfBu_WSBiRLMpe26ALrFB1UlQw",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.865
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9129999999999999,
+          "endSeconds": 3.93
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.955,
+          "endSeconds": 7.146
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.194,
+          "endSeconds": 11.053
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-jungle",
+      "cacheKey": "83827ef668675cb182c3d20be8e05ac7a33cfceb9b9c2d423c11caba6e4691c4",
+      "fileId": "1jOwfmPEjW95Zpbh6zggc0vu7gd1mMPUq",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7255
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.7255,
+          "endSeconds": 3.826
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.99,
+          "endSeconds": 7.191999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.357,
+          "endSeconds": 11.331
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-glacier",
+      "cacheKey": "f46f1a69815caf967ccd3f429b6ac6850f93d0b23c9ef8faa9ea4c75e187a2da",
+      "fileId": "1VM_9hz5xsvkMht_WyeYYxI700IPQJWGI",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.952
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.952,
+          "endSeconds": 3.8025
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.851,
+          "endSeconds": 7.5755
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.624,
+          "endSeconds": 11.238
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-element",
+      "cacheKey": "e07d8e76432ce747ca049a0e907af28070ed4624f930f84193be339258709765",
+      "fileId": "1BdxmIxyLSR_bBVq2xb2tAHx2pzAM4Lu3",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.772
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9369999999999999,
+          "endSeconds": 3.8600000000000003
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.292,
+          "endSeconds": 7.332
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.4959999999999996,
+          "endSeconds": 10.728
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-particle",
+      "cacheKey": "40a59665812c5415dc775faa8d2ff4e1b95de82bf7c3eb10d5031deb6c551fdc",
+      "fileId": "1C9N1HDuIdXiVn24y9VQzcpuqJjuvY8rr",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.946
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.1800000000000002,
+          "endSeconds": 4.428999999999999
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.536,
+          "endSeconds": 8.0455
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.053,
+          "endSeconds": 10.728
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-magnet",
+      "cacheKey": "6b6ecf062106f500bc708282308793f26c78ddcfd11e10eaae322dcdeb90405f",
+      "fileId": "1toSlxk1TTvyD5IwDWK14SZDohmiFdQ5k",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8879999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.053,
+          "endSeconds": 3.9530000000000003
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.118,
+          "endSeconds": 6.891
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.997,
+          "endSeconds": 10.356
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-principle",
+      "cacheKey": "b6a678b022f3c738a5c2894691b092f8c6158fc12b9dee015450eebb0f0b1eba",
+      "fileId": "11IXdXl5z5h63YmEhoedCgYajuvnCYs51",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.958
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.958,
+          "endSeconds": 3.9764999999999997
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.002,
+          "endSeconds": 6.821
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.869,
+          "endSeconds": 10.728
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-telescope",
+      "cacheKey": "8db5d663aba00ec44b15d0d83a4c87fb23edb8f78e2ef772146f84db339d03cd",
+      "fileId": "1vrJXatXuqv5x7VawRUkFh0FHefzUY0Ri",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.894
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.902,
+          "endSeconds": 3.048
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.2119999999999997,
+          "endSeconds": 6.345
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.579,
+          "endSeconds": 9.752
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-universe",
+      "cacheKey": "12f62e7fb8701b01eb291921a6e23f0d1c8f30ed4ba3c91257966d07f55356c1",
+      "fileId": "1DfrnOO4nU-6rnzPUUsBZFFAQqR6Oh2kE",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.836
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.844,
+          "endSeconds": 4.0115
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.0115,
+          "endSeconds": 6.902
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.95,
+          "endSeconds": 10.031
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-galaxy",
+      "cacheKey": "ea943d5357f45e08ff574625781509f5270cf1cdad44c1e990599100706d2799",
+      "fileId": "1h1GE4PCzCpXHJRhJIaNka_rkoHbE3L95",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8765000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.8765000000000001,
+          "endSeconds": 4.511
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.745,
+          "endSeconds": 9.015
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 9.180000000000001,
+          "endSeconds": 13.653
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-rocket",
+      "cacheKey": "75bee3ce4c09684debf4d64b933010dd850fbecc1e7928c93ff51ff98ce76997",
+      "fileId": "1e-v8GfpeMwzt684sFv8SJJ6map__m6DP",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8185
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.867,
+          "endSeconds": 4.644
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.652,
+          "endSeconds": 8.179
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.204,
+          "endSeconds": 11.981
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-wireless",
+      "cacheKey": "9b5b1776f7411c939338e313e0e44b6761c37feb151663593b2d46ab5b7adba3",
+      "fileId": "1pOt4y_-yExHMhIGbq6FHTeI2dTAqTCfc",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8474999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.855,
+          "endSeconds": 4.534
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.6979999999999995,
+          "endSeconds": 8.423
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.587000000000002,
+          "endSeconds": 12.214
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-upload",
+      "cacheKey": "d899b22b627d6a0c8876da4f9312efda11d28fac230eb87c9aa1b6d683805a01",
+      "fileId": "1sENo1u00ItC1Z8u6AWgwpkNPF4u4Tzws",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.772
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.772,
+          "endSeconds": 4.255
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.42,
+          "endSeconds": 8.017
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.181000000000001,
+          "endSeconds": 11.61
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-security",
+      "cacheKey": "cb2f2fd90dbf45da585158fc0e39059ce91e4868ff0aa7c1f44cf628d6d950d9",
+      "fileId": "1rwavxF5ESeGfoUtzoP4VYqV6CqlBIQDJ",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9635
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.971,
+          "endSeconds": 4.673
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.721,
+          "endSeconds": 7.866
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.030000000000001,
+          "endSeconds": 11.424
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-dialect",
+      "cacheKey": "b9407e4370d00f5af0cfcbd886d847acacb0c58d668264ae77cdfc7fab04ba22",
+      "fileId": "11F_2uIeJ26XHlyuWI1JqiM7_i_Y9EmsA",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.1084999999999998
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.157,
+          "endSeconds": 5.207
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.255,
+          "endSeconds": 9.387
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 9.412,
+          "endSeconds": 12.725
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-interpret",
+      "cacheKey": "f90c12e6a52ff2b524033592636990e02bd3621cff5f216aa86f132cbd95dbc9",
+      "fileId": "1IxavZdLvCsZDpEIuW62a7zSrhaudeFqm",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.271
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.6099999999999999,
+          "endSeconds": 4.8469999999999995
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.012,
+          "endSeconds": 7.959
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.123000000000001,
+          "endSeconds": 12.678
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-apology",
+      "cacheKey": "c5eb4b511ac16c802e8e4863b7a3aced36790a54f64cd2e5f9691ce6eb19aef3",
+      "fileId": "1Oly6XXqjeinl0zuGtqxT63Rfq8mNbBWg",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8534999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.8534999999999999,
+          "endSeconds": 3.802
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.036,
+          "endSeconds": 6.774
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.939,
+          "endSeconds": 10.217
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-cooperate",
+      "cacheKey": "5cf39aa1cd3164823cb878aca51bb28dec88a8708703108f710d19d39b37c137",
+      "fileId": "1Xp7VCSw95U0VMntQR6FVu6hKHcryCqFm",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9929999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0179999999999998,
+          "endSeconds": 4.249499999999999
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.257,
+          "endSeconds": 7.6455
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.694,
+          "endSeconds": 11.378
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-neighborhood",
+      "cacheKey": "fea7e3c1f965d9ab1cde6e38940f83dae5793f5ee120a7b45fedfc8aabfbf58f",
+      "fileId": "1gwglFB8c5AROidh9nZy51rjpD0JkD5oA",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.911
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.076,
+          "endSeconds": 3.628
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.7929999999999997,
+          "endSeconds": 5.984999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.219,
+          "endSeconds": 8.87
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-orchestra",
+      "cacheKey": "83bf9eed611bdd2ee651d0b7a00d3dfb0182455f2520f2c3c8fcc98988ac3ba2",
+      "fileId": "1O5t-EcyD-c6E7nPPutfegE40TS8zuszq",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.923
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.029,
+          "endSeconds": 4.0809999999999995
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.129,
+          "endSeconds": 7.2620000000000005
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.2620000000000005,
+          "endSeconds": 10.31
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-novelist",
+      "cacheKey": "e8639a9b73766df2c1bd5f6681de851795bb4ea808ed5ef17f367bf9f1a91df0",
+      "fileId": "1EeLPXJt4ixIiF0KbJvchnBQqvO_EKWGO",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.946
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.1110000000000002,
+          "endSeconds": 4.4639999999999995
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.57,
+          "endSeconds": 8.017
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.251000000000001,
+          "endSeconds": 11.889
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-poster",
+      "cacheKey": "cb99581e63af89c2e21c3a94ab4ef09ea12aea75b2808f0e3ae35e1512f61915",
+      "fileId": "1HuKs7tOeirIJbkQuV6rwrP8k_wRUS05H",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.016
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.1800000000000002,
+          "endSeconds": 4.766
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.766,
+          "endSeconds": 7.7615
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.81,
+          "endSeconds": 11.61
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-ingredient",
+      "cacheKey": "e4107e0e1f9143a4656d7b658bb241a8605cbb95bd30c04cdf05ff39796ad1d2",
+      "fileId": "1eeLH6zwC7imCw6YtMkYoxul5b3lRYM8B",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.0505
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0990000000000002,
+          "endSeconds": 5.1255
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.1739999999999995,
+          "endSeconds": 8.876
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.982000000000001,
+          "endSeconds": 12.492
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-cuisine",
+      "cacheKey": "409448f5b29acf1cfbab237c435a81062ce1a8ab0c4635fbc142e226a25f1258",
+      "fileId": "1_6Phsc59XbKt8jY_7cEhlsl0B0lDrCqJ",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8534999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.8534999999999999,
+          "endSeconds": 3.849
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.083,
+          "endSeconds": 7.1339999999999995
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.2989999999999995,
+          "endSeconds": 11.238
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-waiter",
+      "cacheKey": "685bfebe303603ec68617bae349727c4ae7815bd3e61488f28f9644e5ad4c135",
+      "fileId": "10wi77ehbZi2fX_akLkt2-8vaxonzZIpc",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7255
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.751,
+          "endSeconds": 3.8485000000000005
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.8970000000000002,
+          "endSeconds": 6.31
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.4159999999999995,
+          "endSeconds": 9.056
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-referee",
+      "cacheKey": "45cea655eb1d1b89d99f92e8281d82dc1cc938ea368efeefef1b561cef73fcec",
+      "fileId": "1bj8K6IehPBcVbH7L1UxQw38GFB-Cw0fx",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.958
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.1219999999999999,
+          "endSeconds": 3.9354999999999998
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.9429999999999996,
+          "endSeconds": 7.587
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.752,
+          "endSeconds": 11.006
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-champion",
+      "cacheKey": "019d98377f6a7dcb4404c86ac8eba35ad23dee8ddf8160b0520df55e0278df59",
+      "fileId": "1hFmqbEYht1UfWPXGCMVSK9pq_i5DfoDd",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.0045
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.053,
+          "endSeconds": 4.586
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.594,
+          "endSeconds": 7.6915
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.74,
+          "endSeconds": 10.403
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-stadium",
+      "cacheKey": "d23b2116764e82450d33e770eee1b7e1b667e4dc7d9e4bc867ccc4af31dac1b8",
+      "fileId": "1r_EgY04rrStwkv_s8Z6ZiZI9PfStNXrU",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.877
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.1110000000000002,
+          "endSeconds": 3.7325
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.758,
+          "endSeconds": 6.798
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.962,
+          "endSeconds": 9.985
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-bruise",
+      "cacheKey": "19e26150a2310ffcec2c62a65a985333b4ff41ccda650783418f84b45bb73f6d",
+      "fileId": "1W6eE7jWrmjxvwSfQTpY84paqzIoArkyU",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8999999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0059999999999998,
+          "endSeconds": 3.6745
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.723,
+          "endSeconds": 6.1475
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.196,
+          "endSeconds": 8.638
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-dizzy",
+      "cacheKey": "25ed755a56968967312e9fc4448eb83bfd3b996bd1998715f548cd1343f09561",
+      "fileId": "1XcM-nr8di1lvXn7xfxtPML14SqOK6duk",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.772
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.82,
+          "endSeconds": 3.2800000000000002
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.514,
+          "endSeconds": 6.391
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.556,
+          "endSeconds": 9.659
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-nutrition",
+      "cacheKey": "be5e2c477c57e76ebab41ddb516bb0115d1a5a5fc5d1889ccc7ff6c4265b467d",
+      "fileId": "1smKfeM-S9jldMTg7tGSQ1DH1THQ7fmrW",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9929999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.157,
+          "endSeconds": 5.265
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.372,
+          "endSeconds": 9.143
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 9.191,
+          "endSeconds": 12.678
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-mortgage",
+      "cacheKey": "ea2871a32aca52c203492dabd89869ad2a4c1c6008111083cde07de81b9a9209",
+      "fileId": "1W8SCxBGVfEPnpgy1LnGbLBgMzjG33_4b",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8705
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.878,
+          "endSeconds": 3.547
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.7809999999999997,
+          "endSeconds": 6.949
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.1129999999999995,
+          "endSeconds": 10.077
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-stock",
+      "cacheKey": "0b47a6a2edf1210fee2238d24526b5117f5ef082d150335c929dd8d305e090d3",
+      "fileId": "1zOT-9bAT4QibtVuVoXeqn3b2rFdiRhVf",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8535
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.902,
+          "endSeconds": 4.174
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.28,
+          "endSeconds": 6.9254999999999995
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.9254999999999995,
+          "endSeconds": 9.752
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-consumer",
+      "cacheKey": "6bceac5b6af3d6ed969bb6fe2bc8463c42bab3020d1c8725d2fbc23ed9e28c4f",
+      "fileId": "1o8pxFISch0V-FCPW6p2dozLzrue0hJnB",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.016
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.064,
+          "endSeconds": 5.439
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.604,
+          "endSeconds": 10.072
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 10.236,
+          "endSeconds": 14.211
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-employ",
+      "cacheKey": "3d2266fa4c5d6d12d9bb885cbf28a00496f74f02fc231c6941db8d34946860ef",
+      "fileId": "1qNynqo4hwJO066Uo2lVmTEc3JtL1G7J9",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.946
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.1110000000000002,
+          "endSeconds": 4.975
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.139,
+          "endSeconds": 8.655
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.82,
+          "endSeconds": 12.121
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-promotion",
+      "cacheKey": "123ef965e475f8a81031aabed7a061a7a37e23723abf938ece5bf13136394d40",
+      "fileId": "1-4Tkg373xn6svL0unLYwMx2RoE1CeKxM",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.016
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.016,
+          "endSeconds": 4.8934999999999995
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.942,
+          "endSeconds": 8.6085
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.657,
+          "endSeconds": 12.121
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-agenda",
+      "cacheKey": "71541c4d82bcf9d284093e7f5a67c6f120900ad90c1cf2e8cb8dda337991b9b6",
+      "fileId": "1gnqGPfyZQCwAQBo8F2EWUehEcdBdR43J",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8474999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.8474999999999999,
+          "endSeconds": 3.895
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.06,
+          "endSeconds": 7.169
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.334,
+          "endSeconds": 10.681
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-beneath",
+      "cacheKey": "59597450973b357f2af0d15d4627caf71f3b5a251cd5f3349a645f3a73cc4f3f",
+      "fileId": "1Z64jTQyEDdqUTxvMNSsh5eYftT7uGP3n",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9344999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9344999999999999,
+          "endSeconds": 3.9475
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.955,
+          "endSeconds": 6.843999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.869,
+          "endSeconds": 10.96
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-chew",
+      "cacheKey": "a92eceb45a1d94c1ff0cc9a2c4305d5dc9673be63236f199dfc3425c445d9a54",
+      "fileId": "1B5GGj8WmtSQ-5doBG3j9E6MCeh_Hs2lu",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7489999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0870000000000002,
+          "endSeconds": 3.93
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.036,
+          "endSeconds": 7.518
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.6819999999999995,
+          "endSeconds": 10.588
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-pure",
+      "cacheKey": "cb2c2b67c39b8eb0b171eb5b4aacaf883b03c8a22eddf78a71a938f44c4de041",
+      "fileId": "1MTaS9o-rP4A0799SRycHmJkJ2exUC6zY",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8069999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.832,
+          "endSeconds": 4.6035
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.652,
+          "endSeconds": 7.935499999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.983999999999999,
+          "endSeconds": 10.31
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-scarce",
+      "cacheKey": "fdc91d88836d013174b32f7192d7c486bda0d5b58d9f84533948160f957395af",
+      "fileId": "1iA575TqAPi7aq1obSyWs7CO-XWT_U6pZ",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.766
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.766,
+          "endSeconds": 4.127
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.559,
+          "endSeconds": 7.598999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.705,
+          "endSeconds": 10.635
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-procedure",
+      "cacheKey": "43d265066ac626c7c607649ae19540467e9ec5207a52dc23427d1a83d83ed0bc",
+      "fileId": "1cJoCPiBDbiQRYlTkuzSTE6bCJoUtFz2R",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.144
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.25,
+          "endSeconds": 4.8415
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.849,
+          "endSeconds": 8.6845
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.692,
+          "endSeconds": 12.074
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-vast",
+      "cacheKey": "645eda234ce99ddab2d70df62bbdca76480526a37ef4cc91c7b00b7cb5b2a207",
+      "fileId": "1gjlUp0gpWV7Nvm0aoW00sm8s2jVlW32j",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7545
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.7545,
+          "endSeconds": 4.394
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.628,
+          "endSeconds": 7.8309999999999995
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.995,
+          "endSeconds": 11.053
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-slice",
+      "cacheKey": "91a732c68d6ac826b076fc8ea6b0e7ff770bf5f995561549c480b72974255981",
+      "fileId": "1DNrr6v0l5eGE_UyyT9ta-_GUnmSKEHjk",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.708
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.708,
+          "endSeconds": 3.1174999999999997
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.166,
+          "endSeconds": 5.3925
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.441,
+          "endSeconds": 7.848
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-stir",
+      "cacheKey": "46ee6b889eceec4574b79f1329f387654a5dfc74115cb5d0b4ad3a06106d4f1c",
+      "fileId": "1pCbJdFK7PMTKi4luWYH5qISHMy7veCp1",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9695
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9695,
+          "endSeconds": 3.5585
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.6069999999999998,
+          "endSeconds": 5.776
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.824,
+          "endSeconds": 8.313
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-wrap",
+      "cacheKey": "c4a9c2ec2e7f016566c001a0a3e061179490198e702f983af89339c26519a253",
+      "fileId": "1jz7KaUMotZAxSOTNp8uxFzcicgkoIyxG",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7489999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9129999999999999,
+          "endSeconds": 3.4770000000000003
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.711,
+          "endSeconds": 6.553999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.788,
+          "endSeconds": 9.334
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-shelter",
+      "cacheKey": "8d2cfd7133cde84a360c31d46dfd32072219b8454cf06d05a4c16f4caa050d6c",
+      "fileId": "17mVjqiPIhrwk8sAKVo_OFxvVXcrQknT7",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.062
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.169,
+          "endSeconds": 5.166499999999999
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.1739999999999995,
+          "endSeconds": 9.12
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 9.226,
+          "endSeconds": 12.678
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-poll",
+      "cacheKey": "fc2f4daa69b8f316b525ba55146e95502ba556d99439b1bc12456239443b8499",
+      "fileId": "17dTk2Lm13Ere-if8r11Huod2Pi0huukt",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7605
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.809,
+          "endSeconds": 4.6499999999999995
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.814,
+          "endSeconds": 8.562
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.727,
+          "endSeconds": 12.353
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-shore",
+      "cacheKey": "872c074aa9a9fead6c805f5d24e13c5fbc6f5725812e017563b84bbc38b9dbe9",
+      "fileId": "1KpR540u_MfmGZb8rRpYPNZddtximwuNr",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.865
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.029,
+          "endSeconds": 4.214499999999999
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.2219999999999995,
+          "endSeconds": 8.1095
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.158000000000001,
+          "endSeconds": 11.053
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-tap",
+      "cacheKey": "861b1c08530a14c1db39f820c87995fbf9ae6ddccb6a65042dfc8eb20734878b",
+      "fileId": "1mGFfE5OySlfGQUjs3c1gNjt4RLkbpnDC",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.45899999999999996
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.45899999999999996,
+          "endSeconds": 2.8970000000000002
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.061,
+          "endSeconds": 6.159
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.324,
+          "endSeconds": 10.077
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-reverse",
+      "cacheKey": "54dcd57f774f0ee892d92a83cd139eaf9ab793e4260ee2879827ad7f1712acb1",
+      "fileId": "1UFS46RRiaYtbjIYYBpB90L-qEBOM_m6i",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.0274999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.076,
+          "endSeconds": 4.58
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.6049999999999995,
+          "endSeconds": 7.935499999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.983999999999999,
+          "endSeconds": 11.749
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-assess",
+      "cacheKey": "69fb924c31f008282042815472c09da07ba47893eef47561c6e6391079c91d16",
+      "fileId": "1UMsC0hqjmCAyiRRm2WJUS-olJf5xOo3L",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.935
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.169,
+          "endSeconds": 4.754
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.861,
+          "endSeconds": 7.912
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.077,
+          "endSeconds": 11.285
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-bias",
+      "cacheKey": "9aee6a67d94f6610c959b9b8340e7d3e181e51a48eb7f6cf110c284b07152e2c",
+      "fileId": "1KCPwtzTLUC6L61GYEOCBW0IDe8NFLwJH",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.016
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.064,
+          "endSeconds": 5.0329999999999995
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.0809999999999995,
+          "endSeconds": 8.6555
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.704,
+          "endSeconds": 12.864
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-premise",
+      "cacheKey": "b942b7a970565eb52e8fcab73cc868128e751d2a8b8d3f5b93abdbdc720be450",
+      "fileId": "1CLxLcHftk4q2Ju7q8nurfi9LiRuXvAj4",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7315
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.739,
+          "endSeconds": 4.359999999999999
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.594,
+          "endSeconds": 8.040000000000001
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.146,
+          "endSeconds": 11.656
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-conclude",
+      "cacheKey": "ce1c2d6071c10b11d9b5aac25d4aa09354b14953db0531d521dd8e021361e01d",
+      "fileId": "1KNsObGWN5Fj9qns_1tyfl-KGIYTRjUYy",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.952
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9600000000000001,
+          "endSeconds": 4.615
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.663,
+          "endSeconds": 8.057500000000001
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.065000000000001,
+          "endSeconds": 10.728
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-rational",
+      "cacheKey": "a9f5ef99c89508bb65b820ecc9924b30889235963e174f421f3bc624038b8e83",
+      "fileId": "1AqrTKEswIoRFdrIj3WtgG9Wv6tgfpvjW",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.946
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.3780000000000001,
+          "endSeconds": 5.3
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.4639999999999995,
+          "endSeconds": 8.725
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.889000000000001,
+          "endSeconds": 12.539
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-syllable",
+      "cacheKey": "f027ea53bcb207eb045980be57300478f5ec9d45f4eb8c2e5002218cfb7f133c",
+      "fileId": "16K-hOOojeWFdBSqYuabHtX8wnA_Ie53I",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7949999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9600000000000001,
+          "endSeconds": 3.593
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.618,
+          "endSeconds": 6.426
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.591,
+          "endSeconds": 9.799
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-pronounce",
+      "cacheKey": "88cd18076ee1302b5380723089833c05a36c79643c7fbbefc69aeeca468bd568",
+      "fileId": "1U6xtfRLBQg8wdHQw9Lx5CfiPGCkjGpwA",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9115
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9115,
+          "endSeconds": 3.0475000000000003
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.096,
+          "endSeconds": 5.6715
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.72,
+          "endSeconds": 9.195
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-publish",
+      "cacheKey": "cc702476ac6f465bca1c1b1781618903c4c1db2f0850791ee19f6228b5f80070",
+      "fileId": "1kBhGafXjmFf36bcptxiNpTax-J0DMiJ8",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9115
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9115,
+          "endSeconds": 4.3825
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.431,
+          "endSeconds": 7.4825
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.531,
+          "endSeconds": 10.681
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-sketch",
+      "cacheKey": "abc43bf42df60f5ee970d3fc7c6ac84e9fb9977dbae219518c0a00c82d6ecf2f",
+      "fileId": "1le8BbGJ5mfykThv7MILGnyY1Byf6yfLn",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.045
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.053,
+          "endSeconds": 3.4425
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.491,
+          "endSeconds": 6.107
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.115,
+          "endSeconds": 8.777
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-melody",
+      "cacheKey": "0071a4fccbf9cc4dc4e86750cb5a8e01feea70e3a0572895953d806ab97a82b8",
+      "fileId": "1q_9dfwx04VVCWNw2Gbr9MRiAjYDZkLgx",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.743
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.743,
+          "endSeconds": 4.023
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.187,
+          "endSeconds": 6.188
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.188,
+          "endSeconds": 9.149
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-rehearse",
+      "cacheKey": "a2b94b3480b611f033e098639d15c903a30407f659458d372d7f104ff22ccfd1",
+      "fileId": "1t0xQJ--wSt9FZG0gyoZWUTU1PjW8jCjt",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.016
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.1800000000000002,
+          "endSeconds": 4.487
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.652,
+          "endSeconds": 7.587
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.635,
+          "endSeconds": 10.635
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-refund",
+      "cacheKey": "90e0aebd4b39a586552b1eb3db1f6a4a51821f15fd353f286b747da13e69ea42",
+      "fileId": "17PGVdj7SfLhvlAoFyX2Lsz_q_mEPjach",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.028
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.366,
+          "endSeconds": 4.754
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.919,
+          "endSeconds": 8.528
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.692,
+          "endSeconds": 11.749
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-discount",
+      "cacheKey": "2d430de1fd69e99b78f478b7b886355a56009a84bfc7138d386178eaf50615a9",
+      "fileId": "16J5qkn7rg_Wxg3LefZeCD3cbZzTRmW91",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8300000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.855,
+          "endSeconds": 3.2915
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.34,
+          "endSeconds": 6.792
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.792,
+          "endSeconds": 9.985
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-retail",
+      "cacheKey": "75feec087ca109a2e88f037c081f35742af2628d3431707fb1657e87c7657e5a",
+      "fileId": "1QfT0Jz2b7j8jwicG7_BLqK6wnAcPIHIF",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8534999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.8534999999999999,
+          "endSeconds": 4.2669999999999995
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.373,
+          "endSeconds": 7.761
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.995,
+          "endSeconds": 11.889
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-warehouse",
+      "cacheKey": "6c6abc87b18418d53509d860a1adda6465e2d56fddd2f64069fab52545d242bb",
+      "fileId": "1dEP9AePxm7ItDiR3X5sLSK8KNeA7f958",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9870000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9870000000000001,
+          "endSeconds": 4.0634999999999994
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.071,
+          "endSeconds": 6.821
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.821,
+          "endSeconds": 9.845
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-highway",
+      "cacheKey": "ae864912ac7be4b28b6f108fbcca4047e6b098a66fa529d8468fd5f9f109fbe6",
+      "fileId": "1NyM6xRFq5wg14tKeMReKSzvfzsCB-IKr",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.911
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.076,
+          "endSeconds": 4.278
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.443,
+          "endSeconds": 7.215999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.38,
+          "endSeconds": 10.17
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-passage",
+      "cacheKey": "f2483882aaad1f426c8712999fdb633e64281542c9c5fbf6228d2506fd4b1927",
+      "fileId": "1qf1Ng6JMuTdzEOnD1WjvxLS7Odm9YTiG",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9924999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.041,
+          "endSeconds": 4.0115
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.06,
+          "endSeconds": 7.2275
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.276,
+          "endSeconds": 10.403
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-departure",
+      "cacheKey": "ff640e17f2c113f9c0d5398fe507355c2ec1d097c81a673ce67231bf9caff882",
+      "fileId": "1Fh5h0feoeOhBX8QM8Ay4Lw1yRb__boFo",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.894
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.902,
+          "endSeconds": 4.29
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.454,
+          "endSeconds": 7.413
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.461,
+          "endSeconds": 10.403
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-arrival",
+      "cacheKey": "709908c88435ca7d89a1db74c1c32ad66a610a7e45c1724556f174e9358f2936",
+      "fileId": "1d0ay8x2NOKFNqHkrqiFiy_7-t6V4_x_T",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.0505
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0505,
+          "endSeconds": 4.0985
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.106,
+          "endSeconds": 7.6625
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.67,
+          "endSeconds": 10.867
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-destination",
+      "cacheKey": "b56c11eaf4ba79bd25214a45681e7ec73c56eae8ec2c2618d653f10d7bc2e59e",
+      "fileId": "1r-DsI-Olxah1-3qCInLchrtPsejHQjsD",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.045
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.053,
+          "endSeconds": 4.231999999999999
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.466,
+          "endSeconds": 8.017
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.181000000000001,
+          "endSeconds": 11.378
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    }
+  ]
 }

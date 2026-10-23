@@ -9153,6 +9153,201 @@
       }
     },
     {
+      "id": "vocab-economy",
+      "word": "economy",
+      "level": "3級",
+      "ipa": "/ɪˈkɒnəmi/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "the system of money, trade and jobs in a country or region; also careful use of money or resources",
+      "meaning": "経済、節約",
+      "usageTip": "主に the economy の形で国や地域の経済を指す。学問の「経済学」は economics。「節約」の意味では make economies(支出を切り詰める)や economy of effort などの限られた表現で使う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "ニュース",
+          "text": "The local economy depends heavily on tourism during the summer months.",
+          "translation": "その地域の経済は、夏の間は観光に大きく依存している。"
+        },
+        {
+          "id": "example-2",
+          "context": "仕事",
+          "text": "A strong economy usually creates more jobs for young people.",
+          "translation": "強い経済は通常、若者により多くの仕事を生み出す。"
+        },
+        {
+          "id": "example-3",
+          "context": "家計",
+          "text": "We had to make some economies after the rent went up.",
+          "translation": "家賃が上がったので、私たちは出費を切り詰めなければならなかった。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "economy",
+          "choices": [
+            {
+              "text": "環境",
+              "meaning": "人や生き物を取り巻く自然"
+            },
+            {
+              "text": "経済",
+              "meaning": "お金や取引の仕組み"
+            },
+            {
+              "text": "感情",
+              "meaning": "心の動き"
+            },
+            {
+              "text": "競争",
+              "meaning": "勝ちを争うこと"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "economy は国や地域のお金・取引・仕事の仕組み、つまり経済を表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "国のお金や取引や仕事の仕組み(経済)",
+          "choices": [
+            {
+              "text": "energy",
+              "meaning": "エネルギー"
+            },
+            {
+              "text": "education",
+              "meaning": "教育"
+            },
+            {
+              "text": "entrance",
+              "meaning": "入口"
+            },
+            {
+              "text": "economy",
+              "meaning": "経済"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "「経済」は economy です。他は別の意味の語です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "国の景気を話す場面: The country's ___ grew slowly last year.",
+          "choices": [
+            {
+              "text": "kitchen",
+              "meaning": "台所"
+            },
+            {
+              "text": "economy",
+              "meaning": "経済"
+            },
+            {
+              "text": "holiday",
+              "meaning": "休日"
+            },
+            {
+              "text": "mountain",
+              "meaning": "山"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "国全体の成長を述べているので「経済」が適切です。",
+          "alternatives": [
+            {
+              "answer": "industry",
+              "explanation": "特定の産業を指すので、国全体の話とは焦点が少し変わります。"
+            },
+            {
+              "answer": "market",
+              "explanation": "取引の場や需要に焦点が当たります。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "「経済」の意味で economy を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "The economy are improving this year.",
+              "meaning": "経済は改善している。(動詞の一致が誤り)"
+            },
+            {
+              "text": "The economy is improving this year.",
+              "meaning": "今年は経済が改善している。"
+            },
+            {
+              "text": "He studies economy at university.",
+              "meaning": "彼は大学で経済学を学ぶ。(学問名は economics)"
+            },
+            {
+              "text": "She economy money every month.",
+              "meaning": "彼女は毎月お金を節約する。(動詞として誤用)"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "economy は単数名詞なので is と合います。学問名は economics、動詞には save などを使います。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "国の景気を話す場面: The country's ___ grew slowly last year.",
+        "answers": [
+          "economy"
+        ],
+        "explanation": "国全体の成長を述べているので「経済」が適切です。",
+        "alternatives": [
+          {
+            "answer": "industry",
+            "explanation": "特定の産業を指すので、国全体の話とは焦点が少し変わります。"
+          },
+          {
+            "answer": "market",
+            "explanation": "取引の場や需要に焦点が当たります。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "economyを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The local economy depends heavily on tourism during the summer months.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-economy-usage",
+          "type": "usage",
+          "prompt": "「経済」の意味で economy を正しく使った文を選んでください。",
+          "choices": [
+            "The economy are improving this year.",
+            "The economy is improving this year.",
+            "He studies economy at university.",
+            "She economy money every month."
+          ],
+          "correctIndex": 1,
+          "explanation": "economy は単数名詞なので is と合います。学問名は economics、動詞には save などを使います。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "economics",
+          "society",
+          "work"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-education",
       "word": "education",
       "level": "3級",
@@ -11875,6 +12070,209 @@
         "domains": [
           "daily-life",
           "society"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-general",
+      "word": "general",
+      "level": "3級",
+      "ipa": "ˈdʒen(ə)rəl",
+      "ipaLabel": "英音",
+      "partOfSpeech": "形容詞",
+      "definition": "relating to most people or things, without focusing on small details",
+      "meaning": "一般的な、全体的な、大まかな",
+      "usageTip": "名詞の前に置いて a general idea(大まかな考え)のように使う。in general は「一般に」という意味の決まった表現で、文頭や文末で使える。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "説明",
+          "text": "I only have a general idea of how this machine works.",
+          "translation": "この機械がどう動くのか、大まかにしか分かっていません。"
+        },
+        {
+          "id": "example-2",
+          "context": "会話",
+          "text": "In general, people here eat dinner fairly early.",
+          "translation": "一般に、ここの人々は夕食がかなり早い。"
+        },
+        {
+          "id": "example-3",
+          "context": "学校",
+          "text": "The teacher gave us some general advice before the exam.",
+          "translation": "先生は試験の前に一般的な助言をくれた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "general",
+          "choices": [
+            {
+              "text": "秘密の",
+              "meaning": "人に知らせず隠された"
+            },
+            {
+              "text": "高価な",
+              "meaning": "値段が高い"
+            },
+            {
+              "text": "一般的な、全体的な",
+              "meaning": "細部よりも広く全体に当てはまる"
+            },
+            {
+              "text": "危険な",
+              "meaning": "危害を与えるおそれがある"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "general は細部ではなく、全体や一般的な傾向を表す形容詞である。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "一般的な、全体的な",
+          "choices": [
+            {
+              "text": "private",
+              "meaning": "私的な"
+            },
+            {
+              "text": "exact",
+              "meaning": "正確な"
+            },
+            {
+              "text": "rare",
+              "meaning": "まれな"
+            },
+            {
+              "text": "general",
+              "meaning": "一般的な"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "広く全体に当てはまる意味を表すのは general。exact は細部まで正確という意味で逆の方向である。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "細かい説明の前に概略を示す場面: Let me first give you a ___ overview of the plan.",
+          "choices": [
+            {
+              "text": "heavy",
+              "meaning": "重い"
+            },
+            {
+              "text": "wet",
+              "meaning": "濡れた"
+            },
+            {
+              "text": "general",
+              "meaning": "大まかな"
+            },
+            {
+              "text": "lucky",
+              "meaning": "幸運な"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "overview を修飾して「大まかな概略」を表せるのは general。他は意味が合わない。",
+          "alternatives": [
+            {
+              "answer": "broad",
+              "explanation": "範囲が広く、全体を大きくとらえる概略という響きになる。"
+            },
+            {
+              "answer": "basic",
+              "explanation": "基本的な要点だけを示すという意味合いが強くなる。"
+            },
+            {
+              "answer": "rough",
+              "explanation": "細部が粗く、おおよその内容という感じになる。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "「一般に」の意味で general を使った正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "In generally, trains here are on time.",
+              "meaning": "前置詞の後に副詞を置いた誤り。"
+            },
+            {
+              "text": "In general, trains here are on time.",
+              "meaning": "一般に、ここの電車は時間通りだ。"
+            },
+            {
+              "text": "By general, trains here are on time.",
+              "meaning": "前置詞が不適切な文。"
+            },
+            {
+              "text": "At general, trains here are on time.",
+              "meaning": "前置詞が不適切な文。"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "「一般に」は決まった表現 in general で表す。他は副詞の誤用や前置詞の誤りである。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "細かい説明の前に概略を示す場面: Let me first give you a ___ overview of the plan.",
+        "answers": [
+          "general"
+        ],
+        "explanation": "overview を修飾して「大まかな概略」を表せるのは general。他は意味が合わない。",
+        "alternatives": [
+          {
+            "answer": "broad",
+            "explanation": "範囲が広く、全体を大きくとらえる概略という響きになる。"
+          },
+          {
+            "answer": "basic",
+            "explanation": "基本的な要点だけを示すという意味合いが強くなる。"
+          },
+          {
+            "answer": "rough",
+            "explanation": "細部が粗く、おおよその内容という感じになる。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "generalを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I only have a general idea of how this machine works.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-general-usage",
+          "type": "usage",
+          "prompt": "「一般に」の意味で general を使った正しい文を選んでください。",
+          "choices": [
+            "In generally, trains here are on time.",
+            "In general, trains here are on time.",
+            "By general, trains here are on time.",
+            "At general, trains here are on time."
+          ],
+          "correctIndex": 1,
+          "explanation": "「一般に」は決まった表現 in general で表す。他は副詞の誤用や前置詞の誤りである。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "education",
+          "society",
+          "communication"
         ],
         "gradeEstimate": "3級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -19180,6 +19578,286 @@
       "voiceLabel": "Sarah（女性）"
     },
     {
+      "wordId": "vocab-agree",
+      "cacheKey": "a0509d380dc7ba78e9d07d0ed049d9ac81ec528688170e458c0ffe647ed9a02c",
+      "fileId": "1uOeFlcpgeXkkZd9MoumMXS_KsLe1aTxi",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.633
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.633,
+          "endSeconds": 3.733
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.8970000000000002,
+          "endSeconds": 6.757
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.765,
+          "endSeconds": 9.427
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-allow",
+      "cacheKey": "77e6486e2042622f3e5c588e42ee64e8781981d10a376aa64f553b20f4362875",
+      "fileId": "1vABrkCsXOU-eS5bYn9foEmduRcASYyaE",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.877
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.983,
+          "endSeconds": 4.284
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.292,
+          "endSeconds": 6.513
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.513,
+          "endSeconds": 9.659
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-amount",
+      "cacheKey": "1d98f68f14a32f610a3194b282c7b357208ccbe590ad5f2aad4561cf382865cf",
+      "fileId": "1lq-S5Cv4LhYAm8Ao68ALb5WfaZl-FBFn",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.673
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.673,
+          "endSeconds": 3.35
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.514,
+          "endSeconds": 6.455
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.463,
+          "endSeconds": 9.149
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-apply",
+      "cacheKey": "e35a62ad0946fec21f3d77d26bd7ad4a64219a6e995895c71ba15a8a0ffff7e5",
+      "fileId": "1Y5RthhHbZHKS90J6jXoPOL9ryjl2WLoH",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.772
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.772,
+          "endSeconds": 4.0695
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.118,
+          "endSeconds": 7.239000000000001
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.264,
+          "endSeconds": 10.913
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-area",
+      "cacheKey": "1068bb27a991eeae129b5c431e2c0ac398821b838d0e2a1fbfc4790f0cb80db6",
+      "fileId": "1oQaHsoRzXFL3h36IBb86Y4Lmg8GOlDVU",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.6735
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.6735,
+          "endSeconds": 3.0069999999999997
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.0149999999999997,
+          "endSeconds": 5.694999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.859,
+          "endSeconds": 9.009
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-argue",
+      "cacheKey": "48ea38d2b6c6813adf361fe64a3777e0115c3b6877fc0aadc0b305b531c6e6f0",
+      "fileId": "1jknaQztYbjsPHrTlfSYWkHXIUdJeE5WS",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7484999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.797,
+          "endSeconds": 4.0925
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.141,
+          "endSeconds": 7.471
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.4959999999999996,
+          "endSeconds": 11.656
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-art",
+      "cacheKey": "1f9188748090916d6439d1ef42ec0d996278037c0d797a1a6ce737547d47f44e",
+      "fileId": "1AAUWPrwA0tlsfgwgqz42LSWQbm8MyNpr",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.598
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.598,
+          "endSeconds": 3.698
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.804,
+          "endSeconds": 7.007
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.171,
+          "endSeconds": 10.542
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-ask",
+      "cacheKey": "0f592aee4ad87d5cca94d0de6f06c49a76d790466d20a1ceb62e5dceca26cc31",
+      "fileId": "1y3UVCn-pT5V-Pomjqx2H3q_uVMngz_2x",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7605
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.786,
+          "endSeconds": 3.8840000000000003
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.048,
+          "endSeconds": 6.4955
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.544,
+          "endSeconds": 8.684
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-balance",
+      "cacheKey": "6e7e4aada74ae1ca1eac3a1267d61060d730290883386b8f223f5dfff0ee61c7",
+      "fileId": "1J9TFWKUlpEFktngzwUV9_8fDSFjeHDs8",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7255
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.7255,
+          "endSeconds": 3.686
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.851,
+          "endSeconds": 6.635
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.8,
+          "endSeconds": 9.613
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-base",
+      "cacheKey": "7e5741c414478e7308c414a7a5f12fd397a47a75c0144d963d2497b39c7fee66",
+      "fileId": "1tcaTqsRbRj1uE9dwkpM0sSuPs5TtSZZO",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7949999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.82,
+          "endSeconds": 3.6745
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.723,
+          "endSeconds": 6.925000000000001
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.95,
+          "endSeconds": 10.588
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
       "wordId": "vocab-basic",
       "cacheKey": "d32d222d8d8045efddaebaa47c648babbdb358555968224fec5cb4c8104102e0",
       "fileId": "16cRqLUYiiWXpo398BCbQHP3Zq_6cXxrv",
@@ -19460,6 +20138,146 @@
       "voiceLabel": "Sarah（女性）"
     },
     {
+      "wordId": "vocab-change",
+      "cacheKey": "005a1dbd59da87dc41e4f285a62b0b68b6b3598b3464c55781bb40b4923e14d6",
+      "fileId": "19sZZuQlRqii7HhwnNm-LM2ijPKBipO4I",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7955000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.7955000000000001,
+          "endSeconds": 4.011
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.176,
+          "endSeconds": 7.39
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.624,
+          "endSeconds": 10.217
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-choose",
+      "cacheKey": "7fadc4640a87e44b8fd815da7ef73ec30d4b8434ffd7278f1e79f5f5ddffec04",
+      "fileId": "1vWPhlzIT4u6z3VeI-OIYmZhKmSMhX3V4",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8995
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.8995,
+          "endSeconds": 3.5934999999999997
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.642,
+          "endSeconds": 6.4725
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.521,
+          "endSeconds": 9.799
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-citizen",
+      "cacheKey": "604d0819a9673a2e1f3bf0c38d7f2bbd94d9e934325dac472824c7606d4ed5e3",
+      "fileId": "1NvykhSV3zUNAwJUeorCn8H7D6x2Zzizg",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.685
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.685,
+          "endSeconds": 3.5820000000000003
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.746,
+          "endSeconds": 7.552
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.577,
+          "endSeconds": 10.728
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-claim",
+      "cacheKey": "9ef0a3a8cad668fe7f27caea22b1d155281f0a195b4beb543ed0f89e22ef1dda",
+      "fileId": "1XfoeBkhK6aSv4OjjTIcOXcWl1Ozf9dKi",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.0274999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.076,
+          "endSeconds": 3.651
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.6759999999999997,
+          "endSeconds": 6.6465
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.695,
+          "endSeconds": 9.706
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-clear",
+      "cacheKey": "b43d5824e378ef3a28189dda4ec72523b21a32aad02b11b490767b535d60ad33",
+      "fileId": "17-q6tEfuXLSZ_n8fR5UUSpgwUpVyGwv7",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.76
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.867,
+          "endSeconds": 3.7910000000000004
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.2219999999999995,
+          "endSeconds": 7.122999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.229,
+          "endSeconds": 10.31
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
       "wordId": "vocab-common",
       "cacheKey": "1fec5a7d7ce014ab43d5e1aa184162d25caa468ed41660ef1fa2a2bcc2acfc44",
       "fileId": "1XyeEIwhenB9HTJVE65wiUuxhmAr-lSn7",
@@ -19626,6 +20444,34 @@
         }
       ],
       "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-cost",
+      "cacheKey": "68b0c344f1613ed3faac7f51bce78fe72b8ea5986ef184f73c3b09cb95979d81",
+      "fileId": "1zZaBAFaKEUbMZS2vUaVpQ7B36gWtRV3t",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9115
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9115,
+          "endSeconds": 3.9879999999999995
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.036,
+          "endSeconds": 6.589
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.614,
+          "endSeconds": 9.706
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
     },
     {
       "wordId": "vocab-create",
@@ -20132,6 +20978,34 @@
       "voiceLabel": "George（男性）"
     },
     {
+      "wordId": "vocab-fact",
+      "cacheKey": "0ff6bef3daa787ba9e73d8ca79dd064d422c9b89fed5caa18ec153a1c235c6c4",
+      "fileId": "1Z0Y6wLd98_-953mUAvsoF60fziABwyJN",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7949999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.902,
+          "endSeconds": 4.9399999999999995
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.9879999999999995,
+          "endSeconds": 8.8645
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.913,
+          "endSeconds": 12.399
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
       "wordId": "vocab-feel",
       "cacheKey": "8fe1a257499545ad65a8cfe5dcfab3d0af6f9ad5f8677e68efcd83a1879dca81",
       "fileId": "1jsxSF3hPQjapFdi8_1ZN8Bv2fp9p3FR3",
@@ -20155,6 +21029,146 @@
           "id": "example-3",
           "startSeconds": 8.030000000000001,
           "endSeconds": 11.192
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-field",
+      "cacheKey": "c3b96b92ab1eca207a5a8eedcf5d470784c0fcd625e82e71ba1434b894fe72b8",
+      "fileId": "1Oj1FkVC6pfhlwrubzJCpiYzrQ15V1S5-",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.627
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.627,
+          "endSeconds": 3.384
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.409,
+          "endSeconds": 6.798
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.962,
+          "endSeconds": 11.703
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-form",
+      "cacheKey": "20a94b31ebb1188ef52e21c82631045b31c37a481b1e211e0d225048ba7ea8c6",
+      "fileId": "1kiYCGIKBATdso8yOv6qOGqLxW-9USGIL",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7955
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.844,
+          "endSeconds": 3.698
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.723,
+          "endSeconds": 6.7105
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.7105,
+          "endSeconds": 9.706
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-free",
+      "cacheKey": "7cc11605f59384d94d3b36abcbdbc0424583da8d6742e670870a15bdf49470a7",
+      "fileId": "1Cpicx17eaDLj8zT2N58jzog2_JayF2w3",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.714
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.762,
+          "endSeconds": 3.843
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.851,
+          "endSeconds": 6.821
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.985,
+          "endSeconds": 9.938
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-future",
+      "cacheKey": "d3794014625cdb4abf600756f1160157b3d84fc00492eedd8896d01c1dc5079c",
+      "fileId": "1Ib_5m_hC5nKzptqT6FqwPgjSQFIEX5hI",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.923
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.971,
+          "endSeconds": 3.21
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.21,
+          "endSeconds": 5.7995
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.848,
+          "endSeconds": 8.081
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-global",
+      "cacheKey": "758aec12169448d089efd850999ab4f2d6abc310d88574ec3d01eae187756a8b",
+      "fileId": "1vigUDMThsLZR0Qfycb_e7K29_iu4q5gf",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7315
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.7315,
+          "endSeconds": 3.274
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.274,
+          "endSeconds": 5.7235
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.731,
+          "endSeconds": 9.474
         }
       ],
       "voiceLabel": "Sarah（女性）"
@@ -20300,6 +21314,34 @@
       "voiceLabel": "George（男性）"
     },
     {
+      "wordId": "vocab-idea",
+      "cacheKey": "1e5a77e7cf286f817bdf21f731643c7c0bb650d0caa3e45b2a991e47c038a767",
+      "fileId": "1bI49Om-etjjl4ZIntychD2QGj-PSPhyv",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.772
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.772,
+          "endSeconds": 3.843
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.843,
+          "endSeconds": 6.583
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.591,
+          "endSeconds": 9.195
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
       "wordId": "vocab-impact",
       "cacheKey": "694034d5c55d8b26898de391d46eac24943e9b6dc7fb0d2e94b4e12b5e745650",
       "fileId": "18HLQekuNdCflZjjsWq-eIC_yCKd1wW8M",
@@ -20323,6 +21365,230 @@
           "id": "example-3",
           "startSeconds": 7.624,
           "endSeconds": 10.681
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-important",
+      "cacheKey": "3de1779800aa47b1aa696b33c634ecbb15dc367f4995f081a72861a6f1d4c819",
+      "fileId": "1hJQUSwhJjdRHeHn6034SX-L71QXm1YMW",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.0855000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.1110000000000002,
+          "endSeconds": 3.8895
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.8970000000000002,
+          "endSeconds": 6.577
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.625,
+          "endSeconds": 9.892
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-income",
+      "cacheKey": "1f7a21bb9d0746537880542184b11770418e1c4e671cbd99f2c64d492da8d14e",
+      "fileId": "1qA1kKVRAqZbF-sZZIe7nVIRRX2HZx5wj",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.708
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.708,
+          "endSeconds": 3.802
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.9669999999999996,
+          "endSeconds": 6.832999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.997,
+          "endSeconds": 10.17
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-increase",
+      "cacheKey": "f75f826fbca60f010c8fcbc88ace640abb0a6fcb86e21145c98d0a53563f3d68",
+      "fileId": "1OvCCIUk2BBomkjskQGdmDAH7fsPrNelO",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9695
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.995,
+          "endSeconds": 4.075
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.083,
+          "endSeconds": 7.3435
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.3919999999999995,
+          "endSeconds": 11.099
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-individual",
+      "cacheKey": "7abd04a31bd38b984043ee723f8ed79e5f399d91cb6777ccae59881b40f7b2a4",
+      "fileId": "1bZbimK5Erbb5tqwyVf9IbGIqG73EzaQ2",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.039
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.2040000000000002,
+          "endSeconds": 4.801
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.035,
+          "endSeconds": 8.202
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.367,
+          "endSeconds": 11.981
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-information",
+      "cacheKey": "25c6699e867122aeffe43cebaa19b45e915cf8b566f049ff0191460ec7ef4ada",
+      "fileId": "1uRbIZXqIRfNPLCFX-Ybkow7w0_H6_cHT",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.155
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.3199999999999998,
+          "endSeconds": 4.7775
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.826,
+          "endSeconds": 7.7265
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.7749999999999995,
+          "endSeconds": 10.867
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-instead",
+      "cacheKey": "57e5b7bca6a870e83c40c88d8e1fc6d98dc5db22b78df024a8843fee82885a00",
+      "fileId": "13U887L4q771tLZSEaWOrFjvboeZrQQSD",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.72
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.72,
+          "endSeconds": 4.046
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.385,
+          "endSeconds": 7.308999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.543,
+          "endSeconds": 10.681
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-interest",
+      "cacheKey": "8d23902ef19f1996b8ab927243980c77b1d39ff601e4b08e8473529a6c84134d",
+      "fileId": "1sK29vn9qvOBBkPMUiviZH6ophUaDkAnR",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.958
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.983,
+          "endSeconds": 4.4990000000000006
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.547,
+          "endSeconds": 7.6915
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.74,
+          "endSeconds": 10.588
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-keep",
+      "cacheKey": "7435d1828409a0d75df2d100a1f2deb81d871ac81d48ec677553e7f9db505c63",
+      "fileId": "1ZVr3NJGWIg2wgYjkEpaZqPv5T2_Gh63t",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.5225
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.5225,
+          "endSeconds": 3.7910000000000004
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.2219999999999995,
+          "endSeconds": 7.494
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.601,
+          "endSeconds": 9.752
         }
       ],
       "voiceLabel": "George（男性）"
@@ -20636,6 +21902,34 @@
       "voiceLabel": "Sarah（女性）"
     },
     {
+      "wordId": "vocab-natural",
+      "cacheKey": "e4dffa1463c35fcb3593930826de77183d106f0bd70a8424cca00c93e0529084",
+      "fileId": "1Kjmi1gl8naDAcqqUqei81fpPHr8TieUm",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8245
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.832,
+          "endSeconds": 4.789
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.954,
+          "endSeconds": 7.9239999999999995
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.088000000000001,
+          "endSeconds": 11.842
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
       "wordId": "vocab-necessary",
       "cacheKey": "26c0c3a394a5d3e046526385ca0f241150b5cd1138b3480925ced5fc1d731c49",
       "fileId": "1j74-dmDgRaQBNNA2bY8uv71CJ06fktJK",
@@ -20662,6 +21956,34 @@
         }
       ],
       "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-need",
+      "cacheKey": "7bfa2dcc7ababd4af7dff8ffaedc1ccfac5640a522ebb473fba15b41e214be90",
+      "fileId": "19vMySAEJhiaSUzXMr6dKatZbdh79gbZ4",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.784
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.1219999999999999,
+          "endSeconds": 3.6630000000000003
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.827,
+          "endSeconds": 6.136
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.242,
+          "endSeconds": 9.149
+        }
+      ],
+      "voiceLabel": "George（男性）"
     },
     {
       "wordId": "vocab-negative",
@@ -20746,6 +22068,90 @@
         }
       ],
       "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-occur",
+      "cacheKey": "859fa590c99911ab177c749faa03a9d377dac9706d386eb571eac19142abe1e4",
+      "fileId": "1sPtfUAchiga-vfKPWkGlhViAXY496vSn",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.72
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.72,
+          "endSeconds": 4.569
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.733,
+          "endSeconds": 7.888999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.053,
+          "endSeconds": 11.192
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-option",
+      "cacheKey": "cbc8d111b70b4fd41d2df16585f36776a5dbb07b75a845515559305f50c7679f",
+      "fileId": "1lQCdWgqNJmtWLxTBoL0JuCtZaD3nfp7S",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7315
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.739,
+          "endSeconds": 4.313000000000001
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.338,
+          "endSeconds": 8.4
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.425,
+          "endSeconds": 11.703
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-order",
+      "cacheKey": "1f28263b7ccb95b80da993b79075c742d27e82ee6467b9641869d769174c7e8a",
+      "fileId": "1mSeSSw2EouSPItNsiKjRpoiKRn6q3MTc",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.65
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.658,
+          "endSeconds": 3.7790000000000004
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.013,
+          "endSeconds": 7.609999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.7749999999999995,
+          "endSeconds": 11.285
+        }
+      ],
+      "voiceLabel": "George（男性）"
     }
   ]
 }

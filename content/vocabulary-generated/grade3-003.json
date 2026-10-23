@@ -1489,6 +1489,192 @@
       }
     },
     {
+      "id": "vocab-below",
+      "word": "below",
+      "level": "3級",
+      "ipa": "bɪˈloʊ",
+      "ipaLabel": "米音",
+      "partOfSpeech": "前置詞",
+      "definition": "in a lower place or at a lower level than something else",
+      "meaning": "〜の下に、〜より下で",
+      "usageTip": "位置や数値が基準より低いときに使います。below zero は氷点下の意味です。真下で接触する感じは under が自然です。時刻や期間の意味では使いません。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "天気",
+          "text": "The temperature fell below zero last night, so the road was icy.",
+          "translation": "昨夜は気温が氷点下になり、道路が凍っていました。"
+        },
+        {
+          "id": "example-2",
+          "context": "建物",
+          "text": "Our apartment is just below the roof, so it gets hot in summer.",
+          "translation": "私たちの部屋は屋根のすぐ下にあるので、夏は暑くなります。"
+        },
+        {
+          "id": "example-3",
+          "context": "試験",
+          "text": "Scores below fifty percent need extra review before the next class.",
+          "translation": "50パーセント未満の点数は、次の授業の前に追加の復習が必要です。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "below",
+          "choices": [
+            {
+              "text": "〜の間で",
+              "meaning": "集団や二つのものの中で"
+            },
+            {
+              "text": "〜の後ろに",
+              "meaning": "背後の位置に"
+            },
+            {
+              "text": "〜の下に、〜より下で",
+              "meaning": "低い位置や水準に"
+            },
+            {
+              "text": "〜より前に",
+              "meaning": "時間的に先に"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "below は基準より低い位置や水準を表す前置詞です。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "〜の下に、〜より下で",
+          "choices": [
+            {
+              "text": "before",
+              "meaning": "〜より前に"
+            },
+            {
+              "text": "during",
+              "meaning": "〜の間ずっと"
+            },
+            {
+              "text": "among",
+              "meaning": "〜の間で"
+            },
+            {
+              "text": "below",
+              "meaning": "〜の下に、〜より下で"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "低い位置や水準を示す語は below です。before は時間の前、during は期間、among は集団の中を表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "冬の寒い朝、気温が0度より低い場面: It was five degrees ___ zero this morning.",
+          "choices": [
+            {
+              "text": "among",
+              "meaning": "〜の間で"
+            },
+            {
+              "text": "below",
+              "meaning": "〜より下で"
+            },
+            {
+              "text": "behind",
+              "meaning": "〜の後ろに"
+            },
+            {
+              "text": "during",
+              "meaning": "〜の間ずっと"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "0度より低い値を表すので、below zero が自然です。",
+          "alternatives": [
+            {
+              "answer": "under",
+              "explanation": "under zero も通じますが、気温では below zero のほうが一般的です。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "below の使い方として正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "I was tired below the trip.",
+              "meaning": "旅行中に疲れた。(誤:期間には during を使う)"
+            },
+            {
+              "text": "The shop opens below nine.",
+              "meaning": "店は9時前に開く。(誤:時刻には before を使う)"
+            },
+            {
+              "text": "The cat is below of the table.",
+              "meaning": "猫はテーブルの下にいる。(誤:of は不要)"
+            },
+            {
+              "text": "Please read the notes below the picture.",
+              "meaning": "写真の下の注記を読んでください。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "below は位置が基準より下であることを表し、後ろに名詞を直接置きます。期間や時刻には使わず、below of とも言いません。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "冬の寒い朝、気温が0度より低い場面: It was five degrees ___ zero this morning.",
+        "answers": [
+          "below"
+        ],
+        "explanation": "0度より低い値を表すので、below zero が自然です。",
+        "alternatives": [
+          {
+            "answer": "under",
+            "explanation": "under zero も通じますが、気温では below zero のほうが一般的です。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "belowを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The temperature fell below zero last night, so the road was icy.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-below-usage",
+          "type": "usage",
+          "prompt": "below の使い方として正しい文を選んでください。",
+          "choices": [
+            "I was tired below the trip.",
+            "The shop opens below nine.",
+            "The cat is below of the table.",
+            "Please read the notes below the picture."
+          ],
+          "correctIndex": 3,
+          "explanation": "below は位置が基準より下であることを表し、後ろに名詞を直接置きます。期間や時刻には使わず、below of とも言いません。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "daily-life",
+          "education"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-during",
       "word": "during",
       "level": "3級",
@@ -5137,6 +5323,201 @@
       }
     },
     {
+      "id": "vocab-where",
+      "word": "where",
+      "level": "3級",
+      "ipa": "/wɛr/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "副詞",
+      "definition": "Used to ask about a place, position or direction, or to refer to a place in a clause.",
+      "meaning": "どこに、どこで",
+      "usageTip": "場所を尋ねる疑問副詞。疑問文では Where do you live? のように do you + 動詞の語順にする。Where is the station? のように be動詞の文では be が主語の前に来る。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "道案内",
+          "text": "Where is the nearest bus stop from here?",
+          "translation": "ここから一番近いバス停はどこですか。"
+        },
+        {
+          "id": "example-2",
+          "context": "家で",
+          "text": "Where did you put my car keys this morning?",
+          "translation": "今朝、私の車の鍵をどこに置いたの?"
+        },
+        {
+          "id": "example-3",
+          "context": "自己紹介",
+          "text": "Where are you from originally?",
+          "translation": "もともとはどちらのご出身ですか。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "where",
+          "choices": [
+            {
+              "text": "いつ",
+              "meaning": "時をたずねる語"
+            },
+            {
+              "text": "だれ",
+              "meaning": "人をたずねる語"
+            },
+            {
+              "text": "どこに",
+              "meaning": "場所をたずねる語"
+            },
+            {
+              "text": "なぜ",
+              "meaning": "理由をたずねる語"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "where は場所や位置をたずねる「どこに」を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "どこに、どこで",
+          "choices": [
+            {
+              "text": "who",
+              "meaning": "だれ"
+            },
+            {
+              "text": "where",
+              "meaning": "どこに"
+            },
+            {
+              "text": "what",
+              "meaning": "何"
+            },
+            {
+              "text": "when",
+              "meaning": "いつ"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "場所をたずねる語は where。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "駅で出口の場所を尋ねる場面: Excuse me, ___ is the south exit?",
+          "choices": [
+            {
+              "text": "who",
+              "meaning": "だれ"
+            },
+            {
+              "text": "when",
+              "meaning": "いつ"
+            },
+            {
+              "text": "where",
+              "meaning": "どこに"
+            },
+            {
+              "text": "why",
+              "meaning": "なぜ"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "出口の場所を聞くので、場所をたずねる where が合う。",
+          "alternatives": [
+            {
+              "answer": "how do I get to",
+              "explanation": "行き方を尋ねる言い方で、道順を知りたいときに自然。"
+            },
+            {
+              "answer": "which way is",
+              "explanation": "方向を尋ねる表現で、where より方向に焦点がある。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "where を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "Where you live now?",
+              "meaning": "今どこに住んでる?(誤文)"
+            },
+            {
+              "text": "Where do you living now?",
+              "meaning": "今どこに住んでる?(誤文)"
+            },
+            {
+              "text": "Where is you live now?",
+              "meaning": "今どこに住んでる?(誤文)"
+            },
+            {
+              "text": "Where do you live now?",
+              "meaning": "今どこに住んでいますか。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "Where の後は do you live の疑問文語順にし、動詞は原形にする。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "駅で出口の場所を尋ねる場面: Excuse me, ___ is the south exit?",
+        "answers": [
+          "where"
+        ],
+        "explanation": "出口の場所を聞くので、場所をたずねる where が合う。",
+        "alternatives": [
+          {
+            "answer": "how do I get to",
+            "explanation": "行き方を尋ねる言い方で、道順を知りたいときに自然。"
+          },
+          {
+            "answer": "which way is",
+            "explanation": "方向を尋ねる表現で、where より方向に焦点がある。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "whereを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Where is the nearest bus stop from here?",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-where-usage",
+          "type": "usage",
+          "prompt": "where を正しく使った文を選びなさい。",
+          "choices": [
+            "Where you live now?",
+            "Where do you living now?",
+            "Where is you live now?",
+            "Where do you live now?"
+          ],
+          "correctIndex": 3,
+          "explanation": "Where の後は do you live の疑問文語順にし、動詞は原形にする。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A1",
+        "domains": [
+          "daily-life",
+          "travel",
+          "communication"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-when",
       "word": "when",
       "level": "3級",
@@ -6635,6 +7016,201 @@
       }
     },
     {
+      "id": "vocab-more",
+      "word": "more",
+      "level": "3級",
+      "ipa": "mɔː",
+      "ipaLabel": "英音",
+      "partOfSpeech": "副詞",
+      "definition": "to a greater degree or extent; also used before longer adjectives and adverbs to compare",
+      "meaning": "もっと、より(多く)",
+      "usageTip": "動詞の後ろに置くと「もっと〜する」。長めの形容詞・副詞の前に置くと比較級を作り、than で比べる相手を示す。短い語は taller のように -er を使い、more と重ねない。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "勉強",
+          "text": "You should practice more if you want to improve your speaking.",
+          "translation": "話す力を伸ばしたいなら、もっと練習した方がいいですよ。"
+        },
+        {
+          "id": "example-2",
+          "context": "感想",
+          "text": "I found the second story more interesting than the first one.",
+          "translation": "私は二つ目の話の方が最初のものよりおもしろいと思いました。"
+        },
+        {
+          "id": "example-3",
+          "context": "会話",
+          "text": "Could you speak more slowly so everyone can follow you?",
+          "translation": "みんながついていけるように、もっとゆっくり話してもらえますか。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "more",
+          "choices": [
+            {
+              "text": "もっと、より多く",
+              "meaning": "程度や量が増える"
+            },
+            {
+              "text": "二度と",
+              "meaning": "never again"
+            },
+            {
+              "text": "ちょうど",
+              "meaning": "exactly"
+            },
+            {
+              "text": "たぶん",
+              "meaning": "maybe"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "more は程度や量がより大きいことを表す語です。他の選択肢は回数、正確さ、可能性を表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "もっと、より多く(副詞)",
+          "choices": [
+            {
+              "text": "almost",
+              "meaning": "ほとんど"
+            },
+            {
+              "text": "once",
+              "meaning": "一度"
+            },
+            {
+              "text": "only",
+              "meaning": "〜だけ"
+            },
+            {
+              "text": "more",
+              "meaning": "もっと"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "「もっと」にあたる副詞は more です。almost は近さ、once は回数、only は限定を表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 友人にカフェを勧める。This cafe is ___ popular than that one.",
+          "choices": [
+            {
+              "text": "most",
+              "meaning": "最も"
+            },
+            {
+              "text": "much",
+              "meaning": "たくさん"
+            },
+            {
+              "text": "more",
+              "meaning": "より〜"
+            },
+            {
+              "text": "many",
+              "meaning": "多くの"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "than と形容詞 popular があるので、比較級を作る more が入ります。",
+          "alternatives": [
+            {
+              "answer": "far more",
+              "explanation": "差が大きいことを強調し、ずっと人気があるという意味になります。"
+            },
+            {
+              "answer": "less",
+              "explanation": "逆に、人気が低いことを表します。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "副詞の more を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "He runs more fast than me.",
+              "meaning": "faster が自然"
+            },
+            {
+              "text": "She is more taller than I am.",
+              "meaning": "二重比較で誤り"
+            },
+            {
+              "text": "This lesson is more useful than that one.",
+              "meaning": "この授業はあちらより役に立つ"
+            },
+            {
+              "text": "I like it more better than before.",
+              "meaning": "二重比較で誤り"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "useful は長めの形容詞なので more useful で比較級を作ります。fast は faster、tall は taller になり、better は more と重ねません。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 友人にカフェを勧める。This cafe is ___ popular than that one.",
+        "answers": [
+          "more"
+        ],
+        "explanation": "than と形容詞 popular があるので、比較級を作る more が入ります。",
+        "alternatives": [
+          {
+            "answer": "far more",
+            "explanation": "差が大きいことを強調し、ずっと人気があるという意味になります。"
+          },
+          {
+            "answer": "less",
+            "explanation": "逆に、人気が低いことを表します。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "moreを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "You should practice more if you want to improve your speaking.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-more-usage",
+          "type": "usage",
+          "prompt": "副詞の more を正しく使った文を選んでください。",
+          "choices": [
+            "He runs more fast than me.",
+            "She is more taller than I am.",
+            "This lesson is more useful than that one.",
+            "I like it more better than before."
+          ],
+          "correctIndex": 2,
+          "explanation": "useful は長めの形容詞なので more useful で比較級を作ります。fast は faster、tall は taller になり、better は more と重ねません。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A1",
+        "domains": [
+          "daily-life",
+          "education",
+          "communication"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-most",
       "word": "most",
       "level": "3級",
@@ -6824,6 +7400,404 @@
           "daily-life",
           "education",
           "travel"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-much",
+      "word": "much",
+      "level": "3級",
+      "ipa": "mʌtʃ",
+      "ipaLabel": "英音",
+      "partOfSpeech": "副詞",
+      "definition": "to a large degree; often used in negatives, questions and before comparatives",
+      "meaning": "とても、あまり(否定文)、ずっと",
+      "usageTip": "副詞の much は否定文の not ... much や very much、比較級の前の much cheaper で使う。肯定文では very や a lot が自然。How much は量や値段をたずねる。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "買い物",
+          "text": "I don't like this jacket very much, so I'll leave it.",
+          "translation": "このジャケットはあまり好きではないので、やめておきます。"
+        },
+        {
+          "id": "example-2",
+          "context": "比較",
+          "text": "This phone is much cheaper than the one I saw yesterday.",
+          "translation": "この電話は昨日見たものよりずっと安いです。"
+        },
+        {
+          "id": "example-3",
+          "context": "質問",
+          "text": "How much did you enjoy the concert last night?",
+          "translation": "昨夜のコンサートはどれくらい楽しめましたか。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "much",
+          "choices": [
+            {
+              "text": "めったに",
+              "meaning": "rarely"
+            },
+            {
+              "text": "すぐに",
+              "meaning": "soon"
+            },
+            {
+              "text": "一緒に",
+              "meaning": "together"
+            },
+            {
+              "text": "ずっと、とても",
+              "meaning": "程度が大きい"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "副詞の much は程度が大きいことを表し、比較級を強めると「ずっと」になります。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "ずっと(比較級を強める副詞)",
+          "choices": [
+            {
+              "text": "each",
+              "meaning": "それぞれ"
+            },
+            {
+              "text": "much",
+              "meaning": "ずっと"
+            },
+            {
+              "text": "other",
+              "meaning": "ほかの"
+            },
+            {
+              "text": "few",
+              "meaning": "少数の"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "比較級を強めて「ずっと」と言うのは much です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 友人に二つの店を比べて話す。This shop is ___ bigger than the old one.",
+          "choices": [
+            {
+              "text": "much",
+              "meaning": "ずっと"
+            },
+            {
+              "text": "many",
+              "meaning": "多くの"
+            },
+            {
+              "text": "most",
+              "meaning": "最も"
+            },
+            {
+              "text": "very",
+              "meaning": "とても"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "比較級 bigger を強める副詞は much です。very は比較級を直接強めません。many は名詞に使います。",
+          "alternatives": [
+            {
+              "answer": "a lot",
+              "explanation": "much と同じく差が大きいことを表し、会話的です。"
+            },
+            {
+              "answer": "far",
+              "explanation": "much より差の大きさを強調します。"
+            },
+            {
+              "answer": "a little",
+              "explanation": "逆に、差が小さいことを表します。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "副詞の much を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I much like this song.",
+              "meaning": "very much を文末に置く"
+            },
+            {
+              "text": "She doesn't talk much in class.",
+              "meaning": "彼女は授業であまり話さない"
+            },
+            {
+              "text": "He is much tired today.",
+              "meaning": "very tired が自然"
+            },
+            {
+              "text": "We much enjoyed it yesterday.",
+              "meaning": "enjoyed it very much が自然"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "否定文の動詞の後ろで not ... much を使うのが自然です。肯定文で動詞の前や形容詞の前に much を置くのは誤りです。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 友人に二つの店を比べて話す。This shop is ___ bigger than the old one.",
+        "answers": [
+          "much"
+        ],
+        "explanation": "比較級 bigger を強める副詞は much です。very は比較級を直接強めません。many は名詞に使います。",
+        "alternatives": [
+          {
+            "answer": "a lot",
+            "explanation": "much と同じく差が大きいことを表し、会話的です。"
+          },
+          {
+            "answer": "far",
+            "explanation": "much より差の大きさを強調します。"
+          },
+          {
+            "answer": "a little",
+            "explanation": "逆に、差が小さいことを表します。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "muchを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I don't like this jacket very much, so I'll leave it.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-much-usage",
+          "type": "usage",
+          "prompt": "副詞の much を正しく使った文を選んでください。",
+          "choices": [
+            "I much like this song.",
+            "She doesn't talk much in class.",
+            "He is much tired today.",
+            "We much enjoyed it yesterday."
+          ],
+          "correctIndex": 1,
+          "explanation": "否定文の動詞の後ろで not ... much を使うのが自然です。肯定文で動詞の前や形容詞の前に much を置くのは誤りです。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A1",
+        "domains": [
+          "daily-life",
+          "finance",
+          "communication"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-other",
+      "word": "other",
+      "level": "3級",
+      "ipa": "ˈʌðɚ",
+      "ipaLabel": "米音",
+      "partOfSpeech": "形容詞",
+      "definition": "different from or in addition to the one or ones already mentioned",
+      "meaning": "ほかの、別の",
+      "usageTip": "other は複数名詞や不可算名詞の前で使う(other people)。単数名詞には another、特定の残りには the other を使う。the other team のように the が付くと「残りの一方」になる。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "買い物",
+          "text": "I don't like this color. Can I see the other shirts?",
+          "translation": "この色は好きではありません。ほかのシャツを見せてもらえますか。"
+        },
+        {
+          "id": "example-2",
+          "context": "学校",
+          "text": "Some students walked home, and other students took the bus.",
+          "translation": "歩いて帰る生徒もいれば、バスに乗る生徒もいた。"
+        },
+        {
+          "id": "example-3",
+          "context": "仕事",
+          "text": "We should ask the other team before we change the schedule.",
+          "translation": "予定を変える前に、もう一方のチームに聞くべきだ。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "other",
+          "choices": [
+            {
+              "text": "同じ",
+              "meaning": "違いがない"
+            },
+            {
+              "text": "古い",
+              "meaning": "新しくない"
+            },
+            {
+              "text": "静かな",
+              "meaning": "音が少ない"
+            },
+            {
+              "text": "ほかの",
+              "meaning": "別の、違う"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "other は、すでに出たものとは別の人や物を表す形容詞です。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "ほかの(形容詞)",
+          "choices": [
+            {
+              "text": "other",
+              "meaning": "ほかの"
+            },
+            {
+              "text": "very",
+              "meaning": "とても"
+            },
+            {
+              "text": "such",
+              "meaning": "そのような"
+            },
+            {
+              "text": "also",
+              "meaning": "また"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "「ほかの」は other です。他の語は程度、種類、追加を表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 席を探している。This seat is taken, so let's find ___ seats.",
+          "choices": [
+            {
+              "text": "very",
+              "meaning": "とても"
+            },
+            {
+              "text": "other",
+              "meaning": "ほかの"
+            },
+            {
+              "text": "also",
+              "meaning": "また"
+            },
+            {
+              "text": "such",
+              "meaning": "そのような"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "複数名詞 seats の前で「ほかの」を表せるのは other です。",
+          "alternatives": [
+            {
+              "answer": "different",
+              "explanation": "「違う席」という意味で、other より違いを強調します。"
+            },
+            {
+              "answer": "more",
+              "explanation": "「さらに多くの席」と、追加を探す感じになります。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "形容詞の other を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I like this song, but I want other song.",
+              "meaning": "another song が正しい"
+            },
+            {
+              "text": "She has two cats; one is here, other is outside.",
+              "meaning": "the other が正しい"
+            },
+            {
+              "text": "Please give me the others book.",
+              "meaning": "the other book が正しい"
+            },
+            {
+              "text": "Some people agree, and other people don't.",
+              "meaning": "賛成する人もしない人もいる"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "other は複数名詞 people の前で使えます。単数名詞なら another、残りの1つなら the other が必要で、others は名詞の前に置けません。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 席を探している。This seat is taken, so let's find ___ seats.",
+        "answers": [
+          "other"
+        ],
+        "explanation": "複数名詞 seats の前で「ほかの」を表せるのは other です。",
+        "alternatives": [
+          {
+            "answer": "different",
+            "explanation": "「違う席」という意味で、other より違いを強調します。"
+          },
+          {
+            "answer": "more",
+            "explanation": "「さらに多くの席」と、追加を探す感じになります。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "otherを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I don't like this color. Can I see the other shirts?",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-other-usage",
+          "type": "usage",
+          "prompt": "形容詞の other を正しく使った文を選んでください。",
+          "choices": [
+            "I like this song, but I want other song.",
+            "She has two cats; one is here, other is outside.",
+            "Please give me the others book.",
+            "Some people agree, and other people don't."
+          ],
+          "correctIndex": 3,
+          "explanation": "other は複数名詞 people の前で使えます。単数名詞なら another、残りの1つなら the other が必要で、others は名詞の前に置けません。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A1",
+        "domains": [
+          "daily-life",
+          "work",
+          "education"
         ],
         "gradeEstimate": "3級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -14318,6 +15292,225 @@
       }
     },
     {
+      "id": "vocab-call",
+      "word": "call",
+      "level": "3級",
+      "ipa": "/kɔːl/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "call"
+        ],
+        "past": [
+          "called"
+        ],
+        "pastParticiple": [
+          "called"
+        ],
+        "presentParticiple": [
+          "calling"
+        ],
+        "thirdPersonSingular": [
+          "calls"
+        ]
+      },
+      "definition": "to phone someone, or to give a person or thing a particular name",
+      "meaning": "電話する・呼ぶ",
+      "usageTip": "「人に電話する」は call him のように直接目的語を取り、to は不要。call A B で「AをBと呼ぶ」の形になる。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "家族への連絡",
+          "text": "I will call my mother when I get to the station.",
+          "translation": "駅に着いたら母に電話するつもりです。"
+        },
+        {
+          "id": "example-2",
+          "context": "ペットの名前",
+          "text": "We call our small cat Mochi because she is so soft.",
+          "translation": "うちの小さな猫はとても柔らかいので、モチと呼んでいます。"
+        },
+        {
+          "id": "example-3",
+          "context": "店の予約",
+          "text": "Could you call the restaurant and ask about Friday night?",
+          "translation": "レストランに電話して金曜の夜について聞いてくれますか。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "call",
+          "choices": [
+            {
+              "text": "眠る",
+              "meaning": "sleep の意味"
+            },
+            {
+              "text": "洗う",
+              "meaning": "wash の意味"
+            },
+            {
+              "text": "電話する・呼ぶ",
+              "meaning": "call の意味"
+            },
+            {
+              "text": "貸す",
+              "meaning": "lend の意味"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "call は電話をする、または名前で呼ぶという意味の動詞である。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "電話する・呼ぶ",
+          "choices": [
+            {
+              "text": "open",
+              "meaning": "開ける"
+            },
+            {
+              "text": "wait",
+              "meaning": "待つ"
+            },
+            {
+              "text": "carry",
+              "meaning": "運ぶ"
+            },
+            {
+              "text": "call",
+              "meaning": "電話する・呼ぶ"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "電話する、名前で呼ぶという意味を表す語は call である。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "友達が来なくて心配な場面。I am worried, so I will ___ him now.",
+          "choices": [
+            {
+              "text": "call",
+              "meaning": "電話する"
+            },
+            {
+              "text": "smell",
+              "meaning": "においをかぐ"
+            },
+            {
+              "text": "paint",
+              "meaning": "塗る"
+            },
+            {
+              "text": "guess",
+              "meaning": "推測する"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "心配で相手に連絡を取る場面なので、電話をする call が自然である。他の選択肢は him を目的語にしても文意が合わない。",
+          "alternatives": [
+            {
+              "answer": "phone",
+              "explanation": "call とほぼ同じ意味で、特に英国でよく使われる。"
+            },
+            {
+              "answer": "text",
+              "explanation": "電話ではなくメッセージを送る意味になる。"
+            },
+            {
+              "answer": "contact",
+              "explanation": "手段を限定せず連絡を取る意味になる。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "電話をする意味の call を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I will call to my teacher tonight.",
+              "meaning": "私は今夜先生に電話します、のつもりの誤り"
+            },
+            {
+              "text": "He called with me yesterday.",
+              "meaning": "彼は昨日私に電話した、のつもりの誤り"
+            },
+            {
+              "text": "They are calling at their uncle now.",
+              "meaning": "彼らは今おじさんに電話している、のつもりの誤り"
+            },
+            {
+              "text": "She called me at seven.",
+              "meaning": "彼女は7時に私に電話した。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "電話をする意味の call は人を直接目的語に取るので called me が正しい。to、with、at を人の前に置くのは誤りである。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "友達が来なくて心配な場面。I am worried, so I will ___ him now.",
+        "answers": [
+          "call"
+        ],
+        "explanation": "心配で相手に連絡を取る場面なので、電話をする call が自然である。他の選択肢は him を目的語にしても文意が合わない。",
+        "alternatives": [
+          {
+            "answer": "phone",
+            "explanation": "call とほぼ同じ意味で、特に英国でよく使われる。"
+          },
+          {
+            "answer": "text",
+            "explanation": "電話ではなくメッセージを送る意味になる。"
+          },
+          {
+            "answer": "contact",
+            "explanation": "手段を限定せず連絡を取る意味になる。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "callを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I will call my mother when I get to the station.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-call-usage",
+          "type": "usage",
+          "prompt": "電話をする意味の call を正しく使った文を選んでください。",
+          "choices": [
+            "I will call to my teacher tonight.",
+            "He called with me yesterday.",
+            "They are calling at their uncle now.",
+            "She called me at seven."
+          ],
+          "correctIndex": 3,
+          "explanation": "電話をする意味の call は人を直接目的語に取るので called me が正しい。to、with、at を人の前に置くのは誤りである。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A1",
+        "domains": [
+          "daily-life",
+          "communication"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-begin",
       "word": "begin",
       "level": "3級",
@@ -14523,6 +15716,217 @@
         "domains": [
           "education",
           "daily-life"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-bring",
+      "word": "bring",
+      "level": "3級",
+      "ipa": "/brɪŋ/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "bring"
+        ],
+        "past": [
+          "brought"
+        ],
+        "pastParticiple": [
+          "brought"
+        ],
+        "presentParticiple": [
+          "bringing"
+        ],
+        "thirdPersonSingular": [
+          "brings"
+        ]
+      },
+      "definition": "to carry or take something or someone to the place where the speaker or listener is, or with you to an event",
+      "meaning": "持ってくる・連れてくる",
+      "usageTip": "話し手や聞き手のいる場所、または集まりの場所へ持ってくる・連れてくる時に使う。bring A to B や bring A with you の形が基本。相手のところへ行く場合にも使える。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "パーティーの準備",
+          "text": "Please bring a small gift to the party on Saturday.",
+          "translation": "土曜のパーティーに小さな贈り物を持ってきてください。"
+        },
+        {
+          "id": "example-2",
+          "context": "友人を紹介",
+          "text": "Can I bring my friend to your class tomorrow?",
+          "translation": "明日、友達をあなたの授業に連れて行ってもいいですか。"
+        },
+        {
+          "id": "example-3",
+          "context": "天気への備え",
+          "text": "You should bring an umbrella because it may rain later.",
+          "translation": "後で雨が降るかもしれないので、傘を持ってきたほうがいいですよ。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "bring",
+          "choices": [
+            {
+              "text": "捨てる",
+              "meaning": "throw away の意味"
+            },
+            {
+              "text": "隠す",
+              "meaning": "hide の意味"
+            },
+            {
+              "text": "数える",
+              "meaning": "count の意味"
+            },
+            {
+              "text": "持ってくる・連れてくる",
+              "meaning": "bring の意味"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "bring は物や人をある場所へ持ってくる、連れてくるという意味である。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "持ってくる・連れてくる",
+          "choices": [
+            {
+              "text": "build",
+              "meaning": "建てる"
+            },
+            {
+              "text": "bring",
+              "meaning": "持ってくる・連れてくる"
+            },
+            {
+              "text": "break",
+              "meaning": "壊す"
+            },
+            {
+              "text": "borrow",
+              "meaning": "借りる"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "物や人を話題の場所へ持ってくる動詞は bring である。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "明日の遠足についての先生からの連絡。Please ___ your lunch and a bottle of water.",
+          "choices": [
+            {
+              "text": "forget",
+              "meaning": "忘れる"
+            },
+            {
+              "text": "sell",
+              "meaning": "売る"
+            },
+            {
+              "text": "bring",
+              "meaning": "持ってくる"
+            },
+            {
+              "text": "mend",
+              "meaning": "直す"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "遠足に昼食と水を持参するよう頼む文なので bring が自然である。",
+          "alternatives": [
+            {
+              "answer": "take",
+              "explanation": "話し手のいない場所へ持って行く視点になる。"
+            },
+            {
+              "answer": "pack",
+              "explanation": "荷物に詰める意味になり、持参する行為そのものより準備に焦点がある。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "「ここに持ってくる」の意味の bring を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "Please bring me your notebook.",
+              "meaning": "あなたのノートを私のところへ持ってきてください。"
+            },
+            {
+              "text": "Please bring to me with your notebook.",
+              "meaning": "with が余分で文が成り立たない"
+            },
+            {
+              "text": "Please bring at me your notebook.",
+              "meaning": "at が不適切"
+            },
+            {
+              "text": "Please bring for me in your notebook.",
+              "meaning": "for と in が不適切"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "bring は bring me your notebook のように、人と物を直接並べて使える。余分な前置詞を入れると誤りになる。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "明日の遠足についての先生からの連絡。Please ___ your lunch and a bottle of water.",
+        "answers": [
+          "bring"
+        ],
+        "explanation": "遠足に昼食と水を持参するよう頼む文なので bring が自然である。",
+        "alternatives": [
+          {
+            "answer": "take",
+            "explanation": "話し手のいない場所へ持って行く視点になる。"
+          },
+          {
+            "answer": "pack",
+            "explanation": "荷物に詰める意味になり、持参する行為そのものより準備に焦点がある。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "bringを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Please bring a small gift to the party on Saturday.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-bring-usage",
+          "type": "usage",
+          "prompt": "「ここに持ってくる」の意味の bring を正しく使った文を選んでください。",
+          "choices": [
+            "Please bring me your notebook.",
+            "Please bring to me with your notebook.",
+            "Please bring at me your notebook.",
+            "Please bring for me in your notebook."
+          ],
+          "correctIndex": 0,
+          "explanation": "bring は bring me your notebook のように、人と物を直接並べて使える。余分な前置詞を入れると誤りになる。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A1",
+        "domains": [
+          "daily-life",
+          "travel"
         ],
         "gradeEstimate": "3級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -15324,6 +16728,200 @@
         "domains": [
           "daily-life",
           "food"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-hand",
+      "word": "hand",
+      "level": "3級",
+      "ipa": "/hænd/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "the part of the body at the end of the arm, used to hold and touch things",
+      "meaning": "手",
+      "usageTip": "体の部分としては可算名詞で、両手なら hands。give me a hand は「手伝って」、by hand は「手作業で」の意味。ここでは主に「手」の意味を扱う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "授業",
+          "text": "Please raise your hand if you know the answer.",
+          "translation": "答えが分かる人は手を挙げてください。"
+        },
+        {
+          "id": "example-2",
+          "context": "頼み事",
+          "text": "Could you give me a hand with these boxes?",
+          "translation": "この箱を運ぶのを手伝ってくれますか。"
+        },
+        {
+          "id": "example-3",
+          "context": "寒い日",
+          "text": "My hands were so cold that I could not hold the pen.",
+          "translation": "手がとても冷たくて、ペンを持てなかった。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "hand",
+          "choices": [
+            {
+              "text": "足",
+              "meaning": "歩くための体の部分"
+            },
+            {
+              "text": "目",
+              "meaning": "見るための器官"
+            },
+            {
+              "text": "耳",
+              "meaning": "聞くための器官"
+            },
+            {
+              "text": "手",
+              "meaning": "腕の先にある体の部分"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "hand は腕の先にあり、物をつかんだり触れたりする「手」を表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "手",
+          "choices": [
+            {
+              "text": "head",
+              "meaning": "頭"
+            },
+            {
+              "text": "hand",
+              "meaning": "手"
+            },
+            {
+              "text": "glass",
+              "meaning": "ガラス"
+            },
+            {
+              "text": "earth",
+              "meaning": "地球"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "「手」は hand です。head は頭を表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "重い荷物を運ぶのを頼む場面。Can you give me a ___ with this heavy bag?",
+          "choices": [
+            {
+              "text": "glass",
+              "meaning": "ガラス"
+            },
+            {
+              "text": "head",
+              "meaning": "頭"
+            },
+            {
+              "text": "hand",
+              "meaning": "手"
+            },
+            {
+              "text": "earth",
+              "meaning": "地球"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "give me a hand は「手伝う」という定型表現です。他の語ではこの慣用句になりません。",
+          "alternatives": [
+            {
+              "answer": "some help",
+              "explanation": "Can you give me some help with this heavy bag? も自然で、やや丁寧で直接的です。"
+            },
+            {
+              "answer": "lift",
+              "explanation": "give me a lift は「車に乗せる」の意味が一般的なので、荷物には不向きです。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "hand を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I washed me hands before dinner.",
+              "meaning": "所有格が誤り"
+            },
+            {
+              "text": "I washed my hands before dinner.",
+              "meaning": "夕食前に手を洗った。"
+            },
+            {
+              "text": "I washed my hand to before dinner.",
+              "meaning": "不要な to がある誤り"
+            },
+            {
+              "text": "I washed hands my before dinner.",
+              "meaning": "語順が誤り"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "「私の手」は所有格 my を名詞の前に置いて my hands と表します。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "重い荷物を運ぶのを頼む場面。Can you give me a ___ with this heavy bag?",
+        "answers": [
+          "hand"
+        ],
+        "explanation": "give me a hand は「手伝う」という定型表現です。他の語ではこの慣用句になりません。",
+        "alternatives": [
+          {
+            "answer": "some help",
+            "explanation": "Can you give me some help with this heavy bag? も自然で、やや丁寧で直接的です。"
+          },
+          {
+            "answer": "lift",
+            "explanation": "give me a lift は「車に乗せる」の意味が一般的なので、荷物には不向きです。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "handを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Please raise your hand if you know the answer.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-hand-usage",
+          "type": "usage",
+          "prompt": "hand を正しく使った文を選んでください。",
+          "choices": [
+            "I washed me hands before dinner.",
+            "I washed my hands before dinner.",
+            "I washed my hand to before dinner.",
+            "I washed hands my before dinner."
+          ],
+          "correctIndex": 1,
+          "explanation": "「私の手」は所有格 my を名詞の前に置いて my hands と表します。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A1",
+        "domains": [
+          "daily-life",
+          "health"
         ],
         "gradeEstimate": "3級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -16717,6 +18315,62 @@
   ],
   "audio": [
     {
+      "wordId": "vocab-about",
+      "cacheKey": "e799e7131408cd83cd1ff96039930448fc40f60c436ebc7bdeca4cde2ff8437f",
+      "fileId": "1VScQyLZz5z1-MkOboXwvS_BD1VGNYfBk",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7949999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9600000000000001,
+          "endSeconds": 3.4655
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.491,
+          "endSeconds": 6.0545
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.08,
+          "endSeconds": 8.824
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-above",
+      "cacheKey": "0ca72a1dc9232d16bb0cf0d3beb5c1bc2a90a75aa776678154df73d3cc451cb3",
+      "fileId": "14GtNlDfgPELNHByCcOXSYEN4c4NjswGg",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.708
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.708,
+          "endSeconds": 3.088
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.088,
+          "endSeconds": 6.148
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.382,
+          "endSeconds": 9.474
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
       "wordId": "vocab-across",
       "cacheKey": "4d604dc6f417f8947967f06921aa074361c693711400d9749f93542fd5bd72d8",
       "fileId": "1eZgPJi4dGREqPASwaZFinQua6FRSf4bU",
@@ -16827,6 +18481,34 @@
         }
       ],
       "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-before",
+      "cacheKey": "67997d6dd83480a2ac089250f4a4db605327ccb1a4154cb0df1115814e211876",
+      "fileId": "17UvqVviJEjh0haXdRQoeIWJi777xdPDl",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.865
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.2040000000000002,
+          "endSeconds": 3.779
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.827,
+          "endSeconds": 6.624
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.788,
+          "endSeconds": 9.288
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
     },
     {
       "wordId": "vocab-behind",
@@ -16941,6 +18623,34 @@
       "voiceLabel": "George（男性）"
     },
     {
+      "wordId": "vocab-through",
+      "cacheKey": "def35e086c9ea7f75f8201fd37dd36726dd921b3831f55e3c9e2a505db8d4797",
+      "fileId": "18WQA3D12orZlnnAGYgMY_9XlkXlc0Xd9",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7484999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.797,
+          "endSeconds": 3.779
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.827,
+          "endSeconds": 6.728
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.776,
+          "endSeconds": 8.916
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
       "wordId": "vocab-toward",
       "cacheKey": "77560485843415abd74b032649a24c3ab85c4e9f20e716e17ba1552ba9e656c0",
       "fileId": "1KMnU6Xqc8mOwkDKxh5yVeXoAP8yb8OhY",
@@ -16995,6 +18705,34 @@
         }
       ],
       "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-within",
+      "cacheKey": "38ee362a278a5c5928c74eb9d0bd980fd838cb90350332e8c7f8f917c6cd955f",
+      "fileId": "1rBVa3O6zN9vbXPyGogHzikfEwgozbtYV",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.76
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9249999999999999,
+          "endSeconds": 3.454
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.56,
+          "endSeconds": 6.287
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.287,
+          "endSeconds": 8.963
+        }
+      ],
+      "voiceLabel": "George（男性）"
     },
     {
       "wordId": "vocab-but",
@@ -17137,6 +18875,230 @@
       "voiceLabel": "Sarah（女性）"
     },
     {
+      "wordId": "vocab-that",
+      "cacheKey": "e25c8ba225fc1d439b0b1297735b5672e1a61b081abff23590b840ac8a7f3b20",
+      "fileId": "10vascHcKdvO0Zy02rj356AeRnrU1jiCN",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.784
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0179999999999998,
+          "endSeconds": 3.373
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.711,
+          "endSeconds": 5.8105
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.8105,
+          "endSeconds": 8.081
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-this",
+      "cacheKey": "84a92f2b1c8242d732a1efe35e0e4298e8ab507b865c342397eec624c8452379",
+      "fileId": "1vmxAbOMiNa14SfDKweJr1H_vEcoRkHNm",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7605
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.809,
+          "endSeconds": 3.2104999999999997
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.259,
+          "endSeconds": 6.1825
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.231,
+          "endSeconds": 8.824
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-these",
+      "cacheKey": "66bad3c9a7d243c46ab16540ef9cedf2387794c875b767cfc7d98972ad8b1ebe",
+      "fileId": "1DWEebh3H51awCP-f9CoGpUzQPXIGB0TI",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.737
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.762,
+          "endSeconds": 3.4770000000000003
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.642,
+          "endSeconds": 6.332999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.4399999999999995,
+          "endSeconds": 9.242
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-those",
+      "cacheKey": "4a57770efceb2983b1d3058026d0d9e6afcb696669f6274d2f90ed7b189d2641",
+      "fileId": "1i6K6ZBqQKhXsb3_iMlJP9wgVY1c-tyIF",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8420000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9480000000000001,
+          "endSeconds": 3.976
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.083,
+          "endSeconds": 6.966
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.974,
+          "endSeconds": 9.427
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-what",
+      "cacheKey": "4f7ee09c5f7725eced66396d7a25d688e3850875567fb9eec69c9afeef15a98b",
+      "fileId": "15cWh3zGUGfeTZHklJB55eTCslCEFLIGv",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.6910000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.029,
+          "endSeconds": 3.1465
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.154,
+          "endSeconds": 5.1259999999999994
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.36,
+          "endSeconds": 7.895
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-which",
+      "cacheKey": "5964e92359550c0caf85018b42dd3d8d2499cd965661329f51da51b812e6756a",
+      "fileId": "1oJKV8CFzemFByvknghUhED7qjEnA9ByK",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7025
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.751,
+          "endSeconds": 3.1060000000000003
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.2119999999999997,
+          "endSeconds": 5.869
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.894,
+          "endSeconds": 8.359
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-who",
+      "cacheKey": "a3d6c6f42ef1a1c0395b0a305f26477b51b6b67945918bef3e67920f64c409b1",
+      "fileId": "1DlDc3rTMixzmXSywhXAPpAn8iTgLSmDu",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.726
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.89,
+          "endSeconds": 2.3105
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 2.318,
+          "endSeconds": 4.731
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 4.779,
+          "endSeconds": 6.78
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-when",
+      "cacheKey": "5e2fe1408f68057bf8f019b59b14766493f837446a9099f74295e0c5d0d4bd41",
+      "fileId": "10rTlqsdoAHWgQa2I4USYaK5ur9UcEG7s",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.714
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9480000000000001,
+          "endSeconds": 3.245
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.479,
+          "endSeconds": 5.521
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.685,
+          "endSeconds": 7.895
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
       "wordId": "vocab-why",
       "cacheKey": "78d5a5d555e683b61fff7ac22e760c4ec041fa156d8901ea5b55afa6c4c9cde9",
       "fileId": "1QloBPOWfYXwf6VbK-TSDDYIk0m6HwvSi",
@@ -17249,6 +19211,34 @@
       "voiceLabel": "George（男性）"
     },
     {
+      "wordId": "vocab-each",
+      "cacheKey": "78396ed47e538002a5ab7e7340f6b6c46f453f1300a2db272cc01f80b9d0c51c",
+      "fileId": "1oJRMifEpnQ74OcEY9H_i9wwD62QQg5mb",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.784
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9480000000000001,
+          "endSeconds": 3.7325
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.7809999999999997,
+          "endSeconds": 7.1225000000000005
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.171,
+          "endSeconds": 10.728
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
       "wordId": "vocab-every",
       "cacheKey": "dc38eceb292957a1598833d2fc3fe0f564f4f1507486b35163216f896e1147e7",
       "fileId": "18dPBPiKBx3ltndiVBLLknWp1ja3VZ3eo",
@@ -17303,6 +19293,62 @@
         }
       ],
       "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-most",
+      "cacheKey": "91908e1225348639d2955d2b809bd1b3a658a17af9183cd1c6df9c798ac2cd75",
+      "fileId": "1H0vRibICnELGJ_6fxI29-v4iF1jMIWKQ",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.83
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.83,
+          "endSeconds": 3.1925
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.1999999999999997,
+          "endSeconds": 5.062
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.07,
+          "endSeconds": 7.477
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-very",
+      "cacheKey": "b72ddb223c7cc1072ce47ef1a1710219f42fd33cbfc4cb41a505da436fd2f886",
+      "fileId": "1gCBP4LNFR4LERCOiqxo92haNnGKxvfFA",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.772
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9369999999999999,
+          "endSeconds": 3.895
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.06,
+          "endSeconds": 7.0649999999999995
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.2989999999999995,
+          "endSeconds": 9.659
+        }
+      ],
+      "voiceLabel": "George（男性）"
     },
     {
       "wordId": "vocab-still",
@@ -17613,6 +19659,62 @@
       "voiceLabel": "George（男性）"
     },
     {
+      "wordId": "vocab-rather",
+      "cacheKey": "7dca8e05362cbe08a8bfc77549cad9d42f52c61f1ab221b46fe5f0a4eb8c68f5",
+      "fileId": "1L7WpmJoRwJZHYAQDGeu0xAwuw6RjwdIW",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.6385000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.6385000000000001,
+          "endSeconds": 3.3840000000000003
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.549,
+          "endSeconds": 6.8325
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.881,
+          "endSeconds": 9.659
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-perhaps",
+      "cacheKey": "75193f3d2aadccdd459911b2dde583b9e2c3ccebac2484cc4323f1ed96bda283",
+      "fileId": "1UUtvBhoN8qNI1HtEB_2RO1B_m33xUkfo",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.004
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.1110000000000002,
+          "endSeconds": 4.2085
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.234,
+          "endSeconds": 7.0065
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.0065,
+          "endSeconds": 10.031
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
       "wordId": "vocab-maybe",
       "cacheKey": "d55ae3758a367e73bb7e0d7cab121342aa1835deaad50f8115a3ddd2f3b9ef09",
       "fileId": "1fOhjNgVoStGvhJHVc4ZHLr5T-USYr7Yb",
@@ -17695,6 +19797,90 @@
         }
       ],
       "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-you",
+      "cacheKey": "3f7fde458ba52600f740739916b2f12cdb5e93b3e262d7ab58c8927c01ff5ac1",
+      "fileId": "1iGpvXVD6ZN9VJZy1NUCJe4CFUmxeKgNp",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.644
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.809,
+          "endSeconds": 3.4539999999999997
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.502,
+          "endSeconds": 5.37
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.476,
+          "endSeconds": 7.291
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-they",
+      "cacheKey": "77c6f33eabde997189b056cf7e662d6e20cce65890ebde775ae405e2b6776e53",
+      "fileId": "1PPLi5QM-jK41N6BV7Bjod5Ollt8mKNgv",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8069999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.971,
+          "endSeconds": 3.9530000000000003
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.06,
+          "endSeconds": 7.888999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.228000000000002,
+          "endSeconds": 11.238
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-me",
+      "cacheKey": "4dd21675613bbbbf6670f890d49544044c534a6c08ae2ecceec5e5d2aab6c56b",
+      "fileId": "1e4PW5fmSCMzhcLIFEoXLa7zjySgg1yz-",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8069999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9129999999999999,
+          "endSeconds": 3.2915
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.34,
+          "endSeconds": 5.6195
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.627,
+          "endSeconds": 7.57
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
     },
     {
       "wordId": "vocab-him",
@@ -18005,6 +20191,34 @@
       "voiceLabel": "George（男性）"
     },
     {
+      "wordId": "vocab-off",
+      "cacheKey": "bd3dce5fbccecb297ea4fe0d40e611a7391e3cdee17fec60dd21655c0566a047",
+      "fileId": "1vNQjO0kM5Eu_SP-nl0AAjebMzYcS_4Ln",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.6905
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.739,
+          "endSeconds": 3.274
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.282,
+          "endSeconds": 6.159
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.207,
+          "endSeconds": 9.009
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
       "wordId": "vocab-out",
       "cacheKey": "713b0f971b8d7ce30442b902267f35066b8b57746eb1311f4a97e5c826e6732e",
       "fileId": "1fHGjBYkCxMsiv58-Hleie2_QoClHHDU7",
@@ -18201,6 +20415,118 @@
       "voiceLabel": "George（男性）"
     },
     {
+      "wordId": "vocab-brother",
+      "cacheKey": "d2b18fc3e9ac655f3f587b8bd00f168d7b28f89a2ca4bf4cf8cc672073107f59",
+      "fileId": "1Nu5Kx9LMHPb3_TJmX-IhCBQzc66iRJOu",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7489999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9129999999999999,
+          "endSeconds": 3.7325
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.7809999999999997,
+          "endSeconds": 5.8454999999999995
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.894,
+          "endSeconds": 8.313
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-begin",
+      "cacheKey": "b7aafb39776491c1a08e41641e6af153f22102cf26d31b321f41af9df662d3b3",
+      "fileId": "1qT2ZYN1UIvwQorZepY5dRpIzM-lobISX",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.784
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.809,
+          "endSeconds": 3.4885
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.537,
+          "endSeconds": 6.6579999999999995
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.683,
+          "endSeconds": 9.427
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-cook",
+      "cacheKey": "2627eaf8c5af3d5411eba93b7290be8e1690a05d979e8b77b0f35225a096e7cb",
+      "fileId": "1tT4jG0BImTvJbyxiMN0ssYWoNEEeZpMX",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7370000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.971,
+          "endSeconds": 3.553
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.553,
+          "endSeconds": 6.3100000000000005
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.3100000000000005,
+          "endSeconds": 8.916
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-dog",
+      "cacheKey": "781015ffa7b6767c1165e466a406dbfc6267ba57e8f5ecba8c99fb592e9f7b43",
+      "fileId": "1FtgVQDvBkAQgiB1dj11vukFw3MAv4WSe",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.6325000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.6325000000000001,
+          "endSeconds": 3.2800000000000002
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.444,
+          "endSeconds": 6.705
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.869,
+          "endSeconds": 9.52
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
       "wordId": "vocab-earth",
       "cacheKey": "f5c69de4576a85ae595a83ad7565223b91ff8ee538f0879635a6f18df7ddc14c",
       "fileId": "1R_f7Y85klZBz90_9Mu7Vy5RrnaMZ8voX",
@@ -18224,6 +20550,90 @@
           "id": "example-3",
           "startSeconds": 8.843,
           "endSeconds": 11.981
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-glass",
+      "cacheKey": "5660b7219ce095fabb9879d08fca42b4fdebc9de22067e04c3ee4a06f7d7f080",
+      "fileId": "1pA1A_8fz0VpDbPnXqLT6ZneRr5NKmSwy",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8420000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.2730000000000001,
+          "endSeconds": 3.233
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.3979999999999997,
+          "endSeconds": 6.473
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.904,
+          "endSeconds": 10.495
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-head",
+      "cacheKey": "7fcd9fd1c1a4d8bbe53139749b7735d858ab822964ca48e37fce0a0e845beb6d",
+      "fileId": "1wPIyFV-UVqrMyuMAo6UHAQCV88eH0D-P",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.54
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.54,
+          "endSeconds": 2.8850000000000002
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.05,
+          "endSeconds": 5.161
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.499,
+          "endSeconds": 7.477
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-hear",
+      "cacheKey": "6a38a1e72a7b12bff7e50977ee50307833c253fd10d34552d50d339781296318",
+      "fileId": "1HNKNo5qDT2jpmveYFNAoLkv4_LLxERJ_",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.6445
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.693,
+          "endSeconds": 2.798
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 2.806,
+          "endSeconds": 5.4625
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.511,
+          "endSeconds": 7.616
         }
       ],
       "voiceLabel": "Sarah（女性）"
