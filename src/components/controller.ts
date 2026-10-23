@@ -12,6 +12,7 @@ export interface UploadStatus {
 }
 
 export interface NewLearningPlan {
+  questionTemplate?: import('@/lib/types').QuestionTemplate;
   title?: string;
   subject: string;
   goal: string;

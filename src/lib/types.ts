@@ -2,9 +2,11 @@ export type Subject = string;
 export type Role = 'parent' | 'student';
 export type AccessLevel = 'superuser' | 'manager' | 'learner';
 export type PracticeMode = 'daily' | 'extra' | 'weak';
+export type QuestionTemplate = 'kobun-vocabulary';
 export type QuestionStatus = 'draft' | 'approved' | 'published' | 'archived';
 
 export interface Topic {
+  questionTemplate?: QuestionTemplate;
   id: string; title: string; subject: Subject; description: string;
   createdAt: string; targetCount: number;
   audienceUserId?: string; planId?: string;
@@ -42,6 +44,7 @@ export interface PracticeSession {
   createdAt: string; completedAt?: string;
 }
 export interface GenerationJob {
+  questionTemplate?: QuestionTemplate;
   id: string; topicId: string;
   status: 'queued' | 'running' | 'review' | 'failed';
   targetCount: number; generatedCount: number; createdAt: string;
@@ -55,6 +58,7 @@ export interface GenerationJob {
   testOnly?: boolean;
 }
 export interface LearningPlan {
+  questionTemplate?: QuestionTemplate;
   id: string; ownerId: string; title: string; subject: Subject;
   tags?: string[];
   goal: string; difficulty: string; targetDate?: string; dailyQuestionTarget: number;

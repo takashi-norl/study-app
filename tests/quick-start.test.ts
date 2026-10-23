@@ -151,3 +151,24 @@ test('all kobun choices keep the full optional comment and remain within saved-p
     assert.ok(result.message.length<=4000);
   }
 });
+
+test('kobun vocabulary saves its durable template and requires real selected materials',()=>{
+  const result=buildQuickStart({...base,materialMode:'sources',sourceIds:['photo'],kobunQuestionStyle:'vocabulary'});
+  assert.equal(result.plan.questionTemplate,'kobun-vocabulary');
+  assert.deepEqual(result.plan.sourceIds,['photo']);
+  assert.match(result.plan.goal,/古文単語/);
+  assert.match(result.message,/練習する内容：古文単語/);
+  assert.throws(()=>buildQuickStart({...base,kobunQuestionStyle:'vocabulary'}),/自分の教材/);
+  assert.throws(()=>buildQuickStart({...base,materialMode:'sources',kobunQuestionStyle:'vocabulary'}),/1〜20件/);
+});
+
+test('vocabulary template never persists after selecting another style or subject',()=>{
+  const material={...base,materialMode:'sources' as const,sourceIds:['photo']};
+  for(const style of KOBUN_QUESTION_STYLES.filter(item=>item.id!=='vocabulary')) {
+    assert.equal(buildQuickStart({...material,kobunQuestionStyle:style.id}).plan.questionTemplate,undefined);
+  }
+  for(const subject of ['英語','漢文','数学']) {
+    const input={...base,subject};
+    assert.deepEqual(buildQuickStart({...input,kobunQuestionStyle:'vocabulary'}),buildQuickStart(input));
+  }
+});

@@ -1,6 +1,7 @@
 import type { GenerationJob, LearningPlan, PlanningProposal, Profile, StudyData } from '@/lib/types';
 import { ApiError } from './config';
 import { canAccessSource,canAccessQuestion,canAccessPlan } from './access';
+import { questionTemplateRules, validateVocabularyQuestions } from '@/lib/kobun-vocabulary';
 import { validateSamples } from './planning-samples';
 
 export interface GenerationSelection {
@@ -13,7 +14,7 @@ export function generationReplay(data: StudyData, profile: Profile, input: Gener
   const job = data.jobs.find(job => job.requestId === input.requestId && job.requestedBy === profile.id);
   if (!job) return undefined;
   if(!canAccessQuestion(job,profile)) throw new ApiError(404,'作問依頼が見つかりません。','TOPIC_NOT_FOUND');
-  if (job.planId && !data.plans.some(plan => plan.id === job.planId && plan.ownerId === profile.id)) throw new ApiError(404, '自分の学習相談が見つかりません。', 'PLAN_NOT_FOUND');
+  if (job.planId && !data.plans.some(plan => plan.id === job.planId && plan.questionTemplate === job.questionTemplate && plan.ownerId === profile.id)) throw new ApiError(404, '自分の学習相談が見つかりません。', 'PLAN_NOT_FOUND');
   const topic = data.topics.find(topic => topic.id === job.topicId);
   if (!topic) throw new ApiError(404, '作成先の問題集が見つかりません。', 'TOPIC_NOT_FOUND');
   if (job.planId !== input.planId || job.turnId !== input.turnId || job.proposalId !== input.proposalId
@@ -39,8 +40,9 @@ export function assertGenerationAccess(data: StudyData, job: GenerationJob) {
   const requester = data.profiles.find(profile => profile.id === job.requestedBy);
   const topic = data.topics.find(topic => topic.id === job.topicId);
   if (!requester || !topic) throw new ApiError(403, '作問依頼者の利用権限を確認できません。', 'GENERATION_ACCESS_DENIED');
+  if(job.questionTemplate && topic.subject!=='古文')throw new ApiError(403,'古文の単語問題として確認できません。','GENERATION_ACCESS_DENIED');
   if(topic.libraryPublished) throw new ApiError(403,'公開版に問題を追加することはできません。','GENERATION_ACCESS_DENIED');
-  if (job.audienceUserId !== topic.audienceUserId || job.planId !== topic.planId || !!job.testOnly!==!!topic.testOnly || !canAccessQuestion(job,requester)) throw new ApiError(403, '作問先の設定が一致しません。', 'GENERATION_ACCESS_DENIED');
+  if (job.questionTemplate !== topic.questionTemplate || job.audienceUserId !== topic.audienceUserId || job.planId !== topic.planId || !!job.testOnly!==!!topic.testOnly || !canAccessQuestion(job,requester)) throw new ApiError(403, '作問先の設定が一致しません。', 'GENERATION_ACCESS_DENIED');
   if (job.planId && !data.plans.some(plan => plan.id === job.planId && plan.ownerId === requester.id && canAccessPlan(plan,requester) && !!plan.testOnly===!!job.testOnly)) throw new ApiError(403, 'この相談から作問できるのは本人だけです。', 'GENERATION_ACCESS_DENIED');
   if (requester.role === 'student' && (!job.planId || job.audienceUserId !== requester.id)) throw new ApiError(403, '自分の学習相談から作問してください。', 'GENERATION_ACCESS_DENIED');
   if(job.approvedSamples) {
@@ -72,7 +74,12 @@ export function currentProposal(data: StudyData, profile: Profile, planId: strin
 export function currentApprovedProposal(data:StudyData,profile:Profile,planId:string|undefined,input:{expectedVersion?:number;turnId?:string;proposalId?:string;approveSamples?:boolean}) {
   if(!planId || !input.expectedVersion || !input.turnId || !input.proposalId || input.approveSamples!==true) throw new ApiError(409,'まず3問のサンプルを確認し、この作り方でよいか決めてから本作成へ進んでください。','SAMPLE_APPROVAL_REQUIRED');
   const selected=currentProposal(data,profile,planId,{expectedVersion:input.expectedVersion,turnId:input.turnId,proposalId:input.proposalId});
-  return {...selected,samples:validateSamples(selected.proposal.samples,selected.proposal.sourceIds)};
+  const samples=validateSamples(selected.proposal.samples,selected.proposal.sourceIds);
+  if(questionTemplateRules(selected.plan.subject,selected.plan.questionTemplate)){
+    if(selected.proposal.subject!==selected.plan.subject)throw new ApiError(422,'古文の単語問題として試作し直してください。','INVALID_VOCABULARY_QUESTION');
+    try{validateVocabularyQuestions(samples);}catch(error){throw new ApiError(422,error instanceof Error?error.message:'単語問題を確認できません。','INVALID_VOCABULARY_QUESTION');}
+  }
+  return {...selected,samples};
 }
 
 export function validateBulkCadence(targetCount:number,dailyQuestionTarget?:number,plannedDays?:number):void {

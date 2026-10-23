@@ -45,7 +45,8 @@ const questionSchema = z.object({
   audienceUserId: idSchema.optional(), planId: idSchema.optional(), ownerId:idSchema.optional(), aiGenerated:z.boolean().optional(),
   testOnly:z.boolean().optional(),
 }).refine((question) => question.correctIndex < question.choices.length, 'Invalid answer');
-const topicSchema = z.object({ id: idSchema, title: z.string(), subject: subjectSchema,
+const topicSchema = z.object({
+  questionTemplate: z.literal('kobun-vocabulary').optional(), id: idSchema, title: z.string(), subject: subjectSchema,
   description: z.string(), createdAt: isoSchema, targetCount: z.number().int().min(0),
   audienceUserId: idSchema.optional(), planId: idSchema.optional(),testOnly:z.boolean().optional(),
   libraryPublished:z.boolean().optional(),librarySourceTopicId:idSchema.optional(), ownerId:idSchema.optional(),
@@ -60,7 +61,8 @@ const attemptSchema = z.object({ id: idSchema, userId: idSchema, questionId: idS
   sessionId: idSchema, selectedIndex: z.number().int().min(0), correct: z.boolean(), answeredAt: isoSchema });
 const exposureSchema = z.object({ id: idSchema, userId: idSchema, questionId: idSchema, questionVersion: z.number().int().min(1),
   sessionId: idSchema, shownAt: isoSchema });
-const jobSchema = z.object({ id: idSchema, topicId: idSchema, status: z.enum(['queued', 'running', 'review', 'failed']),
+const jobSchema = z.object({
+  questionTemplate: z.literal('kobun-vocabulary').optional(), id: idSchema, topicId: idSchema, status: z.enum(['queued', 'running', 'review', 'failed']),
   targetCount: z.number().int().min(0), generatedCount: z.number().int().min(0), createdAt: isoSchema, error: z.string().optional(),
   audienceUserId: idSchema.optional(), planId: idSchema.optional(), sourceIds: z.array(idSchema).max(20).optional(),
   instructions: z.string().max(4000).optional(), requestedBy: idSchema.optional(), proposalId: idSchema.optional(),
@@ -68,6 +70,7 @@ const jobSchema = z.object({ id: idSchema, topicId: idSchema, status: z.enum(['q
   approvedSamples:planningSamplesSchema.optional(),approvedSampleVersion:z.number().int().positive().optional(),approvedInstructions:z.string().min(1).max(4000).optional(),
   dailyQuestionTarget:z.number().int().min(1).max(100).optional(),plannedDays:z.number().int().min(1).max(300).optional() });
 const planSchema = z.object({
+  questionTemplate: z.literal('kobun-vocabulary').optional(),
   id: idSchema, ownerId: idSchema, title: z.string().trim().min(1).max(150), subject: subjectSchema,
   tags: planTagsSchema.optional(),
   goal: z.string().max(4000), difficulty: z.string().max(200), targetDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
