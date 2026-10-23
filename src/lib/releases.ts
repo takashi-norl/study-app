@@ -8,6 +8,15 @@ export interface AppRelease {
 
 // Newest first. This is the source for Settings, public history and update notices.
 export const APP_RELEASES: readonly AppRelease[] = [{
+  version: '0.15.3',
+  date: '2026-10-24',
+  title: '収録中の4,552語すべてに音声',
+  announcement: '単語と3つの例文を、収録中の4,552語すべてで聞けるようになりました。',
+  changes: [
+    { title: '発音と例文の音声がそろいました', description: '追加教材の音声2,348語分を反映しました。3級・準2級・2級の追加4,452語と、既存の2級・準1級100語で発音・例文を聞けます。' },
+    { title: '聞いて、選んで、繰り返せる', description: '音声を聞いた後は、意味・英単語・英文の空欄・使い方の4形式で確かめられます。再生や選択問題の採点ではAIを呼び出しません。' },
+  ],
+}, {
   version: '0.15.2',
   date: '2026-10-24',
   title: '単語教材を4,552語に',

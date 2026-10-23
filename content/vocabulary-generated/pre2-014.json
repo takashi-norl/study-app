@@ -19198,6 +19198,1014 @@
   ],
   "audio": [
     {
+      "wordId": "vocab-gallon",
+      "cacheKey": "19df506f744588ea00cd94f1f47c39096649fd6f836ff0b79de81088b5b52597",
+      "fileId": "14lMoYpp8HSdtlUZiWIvohmgYorLSyIA2",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8765
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9249999999999999,
+          "endSeconds": 3.135
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.135,
+          "endSeconds": 6.4030000000000005
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.428,
+          "endSeconds": 8.916
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-liter",
+      "cacheKey": "b566ec7eb307f28805336c54ab43b5e917e9dde563ca5473c9d8eca1fae12538",
+      "fileId": "13crA9eMt2JjxB-WDuf9QUMYD6IALG2Qa",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8420000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0059999999999998,
+          "endSeconds": 4.185
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.292,
+          "endSeconds": 8.214
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.379000000000001,
+          "endSeconds": 12.725
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-vowel",
+      "cacheKey": "d030ab7295db556697dab40879e3ffd8f908d929411a25c7631a8c1f5ba41bfb",
+      "fileId": "1-G27_joYmAMuhkY48PPGGVykB2VLhMbF",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.923
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.029,
+          "endSeconds": 5.021
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.186,
+          "endSeconds": 9.433
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 9.540000000000001,
+          "endSeconds": 13.375
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-sunglasses",
+      "cacheKey": "277b0c05bb6f3dc3bc27d0880b35ae1f649018d41d4e8d252f68ebf59172feb6",
+      "fileId": "1n1c5PfWZ7pWqc-seCNFbQAx3RrHEpdaN",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.0915
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0990000000000002,
+          "endSeconds": 4.209
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.373,
+          "endSeconds": 7.2735
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.322,
+          "endSeconds": 10.356
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-toothpaste",
+      "cacheKey": "54e11d9a78038786557b85a5165610bac2f2560c54803138af8c8a65f5164f20",
+      "fileId": "1rSqYw5mb-Ka2Cqeq8iYlgtJiDWdJCtBt",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.0274999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.076,
+          "endSeconds": 4.1625000000000005
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.211,
+          "endSeconds": 6.9605
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.0089999999999995,
+          "endSeconds": 10.077
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-airplane",
+      "cacheKey": "5c01d8b2193f236abadf537dfcd09d7319671666a22fc39098eeea987c333462",
+      "fileId": "1d29FNz17CMGrcBFTdlHY_hU82CvTFHb1",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8879999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.1219999999999999,
+          "endSeconds": 4.6499999999999995
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.814,
+          "endSeconds": 8.063
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.297,
+          "endSeconds": 11.285
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-crossroads",
+      "cacheKey": "d28188c229b638e8009b25afffb98d3483571d426d284a9b6b7e877ec0689682",
+      "fileId": "1c_-OB1fpy-7OHLeeRuYspIYIeHzidI0N",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.271
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.3780000000000001,
+          "endSeconds": 4.835999999999999
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5,
+          "endSeconds": 8.655
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.762,
+          "endSeconds": 13.978
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-magnify",
+      "cacheKey": "e7e647f9f1f22dafc89c0fcec8aace0aeb57c818f17312ef3d6d2c9effcb4601",
+      "fileId": "1m99p4N5k5BabTPb5QllqMxjKapnML9K5",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9695
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9695,
+          "endSeconds": 5.079
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.313,
+          "endSeconds": 9.108
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 9.272,
+          "endSeconds": 13.328
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-kitten",
+      "cacheKey": "80d756405999b38d41e04da339d5ca45cfb9d41d25be830c04b0c7bf811e6513",
+      "fileId": "1_zB-hXMBpwD6n5pHnKtralrBw9UfbpcT",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.865
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.971,
+          "endSeconds": 3.617
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.723,
+          "endSeconds": 7.122999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.148,
+          "endSeconds": 10.124
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-peanut",
+      "cacheKey": "c65a7acd82e5d23e2134825c42b77f007bb9840ad0fb2441daab9f5fcf83b6eb",
+      "fileId": "1vqMUkA4Wi1sL_mcWBo-GuwoSArj4L0F5",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.819
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.157,
+          "endSeconds": 3.9939999999999998
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.002,
+          "endSeconds": 6.867
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.101,
+          "endSeconds": 9.938
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-walnut",
+      "cacheKey": "c2a71e44258493d4439c79bc8392397c0bd53378924ae6715df03babd729ca14",
+      "fileId": "16i0u1nyoVxC9Hj2Sk3KknmCvtzz-uB-H",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9690000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.076,
+          "endSeconds": 3.8895
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.8970000000000002,
+          "endSeconds": 7.355
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.403,
+          "endSeconds": 9.845
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-holiday",
+      "cacheKey": "d8a44edafa9a415562f85e7011769ab936698063bc13513d3d2a74bc40ed59b6",
+      "fileId": "1XDG1a0rs40u1-8-gtvEaMwg19vwIXRmA",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.755
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.755,
+          "endSeconds": 4.104
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.338,
+          "endSeconds": 7.8309999999999995
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.995,
+          "endSeconds": 11.749
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-perspective",
+      "cacheKey": "630e8abbe1a8d40ba9b9943a79ab85af3bde2e39b18bd9134766f9ea7942d076",
+      "fileId": "1OQ7Pb2HcWqqqXX4npj_UQB1KTFIKYFlr",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.028
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.1920000000000002,
+          "endSeconds": 5.183999999999999
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.348,
+          "endSeconds": 9.4565
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 9.505,
+          "endSeconds": 13.468
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-headquarters",
+      "cacheKey": "40aea6b0889a36b2e4eff356a1333b6733b4142c3cb42dd542e275591f522e3b",
+      "fileId": "1OiJsUhcK0fetaUfit2ywYHw764bl6Dlg",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.062
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.2269999999999999,
+          "endSeconds": 5.428
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.859,
+          "endSeconds": 9.189
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 9.354000000000001,
+          "endSeconds": 13.235
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-backyard",
+      "cacheKey": "86b115ea85af4347262a76c6be46c5e81df3b4390aa7cbfbe7aca8c58100f269",
+      "fileId": "1-WUFT2qi5FIWJKc5MsZN_9PUfjnqn4OG",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8999999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9249999999999999,
+          "endSeconds": 4.028499999999999
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.036,
+          "endSeconds": 6.843999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.869,
+          "endSeconds": 9.892
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-bagel",
+      "cacheKey": "697a434e06cf3c50939308c7e0fa89f9ad955398f868a1b165c9385a1e5d76c0",
+      "fileId": "1GDTeNQvBBqY8R3I0EmrE6HXGMl8GPhIl",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8069999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.832,
+          "endSeconds": 4.348
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.512,
+          "endSeconds": 7.7379999999999995
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.077,
+          "endSeconds": 11.378
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-raisin",
+      "cacheKey": "18020ac266b68fbac88aae3ee9ddcf4264bd9517189bae72181bdbd95564595d",
+      "fileId": "1rUdoVimYKR9Ye-XuEbupFxOVboLHz2O3",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8420000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0059999999999998,
+          "endSeconds": 4.464
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.512,
+          "endSeconds": 7.3085
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.357,
+          "endSeconds": 10.495
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-sushi",
+      "cacheKey": "d0b4301ce77816403498418af36f3c1f2be4bbc632aa1fc36d61344aa1cab66a",
+      "fileId": "11qM-qHARlv4wS6HttKNz3r1f9fAIzsWe",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.911
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0179999999999998,
+          "endSeconds": 4.2669999999999995
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.501,
+          "endSeconds": 7.2155000000000005
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.264,
+          "endSeconds": 10.217
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-bedtime",
+      "cacheKey": "8111ad8e627b9180de1052ba22560cfafa0a5e132ab879a8b04498a02b5d1433",
+      "fileId": "1zNRC53JMIKSZgRpiTmW3yXrdFOzxrYZy",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.004
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.169,
+          "endSeconds": 4.242999999999999
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.35,
+          "endSeconds": 6.8675
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.9159999999999995,
+          "endSeconds": 9.659
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-lunchtime",
+      "cacheKey": "53dfc5da32d14cd39bc07f3aebcfe1ccb94201827023f08b7c7114a4c071c456",
+      "fileId": "1hx8s7Wf9N05hNT9d0JXD5rdCDIqEeWTJ",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.859
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.859,
+          "endSeconds": 3.733
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.839,
+          "endSeconds": 6.5365
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.544,
+          "endSeconds": 9.288
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-gardener",
+      "cacheKey": "fc5826ed71b47cc6c972ad238ebabf5ed4bd13e7f6eb2b50c90f44f4f62a5310",
+      "fileId": "1XHCoZXydEcEn02xiL2JtjzW43NTkmsEF",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.074
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.238,
+          "endSeconds": 4.614999999999999
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.721,
+          "endSeconds": 7.923500000000001
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.972,
+          "endSeconds": 11.006
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-librarian",
+      "cacheKey": "5c0d9441127fb51b5777fd1b7b9853e29a182f5d9292aac2b1f81170fc70754b",
+      "fileId": "1bK7LKc5aPd0YwG33a-d6u779sfyjiUNw",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.155
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.3199999999999998,
+          "endSeconds": 5.380999999999999
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.546,
+          "endSeconds": 9.747
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 9.981000000000002,
+          "endSeconds": 13.839
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-photographer",
+      "cacheKey": "e36349171d24d8e9957c10294aceb1ecc681856d31e081f4529c3a89a217da69",
+      "fileId": "1uHmjTGM21JETODEkUgeP8ttnVcajTE4I",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.2135
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.2135,
+          "endSeconds": 4.987
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.093,
+          "endSeconds": 8.725000000000001
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.773000000000001,
+          "endSeconds": 13.05
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-bookshelf",
+      "cacheKey": "1b0f6fc578bb5f62ad26bdb46dcfe2a2c2c0dda41e980edc95a576927338043e",
+      "fileId": "1-EZNkGa1ZLejNpUfRQOTdQ5wqbqchIra",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.946
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.3780000000000001,
+          "endSeconds": 3.9415000000000004
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.99,
+          "endSeconds": 7.191999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.357,
+          "endSeconds": 10.449
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-notepad",
+      "cacheKey": "217266b02afb8b769039eefcc366de0f38a842f2665b10e6e9f12c8ebaa772e4",
+      "fileId": "1bLqwGi3LcecVWO14P-yaZIZl0O4YqiXS",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9810000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0870000000000002,
+          "endSeconds": 3.814
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.862,
+          "endSeconds": 6.455
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.463,
+          "endSeconds": 9.102
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-chimney",
+      "cacheKey": "65029a6fb83997e1a40fb8c46b55c2b5f6afade09d5f02ab570aac77014d7058",
+      "fileId": "14cMl36CLpqRpSkQKSQiCys3tJt4PsjMg",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8879999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.053,
+          "endSeconds": 3.895
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.06,
+          "endSeconds": 6.832999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.067,
+          "endSeconds": 9.985
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-kindergarten",
+      "cacheKey": "712f4cc239a942349698e6fc0333146814f342a1773c584024a17c0c97bb0692",
+      "fileId": "1jkDb-Up6eDS1CzZYotBAQpJGV5QZ0duK",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.126
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.134,
+          "endSeconds": 4.8355
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.861,
+          "endSeconds": 8.011
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.019,
+          "endSeconds": 11.146
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-gutter",
+      "cacheKey": "28606435014e1f0a189bd67a90f2c1c68e9b50f78d0433e9258d5f4f27e19dca",
+      "fileId": "1BDaVkJ__IOZfrU8C-Z0cLAuhSqzitrqf",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.6735
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.681,
+          "endSeconds": 3.8840000000000003
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.99,
+          "endSeconds": 6.49
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.49,
+          "endSeconds": 9.195
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-shrine",
+      "cacheKey": "1e4e747f93f9c5ffdd7de7c5dc847d938bf83566005bc226217a11efd53cd74f",
+      "fileId": "10tz-H_1duPs0dfAlP3Dzm7DIqibreiCu",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.958
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.1219999999999999,
+          "endSeconds": 4.011
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.118,
+          "endSeconds": 7.4945
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.543,
+          "endSeconds": 10.403
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-plaza",
+      "cacheKey": "ffea6592db39fb75abedad579c7d823cf4af0dd230f6e9640ae0042bacdd8798",
+      "fileId": "1BrGpwzR-f5iRUgSOPUMNaBi_45kZ5zSC",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.772
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.772,
+          "endSeconds": 4.162
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.269,
+          "endSeconds": 7.007
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.171,
+          "endSeconds": 10.124
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-trademark",
+      "cacheKey": "227e413a9b126ad154197bdf93d32981e943278b2b226b8ba7d6e0180ded2e27",
+      "fileId": "1wmlw3E4DZS9PwNMgGvhOL_Eqnx2-5pzo",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.882
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.882,
+          "endSeconds": 3.9645
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.013,
+          "endSeconds": 8.1155
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.123000000000001,
+          "endSeconds": 10.913
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-thrift",
+      "cacheKey": "edfaf9dc237476c6d1180e598e1bb57a87b7d88d41be61ea5a2e03c8ffeafd5a",
+      "fileId": "1QZu6IVT_pRpZ53q7NOw5PymxWPGx5700",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8069999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.145,
+          "endSeconds": 4.441
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.6049999999999995,
+          "endSeconds": 7.9239999999999995
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.088000000000001,
+          "endSeconds": 12.214
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-sled",
+      "cacheKey": "cf839a96a8b5ffbe1407f56ddbcd5f805d52e8d694c08fa875e1b421530d5f80",
+      "fileId": "1sR9ZmpR74cG-qorrC3pvIJGHABT4_vJh",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.051
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.157,
+          "endSeconds": 3.9415000000000004
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.99,
+          "endSeconds": 7.4015
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.45,
+          "endSeconds": 10.82
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-enzyme",
+      "cacheKey": "3ee03870d44faa11b51a63cebb42d54f7c62b5a3d53b7c9c9046d7c8e6b19442",
+      "fileId": "1aDdFD2wVbuI7OWmkvQ1adfTXruZRFH4C",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8185
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.8185,
+          "endSeconds": 4.742999999999999
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.907,
+          "endSeconds": 8.655
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.762,
+          "endSeconds": 12.307
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-tumor",
+      "cacheKey": "024f7fee6c66fff7aefd6387e9312673565cd12076b18c30e5f90b6e11d306e1",
+      "fileId": "1qrMvbfmjHtrCJaX-fNzdnGiFOo4VZkV4",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.853
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.878,
+          "endSeconds": 3.6630000000000003
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.7689999999999997,
+          "endSeconds": 7.2155000000000005
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.264,
+          "endSeconds": 10.96
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-vitality",
+      "cacheKey": "6503cec2cf21250465db607e3e927b10653e16ca204b533955535852c3e2f65b",
+      "fileId": "13MZWSfU5jR1mIxLradvAhbJS_HoXCMhp",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.086
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.1920000000000002,
+          "endSeconds": 4.824
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.163,
+          "endSeconds": 9.131
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 9.365,
+          "endSeconds": 13.514
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
       "wordId": "vocab-tempo",
       "cacheKey": "a617b681c7d0afa221bce28ad45c1f1fb67a37e5ae6fe1addace8a2b821fe762",
       "fileId": "1969mrj3D5aSylKBQdorBfwcCNjxlFZci",
@@ -19338,6 +20346,566 @@
       "voiceLabel": "Sarah（女性）"
     },
     {
+      "wordId": "vocab-retiree",
+      "cacheKey": "88f9a49a31578f198ca1dcc2bb863c905bc684841885f05c2cc2d9c417402903",
+      "fileId": "1nL7nSNGx6HiFFyT8DZd_I7n0HMiUmvw3",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.01
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0179999999999998,
+          "endSeconds": 4.592
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.756,
+          "endSeconds": 8.144
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.309000000000001,
+          "endSeconds": 11.656
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-sewer",
+      "cacheKey": "28986345cb2af425d0a1851d43e793f5c7b1608aa6212bdb10604b9e1309b600",
+      "fileId": "10IMjO98tE4ryOzhZamAyJQymml716cIP",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.737
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.762,
+          "endSeconds": 4.011
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.036,
+          "endSeconds": 7.5755
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.601,
+          "endSeconds": 10.82
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-deflation",
+      "cacheKey": "c91312196da4e612907f696502d4edb62847f932ddc9d1cfd808283466d7d98e",
+      "fileId": "1rP8L4BvBZuTmNs0VGwX8h4AeyouNSOOj",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.016
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.25,
+          "endSeconds": 5.196
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.36,
+          "endSeconds": 9.073
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 9.238000000000001,
+          "endSeconds": 13.375
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-pulley",
+      "cacheKey": "ed1c735390ac06335bde2dcd3c34167ad957167e7f280695ffcb420669766b60",
+      "fileId": "1v0kyxwdl2J9qCY4aLoysKpKEY2lEDm37",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8879999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.053,
+          "endSeconds": 3.396
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.396,
+          "endSeconds": 6.345
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.393,
+          "endSeconds": 9.056
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-easel",
+      "cacheKey": "64b7ec78cb25da8206b78114fb830249b51d3f49d719f35ef8b94fc545d84357",
+      "fileId": "1oxdnyaNtTJiJ8CCl5r3TOS3zD9ePEe8O",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8420000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.076,
+          "endSeconds": 4.2315000000000005
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.28,
+          "endSeconds": 7.598999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.763,
+          "endSeconds": 11.378
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-clipboard",
+      "cacheKey": "0a6fd80f311a34fadfa39fb342b25739e683fe8b4da589afb83d31ac15fde480",
+      "fileId": "11IpSo6KQDnO8FhGtnE9en0frH1iLJMAk",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.935
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.041,
+          "endSeconds": 4.824
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.849,
+          "endSeconds": 8.1095
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.158000000000001,
+          "endSeconds": 11.053
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-biscuit",
+      "cacheKey": "aea0c48ce7c031736e671632d328f282a644d1ee25227c96b4a4829d3f018bad",
+      "fileId": "126D_bnOtGhCyHkxHhjyszBGSNXWNYQlD",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8879999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.995,
+          "endSeconds": 3.814
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.152,
+          "endSeconds": 6.6815
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.7299999999999995,
+          "endSeconds": 9.892
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-parasol",
+      "cacheKey": "0eeaf6bff5730d4a69ded89769854e762dcb1e0f1677f2a20d3fbaca4b866363",
+      "fileId": "1yUKnMdvoL3ZNu-o9NqLj-_3rJztzwNrB",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.1785
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.2269999999999999,
+          "endSeconds": 4.569
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.675,
+          "endSeconds": 7.4535
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.461,
+          "endSeconds": 10.542
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-hedge",
+      "cacheKey": "50b521d2ab24fb9e1f08bb492bc0504d36b96344aaf7d74c04ecbcbbe807cef5",
+      "fileId": "1h-nrW1nny1Fh0ZtzpEE4QaZ8r4vKkus6",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8300000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.995,
+          "endSeconds": 3.988
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.152,
+          "endSeconds": 7.436
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.67,
+          "endSeconds": 10.588
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-tower",
+      "cacheKey": "36415439265cb03f28db179807c31a8f1ba2a070aace4727ea7ac7998d7c1813",
+      "fileId": "1E5vBQtG3TBk5sMIu243BtFPsk0pzd9cy",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9575
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0059999999999998,
+          "endSeconds": 3.3845
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.3845,
+          "endSeconds": 6.5015
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.5089999999999995,
+          "endSeconds": 8.963
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-soccer",
+      "cacheKey": "fb4be5fbfd95bdb72c12a207219d4a14cc65e0f0813cc1fefa918defe218c364",
+      "fileId": "1TGYTNfzEy0RTDVCZEQPjKt8eEFNFDQvl",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8879999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.053,
+          "endSeconds": 5.0329999999999995
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.197,
+          "endSeconds": 8.679
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.843,
+          "endSeconds": 13.003
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-basketball",
+      "cacheKey": "2a1b680c9d0811cc06d0371a8f3f92329e48ae9341d67deff3f04118ade7614c",
+      "fileId": "1Pv3RsTVh91ZlmWMwtvSDsBs8sVbrlttG",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.0274999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0274999999999999,
+          "endSeconds": 4.2435
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.2435,
+          "endSeconds": 7.303
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.303,
+          "endSeconds": 10.774
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-bathtub",
+      "cacheKey": "efad2eeebb56ffa9d39e2787564eb0ed0d2c25f6c296037380cb32c12493bee1",
+      "fileId": "1Plc5OYkmfc8ItE5PHywaEZkrbvjtQMpl",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.097
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.529,
+          "endSeconds": 5.0675
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.116,
+          "endSeconds": 8.4
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.564,
+          "endSeconds": 12.167
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-monument",
+      "cacheKey": "1965af1a150785b64aaa26fd05bb406bc454f42cdb3e72d9c47b3ff2f3f481c4",
+      "fileId": "1BluQjrpRle94arZ_5EgecaHT6loM74Xg",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.2075
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.2149999999999999,
+          "endSeconds": 5.1375
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.186,
+          "endSeconds": 8.806
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.913,
+          "endSeconds": 13.05
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-motive",
+      "cacheKey": "5582de6f8aeee5c9523a09d5db0cdb7dc90e6f64a2ef4792067083a0989de5f4",
+      "fileId": "1373SEv1nDNH12rPRgUuz47XKEvUxS229",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.865
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.029,
+          "endSeconds": 4.278
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.443,
+          "endSeconds": 7.436
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.601,
+          "endSeconds": 11.285
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-context",
+      "cacheKey": "13547f9654697f67903def02c37a77daec72124bf94e5ca87dbf85f5cdd899cb",
+      "fileId": "1DrA32e65zmDLPVFkY6TBMrbvVArNN3vc",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.202
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.2269999999999999,
+          "endSeconds": 4.3595
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.3595,
+          "endSeconds": 7.744
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.752,
+          "endSeconds": 11.981
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-supermarket",
+      "cacheKey": "c51c482531075b8b991f2904297e06d3bde5474bca4a37318735620fdf978101",
+      "fileId": "1KU67E8DLLoYKYy2q24gsXRp8AhUa6S2y",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.097
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.436,
+          "endSeconds": 4.313
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.42,
+          "endSeconds": 7.3895
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.3895,
+          "endSeconds": 10.495
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-snowfall",
+      "cacheKey": "b18aea5f999f440a8e168dbebb0988bdca3a3f94a3c58baff57fff5ca0bc8463",
+      "fileId": "1IcCrEBurcmtIYkuubOEptkumOWSIm259",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.0045
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0045,
+          "endSeconds": 3.8369999999999997
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.8369999999999997,
+          "endSeconds": 6.8035
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.811,
+          "endSeconds": 9.938
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-thunderstorm",
+      "cacheKey": "bcc70e1c1ba73fcd51f495d5b65f27b1436cc4fa48b9667952cb5e9a581dbc32",
+      "fileId": "17bLVHsTX39m_3j5dnsXs5K4QMZp-53R_",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9924999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9924999999999999,
+          "endSeconds": 4.093
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.327,
+          "endSeconds": 7.552
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.717,
+          "endSeconds": 10.31
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-university",
+      "cacheKey": "d50980155302e1c77e8d3fdca57301cbb9290cee1b993337b507d0d41ad19279",
+      "fileId": "1nmk0Y7BYOlXCwFmkA2qyH78T9obTsqhu",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9755
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.983,
+          "endSeconds": 4.406000000000001
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.431,
+          "endSeconds": 7.3895
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.3895,
+          "endSeconds": 10.82
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
       "wordId": "vocab-reading",
       "cacheKey": "15db68fc6cc26251dfeddfe732225686d64ac9392782035f46fd8c292465c4d0",
       "fileId": "115aMDeQjaEERNYrFNtDJJK7OMaSOXq6L",
@@ -19473,6 +21041,958 @@
           "id": "example-3",
           "startSeconds": 7.554,
           "endSeconds": 11.146
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-lawmaker",
+      "cacheKey": "1894e544c4407639e2a4ecce43e30c8ac9f5f898f1d98e8addb82e5ad909f18c",
+      "fileId": "1nBeHUPBjYld3Z0XIrnlZo3tZlWP0C2Yc",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9810000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0870000000000002,
+          "endSeconds": 5.055999999999999
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.0809999999999995,
+          "endSeconds": 8.574
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.599,
+          "endSeconds": 12.26
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-uncertainty",
+      "cacheKey": "feef9ad3c6a81057d573d849233d6fef738e1ae83a60266008b51eced708518e",
+      "fileId": "1bRIFYpxIJYMQLs9_MnLhFNA6L_sXJPWC",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.0565
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.064,
+          "endSeconds": 5.346
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.58,
+          "endSeconds": 9.201
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 9.365,
+          "endSeconds": 12.957
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-recycling",
+      "cacheKey": "5b61df67094130573a5fdc4b791cdc4064cad1411c5610c43ed4d9b0fd466332",
+      "fileId": "1rX90nxwndnjXryjzRRO157wNftH0mzgt",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.051
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.076,
+          "endSeconds": 4.330500000000001
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.338,
+          "endSeconds": 7.889
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.937,
+          "endSeconds": 11.192
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-chocolate",
+      "cacheKey": "a861221d02912e2339b9abd69f0c3046148c39f5187ff8d11a6dff279ef4671a",
+      "fileId": "1DmIc9to6QZpwd0Zr7FxES_L3BB4A7CmI",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7375
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.7375,
+          "endSeconds": 3.245
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.409,
+          "endSeconds": 6.194
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.428,
+          "endSeconds": 8.777
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-announcement",
+      "cacheKey": "173a94b2c2a6b8f735b36d421f2287112521c50bef876e99507c4a0480dbb473",
+      "fileId": "1RJkzkrpUihEZ0R7US9APUgGTC60s33IM",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.097
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.145,
+          "endSeconds": 4.615
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.64,
+          "endSeconds": 7.947
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.972,
+          "endSeconds": 11.424
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-cafe",
+      "cacheKey": "b376096a0d7620fe0348e5d24f6a372d7bcd57b662816522bcad869e9cf1e120",
+      "fileId": "1jwx-mfgvvehQuUnKv4kbzNSjafRWyUjB",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.772
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.772,
+          "endSeconds": 3.744
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.909,
+          "endSeconds": 6.7105
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.718,
+          "endSeconds": 9.845
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-mall",
+      "cacheKey": "089c6891b2a470f8809ee15845e5c9e08429fdf8a01a95b30fb8cae632c283db",
+      "fileId": "1eQk4cINvv7VMxDxmZbhVIijV6zKZJ_FM",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8300000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.878,
+          "endSeconds": 3.785
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.7929999999999997,
+          "endSeconds": 6.258
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.258,
+          "endSeconds": 8.916
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-sunflower",
+      "cacheKey": "2d2b026e5aacdaf908aee8cc85f56a60a3db0509dcfe685232590186e86822ea",
+      "fileId": "1dmO-S1JmZSIah0T625N4payre2Fzo0ec",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.929
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9369999999999999,
+          "endSeconds": 4.487
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.652,
+          "endSeconds": 7.68
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.728,
+          "endSeconds": 11.006
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-seatbelt",
+      "cacheKey": "08dd0a66daebc5fc2249a99f78e0f91ec684fcbd95a90833deb9f0e61beaeef9",
+      "fileId": "1ZaBed5g-vuOYTfRHswnlVuYy1p_QBVHD",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8885
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9369999999999999,
+          "endSeconds": 4.2085
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.257,
+          "endSeconds": 7.5175
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.5175,
+          "endSeconds": 10.217
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-patent",
+      "cacheKey": "da19e0f24551a4113e247878ee2aeeb92095c78b0a555e553d152db35ddbbc98",
+      "fileId": "1j2o3MZKYVVMKwEO-PAYLEyNV6tEt5zWM",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8245
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.832,
+          "endSeconds": 4.348
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.582,
+          "endSeconds": 8.063
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.228000000000002,
+          "endSeconds": 12.446
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-tactic",
+      "cacheKey": "917dcd2f5e0db2c18e642dce819955c99ccdcb4e017c4facabc3d412bda362be",
+      "fileId": "1KHocRq1-BhiAcTPUEAzprvyWaBeDZdJT",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9344999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9344999999999999,
+          "endSeconds": 6.0895
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 6.138,
+          "endSeconds": 9.665
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 9.690000000000001,
+          "endSeconds": 13.839
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-whatever",
+      "cacheKey": "8c504a30fa73bd2f9259f6c1a334aa43cbb73c1ee7bb7fa2bca490a513dd327a",
+      "fileId": "1eAuh4NoaLKc2mkpjVIcag30sRytB3f2t",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.801
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.809,
+          "endSeconds": 3.6750000000000003
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.909,
+          "endSeconds": 7.215999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.322,
+          "endSeconds": 10.82
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-herself",
+      "cacheKey": "ecf08074859ec194ab3c1f6bb0614c2f29e5759dc5a53a3d6585b5b52e541080",
+      "fileId": "1NYRGEU2HfEJLIv8AnwF49V5M0lwwRo9R",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.1084999999999998
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.157,
+          "endSeconds": 3.8840000000000003
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.048,
+          "endSeconds": 6.9485
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.974,
+          "endSeconds": 9.985
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-fingerprint",
+      "cacheKey": "6beeb9465f598b504b5706338891d03bca4f1a511988435328f35185cf56379f",
+      "fileId": "1MTz_JzKf34m20TElcSJizWdn2U9n2cY2",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9810000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.2149999999999999,
+          "endSeconds": 4.185
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.35,
+          "endSeconds": 7.308999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.473,
+          "endSeconds": 10.774
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-pathogen",
+      "cacheKey": "1dba355049dab69f7163ea4069fcc7146f31fb1d6414af482046580467ae8746",
+      "fileId": "1TlPU4Fp2lWQMzlWV0mOZAEibDVy50jRi",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.0625
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0625,
+          "endSeconds": 5.184
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.232,
+          "endSeconds": 9.166
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 9.214,
+          "endSeconds": 12.725
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-warrant",
+      "cacheKey": "9e80ec8989cfc0b3fe35429c71dfd6baf6b81b6ab537f50cc7459eef0b55734a",
+      "fileId": "13jbDdfTMk9Zw9htw1BL5Koz1o8hlJbBd",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.853
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.1920000000000002,
+          "endSeconds": 4.452
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.617,
+          "endSeconds": 8.0165
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.065000000000001,
+          "endSeconds": 11.749
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-testify",
+      "cacheKey": "f264bc383681b61fd36d3254a3575e53013a0a755c185a341b2998be22e2e9a2",
+      "fileId": "13U6pQyJwouairiESFJ9Yo9nXzE9ugZtP",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.1145
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.1145,
+          "endSeconds": 4.139
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.187,
+          "endSeconds": 7.268
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.268,
+          "endSeconds": 10.403
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-freeway",
+      "cacheKey": "0c991b7304c14eb70062f704e853821608ce317bc8649242641e884796c4257a",
+      "fileId": "19fNQHJOh7Wdmvj2lVSJPZJ2lIXdxNVAH",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.743
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.743,
+          "endSeconds": 3.024
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.259,
+          "endSeconds": 6.438
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.602,
+          "endSeconds": 9.706
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-amphibian",
+      "cacheKey": "7d7394e5bcc58284d2e68756dba042e4cb183493111317da9c5b946a71600b64",
+      "fileId": "1O7Tc6DMDdaxdfomBZMb8fwKD9QRtvvAh",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.0045
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.053,
+          "endSeconds": 4.952
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.058,
+          "endSeconds": 9.2125
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 9.261000000000001,
+          "endSeconds": 12.399
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-portrait",
+      "cacheKey": "7ce412db542241f675ca36422d15854157efcbc2a689bee5dd1bba133b88e11b",
+      "fileId": "1uIPXWeWAW1bjUajp08mG-8Iay-J48E9y",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8879999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.053,
+          "endSeconds": 4.162
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.269,
+          "endSeconds": 7.181
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.415,
+          "endSeconds": 10.356
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-ensemble",
+      "cacheKey": "052be2d8eb39e35fade568fbe04d91a6ddfe309d32777339e92f44f7e123f6c5",
+      "fileId": "1U4fnk9dPvEnSkQ0db_gsUbXiIut-NmuF",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8995
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9480000000000001,
+          "endSeconds": 5.0445
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.093,
+          "endSeconds": 10.1065
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 10.155000000000001,
+          "endSeconds": 14.025
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-narrative",
+      "cacheKey": "0681d878deceab7b0964dcc1b5c5e24ab1d8b7806b70c1302ee082cdbec4e609",
+      "fileId": "1CVJD2AVr1a5ExJ4hZRz_ZZOZOTcIFmB0",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.935
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.366,
+          "endSeconds": 4.9399999999999995
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.104,
+          "endSeconds": 8.283999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.518,
+          "endSeconds": 12.121
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-critic",
+      "cacheKey": "fc9f6a620a0e18b4fbe4d3e033139a32cb0d9597f30200289150a5e63ae7aa30",
+      "fileId": "1TjnL_0dUTQ6A64vIvx6-7ppLbs-a4khd",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.819
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9249999999999999,
+          "endSeconds": 4.423500000000001
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.431,
+          "endSeconds": 7.2565
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.264,
+          "endSeconds": 10.263
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-yourselves",
+      "cacheKey": "60364075bc5077080b32fb5a5e4343201a343a2258f89f1b12fa5e3a2fbaea10",
+      "fileId": "1Q6wgPcyZlbe1ru6fBIe8XsCztAfQKp0_",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.952
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9600000000000001,
+          "endSeconds": 3.6165000000000003
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.642,
+          "endSeconds": 6.925
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.09,
+          "endSeconds": 9.799
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-hybrid",
+      "cacheKey": "03af4fa48ea9a8717e742c0bbfefd8034da29e464f65a5ddc352d99b9ade35c1",
+      "fileId": "1Hd3iDEl1taNKNF5wh2m830GvjlZJu_rm",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.853
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9600000000000001,
+          "endSeconds": 3.6630000000000003
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.827,
+          "endSeconds": 7.250500000000001
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.276,
+          "endSeconds": 10.728
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-rebate",
+      "cacheKey": "e380b0f3b99e4e9501d1f710cc360ba58bda1552cfdf84885276d4b78bcd021d",
+      "fileId": "1kEEo8FjbIGwRxcuq3TKt6EQpW3a5blXl",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8125
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.82,
+          "endSeconds": 4.476
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.64,
+          "endSeconds": 8.028
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.135000000000002,
+          "endSeconds": 12.539
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-quarterly",
+      "cacheKey": "bf72c4948df3aa93b9fdc2090d837bcbcfe621daee415d439034bde88af822b8",
+      "fileId": "1qjnZIKU3Q-rogAfOtVAo8eAYhwkBW2jU",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.952
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.952,
+          "endSeconds": 4.1275
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.176,
+          "endSeconds": 7.029999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.029999999999999,
+          "endSeconds": 11.238
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-nuance",
+      "cacheKey": "d120a395b40822b7f3abdce2e136617d05251fb9c731e7daa8ae7bce026c036b",
+      "fileId": "1lm1NpFXGQFKCsvN9yCsFz-fWyAGtzfG1",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8705
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.878,
+          "endSeconds": 4.6845
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.733,
+          "endSeconds": 8.086
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.251000000000001,
+          "endSeconds": 12.26
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-anecdote",
+      "cacheKey": "971bb7e2bc9113cf83e0d45773628361576f72e060b22ba74c2db2662247fc7f",
+      "fileId": "1qrl5l7aa-bhZ8MArZH8wGi-rDhtJiP8A",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.1785
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.2269999999999999,
+          "endSeconds": 4.5745000000000005
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.582,
+          "endSeconds": 8.528
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.634,
+          "endSeconds": 12.028
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-tabloid",
+      "cacheKey": "f09638e94008cdde583c1e0c9ef9e1c80099974e6f36068cf111a2172714fbe6",
+      "fileId": "1RPGteOQQiP-wnEFTY-7oFz58UAaAzmvY",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8414999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.8414999999999999,
+          "endSeconds": 4.0809999999999995
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.245,
+          "endSeconds": 7.715
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.879,
+          "endSeconds": 11.703
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-caption",
+      "cacheKey": "4ff63a5e09fd4becb05391c2e827d097cc95913a278ddf0590bc05d1c0b76c4a",
+      "fileId": "1-vfzW-78JjtwGCy27DQOnsiVOoRgnkyF",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.0274999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0274999999999999,
+          "endSeconds": 4.615
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.663,
+          "endSeconds": 8.248999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.297,
+          "endSeconds": 11.564
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-epidemic",
+      "cacheKey": "52a062bec9e127ca8a9447e793018bf8bd0453ff8789a0c44a2288c7154fdceb",
+      "fileId": "1P58EEJePX0kn9VR0SLEtOjR_hhom9Fxn",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9929999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.157,
+          "endSeconds": 4.778
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.942,
+          "endSeconds": 9.213
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 9.447000000000001,
+          "endSeconds": 13.514
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-antiseptic",
+      "cacheKey": "07665d7cef378cc72b577a2f8e458d8d64c0ff97fc1adac8f9a1da45d3c1abbd",
+      "fileId": "1MPVnh1QDNsWYfP2eRoCIWjU7j1umUjDb",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.2129999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.3780000000000001,
+          "endSeconds": 5.242
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.348,
+          "endSeconds": 8.783
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.889000000000001,
+          "endSeconds": 12.26
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-additive",
+      "cacheKey": "29ced4c99ba6eef56378e07991456f5205b74688d6c6420673d4e397e9681dd2",
+      "fileId": "1QjUy_u3pyUVEDDw_BI0quzbbFadZ1z0e",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7835000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.7835000000000001,
+          "endSeconds": 4.5569999999999995
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.721,
+          "endSeconds": 8.481
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.646,
+          "endSeconds": 12.632
         }
       ],
       "voiceLabel": "George（男性）"

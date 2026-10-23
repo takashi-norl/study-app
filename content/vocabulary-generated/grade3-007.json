@@ -19518,6 +19518,34 @@
       "voiceLabel": "Sarah（女性）"
     },
     {
+      "wordId": "vocab-sick",
+      "cacheKey": "0e7e373e13d39728c7341508e01b86c29541da1ecc792c3caa98058088ae4748",
+      "fileId": "137fFeZkFDyZ1XsZTZtYwYJ_U7bO5JJxj",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7255
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.774,
+          "endSeconds": 3.524
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.6879999999999997,
+          "endSeconds": 6.170999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.277,
+          "endSeconds": 8.824
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
       "wordId": "vocab-pharmacy",
       "cacheKey": "0bb89e2a28381e4708fde8640f04c9f08e8cc01aced63996dd040d6b7d75f3d8",
       "fileId": "1lIJwN8Wqmh2m12mA2_WCk9IoRuqfl6dl",
@@ -19600,6 +19628,34 @@
         }
       ],
       "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-fruit",
+      "cacheKey": "5012ec0a79e45a537acf66225a2d8d48df412c4c4d05e31adcb0a1d475ed38d1",
+      "fileId": "11nfBphqa42fStrx5q1yx-QpTtsKW4M2Z",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7370000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.076,
+          "endSeconds": 3.709
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.816,
+          "endSeconds": 6.1185
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.126,
+          "endSeconds": 8.591
+        }
+      ],
+      "voiceLabel": "George（男性）"
     },
     {
       "wordId": "vocab-breakfast",
@@ -19989,6 +20045,62 @@
           "id": "example-3",
           "startSeconds": 5.801,
           "endSeconds": 8.127
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-clothing",
+      "cacheKey": "2dbef39b49be6e23aa41f0f32579b4a908066fe7164ed8d5650f1c0549404be1",
+      "fileId": "1Np1W09jaCB7PKMT2A6sJtQMUWd6VW6JP",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9810000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.145,
+          "endSeconds": 4.5280000000000005
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.5280000000000005,
+          "endSeconds": 7.7035
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.752,
+          "endSeconds": 11.006
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-pocket",
+      "cacheKey": "999579c6e1b7bd9ec781305511c9eb8fd7cc17c3c6dfafe903728f184818994b",
+      "fileId": "1dzVTw0N0So07Uoq4BHh9SdWp0Z1j06zb",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8069999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9129999999999999,
+          "endSeconds": 3.0475000000000003
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.096,
+          "endSeconds": 5.949999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.382,
+          "endSeconds": 9.056
         }
       ],
       "voiceLabel": "George（男性）"
