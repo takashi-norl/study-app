@@ -122,6 +122,178 @@
       ],
       "reasonJa": "直接置換すると The decision ... is still awaiting a decision となり、決定自体が決定を待つ不自然な自己反復になる。My loan application is still awaiting a decision と主語を変更する場合の表現であり、この空所の代替ではない。",
       "sourceReference": "https://www.oxfordlearnersdictionaries.com/us/definition/english/pending_2"
+    },
+    {
+      "wordId": "vocab-have",
+      "beforeContentSha256": "af27b3bdb8898e9c4f80ac252bc6c00260f9eea518b9e4d81f29c95831dfea1f",
+      "afterContentSha256": "61b904f078885391d647cd713a3b7e17f531a598e4a6d8c03cb5dfe83c4ef890",
+      "operations": [
+        {
+          "mode": "context",
+          "field": "alternatives",
+          "removeExactAnswer": "bring",
+          "before": [
+            {
+              "answer": "carry",
+              "explanation": "持ち歩いているという意味合いが強い。"
+            },
+            {
+              "answer": "bring",
+              "explanation": "持ってくるという意味で、場面によってはやや不自然。"
+            }
+          ],
+          "after": [
+            {
+              "answer": "carry",
+              "explanation": "持ち歩いているという意味合いが強い。"
+            }
+          ]
+        },
+        {
+          "mode": "recall",
+          "field": "alternatives",
+          "removeExactAnswer": "bring",
+          "before": [
+            {
+              "answer": "carry",
+              "explanation": "持ち歩いているという意味合いが強い。"
+            },
+            {
+              "answer": "bring",
+              "explanation": "持ってくるという意味で、場面によってはやや不自然。"
+            }
+          ],
+          "after": [
+            {
+              "answer": "carry",
+              "explanation": "持ち歩いているという意味合いが強い。"
+            }
+          ]
+        }
+      ],
+      "reasonJa": "bringは現在の一回の買い物の空所へそのまま代入する類義語ではないため除外。",
+      "sourceReference": "https://www.cambridge.org/core/books/abs/grammar-for-english-language-teachers/present/0E0854D33F7F80E293AD7AF652F06364",
+      "provenance": {
+        "sourceAuthor": "/root/catalog_pipeline_design",
+        "sourceProposalSha256": "c0c8c8bdca085ce8c86607c726a140f8933c9ca98b88823c1ae711cfad8973b1",
+        "independentReviewSha256": "df7defe3fbe6de61446aa37ea5082a73c34a3a8c5175638e920293869a64f126",
+        "independentReviewer": "/root/bulk_audio_assets",
+        "reviewedBy": "/root",
+        "reviewedAt": "2026-10-23T20:28:16.353Z"
+      }
+    },
+    {
+      "wordId": "vocab-arrears",
+      "beforeContentSha256": "dee4097e47a01173623ea782d5dc0c9b4f8d388d52849cff735efc64a378ba8b",
+      "afterContentSha256": "8c9ccc7d694315d976cb4d92f7d3c8b770ed829f96139c00f08af2cc09d72624",
+      "operations": [
+        {
+          "kind": "replace-test-leaf",
+          "path": "/tests/3/prompt",
+          "before": "arrearsを正しく使った文はどれですか。",
+          "after": "He is in arrears on his car loan. この文が表す状況として最も適切なものを選びなさい。"
+        },
+        {
+          "kind": "replace-test-leaf",
+          "path": "/tests/3/explanation",
+          "before": "be in arrears on ~ が自然な形。in が必要で、前置詞はofではなくonやwithを使う。",
+          "after": "in arrears on his car loan は、そのローンの支払期限を過ぎた未払いがある状態を表す。期限前の支払い、申込前の金利比較、完済の状況とは異なる。"
+        },
+        {
+          "kind": "replace-test-leaf",
+          "path": "/questions/0/prompt",
+          "before": "arrearsを正しく使った文はどれですか。",
+          "after": "He is in arrears on his car loan. この文が表す状況として最も適切なものを選びなさい。"
+        },
+        {
+          "kind": "replace-test-leaf",
+          "path": "/questions/0/explanation",
+          "before": "be in arrears on ~ が自然な形。in が必要で、前置詞はofではなくonやwithを使う。",
+          "after": "in arrears on his car loan は、そのローンの支払期限を過ぎた未払いがある状態を表す。期限前の支払い、申込前の金利比較、完済の状況とは異なる。"
+        },
+        {
+          "kind": "replace-test-leaf",
+          "path": "/tests/3/choices/0/text",
+          "before": "He is in arrears on his car loan.",
+          "after": "He still owes loan payments whose due dates have passed."
+        },
+        {
+          "kind": "replace-test-leaf",
+          "path": "/tests/3/choices/0/meaning",
+          "before": "彼は自動車ローンを滞納している。",
+          "after": "支払期限を過ぎたローンの支払いが、まだ残っている。"
+        },
+        {
+          "kind": "replace-test-leaf",
+          "path": "/questions/0/choices/0",
+          "before": "He is in arrears on his car loan.",
+          "after": "He still owes loan payments whose due dates have passed."
+        },
+        {
+          "kind": "replace-test-leaf",
+          "path": "/tests/3/choices/1/text",
+          "before": "He is in arrears of his car loan.",
+          "after": "He has paid every loan installment before its due date."
+        },
+        {
+          "kind": "replace-test-leaf",
+          "path": "/tests/3/choices/1/meaning",
+          "before": "前置詞が不自然な誤り文。",
+          "after": "ローンの各回の支払いを、すべて期限前に済ませている。"
+        },
+        {
+          "kind": "replace-test-leaf",
+          "path": "/questions/0/choices/1",
+          "before": "He is in arrears of his car loan.",
+          "after": "He has paid every loan installment before its due date."
+        },
+        {
+          "kind": "replace-test-leaf",
+          "path": "/tests/3/choices/2/text",
+          "before": "He is arrears on his car loan.",
+          "after": "He is comparing interest rates before applying for a loan."
+        },
+        {
+          "kind": "replace-test-leaf",
+          "path": "/tests/3/choices/2/meaning",
+          "before": "in が抜けた誤り文。",
+          "after": "ローンを申し込む前に、金利を比較している。"
+        },
+        {
+          "kind": "replace-test-leaf",
+          "path": "/questions/0/choices/2",
+          "before": "He is arrears on his car loan.",
+          "after": "He is comparing interest rates before applying for a loan."
+        },
+        {
+          "kind": "replace-test-leaf",
+          "path": "/tests/3/choices/3/text",
+          "before": "He has an arrear on his car loan.",
+          "after": "He has fully repaid the loan and owes nothing."
+        },
+        {
+          "kind": "replace-test-leaf",
+          "path": "/tests/3/choices/3/meaning",
+          "before": "単数形で不自然な誤り文。",
+          "after": "ローンを完済しており、未払いはない。"
+        },
+        {
+          "kind": "replace-test-leaf",
+          "path": "/questions/0/choices/3",
+          "before": "He has an arrear on his car loan.",
+          "after": "He has fully repaid the loan and owes nothing."
+        }
+      ],
+      "reasonJa": "通常は複数という語法を単数形が存在しないという誤り判定にせず、in arrearsの意味・状況を選ぶ1問に限定して置換。",
+      "sourceReference": "https://www.merriam-webster.com/dictionary/arrear",
+      "provenance": {
+        "sourceAuthor": "/root/catalog_pipeline_design",
+        "sourceProposalSha256": "c0c8c8bdca085ce8c86607c726a140f8933c9ca98b88823c1ae711cfad8973b1",
+        "independentReviewSha256": "df7defe3fbe6de61446aa37ea5082a73c34a3a8c5175638e920293869a64f126",
+        "independentReviewer": "/root/bulk_audio_assets",
+        "reviewedBy": "/root",
+        "reviewedAt": "2026-10-23T20:28:16.354Z"
+      }
     }
   ]
 }
