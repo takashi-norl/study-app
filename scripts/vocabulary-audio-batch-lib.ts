@@ -6,6 +6,7 @@ import { z } from 'zod';
 import type { VocabularyEntry } from '../src/lib/vocabulary-types';
 import { audioSegmentsSchema } from '../src/server/audio-segments';
 import { extractVocabularySegments, vocabularyAudioSpec, VOCABULARY_AUDIO_LIMITS, type VocabularyAudioSpec } from '../src/server/vocabulary-audio';
+import { audioQuotaRetryPending, beginAudioQuotaRetry, loadAudioQuotaRetryReservations } from './vocabulary-audio-reconcile';
 
 export const AUDIO_BATCH_BUDGET_USD = 400;
 // The current Creator additional-credit rate is more conservative than the API pricing headline.
@@ -203,14 +204,20 @@ export async function runAudioBatch(options: AudioBatchOptions): Promise<AudioBa
       await lock.writeFile(JSON.stringify({ pid: process.pid, hostname: hostname(), createdAt: new Date().toISOString() })); await lock.sync();
     }
     const ledger = await reservations(output);
-    let reservedMicroUsd = [...ledger.values()].reduce((sum, record) => sum + record.reservedMicroUsd, 0);
+    const quotaRetries = await loadAudioQuotaRetryReservations(output);
+    let reservedMicroUsd = [...ledger.values(), ...quotaRetries.values()].reduce((sum, record) => sum + record.reservedMicroUsd, 0);
     report.reservedUsd = reservedMicroUsd / 1e6;
     const states = [];
     for (const info of items) {
       const state = info.existing ? 'existing' : await cachedAssetReady(output, info.item, info.spec) ? 'ready' : ledger.has(info.spec.cacheKey) ? 'failed' : 'missing';
       report[state]++; states.push({ ...info, state });
     }
-    const planned = states.filter(info => info.state === 'missing').slice(0, maxItems);
+    const retryKeys = new Set<string>();
+    for (const info of states.filter(info => info.state === 'failed')) {
+      const retry = quotaRetries.get(info.spec.cacheKey);
+      if (retry && await audioQuotaRetryPending(output, retry)) retryKeys.add(info.spec.cacheKey);
+    }
+    const planned = [...states.filter(info => retryKeys.has(info.spec.cacheKey)), ...states.filter(info => info.state === 'missing')].slice(0, maxItems);
     report.plannedRequests = planned.length;
     report.plannedCharacters = planned.reduce((sum, info) => sum + info.spec.characters, 0);
     report.plannedUsd = report.plannedCharacters * MICRO_USD_PER_CHARACTER / 1e6;
@@ -232,6 +239,10 @@ export async function runAudioBatch(options: AudioBatchOptions): Promise<AudioBa
     // reconcile the reserved request with its provider history before continuing this ledger.
     for (const reservation of ledger.values()) {
       if (!await exists(path.join(assetDirectory(output, reservation.cacheKey), 'asset.json'))) {
+        const retry = quotaRetries.get(reservation.cacheKey);
+        // Only a separately reserved, explicitly reconciled quota rejection can be released.
+        // Once its one retry starts, a missing asset blocks again, including on other inputs.
+        if (retry && await audioQuotaRetryPending(output, retry)) continue;
         report.stopped = 'uncertain_request'; update();
         await writeJson(path.join(output, 'last-report.json'), { ...report, finishedAt: new Date().toISOString() });
         return report;
@@ -273,23 +284,32 @@ export async function runAudioBatch(options: AudioBatchOptions): Promise<AudioBa
       }
       update();
     };
-    const pending = states.filter(info => info.state === 'missing').slice(0, maxItems);
+    const pending = [...states.filter(info => retryKeys.has(info.spec.cacheKey) && info.state === 'failed'), ...states.filter(info => info.state === 'missing')].slice(0, maxItems);
+    if (reservedMicroUsd > Math.floor(budgetUsd * 1e6)) stop('budget');
     for (let offset = 0; offset < pending.length && !report.stopped; offset += concurrency) {
       const wave: ReservedTask[] = [];
       // Budget allocation and durable reservations stay serial. No provider request begins
       // until the wave is fully reserved, so concurrent responses cannot overspend the ledger.
       for (const { item, spec } of pending.slice(offset, offset + concurrency)) {
         const cost = spec.characters * MICRO_USD_PER_CHARACTER;
-        if (reservedMicroUsd + cost > Math.floor(budgetUsd * 1e6)) { stop('budget'); update(); break; }
+        const retry = retryKeys.has(spec.cacheKey) ? quotaRetries.get(spec.cacheKey) : undefined;
+        if (!retry && reservedMicroUsd + cost > Math.floor(budgetUsd * 1e6)) { stop('budget'); update(); break; }
         const key = options.apiKey?.trim();
         if (!key) throw new Error('ELEVENLABS_API_KEY is required for --run. No request was sent for the next item.');
         const directory = assetDirectory(output, spec.cacheKey);
         await mkdir(directory, { recursive: true, mode: 0o700 });
-        await writeJson(path.join(directory, 'input.json'), { entry: item.entry, review: item.review, provenance: item.provenance, spec });
-        const reservation: Reservation = { schemaVersion: 1, cacheKey: spec.cacheKey, requestId: randomUUID(), characters: spec.characters, reservedMicroUsd: cost, createdAt: new Date().toISOString() };
-        await writeJson(reservationFile(output, spec.cacheKey), reservation, true);
-        ledger.set(spec.cacheKey, reservation); reservedMicroUsd += cost;
-        report.requests++; report.charactersRequested += spec.characters; report.missing--; report.failed++;
+        if (retry) {
+          // This marker is durable before POST. A crash, auth error, or second quota error
+          // cannot silently spend again; the original rejected response remains archived.
+          await beginAudioQuotaRetry(output, retry);
+        } else {
+          await writeJson(path.join(directory, 'input.json'), { entry: item.entry, review: item.review, provenance: item.provenance, spec });
+          const reservation: Reservation = { schemaVersion: 1, cacheKey: spec.cacheKey, requestId: randomUUID(), characters: spec.characters, reservedMicroUsd: cost, createdAt: new Date().toISOString() };
+          await writeJson(reservationFile(output, spec.cacheKey), reservation, true);
+          ledger.set(spec.cacheKey, reservation); reservedMicroUsd += cost;
+          report.missing--; report.failed++;
+        }
+        report.requests++; report.charactersRequested += spec.characters;
         wave.push({ item, spec, directory, key });
       }
       // Always await every in-flight capture before releasing the process lock. A failure
