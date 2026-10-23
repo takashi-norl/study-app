@@ -13,9 +13,17 @@ export function quoteBatchInput(params, inputTokens, now) {
   const standard = quoteInput(params, inputTokens, now);
   return { ...standard, standardReservedUsd: standard.reservedUsd, reservedUsd: round(standard.reservedUsd * 0.5), batchPolicySha256: BATCH_POLICY_SHA256 };
 }
+/** Only Batch transport may normalize its explicit billing tier for shared base-rate arithmetic.
+ * Raw messages remain untouched; synchronous price functions still reject `batch`.
+ */
+export function batchPricingMessage(message) {
+  const tier = message?.usage?.service_tier;
+  if (tier !== undefined && tier !== 'standard' && tier !== 'batch') throw new Error('Unrecognized Batch usage tier; retain its reservation.');
+  return tier === 'batch' ? { ...message, usage: { ...message.usage, service_tier: 'standard' } } : message;
+}
 export function priceBatchResult(item) {
   if (!item?.result || !/^[a-zA-Z0-9_-]{1,64}$/.test(item.custom_id ?? '')) throw new Error('Invalid exact batch result identity.');
-  if (item.result.type === 'succeeded') return round(priceResponse(item.result.message) * 0.5);
+  if (item.result.type === 'succeeded') return round(priceResponse(batchPricingMessage(item.result.message)) * 0.5);
   if (BATCH_POLICY.nonBilledTerminalResults.includes(item.result.type)) return 0;
   throw new Error('Unrecognized batch outcome; its full reservation must remain.');
 }
@@ -67,7 +75,7 @@ export const AUTHOR_EDITOR_BATCH_POLICY_SHA256=hashContent({base:BATCH_POLICY_SH
 export const batchOperation=params=>params?.model==='claude-haiku-5-5'?'author':params?.model==='claude-sonnet-5-5'?'editor':null;
 export function quoteAuthorEditorBatch(params,inputTokens=1){const operation=batchOperation(params);let standard;if(operation==='author')standard=scopeQuote(params,operation,inputTokens);else{if(operation!=='editor'||params.max_tokens!==12000||params.output_config?.effort!=='medium'||hashContent(params.thinking)!==hashContent({type:'adaptive'}))throw Error('Exact medium adaptive editor policy required.');const {thinking:_thinking,...rest}=params;standard={...quoteInput(rest,inputTokens),paramsSha256:hashContent(params)};}return{...standard,standardReservedUsd:standard.reservedUsd,reservedUsd:round(standard.reservedUsd*0.5),batchPolicySha256:AUTHOR_EDITOR_BATCH_POLICY_SHA256};}
 export function validateAuthorEditorBatchRequests(requests){if(!Array.isArray(requests)||!requests.length||requests.length>40||new Set(requests.map(r=>r.custom_id)).size!==requests.length||Buffer.byteLength(JSON.stringify({requests}))>BATCH_POLICY.maxPayloadBytes)throw Error('Batch is outside the reviewed 1–40 request bound.');for(const row of requests){if(Object.keys(row).some(k=>!['custom_id','params'].includes(k))||! /^[a-zA-Z0-9_-]{1,64}$/.test(row.custom_id??''))throw Error('Invalid batch request identity.');quoteAuthorEditorBatch(row.params);}if(new Set(requests.map(r=>batchOperation(r.params))).size!==1)throw Error('One author or editor stage per batch.');return requests;}
-export function priceAuthorEditorBatchResult(item){if(!item?.result||! /^[a-zA-Z0-9_-]{1,64}$/.test(item.custom_id??''))throw Error('Invalid exact batch result identity.');if(item.result.type==='succeeded'){if(batchOperation(item.result.message)==='editor'&&item.result.message.usage?.output_tokens>12000)throw Error('Editor output exceeded its exact ceiling.');return round(scopePrice(item.result.message,batchOperation(item.result.message))*0.5);}if(BATCH_POLICY.nonBilledTerminalResults.includes(item.result.type))return 0;throw Error('Unrecognized batch outcome; retain its reservation.');}
+export function priceAuthorEditorBatchResult(item){if(!item?.result||! /^[a-zA-Z0-9_-]{1,64}$/.test(item.custom_id??''))throw Error('Invalid exact batch result identity.');if(item.result.type==='succeeded'){if(batchOperation(item.result.message)==='editor'&&item.result.message.usage?.output_tokens>12000)throw Error('Editor output exceeded its exact ceiling.');return round(scopePrice(batchPricingMessage(item.result.message),batchOperation(item.result.message))*0.5);}if(BATCH_POLICY.nonBilledTerminalResults.includes(item.result.type))return 0;throw Error('Unrecognized batch outcome; retain its reservation.');}
 export function createAuthorEditorBatchAdapter({apiKey=process.env.ANTHROPIC_API_KEY,client,now=()=>new Date()}={}) {
  if(!client&&(!apiKey||typeof apiKey!=='string'))throw Error('Private ANTHROPIC_API_KEY is required.');
  const sdk=client??new Anthropic({apiKey,baseURL:'https://api.anthropic.com',maxRetries:0,timeout:180000}),models=new Set();
