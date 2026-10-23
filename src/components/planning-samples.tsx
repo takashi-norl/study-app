@@ -50,11 +50,12 @@ export function PlanningSamples({ c, plan, turn, proposal, canGenerate, onGenera
   }
   return <article ref={top} className={`panel ${styles.card}`}>
     <div className={styles.steps} aria-label="問題作成の段階"><span className={stage!=='quantity'?styles.current:''}>1 · 試作で調整</span><ArrowRight size={13}/><span className={stage==='quantity'?styles.current:''}>2 · 分量を決める</span></div>
-    <div className={styles.heading}><span className="subject-badge">{proposal.subject}</span><small>{proposal.difficulty} · 四択</small></div>
-    <h2>{stage==='quantity'?'この作り方で、どれくらい作る？':stage==='adjust'?'出し方を、もう少し調整する。':proposal.title}</h2>
+    <div className={styles.heading}><span className="subject-badge">{proposal.subject}</span><small>四択</small></div>
+    <h2>{stage==='quantity'?'この作り方で、どれくらい作る？':stage==='adjust'?'出し方を、もう少し調整する。':'サンプルを確認'}</h2>
+    <details className={styles.answer}><summary>出題内容・難しさ</summary><strong>{proposal.title}</strong><p>難しさ：{proposal.difficulty}</p>{proposal.description&&<p>{proposal.description}</p>}</details>
     {c.demo&&<p className={styles.demo}>操作確認用の例題です。AIへの送信はなく、入力した希望で問題内容は変わりません。</p>}
     {stage==='samples'&&<>
-      {!complete ? <><p className={styles.note}>{proposal.description}</p><p className={styles.note}>この案には試作がまだありません。先に3問で出し方と難しさを確かめます。</p>{own&&<button type="button" className="button primary" disabled={disabled} onClick={()=>void revise(true)}><Sparkles size={17}/>この案の試作3問を作る</button>}</> : <>
+      {!complete ? <><p className={styles.note}>この案には試作がまだありません。先に3問で出し方と難しさを確かめます。</p>{own&&<button type="button" className="button primary" disabled={disabled} onClick={()=>void revise(true)}><Sparkles size={17}/>この案の試作3問を作る</button>}</> : <>
         <div ref={sampleTop} className={styles.pager}><button type="button" aria-label="前の試作問題" disabled={index===0} onClick={()=>selectSample(Math.max(0,index-1))}><ChevronLeft size={20}/></button><strong>試作 {index+1} / 3</strong><button type="button" aria-label="次の試作問題" disabled={index===2} onClick={()=>selectSample(Math.min(2,index+1))}><ChevronRight size={20}/></button></div>
         <div key={`${turn.id}:${index}`} className={styles.sample}>{sample.needsReview&&<p className={styles.uncertain}>資料の読み取りや答えに、確認が必要な点があります。根拠を見て、気になる点は「調整する」から伝えられます。</p>}<h3>{sample.prompt}</h3><ol>{sample.choices.map((choice,i)=><li key={i}><span>{String.fromCharCode(65+i)}</span><p>{choice}</p></li>)}</ol><details className={styles.answer}><summary>正解・解説を見る</summary><strong>正解：{String.fromCharCode(65+sample.correctIndex)}. {sample.choices[sample.correctIndex]}</strong><p>{sample.explanation}</p>{sample.learningPoint&&<p className={styles.learningPoint}>覚えるポイント：{sample.learningPoint}</p>}{sample.sourceNote&&<div className={styles.sourceNote}><strong>作問の根拠</strong><p>{sample.sourceNote}</p></div>}</details></div>
         {comment.trim()&&<p className={styles.note}>入力中の希望はまだ反映されていません。「調整する」から送信するか、コメントを消すと次へ進めます。</p>}
