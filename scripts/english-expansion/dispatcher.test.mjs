@@ -122,7 +122,7 @@ test('real phase-one evidence blocks stopped-but-incomplete, running, pending an
     async o => put(join(o.phaseOneOutput, 'manifest.json'), { words: [{ id: 'base', status: 'preserved' }, { id: 'home', status: 'held' }] }),
     async o => put(join(o.phaseOneOutput, 'audio', 'last-report.json'), { total: 1, ready: 0, existing: 0, missing: 1, failed: 0 }),
   ];
-  for (const mutate of cases) await fixture(async ({ options, getCalls }) => { await mutate(options); await assert.rejects(dispatchWithMockProvider(options), /checkpoint|running|settled|not complete|not drained/); assert.equal(getCalls(), 0); });
+  for (const mutate of cases) await fixture(async ({ options, getCalls }) => { await mutate(options); await assert.rejects(dispatchWithMockProvider(options), /checkpoint|running|settled|not complete|not drained|manifest identity/); assert.equal(getCalls(), 0); });
 });
 test('a previously frozen base cannot silently change beneath future reservations', async () => fixture(async ({ options, getCalls }) => {
   await dispatchWithMockProvider(options);
@@ -136,6 +136,31 @@ test('settled held inventory is excluded from completion but retained in dedup',
   for (const lemma of ['specialist', 'technical']) {
     const target = seed(lemma); await assert.rejects(dispatchWithMockProvider({ ...options, seeds: [target], request: request(`held-${lemma}`, target) }), /overlap/);
   }
+  assert.equal(getCalls(), 1);
+}));
+test('excluded approved assets retain audio accounting and dedup without inflating base completion', async () => fixture(async ({ options, asset, getCalls }) => {
+  const entry = { id: 'wroth', word: 'wroth' }, review = { status: 'approved', contentSha256: hashContent(entry) };
+  const original = { id: 'wroth', word: 'wroth', status: 'approved', batchId: 'retained' };
+  const disposition = { schemaVersion: 1, kind: 'expansion-only', id: original.id, proposalId: 'review-one',
+    proposalSha256: '1'.repeat(64), reviewSha256: '2'.repeat(64), seedSha256: hashContent(original),
+    contentSha256: hashContent(entry), contentReviewSha256: hashContent(review), reason: 'Retain outside base',
+    reviewedBy: 'independent-reviewer', reviewedAt: '2026-10-24T00:00:00.000Z', appliedAt: '2026-10-24T00:00:00.000Z' };
+  const manifestPath = join(options.phaseOneOutput, 'manifest.json'), manifest = await readJson(manifestPath);
+  manifest.words.push({ ...original, catalogDisposition: disposition }); await put(manifestPath, manifest);
+  await put(join(options.phaseOneOutput, 'approved', 'grade3', 'retained.json'), { schemaVersion: 1, batchId: 'retained', entries: [{ entry, review }] });
+  const second = 'b'.repeat(64), secondAsset = join(options.phaseOneOutput, 'audio', 'assets', second);
+  await put(join(options.phaseOneOutput, 'audio', 'reservations', `${second}.json`), { schemaVersion: 1, cacheKey: second, requestId: 'retained-audio', characters: 100, reservedMicroUsd: 18200, createdAt: '2026-10-23T00:00:00.000Z' });
+  for (const name of ['state.json', 'http-status.json', 'asset.json']) {
+    const value = await readJson(join(asset, name)); if (value.cacheKey) value.cacheKey = second; await put(join(secondAsset, name), value);
+  }
+  await writeFile(join(secondAsset, 'audio.mp3'), 'test-audio-only');
+  await put(join(options.phaseOneOutput, 'audio', 'last-report.json'), { total: 2, ready: 2, existing: 0, missing: 0, failed: 0 });
+  await dispatchWithMockProvider(options); assert.equal(getCalls(), 1);
+  const target = seed('wroth');
+  await assert.rejects(dispatchWithMockProvider({ ...options, seeds: [target], request: request('retained', target) }), /overlap/);
+  await assert.rejects(dispatchWithMockProvider({ ...options, mockExpectedBaseTarget: 3 }), /not complete/);
+  await put(join(options.phaseOneOutput, 'audio', 'last-report.json'), { total: 1, ready: 1, existing: 0, missing: 0, failed: 0 });
+  await assert.rejects(dispatchWithMockProvider(options), /not drained/);
   assert.equal(getCalls(), 1);
 }));
 test('pilot aliases cannot reintroduce base or previously registered forms', async () => fixture(async ({ options }) => {

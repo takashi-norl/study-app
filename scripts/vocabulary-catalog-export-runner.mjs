@@ -3,6 +3,7 @@ import { readFile, readdir, mkdir, rename, writeFile } from 'node:fs/promises';
 import { resolve, join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { hashVocabularyEntry, GRADES, normalizeLemma } from './vocabulary-batch/schema.mjs';
+import { assertDispositionContent, isPublicCandidate, publicCatalogGroups } from './vocabulary-batch/catalog-policy.mjs';
 import { preserveVocabularyAudio } from './vocabulary-catalog-export-lib.ts';
 
 const args=process.argv.slice(2), source=args[0];
@@ -22,6 +23,8 @@ for(const grade of Object.keys(GRADES)){
    const seed=manifest.words.find(x=>x.id===item.entry.id);
    if(!seed||seed.frozen||seed.grade!==grade||seed.status!=='approved'||seed.batchId!==chunk.batchId)continue;
    if(item.review.status!=='approved'||item.review.contentSha256!==hashVocabularyEntry(item.entry))throw Error('Review hash mismatch.');
+   assertDispositionContent(seed,item);
+   if(!isPublicCandidate(seed))continue;
    if(existing.has(normalizeLemma(item.entry.word))||approved.has(item.entry.id))throw Error('Duplicate approved entry.');
    approved.set(item.entry.id,item.entry);
   }
@@ -29,15 +32,12 @@ for(const grade of Object.keys(GRADES)){
 }
 const batches=[];
 for(const grade of Object.keys(GRADES)){
- const words=manifest.words.filter(x=>x.grade===grade&&!x.frozen);
- for(let offset=0;offset<words.length;offset+=100){
-  const entries=words.slice(offset,offset+100).flatMap(x=>approved.has(x.id)?[approved.get(x.id)]:[]);
-  if(!entries.length)continue;
-  const id=`${grade}-${String(offset/100+1).padStart(3,'0')}`, file=`${id}.json`;
+ for(const {ordinal,entries} of publicCatalogGroups(manifest.words,approved,grade)){
+  const id=`${grade}-${String(ordinal).padStart(3,'0')}`, file=`${id}.json`;
   // Preserve already-imported audio only when the exact word script still matches.
   let old;try{old=JSON.parse(await readFile(join(target,file),'utf8'));}catch(e){if(e.code!=='ENOENT')throw e;}
   const audio=preserveVocabularyAudio(old?.entries??[],entries,old?.audio??[]);
-  batches.push({summary:{id,level:GRADES[grade].label,title:`${GRADES[grade].label}・単語セット${offset/100+1}`,entryCount:entries.length,file},data:{schemaVersion:2,entries,audio}});
+  batches.push({summary:{id,level:GRADES[grade].label,title:`${GRADES[grade].label}・単語セット${ordinal}`,entryCount:entries.length,file},data:{schemaVersion:2,entries,audio}});
  }
 }
 if(write){

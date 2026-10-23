@@ -10,6 +10,7 @@ import { salvageResponses } from './salvage.mjs';
 import { applyInventoryRound, inventoryChunkSize, savedInventoryResult } from './inventory.mjs';
 import { activeGenerationGroups, preparedGenerationGroups } from './groups.mjs';
 import { baseCount, isBaseCandidate } from './holds.mjs';
+import { catalogCounts } from './catalog-policy.mjs';
 import { futureInventoryRequestSchema, inventoryFocusForRound, INVENTORY_QUALITY_INSTRUCTIONS, auditInventoryCandidates } from './inventory-quality.mjs';
 
 const REPO = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
@@ -53,8 +54,9 @@ async function initialize(output) {
 }
 async function status(output) {
   const state = await loadManifest(output), ledger = await readJson(join(output, 'ledger.json'), { calls: [] });
-  console.log(JSON.stringify({ target: 7500, inventory: baseCount(state.words), registeredIncludingHeld: state.words.length, heldInventory: state.words.filter(item => !isBaseCandidate(item)).length, preserved: state.words.filter(item => item.frozen).length, approvedNew: state.words.filter(item => item.status === 'approved').length, rejectedNew: state.words.filter(item => item.status === 'rejected').length,
-    grades: Object.fromEntries(Object.keys(GRADES).map(grade => [grade, { target: GRADES[grade].target, inventoried: baseCount(state.words, grade), approvedOrPreserved: state.words.filter(item => item.grade === grade && ['approved', 'preserved'].includes(item.status)).length }])),
+  const counts = catalogCounts(state.words);
+  console.log(JSON.stringify({ target: 7500, inventory: counts.baseEligible, registeredIncludingHeld: state.words.length, heldInventory: counts.inventoryHolds, catalogExcluded: counts.catalogExcluded, preserved: state.words.filter(item => item.frozen).length, approvedNew: counts.baseApprovedNew, allApprovedNew: counts.allApprovedNew, completedBase: counts.baseCompleted, rejectedNew: counts.baseRejected,
+    grades: Object.fromEntries(Object.keys(GRADES).map(grade => { const count = catalogCounts(state.words, grade); return [grade, { target: GRADES[grade].target, inventoried: count.baseEligible, approvedOrPreserved: count.baseCompleted, catalogExcluded: count.catalogExcluded, allApprovedNew: count.allApprovedNew }]; })),
     textUsd: ledger.calls.filter(call => call.status === 'complete').reduce((sum, call) => sum + call.actualUsd, 0), uncertain: ledger.calls.filter(call => call.status !== 'complete').map(call => ({ id: call.id, status: call.status, reservedUsd: call.reservedUsd })), capUsd: HARD_TEXT_CAP_USD,
     audio: 'No audio calls are made by this tool. Approved immutable text assets may be consumed by the separate audio builder.' }, null, 2));
 }

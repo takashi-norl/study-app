@@ -1,7 +1,7 @@
 import { hashContent, normalizeForm, validateSeed } from './schema.mjs';
 
 /** Registry identifies lexical forms, not exam/genre tags or individual senses. */
-export function createRegistry({ approvedBatches = [], frozenEntries = [], ownInventory = [] } = {}) {
+export function createRegistry({ approvedBatches = [], frozenEntries = [], ownInventory = [], retainedEntries = [] } = {}) {
   const units = new Map(), forms = new Map(), conflicts = [];
   function add(entry, source) {
     const lemma = normalizeForm(entry.lemma ?? entry.word), id = entry.id;
@@ -28,6 +28,8 @@ export function createRegistry({ approvedBatches = [], frozenEntries = [], ownIn
     if (item.entry && hashContent(item.entry) !== item.contentSha256) throw new Error('Frozen catalog hash mismatch.');
     add(item.entry ?? item, 'frozen');
   }
+  // Excluded paid assets and aliases remain reserved identities, never completed base units.
+  for (const item of retainedEntries) add(item.entry, item.source);
   for (const raw of ownInventory) add(validateSeed(raw), 'expansion');
   return { units, forms, conflicts };
 }
@@ -52,6 +54,6 @@ export function classifyCandidates(registry, rawCandidates) {
 }
 
 export function countDistinct(registry) {
-  const forms = new Set([...registry.units.values()].map(unit => unit.lemma));
+  const forms = new Set([...registry.units.values()].filter(unit => ['base-approved', 'frozen', 'expansion'].includes(unit.source)).map(unit => unit.lemma));
   return { lexicalUnits: forms.size, words: [...forms].filter(form => !form.includes(' ')).length, phrases: [...forms].filter(form => form.includes(' ')).length };
 }

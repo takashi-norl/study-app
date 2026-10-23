@@ -4,6 +4,7 @@ import { loadBudgetSnapshot, loadRegistry } from './loaders.mjs';
 import { classifyCandidates } from './registry.mjs';
 import { hashContent, normalizeForm, validateSeed } from './schema.mjs';
 import { TARGET_ALLOCATION } from './allocation.mjs';
+import { isPublicCandidate } from '../vocabulary-batch/catalog-policy.mjs';
 import { reserveExpansionRequest } from './budget.mjs';
 import { assertLease, initializeStore, persistLedger, persistRawResponse, persistRequest, readJson, readOptionalJson, registerPilotSeeds, withExpansionLock } from './store.mjs';
 
@@ -34,13 +35,15 @@ export async function inspectPhaseOneGate(lease, { phaseOneOutput, runtimeDirect
   ]);
   if (snapshot.phaseOneText.calls.some(call => call.status !== 'complete')) throw new Error('Phase-one text requests must be fully settled.');
   if (snapshot.phaseOneAudioReservations.some(record => !['ready', 'known-quota-rejection'].includes(record.outcome))) throw new Error('Phase-one audio requests must be fully settled.');
-  const approvedForms = new Set([...registry.units.values()].map(unit => unit.lemma));
-  const activeWords = Array.isArray(manifest.words) ? manifest.words.filter(word => !word.inventoryHold) : [];
+  const approvedForms = new Set([...registry.units.values()].filter(unit => ['base-approved', 'frozen'].includes(unit.source)).map(unit => unit.lemma));
+  const activeWords = Array.isArray(manifest.words) ? manifest.words.filter(isPublicCandidate) : [];
   const activeForms = new Set(activeWords.map(word => normalizeForm(word.word ?? word.lemma ?? '')));
   if (approvedForms.size !== mockExpectedBaseTarget || activeWords.length !== mockExpectedBaseTarget || activeForms.size !== mockExpectedBaseTarget || activeWords.some(word => !['approved', 'preserved'].includes(word.status)) || [...activeForms].some(form => !approvedForms.has(form))) throw new Error('Phase-one approved catalog is not complete; held inventory is not completion.');
   const heldWords = manifest.words.filter(word => word.inventoryHold);
-  if (heldWords.some(word => ['approved', 'preserved'].includes(word.status) || registry.units.has(word.id))) throw new Error('Held inventory must not appear in the approved base catalog.');
-  const approvedNew = activeWords.filter(word => word.status === 'approved').length;
+  if (heldWords.some(word => ['approved', 'preserved'].includes(word.status))) throw new Error('Held inventory must not appear in the approved base catalog.');
+  // Audio reports cover all paid approved assets, including retained non-base content.
+  // Do not discard those reservations or demand another recording to reach the base target.
+  const approvedNew = manifest.words.filter(word => word.status === 'approved').length;
   if (audioReport.total !== approvedNew || audioReport.ready + audioReport.existing !== approvedNew || audioReport.missing !== 0 || audioReport.failed !== 0 || audioReport.stopped || snapshot.phaseOneAudioReservations.filter(record => record.outcome === 'ready').length < audioReport.ready) throw new Error('Phase-one audio has not drained to a complete final report.');
   const phaseOneFingerprint = hashContent({ manifest, ledger: snapshot.phaseOneText, audioReservations: snapshot.phaseOneAudioReservations, contentHash });
   // Quarantined seeds remain reserved lexical identities. They are not completed assets,

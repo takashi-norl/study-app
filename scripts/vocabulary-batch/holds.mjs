@@ -1,6 +1,7 @@
 import { hashVocabularyEntry } from './schema.mjs';
+import { isPublicCandidate } from './catalog-policy.mjs';
 
-export const isBaseCandidate = word => !word.inventoryHold;
+export const isBaseCandidate = isPublicCandidate;
 export const baseCount = (words, grade) => words.filter(word => isBaseCandidate(word) && (!grade || word.grade === grade)).length;
 
 /** Preserve indices, original seeds and paid groups. A hold never deletes a receipt. */
