@@ -15,6 +15,7 @@ import { aiRequestedSchema, aiUsageSchema } from './ai-usage-schema';
 import { vocabularyLookupSchema } from './vocabulary-lookup-schemas';
 import { audioSegmentsSchema } from './audio-segments';
 import { personalProfileSavedEventSchema, personalProfileChatRequestedEventSchema, personalProfileChatCompletedEventSchema, personalProfileChatFailedEventSchema } from './personal-profile-schemas';
+import { planTagsSchema } from './plan-tags';
 
 const EVENT_TYPES = [
   'topic.created', 'source.created', 'question.upserted', 'questions.published', 'session.created',
@@ -67,6 +68,7 @@ const jobSchema = z.object({ id: idSchema, topicId: idSchema, status: z.enum(['q
   dailyQuestionTarget:z.number().int().min(1).max(100).optional(),plannedDays:z.number().int().min(1).max(300).optional() });
 const planSchema = z.object({
   id: idSchema, ownerId: idSchema, title: z.string().trim().min(1).max(150), subject: subjectSchema,
+  tags: planTagsSchema.optional(),
   goal: z.string().max(4000), difficulty: z.string().max(200), targetDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
   dailyQuestionTarget: z.number().int().min(1).max(100), sourceIds: z.array(idSchema).max(20),
   requestedQuestionCount: z.number().int().min(1).max(300).optional(),
@@ -74,6 +76,7 @@ const planSchema = z.object({
   sampleFirst:z.boolean().optional(),arrangedFromTopicId:idSchema.optional(),arrangementExamples:z.array(planningSampleSchema).max(3).optional(),arrangementInstructions:z.string().max(4000).optional(),plannedDays:z.number().int().min(1).max(300).optional(),
   version: z.number().int().min(1), createdAt: isoSchema, updatedAt: isoSchema,
 });
+const planTagsEventSchema = planSchema.extend({ tags: planTagsSchema, tagsOnly: z.literal(true) }).strict();
 const proposalSchema = z.object({
   id: idSchema, title: z.string().trim().min(1).max(150), subject: subjectSchema,
   description: z.string().max(2000), instructions: z.string().max(4000), difficulty: z.string().max(200),
@@ -198,7 +201,11 @@ function validateEvent(input: StudyEvent): StudyEvent {
       if(requested.updatedPlan && (requested.updatedPlan.id!==requested.job.planId || requested.updatedPlan.ownerId!==requested.job.requestedBy)) throw new ApiError(400,'学習プランの作成者が一致しません。','INVALID_GENERATION');
       break;
     }
-    case 'plan.created': case 'plan.updated': planSchema.parse(payload); break;
+    case 'plan.created': planSchema.parse(payload); break;
+    case 'plan.updated':
+      if (payload?.tagsOnly !== undefined) planTagsEventSchema.parse(payload);
+      else planSchema.parse(payload);
+      break;
     case 'library.publication-requested': {
       const pending=z.object({sourceTopicId:idSchema,requestedBy:idSchema,requestedAt:isoSchema,revision:z.string().length(64),sequence:z.number().int().positive()}).strict().parse(payload);
       if(pending.requestedBy!==metadata.actorId) throw new ApiError(400,'公開依頼者が一致しません。','INVALID_LIBRARY');
@@ -362,7 +369,7 @@ export function foldEvents(events: StudyEvent[], profiles: Profile[] = []): Stud
           if(payload.updatedPlan) {
             const updated=planSchema.parse(payload.updatedPlan);
             const previous=plans.get(updated.id);
-            if(previous && previous.ownerId===updated.ownerId && updated.version===previous.version+1) plans.set(updated.id,updated);
+            if(previous && previous.ownerId===updated.ownerId && updated.version===previous.version+1) plans.set(updated.id,{...updated,tags:previous.tags});
           }
         }
         break;
@@ -392,7 +399,16 @@ export function foldEvents(events: StudyEvent[], profiles: Profile[] = []): Stud
       case 'plan.updated': {
         const plan = planSchema.parse(payload);
         const previous = plans.get(plan.id);
-        if (previous && plan.ownerId === previous.ownerId && plan.version > previous.version) plans.set(plan.id, plan);
+        if (payload.tagsOnly === true) {
+          const owner = profiles.find(profile => profile.id === event.actorId && profile.familyId === getFamilyId());
+          // An in-flight AI update may already have advanced the version. Never replace its content.
+          if (previous && owner && plan.ownerId === previous.ownerId && event.actorId === previous.ownerId
+            && plan.version <= previous.version && (!previous.testOnly || owner.role === 'parent')) {
+            plans.set(previous.id, { ...previous, tags: plan.tags, updatedAt: event.createdAt });
+          }
+        } else if (previous && plan.ownerId === previous.ownerId && plan.version > previous.version) {
+          plans.set(plan.id, { ...plan, tags: previous.tags });
+        }
         break;
       }
       case 'planning.turn.upserted': {

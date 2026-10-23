@@ -10,7 +10,7 @@ import styles from './question-library.module.css';
 
 export function SetSharingActions({ c, topic }: { c: StudyController; topic: Topic }) {
   const [attempted, setAttempted] = useState(false);
-  if (topic.libraryPublished) return null;
+  if (topic.libraryPublished || c.preview) return null;
   const parent = c.profile.role === 'parent';
   const ownerId = topicOwnerId(c.data, topic);
   const owner = c.data.profiles.find(profile => profile.id === ownerId);
@@ -71,9 +71,9 @@ export function QuestionLibrary({ c, initialTab = 'private', onEdit, onCreate, o
       <button type="button" role="tab" aria-selected={tab==='private'} onClick={()=>setTab('private')}><LockKeyhole size={16}/><span>プライベート{requested>0&&<small>公開依頼 {requested}</small>}</span></button>
       <button type="button" role="tab" aria-selected={tab==='public'} onClick={()=>setTab('public')}><Globe2 size={16}/><span>パブリック</span></button>
     </div>
-    {tab==='public' ? <><p className={styles.intro}>登録ユーザー向けの問題集です。インターネット全体には公開されません。</p><SharedLibrary c={c} onAdded={()=>{}} onOpen={id=>void c.actions.startPractice('daily',id)} onInspect={parent ? onEdit : undefined} onArrange={onOpenPlan ? async id=>{const next=await c.actions.arrangeTopic(id);if(next)onOpenPlan(next);} : undefined}/></> : <>
+    {tab==='public' ? <><p className={styles.intro}>登録ユーザー向けの問題集です。インターネット全体には公開されません。</p><SharedLibrary c={c} onAdded={()=>{}} onOpen={id=>void c.actions.startPractice('daily',id)} onInspect={parent ? onEdit : undefined} onArrange={!c.preview && onOpenPlan ? async id=>{const next=await c.actions.arrangeTopic(id);if(next)onOpenPlan(next);} : undefined}/></> : <>
       <p className={styles.intro}>{parent ? '作った問題はそのまま練習できます。管理者は学習者の内容も確認し、届いた公開依頼をここで扱えます。' : '自分で作った問題はここに保存され、そのまま練習できます。管理者は内容と学習履歴を確認できます。'}</p>
-      {!topics.length ? <div className={styles.empty}><BookOpen size={28}/><h2>最初の問題集を作ろう。</h2><p>教材を使っても、AIへの相談だけでも始められます。</p><button type="button" className="button primary" onClick={onCreate}>問題を作る<ArrowRight size={16}/></button></div> : <div className={styles.grid}>{topics.map(topic=>{
+      {!topics.length ? <div className={styles.empty}><BookOpen size={28}/><h2>最初の問題集を作ろう。</h2><p>教材を使っても、AIへの相談だけでも始められます。</p>{!c.preview && <button type="button" className="button primary" onClick={onCreate}>問題を作る<ArrowRight size={16}/></button>}</div> : <div className={styles.grid}>{topics.map(topic=>{
         const ownerId=topicOwnerId(c.data,topic);
         const owner=c.data.profiles.find(profile=>profile.id===ownerId);
         const questions=c.data.questions.filter(question=>question.topicId===topic.id && question.status!=='archived');
@@ -87,13 +87,14 @@ export function QuestionLibrary({ c, initialTab = 'private', onEdit, onCreate, o
         const practice=mayPracticeLibraryTopic(c.data,c.profile,topic)&&questions.some(question=>isPracticeReadyQuestion(question));
         return <article className={styles.card} key={topic.id}>
           <div className={styles.meta}><span className="subject-badge">{topic.subject}</span><span>{owner?.name || '自分'}の問題集{topic.testOnly&&' · テスト用'}</span></div>
+          {parent && <p className={styles.visibility}><LockKeyhole size={14}/>{topic.testOnly ? 'この原本は管理者だけに表示（テスト用）' : owner?.role === 'student' ? `${owner.name}さんと管理者だけに表示` : 'この原本は管理者だけに表示'}</p>}
           <h2>{topic.title}</h2><p className={styles.description}>{topic.description || '1回10問ずつ、自分のペースで練習できます。'}</p>
           <p className={styles.count}><strong>{count}</strong>問を保存済み{active&&<span> · 作成中</span>}</p>
-          <div className={styles.actions}>{practice && <button type="button" className="button primary" disabled={c.busy} onClick={()=>void c.actions.startPractice('daily',topic.id)}>10問練習する<ArrowRight size={16}/></button>}{parent&&count>0&&<button type="button" className="text-button" onClick={()=>onEdit(topic.id)}><Pencil size={15}/>内容を見る・編集</button>}{count>0&&onOpenPlan&&<ArrangeTopicButton c={c} topicId={topic.id} onCreated={onOpenPlan}/>}{(active||failed)&&topic.planId&&onOpenPlan&&<button type="button" className="text-button" onClick={()=>onOpenPlan(topic.planId!)}>作成状況を見る<ArrowRight size={15}/></button>}</div>
+          <div className={styles.actions}>{practice && <button type="button" className="button primary" disabled={c.busy} onClick={()=>void c.actions.startPractice('daily',topic.id)}>10問練習する<ArrowRight size={16}/></button>}{parent&&count>0&&<button type="button" className="text-button" onClick={()=>onEdit(topic.id)}><Pencil size={15}/>一覧でレビュー・編集</button>}{!c.preview&&count>0&&onOpenPlan&&<ArrangeTopicButton c={c} topicId={topic.id} onCreated={onOpenPlan}/>}{!c.preview&&(active||failed)&&topic.planId&&onOpenPlan&&<button type="button" className="text-button" onClick={()=>onOpenPlan(topic.planId!)}>作成状況を見る<ArrowRight size={15}/></button>}</div>
           {!count&&<p className={styles.small}>問題が保存されると、ここから練習できます。</p>}
           {count>0&&!practice&&parent&&<p className={styles.small}>学習者本人の練習用です。管理者は内容を確認・編集できます。</p>}
-          {activeJob&&<div className={styles.work}><p>{canStart ? '作成の開始状況を確認できます。' : '10問ずつ保存しています。保存した問題から練習できます。'}</p><button type="button" className="text-button" disabled={c.busy||c.sync.checking} onClick={()=>void(canStart ? c.actions.resumeGeneration(activeJob.id) : c.actions.refreshStatus())}><RefreshCw size={14}/>{c.busy||c.sync.checking ? '状況を確認しています' : canStart ? '開始を確認する' : '最新の状況を確認'}</button></div>}
-          {canRetry&&failedJob&&<div className={styles.work}><p>{generating ? 'ほかの問題の作成が終わると、続きを依頼できます。' : '作成が途中で止まりました。保存した問題を残して、同じ条件で続きを作れます。'}</p><button type="button" className="button secondary" disabled={c.busy||generating||!!retryingJob} onClick={()=>void retry(failedJob.id)}><RefreshCw size={15}/>{retryingJob===failedJob.id ? '依頼を確認しています' : '同じ条件で続きを作る'}</button>{retryAttempt===failedJob.id&&c.error&&<p className={styles.error} role="alert">{c.error}</p>}</div>}
+          {!c.preview&&activeJob&&<div className={styles.work}><p>{canStart ? '作成の開始状況を確認できます。' : '10問ずつ保存しています。保存した問題から練習できます。'}</p><button type="button" className="text-button" disabled={c.busy||c.sync.checking} onClick={()=>void(canStart ? c.actions.resumeGeneration(activeJob.id) : c.actions.refreshStatus())}><RefreshCw size={14}/>{c.busy||c.sync.checking ? '状況を確認しています' : canStart ? '開始を確認する' : '最新の状況を確認'}</button></div>}
+          {!c.preview&&canRetry&&failedJob&&<div className={styles.work}><p>{generating ? 'ほかの問題の作成が終わると、続きを依頼できます。' : '作成が途中で止まりました。保存した問題を残して、同じ条件で続きを作れます。'}</p><button type="button" className="button secondary" disabled={c.busy||generating||!!retryingJob} onClick={()=>void retry(failedJob.id)}><RefreshCw size={15}/>{retryingJob===failedJob.id ? '依頼を確認しています' : '同じ条件で続きを作る'}</button>{retryAttempt===failedJob.id&&c.error&&<p className={styles.error} role="alert">{c.error}</p>}</div>}
           <SetSharingActions c={c} topic={topic}/>
         </article>;
       })}</div>}

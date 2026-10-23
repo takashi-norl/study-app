@@ -483,8 +483,26 @@ export function useStudy():StudyController {
       setNotice('自分の学習に追加しました。1回10問ずつ練習できます。');
     });return resultId;
   }
+  async function updatePlanTags(planId:string,tags:string[]):Promise<boolean>{
+    let saved=false;
+    await run(async()=>{
+      const normalized=[...new Set(tags.map(tag=>tag.trim()).filter(Boolean))];
+      if(normalized.length>8 || normalized.some(tag=>tag.length>40)) throw new Error('タグは8個まで、1個40文字以内で入力してください。');
+      if(demo){
+        const plan=state.current.plans.find(item=>item.id===planId && item.ownerId===profile.id && (!item.testOnly || profile.role==='parent'));
+        if(!plan) throw new Error('自分の学習プランを選んでください。');
+        const next={...state.current,plans:state.current.plans.map(item=>item.id===planId?{...item,tags:normalized}:item)};
+        state.current=next;setData(next);
+      }else{
+        const result=await api<{plan:LearningPlan}>(`/api/plans/${encodeURIComponent(planId)}/tags`,'PATCH',{tags:normalized});
+        const next={...state.current,plans:state.current.plans.map(item=>item.id===result.plan.id?{...item,tags:result.plan.tags}:item)};
+        state.current=next;setData(next);
+      }
+      saved=true;setNotice('学習プランのタグを保存しました。');
+    });return saved;
+  }
   return {data:demo?demoStudyDataForProfile(data,profile):data,profile,demo,ready,busy,error,notice,uploadStatus,sync,session,currentQuestion,feedback,actions:{
-    refreshStatus,startPractice,answer,nextQuestion,createTopic,uploadSources,createPlan,sendPlanningMessage,resumePlanningTurn,generateProposal,arrangeTopic,generate,resumeGeneration,retryGeneration,updateQuestion,publish,publishLibrary,requestLibraryPublication,addLibraryPlan,requestNotifications,
+    refreshStatus,updatePlanTags,startPractice,answer,nextQuestion,createTopic,uploadSources,createPlan,sendPlanningMessage,resumePlanningTurn,generateProposal,arrangeTopic,generate,resumeGeneration,retryGeneration,updateQuestion,publish,publishLibrary,requestLibraryPublication,addLibraryPlan,requestNotifications,
     switchRole(role:Role){if(!demo)return;setProfile(data.profiles.find(p=>p.role===role)||GUEST);setSession(null);setSessionQuestions([]);setFeedback(null);setError(null);setNotice(null);setUploadStatus(null);},
     finishSession(){setSession(null);setSessionQuestions([]);setFeedback(null);},
     async resetDemo(){if(!demo)return;await run(async()=>{await clearLocalFiles();setData(createDemoData());setSession(null);setFeedback(null);setNotice('サンプルの記録を初期状態に戻しました。');});},

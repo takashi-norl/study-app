@@ -23,6 +23,8 @@ export interface NewLearningPlan {
 }
 
 export interface StudyController {
+  /** Read-only learner rehearsal; all practice state is held only in memory. */
+  preview?: boolean;
   data: StudyData;
   profile: Profile;
   demo: boolean;
@@ -45,6 +47,7 @@ export interface StudyController {
     createTopic(title: string, subject: Subject, description: string, targetCount: number): Promise<string | void>;
     uploadSources(topicId: string | undefined, files: File[]): Promise<void>;
     createPlan(input: NewLearningPlan): Promise<string | void>;
+    updatePlanTags(planId: string, tags: string[]): Promise<boolean>;
     sendPlanningMessage(planId: string, message: string): Promise<boolean>;
     resumePlanningTurn(turnId: string): Promise<void>;
     generateProposal(planId: string, turnId: string, proposalId: string, targetCount: number, schedule?: { dailyQuestionTarget: number; plannedDays: number }): Promise<string | void>;

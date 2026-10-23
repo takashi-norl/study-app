@@ -8,12 +8,13 @@ import styles from './english-audio.module.css';
 // Speech synthesis has one queue per page. A previous component must not stop a newer owner.
 let activePlayback: { owner: symbol; stop: () => void } | null = null;
 
-export function EnglishAudio({ questionId, sessionId, prompt, choices, enabled = true }: {
+export function EnglishAudio({ questionId, sessionId, prompt, choices, enabled = true, deviceOnly = false }: {
   questionId: string;
   sessionId?: string;
   prompt: string;
   choices: string[];
   enabled?: boolean;
+  deviceOnly?: boolean;
 }) {
   const [supported, setSupported] = useState<boolean | null>(null);
   const [configured, setConfigured] = useState(false);
@@ -58,7 +59,7 @@ export function EnglishAudio({ questionId, sessionId, prompt, choices, enabled =
   }, []);
 
   useEffect(() => {
-    if (!enabled) return;
+    if (!enabled || deviceOnly) return;
     const controller = new AbortController();
     void fetch('/api/audio', { credentials: 'same-origin', cache: 'no-store', signal: controller.signal })
       .then(async response => response.ok ? response.json() as Promise<{ configured?: boolean }> : { configured: false })
@@ -68,7 +69,7 @@ export function EnglishAudio({ questionId, sessionId, prompt, choices, enabled =
         if (result.configured && !chosenProvider.current) setProvider('elevenlabs');
       }).catch(() => {});
     return () => controller.abort();
-  }, [enabled]);
+  }, [enabled, deviceOnly]);
 
   useEffect(() => {
     stop();
@@ -182,7 +183,7 @@ export function EnglishAudio({ questionId, sessionId, prompt, choices, enabled =
     if (!text) return;
     chosenProvider.current = true;
     activePlayback?.stop();
-    if (provider === 'elevenlabs' && configured) playCloud(key, text, choiceIndex);
+    if (!deviceOnly && provider === 'elevenlabs' && configured) playCloud(key, text, choiceIndex);
     else playDevice(key, text);
   };
 
