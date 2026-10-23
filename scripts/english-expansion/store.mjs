@@ -108,6 +108,13 @@ export async function persistRepairRevision(lease, requestId, revision) {
   await durableJson(join(lease.output, 'requests', safeId(requestId), 'repair-revision.json'), revision, true);
   return revision;
 }
+export async function persistEditorialEvidence(lease, authority, record) {
+  await assertLease(lease, lease.output);
+  const directory = join(lease.output, 'editorial-overlays', safeId(record.id));
+  await durableJson(join(directory, 'authority.json'), authority, true);
+  await durableJson(join(directory, 'revision.json'), record, true);
+  await durableJson(join(lease.output, 'editorial-overlays', 'active.json'), record, true);
+}
 export async function persistRawResponse(lease, request, response) {
   await assertLease(lease, lease.output);
   const file = join(lease.output, 'requests', safeId(request.id), 'response.json');

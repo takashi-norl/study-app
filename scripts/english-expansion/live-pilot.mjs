@@ -7,6 +7,7 @@ import { reserveExpansionRequest } from './budget.mjs';
 import { boundedRequest, inspectPhaseOneGate } from './dispatcher.mjs';
 import { checkedVersionedWork, parseVersionedGeneration, parseVersionedReview } from './work-versions.mjs';
 import { assertOnlyTestsChanged, assertSingleRepairDispatch, inspectRepairEvidence, assertRepairAwareReview } from './pilot-repair.mjs';
+import { assertEditorialAuthorityPresent, assertEditorialAwareReview } from './pilot-editorial.mjs';
 import { classifyCandidates } from './registry.mjs';
 import { hashContent } from './schema.mjs';
 import { initializeStore, persistDraft, persistLedger, persistPhaseOneHandoff, persistRawResponse, persistRepairRevision, persistRequest, persistReviewResult, persistWork, publishReviewedUnit, readJson, readOptionalJson, registerPilotSeeds, withExpansionLock } from './store.mjs';
@@ -73,8 +74,10 @@ async function pilotAction(options, adapterFactory) {
       if (draft.contentSha256 !== hashContent(unit) || hashContent(draft.unit) !== hashContent(unit)) throw new Error('Review must use the complete immutable saved draft.');
     }
     let ledger = await readJson(join(lease.output, 'ledger.json'));
+    await assertEditorialAuthorityPresent(lease.output, approval.config.pilotEditorial);
     if (ledger.calls.some(call => call.repairOf || call.repairPlanSha256) && !approval.config.pilotRepair) throw new Error('Existing pilot repair authority cannot be omitted from later requests.');
     const prior = ledger.calls.find(call => call.id === work.id);
+    if (work.stage === 'review' && approval.config.pilotEditorial) await assertEditorialAwareReview(lease.output, approval.config.pilotRepair, approval.config.pilotEditorial, work);
     const repair = work.kind === 'tests-only-repair' ? await inspectRepairEvidence(lease.output, approval.config.pilotRepair, work, { allowApprovedReplacement: Boolean(prior) }) : null;
     if (repair && !prior) assertSingleRepairDispatch(ledger, work, repair);
     const adapter = adapterFactory(); // No credentials/network constructed before actual completion gate.
@@ -88,7 +91,7 @@ async function pilotAction(options, adapterFactory) {
       return { ...await finishSaved(lease, request, work, raw, adapter), replayed: true };
     }
     if (approval.config.pilotRepair && work.promptVersion !== 'v2') throw new Error('New requests require the reviewed v2 quality prompt; historical work can only replay saved raw.');
-    if (work.stage === 'review' && approval.config.pilotRepair) await assertRepairAwareReview(lease.output, approval.config.pilotRepair, work, ledger);
+    if (work.stage === 'review' && approval.config.pilotRepair && !approval.config.pilotEditorial) await assertRepairAwareReview(lease.output, approval.config.pilotRepair, work, ledger);
     if (ledger.calls.some(call => call.accountingHold)) throw new Error('An accounting hold blocks further spending.');
     if (ledger.calls.length >= 10) throw new Error('Initial pilot is limited to ten total generation/review submissions.');
     if (!repair && ledger.calls.some(call => call.stage === work.stage && call.unitIds.some(id => work.unitIds.includes(id)))) throw new Error('These units already have a request for this stage. Reconcile saved evidence; a new ID is not retry permission.');

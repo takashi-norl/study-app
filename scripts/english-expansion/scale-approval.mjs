@@ -5,6 +5,7 @@ import { BATCH_POLICY_SHA256 } from './batch-provider.mjs';
 import { boundedRequest } from './dispatcher.mjs';
 import { checkedVersionedWork, parseVersionedGeneration, parseVersionedReview } from './work-versions.mjs';
 import { assertOnlyTestsChanged, inspectRepairEvidence } from './pilot-repair.mjs';
+import { assertEditorialAuthorityPresent, inspectEditorialOverlay } from './pilot-editorial.mjs';
 import { approveUnit, hashContent } from './schema.mjs';
 import { readJson, readOptionalJson } from './store.mjs';
 
@@ -22,7 +23,9 @@ export function scaleFiles() {
 }
 
 /** Stable after scale requests are appended: only the exact twenty pilot IDs enter this snapshot. */
-export async function measuredPilotSnapshot(output, reviewedSeeds, repairAuthority) {
+export async function measuredPilotSnapshot(output, reviewedSeeds, repairAuthority, editorialAuthority) {
+  await assertEditorialAuthorityPresent(output, editorialAuthority);
+  const editorial = editorialAuthority ? await inspectEditorialOverlay(output, repairAuthority, editorialAuthority) : null;
   const store = await readJson(join(output, 'store.json')), ledger = await readJson(join(output, 'ledger.json'));
   const seeds = store?.pilot?.seeds;
   if (store.pilot?.maxUnits !== 20 || !Array.isArray(seeds) || seeds.length !== 20 || new Set(seeds.map(seed => seed.id)).size !== 20
@@ -57,6 +60,10 @@ export async function measuredPilotSnapshot(output, reviewedSeeds, repairAuthori
           assertOnlyTestsChanged(original, unit); generated.set(unit.id, unit);
         }
         generationLineage.push(revision);
+        if (editorial) {
+          if (editorial.proposal.sourceRequestId !== work.id || hashContent(editorial.originalUnits) !== hashContent(parsed)) throw new Error('Editorial final cards do not descend from this exact repair.');
+          for (const unit of editorial.units) generated.set(unit.id, unit);
+        }
       } else {
         if (call.repairOf || call.repairPlanSha256) throw new Error('Ordinary generation cannot claim repair permission.');
         for (const unit of parsed) { if (generated.has(unit.id)) throw new Error('Duplicate generation has no authorized repair chain.'); generated.set(unit.id, unit); }
@@ -87,7 +94,7 @@ export async function measuredPilotSnapshot(output, reviewedSeeds, repairAuthori
   const actualUsd = Math.round(calls.reduce((sum, call) => sum + call.actualUsd, 0) * 1e9) / 1e9;
   if (!(actualUsd > 0)) throw new Error('A measured nonzero pilot cost is required; forecasts cannot substitute for actual usage.');
   return { schemaVersion: 1, phaseOneFingerprint: store.phaseOneFingerprint, seedsSha256: hashContent(seeds),
-    units, generationLineage, callsSha256: hashContent(calls), actualUsd, reviewedUnits: 20, approvedUnits, heldUnits: 20 - approvedUnits };
+    units, generationLineage, ...(editorial ? { editorialLineage: editorial.record } : {}), callsSha256: hashContent(calls), actualUsd, reviewedUnits: 20, approvedUnits, heldUnits: 20 - approvedUnits };
 }
 
 /** Never creates/enables receipts. A root review of observed pilot quality and cost is mandatory. */
@@ -105,7 +112,7 @@ export async function verifyScaleApproval(options) {
   const files = scaleFiles();
   if (!Array.isArray(receipt.files) || receipt.files.length !== files.length || new Set(receipt.files.map(file => file.id)).size !== files.length) throw new Error('All batch spending modules require exact review hashes.');
   for (const file of files) if (await realpath(file.path) !== resolve(file.path) || receipt.files.find(row => row.id === file.id)?.sha256 !== await sha256File(file.path)) throw new Error('Batch module changed; scale approval is stale.');
-  const pilot = await measuredPilotSnapshot(options.output, integration.seeds, integration.config.pilotRepair);
+  const pilot = await measuredPilotSnapshot(options.output, integration.seeds, integration.config.pilotRepair, integration.config.pilotEditorial);
   if (receipt.pilotSnapshotSha256 !== hashContent(pilot) || receipt.measuredPilotUsd !== pilot.actualUsd || receipt.pilotApprovedUnits !== pilot.approvedUnits) throw new Error('Measured pilot evidence differs from the root quality/cost review.');
   return { ...integration, receipt, approvalSha256: hashContent(receipt), pilot };
 }

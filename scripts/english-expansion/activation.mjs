@@ -7,9 +7,10 @@ import { assertPricingFresh, PRICING_POLICY_SHA256 } from './anthropic-adapter.m
 import { validateHistoricalCommitments } from './historical-costs.mjs';
 import { hashContent, validateSeed } from './schema.mjs';
 import { validateRepairAuthority } from './pilot-repair.mjs';
+import { validateEditorialAuthority } from './pilot-editorial.mjs';
 
 export const REPO_ROOT = fileURLToPath(new URL('../../', import.meta.url));
-const scripts = ['shared-spending-fence.mjs', ...['canonical-policy', 'catalog-policy', 'holds', 'schema', 'structural-forms'].map(name => `vocabulary-batch/${name}.mjs`), ...['activation', 'anthropic-adapter', 'prompts', 'prompts-v2', 'work-versions', 'pilot-repair', 'live-pilot', 'dispatcher', 'store', 'budget', 'historical-costs', 'schema', 'canonical-families', 'registry', 'loaders', 'audio-adapter', 'allocation'].map(name => `english-expansion/${name}.mjs`)];
+const scripts = ['shared-spending-fence.mjs', ...['canonical-policy', 'catalog-policy', 'holds', 'schema', 'structural-forms'].map(name => `vocabulary-batch/${name}.mjs`), ...['activation', 'anthropic-adapter', 'prompts', 'prompts-v2', 'work-versions', 'pilot-repair', 'pilot-editorial', 'pilot-editorial-cli', 'live-pilot', 'dispatcher', 'store', 'budget', 'historical-costs', 'schema', 'canonical-families', 'registry', 'loaders', 'audio-adapter', 'allocation'].map(name => `english-expansion/${name}.mjs`)];
 export function integrationFiles(runtimeDirectory) {
   return [...['production.mjs', 'run.mjs'].map(name => ({ id: `phase-one/${name}`, path: join(runtimeDirectory, name) })),
     ...scripts.map(name => ({ id: `scripts/${name}`, path: join(REPO_ROOT, 'scripts', name) }))];
@@ -37,6 +38,7 @@ export async function verifyIntegration(options, now = new Date()) {
   if (config.schemaVersion !== 1 || config.protocol !== SPENDING_FENCE_PROTOCOL || config.enabled !== true || config.scope !== 'phase-two-initial-pilot' || config.textOnly !== true || config.pilot?.maxUnits !== 20 || config.pilot?.maxPaidRequests !== 10 || !config.reviewedBy || !Number.isFinite(Date.parse(config.reviewedAt)) || config.pricingPolicySha256 !== PRICING_POLICY_SHA256 || config.expenseCoverage !== 'reviewed-ledgers-plus-bounded-historical-allowance' || !Array.isArray(config.cashPurchases)) throw new Error('Live expansion integration receipt is incomplete or exceeds the bounded authority.');
   const historical = validateHistoricalCommitments(config.historicalCommitments);
   if (config.pilotRepair !== undefined) validateRepairAuthority(config.pilotRepair);
+  if (config.pilotEditorial !== undefined) validateEditorialAuthority(config.pilotEditorial, config.pilotRepair);
   if (config.cashPurchases.filter(p => p.provider === 'elevenlabs' && p.fundingPool === 'audio').reduce((sum, p) => sum + p.amountUsdPreTax, 0) < historical.confirmedAudioPrepaymentUsd) throw new Error('Confirmed historical audio prepayment is missing from cash obligations.');
   for (const key of ['phaseOneOutput', 'runtimeDirectory', 'output', 'sharedLockDirectory']) if (config.paths?.[key] !== resolve(options[key])) throw new Error('Integration receipt is bound to different private directories.');
   const expected = integrationFiles(runtimeDirectory);
