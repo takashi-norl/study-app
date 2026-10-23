@@ -1,3 +1,5 @@
+import type { VerbForms } from './verb-forms';
+
 export type VocabularyEntry = {
   id: string;
   word: string;
@@ -5,6 +7,7 @@ export type VocabularyEntry = {
   ipa: string;
   ipaLabel: string;
   partOfSpeech: string;
+  verbForms?: VerbForms;
   definition: string;
   meaning: string;
   usageTip: string;

@@ -7,6 +7,7 @@ import type { VocabularyAudio, VocabularyEntry } from '@/lib/vocabulary-types';
 import type { GlossaryEntry } from '@/lib/vocabulary-glossary';
 import { buildVocabularyTest, checkVocabularyAnswer, summarizeVocabularyTest, vocabularyGroups, type VocabularyTestItem } from '@/lib/vocabulary-session';
 import { GLOSSARY_PAUSE_AUDIO_EVENT, GlossaryHistoryButton, GlossarySentence, VocabularyGlossaryProvider } from './vocabulary-glossary';
+import VerbForms from './verb-forms';
 import styles from './vocabulary-marathon.module.css';
 
 type TestState = {
@@ -347,6 +348,7 @@ export default function VocabularyMarathon({ entries, audio, preparation, glossa
         <WordAudio key={entry.id} entry={entry} clip={availableAudio.find(clip => clip.wordId === entry.id)} example={exampleIndex} stopKey={`${entry.id}-${session.stage}-${exampleIndex}`} busy={!!busyWord} onPrepare={() => void prepare()} onRefresh={() => void refresh()} />
         {audioError && <p role="alert" className={styles.error}>{audioError}</p>}
         <div className={styles.definition}><p lang="en">{entry.definition}</p><p>{entry.meaning}</p></div>
+        <VerbForms key={entry.id} forms={entry.verbForms} />
         <section className={styles.example} aria-label={`例文 ${exampleIndex + 1}`}>
           <div className={styles.exampleHeading}><span>例文 {exampleIndex + 1} / {entry.examples.length}</span><strong>{example.context}</strong></div>
           <p lang="en" className={styles.exampleText}><GlossarySentence text={example.text} /></p>

@@ -1,5 +1,8 @@
+import type { VerbForms } from './verb-forms';
+
 export type GlossaryEntry = {
   id: string; term: string; aliases: string[]; meaning: string; definition: string; level: string;
+  verbForms?: VerbForms;
   examples: { text: string; translation: string }[]; relatedIds: string[];
 };
 export type LookupRecord = {

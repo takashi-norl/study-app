@@ -3,6 +3,7 @@
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
 import { ArrowLeft, ArrowRight, BookmarkPlus, Check, ChevronLeft, ChevronRight, History, RefreshCw, X } from 'lucide-react';
 import { matchGlossaryTerms, type GlossaryEntry, type LookupRecord } from '@/lib/vocabulary-glossary';
+import VerbForms from './verb-forms';
 import styles from './vocabulary-glossary.module.css';
 
 export const GLOSSARY_PAUSE_AUDIO_EVENT = 'hibi-vocabulary-pause-audio';
@@ -209,6 +210,7 @@ export function VocabularyGlossaryProvider({ entries, children }: { entries: Glo
           <div className={styles.termHeading}><h2 id="vocabulary-glossary-heading" ref={heading} tabIndex={-1} lang="en">{entry.term}</h2><span>{entry.level}</span></div>
           <p className={styles.meaning}>{entry.meaning}</p>
           <p className={styles.definition} lang="en"><GlossarySentence text={entry.definition} excludeEntryId={entry.id} /></p>
+          <VerbForms key={entry.id} forms={entry.verbForms} />
           {example && <section className={styles.examples} aria-label="使い方の例文">
             <p className={styles.exampleLabel}>使い方の例文 {view.example + 1} / {entry.examples.length}</p>
             <p lang="en" className={styles.exampleText}><GlossarySentence text={example.text} excludeEntryId={entry.id} /></p>

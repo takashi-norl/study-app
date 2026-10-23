@@ -8,6 +8,15 @@ export interface AppRelease {
 
 // Newest first. This is the source for Settings, public history and update notices.
 export const APP_RELEASES: readonly AppRelease[] = [{
+  version: '0.8.1',
+  date: '2026-10-23',
+  title: '動詞の活用を、辞書のように確認',
+  announcement: '動詞に原形・過去形・過去分詞を追加しました。活用した形からも、同じ単語を調べられます。',
+  changes: [
+    { title: '過去形と過去分詞を並べて見る', description: '100語セットの動詞と基礎の動詞・熟語に活用表を追加しました。ing形・三単現はタップして開けます。readの発音や、米式・英式のつづりの違いも注記しています。' },
+    { title: 'took・takenからtakeへ', description: 'take・go・writeなど基礎の不規則動詞10語を用語説明に追加しました。例文の活用形から原形の説明へ移り、参照履歴は同じ単語にまとめます。take part inなど熟語の活用形にも対応します。' },
+  ],
+}, {
   version: '0.8.0',
   date: '2026-10-23',
   title: '100語を学び、まとめて試し、言葉をたどる',

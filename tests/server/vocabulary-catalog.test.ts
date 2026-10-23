@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import legacy from '../../content/vocabulary-marathon.json';
+import grade2 from '../../content/vocabulary-grade2.json';
+import pre1 from '../../content/vocabulary-pre1.json';
 import { vocabularyEntries } from '../../src/server/vocabulary-catalog';
 import { glossaryEntries } from '../../src/server/vocabulary-glossary-catalog';
 import { vocabularyAudioSpec } from '../../src/server/vocabulary-audio';
@@ -41,11 +43,33 @@ test('the six saved recordings retain their exact cache identity, example text a
   }
 });
 test('glossary connects foundation phrases and catalog words without duplicate aliases or dangling references', () => {
-  assert.equal(glossaryEntries.length, 136);
+  assert.equal(glossaryEntries.length, 146);
   assert.equal(new Set(glossaryEntries.map(entry => entry.id)).size, glossaryEntries.length);
   const keys = glossaryEntries.flatMap(entry => [entry.term, ...entry.aliases].map(term => term.toLowerCase()));
   assert.equal(new Set(keys).size, keys.length, 'An alias must resolve to exactly one entry');
   assert.ok(glossaryEntries.every(entry => entry.relatedIds.every(id => glossaryEntries.some(item => item.id === id))));
   assert.equal(matchGlossaryTerms('We left early in order to avoid rain.', glossaryEntries).filter(part => part.entryId).length, 2);
   assert.deepEqual(matchGlossaryTerms('She achieved her goal and admitted the mistake, justifying her choice.', glossaryEntries).filter(part => part.entryId).map(part => part.entryId), ['achieve', 'admit', 'justify']);
+});
+
+test('verb metadata covers every catalog verb without changing any saved audio identity', () => {
+  const originals = [...grade2.entries, ...pre1.entries] as VocabularyEntry[];
+  for (const entry of vocabularyEntries) {
+    if (entry.partOfSpeech === '動詞') assert.ok(entry.verbForms, `${entry.word} needs a conjugation table`);
+    else assert.equal(entry.verbForms, undefined, `${entry.word} is not a verb entry`);
+    assert.equal(vocabularyAudioSpec(entry).cacheKey, vocabularyAudioSpec(originals.find(old => old.id === entry.id)!).cacheKey, entry.word);
+  }
+});
+
+test('all displayed verb forms resolve back to their canonical glossary history ID', () => {
+  for (const entry of glossaryEntries) {
+    if (!entry.verbForms) continue;
+    const { base, past, pastParticiple, presentParticiple, thirdPersonSingular } = entry.verbForms;
+    for (const form of [...base, ...past, ...pastParticiple, ...presentParticiple, ...thirdPersonSingular]) {
+      assert.deepEqual(matchGlossaryTerms(form, glossaryEntries), [{ text: form, entryId: entry.id }], `${entry.term}: ${form}`);
+    }
+  }
+  const text = 'She took part in it, has taken part in it, then took notes and has written a report.';
+  assert.deepEqual(matchGlossaryTerms(text, glossaryEntries).filter(part => part.entryId).map(part => part.entryId),
+    ['basic-take-part-in', 'basic-take-part-in', 'basic-take', 'basic-write']);
 });
