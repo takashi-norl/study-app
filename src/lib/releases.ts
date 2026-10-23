@@ -8,6 +8,15 @@ export interface AppRelease {
 
 // Newest first. This is the source for Settings, public history and update notices.
 export const APP_RELEASES: readonly AppRelease[] = [{
+  version: '0.13.0',
+  date: '2026-10-23',
+  title: '自分の教材から、古文の単語問題を',
+  announcement: '古文の作り方に「単語問題」を追加しました。写真やPDFの読めた範囲を使い、意味と文脈を確かめる問題を、同じ作り方で相談・作成できます。',
+  changes: [
+    { title: '単語問題の作り方を引き継ぐ', description: '基本の意味と文脈での使い分けを中心に、教材に記載があれば活用も出題します。試作・調整・まとめて作成・別セットへのアレンジで、選んだ作り方を保持します。' },
+    { title: '確認した問題を、非公開で取り込める', description: '管理者は確認済みの問題セットをライブラリから取り込めます。AIで再生成せず保存し、必要な学習者へ届けられます。教材の写真や元の相談は共有しません。' },
+  ],
+}, {
   version: '0.12.0',
   date: '2026-10-23',
   title: '選ぶとすぐに、正解と解説へ',

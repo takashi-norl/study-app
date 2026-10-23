@@ -64,3 +64,17 @@ test('same file belongs separately to each admin and template marker stays class
   assert.notEqual(first.topic.id,other.topic.id);
   assert.equal(questionSetBundleSchema.safeParse({...input.bundle,subject:'英語',questionTemplate:'kobun-vocabulary'}).success,false);
 });
+
+
+test('a vocabulary-marked import must satisfy the same structural rules and retains its public mode label',()=>{
+  const {data,events,input}=fixture();
+  const bundle={...input.bundle,questionTemplate:'kobun-vocabulary' as const};
+  assert.throws(()=>prepareQuestionSetImport(data,events,parent,{...input,bundle}),{code:'INVALID_VOCABULARY_QUESTION'});
+  bundle.questions=bundle.questions.map(q=>({...q,prompt:`【意味】${q.prompt}`,learningPoint:'古文単語｜まもる'}));
+  const saved=prepareQuestionSetImport(data,events,parent,{...input,bundle});
+  const after=foldEvents([...events,...saved.events],[parent,learner]);
+  assert.equal(after.topics[0].questionTemplate,'kobun-vocabulary');
+  assert.equal(after.plans[0].questionTemplate,undefined,'an existing plan is not silently reclassified');
+  assert.equal(after.questions[0].learningPoint,'古文単語｜まもる');
+  assert.throws(()=>prepareQuestionSetImport(data,events,parent,{...input,bundle:{...bundle,questions:bundle.questions.map(q=>({...q,explanation:'正解はAです。'}))}}),{code:'INVALID_VOCABULARY_QUESTION'});
+});

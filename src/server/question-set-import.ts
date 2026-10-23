@@ -1,6 +1,7 @@
 import 'server-only';
 import { createHash } from 'node:crypto';
 import type { Profile, Question, StudyData, Topic } from '@/lib/types';
+import { validateVocabularyQuestions } from '@/lib/kobun-vocabulary';
 import { questionSetImportSchema } from '@/lib/question-set-import';
 import { canAccessSource } from './access';
 import { ApiError } from './config';
@@ -14,7 +15,12 @@ function stableId(value:string) {
 
 export function prepareQuestionSetImport(data:StudyData,events:StudyEvent[],profile:Profile,raw:unknown,now=new Date()) {
   if(profile.role!=='parent'||profile.familyId!==getFamilyId()) throw new ApiError(403,'管理者だけが取り込めます。','FORBIDDEN');
-  const {bundle}=questionSetImportSchema.parse(raw);
+  const {bundle:parsed}=questionSetImportSchema.parse(raw);
+  let bundle=parsed;
+  if(bundle.questionTemplate){
+    try{bundle={...bundle,questions:validateVocabularyQuestions(bundle.questions)};}
+    catch(error){throw new ApiError(400,error instanceof Error?error.message:'単語問題の形式を確認してください。','INVALID_VOCABULARY_QUESTION');}
+  }
   const plan=bundle.planId ? data.plans.find(p=>p.id===bundle.planId) : undefined;
   if(bundle.planId && (!plan || plan.ownerId!==profile.id || plan.testOnly || plan.subject!==bundle.subject)) throw new ApiError(403,'自分の学習プランを選んでください。','INVALID_PLAN');
   for(const id of new Set(bundle.questions.flatMap(q=>q.sourceIds))) {
