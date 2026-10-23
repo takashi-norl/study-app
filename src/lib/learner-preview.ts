@@ -14,7 +14,7 @@ export interface PreviewPracticeState {
   session: PracticeSession | null;
   sessionQuestions: Question[];
   index: number;
-  feedback: { correct: boolean; correctIndex: number; explanation: string } | null;
+  feedback: { correct: boolean; correctIndex: number; explanation: string; selectedIndex: number } | null;
   error: string | null;
 }
 
@@ -80,7 +80,7 @@ export function answerPreviewQuestion(
     || !Number.isInteger(selectedIndex) || selectedIndex < 0 || selectedIndex >= question.choices.length) return state;
   const correct = selectedIndex === question.correctIndex;
   return { ...state, error: null,
-    feedback: { correct, correctIndex: question.correctIndex, explanation: question.explanation },
+    feedback: { selectedIndex, correct, correctIndex: question.correctIndex, explanation: question.explanation },
     data: { ...state.data, attempts: [...state.data.attempts,
       { id: `preview-${createId()}`, userId: state.profile.id, sessionId: state.session.id,
         questionId: question.id, questionVersion: question.version, selectedIndex, correct, answeredAt: now.toISOString() }] },

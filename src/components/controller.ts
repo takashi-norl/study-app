@@ -38,15 +38,19 @@ export interface StudyController {
   notice: string | null;
   uploadStatus: UploadStatus | null;
   sync: { checking: boolean; lastSyncedAt: number | null; error: string | null };
+  practiceStart: { mode: PracticeMode; topicId?: string } | null;
+  answerConfirmation: boolean;
   session: PracticeSession | null;
   currentQuestion: Question | null;
-  feedback: { correct: boolean; correctIndex: number; explanation: string } | null;
+  feedback: { correct: boolean; correctIndex: number; explanation: string; selectedIndex: number } | null;
   actions: {
     retryAuth(): Promise<void>;
     refreshStatus(): Promise<void>;
     switchRole(role: Role): void;
     startPractice(mode: PracticeMode, topicId?: string): void | Promise<void>;
-    answer(index: number): void | Promise<void>;
+    beginPractice(requireConfirmation: boolean): void | Promise<void>;
+    cancelPracticeStart(): void;
+    answer(index: number): boolean | Promise<boolean>;
     nextQuestion(): void | Promise<void>;
     finishSession(): void | Promise<void>;
     createTopic(title: string, subject: Subject, description: string, targetCount: number): Promise<string | void>;

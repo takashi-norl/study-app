@@ -55,6 +55,10 @@ export function useStudy():StudyController {
   const lastSessionCheck=useRef(0);
   const lastSync=useRef(0);
   const [uploadStatus,setUploadStatus]=useState<UploadStatus|null>(null);
+  const [practiceStart,setPracticeStart]=useState<StudyController['practiceStart']>(null);
+  const pendingPractice=useRef<StudyController['practiceStart']>(null);
+  const [answerConfirmation,setAnswerConfirmation]=useState(false);
+  function updatePracticeStart(next:StudyController['practiceStart']){pendingPractice.current=next;setPracticeStart(next);}
   const [session,setSession]=useState<PracticeSession|null>(null);
   const [sessionQuestions,setSessionQuestions]=useState<Question[]>([]);
   const [index,setIndex]=useState(0);
@@ -69,7 +73,7 @@ export function useStudy():StudyController {
 
   function clearAccess(status: 'checking'|'unauthenticated'){
     state.current=EMPTY;identity.current=GUEST;setData(EMPTY);setProfile(GUEST);
-    setSession(null);setSessionQuestions([]);setFeedback(null);setUploadStatus(null);
+    updatePracticeStart(null);setSession(null);setSessionQuestions([]);setFeedback(null);setUploadStatus(null);
     planningRequests.current.clear();exposed.current.clear();lastSync.current=0;
     setAuthStatus(status);setAuthError(null);setError(null);setNotice(null);
     setSync({checking:status==='checking',lastSyncedAt:null,error:null});
@@ -77,7 +81,7 @@ export function useStudy():StudyController {
   function applyState(result:StudyStatePayload){
     if(signingOut.current)return;
     if(!sameStudyIdentity(identity.current,result.profile)){
-      setSession(null);setSessionQuestions([]);setFeedback(null);setUploadStatus(null);
+      updatePracticeStart(null);setSession(null);setSessionQuestions([]);setFeedback(null);setUploadStatus(null);
       planningRequests.current.clear();exposed.current.clear();
     }
     state.current=result.data;identity.current=result.profile;setData(result.data);setProfile(result.profile);
@@ -220,8 +224,16 @@ export function useStudy():StudyController {
     }
   },[currentQuestion?.id,session?.id,demo]);
 
-  async function startPractice(mode:PracticeMode,topicId?:string){
+  function startPractice(mode:PracticeMode,topicId?:string){
+    if(lock.current || session && !session.completedAt)return;
+    setError(null);setNotice(null);updatePracticeStart({mode,topicId});
+  }
+  async function beginPractice(requireConfirmation:boolean){
+    const requested=pendingPractice.current;
+    if(!requested)return;
+    const {mode,topicId}=requested;
     await run(async()=>{
+      setAnswerConfirmation(requireConfirmation);
       if(demo){
         const available=demoPracticeQuestions(state.current,profile,topicId);
         const previous=state.current.sessions.find(s=>demoSessionAllowed(s,available,profile)&&!s.completedAt&&s.questionIds.some(id=>!state.current.attempts.some(a=>a.sessionId===s.id&&a.questionId===id)));
@@ -230,7 +242,7 @@ export function useStudy():StudyController {
         if(previous)questions=demoSessionQuestions(previous,state.current.questions);
         else{
           questions=selectQuestions(available,profile.role==='parent'?[]:state.current.attempts,state.current.exposures,profile.id,profile.role==='parent'?'extra':mode,new Date(),10,topicId);
-          if(!questions.length){setNotice(mode==='weak'?'今、復習が必要な問題はありません。別の問題集にも挑戦してみましょう。':'今日の分はよくできました。新しい問題や次の復習日を待ちましょう。');return;}
+          if(!questions.length){updatePracticeStart(null);setNotice(mode==='weak'?'今、復習が必要な問題はありません。別の問題集にも挑戦してみましょう。':'今日の分はよくできました。新しい問題や次の復習日を待ちましょう。');return;}
           next={id:uid(),userId:profile.id,mode,questionIds:questions.map(q=>q.id),questionSnapshots:questions.map(question=>({...question,choices:[...question.choices],sourceIds:[...question.sourceIds]})),createdAt:new Date().toISOString()};
           setData(d=>({...d,sessions:[...d.sessions,next!]}));
         }
@@ -239,29 +251,34 @@ export function useStudy():StudyController {
         setIndex(Math.max(0,first));setFeedback(null);
       }else{
         const result=await api<{session:PracticeSession;questions:Question[]}>('/api/practice','POST',{mode,topicId});
-        setSession(result.session);setSessionQuestions(result.questions);setFeedback(null);
         const fresh=await refresh();
+        if(pendingPractice.current!==requested || !sameStudyIdentity(identity.current,profile))return;
+        setSession(result.session);setSessionQuestions(result.questions);setFeedback(null);
         const first=result.questions.findIndex(q=>!fresh.data.attempts.some(a=>a.sessionId===result.session.id&&a.questionId===q.id));
         setIndex(Math.max(0,first));
       }
+      updatePracticeStart(null);
     });
   }
   async function answer(selectedIndex:number){
-    if(!session||!currentQuestion||feedback)return;
+    if(!session||!currentQuestion||feedback)return false;
+    let saved=false;
     await run(async()=>{
-      if(selectedIndex<0||selectedIndex>=currentQuestion.choices.length)return;
+      if(!Number.isInteger(selectedIndex)||selectedIndex<0||selectedIndex>=currentQuestion.choices.length)return;
       if(demo){
         const available=demoPracticeQuestions(state.current,profile,profile.role==='parent'?currentQuestion.topicId:undefined);
         if(!demoSessionAllowed(session,available,profile)||!available.some(question=>question.id===currentQuestion.id))throw new Error('この練習には回答できません。問題集を選び直してください。');
-        const attempt:Attempt={id:uid(),userId:profile.id,questionId:currentQuestion.id,questionVersion:currentQuestion.version,sessionId:session.id,selectedIndex,correct:selectedIndex===currentQuestion.correctIndex,answeredAt:new Date().toISOString()};
+        const attempt:Attempt=state.current.attempts.find(a=>a.sessionId===session.id&&a.questionId===currentQuestion.id)??{id:uid(),userId:profile.id,questionId:currentQuestion.id,questionVersion:currentQuestion.version,sessionId:session.id,selectedIndex,correct:selectedIndex===currentQuestion.correctIndex,answeredAt:new Date().toISOString()};
         setData(d=>({...d,attempts:d.attempts.some(a=>a.sessionId===session.id&&a.questionId===currentQuestion.id)?d.attempts:[...d.attempts,attempt]}));
-        setFeedback({correct:attempt.correct,correctIndex:currentQuestion.correctIndex,explanation:currentQuestion.explanation});
+        setFeedback({selectedIndex:attempt.selectedIndex,correct:attempt.correct,correctIndex:currentQuestion.correctIndex,explanation:currentQuestion.explanation});
       }else{
         const result=await api<{attempt:Attempt;feedback:{correctIndex:number;explanation:string}}>('/api/answer','POST',{sessionId:session.id,questionId:currentQuestion.id,selectedIndex,attemptId:uid()});
-        setFeedback({correct:result.attempt.correct,...result.feedback});
+        setFeedback({selectedIndex:result.attempt.selectedIndex,correct:result.attempt.correct,...result.feedback});
         setData(d=>({...d,attempts:d.attempts.some(a=>a.id===result.attempt.id)?d.attempts:[...d.attempts,result.attempt]}));
       }
+      saved=true;
     });
+    return saved;
   }
   function nextQuestion(){
     if(!feedback||!session)return;
@@ -588,11 +605,11 @@ export function useStudy():StudyController {
       saved=true;setNotice('学習プランのタグを保存しました。');
     });return saved;
   }
-  return {data:demo?demoStudyDataForProfile(data,profile):data,profile,demo,ready,authStatus,authError,busy,error,notice,uploadStatus,sync,session,currentQuestion,feedback,actions:{
-    retryAuth,refreshStatus,updatePlanTags,startPractice,answer,nextQuestion,createTopic,uploadSources,createPlan,sendPlanningMessage,resumePlanningTurn,generateProposal,arrangeTopic,generate,resumeGeneration,retryGeneration,updateQuestion,publish,publishLibrary,requestLibraryPublication,addLibraryPlan,deliverToLearner,requestNotifications,
-    switchRole(role:Role){if(!demo)return;setProfile(data.profiles.find(p=>p.role===role)||GUEST);setSession(null);setSessionQuestions([]);setFeedback(null);setError(null);setNotice(null);setUploadStatus(null);},
-    finishSession(){setSession(null);setSessionQuestions([]);setFeedback(null);},
-    async resetDemo(){if(!demo)return;await run(async()=>{await clearLocalFiles();setData(createDemoData());setSession(null);setFeedback(null);setNotice('サンプルの記録を初期状態に戻しました。');});},
+  return {data:demo?demoStudyDataForProfile(data,profile):data,profile,demo,ready,authStatus,authError,busy,error,notice,uploadStatus,sync,practiceStart,answerConfirmation,session,currentQuestion,feedback,actions:{
+    retryAuth,refreshStatus,updatePlanTags,startPractice,beginPractice,cancelPracticeStart(){if(!lock.current)updatePracticeStart(null);},answer,nextQuestion,createTopic,uploadSources,createPlan,sendPlanningMessage,resumePlanningTurn,generateProposal,arrangeTopic,generate,resumeGeneration,retryGeneration,updateQuestion,publish,publishLibrary,requestLibraryPublication,addLibraryPlan,deliverToLearner,requestNotifications,
+    switchRole(role:Role){if(!demo)return;setProfile(data.profiles.find(p=>p.role===role)||GUEST);updatePracticeStart(null);setSession(null);setSessionQuestions([]);setFeedback(null);setError(null);setNotice(null);setUploadStatus(null);},
+    finishSession(){updatePracticeStart(null);setSession(null);setSessionQuestions([]);setFeedback(null);},
+    async resetDemo(){if(!demo)return;await run(async()=>{await clearLocalFiles();setData(createDemoData());updatePracticeStart(null);setSession(null);setFeedback(null);setNotice('サンプルの記録を初期状態に戻しました。');});},
     async signIn(){if(!signingOut.current)await googleSignIn('google',{callbackUrl:'/'});},
     async signOut(){
       if(demo){location.href='/';return;}

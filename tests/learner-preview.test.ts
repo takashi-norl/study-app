@@ -6,6 +6,7 @@ import {
   type LearnerPreviewPayload,
 } from '../src/lib/learner-preview';
 import type { Question } from '../src/lib/types';
+import { createAnswerInteraction, chooseAnswer, submitAnswer, settleAnswer } from '../src/lib/answer-interaction';
 
 const now = new Date('2026-10-23T00:00:00.000Z');
 function fixture(count = 3) {
@@ -105,4 +106,33 @@ test('preview uses the real ten-question selection and existing learner history'
   assert.equal(state.data.attempts.length, 1);
   assert.equal(startPreviewPractice(initial, 'weak', undefined, now, id).session, null);
   assert.match(startPreviewPractice(initial, 'weak', undefined, now, id).error!, /間違えた問題/);
+});
+
+
+test('both answer modes reveal the same preview feedback exactly once and leave the learner data untouched', () => {
+  for (const confirmation of [false, true]) {
+    const { payload, id } = fixture();
+    const saved = JSON.stringify(payload);
+    let practice = startPreviewPractice(createPreviewPractice(payload), 'daily', undefined, now, id);
+    let input = chooseAnswer(createAnswerInteraction(confirmation), 1, 2);
+    assert.equal(previewCurrentQuestion(practice)?.correctIndex, -1);
+    if (confirmation) {
+      assert.equal(input.phase, 'choosing');
+      input = chooseAnswer(input, 0, 2);
+      input = submitAnswer(input);
+    }
+    assert.equal(input.phase, 'submitting');
+    const key = previewQuestionKey(practice);
+    practice = answerPreviewQuestion(practice, input.selected!, key, now, id);
+    input = settleAnswer(input, true);
+    assert.equal(practice.feedback?.selectedIndex, confirmation ? 0 : 1);
+    assert.equal(practice.feedback?.correct, confirmation);
+    assert.equal(practice.data.attempts.length, 1);
+    assert.equal(answerPreviewQuestion(practice, 0, key, now, id), practice);
+    practice = advancePreviewQuestion(practice, key, now, id);
+    assert.equal(practice.feedback, null);
+    assert.equal(previewCurrentQuestion(practice)?.correctIndex, -1);
+    assert.equal(createAnswerInteraction(input.requireConfirmation).selected, null);
+    assert.equal(JSON.stringify(payload), saved);
+  }
 });
