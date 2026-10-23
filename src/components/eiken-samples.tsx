@@ -196,6 +196,7 @@ export default function EikenSamples({ samples, audio }: { samples: EikenSample[
       <p className={styles.eyebrow}>英検 2級・準1級</p>
       <h1>問題と声を、試してみる。</h1>
       <p>読む・聞く・書くを1問ずつ。問題の難しさと、声の聞きやすさを確認できます。</p>
+      <Link className={styles.back} href="/admin/vocabulary-samples">単語・例文3つを音声で試す<ArrowRight size={16} aria-hidden="true" /></Link>
     </div>
 
     <div className={styles.selectors}>

@@ -8,6 +8,16 @@ export interface AppRelease {
 
 // Newest first. This is the source for Settings, public history and update notices.
 export const APP_RELEASES: readonly AppRelease[] = [{
+  version: '0.6.2',
+  date: '2026-10-23',
+  title: '単語を、3つの例文と音声で身につける',
+  announcement: '管理者向けにボキャブラリーマラソンの見本を追加。単語と例文を個別に聞き、使い方を練習できます。',
+  changes: [
+    { title: '6語・18例文を、男女の声で', description: '2級・準1級を想定した6語に、文脈の違う例文を3つずつ用意しました。単語・各例文を個別に再生でき、ゆっくり聞き直せます。音声は保存して再利用します。' },
+    { title: '和訳だけでなく、使い方を練習', description: '自然な使い方・文脈に合う語・言い換えの3種類、合計18問を試せます。1問ずつ答え合わせし、間違えた問題だけ練習し直せます。' },
+    { title: '声と内容を確認する、管理者用の見本', description: 'メニューと設定から開けます。この見本の回答は学習者の成績に入らず、ページを閉じるとリセットされます。' },
+  ],
+}, {
   version: '0.6.1',
   date: '2026-10-23',
   title: '英検2級・準1級の問題と音声を試す',
