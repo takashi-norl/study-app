@@ -12,6 +12,7 @@ import { asPracticeQuestion, isPracticeReadyQuestion, topicOwnerId } from '@/lib
 import { libraryRevision } from './library';
 import { planningSamplesSchema, planningSampleSchema } from './planning-samples';
 import { aiRequestedSchema, aiUsageSchema } from './ai-usage-schema';
+import { vocabularyLookupSchema } from './vocabulary-lookup-schemas';
 import { audioSegmentsSchema } from './audio-segments';
 import { personalProfileSavedEventSchema, personalProfileChatRequestedEventSchema, personalProfileChatCompletedEventSchema, personalProfileChatFailedEventSchema } from './personal-profile-schemas';
 import { planTagsSchema } from './plan-tags';
@@ -26,6 +27,7 @@ const EVENT_TYPES = [
   'library.questions', 'library.published', 'library.adopted', 'library.publication-requested',
   'ai.requested', 'ai.usage',
   'personal-profile.saved', 'personal-profile.chat.requested', 'personal-profile.chat.completed', 'personal-profile.chat.failed',
+  'vocabulary.lookup',
 ] as const;
 export type StudyEventType = typeof EVENT_TYPES[number];
 export interface StudyEvent {
@@ -168,6 +170,7 @@ function validateEvent(input: StudyEvent): StudyEvent {
   if (metadata.familyId && metadata.familyId !== getFamilyId()) throw new ApiError(403, '別の家族の記録にはアクセスできません。', 'FAMILY_MISMATCH');
   const payload = input.payload;
   switch (metadata.type) {
+    case 'vocabulary.lookup': vocabularyLookupSchema.parse(payload); break;
     case 'ai.requested': aiRequestedSchema.parse(payload); break;
     case 'ai.usage': aiUsageSchema.parse(payload); break;
     case 'personal-profile.saved': personalProfileSavedEventSchema.parse(payload); break;

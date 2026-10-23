@@ -1,0 +1,3274 @@
+{
+  "version": "1",
+  "createdAt": "2026-10-23",
+  "title": "2級対策・基礎から使う50語",
+  "levelNote": "英検2級対策として基礎語の多様な使い方を練習するオリジナル教材です。級は学習の目安で、公式の級別語彙リストや難易度実測による認定ではありません。",
+  "sources": [
+    {
+      "title": "Cambridge Dictionary: avoid（発音・用法の確認）",
+      "url": "https://dictionary.cambridge.org/us/dictionary/english/avoid"
+    },
+    {
+      "title": "Cambridge Dictionary: afford（発音・用法の確認）",
+      "url": "https://dictionary.cambridge.org/dictionary/english/afford"
+    },
+    {
+      "title": "Cambridge Dictionary: contribute（発音の確認）",
+      "url": "https://dictionary.cambridge.org/pronunciation/english/contribute"
+    },
+    {
+      "title": "Cambridge Dictionary: contribute to（用法の確認）",
+      "url": "https://dictionary.cambridge.org/dictionary/english/contribute-to"
+    },
+    {
+      "title": "Cambridge Dictionary: estimate（動詞の発音・用法）",
+      "url": "https://dictionary.cambridge.org/dictionary/english/estimate?topic=estimating-value"
+    },
+    {
+      "title": "Cambridge Academic English（appreciateの発音・用法）",
+      "url": "https://assets.cambridge.org/97805211/65259/excerpt/9780521165259_excerpt.pdf"
+    },
+    {
+      "title": "Cambridge Dictionary: resource（発音・用法）",
+      "url": "https://dictionary.cambridge.org/us/dictionary/english/resource"
+    },
+    {
+      "title": "Cambridge Dictionary: responsibility（発音）",
+      "url": "https://dictionary.cambridge.org/us/pronunciation/english/responsibility"
+    },
+    {
+      "title": "Cambridge Dictionary: convenient（発音・用法）",
+      "url": "https://dictionary.cambridge.org/us/dictionary/english/convenient"
+    }
+  ],
+  "entries": [
+    {
+      "id": "avoid",
+      "level": "2級",
+      "word": "avoid",
+      "ipa": "/əˈvɔɪd/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "動詞",
+      "definition": "To keep away from something or act so that an unwanted thing does not happen.",
+      "meaning": "避ける・〜しないようにする",
+      "usageTip": "avoid + 名詞 / 動詞の-ing形。avoid to do とはしません。「場所を避ける」「行動を控える」「問題が起こらないようにする」に使えます。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "場所を避ける",
+          "text": "On rainy days, I avoid the path beside the river because it gets slippery.",
+          "translation": "雨の日は滑りやすくなるので、川沿いの道を避けています。"
+        },
+        {
+          "id": "example-2",
+          "context": "行動を控える",
+          "text": "Mina avoids checking messages while she studies, so she can focus on one task.",
+          "translation": "ミナは一つのことに集中できるように、勉強中はメッセージを確認しないようにしています。"
+        },
+        {
+          "id": "example-3",
+          "context": "問題を未然に防ぐ",
+          "text": "Please label each file clearly to avoid confusion when the group combines its work.",
+          "translation": "グループの作業をまとめる際に混乱しないよう、各ファイルに分かりやすい名前を付けてください。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "avoid-usage",
+          "type": "usage",
+          "prompt": "avoid を使った、文法・意味ともに自然な文を1つ選んでください。",
+          "choices": [
+            "I avoid to leave my homework until Sunday night.",
+            "I avoid leaving my homework until Sunday night.",
+            "I avoid my homework from leaving until Sunday night.",
+            "I avoid for leaving my homework until Sunday night."
+          ],
+          "correctIndex": 1,
+          "explanation": "正解は2。avoid leaving で「残しておくことを避ける」。avoid の後に行動を置くときは-ing形です。1の to leave、4の for leaving はこの構文では使いません。3の avoid A from doing は prevent A from doing との混同で、宿題が自分で立ち去るという不自然な形にもなっています。"
+        },
+        {
+          "id": "avoid-context",
+          "type": "context",
+          "prompt": "空欄に最も合う語を選んでください。\nThe school opened a second entrance to _____ long lines at the gate.",
+          "choices": [
+            "avoid",
+            "announce",
+            "accept",
+            "measure"
+          ],
+          "correctIndex": 0,
+          "explanation": "正解は1。入口を増やす目的は「長い列ができるのを避ける」ことなので avoid が合います。announce は発表する、accept は受け入れる、measure は測る。入口を増やすという行動と、その目的のつながりを考えます。"
+        },
+        {
+          "id": "avoid-paraphrase",
+          "type": "paraphrase",
+          "prompt": "次の文に最も近い意味の英文を選んでください。\nRen changed the subject to avoid arguing with his brother.",
+          "choices": [
+            "Ren changed the subject because the argument had already ended.",
+            "Ren changed the subject to make his brother start an argument.",
+            "Ren changed the subject so that they would not have an argument.",
+            "Ren changed the subject because he had forgotten his brother's opinion."
+          ],
+          "correctIndex": 2,
+          "explanation": "正解は3。「言い争いにならないように」話題を変えた、という目的を表します。1の『すでに終わった』、4の『意見を忘れた』は述べられていません。2は口論を始めさせるという逆の目的です。avoid は嫌なことが起こる前の行動にも使えます。"
+        }
+      ],
+      "voice": "female",
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n混雑した時間帯を避けたい場面。\nWe leave early to _____ the morning rush.",
+        "answers": [
+          "avoid"
+        ],
+        "explanation": "avoid the morning rush で朝の混雑を避ける。to の後は原形です。"
+      },
+      "production": {
+        "prompt": "勉強中に控えている行動を、avoid を使って1文で書こう。",
+        "modelAnswer": "I avoid watching videos while I am studying.",
+        "checkpoints": [
+          "avoid の後を-ing形にする",
+          "控えている具体的な行動を書く",
+          "どんな場面かを加える"
+        ]
+      }
+    },
+    {
+      "id": "afford",
+      "level": "2級",
+      "word": "afford",
+      "ipa": "/əˈfɔːd/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "動詞",
+      "definition": "To have the money or time for something, or be able to do it without serious trouble.",
+      "meaning": "〜する余裕がある・〜を買う余裕がある",
+      "usageTip": "can/could afford + 名詞 / to do が基本。お金だけでなく、時間や失敗による損失にも使います。can't afford to fail は「失敗するわけにはいかない」。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "お金の余裕",
+          "text": "By buying a used bicycle, I could afford a helmet and lights as well.",
+          "translation": "中古の自転車を買うことで、ヘルメットとライトも買う余裕ができました。"
+        },
+        {
+          "id": "example-2",
+          "context": "時間の余裕",
+          "text": "We have only twenty minutes, so we can't afford to wait for the next bus.",
+          "translation": "あと20分しかないので、次のバスを待っている余裕はありません。"
+        },
+        {
+          "id": "example-3",
+          "context": "失敗するわけにはいかない",
+          "text": "The lab has only one sample left; we cannot afford to damage it.",
+          "translation": "研究室には試料が一つしか残っていないので、それを傷つけるわけにはいきません。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "afford-usage",
+          "type": "usage",
+          "prompt": "afford を使った、文法・意味ともに自然な文を1つ選んでください。",
+          "choices": [
+            "We can't afford buying another printer this month.",
+            "We can't afford for another printer this month.",
+            "We can't afford to buy another printer this month.",
+            "We can't afford us another printer this month."
+          ],
+          "correctIndex": 2,
+          "explanation": "正解は3。can afford to buy で「買う余裕がある」。この意味では afford の後は to buy または買う物の名詞です。1の buying、2の for another printer、4の us another printer はこの構文に合いません。avoid doing と afford to do の違いにも注目します。"
+        },
+        {
+          "id": "afford-context",
+          "type": "context",
+          "prompt": "空欄に最も合う語を選んでください。\nThe club has forty dollars left, but the room costs seventy dollars. It cannot _____ the rent without extra money.",
+          "choices": [
+            "deserve",
+            "replace",
+            "record",
+            "afford"
+          ],
+          "correctIndex": 3,
+          "explanation": "正解は4。手元のお金が料金に足りないため「賃料を払う余裕がない」となります。deserve は〜に値する、replace は取り替える、record は記録する。cannot afford the rent のように、afford のすぐ後に費用を表す名詞も置けます。"
+        },
+        {
+          "id": "afford-paraphrase",
+          "type": "paraphrase",
+          "prompt": "次の文に最も近い意味の英文を選んでください。\nWith the interview starting in five minutes, I can't afford to lose my notes.",
+          "choices": [
+            "Losing my notes now could cause a serious problem for me.",
+            "My notes cost too much money for me to buy them again.",
+            "I have enough time to rewrite my notes before the interview.",
+            "I am not allowed to take any notes into the interview."
+          ],
+          "correctIndex": 0,
+          "explanation": "正解は1。ここでの can't afford to lose は「なくすと困るので、なくすわけにはいかない」。必ずしも金額の話ではありません。2の購入費、4の持ち込み禁止は書かれていません。3の『書き直す時間が十分ある』は、直前なので失えないという文脈と合いません。"
+        }
+      ],
+      "voice": "male",
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n時間が足りず休めない場面。\nWith the deadline so close, we cannot _____ to take another day off.",
+        "answers": [
+          "afford"
+        ],
+        "explanation": "cannot afford to take ... で〜する余裕がない。金銭だけでなく時間にも使えます。"
+      },
+      "production": {
+        "prompt": "時間に余裕がない場面を、afford を使って1文で書こう。",
+        "modelAnswer": "We can't afford to wait because the last train leaves soon.",
+        "checkpoints": [
+          "can/cannot afford to do を使う",
+          "余裕がない行動を示す",
+          "時間の理由を具体的に加える"
+        ]
+      }
+    },
+    {
+      "id": "contribute",
+      "level": "2級",
+      "word": "contribute",
+      "ipa": "/kənˈtrɪb.juːt/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "動詞",
+      "definition": "To give something as part of a shared effort, or be one factor that brings about a result.",
+      "meaning": "提供する・貢献する・一因となる",
+      "usageTip": "contribute something to ...（〜を提供する）と contribute to ...（〜に貢献する／〜の一因となる）。結果は良いこととは限りません。to は前置詞なので後ろは名詞や-ing形です。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "考えを持ち寄る",
+          "text": "It took weeks to finish the mural, and every student contributed at least one idea.",
+          "translation": "壁画の完成には何週間もかかりましたが、生徒は全員、少なくとも一つのアイデアを出しました。"
+        },
+        {
+          "id": "example-2",
+          "context": "物を提供する",
+          "text": "The bakery contributes bread to a local shelter every Friday.",
+          "translation": "そのパン屋は毎週金曜日に、地域のシェルターへパンを提供しています。"
+        },
+        {
+          "id": "example-3",
+          "context": "悪い結果の一因にもなる",
+          "text": "Poor lighting can contribute to accidents on this road.",
+          "translation": "照明の不十分さが、この道路での事故の一因になることがあります。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "contribute-usage",
+          "type": "usage",
+          "prompt": "contribute を使った、文法・意味ともに自然な文を1つ選んでください。",
+          "choices": [
+            "Our club contributed money for the library to buying new books.",
+            "Our club contributed the library with money for new books.",
+            "Our club contributed money the library for new books.",
+            "Our club contributed money to the library for new books."
+          ],
+          "correctIndex": 3,
+          "explanation": "正解は4。contribute money to the library で「図書館にお金を提供する」。2は provide the library with money との混同、3は提供先の前の to が必要です。1は目的を表す to buying が不適切です。本を買うためなら to buy、貢献の対象を表す contribute to の後なら buying という形になります。"
+        },
+        {
+          "id": "contribute-context",
+          "type": "context",
+          "prompt": "空欄に最も合う語を選んでください。\nTraffic was already heavy. The roadworks _____ to the delays by closing one lane.",
+          "choices": [
+            "objected",
+            "contributed",
+            "referred",
+            "apologized"
+          ],
+          "correctIndex": 1,
+          "explanation": "正解は2。工事で一車線が閉鎖され、遅れを生む要因が加わったので contributed to が合います。objected to は反対した、referred to は言及した、apologized は謝罪した。contribute は、遅れのような望ましくない結果にも使います。"
+        },
+        {
+          "id": "contribute-paraphrase",
+          "type": "paraphrase",
+          "prompt": "次の文に最も近い意味の英文を選んでください。\nRegular feedback contributed to the team's improvement.",
+          "choices": [
+            "The team improved only because it received regular feedback.",
+            "The team's improvement made regular feedback unnecessary.",
+            "Regular feedback was one of the things that helped the team improve.",
+            "Regular feedback prevented the team from making any progress."
+          ],
+          "correctIndex": 2,
+          "explanation": "正解は3。contributed to は「改善を助ける一因になった」で、唯一の原因とは限りません。1の only は言い過ぎです。2の不要になったという関係はなく、4の進歩を妨げたは逆の内容です。"
+        }
+      ],
+      "voice": "female",
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n共同の取り組みに力を貸す場面。\nEveryone can _____ to the project by sharing useful information.",
+        "answers": [
+          "contribute"
+        ],
+        "explanation": "contribute to the project で企画に貢献する。can の後は原形です。"
+      },
+      "production": {
+        "prompt": "グループ活動に自分がどう貢献できるか、contribute を使って1文で書こう。",
+        "modelAnswer": "I can contribute to our project by checking the facts in our report.",
+        "checkpoints": [
+          "contribute to + 活動を使う",
+          "貢献の方法を具体的にする",
+          "to の後を原形動詞にしない"
+        ]
+      }
+    },
+    {
+      "id": "achieve",
+      "word": "achieve",
+      "level": "2級",
+      "ipa": "/əˈtʃiːv/",
+      "ipaLabel": "米音",
+      "voice": "female",
+      "partOfSpeech": "動詞",
+      "definition": "To reach a goal through effort.",
+      "meaning": "達成する",
+      "usageTip": "achieve a goal / success。結果として到達すること。try は努力する段階です。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "個人の目標",
+          "text": "Aya achieved her reading goal by finishing one short article after breakfast each day.",
+          "translation": "アヤは毎朝食後に短い記事を一つ読み、読書の目標を達成しました。"
+        },
+        {
+          "id": "example-2",
+          "context": "共同作業",
+          "text": "The class achieved a better result when everyone checked a different part of the report.",
+          "translation": "全員が報告書の別々の部分を確認すると、クラスはより良い成果を上げました。"
+        },
+        {
+          "id": "example-3",
+          "context": "長期的な変化",
+          "text": "Small changes can achieve lasting improvements if people continue them beyond the first week.",
+          "translation": "小さな変更でも、最初の一週間以降も続ければ、長続きする改善を実現できます。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "achieve-context",
+          "type": "context",
+          "prompt": "空欄に最も合う語を選んでください。\nThe runners trained all winter to _____ their goal of finishing the race.",
+          "choices": [
+            "achieve",
+            "postpone",
+            "abandon",
+            "describe"
+          ],
+          "correctIndex": 0,
+          "explanation": "正解は1。練習を続けた目的は目標を達成すること。postpone は延期、abandon は放棄、describe は説明です。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n節水目標を達成したい場面。\nWe hope to _____ our water-saving goal before summer.",
+        "answers": [
+          "achieve"
+        ],
+        "explanation": "hope to の後は動詞の原形。achieve a goal で目標を達成する。"
+      },
+      "production": {
+        "prompt": "achieve を使って、部活動で今年達成したい目標を1文で書こう。",
+        "modelAnswer": "Our club hopes to achieve its fundraising goal this year.",
+        "checkpoints": [
+          "achieve の目的語に目標や成果を置く",
+          "誰の目標かを示す",
+          "達成したい時期か方法を加える"
+        ]
+      }
+    },
+    {
+      "id": "admit",
+      "word": "admit",
+      "level": "2級",
+      "ipa": "/ədˈmɪt/",
+      "ipaLabel": "英音",
+      "voice": "male",
+      "partOfSpeech": "動詞",
+      "definition": "To accept that something is true, or allow someone to enter.",
+      "meaning": "認める・入場を許可する",
+      "usageTip": "admit doing / admit that ...。入場では admit 人。admit to doing も使えます。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "自分の誤り",
+          "text": "Ken admitted that he had copied the wrong date into the group calendar.",
+          "translation": "ケンはグループの予定表に間違った日付を写したと認めました。"
+        },
+        {
+          "id": "example-2",
+          "context": "事実を認める",
+          "text": "Even the coach admitted that the other team had played better that afternoon.",
+          "translation": "監督でさえ、その日の午後は相手チームの方が良いプレーをしたと認めました。"
+        },
+        {
+          "id": "example-3",
+          "context": "入場を認める",
+          "text": "The museum admits visitors without reservations on quiet weekday mornings during the winter.",
+          "translation": "その博物館は冬の静かな平日の午前中、予約なしの来館者を入れています。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "admit-usage",
+          "type": "usage",
+          "prompt": "自分の誤りを認める、自然な英文を選んでください。",
+          "choices": [
+            "He admitted to send the file to the wrong address.",
+            "He admitted sending the file to the wrong address.",
+            "He admitted for sending the file to the wrong address.",
+            "He admitted that send the file to the wrong address."
+          ],
+          "correctIndex": 1,
+          "explanation": "正解は2。admit sending または admit that he sent ...。admit to sending も可能ですが、to send ではありません。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n自分の間違いを認める場面。\nIt can be difficult to _____ a mistake in front of others.",
+        "answers": [
+          "admit"
+        ],
+        "explanation": "admit a mistake は誤りを認める。to の後は原形です。"
+      },
+      "production": {
+        "prompt": "admit を使って、友達の本をなくしたことを正直に認める1文を書こう。",
+        "modelAnswer": "I admit that I lost your book on the train.",
+        "checkpoints": [
+          "admit that + 主語・動詞を使う",
+          "認める事実を具体的に書く",
+          "過去の出来事なら時制を合わせる"
+        ]
+      }
+    },
+    {
+      "id": "affect",
+      "word": "affect",
+      "level": "2級",
+      "ipa": "/əˈfekt/",
+      "ipaLabel": "米音",
+      "voice": "female",
+      "partOfSpeech": "動詞",
+      "definition": "To cause a change in someone or something.",
+      "meaning": "影響を与える",
+      "usageTip": "動詞 affect + 影響を受けるもの。名詞 effect（影響・結果）と区別。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "生活",
+          "text": "Noise from the road affects my sleep, so I close the bedroom window.",
+          "translation": "道路の騒音が睡眠に影響するので、寝室の窓を閉めます。"
+        },
+        {
+          "id": "example-2",
+          "context": "学校",
+          "text": "The new bus timetable will affect students who stay late for club activities.",
+          "translation": "新しいバスの時刻表は、部活動で遅くまで残る生徒に影響します。"
+        },
+        {
+          "id": "example-3",
+          "context": "社会",
+          "text": "A rise in food prices can affect families differently depending on their income.",
+          "translation": "食料価格の上昇は、収入によって家庭に異なる影響を与えることがあります。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "affect-context",
+          "type": "context",
+          "prompt": "空欄に最も合う語を選んでください。\nThe bridge will close tomorrow, but the closure will not _____ train services.",
+          "choices": [
+            "contain",
+            "admire",
+            "affect",
+            "borrow"
+          ],
+          "correctIndex": 2,
+          "explanation": "正解は3。閉鎖が鉄道の運行に影響しない、という内容。affect は目的語を直接取り、affect on とはしません。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n天候が計画に影響する場面。\nBad weather may _____ our plans for the school festival.",
+        "answers": [
+          "affect"
+        ],
+        "explanation": "may の後は原形。affect our plans で計画に影響する。"
+      },
+      "production": {
+        "prompt": "affect を使って、睡眠不足が集中力に与える影響を1文で書こう。",
+        "modelAnswer": "A lack of sleep can affect my concentration in class.",
+        "checkpoints": [
+          "affect + 影響を受けるもの",
+          "影響の原因を主語にする",
+          "on を affect の直後に入れない"
+        ]
+      }
+    },
+    {
+      "id": "appreciate",
+      "word": "appreciate",
+      "level": "2級",
+      "ipa": "/əˈpriː.ʃi.eɪt/",
+      "ipaLabel": "英音",
+      "voice": "male",
+      "partOfSpeech": "動詞",
+      "definition": "To be grateful for something or understand its value.",
+      "meaning": "感謝する・価値を理解する",
+      "usageTip": "appreciate your help / appreciate doing。thank 人と異なり、感謝する内容を目的語に。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "感謝",
+          "text": "I appreciate your advice because it helped me prepare for my first interview.",
+          "translation": "初めての面接の準備に役立ったので、助言に感謝しています。"
+        },
+        {
+          "id": "example-2",
+          "context": "価値を理解する",
+          "text": "After trying to grow vegetables, we began to appreciate the work farmers do.",
+          "translation": "野菜作りを試してから、私たちは農家の仕事の価値を理解し始めました。"
+        },
+        {
+          "id": "example-3",
+          "context": "状況を理解する",
+          "text": "The manager appreciates how difficult it is to work while caring for a child.",
+          "translation": "部長は、子育てをしながら働くことの難しさを理解しています。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "appreciate-usage",
+          "type": "usage",
+          "prompt": "手伝ってくれたことへの感謝を自然に伝える文を選んでください。",
+          "choices": [
+            "I appreciate for your help with the presentation.",
+            "I appreciate you to help with the presentation.",
+            "I appreciate to help with the presentation.",
+            "I appreciate your help with the presentation."
+          ],
+          "correctIndex": 3,
+          "explanation": "正解は4。appreciate は感謝する内容を直接目的語にします。your help が自然。for や to help をこの形で続けません。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n相談に乗ってもらったことへの感謝。\nI really _____ the time you spent listening to my concerns.",
+        "answers": [
+          "appreciate"
+        ],
+        "explanation": "appreciate the time ... で、時間を割いてくれたことに感謝する。"
+      },
+      "production": {
+        "prompt": "appreciate を使って、先生が丁寧に説明してくれたことへ感謝する1文を書こう。",
+        "modelAnswer": "I appreciate your clear explanation of this difficult topic.",
+        "checkpoints": [
+          "appreciate の目的語を示す",
+          "何に感謝するか具体的にする",
+          "不要な for を挟まない"
+        ]
+      }
+    },
+    {
+      "id": "arrange",
+      "word": "arrange",
+      "level": "2級",
+      "ipa": "/əˈreɪndʒ/",
+      "ipaLabel": "米音",
+      "voice": "female",
+      "partOfSpeech": "動詞",
+      "definition": "To organize a plan or put things in a particular order.",
+      "meaning": "手配する・並べる",
+      "usageTip": "arrange to do / arrange for 人 to do。物を並べる意味もあります。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "予定",
+          "text": "We arranged to meet outside the station before visiting the university together.",
+          "translation": "一緒に大学を訪問する前に、駅の外で会うことにしました。"
+        },
+        {
+          "id": "example-2",
+          "context": "物の配置",
+          "text": "Please arrange the chairs in a circle so everyone can see each other.",
+          "translation": "全員がお互いを見られるように、椅子を円形に並べてください。"
+        },
+        {
+          "id": "example-3",
+          "context": "手配",
+          "text": "The school arranged for a local scientist to speak at the careers event.",
+          "translation": "学校は進路イベントで地元の科学者に話してもらうよう手配しました。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "arrange-usage",
+          "type": "usage",
+          "prompt": "人に送迎を頼む手配として自然な文を選んでください。",
+          "choices": [
+            "We arranged for a driver to collect the guests.",
+            "We arranged a driver collect the guests.",
+            "We arranged for a driver collecting the guests.",
+            "We arranged to a driver collect the guests."
+          ],
+          "correctIndex": 0,
+          "explanation": "正解は1。arrange for 人 to do で、人が何かをするよう手配する。for a driver to collect が一組です。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n勉強会の予定を組む場面。\nLet's _____ a study session before the history test.",
+        "answers": [
+          "arrange"
+        ],
+        "explanation": "arrange a session で集まりを計画する。Let's の後は原形です。"
+      },
+      "production": {
+        "prompt": "arrange を使って、友達と図書館で会う約束を1文で書こう。",
+        "modelAnswer": "We arranged to meet at the library on Saturday.",
+        "checkpoints": [
+          "arrange to meet を使う",
+          "会う場所か時間を示す",
+          "過去の約束なら arranged にする"
+        ]
+      }
+    },
+    {
+      "id": "assume",
+      "word": "assume",
+      "level": "2級",
+      "ipa": "/əˈsjuːm/",
+      "ipaLabel": "英音",
+      "voice": "male",
+      "partOfSpeech": "動詞",
+      "definition": "To accept something as true without being certain.",
+      "meaning": "確かめずにそうだと思う・仮定する",
+      "usageTip": "assume that ... は未確認の推測。know（知っている）とは違います。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "思い込み",
+          "text": "I assumed the shop was open, but its door was locked when I arrived.",
+          "translation": "店は開いていると思い込みましたが、着くとドアは施錠されていました。"
+        },
+        {
+          "id": "example-2",
+          "context": "仮定",
+          "text": "For this calculation, assume that every household uses the same amount of water.",
+          "translation": "この計算では、全家庭が同じ量の水を使うと仮定してください。"
+        },
+        {
+          "id": "example-3",
+          "context": "確認の必要",
+          "text": "Don't assume that a popular video gives accurate advice without checking its sources.",
+          "translation": "情報源を確認せず、人気の動画だから助言も正確だと思い込まないでください。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "assume-paraphrase",
+          "type": "paraphrase",
+          "prompt": "Mika assumed that the meeting was online. に最も近い意味を選んでください。",
+          "choices": [
+            "Mika proved that the meeting was online.",
+            "Mika believed the meeting was online without being certain.",
+            "Mika asked everyone to move the meeting online.",
+            "Mika knew the meeting was online because she had checked."
+          ],
+          "correctIndex": 1,
+          "explanation": "正解は2。assumed は確実な確認なしにそう考えたこと。証明、依頼、確認済みの知識ではありません。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n未確認の営業時間について。\nWe should not _____ that the library is open on holidays.",
+        "answers": [
+          "assume"
+        ],
+        "explanation": "should not assume that ... で、確認せずそうだと思うべきでない。"
+      },
+      "production": {
+        "prompt": "assume を使って、返信がないだけで友達が怒っていると思い込まないよう助言しよう。",
+        "modelAnswer": "Don't assume that your friend is angry just because they haven't replied.",
+        "checkpoints": [
+          "assume that + 文",
+          "思い込みの内容を示す",
+          "根拠が不十分なことを表す"
+        ]
+      }
+    },
+    {
+      "id": "attract",
+      "word": "attract",
+      "level": "2級",
+      "ipa": "/əˈtrækt/",
+      "ipaLabel": "米音",
+      "voice": "female",
+      "partOfSpeech": "動詞",
+      "definition": "To make someone interested or draw something towards a place.",
+      "meaning": "引きつける",
+      "usageTip": "attract attention / visitors。魅力・関心を引きつける動詞。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "人を呼ぶ",
+          "text": "The free concert attracted families who had never visited the park before.",
+          "translation": "無料コンサートは、それまで公園を訪れたことのない家族を引きつけました。"
+        },
+        {
+          "id": "example-2",
+          "context": "注目",
+          "text": "Our unusual poster attracted attention because its message was easy to understand.",
+          "translation": "私たちの独特なポスターは、メッセージが分かりやすかったので注目を集めました。"
+        },
+        {
+          "id": "example-3",
+          "context": "自然",
+          "text": "These flowers attract bees, which help other plants in the garden produce seeds.",
+          "translation": "この花はハチを引き寄せ、ハチは庭の他の植物の種作りを助けます。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "attract-context",
+          "type": "context",
+          "prompt": "空欄に最も合う語を選んでください。\nThe town hopes its new art festival will _____ visitors from nearby cities.",
+          "choices": [
+            "remove",
+            "interrupt",
+            "attract",
+            "confuse"
+          ],
+          "correctIndex": 2,
+          "explanation": "正解は3。祭りで町へ来てもらいたいので attract visitors。remove は取り除く、interrupt は中断する、confuse は混乱させる。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n展示への関心を集めたい場面。\nBright photographs may _____ attention to our science display.",
+        "answers": [
+          "attract"
+        ],
+        "explanation": "attract attention to ... で〜へ注目を集める。"
+      },
+      "production": {
+        "prompt": "attract を使って、学校のイベントがどんな人を引きつけるか1文で書こう。",
+        "modelAnswer": "Our cooking event may attract students who enjoy trying new food.",
+        "checkpoints": [
+          "attract の目的語に人を置く",
+          "イベントの魅力を具体的にする",
+          "誰が引きつけられるか示す"
+        ]
+      }
+    },
+    {
+      "id": "compare",
+      "word": "compare",
+      "level": "2級",
+      "ipa": "/kəmˈpeə(r)/",
+      "ipaLabel": "英音",
+      "voice": "male",
+      "partOfSpeech": "動詞",
+      "definition": "To examine things together to notice similarities or differences.",
+      "meaning": "比較する",
+      "usageTip": "compare A with/to B。比較の対象や基準を具体的に。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "買い物",
+          "text": "Before buying headphones, I compared their battery life rather than just their prices.",
+          "translation": "ヘッドホンを買う前に、値段だけでなくバッテリーの持ちを比較しました。"
+        },
+        {
+          "id": "example-2",
+          "context": "学習",
+          "text": "Compare your first essay with this one to see how your explanations have improved.",
+          "translation": "説明がどう上達したかを見るため、最初の作文と今回の作文を比べてください。"
+        },
+        {
+          "id": "example-3",
+          "context": "調査",
+          "text": "The researchers compared results from coastal towns with those from cities further inland.",
+          "translation": "研究者たちは海沿いの町の結果と、もっと内陸にある都市の結果を比較しました。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "compare-context",
+          "type": "context",
+          "prompt": "空欄に最も合う語を選んでください。\nTo find which bottle keeps water cold longer, _____ their temperatures after an hour.",
+          "choices": [
+            "cancel",
+            "borrow",
+            "hide",
+            "compare"
+          ],
+          "correctIndex": 3,
+          "explanation": "正解は4。どちらが長く冷たさを保つかは温度を比較して判断します。compare は複数の対象を基準に沿って調べること。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n二つの案の費用を比べる場面。\nWe need to _____ the costs of both plans before deciding.",
+        "answers": [
+          "compare"
+        ],
+        "explanation": "compare the costs で費用を比較する。"
+      },
+      "production": {
+        "prompt": "compare を使って、通学方法を時間の面で比べる1文を書こう。",
+        "modelAnswer": "I compared the bus journey with the train journey to find the faster route.",
+        "checkpoints": [
+          "compare の比較対象を二つ示す",
+          "with または to を適切に使う",
+          "比較する基準を加える"
+        ]
+      }
+    },
+    {
+      "id": "confirm",
+      "word": "confirm",
+      "level": "2級",
+      "ipa": "/kənˈfɝːm/",
+      "ipaLabel": "米音",
+      "voice": "female",
+      "partOfSpeech": "動詞",
+      "definition": "To check or show that something is correct or definitely arranged.",
+      "meaning": "確認する・確かなものにする",
+      "usageTip": "confirm a booking / confirm that ...。曖昧だったことを確かにします。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "予約",
+          "text": "Please confirm your reservation by replying to this message before tomorrow evening.",
+          "translation": "明日の夕方までにこのメッセージに返信し、予約を確定してください。"
+        },
+        {
+          "id": "example-2",
+          "context": "予定の確認",
+          "text": "I called the office to confirm that the interview would start after lunch.",
+          "translation": "面接が昼食後に始まることを確認するため、事務所に電話しました。"
+        },
+        {
+          "id": "example-3",
+          "context": "証拠",
+          "text": "A second test confirmed the result, making the team more confident about its findings.",
+          "translation": "二回目の試験で結果が確かめられ、チームは発見により自信を持ちました。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "confirm-context",
+          "type": "context",
+          "prompt": "空欄に最も合う語を選んでください。\nBefore printing the invitations, please _____ the date with the hall manager.",
+          "choices": [
+            "confirm",
+            "invent",
+            "erase",
+            "postpone"
+          ],
+          "correctIndex": 0,
+          "explanation": "正解は1。招待状を印刷する前に日付を確かめるので confirm。invent は作り出す、erase は消す、postpone は延期する。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n予約が確定しているか確かめる場面。\nCould you _____ that our rooms are booked for Friday?",
+        "answers": [
+          "confirm"
+        ],
+        "explanation": "confirm that + 文で、その内容が正しいと確認する。"
+      },
+      "production": {
+        "prompt": "confirm を使って、先生にテストの日程の確認をお願いする1文を書こう。",
+        "modelAnswer": "Could you confirm the date of our next test?",
+        "checkpoints": [
+          "confirm の目的語を示す",
+          "確認したい内容を具体的にする",
+          "依頼として自然な形にする"
+        ]
+      }
+    },
+    {
+      "id": "consider",
+      "word": "consider",
+      "level": "2級",
+      "ipa": "/kənˈsɪd.ə(r)/",
+      "ipaLabel": "英音",
+      "voice": "male",
+      "partOfSpeech": "動詞",
+      "definition": "To think carefully about a choice, fact, or possibility.",
+      "meaning": "よく考える・検討する",
+      "usageTip": "consider doing / consider 名詞。consider to do は使いません。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "選択肢",
+          "text": "We are considering taking an earlier train because the museum closes before sunset.",
+          "translation": "博物館が日没前に閉まるので、もっと早い電車に乗ることを検討しています。"
+        },
+        {
+          "id": "example-2",
+          "context": "相手への配慮",
+          "text": "Please consider other passengers before playing music aloud during the bus journey.",
+          "translation": "バスの移動中に音楽を大きく流す前に、他の乗客のことを考えてください。"
+        },
+        {
+          "id": "example-3",
+          "context": "判断材料",
+          "text": "The committee considered both the cost and the environmental effects of the proposal.",
+          "translation": "委員会は提案の費用と環境への影響の両方を検討しました。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "consider-usage",
+          "type": "usage",
+          "prompt": "新しいクラブへの参加を検討する、自然な文を選んでください。",
+          "choices": [
+            "I'm considering to join the photography club.",
+            "I'm considering joining the photography club.",
+            "I'm considering for join the photography club.",
+            "I'm considering join to the photography club."
+          ],
+          "correctIndex": 1,
+          "explanation": "正解は2。consider の後で行動を表すときは joining。参加を決めたとは限らず、検討している段階です。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n進路の選択肢を検討する場面。\nI want to _____ several universities before choosing one.",
+        "answers": [
+          "consider"
+        ],
+        "explanation": "consider several universities で複数の大学を検討する。"
+      },
+      "production": {
+        "prompt": "consider を使って、来年やってみたい活動を検討中だと伝えよう。",
+        "modelAnswer": "I'm considering volunteering at the local library next year.",
+        "checkpoints": [
+          "consider + -ing形を使う",
+          "具体的な活動を書く",
+          "検討中と決定済みを混同しない"
+        ]
+      }
+    },
+    {
+      "id": "contain",
+      "word": "contain",
+      "level": "2級",
+      "ipa": "/kənˈteɪn/",
+      "ipaLabel": "米音",
+      "voice": "female",
+      "partOfSpeech": "動詞",
+      "definition": "To have something inside or as part of a whole.",
+      "meaning": "含む・中に入っている",
+      "usageTip": "contain は中身を含む。contain A in B のような不要な重複に注意。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "食品",
+          "text": "This soup contains peanuts, so please tell us if you have an allergy.",
+          "translation": "このスープにはピーナッツが入っているので、アレルギーがあれば教えてください。"
+        },
+        {
+          "id": "example-2",
+          "context": "情報",
+          "text": "The final page contains a useful map showing where all the classrooms are.",
+          "translation": "最後のページには全教室の場所を示す便利な地図があります。"
+        },
+        {
+          "id": "example-3",
+          "context": "容器",
+          "text": "Each small box contains enough parts to build one model of the bridge.",
+          "translation": "小さな箱にはそれぞれ、橋の模型一つを作るのに十分な部品が入っています。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "contain-context",
+          "type": "context",
+          "prompt": "空欄に最も合う語を選んでください。\nRead the label carefully; the drink may _____ more sugar than you expect.",
+          "choices": [
+            "obtain",
+            "solve",
+            "contain",
+            "refuse"
+          ],
+          "correctIndex": 2,
+          "explanation": "正解は3。飲み物の中に砂糖が含まれるので contain。obtain は手に入れるで、中身の説明ではありません。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n箱の中身を説明する場面。\nThese boxes _____ books donated by local families.",
+        "answers": [
+          "contain"
+        ],
+        "explanation": "主語は複数 boxes なので contain。箱が本を含むという関係です。"
+      },
+      "production": {
+        "prompt": "contain を使って、学校の案内冊子に何が載っているか1文で書こう。",
+        "modelAnswer": "The guide contains a map and information about school clubs.",
+        "checkpoints": [
+          "contain の後に中身を書く",
+          "単数主語なら contains",
+          "内容が入っている関係を表す"
+        ]
+      }
+    },
+    {
+      "id": "convince",
+      "word": "convince",
+      "level": "2級",
+      "ipa": "/kənˈvɪns/",
+      "ipaLabel": "英音",
+      "voice": "male",
+      "partOfSpeech": "動詞",
+      "definition": "To make someone believe something or agree to act.",
+      "meaning": "納得させる・説得する",
+      "usageTip": "convince 人 that ... / convince 人 to do / convince 人 of ...。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "行動を促す",
+          "text": "The clear demonstration convinced my father to try repairing the old radio himself.",
+          "translation": "分かりやすい実演で、父は古いラジオを自分で修理してみようと思いました。"
+        },
+        {
+          "id": "example-2",
+          "context": "考えを変える",
+          "text": "The survey convinced us that students needed a quieter place to study after school.",
+          "translation": "調査によって、生徒には放課後にもっと静かな勉強場所が必要だと納得しました。"
+        },
+        {
+          "id": "example-3",
+          "context": "根拠",
+          "text": "Her careful measurements convinced the judges of the reliability of the experiment's results.",
+          "translation": "彼女の慎重な測定は、実験結果の信頼性を審査員に納得させました。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "convince-usage",
+          "type": "usage",
+          "prompt": "友達を参加するよう説得した、自然な文を選んでください。",
+          "choices": [
+            "I convinced to my friend join the cleanup.",
+            "I convinced my friend joining the cleanup.",
+            "I convinced that my friend to join the cleanup.",
+            "I convinced my friend to join the cleanup."
+          ],
+          "correctIndex": 3,
+          "explanation": "正解は4。convince 人 to do で人を説得して行動させる。my friend の後は to join。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n根拠を使って人を納得させる場面。\nWe need stronger evidence to _____ the committee that the plan is safe.",
+        "answers": [
+          "convince"
+        ],
+        "explanation": "convince 人 that + 文で、その内容を相手に納得させる。"
+      },
+      "production": {
+        "prompt": "convince を使って、友達に自転車通学を試すよう説得する1文を書こう。",
+        "modelAnswer": "I hope to convince my friend to try cycling to school.",
+        "checkpoints": [
+          "convince + 人 + to do",
+          "勧める行動を具体的にする",
+          "誰を説得するか示す"
+        ]
+      }
+    },
+    {
+      "id": "develop",
+      "word": "develop",
+      "level": "2級",
+      "ipa": "/dɪˈvel.əp/",
+      "ipaLabel": "米音",
+      "voice": "female",
+      "partOfSpeech": "動詞",
+      "definition": "To grow, improve, or create something over time.",
+      "meaning": "発達する・育てる・開発する",
+      "usageTip": "develop skills / a habit / a product。時間をかけた成長や開発。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "技能",
+          "text": "Working on the newspaper helped me develop skills in interviewing and checking facts.",
+          "translation": "新聞作りの活動で、取材や事実確認の技能を伸ばせました。"
+        },
+        {
+          "id": "example-2",
+          "context": "習慣",
+          "text": "We developed a habit of reviewing new words while walking home from school.",
+          "translation": "学校から歩いて帰る間に新しい単語を復習する習慣が身につきました。"
+        },
+        {
+          "id": "example-3",
+          "context": "製品",
+          "text": "The engineers developed a simple device that warns people when their plants need water.",
+          "translation": "技術者たちは植物に水が必要なとき知らせる簡単な装置を開発しました。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "develop-context",
+          "type": "context",
+          "prompt": "空欄に最も合う語を選んでください。\nRegular practice helps beginners _____ the skills they need to play in a band.",
+          "choices": [
+            "develop",
+            "ignore",
+            "lend",
+            "remove"
+          ],
+          "correctIndex": 0,
+          "explanation": "正解は1。必要な技能を伸ばすので develop skills。技能をすでに持っているという意味ではありません。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n聞く力を伸ばす場面。\nListening to different speakers can help me _____ my listening skills.",
+        "answers": [
+          "develop"
+        ],
+        "explanation": "help 人 develop で人が技能を伸ばすのを助ける。"
+      },
+      "production": {
+        "prompt": "develop を使って、新しい技能を身につける方法を1文で書こう。",
+        "modelAnswer": "I want to develop my writing skills by keeping a short diary.",
+        "checkpoints": [
+          "develop + 技能",
+          "具体的な練習方法を書く",
+          "成長する対象を明確にする"
+        ]
+      }
+    },
+    {
+      "id": "discover",
+      "word": "discover",
+      "level": "2級",
+      "ipa": "/dɪˈskʌv.ə(r)/",
+      "ipaLabel": "英音",
+      "voice": "male",
+      "partOfSpeech": "動詞",
+      "definition": "To find or learn something that was not known before.",
+      "meaning": "発見する・知る",
+      "usageTip": "discover は存在する事実・物を発見する。invent は新しく発明する。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "発見",
+          "text": "During the walk, we discovered a small garden hidden behind the old station.",
+          "translation": "散歩中、古い駅の裏に隠れた小さな庭を発見しました。"
+        },
+        {
+          "id": "example-2",
+          "context": "事実を知る",
+          "text": "I discovered that the library lends musical instruments as well as books and magazines.",
+          "translation": "図書館が本や雑誌だけでなく楽器も貸し出すことを知りました。"
+        },
+        {
+          "id": "example-3",
+          "context": "研究",
+          "text": "The students discovered a link between sunlight and the growth of their bean plants.",
+          "translation": "生徒たちは日光と育てている豆の成長との関係を発見しました。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "discover-context",
+          "type": "context",
+          "prompt": "空欄に最も合う語を選んでください。\nScientists did not create the cave; they _____ it while surveying the mountain.",
+          "choices": [
+            "invented",
+            "discovered",
+            "designed",
+            "manufactured"
+          ],
+          "correctIndex": 1,
+          "explanation": "正解は2。すでにある洞窟を見つけたので discovered。invented、designed、manufactured は作り出す側の語です。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n知らなかった事実を知る場面。\nYou may _____ useful information by reading the original report.",
+        "answers": [
+          "discover"
+        ],
+        "explanation": "may の後は原形。discover information で情報を新たに見いだす。"
+      },
+      "production": {
+        "prompt": "discover を使って、近所で新たに見つけた場所を1文で書こう。",
+        "modelAnswer": "I discovered a quiet walking path near my house.",
+        "checkpoints": [
+          "discover の目的語を示す",
+          "発明ではなく発見を表す",
+          "場所や状況を加える"
+        ]
+      }
+    },
+    {
+      "id": "encourage",
+      "word": "encourage",
+      "level": "2級",
+      "ipa": "/ɪnˈkɝː.ɪdʒ/",
+      "ipaLabel": "米音",
+      "voice": "female",
+      "partOfSpeech": "動詞",
+      "definition": "To give someone confidence or a reason to do something.",
+      "meaning": "励ます・促す",
+      "usageTip": "encourage 人 to do。強制ではなく、行動する気持ちを後押し。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "人を励ます",
+          "text": "My teacher encouraged me to ask questions even when I felt unsure about them.",
+          "translation": "先生は、自信がなくても質問するよう私を励ましてくれました。"
+        },
+        {
+          "id": "example-2",
+          "context": "行動を促す",
+          "text": "The new bike racks encourage students to cycle instead of getting rides to school.",
+          "translation": "新しい駐輪設備は、送ってもらう代わりに自転車で通うことを生徒に促します。"
+        },
+        {
+          "id": "example-3",
+          "context": "活動を支える",
+          "text": "Sharing unfinished ideas can encourage discussion before the group decides on its final plan.",
+          "translation": "未完成の考えを共有すると、最終案を決める前の話し合いを促せます。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "encourage-usage",
+          "type": "usage",
+          "prompt": "人の挑戦を後押しする、自然な文を選んでください。",
+          "choices": [
+            "The coach encouraged to us try a new strategy.",
+            "The coach encouraged us trying a new strategy.",
+            "The coach encouraged us to try a new strategy.",
+            "The coach encouraged that us to try a new strategy."
+          ],
+          "correctIndex": 2,
+          "explanation": "正解は3。encourage 人 to do が基本。us to try の順に置きます。encourage は必ずしも強制することではありません。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n友達が応募できるよう背中を押す場面。\nI want to _____ my friend to enter the writing contest.",
+        "answers": [
+          "encourage"
+        ],
+        "explanation": "encourage my friend to enter で、応募するよう友達を励ます。"
+      },
+      "production": {
+        "prompt": "encourage を使って、緊張している友達を発表に挑戦するよう励ます1文を書こう。",
+        "modelAnswer": "I encouraged my friend to give the presentation despite feeling nervous.",
+        "checkpoints": [
+          "encourage + 人 + to do",
+          "挑戦する行動を示す",
+          "誰を励ますのか分かるようにする"
+        ]
+      }
+    },
+    {
+      "id": "estimate",
+      "word": "estimate",
+      "level": "2級",
+      "ipa": "/ˈes.tɪ.meɪt/",
+      "ipaLabel": "英音",
+      "voice": "male",
+      "partOfSpeech": "動詞",
+      "definition": "To judge an amount or cost approximately.",
+      "meaning": "見積もる・概算する",
+      "usageTip": "動詞は語尾 /meɪt/。estimate the cost / estimate that ...。正確な確定値とは限りません。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "費用",
+          "text": "We estimated the cost of the trip before asking classmates whether they could join.",
+          "translation": "参加できるか同級生に尋ねる前に、旅行の費用を見積もりました。"
+        },
+        {
+          "id": "example-2",
+          "context": "時間",
+          "text": "The builders estimate that repairing the roof will take about three working days.",
+          "translation": "業者は屋根の修理に営業日で約三日かかると見積もっています。"
+        },
+        {
+          "id": "example-3",
+          "context": "数量",
+          "text": "It is difficult to estimate how much food guests will eat at an outdoor event.",
+          "translation": "屋外イベントで来場者がどれだけ食べるかを見積もるのは難しいことです。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "estimate-paraphrase",
+          "type": "paraphrase",
+          "prompt": "We estimated the repair cost at fifty dollars. に最も近い意味を選んでください。",
+          "choices": [
+            "We paid exactly fifty dollars for a completed repair.",
+            "We refused to pay any money for the repair.",
+            "We proved that no repair could cost more than fifty dollars.",
+            "We judged that the repair would probably cost about fifty dollars."
+          ],
+          "correctIndex": 3,
+          "explanation": "正解は4。estimate は概算。支払い済み、厳密な上限の証明ではありません。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n作業に必要な時間を概算する場面。\nCan you _____ how long the painting job will take?",
+        "answers": [
+          "estimate"
+        ],
+        "explanation": "estimate how long ... で所要時間を見積もる。"
+      },
+      "production": {
+        "prompt": "estimate を使って、文化祭の準備に必要な費用を見積もる1文を書こう。",
+        "modelAnswer": "We estimate that the decorations will cost about thirty dollars.",
+        "checkpoints": [
+          "estimate that または estimate the cost",
+          "概算だと分かる表現を使う",
+          "費用の対象を明確にする"
+        ]
+      }
+    },
+    {
+      "id": "expand",
+      "word": "expand",
+      "level": "2級",
+      "ipa": "/ɪkˈspænd/",
+      "ipaLabel": "米音",
+      "voice": "female",
+      "partOfSpeech": "動詞",
+      "definition": "To become larger or make something cover more.",
+      "meaning": "拡大する・広げる",
+      "usageTip": "expand a service / knowledge。規模・範囲を広げます。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "事業",
+          "text": "The bakery plans to expand its delivery service to villages beyond the town.",
+          "translation": "パン屋は配達サービスを町の外の村にも広げる計画です。"
+        },
+        {
+          "id": "example-2",
+          "context": "知識",
+          "text": "Reading stories from other countries can expand our understanding of different ways of life.",
+          "translation": "他国の物語を読むと、異なる暮らし方への理解を広げられます。"
+        },
+        {
+          "id": "example-3",
+          "context": "物理的な変化",
+          "text": "The balloon expands as warm air enters it through the opening at the bottom.",
+          "translation": "下部の開口部から温かい空気が入ると、風船は膨らみます。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "expand-context",
+          "type": "context",
+          "prompt": "空欄に最も合う語を選んでください。\nThe reading club has become popular, so the school will _____ it to include younger students.",
+          "choices": [
+            "expand",
+            "ban",
+            "shrink",
+            "abandon"
+          ],
+          "correctIndex": 0,
+          "explanation": "正解は1。対象を年少の生徒にも広げるので expand。shrink は縮小、ban は禁止、abandon はやめること。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n語彙の幅を広げたい場面。\nReading a little every day can _____ your vocabulary.",
+        "answers": [
+          "expand"
+        ],
+        "explanation": "expand vocabulary は語彙を増やし広げること。"
+      },
+      "production": {
+        "prompt": "expand を使って、学校がサービスを広げる計画を1文で書こう。",
+        "modelAnswer": "The school plans to expand its weekend library service.",
+        "checkpoints": [
+          "expand + 拡大するもの",
+          "広がる規模や時間を示す",
+          "縮小と逆の方向だと分かるようにする"
+        ]
+      }
+    },
+    {
+      "id": "explore",
+      "word": "explore",
+      "level": "2級",
+      "ipa": "/ɪkˈsplɔː(r)/",
+      "ipaLabel": "英音",
+      "voice": "male",
+      "partOfSpeech": "動詞",
+      "definition": "To examine a place, idea, or possibility to learn more.",
+      "meaning": "探検する・詳しく調べる",
+      "usageTip": "explore a place / an idea / options。場所だけでなく可能性の検討にも。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "場所",
+          "text": "We explored the old port on foot and found several small family restaurants.",
+          "translation": "古い港を歩いて探検し、家族経営の小さな店をいくつか見つけました。"
+        },
+        {
+          "id": "example-2",
+          "context": "選択肢",
+          "text": "Before choosing a topic, the group explored several possible explanations for the unusual results.",
+          "translation": "テーマを選ぶ前に、班は珍しい結果の説明となる可能性をいくつか検討しました。"
+        },
+        {
+          "id": "example-3",
+          "context": "自分の関心",
+          "text": "The summer course lets students explore interests that their regular classes rarely cover.",
+          "translation": "夏期講座では、通常の授業があまり扱わない関心事を探究できます。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "explore-context",
+          "type": "context",
+          "prompt": "空欄に最も合う語を選んでください。\nWe have not chosen a solution yet; first, we need to _____ several options.",
+          "choices": [
+            "reject",
+            "explore",
+            "hide",
+            "forget"
+          ],
+          "correctIndex": 1,
+          "explanation": "正解は2。決定前に複数の選択肢を調べるので explore。reject は拒否、hide は隠す、forget は忘れる。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n進路の可能性を調べる場面。\nThe careers fair gives us time to _____ different types of work.",
+        "answers": [
+          "explore"
+        ],
+        "explanation": "explore different types of work でさまざまな仕事を探究する。"
+      },
+      "production": {
+        "prompt": "explore を使って、訪問先で詳しく見て回りたい場所を1文で書こう。",
+        "modelAnswer": "I would like to explore the streets around the old market.",
+        "checkpoints": [
+          "explore の目的語に場所を置く",
+          "具体的な場所を示す",
+          "見て回る意図が伝わるようにする"
+        ]
+      }
+    },
+    {
+      "id": "improve",
+      "word": "improve",
+      "level": "2級",
+      "ipa": "/ɪmˈpruːv/",
+      "ipaLabel": "米音",
+      "voice": "female",
+      "partOfSpeech": "動詞",
+      "definition": "To become better or make something better.",
+      "meaning": "改善する・上達する",
+      "usageTip": "improve skills は技能を伸ばす。Skills improve は技能が伸びる。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "学習",
+          "text": "Listening to my recordings helped me improve the clarity of my English pronunciation.",
+          "translation": "自分の録音を聞くことで、英語の発音をより明瞭にできました。"
+        },
+        {
+          "id": "example-2",
+          "context": "環境",
+          "text": "The school improved its lighting so students could read comfortably on dark winter afternoons.",
+          "translation": "学校は暗い冬の午後にも快適に読めるよう、照明を改善しました。"
+        },
+        {
+          "id": "example-3",
+          "context": "状態",
+          "text": "The weather improved during lunch, allowing us to finish the experiment outside that afternoon.",
+          "translation": "昼食中に天気が良くなり、その午後は外で実験を終えられました。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "improve-context",
+          "type": "context",
+          "prompt": "空欄に最も合う語を選んでください。\nThe instructions were confusing, so we added pictures to _____ them.",
+          "choices": [
+            "damage",
+            "borrow",
+            "improve",
+            "repeat"
+          ],
+          "correctIndex": 2,
+          "explanation": "正解は3。分かりにくい説明に絵を加えて良くするので improve。repeat は繰り返すだけで改善を表しません。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n練習で技能を良くする場面。\nI practice speaking regularly to _____ my fluency.",
+        "answers": [
+          "improve"
+        ],
+        "explanation": "improve my fluency は流暢さを高めること。"
+      },
+      "production": {
+        "prompt": "improve を使って、自分の学習方法をどう改善するか1文で書こう。",
+        "modelAnswer": "I can improve my study routine by taking regular short breaks.",
+        "checkpoints": [
+          "improve の対象を示す",
+          "改善の方法を具体的にする",
+          "良くなる方向が分かるようにする"
+        ]
+      }
+    },
+    {
+      "id": "include",
+      "word": "include",
+      "level": "2級",
+      "ipa": "/ɪnˈkluːd/",
+      "ipaLabel": "英音",
+      "voice": "male",
+      "partOfSpeech": "動詞",
+      "definition": "To have something as part of a group or whole.",
+      "meaning": "含む・参加させる",
+      "usageTip": "include は一部として含める。料金の含有・仲間への参加にも。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "料金",
+          "text": "The ticket price includes lunch, but visitors need to pay separately for drinks.",
+          "translation": "チケット料金には昼食が含まれますが、飲み物は別料金です。"
+        },
+        {
+          "id": "example-2",
+          "context": "仲間",
+          "text": "Our group includes students from several classes, so we have many different ideas.",
+          "translation": "私たちの班には複数のクラスの生徒がいて、さまざまな考えがあります。"
+        },
+        {
+          "id": "example-3",
+          "context": "内容",
+          "text": "Please include a short explanation of your method when you submit the results.",
+          "translation": "結果を提出するときは、方法について短い説明を添えてください。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "include-context",
+          "type": "context",
+          "prompt": "空欄に最も合う語を選んでください。\nThe package costs thirty dollars and _____ both the workbook and the online exercises.",
+          "choices": [
+            "avoids",
+            "replaces",
+            "delays",
+            "includes"
+          ],
+          "correctIndex": 3,
+          "explanation": "正解は4。一式に教材と練習が入っているので includes。単数主語 the package に合わせて-sが付きます。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n報告書に情報を加える場面。\nRemember to _____ the date at the top of your report.",
+        "answers": [
+          "include"
+        ],
+        "explanation": "include the date で日付を含める。to の後は原形。"
+      },
+      "production": {
+        "prompt": "include を使って、旅行代金に何が含まれるか1文で書こう。",
+        "modelAnswer": "The tour price includes transport and a guided museum visit.",
+        "checkpoints": [
+          "include の目的語に含まれる物を置く",
+          "単数主語なら includes",
+          "全体とその一部の関係を示す"
+        ]
+      }
+    },
+    {
+      "id": "involve",
+      "word": "involve",
+      "level": "2級",
+      "ipa": "/ɪnˈvɑːlv/",
+      "ipaLabel": "米音",
+      "voice": "female",
+      "partOfSpeech": "動詞",
+      "definition": "To include an activity as a necessary part or bring someone into it.",
+      "meaning": "伴う・関わらせる",
+      "usageTip": "involve doing / involve 人 in ...。involve to do とはしません。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "必要な作業",
+          "text": "The project involves interviewing local residents and comparing their memories of the shopping street.",
+          "translation": "その企画には地域住民への取材と、商店街の記憶の比較が含まれます。"
+        },
+        {
+          "id": "example-2",
+          "context": "人の参加",
+          "text": "We want to involve younger students in planning the next school sports day.",
+          "translation": "次の運動会の計画に、下級生にも関わってもらいたいと考えています。"
+        },
+        {
+          "id": "example-3",
+          "context": "負担",
+          "text": "Moving the workshop to another building would involve extra costs and several days of preparation.",
+          "translation": "作業室を別の建物へ移すには追加費用と数日の準備が伴います。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "involve-usage",
+          "type": "usage",
+          "prompt": "活動に必要な作業を説明する、自然な文を選んでください。",
+          "choices": [
+            "The job involves checking each order before delivery.",
+            "The job involves to check each order before delivery.",
+            "The job involves check each order before delivery.",
+            "The job involves for check each order before delivery."
+          ],
+          "correctIndex": 0,
+          "explanation": "正解は1。involve の後で作業を表すときは checking。単に関連するだけでなく必要な一部だと述べています。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n活動の一部に調査が含まれる場面。\nSome school projects _____ collecting information from people in the community.",
+        "answers": [
+          "involve"
+        ],
+        "explanation": "複数主語 projects なので involve。後ろは collecting という-ing形。"
+      },
+      "production": {
+        "prompt": "involve を使って、自分の部活動に含まれる作業を1文で書こう。",
+        "modelAnswer": "Running our club involves planning events and keeping track of expenses.",
+        "checkpoints": [
+          "involve + -ing形",
+          "必要な作業を具体的にする",
+          "主語に合わせて involves にする"
+        ]
+      }
+    },
+    {
+      "id": "maintain",
+      "word": "maintain",
+      "level": "2級",
+      "ipa": "/meɪnˈteɪn/",
+      "ipaLabel": "英音",
+      "voice": "male",
+      "partOfSpeech": "動詞",
+      "definition": "To keep something at the same level or in good condition.",
+      "meaning": "維持する・手入れする",
+      "usageTip": "maintain a standard / balance / equipment。良い状態を保ち続ける。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "状態",
+          "text": "Volunteers maintain the walking paths so families can use them safely throughout the year.",
+          "translation": "家族が年間を通じて安全に使えるよう、ボランティアが遊歩道を整備しています。"
+        },
+        {
+          "id": "example-2",
+          "context": "関係",
+          "text": "Regular messages help us maintain friendships with people who have moved to other cities.",
+          "translation": "定期的なメッセージは、他の都市へ移った人との友情を保つ助けになります。"
+        },
+        {
+          "id": "example-3",
+          "context": "水準",
+          "text": "The restaurant tries to maintain quality even when it is busy during the holiday season.",
+          "translation": "その店は休暇シーズンで忙しいときも品質を維持するよう努めています。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "maintain-context",
+          "type": "context",
+          "prompt": "空欄に最も合う語を選んでください。\nThe swimming pool needs regular cleaning to _____ good water quality.",
+          "choices": [
+            "destroy",
+            "maintain",
+            "ignore",
+            "borrow"
+          ],
+          "correctIndex": 1,
+          "explanation": "正解は2。良い水質を保つので maintain。新しく生み出すことより、状態の継続が焦点です。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n生活のバランスを保つ場面。\nIt is important to _____ a balance between study and rest.",
+        "answers": [
+          "maintain"
+        ],
+        "explanation": "maintain a balance はバランスを維持すること。"
+      },
+      "production": {
+        "prompt": "maintain を使って、自転車を良い状態に保つ方法を1文で書こう。",
+        "modelAnswer": "I maintain my bicycle by checking the brakes and cleaning the chain.",
+        "checkpoints": [
+          "maintain の対象を明確にする",
+          "手入れの方法を加える",
+          "継続して状態を保つ意味で使う"
+        ]
+      }
+    },
+    {
+      "id": "obtain",
+      "word": "obtain",
+      "level": "2級",
+      "ipa": "/əbˈteɪn/",
+      "ipaLabel": "米音",
+      "voice": "female",
+      "partOfSpeech": "動詞",
+      "definition": "To get something, especially through a process or effort.",
+      "meaning": "手に入れる・取得する",
+      "usageTip": "obtain permission / information / a result。get より改まった表現。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "許可",
+          "text": "We must obtain permission before filming interviews inside the station for our school project.",
+          "translation": "学校の企画で駅の中を撮影する前に、許可を得る必要があります。"
+        },
+        {
+          "id": "example-2",
+          "context": "情報",
+          "text": "The students obtained useful information by speaking directly with people who manage the park.",
+          "translation": "公園を管理する人に直接話を聞き、生徒たちは有益な情報を得ました。"
+        },
+        {
+          "id": "example-3",
+          "context": "入手",
+          "text": "You can obtain a replacement card by showing identification at the library's front desk.",
+          "translation": "図書館の受付で身分証明書を見せれば、再発行カードを入手できます。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "obtain-context",
+          "type": "context",
+          "prompt": "空欄に最も合う語を選んでください。\nBefore using the photograph in a magazine, you must _____ permission from its owner.",
+          "choices": [
+            "cancel",
+            "lose",
+            "obtain",
+            "refuse"
+          ],
+          "correctIndex": 2,
+          "explanation": "正解は3。所有者から許可を得るので obtain permission。得た後に使うという順序です。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n必要な情報を入手する場面。\nWhere can we _____ reliable information about the scholarship?",
+        "answers": [
+          "obtain"
+        ],
+        "explanation": "obtain information は情報を入手する。can の後は原形。"
+      },
+      "production": {
+        "prompt": "obtain を使って、何かを利用する前に許可を得る必要がある、と1文で書こう。",
+        "modelAnswer": "We need to obtain permission before using the school kitchen.",
+        "checkpoints": [
+          "obtain permission を使う",
+          "何の許可か示す",
+          "before の後の形を整える"
+        ]
+      }
+    },
+    {
+      "id": "participate",
+      "word": "participate",
+      "level": "2級",
+      "ipa": "/pɑːˈtɪs.ɪ.peɪt/",
+      "ipaLabel": "英音",
+      "voice": "male",
+      "partOfSpeech": "動詞",
+      "definition": "To take part in an activity with other people.",
+      "meaning": "参加する",
+      "usageTip": "participate in + 活動。参加者として関わるので、見るだけとは限りません。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "地域活動",
+          "text": "Our classmates participated in a river cleanup organized by residents of the nearby town.",
+          "translation": "同級生たちは近くの町の住民が開いた川の清掃活動に参加しました。"
+        },
+        {
+          "id": "example-2",
+          "context": "議論",
+          "text": "Quiet students can participate in the discussion by sharing ideas through written notes first.",
+          "translation": "静かな生徒も、まずメモで考えを共有すれば議論に参加できます。"
+        },
+        {
+          "id": "example-3",
+          "context": "調査",
+          "text": "Anyone who participates in the survey may skip questions they prefer not to answer.",
+          "translation": "調査の参加者は、答えたくない質問を飛ばすことができます。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "participate-usage",
+          "type": "usage",
+          "prompt": "活動への参加を自然に表す文を選んでください。",
+          "choices": [
+            "Several students participated the science workshop.",
+            "Several students participated to the science workshop.",
+            "Several students participated for the science workshop.",
+            "Several students participated in the science workshop."
+          ],
+          "correctIndex": 3,
+          "explanation": "正解は4。participate in an activity が基本。活動名の前の in が必要です。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n討論への参加を勧める場面。\nEveryone is welcome to _____ in the debate, even without experience.",
+        "answers": [
+          "participate"
+        ],
+        "explanation": "participate in the debate で討論に参加する。to の後は原形。"
+      },
+      "production": {
+        "prompt": "participate を使って、参加してみたい地域活動を1文で書こう。",
+        "modelAnswer": "I would like to participate in the neighborhood gardening project.",
+        "checkpoints": [
+          "participate in を使う",
+          "具体的な活動を書く",
+          "参加したい意思を示す"
+        ]
+      }
+    },
+    {
+      "id": "prevent",
+      "word": "prevent",
+      "level": "2級",
+      "ipa": "/prɪˈvent/",
+      "ipaLabel": "米音",
+      "voice": "female",
+      "partOfSpeech": "動詞",
+      "definition": "To stop something from happening or someone from doing something.",
+      "meaning": "防ぐ・妨げる",
+      "usageTip": "prevent 人/物 from doing。avoid は自分で避ける、prevent は起こるのを止める。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "安全",
+          "text": "The new fence prevents young children from wandering onto the busy road nearby.",
+          "translation": "新しい柵は、幼い子が近くの交通量の多い道路へ出ていくのを防ぎます。"
+        },
+        {
+          "id": "example-2",
+          "context": "問題の予防",
+          "text": "Saving a second copy can prevent the loss of your work if the computer fails.",
+          "translation": "別のコピーを保存すると、パソコンが故障したときの作業消失を防げます。"
+        },
+        {
+          "id": "example-3",
+          "context": "行動の妨げ",
+          "text": "Heavy snow prevented the delivery truck from reaching our village until the next morning.",
+          "translation": "大雪のため、配達トラックは翌朝まで村に到着できませんでした。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "prevent-usage",
+          "type": "usage",
+          "prompt": "事故の発生を防ぐ仕組みとして自然な文を選んでください。",
+          "choices": [
+            "The barrier prevents cars from entering the playground.",
+            "The barrier prevents cars to enter the playground.",
+            "The barrier prevents from cars entering the playground.",
+            "The barrier prevents cars for enter the playground."
+          ],
+          "correctIndex": 0,
+          "explanation": "正解は1。prevent cars from entering で車が入るのを防ぐ。人・物を置いてから from + -ing形です。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n危険な行為を止める場面。\nClear safety rules can _____ accidents during science experiments.",
+        "answers": [
+          "prevent"
+        ],
+        "explanation": "prevent accidents で事故の発生を防ぐ。"
+      },
+      "production": {
+        "prompt": "prevent を使って、何かが行動を妨げた経験を1文で書こう。",
+        "modelAnswer": "The storm prevented us from going camping that weekend.",
+        "checkpoints": [
+          "prevent + 人 + from + -ing形",
+          "妨げた原因を主語にする",
+          "できなかった行動を示す"
+        ]
+      }
+    },
+    {
+      "id": "provide",
+      "word": "provide",
+      "level": "2級",
+      "ipa": "/prəˈvaɪd/",
+      "ipaLabel": "英音",
+      "voice": "male",
+      "partOfSpeech": "動詞",
+      "definition": "To give something that someone needs or can use.",
+      "meaning": "提供する・供給する",
+      "usageTip": "provide 人 with 物 / provide 物 for 人。語順と前置詞を一緒に。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "必要な物",
+          "text": "The camp provides students with warm blankets when the nights become cold in autumn.",
+          "translation": "秋の夜が冷えると、キャンプは生徒に暖かい毛布を提供します。"
+        },
+        {
+          "id": "example-2",
+          "context": "情報",
+          "text": "The website provides clear instructions for families applying for financial help with school meals.",
+          "translation": "そのサイトは、給食費の援助を申請する家庭に分かりやすい手順を提供します。"
+        },
+        {
+          "id": "example-3",
+          "context": "機会",
+          "text": "The project provides an opportunity for teenagers to work alongside experienced local artists.",
+          "translation": "その企画は、十代の若者が経験ある地域の芸術家と働く機会を提供します。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "provide-usage",
+          "type": "usage",
+          "prompt": "必要な物の提供を自然に表す文を選んでください。",
+          "choices": [
+            "The school provides students protective gloves with.",
+            "The school provides students with protective gloves.",
+            "The school provides with students protective gloves.",
+            "The school provides protective gloves to with students."
+          ],
+          "correctIndex": 1,
+          "explanation": "正解は2。provide 人 with 物 が自然。provide protective gloves for students という形も使えます。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n情報を提供する場面。\nCould you _____ more details about the application process?",
+        "answers": [
+          "provide"
+        ],
+        "explanation": "provide details で詳細情報を提供する。"
+      },
+      "production": {
+        "prompt": "provide を使って、学校が生徒に提供している物を1文で書こう。",
+        "modelAnswer": "Our school provides students with computers for their research.",
+        "checkpoints": [
+          "provide 人 with 物の語順",
+          "誰に何を提供するか示す",
+          "用途を具体的に加える"
+        ]
+      }
+    },
+    {
+      "id": "reduce",
+      "word": "reduce",
+      "level": "2級",
+      "ipa": "/rɪˈduːs/",
+      "ipaLabel": "米音",
+      "voice": "female",
+      "partOfSpeech": "動詞",
+      "definition": "To make an amount, size, or degree smaller.",
+      "meaning": "減らす・縮小する",
+      "usageTip": "reduce waste / costs。reduce by は減少幅、reduce to は減少後の値。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "ごみ",
+          "text": "Bringing a reusable bottle can reduce the number of plastic bottles we throw away.",
+          "translation": "再使用できるボトルを持参すると、捨てるペットボトルの数を減らせます。"
+        },
+        {
+          "id": "example-2",
+          "context": "費用",
+          "text": "The club reduced its printing costs by sharing meeting notes online with all members.",
+          "translation": "クラブは全員に議事メモをオンライン共有し、印刷費を減らしました。"
+        },
+        {
+          "id": "example-3",
+          "context": "程度",
+          "text": "Planting trees beside the playground may reduce the heat students feel during summer breaks.",
+          "translation": "校庭の横に植樹すると、夏の休み時間に感じる暑さを軽減できるかもしれません。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "reduce-context",
+          "type": "context",
+          "prompt": "空欄に最も合う語を選んでください。\nThe shop lowered its prices to _____ the amount of food left unsold each evening.",
+          "choices": [
+            "increase",
+            "ignore",
+            "reduce",
+            "create"
+          ],
+          "correctIndex": 2,
+          "explanation": "正解は3。売れ残りの量を少なくするためなので reduce。increase は増加で逆です。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n紙の使用を減らす場面。\nPrinting on both sides can _____ the amount of paper we use.",
+        "answers": [
+          "reduce"
+        ],
+        "explanation": "reduce the amount で量を減らす。"
+      },
+      "production": {
+        "prompt": "reduce を使って、家で減らしたい無駄と方法を1文で書こう。",
+        "modelAnswer": "We can reduce food waste by planning our meals before shopping.",
+        "checkpoints": [
+          "reduce + 減らす物",
+          "方法を by + -ing形などで示す",
+          "増やす意味と混同しない"
+        ]
+      }
+    },
+    {
+      "id": "opportunity",
+      "word": "opportunity",
+      "level": "2級",
+      "ipa": "/ˌɒp.əˈtjuː.nə.ti/",
+      "ipaLabel": "英音",
+      "voice": "male",
+      "partOfSpeech": "名詞",
+      "definition": "A chance to do something useful or desired.",
+      "meaning": "機会・好機",
+      "usageTip": "an opportunity to do / an opportunity for 人。数えられる名詞。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "学習",
+          "text": "The exchange program gave me an opportunity to use English outside the classroom.",
+          "translation": "交換留学プログラムは、教室の外で英語を使う機会をくれました。"
+        },
+        {
+          "id": "example-2",
+          "context": "挑戦",
+          "text": "We missed an opportunity to ask the speaker about her work after the lecture.",
+          "translation": "講演の後、話し手の仕事について質問する機会を逃しました。"
+        },
+        {
+          "id": "example-3",
+          "context": "地域",
+          "text": "The empty shop offers an opportunity for local artists to display their latest work.",
+          "translation": "空き店舗は地元の芸術家に最新作品を展示する機会を与えています。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "opportunity-usage",
+          "type": "usage",
+          "prompt": "新しい技能を学ぶ機会を自然に表す文を選んでください。",
+          "choices": [
+            "The workshop is an opportunity learn basic repairs.",
+            "The workshop is an opportunity to learning basic repairs.",
+            "The workshop is opportunity for learn basic repairs.",
+            "The workshop is an opportunity to learn basic repairs."
+          ],
+          "correctIndex": 3,
+          "explanation": "正解は4。an opportunity to learn で学ぶ機会。単数では冠詞 an が必要です。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n練習できる機会を見つけた場面。\nThis volunteer role is a good _____ to practice speaking English.",
+        "answers": [
+          "opportunity"
+        ],
+        "explanation": "a good opportunity to practice という形です。"
+      },
+      "production": {
+        "prompt": "opportunity を使って、学校行事で得られる機会を1文で書こう。",
+        "modelAnswer": "The festival is an opportunity to work with students from other classes.",
+        "checkpoints": [
+          "an opportunity to do を使う",
+          "できる活動を示す",
+          "冠詞を忘れない"
+        ]
+      }
+    },
+    {
+      "id": "responsibility",
+      "word": "responsibility",
+      "level": "2級",
+      "ipa": "/rɪˌspɑːn.səˈbɪl.ə.t̬i/",
+      "ipaLabel": "米音",
+      "voice": "female",
+      "partOfSpeech": "名詞",
+      "definition": "A duty to take care of something or answer for an action.",
+      "meaning": "責任・担当する役目",
+      "usageTip": "take responsibility for ... / responsibility to do。担当範囲と責任を表す。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "担当",
+          "text": "It is my responsibility to return the sports equipment after our practice ends.",
+          "translation": "練習後に運動用具を返すのは、私の担当です。"
+        },
+        {
+          "id": "example-2",
+          "context": "結果への責任",
+          "text": "The editor took responsibility for the incorrect headline and published a correction online.",
+          "translation": "編集者は誤った見出しの責任を認め、ネットで訂正を公開しました。"
+        },
+        {
+          "id": "example-3",
+          "context": "共有する義務",
+          "text": "Protecting shared spaces is a responsibility that belongs to everyone who uses them.",
+          "translation": "共有の場所を守ることは、利用する全員の責任です。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "responsibility-context",
+          "type": "context",
+          "prompt": "空欄に最も合う語を選んでください。\nAs team leader, Aya took _____ for checking that everyone received the schedule.",
+          "choices": [
+            "responsibility",
+            "advantage",
+            "permission",
+            "evidence"
+          ],
+          "correctIndex": 0,
+          "explanation": "正解は1。確認の役目を引き受けるので take responsibility for。permission は許可、evidence は証拠です。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n自分の担当を述べる場面。\nTaking care of the class plants is my _____.",
+        "answers": [
+          "responsibility"
+        ],
+        "explanation": "my responsibility で自分の担当・責任。"
+      },
+      "production": {
+        "prompt": "responsibility を使って、グループ活動での自分の責任を1文で書こう。",
+        "modelAnswer": "It is my responsibility to check the sources in our report.",
+        "checkpoints": [
+          "responsibility to do または for + -ing形",
+          "担当する具体的な作業を書く",
+          "誰の責任かを示す"
+        ]
+      }
+    },
+    {
+      "id": "advantage",
+      "word": "advantage",
+      "level": "2級",
+      "ipa": "/ədˈvɑːn.tɪdʒ/",
+      "ipaLabel": "英音",
+      "voice": "male",
+      "partOfSpeech": "名詞",
+      "definition": "A feature that makes something useful or puts someone in a better position.",
+      "meaning": "利点・有利な点",
+      "usageTip": "an advantage of ... / have an advantage over ...。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "選択の利点",
+          "text": "One advantage of the early train is that it gives us time to walk.",
+          "translation": "早い電車の利点の一つは、歩く時間が取れることです。"
+        },
+        {
+          "id": "example-2",
+          "context": "比較",
+          "text": "Having local knowledge gave our team an advantage over visitors during the outdoor challenge.",
+          "translation": "屋外の課題では、地元の知識があることで私たちは訪問者より有利でした。"
+        },
+        {
+          "id": "example-3",
+          "context": "機会の活用",
+          "text": "We took advantage of the sunny morning to photograph the flowers before it rained.",
+          "translation": "雨の前に花を撮るため、晴れた朝をうまく利用しました。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "advantage-context",
+          "type": "context",
+          "prompt": "空欄に最も合う語を選んでください。\nA major _____ of studying near home is that you spend less time traveling.",
+          "choices": [
+            "obstacle",
+            "advantage",
+            "accident",
+            "demand"
+          ],
+          "correctIndex": 1,
+          "explanation": "正解は2。移動時間が少ないことは利点なので advantage。obstacle は障害、accident は事故、demand は要求です。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n一つの利点を説明する場面。\nThe main _____ of this bag is its light weight.",
+        "answers": [
+          "advantage"
+        ],
+        "explanation": "the main advantage of ... は〜の主な利点。"
+      },
+      "production": {
+        "prompt": "advantage を使って、オンライン学習の利点を一つ、1文で書こう。",
+        "modelAnswer": "One advantage of online lessons is that I can review recordings later.",
+        "checkpoints": [
+          "an advantage of ... を使う",
+          "具体的な利点を説明する",
+          "全てに優れると決めつけない"
+        ]
+      }
+    },
+    {
+      "id": "evidence",
+      "word": "evidence",
+      "level": "2級",
+      "ipa": "/ˈev.ə.dəns/",
+      "ipaLabel": "米音",
+      "voice": "female",
+      "partOfSpeech": "名詞",
+      "definition": "Information that helps show whether a claim is true.",
+      "meaning": "証拠・根拠",
+      "usageTip": "通常は数えない名詞。some evidence / a piece of evidence。an evidence は避ける。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "根拠",
+          "text": "The photographs provided evidence that the river had flooded before the bridge was built.",
+          "translation": "写真は橋ができる前に川が氾濫していたことの証拠になりました。"
+        },
+        {
+          "id": "example-2",
+          "context": "議論",
+          "text": "A strong opinion is not evidence, so we looked for records supporting the claim.",
+          "translation": "強い意見は証拠ではないので、主張を裏づける記録を探しました。"
+        },
+        {
+          "id": "example-3",
+          "context": "科学",
+          "text": "We need more evidence before concluding that the new method works better for everyone.",
+          "translation": "新しい方法が全員により良く働くと結論づけるには、さらに根拠が必要です。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "evidence-usage",
+          "type": "usage",
+          "prompt": "根拠について自然に表す文を選んでください。",
+          "choices": [
+            "We found an evidence that supports the explanation.",
+            "We found many evidences that supports the explanation.",
+            "We found some evidence that supports the explanation.",
+            "We found evidence a that supports the explanation."
+          ],
+          "correctIndex": 2,
+          "explanation": "正解は3。evidence はこの意味では不可算名詞で、some evidence が自然。数えるなら pieces of evidence を使います。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n主張を裏づけるものが必要な場面。\nThe report makes a strong claim but provides little _____.",
+        "answers": [
+          "evidence"
+        ],
+        "explanation": "little は不可算名詞に使います。根拠が少ないという意味です。"
+      },
+      "production": {
+        "prompt": "evidence を使って、噂を信じる前に根拠が必要だと1文で書こう。",
+        "modelAnswer": "We need reliable evidence before accepting the rumor as true.",
+        "checkpoints": [
+          "evidence を不可算名詞として使う",
+          "どの主張の根拠か示す",
+          "根拠と単なる意見を区別する"
+        ]
+      }
+    },
+    {
+      "id": "effort",
+      "word": "effort",
+      "level": "2級",
+      "ipa": "/ˈef.ət/",
+      "ipaLabel": "英音",
+      "voice": "male",
+      "partOfSpeech": "名詞",
+      "definition": "The physical or mental work used to do something.",
+      "meaning": "努力・労力",
+      "usageTip": "make an effort to do / put effort into ...。結果が出たとは限りません。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "努力",
+          "text": "I made an effort to learn everyone's name during the first week of school.",
+          "translation": "学校の最初の一週間、全員の名前を覚えようと努力しました。"
+        },
+        {
+          "id": "example-2",
+          "context": "労力",
+          "text": "Repairing the old shelves required more effort than simply buying new ones online.",
+          "translation": "古い棚を修理するには、ネットで新品を買うより多くの労力が必要でした。"
+        },
+        {
+          "id": "example-3",
+          "context": "共同作業",
+          "text": "The successful event reflected the effort of many volunteers working together behind the scenes.",
+          "translation": "イベントの成功には、裏で協力した多くのボランティアの努力が表れていました。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "effort-usage",
+          "type": "usage",
+          "prompt": "努力することを自然に表す文を選んでください。",
+          "choices": [
+            "She did an effort to speak more clearly.",
+            "She made an effort speak more clearly.",
+            "She made effort to speaking more clearly.",
+            "She made an effort to speak more clearly."
+          ],
+          "correctIndex": 3,
+          "explanation": "正解は4。make an effort to do が自然な組み合わせ。do an effort や to speaking にはしません。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n分かりやすく説明しようと努力する場面。\nPlease make an _____ to explain the rules simply.",
+        "answers": [
+          "effort"
+        ],
+        "explanation": "make an effort to explain で説明するよう努力する。"
+      },
+      "production": {
+        "prompt": "effort を使って、苦手な科目に取り組む努力を1文で書こう。",
+        "modelAnswer": "I am making an effort to review math mistakes every weekend.",
+        "checkpoints": [
+          "make an effort to do を使う",
+          "具体的な行動を書く",
+          "努力と達成を混同しない"
+        ]
+      }
+    },
+    {
+      "id": "resource",
+      "word": "resource",
+      "level": "2級",
+      "ipa": "/ˈriː.sɔːrs/",
+      "ipaLabel": "米音",
+      "voice": "female",
+      "partOfSpeech": "名詞",
+      "definition": "Something useful that people can draw on to meet a need.",
+      "meaning": "資源・役立つ情報源",
+      "usageTip": "自然資源だけでなく、お金・時間・教材などにも。単数 a resource、複数 resources。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "学習の情報源",
+          "text": "The local history website is a useful resource for students researching their neighborhood.",
+          "translation": "地域史のサイトは、自分の地域を調べる生徒に役立つ情報源です。"
+        },
+        {
+          "id": "example-2",
+          "context": "天然資源",
+          "text": "Clean water is a valuable resource that communities must share and protect carefully.",
+          "translation": "きれいな水は、地域社会が分け合い大切に守るべき資源です。"
+        },
+        {
+          "id": "example-3",
+          "context": "限られた手段",
+          "text": "Small charities often have limited resources, so volunteers help them reach more people.",
+          "translation": "小さな慈善団体は資源が限られるため、ボランティアがより多くの人への支援を助けます。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "resource-context",
+          "type": "context",
+          "prompt": "空欄に最も合う語を選んでください。\nThe free online dictionary is a valuable _____ for students checking word usage.",
+          "choices": [
+            "resource",
+            "barrier",
+            "reward",
+            "complaint"
+          ],
+          "correctIndex": 0,
+          "explanation": "正解は1。学習に役立つ道具・情報源なので resource。barrier は障害、reward は報酬、complaint は苦情です。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n役立つ情報源を紹介する場面。\nThis map is a useful _____ for people planning cycling trips.",
+        "answers": [
+          "resource"
+        ],
+        "explanation": "a useful resource で役に立つ情報源・資料。"
+      },
+      "production": {
+        "prompt": "resource を使って、自分の学習に役立つ情報源を1文で紹介しよう。",
+        "modelAnswer": "The library's website is a useful resource for my history project.",
+        "checkpoints": [
+          "a resource for ... を使う",
+          "具体的な資料か手段を示す",
+          "何に役立つかを加える"
+        ]
+      }
+    },
+    {
+      "id": "consequence",
+      "word": "consequence",
+      "level": "2級",
+      "ipa": "/ˈkɒn.sɪ.kwəns/",
+      "ipaLabel": "英音",
+      "voice": "male",
+      "partOfSpeech": "名詞",
+      "definition": "Something that happens as a result of an action or event.",
+      "meaning": "結果・影響",
+      "usageTip": "a consequence of ...。原因の後に生じる結果で、悪い結果によく使います。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "行動の結果",
+          "text": "One consequence of missing the deadline was that our project appeared in the next exhibition.",
+          "translation": "締切に遅れた結果、私たちの企画は次回の展示に回されました。"
+        },
+        {
+          "id": "example-2",
+          "context": "予想外の影響",
+          "text": "The road closure had an unexpected consequence: more people began visiting shops on foot.",
+          "translation": "道路閉鎖には、徒歩で店を訪れる人が増えるという予想外の結果がありました。"
+        },
+        {
+          "id": "example-3",
+          "context": "判断",
+          "text": "Before sharing private information online, think carefully about the possible consequences for other people.",
+          "translation": "私的な情報をネットで共有する前に、他の人への結果をよく考えてください。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "consequence-paraphrase",
+          "type": "paraphrase",
+          "prompt": "The delay was a consequence of the storm. に最も近い意味を選んでください。",
+          "choices": [
+            "The delay caused the storm.",
+            "The storm caused the delay.",
+            "The storm happened after the delay for an unrelated reason.",
+            "The delay prevented the storm from happening."
+          ],
+          "correctIndex": 1,
+          "explanation": "正解は2。a consequence of は〜の結果。原因が嵐、結果が遅れです。原因と結果の順を逆にしません。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n判断から生まれる結果を考える場面。\nWe should consider every possible _____ of changing the school rules.",
+        "answers": [
+          "consequence"
+        ],
+        "explanation": "every の後なので単数 consequence。変更がもたらす結果です。"
+      },
+      "production": {
+        "prompt": "consequence を使って、睡眠不足から起こりうる結果を1文で書こう。",
+        "modelAnswer": "One consequence of too little sleep is difficulty concentrating in class.",
+        "checkpoints": [
+          "a consequence of + 原因",
+          "結果を具体的に示す",
+          "原因と結果を逆にしない"
+        ]
+      }
+    },
+    {
+      "id": "environment",
+      "word": "environment",
+      "level": "2級",
+      "ipa": "/ɪnˈvaɪ.rən.mənt/",
+      "ipaLabel": "米音",
+      "voice": "female",
+      "partOfSpeech": "名詞",
+      "definition": "The conditions around people or other living things.",
+      "meaning": "環境・周囲の状況",
+      "usageTip": "自然環境だけでなく learning / working environment にも使います。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "学習環境",
+          "text": "A quiet environment helps me concentrate, but my brother prefers some background music.",
+          "translation": "静かな環境は私の集中に役立ちますが、兄弟は少し音楽がある方を好みます。"
+        },
+        {
+          "id": "example-2",
+          "context": "自然環境",
+          "text": "The students studied how litter near the river changes the environment for local wildlife.",
+          "translation": "生徒たちは川の周りのごみが野生動物の環境をどう変えるか調べました。"
+        },
+        {
+          "id": "example-3",
+          "context": "職場",
+          "text": "The company wants to create a working environment where people feel comfortable asking questions.",
+          "translation": "会社は、安心して質問できる職場環境を作りたいと考えています。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "environment-context",
+          "type": "context",
+          "prompt": "空欄に最も合う語を選んでください。\nThe teacher moved the noisy equipment to create a calmer learning _____.",
+          "choices": [
+            "appointment",
+            "distance",
+            "environment",
+            "celebration"
+          ],
+          "correctIndex": 2,
+          "explanation": "正解は3。学習する周囲の条件なので learning environment。場所の物理的な広さだけでなく静かさなども含みます。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n集中しやすい周囲の条件について。\nA comfortable study _____ can make it easier to concentrate.",
+        "answers": [
+          "environment"
+        ],
+        "explanation": "study environment で学習環境。"
+      },
+      "production": {
+        "prompt": "environment を使って、自分が集中しやすい学習環境を1文で書こう。",
+        "modelAnswer": "I study best in an environment with good lighting and little noise.",
+        "checkpoints": [
+          "environment を周囲の条件の意味で使う",
+          "明るさや音などを具体化する",
+          "冠詞を適切に使う"
+        ]
+      }
+    },
+    {
+      "id": "experience",
+      "word": "experience",
+      "level": "2級",
+      "ipa": "/ɪkˈspɪə.ri.əns/",
+      "ipaLabel": "英音",
+      "voice": "male",
+      "partOfSpeech": "名詞",
+      "definition": "Knowledge gained by doing things, or an event someone lives through.",
+      "meaning": "経験・体験",
+      "usageTip": "知識としての経験は不可算。個々の体験は an experience / experiences。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "経験から得る力",
+          "text": "She has experience working with young children, so the camp offered her a job.",
+          "translation": "幼い子と働いた経験があるので、キャンプは彼女に仕事を提供しました。"
+        },
+        {
+          "id": "example-2",
+          "context": "一回の体験",
+          "text": "Cooking a meal outdoors for the first time was an unforgettable experience for me.",
+          "translation": "初めて屋外で食事を作ったことは、忘れられない体験でした。"
+        },
+        {
+          "id": "example-3",
+          "context": "経験の共有",
+          "text": "Our grandparents shared their experiences of traveling before people could book tickets online.",
+          "translation": "祖父母は、オンライン予約ができる以前の旅行体験を話してくれました。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "experience-usage",
+          "type": "usage",
+          "prompt": "仕事で身についた経験を自然に表す文を選んでください。",
+          "choices": [
+            "She has many experience working in restaurants.",
+            "She has an experience to working in restaurants.",
+            "She has much experiences working in restaurants.",
+            "She has a lot of experience working in restaurants."
+          ],
+          "correctIndex": 3,
+          "explanation": "正解は4。技能としての経験は不可算で a lot of experience。個別の出来事なら a memorable experience のように数えます。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n仕事を通じて身についた経験について。\nThis role does not require previous _____ in customer service.",
+        "answers": [
+          "experience"
+        ],
+        "explanation": "previous experience は以前の経験。ここでは不可算です。"
+      },
+      "production": {
+        "prompt": "experience を使って、印象に残った一つの体験を1文で書こう。",
+        "modelAnswer": "Visiting the observatory was an exciting experience for me.",
+        "checkpoints": [
+          "個々の体験には an experience",
+          "具体的な出来事を示す",
+          "形容詞などでどんな体験か説明する"
+        ]
+      }
+    },
+    {
+      "id": "issue",
+      "word": "issue",
+      "level": "2級",
+      "ipa": "/ˈɪʃ.uː/",
+      "ipaLabel": "米音",
+      "voice": "female",
+      "partOfSpeech": "名詞",
+      "definition": "A subject needing attention, or one edition of a publication.",
+      "meaning": "課題・問題・刊行物の号",
+      "usageTip": "an issue to discuss / the latest issue。話題・課題と雑誌の号の両方。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "社会の課題",
+          "text": "Food waste is an issue that our class wants to investigate through local interviews.",
+          "translation": "食品ロスは、地元での取材を通じてクラスが調べたい課題です。"
+        },
+        {
+          "id": "example-2",
+          "context": "話し合う問題",
+          "text": "We should discuss the safety issue before agreeing to use the old building.",
+          "translation": "古い建物の使用に同意する前に、安全面の問題を話し合うべきです。"
+        },
+        {
+          "id": "example-3",
+          "context": "雑誌の号",
+          "text": "The latest issue of the school magazine includes interviews with students studying abroad.",
+          "translation": "学校雑誌の最新号には、海外で学ぶ生徒への取材が載っています。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "issue-context",
+          "type": "context",
+          "prompt": "空欄に最も合う語を選んでください。\nThe latest _____ of the science magazine has an article about ocean temperatures.",
+          "choices": [
+            "issue",
+            "effort",
+            "permission",
+            "arrival"
+          ],
+          "correctIndex": 0,
+          "explanation": "正解は1。雑誌の最新号なので latest issue。issue は課題だけでなく刊行物の一つの号です。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n話し合うべき課題がある場面。\nParking near the school is an _____ we need to discuss.",
+        "answers": [
+          "issue"
+        ],
+        "explanation": "an issue は取り組む必要のある課題。"
+      },
+      "production": {
+        "prompt": "issue を使って、学校で話し合いたい課題を1文で書こう。",
+        "modelAnswer": "Food waste in the cafeteria is an issue worth discussing.",
+        "checkpoints": [
+          "an issue を課題の意味で使う",
+          "何の課題かを示す",
+          "具体的な学校の場面にする"
+        ]
+      }
+    },
+    {
+      "id": "available",
+      "word": "available",
+      "level": "2級",
+      "ipa": "/əˈveɪ.lə.bəl/",
+      "ipaLabel": "英音",
+      "voice": "male",
+      "partOfSpeech": "形容詞",
+      "definition": "Ready to be used, obtained, or reached.",
+      "meaning": "利用できる・都合がつく",
+      "usageTip": "available to 人 / available for 用途。人なら時間が空いている意味にも。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "物の利用",
+          "text": "Extra chairs are available in the storage room if more guests arrive this afternoon.",
+          "translation": "午後に来客が増えたら、物置の予備の椅子を利用できます。"
+        },
+        {
+          "id": "example-2",
+          "context": "人の都合",
+          "text": "Our teacher is available after lunch for students who want help with their applications.",
+          "translation": "出願の相談をしたい生徒のため、先生は昼食後に時間を取れます。"
+        },
+        {
+          "id": "example-3",
+          "context": "情報",
+          "text": "The survey results will be available online once the team finishes checking the data.",
+          "translation": "データの確認が終われば、調査結果はオンラインで見られるようになります。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "available-context",
+          "type": "context",
+          "prompt": "空欄に最も合う語を選んでください。\nThe book is not _____ today because another student has borrowed the only copy.",
+          "choices": [
+            "essential",
+            "available",
+            "accurate",
+            "confident"
+          ],
+          "correctIndex": 1,
+          "explanation": "正解は2。一冊しかなく貸出中なので利用できないという意味の available。重要性や正確さの話ではありません。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n部屋を使えるか確認する場面。\nIs the meeting room _____ tomorrow afternoon?",
+        "answers": [
+          "available"
+        ],
+        "explanation": "available はその時間に利用できる・空いているという意味。"
+      },
+      "production": {
+        "prompt": "available を使って、友達に自分が会える時間を1文で伝えよう。",
+        "modelAnswer": "I am available after school on Wednesday.",
+        "checkpoints": [
+          "be available を使う",
+          "具体的な時間を示す",
+          "人の都合の意味で使う"
+        ]
+      }
+    },
+    {
+      "id": "aware",
+      "word": "aware",
+      "level": "2級",
+      "ipa": "/əˈwer/",
+      "ipaLabel": "米音",
+      "voice": "female",
+      "partOfSpeech": "形容詞",
+      "definition": "Knowing that something exists or that a situation is real.",
+      "meaning": "気づいている・認識している",
+      "usageTip": "be aware of 名詞 / be aware that 文。通常は名詞の前で使いません。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "規則の認識",
+          "text": "Are you aware of the new rule about using phones during club meetings?",
+          "translation": "部活の会議中の電話使用に関する新ルールを知っていますか。"
+        },
+        {
+          "id": "example-2",
+          "context": "状況を知る",
+          "text": "We became aware that the last bus had already left when we checked the timetable.",
+          "translation": "時刻表を確認して、最終バスがすでに出たことに気づきました。"
+        },
+        {
+          "id": "example-3",
+          "context": "リスク",
+          "text": "Sharing your location publicly can create risks that you may not be aware of.",
+          "translation": "位置情報の公開には、自分が気づいていないリスクが生じることがあります。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "aware-usage",
+          "type": "usage",
+          "prompt": "危険を認識していると自然に表す文を選んでください。",
+          "choices": [
+            "We are aware the risks involved.",
+            "We are aware for the risks involved.",
+            "We are aware of the risks involved.",
+            "We aware of the risks involved."
+          ],
+          "correctIndex": 2,
+          "explanation": "正解は3。be aware of + 名詞が基本。aware は形容詞なので be 動詞と、名詞の前の of が必要です。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n締切を知っているか尋ねる場面。\nAre you _____ of the application deadline?",
+        "answers": [
+          "aware"
+        ],
+        "explanation": "be aware of the deadline で締切を知っている。"
+      },
+      "production": {
+        "prompt": "aware を使って、自分が新たに気づいたことを1文で書こう。",
+        "modelAnswer": "I became aware of how much food our class throws away.",
+        "checkpoints": [
+          "become aware of または that",
+          "認識した内容を具体化する",
+          "aware を動詞として使わない"
+        ]
+      }
+    },
+    {
+      "id": "likely",
+      "word": "likely",
+      "level": "2級",
+      "ipa": "/ˈlaɪ.kli/",
+      "ipaLabel": "英音",
+      "voice": "male",
+      "partOfSpeech": "形容詞",
+      "definition": "Expected to happen or be true.",
+      "meaning": "〜しそうな・可能性が高い",
+      "usageTip": "be likely to do / It is likely that ...。確実とまでは言いません。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "天候",
+          "text": "The clouds are getting darker, so it is likely to rain before we finish.",
+          "translation": "雲が暗くなってきたので、終わる前に雨が降りそうです。"
+        },
+        {
+          "id": "example-2",
+          "context": "行動の予測",
+          "text": "People are more likely to recycle when the correct bins are easy to find.",
+          "translation": "正しいごみ箱が見つけやすいと、人はよりリサイクルしやすくなります。"
+        },
+        {
+          "id": "example-3",
+          "context": "結果の見通し",
+          "text": "The new timetable is likely to reduce waiting times for passengers changing buses.",
+          "translation": "新しい時刻表は、バスを乗り換える乗客の待ち時間を減らしそうです。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "likely-paraphrase",
+          "type": "paraphrase",
+          "prompt": "The event is likely to be crowded. に最も近い意味を選んでください。",
+          "choices": [
+            "We know that nobody will attend the event.",
+            "The event has definitely been canceled.",
+            "It is impossible to predict whether anyone will attend.",
+            "We expect many people to attend the event."
+          ],
+          "correctIndex": 3,
+          "explanation": "正解は4。likely は可能性が高いという見通し。確実だという断言でも、予測不能という意味でもありません。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n遅れそうだと予測する場面。\nWith this much traffic, we are _____ to arrive late.",
+        "answers": [
+          "likely"
+        ],
+        "explanation": "be likely to arrive で到着する可能性が高い。"
+      },
+      "production": {
+        "prompt": "likely を使って、明日の予定について、起こりそうなことを1文で書こう。",
+        "modelAnswer": "The park is likely to be busy if the weather stays sunny.",
+        "checkpoints": [
+          "be likely to do を使う",
+          "予測する内容を示す",
+          "必要なら条件や根拠を加える"
+        ]
+      }
+    },
+    {
+      "id": "familiar",
+      "word": "familiar",
+      "level": "2級",
+      "ipa": "/fəˈmɪl.jɚ/",
+      "ipaLabel": "米音",
+      "voice": "female",
+      "partOfSpeech": "形容詞",
+      "definition": "Known through previous contact or experience.",
+      "meaning": "よく知っている・見覚えがある",
+      "usageTip": "be familiar with 〜をよく知る / be familiar to 人には見覚えがある。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "知識",
+          "text": "I'm familiar with the editing software because I use it for our school newspaper.",
+          "translation": "学校新聞に使っているので、その編集ソフトをよく知っています。"
+        },
+        {
+          "id": "example-2",
+          "context": "見覚え",
+          "text": "The melody sounded familiar, although I could not remember where I had heard it.",
+          "translation": "どこで聞いたか思い出せませんでしたが、その旋律には聞き覚えがありました。"
+        },
+        {
+          "id": "example-3",
+          "context": "慣れ",
+          "text": "Cooking a familiar dish can help you feel more comfortable in a new place.",
+          "translation": "慣れた料理を作ると、新しい場所でも少し落ち着くことがあります。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "familiar-usage",
+          "type": "usage",
+          "prompt": "道をよく知っていると自然に表す文を選んでください。",
+          "choices": [
+            "She is familiar with the roads around the station.",
+            "She is familiar of the roads around the station.",
+            "She is familiar to the roads around the station.",
+            "She familiar with the roads around the station."
+          ],
+          "correctIndex": 0,
+          "explanation": "正解は1。人 is familiar with 物で、人が物をよく知っている。物 is familiar to 人という逆向きの形とは区別します。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n使い方をよく知っている場面。\nI am _____ with this camera, so I can show you how it works.",
+        "answers": [
+          "familiar"
+        ],
+        "explanation": "be familiar with はよく知っている・慣れている。"
+      },
+      "production": {
+        "prompt": "familiar を使って、自分がよく知っている場所や道具を1文で紹介しよう。",
+        "modelAnswer": "I am familiar with the library's online search system.",
+        "checkpoints": [
+          "be familiar with を使う",
+          "よく知っている対象を示す",
+          "with と to の向きに注意する"
+        ]
+      }
+    },
+    {
+      "id": "effective",
+      "word": "effective",
+      "level": "2級",
+      "ipa": "/ɪˈfek.tɪv/",
+      "ipaLabel": "英音",
+      "voice": "male",
+      "partOfSpeech": "形容詞",
+      "definition": "Producing the intended result.",
+      "meaning": "効果的な・有効な",
+      "usageTip": "effective at/in doing / an effective method。速さ・安さではなく結果が焦点。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "学習法",
+          "text": "Short quizzes were effective at helping us remember facts several days after the lesson.",
+          "translation": "短い小テストは、授業から数日たっても事実を覚えておくのに効果的でした。"
+        },
+        {
+          "id": "example-2",
+          "context": "伝達",
+          "text": "A simple diagram can be more effective than a long explanation of the same process.",
+          "translation": "同じ手順なら、簡単な図の方が長い説明より効果的な場合があります。"
+        },
+        {
+          "id": "example-3",
+          "context": "対策",
+          "text": "The new signs proved effective in reducing confusion among visitors arriving at the station.",
+          "translation": "新しい案内板は、駅に着く訪問者の混乱を減らすのに効果を発揮しました。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "effective-context",
+          "type": "context",
+          "prompt": "空欄に最も合う語を選んでください。\nThe reminder system was _____: far fewer students forgot to return their library books.",
+          "choices": [
+            "invisible",
+            "effective",
+            "unrelated",
+            "accidental"
+          ],
+          "correctIndex": 1,
+          "explanation": "正解は2。返却忘れが減るという目的を達成したので effective。費用や処理速度を述べているわけではありません。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n方法に効果があるか尋ねる場面。\nIs this method _____ at helping students remember new words?",
+        "answers": [
+          "effective"
+        ],
+        "explanation": "effective at helping で、助けるのに効果がある。"
+      },
+      "production": {
+        "prompt": "effective を使って、自分に効果があった勉強方法を1文で書こう。",
+        "modelAnswer": "Reading aloud is an effective way to practice sentence rhythm.",
+        "checkpoints": [
+          "effective を結果が出る意味で使う",
+          "方法と目的を示す",
+          "単に速いという意味にしない"
+        ]
+      }
+    },
+    {
+      "id": "essential",
+      "word": "essential",
+      "level": "2級",
+      "ipa": "/ɪˈsen.ʃəl/",
+      "ipaLabel": "米音",
+      "voice": "female",
+      "partOfSpeech": "形容詞",
+      "definition": "Necessary for something to work or exist.",
+      "meaning": "不可欠な・必須の",
+      "usageTip": "essential for 名詞 / essential to do。あると便利、よりも強い必要性。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "必要な物",
+          "text": "Clean drinking water is essential for anyone spending several hours walking in hot weather.",
+          "translation": "暑い中を何時間も歩く人には、きれいな飲み水が不可欠です。"
+        },
+        {
+          "id": "example-2",
+          "context": "作業の条件",
+          "text": "It is essential to check the power is off before repairing this equipment.",
+          "translation": "この機器を修理する前に、電源が切れていることを確認するのは必須です。"
+        },
+        {
+          "id": "example-3",
+          "context": "協力",
+          "text": "Clear communication is essential when several teams share responsibility for organizing a large event.",
+          "translation": "複数の班が大きな行事を運営するとき、明確な意思疎通は不可欠です。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "essential-context",
+          "type": "context",
+          "prompt": "空欄に最も合う語を選んでください。\nA valid passport is _____ for this international trip; travelers cannot join without one.",
+          "choices": [
+            "optional",
+            "temporary",
+            "essential",
+            "familiar"
+          ],
+          "correctIndex": 2,
+          "explanation": "正解は3。持たないと参加できない必須条件なので essential。optional は任意で逆です。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n安全に不可欠なものについて。\nFollowing safety instructions is _____ when using power tools.",
+        "answers": [
+          "essential"
+        ],
+        "explanation": "essential は安全のために欠かせないという意味。"
+      },
+      "production": {
+        "prompt": "essential を使って、グループ活動を成功させるため不可欠なことを1文で書こう。",
+        "modelAnswer": "Listening to other members is essential for successful teamwork.",
+        "checkpoints": [
+          "essential for または to を適切に使う",
+          "何に不可欠かを示す",
+          "単に便利な物との違いを意識する"
+        ]
+      }
+    },
+    {
+      "id": "accurate",
+      "word": "accurate",
+      "level": "2級",
+      "ipa": "/ˈæk.jə.rət/",
+      "ipaLabel": "英音",
+      "voice": "male",
+      "partOfSpeech": "形容詞",
+      "definition": "Correct and close to the true facts or measurements.",
+      "meaning": "正確な",
+      "usageTip": "accurate information / measurements。詳しいだけでなく事実に合っている。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "測定",
+          "text": "Accurate measurements are important because even a small error can change the model's shape.",
+          "translation": "小さな誤差でも模型の形が変わるので、正確な測定が重要です。"
+        },
+        {
+          "id": "example-2",
+          "context": "情報",
+          "text": "The website looked professional, but not all of its information was accurate or current.",
+          "translation": "そのサイトは立派に見えましたが、情報が全て正確で最新とは限りませんでした。"
+        },
+        {
+          "id": "example-3",
+          "context": "説明",
+          "text": "Her description of the room was accurate, including the position of the broken window.",
+          "translation": "彼女の部屋の説明は、割れた窓の位置も含めて正確でした。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "accurate-context",
+          "type": "context",
+          "prompt": "空欄に最も合う語を選んでください。\nThe scale matched the laboratory standard, so we believed its readings were _____.",
+          "choices": [
+            "generous",
+            "available",
+            "reluctant",
+            "accurate"
+          ],
+          "correctIndex": 3,
+          "explanation": "正解は4。基準と一致している測定値なので accurate。結果が事実・標準に合っていることです。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n情報が事実と一致するか確認する場面。\nWe must check that the figures in our report are _____.",
+        "answers": [
+          "accurate"
+        ],
+        "explanation": "figures are accurate で数値が正確。"
+      },
+      "production": {
+        "prompt": "accurate を使って、なぜ正確な情報が必要か1文で書こう。",
+        "modelAnswer": "We need accurate information to decide which route is safest.",
+        "checkpoints": [
+          "accurate + 情報や測定値",
+          "正確さが必要な目的を示す",
+          "見た目の良さと正確さを区別する"
+        ]
+      }
+    },
+    {
+      "id": "suitable",
+      "word": "suitable",
+      "level": "2級",
+      "ipa": "/ˈsuː.t̬ə.bəl/",
+      "ipaLabel": "米音",
+      "voice": "female",
+      "partOfSpeech": "形容詞",
+      "definition": "Right for a particular person, purpose, or situation.",
+      "meaning": "適した・ふさわしい",
+      "usageTip": "suitable for 人/目的。物自体の良し悪しではなく、条件への適合。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "人に合う",
+          "text": "This walking route is suitable for beginners because the path is short and flat.",
+          "translation": "道が短く平らなので、この散歩コースは初心者に適しています。"
+        },
+        {
+          "id": "example-2",
+          "context": "目的に合う",
+          "text": "We need a suitable room for interviews where background noise will not disturb the recordings.",
+          "translation": "録音が周囲の騒音に邪魔されない、取材に適した部屋が必要です。"
+        },
+        {
+          "id": "example-3",
+          "context": "条件",
+          "text": "Those thin shoes are not suitable for hiking on wet mountain paths after rain.",
+          "translation": "その薄い靴は、雨上がりの濡れた山道を歩くのには適していません。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "suitable-context",
+          "type": "context",
+          "prompt": "空欄に最も合う語を選んでください。\nThe story uses simple language and large pictures, making it _____ for young readers.",
+          "choices": [
+            "suitable",
+            "responsible",
+            "likely",
+            "aware"
+          ],
+          "correctIndex": 0,
+          "explanation": "正解は1。簡単な言葉と大きな絵が幼い読者に合うので suitable for。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n目的に合う場所を探す場面。\nIs this quiet room _____ for recording our interviews?",
+        "answers": [
+          "suitable"
+        ],
+        "explanation": "suitable for recording は録音する目的に適した。"
+      },
+      "production": {
+        "prompt": "suitable を使って、初心者に適した活動を理由付きで1文紹介しよう。",
+        "modelAnswer": "This short cycling route is suitable for beginners because there are no steep hills.",
+        "checkpoints": [
+          "suitable for + 対象",
+          "何が適しているかを示す",
+          "理由を具体的に加える"
+        ]
+      }
+    },
+    {
+      "id": "confident",
+      "word": "confident",
+      "level": "2級",
+      "ipa": "/ˈkɒn.fɪ.dənt/",
+      "ipaLabel": "英音",
+      "voice": "male",
+      "partOfSpeech": "形容詞",
+      "definition": "Feeling sure about an ability or a likely result.",
+      "meaning": "自信がある・確信している",
+      "usageTip": "confident about 名詞 / confident that 文。自信があっても正しい保証ではありません。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "自分への自信",
+          "text": "After practicing with a friend, I felt more confident about answering questions in English.",
+          "translation": "友達と練習した後、英語で質問に答えることに前より自信が持てました。"
+        },
+        {
+          "id": "example-2",
+          "context": "結果の見通し",
+          "text": "The team was confident that it could finish the design before the competition deadline.",
+          "translation": "チームは大会の締切前に設計を終えられると確信していました。"
+        },
+        {
+          "id": "example-3",
+          "context": "態度",
+          "text": "She sounded confident during the interview, even when she needed time to consider an answer.",
+          "translation": "答えを考える時間が必要なときも、面接中の彼女の声には自信が感じられました。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "confident-paraphrase",
+          "type": "paraphrase",
+          "prompt": "He is confident about his presentation. に最も近い意味を選んでください。",
+          "choices": [
+            "He has proof that every listener will agree with him.",
+            "He feels sure that he can give a good presentation.",
+            "He has decided not to give the presentation.",
+            "He feels unable to prepare for the presentation."
+          ],
+          "correctIndex": 1,
+          "explanation": "正解は2。confident は本人の自信。全員が同意するという客観的な証明ではありません。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n練習して自信がついた場面。\nI feel more _____ about speaking in public after practicing with my classmates.",
+        "answers": [
+          "confident"
+        ],
+        "explanation": "feel confident about ... で〜に自信があると感じる。"
+      },
+      "production": {
+        "prompt": "confident を使って、準備をして自信が持てたことを1文で書こう。",
+        "modelAnswer": "I feel confident about the interview because I have practiced answering questions.",
+        "checkpoints": [
+          "confident about または that",
+          "何に自信があるかを示す",
+          "理由を具体的に加える"
+        ]
+      }
+    },
+    {
+      "id": "convenient",
+      "word": "convenient",
+      "level": "2級",
+      "ipa": "/kənˈviː.ni.ənt/",
+      "ipaLabel": "米音",
+      "voice": "female",
+      "partOfSpeech": "形容詞",
+      "definition": "Easy to use or well suited to someone's plans.",
+      "meaning": "便利な・都合のよい",
+      "usageTip": "a convenient time/place / convenient for 人。人自身を主語に I'm convenient とはしません。",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "場所",
+          "text": "The apartment is convenient for students because both the station and the library are nearby.",
+          "translation": "駅と図書館が近いので、その住居は学生に便利です。"
+        },
+        {
+          "id": "example-2",
+          "context": "時間",
+          "text": "Please suggest a convenient time for us to discuss the report after your classes finish.",
+          "translation": "授業が終わった後、報告書を話し合うのに都合のよい時間を提案してください。"
+        },
+        {
+          "id": "example-3",
+          "context": "方法",
+          "text": "Paying online is convenient, but I still check the total before confirming each order.",
+          "translation": "オンライン決済は便利ですが、注文を確定する前に毎回合計金額を確認します。"
+        }
+      ],
+      "questions": [
+        {
+          "id": "convenient-usage",
+          "type": "usage",
+          "prompt": "会う時間の都合を自然に尋ねる文を選んでください。",
+          "choices": [
+            "Would you be convenient on Friday afternoon?",
+            "Are you convenient to meet on Friday afternoon?",
+            "Would Friday afternoon be convenient for you?",
+            "Would Friday afternoon convenient you?"
+          ],
+          "correctIndex": 2,
+          "explanation": "正解は3。時間を主語に be convenient for 人 とします。人が空いているなら Are you available ...? が自然です。"
+        }
+      ],
+      "recall": {
+        "prompt": "今回学んだ語を1語で入れてください。\n使いやすい方法を説明する場面。\nThe direct bus is a _____ way to reach the museum.",
+        "answers": [
+          "convenient"
+        ],
+        "explanation": "a convenient way は都合がよく便利な方法。"
+      },
+      "production": {
+        "prompt": "convenient を使って、友達に都合のよい時間か確認する1文を書こう。",
+        "modelAnswer": "Would Saturday morning be convenient for our study session?",
+        "checkpoints": [
+          "時間を主語にする",
+          "be convenient for を使う",
+          "相手や目的を明確にする"
+        ]
+      }
+    }
+  ]
+}

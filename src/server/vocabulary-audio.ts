@@ -28,7 +28,7 @@ const unavailable = () => new ApiError(503, '音声を作成できませんで�
 
 /** The browser selects a vocabulary entry; it never supplies provider text or settings. */
 export function vocabularyAudioSpec(entry: VocabularyEntry): VocabularyAudioSpec {
-  const voice = Object.hasOwn(VOICES, entry.word) ? VOICES[entry.word] : undefined;
+  const voice = Object.hasOwn(VOICES, entry.word) ? VOICES[entry.word] : entry.voice === 'female' ? SARAH : entry.voice === 'male' ? GEORGE : undefined;
   if (!voice || entry.examples.length !== 3) throw invalidSpec();
   const parts = [{ id: 'word', text: `${entry.word}.` }, ...entry.examples.map((example, index) => ({ id: PART_IDS[index + 1], text: example.text.trim() }))];
   if (parts.some(part => !part.text)) throw invalidSpec();

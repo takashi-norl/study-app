@@ -1,0 +1,13 @@
+.forms{border:1px solid #dfe7d7;border-radius:10px;background:#f8faf5;margin:0 0 15px;min-width:0;overflow:hidden;color:#3f5c36}
+.mainForms,.extraForms{display:grid;gap:0;min-width:0;padding:0;margin:0}
+.mainForms{grid-template-columns:repeat(3,minmax(0,1fr))}
+.extraForms{grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid #e2e9db}
+.form{min-width:0;padding:10px 9px 9px}
+.form+.form{border-left:1px solid #e2e9db}
+.form dt{font-size:12px;line-height:1.5;color:#617651;font-weight:500;margin:0 0 4px}
+.form dd{font-size:14px;line-height:1.5;color:#3e6034;font-weight:600;padding:0;margin:0;overflow-wrap:anywhere}
+.note{font-size:12px;line-height:1.7;color:#5e724f;margin:0;padding:0 10px 8px}
+.additional{border-top:1px solid #e2e9db}
+.additional summary{padding:11px 10px;min-height:44px;font-size:13px;line-height:1.8;font-weight:500;color:#5b784b;cursor:pointer}
+.additional summary:focus-visible{outline:2px solid #8eb67c;outline-offset:-3px;border-radius:5px}
+@media(max-width:390px){.form{padding-left:7px;padding-right:7px}}

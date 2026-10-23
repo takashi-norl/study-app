@@ -1,6 +1,6 @@
 import 'server-only';
 import { randomUUID } from 'node:crypto';
-import catalog from '../../content/vocabulary-marathon.json';
+import { vocabularyEntries } from './vocabulary-catalog';
 import type { VocabularyAudio, VocabularyEntry } from '@/lib/vocabulary-types';
 import type { Profile } from '@/lib/types';
 import { ApiError, requiredEnv } from './config';
@@ -9,8 +9,10 @@ import { audioRecord, audioSlotId, checkAudioQuota } from './audio';
 import { audioSegmentsSchema } from './audio-segments';
 import { appendEvent, downloadAudioCache, loadEvents, saveAudioCache } from './google-store';
 import { createVocabularyProviderAudio, vocabularyAudioSpec } from './vocabulary-audio';
+import { assertSuperUser } from './env';
+import { checkVocabularyBuildQuota } from './vocabulary-build-budget';
 
-const entries = catalog.entries as VocabularyEntry[];
+const entries = vocabularyEntries;
 export function vocabularyEntry(wordId: string): VocabularyEntry {
   const entry = entries.find(item => item.id === wordId);
   if (!entry) throw new ApiError(404, '単語の見本が見つかりません。', 'SAMPLE_NOT_FOUND');
@@ -32,15 +34,17 @@ export async function vocabularyPreview(profile: Profile) {
 }
 
 /** A fixed catalog and an append-only reservation prevent arbitrary text and repeat paid requests. */
-export async function prepareVocabularyAudio(profile: Profile, wordId: string) {
+export async function prepareVocabularyAudio(profile: Profile, wordId: string, catalogBuild = false) {
   assertSampleAccess(profile);
+  if (catalogBuild) assertSuperUser(profile);
   const spec = vocabularyAudioSpec(vocabularyEntry(wordId));
   const events = await loadEvents();
   const previous = audioRecord(events, spec.cacheKey);
   if (previous?.fileId && previous.segments) return { ready: true };
   if (previous) throw new ApiError(409, previous.failed ? '準備に失敗しています。管理者が状況を確認します。' : '音声を準備中です。「状況を確認」から確認できます。', previous.failed ? 'SAMPLE_AUDIO_FAILED' : 'AUDIO_PENDING');
   requiredEnv('ELEVENLABS_API_KEY');
-  checkAudioQuota(events, spec.characters);
+  if (catalogBuild) checkVocabularyBuildQuota(events, entries.map(vocabularyAudioSpec), spec.cacheKey);
+  else checkAudioQuota(events, spec.characters);
   const slotId = audioSlotId(events); const requestToken = randomUUID();
   await appendEvent({ id: slotId, type: 'audio.requested', actorId: profile.id, createdAt: new Date().toISOString(), payload: {
     cacheKey: spec.cacheKey, requestToken, characters: spec.characters,
