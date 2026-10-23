@@ -1,11 +1,29 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { createDemoData } from '../src/lib/demo-data';
-import { learningProjects, parsePlanTags, planTagsError } from '../src/lib/learning-projects';
+import { learningProjects, parsePlanTags, planGoalSummary, planTagsError } from '../src/lib/learning-projects';
 import type { Attempt, LearningPlan } from '../src/lib/types';
 
 const now = new Date('2026-10-23T12:00:00+09:00');
 const timestamp = '2026-10-01T12:00:00+09:00';
+
+test('project cards summarize the opening goal without displaying the appended source-scope instructions', () => {
+  const opening = '古文単語26〜50を、文脈から意味を選ぶ問題で復習する。';
+  const goal = `${opening}\n参照できる元の問題25問から整理した範囲です。\n学習ポイント（25 / 25項目の抜粋）：\n・古文単語26`;
+  assert.equal(planGoalSummary(goal), opening);
+  assert.ok(goal.includes('学習ポイント'), 'the original goal stays available to the consultation');
+  assert.equal(planGoalSummary(` \r\n ${opening} \r\n次の段落`), opening);
+  assert.equal(planGoalSummary('  \n '), '');
+});
+
+test('long project-card goals stay bounded without splitting visible Unicode characters', () => {
+  const goal = '復習📚'.repeat(80);
+  const summary = planGoalSummary(goal);
+  assert.equal(Array.from(summary).length, 120);
+  assert.equal(summary, `${Array.from(goal).slice(0, 119).join('')}…`);
+  assert.equal(planGoalSummary('文'.repeat(120)), '文'.repeat(120));
+});
+
 function plan(id: string, patch: Partial<LearningPlan> = {}): LearningPlan {
   return { id, ownerId: 'student-demo', title: id, subject: '英語', goal: '復習する', difficulty: '標準', dailyQuestionTarget: 10,
     sourceIds: [], version: 1, createdAt: timestamp, updatedAt: timestamp, ...patch };

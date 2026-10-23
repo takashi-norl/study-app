@@ -17,7 +17,8 @@ export function getAuthOptions(): NextAuthOptions {
   getFamilyMembers();
   return {
     secret: config.secret,
-    session: { strategy: 'jwt', maxAge: 7 * 24 * 60 * 60 },
+    // The client visits /api/auth/session on startup/focus so NextAuth can renew the persistent cookie.
+    session: { strategy: 'jwt', maxAge: 30 * 24 * 60 * 60 },
     providers: [GoogleProvider({
       clientId: config.clientId, clientSecret: config.clientSecret,
       // Student and parent login do not request Drive permissions. Storage has a separate owner grant.

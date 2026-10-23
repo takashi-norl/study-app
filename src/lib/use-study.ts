@@ -8,7 +8,11 @@ import { createDemoData } from './demo-data';
 import { selectQuestions } from './learning';
 import { clearLocalFiles, loadLocalFile, saveLocalFile } from './local-files';
 import { prepareSourceFile } from './source-files';
-import { addDemoLibraryPlan, addDemoPlanningTurn, arrangeDemoTopic, demoPracticeQuestions, demoSessionAllowed, demoSessionQuestions, demoStudyDataForProfile, generateDemoProposal, publishDemoLibrary, requestDemoLibraryPublication, type DemoPracticeSession } from './demo-access';
+import { normalizePlanTags } from './plan-organization';
+import { requestLibraryDelivery, type LibraryDeliveryResult } from './library-delivery';
+import { pauseLoginSessionRefresh, refreshLoginSession, resumeLoginSessionRefresh } from './auth-session';
+import { checkStudyAccess, isStudyStatePayload, sameStudyIdentity, studyAccessFailure, STUDY_CONNECTION_ERROR, type StudyAuthStatus, type StudyStatePayload } from './study-auth';
+import { addDemoLibraryPlan, addDemoPlanningTurn, arrangeDemoTopic, deliverDemoTopic, demoPracticeQuestions, demoSessionAllowed, demoSessionQuestions, demoStudyDataForProfile, generateDemoProposal, publishDemoLibrary, requestDemoLibraryPublication, type DemoPracticeSession } from './demo-access';
 
 const KEY='hibi-study-demo-v1';
 const GUEST:Profile={id:'guest',familyId:'',name:'ゲスト',role:'student'};
@@ -39,12 +43,16 @@ export function useStudy():StudyController {
   const [profile,setProfile]=useState<Profile>(GUEST);
   const [demo,setDemo]=useState(false);
   const [ready,setReady]=useState(false);
+  const [authStatus,setAuthStatus]=useState<StudyAuthStatus>('checking');
+  const [authError,setAuthError]=useState<string|null>(null);
   const [busy,setBusy]=useState(false);
   const [error,setError]=useState<string|null>(null);
   const [notice,setNotice]=useState<string|null>(null);
   const [sync,setSync]=useState<StudyController['sync']>({checking:false,lastSyncedAt:null,error:null});
   const refreshSequence=useRef(0);
-  const statusChecking=useRef(false);
+  const statusChecking=useRef<number|null>(null);
+  const statusCheckSequence=useRef(0);
+  const lastSessionCheck=useRef(0);
   const lastSync=useRef(0);
   const [uploadStatus,setUploadStatus]=useState<UploadStatus|null>(null);
   const [session,setSession]=useState<PracticeSession|null>(null);
@@ -52,49 +60,108 @@ export function useStudy():StudyController {
   const [index,setIndex]=useState(0);
   const [feedback,setFeedback]=useState<Feedback>(null);
   const lock=useRef(false);
+  const signingOut=useRef(false);
   const exposed=useRef(new Set<string>());
   const planningRequests=useRef(new Map<string,string>());
   const state=useRef(data); state.current=data;
+  const identity=useRef(profile); identity.current=profile;
   const currentQuestion=session && !session.completedAt ? sessionQuestions[index] ?? null : null;
 
-  async function refresh(signal?:AbortSignal){
-    const sequence=++refreshSequence.current;
-    setSync(previous=>({...previous,checking:true}));
+  function clearAccess(status: 'checking'|'unauthenticated'){
+    state.current=EMPTY;identity.current=GUEST;setData(EMPTY);setProfile(GUEST);
+    setSession(null);setSessionQuestions([]);setFeedback(null);setUploadStatus(null);
+    planningRequests.current.clear();exposed.current.clear();lastSync.current=0;
+    setAuthStatus(status);setAuthError(null);setError(null);setNotice(null);
+    setSync({checking:status==='checking',lastSyncedAt:null,error:null});
+  }
+  function applyState(result:StudyStatePayload){
+    if(signingOut.current)return;
+    if(!sameStudyIdentity(identity.current,result.profile)){
+      setSession(null);setSessionQuestions([]);setFeedback(null);setUploadStatus(null);
+      planningRequests.current.clear();exposed.current.clear();
+    }
+    state.current=result.data;identity.current=result.profile;setData(result.data);setProfile(result.profile);
+    setAuthStatus('authenticated');setAuthError(null);
+    lastSync.current=Date.now();setSync({checking:false,lastSyncedAt:lastSync.current,error:null});
+  }
+  function applyAccessFailure(result:ReturnType<typeof studyAccessFailure>){
+    if(signingOut.current)return;
+    if(result.status==='unauthenticated'){clearAccess('unauthenticated');return;}
+    if(result.identityChanged)clearAccess('checking');
+    setSync(previous=>({...previous,checking:false,error:result.message}));
+    // Preserve the current screen and unsaved work when already-loaded data is still usable.
+    if(identity.current.id==='guest'){setAuthStatus('unavailable');setAuthError(result.message);}
+  }
+  async function readState(signal?:AbortSignal):Promise<StudyStatePayload>{
     const controller=new AbortController();
     const abort=()=>controller.abort();
     if(signal?.aborted)abort();else signal?.addEventListener('abort',abort,{once:true});
     const timeout=setTimeout(abort,15000);
     try {
-      const result=await api<{data:StudyData;profile:Profile}>('/api/state','GET',undefined,controller.signal);
-      if(sequence===refreshSequence.current){
-        state.current=result.data;setData(result.data);setProfile(result.profile);
-        lastSync.current=Date.now();setSync({checking:false,lastSyncedAt:lastSync.current,error:null});
-      }
+      const result=await api<unknown>('/api/state','GET',undefined,controller.signal);
+      if(!isStudyStatePayload(result))throw new Error(STUDY_CONNECTION_ERROR);
       return result;
     }catch(error){
-      if(sequence===refreshSequence.current)setSync(previous=>({...previous,checking:false,error:'最新の状況を確認できていません。接続を確認して、もう一度お試しください。'}));
       if(controller.signal.aborted&&!signal?.aborted)throw new Error('最新の状況の取得に時間がかかっています。依頼は受け付け済みの場合があります。「最新の状態を確認」から確認してください。');
       throw error;
     }finally{clearTimeout(timeout);signal?.removeEventListener('abort',abort);}
   }
+  async function refresh(signal?:AbortSignal){
+    if(signingOut.current)throw new Error('ログアウトしています。');
+    const sequence=++refreshSequence.current;
+    setSync(previous=>({...previous,checking:true}));
+    try{
+      const result=await readState(signal);
+      if(sequence===refreshSequence.current&&!signal?.aborted)applyState(result);
+      return result;
+    }catch(error){
+      if(sequence===refreshSequence.current&&!signal?.aborted)applyAccessFailure(studyAccessFailure(error));
+      throw error;
+    }
+  }
+  async function checkAuthentication(signal?:AbortSignal){
+    if(signingOut.current)return;
+    const sequence=++refreshSequence.current;
+    setSync(previous=>({...previous,checking:true}));
+    if(identity.current.id==='guest'){setAuthStatus('checking');setAuthError(null);}
+    const result=await checkStudyAccess(refreshLoginSession,async currentProfile=>{
+      if(signal?.aborted||sequence!==refreshSequence.current)throw new Error('確認は中断されました。');
+      if(!sameStudyIdentity(identity.current,currentProfile))clearAccess('checking');
+      return readState(signal);
+    });
+    if(sequence!==refreshSequence.current||signal?.aborted)return;
+    lastSessionCheck.current=Date.now();
+    if(result.status==='authenticated')applyState(result);else applyAccessFailure(result);
+  }
+  async function retryAuth(){
+    if(demo||signingOut.current||lock.current||statusChecking.current!==null)return;
+    const token=++statusCheckSequence.current;statusChecking.current=token;
+    try{await checkAuthentication();}finally{if(statusChecking.current===token)statusChecking.current=null;}
+  }
   async function refreshStatus(){
-    if(demo||lock.current||statusChecking.current)return;
-    statusChecking.current=true;
+    if(demo||signingOut.current||lock.current||statusChecking.current!==null)return;
+    const token=++statusCheckSequence.current;statusChecking.current=token;
     try{await refresh();}catch{/* The connection state remains visible without claiming that the AI job stopped. */}
-    finally{statusChecking.current=false;}
+    finally{if(statusChecking.current===token)statusChecking.current=null;}
   }
   async function run(task:()=>Promise<void>){
-    if(lock.current)return;
+    if(signingOut.current||lock.current)return;
+    if(!demo&&(identity.current.id==='guest'||!sameStudyIdentity(identity.current,profile)))return;
     // A read started before this mutation must never replace its local result.
     refreshSequence.current+=1;
     setSync(previous=>({...previous,checking:false}));
     lock.current=true;setBusy(true);setError(null);setNotice(null);
-    try{await task();}catch(e){setError(e instanceof Error?e.message:'処理を完了できませんでした。');}
+    try{await task();}catch(e){
+      if(signingOut.current)return;
+      if(!demo&&studyAccessFailure(e).status==='unauthenticated')clearAccess('unauthenticated');
+      else setError(e instanceof Error?e.message:'処理を完了できませんでした。');
+    }
     finally{lock.current=false;setBusy(false);}
   }
 
   useEffect(()=>{
     let cancelled=false;
+    const startup=new AbortController();
     async function initialize(){
       const useDemo=new URLSearchParams(location.search).get('demo')==='1';
       setDemo(useDemo);
@@ -110,20 +177,16 @@ export function useStudy():StudyController {
           return {...source,previewUrl:file?URL.createObjectURL(file):source.previewUrl?.startsWith('blob:')?undefined:source.previewUrl};
         }));
         if(cancelled)return;
-        setData(loaded);setProfile(loaded.profiles.find(p=>p.role==='student')||GUEST);
+        state.current=loaded;setData(loaded);const demoProfile=loaded.profiles.find(p=>p.role==='student')||GUEST;
+        identity.current=demoProfile;setProfile(demoProfile);setAuthStatus('authenticated');setAuthError(null);
       }else{
-        try{await refresh();}
-        catch(e){
-          if(cancelled)return;
-          if((e as {status?:number}).status===401)setNotice('ご家族のGoogleアカウントでログインしてください。');
-          else setNotice('本番の接続設定を準備中です。サンプルで画面を確認できます。');
-        }
+        await checkAuthentication(startup.signal);
       }
       if(!cancelled)setReady(true);
     }
     void initialize();
     if('serviceWorker' in navigator)void navigator.serviceWorker.register('/sw.js').catch(()=>{});
-    return()=>{cancelled=true;};
+    return()=>{cancelled=true;startup.abort();refreshSequence.current+=1;statusChecking.current=null;};
   },[]);
   useEffect(()=>{
     if(ready&&demo){
@@ -133,13 +196,17 @@ export function useStudy():StudyController {
   },[data,demo,ready]);
   const activeAiWork=data.planningTurns.some(turn=>turn.status==='queued'||turn.status==='running')||data.jobs.some(job=>job.status==='queued'||job.status==='running');
   useEffect(()=>{
-    if(demo||!ready||profile.id==='guest')return;
+    if(demo||!ready)return;
     const interval=activeAiWork?5000:30000;
-    const check=()=>{if(document.visibilityState==='visible'&&Date.now()-lastSync.current>=2000)void refreshStatus();};
+    const check=()=>{if(document.visibilityState==='visible'&&identity.current.id!=='guest'&&Date.now()-lastSync.current>=2000){
+      if(Date.now()-lastSessionCheck.current>=3600000)void retryAuth();else void refreshStatus();
+    }};
+    const resume=()=>{if(document.visibilityState==='visible'&&Date.now()-lastSessionCheck.current>=2000)void retryAuth();};
     const timer=setInterval(check,interval);
-    window.addEventListener('focus',check);
-    document.addEventListener('visibilitychange',check);
-    return()=>{clearInterval(timer);window.removeEventListener('focus',check);document.removeEventListener('visibilitychange',check);};
+    window.addEventListener('focus',resume);
+    document.addEventListener('visibilitychange',resume);
+    window.addEventListener('online',resume);
+    return()=>{clearInterval(timer);window.removeEventListener('focus',resume);document.removeEventListener('visibilitychange',resume);window.removeEventListener('online',resume);};
   },[demo,ready,profile.id,activeAiWork]);
   useEffect(()=>{
     if(!currentQuestion||!session)return;
@@ -269,13 +336,14 @@ export function useStudy():StudyController {
     let planId:string|undefined;
     await run(async()=>{
       if(!input.goal.trim())throw new Error('目標や取り組みたい内容を入力してください。');
+      const planInput=input.tags===undefined?input:{...input,tags:normalizePlanTags(input.tags)};
       if(demo){
         if(input.testOnly&&profile.role!=='parent')throw new Error('テスト用の作成は管理者だけが利用できます。');
         const now=new Date().toISOString();
-        const plan:LearningPlan={...input,sampleFirst:true,id:uid(),ownerId:profile.id,title:input.title?.trim()||input.goal.trim().slice(0,45),goal:input.goal.trim(),difficulty:input.difficulty||'相談して決めたい',dailyQuestionTarget:input.dailyQuestionTarget||10,version:1,createdAt:now,updatedAt:now};
+        const plan:LearningPlan={...planInput,sampleFirst:true,id:uid(),ownerId:profile.id,title:input.title?.trim()||input.goal.trim().slice(0,45),goal:input.goal.trim(),difficulty:input.difficulty||'相談して決めたい',dailyQuestionTarget:input.dailyQuestionTarget||10,version:1,createdAt:now,updatedAt:now};
         const next={...state.current,plans:[...state.current.plans,plan]};state.current=next;setData(next);planId=plan.id;
       }else{
-        const result=await api<{plan:LearningPlan}>('/api/planning','POST',input);
+        const result=await api<{plan:LearningPlan}>('/api/planning','POST',planInput);
         planId=result.plan.id;await refresh();
       }
       setNotice('目標を保存しました。AIへの相談は、メッセージを送ると始まります。');
@@ -483,6 +551,25 @@ export function useStudy():StudyController {
       setNotice('自分の学習に追加しました。1回10問ずつ練習できます。');
     });return resultId;
   }
+  async function deliverToLearner(topicId:string,learnerId:string,projectName:string):Promise<string|void>{
+    let resultId:string|undefined;
+    await run(async()=>{
+      const learner=state.current.profiles.find(member=>member.id===learnerId&&member.role==='student'&&member.familyId===profile.familyId);
+      if(profile.role!=='parent'||!learner)throw new Error('管理者から、ご家族の学習者を選んで追加してください。');
+      let result:LibraryDeliveryResult;
+      if(demo){
+        const delivered=await requestLibraryDelivery(planningRequests.current,profile.id,{topicId,learnerId,projectName},body=>deliverDemoTopic(state.current,profile,body));
+        state.current=delivered.data;setData(delivered.data);result=delivered;
+      }else{
+        result=await requestLibraryDelivery(planningRequests.current,profile.id,{topicId,learnerId,projectName},(body,signal)=>api<LibraryDeliveryResult>('/api/library/deliver','POST',body,signal));
+        const next={...state.current,plans:[...state.current.plans.filter(plan=>plan.id!==result.plan.id),result.plan],topics:[...state.current.topics.filter(topic=>topic.id!==result.topic.id),result.topic]};
+        state.current=next;setData(next);
+        await refresh().catch(()=>{});
+      }
+      resultId=result.plan.id;
+      setNotice(`${learner.name}さんの学習に${result.deliveredCount}問を追加しました。原本の写真や相談履歴は共有していません。`);
+    });return resultId;
+  }
   async function updatePlanTags(planId:string,tags:string[]):Promise<boolean>{
     let saved=false;
     await run(async()=>{
@@ -501,13 +588,25 @@ export function useStudy():StudyController {
       saved=true;setNotice('学習プランのタグを保存しました。');
     });return saved;
   }
-  return {data:demo?demoStudyDataForProfile(data,profile):data,profile,demo,ready,busy,error,notice,uploadStatus,sync,session,currentQuestion,feedback,actions:{
-    refreshStatus,updatePlanTags,startPractice,answer,nextQuestion,createTopic,uploadSources,createPlan,sendPlanningMessage,resumePlanningTurn,generateProposal,arrangeTopic,generate,resumeGeneration,retryGeneration,updateQuestion,publish,publishLibrary,requestLibraryPublication,addLibraryPlan,requestNotifications,
+  return {data:demo?demoStudyDataForProfile(data,profile):data,profile,demo,ready,authStatus,authError,busy,error,notice,uploadStatus,sync,session,currentQuestion,feedback,actions:{
+    retryAuth,refreshStatus,updatePlanTags,startPractice,answer,nextQuestion,createTopic,uploadSources,createPlan,sendPlanningMessage,resumePlanningTurn,generateProposal,arrangeTopic,generate,resumeGeneration,retryGeneration,updateQuestion,publish,publishLibrary,requestLibraryPublication,addLibraryPlan,deliverToLearner,requestNotifications,
     switchRole(role:Role){if(!demo)return;setProfile(data.profiles.find(p=>p.role===role)||GUEST);setSession(null);setSessionQuestions([]);setFeedback(null);setError(null);setNotice(null);setUploadStatus(null);},
     finishSession(){setSession(null);setSessionQuestions([]);setFeedback(null);},
     async resetDemo(){if(!demo)return;await run(async()=>{await clearLocalFiles();setData(createDemoData());setSession(null);setFeedback(null);setNotice('サンプルの記録を初期状態に戻しました。');});},
-    async signIn(){await googleSignIn('google',{callbackUrl:'/'});},
-    async signOut(){if(demo){location.href='/';return;}await googleSignOut({callbackUrl:'/'});},
+    async signIn(){if(!signingOut.current)await googleSignIn('google',{callbackUrl:'/'});},
+    async signOut(){
+      if(demo){location.href='/';return;}
+      if(signingOut.current)return;
+      signingOut.current=true;refreshSequence.current+=1;statusChecking.current=null;
+      clearAccess('checking');setBusy(true);
+      try{
+        await pauseLoginSessionRefresh();
+        await googleSignOut({callbackUrl:'/'});
+      }catch{
+        signingOut.current=false;resumeLoginSessionRefresh();setBusy(false);
+        setAuthStatus('unavailable');setAuthError('ログアウトを完了できませんでした。接続を確認して、もう一度確認してください。');
+      }
+    },
     exportData(){const blob=new Blob([JSON.stringify({...data,sources:data.sources.map(({previewUrl,...source})=>source)},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=`hibi-study-${today(new Date().toISOString())}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);},
   }};
 }

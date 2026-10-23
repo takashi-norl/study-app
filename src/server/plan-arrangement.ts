@@ -3,6 +3,7 @@ import type { LearningPlan, PlanningSample, Profile, StudyData } from '@/lib/typ
 import type { StudyEvent } from './google-store';
 import { canAccessQuestion, canAccessSource } from './access';
 import { topicOwnerId } from '@/lib/library-policy';
+import { arrangementScopeSummary, ownPlanTagsForTopic } from '@/lib/plan-organization';
 import { planningSampleSchema } from './planning-samples';
 import { ApiError } from './config';
 import { getFamilyId } from './env';
@@ -31,11 +32,12 @@ export function preparePlanArrangement(data:StudyData,profile:Profile,topicId:st
     sourceNote:'既存の問題集からの参考抜粋。全文を網羅するものではありません。',needsReview:!!question.needsReview}))
     .filter(example=>planningSampleSchema.safeParse(example).success).slice(0,3);
   if(!arrangementExamples.length) throw new ApiError(409,'アレンジの参考にできる4択問題を確認できませんでした。新しい相談から始めてください。','ARRANGEMENT_EMPTY');
-  const latestJob=data.jobs.filter(job=>job.topicId===topic.id && (job.approvedInstructions || job.instructions)).at(-1);
+  const latestJob=topic.libraryPublished ? undefined : data.jobs.filter(job=>job.topicId===topic.id && (job.approvedInstructions || job.instructions)).at(-1);
   const latestInstructions=latestJob?.approvedInstructions ?? latestJob?.instructions;
   const createdAt=now.toISOString();
   const plan:LearningPlan={id:requestId,ownerId:profile.id,title:`${topic.title.slice(0,130)}のアレンジ`,subject:topic.subject,
-    goal:`「${topic.title}」を別の問題集としてアレンジする。まず実物3問で内容と形式を確認する。`,arrangementInstructions:latestInstructions,
+    tags:ownPlanTagsForTopic(data,profile,topic),
+    goal:`「${topic.title.slice(0,150)}」を別の問題集としてアレンジする。まず実物3問で内容と形式を確認する。\n${arrangementScopeSummary(topic,originals)}`,arrangementInstructions:latestInstructions,
     difficulty:originalPlan?.difficulty ?? '元の問題を参考に相談して調整',dailyQuestionTarget:10,sourceIds,sampleFirst:true,arrangedFromTopicId:topic.id,
     arrangementExamples,testOnly:topic.testOnly || undefined,version:1,createdAt,updatedAt:createdAt};
   return {plan,event:{id:`plan:${requestId}`,type:'plan.created',actorId:profile.id,createdAt,payload:plan}};

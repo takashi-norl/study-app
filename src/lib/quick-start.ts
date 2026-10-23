@@ -15,6 +15,41 @@ export const PURPOSE_OPTIONS = ['中間試験','期末試験','模試','英検',
 export const SCHEDULE_OPTIONS = ['あと1時間','1週間','1か月','長期','身につくまで'] as const;
 export const DAILY_MINUTES = [5,10,20] as const;
 
+export type QuickStartPreset = 'kobun-material';
+export const KOBUN_QUESTION_STYLES = [
+  {id:'context',label:'文脈で意味を選ぶ',description:'本文の前後から、語句の意味を考える。',instructions:'対象の語句と必要な前後の本文を示し、この文脈に合う意味を四択で問います。単語の意味を暗記しているだけではなく、本文のどこから判断できるかを解説してください。'},
+  {id:'grammar',label:'助動詞・助詞の働き',description:'活用・接続・意味を、本文で見分ける。',instructions:'対象の助動詞・助詞を明示し、活用形・接続・意味・働きのうち1問で問う点を絞ります。形だけでは決められない場合は必要な文脈を示し、正解の根拠となる語や接続を解説してください。'},
+  {id:'honorifics',label:'敬語と主語',description:'誰の動作か、誰への敬意かを読み取る。',instructions:'敬語や省略された主語を問う場合は、登場人物と前後の関係が判断できる本文を示します。誰の動作か、誰に対する敬意かを区別し、本文から確定できない人物や関係を補わないでください。'},
+  {id:'translation',label:'現代語訳・内容理解',description:'言葉のつながりや人物の行動を理解する。',instructions:'対象箇所を明示し、文脈に合う現代語訳または内容理解を四択で問います。訳の選択肢の粒度をそろえ、本文にない主語・理由・出来事を正解へ足さないでください。'},
+] as const;
+export type KobunQuestionStyle = typeof KOBUN_QUESTION_STYLES[number]['id'];
+
+export function quickStartDefaults(preset?:QuickStartPreset,sourceIds:readonly string[]=[]):Pick<QuickStartInput,'subject'|'materialMode'|'focus'> {
+  return {subject:preset==='kobun-material'?'古文':PRACTICE_CATEGORIES[0].subject,
+    materialMode:preset==='kobun-material'||sourceIds.length?'sources':'ai',focus:'おまかせ'};
+}
+
+export function purposeOptionsForSubject(subject:string) {
+  return PURPOSE_OPTIONS.filter(purpose=>subject==='英語'||purpose!=='英検'&&purpose!=='IELTS');
+}
+
+function kobunAuthoringInstructions(input:QuickStartInput):string {
+  if(input.subject.trim()!=='古文') return '';
+  const style=KOBUN_QUESTION_STYLES.find(item=>item.id===(input.kobunQuestionStyle??'context'));
+  if(!style) throw new Error('古文の出題方法を選んでください。');
+  return [
+    `古文の出題方法：${style.label}。${style.instructions}`,
+    input.materialMode==='sources'
+      ? '選択した教材の読み取れた範囲だけから出題します。原文の表記と必要な前後関係を保ち、判読できない文字や欠けた本文を推測で補わないでください。根拠が不足する場合は作れる範囲と不足を伝え、3問を無理に埋めないでください。'
+      : '資料なしのため、一般的な古文学習の知識と自作例文を使います。実在する作品の本文や出典を捏造しないでください。',
+    '各問に答えるための本文と対象箇所を含め、文脈から正解を一つに絞れる四択にします。選択肢に必要な訳を除き、問題文で対象箇所の現代語訳・正解・解説を先に示さないでください。解説では正解の根拠と、誤答のどこが本文に合わないかを簡潔に説明してください。',
+    input.materialMode==='sources'
+      ? '作問の根拠に、教材名・確認できるページや段落・原文の該当箇所を示します。ページが不明なら作らず、不確かな読み取りや解答は具体的に記して要確認にしてください。'
+      : '作問の根拠にAI作成・資料なしと記し、不確かな解答は具体的に記してください。',
+    'この出題方法と品質条件を作成案の条件にも残し、後の本作成へ引き継いでください。',
+  ].join('\n');
+}
+
 export function questionVolumeLabel(count:number):string {
   if(!Number.isInteger(count) || count<1 || count>300) throw new Error('問題数は1〜300問で選んでください。');
   if(count<10) return `${count}問`;
@@ -36,6 +71,7 @@ export interface QuickStartInput {
   examTarget?:string;
   comment?:string;
   targetDate?:string;
+  kobunQuestionStyle?:KobunQuestionStyle;
 }
 export type QuickStartPlan = Pick<LearningPlan,'title'|'subject'|'goal'|'difficulty'|'targetDate'|'dailyQuestionTarget'|'sourceIds'> & {
   requestedQuestionCount?:number;
@@ -71,7 +107,8 @@ export function buildQuickStart(input:QuickStartInput):{plan:QuickStartPlan;mess
     : schedule==='身につくまで'
       ? `期限を決めず、身につくまで1日${minutesPerDay}分を目安に取り組む。初回の理解と別日の復習成績、誤答の減少を分けて確かめる。`
       : `${schedule}をかけて、1日${minutesPerDay}分を目安に取り組む。新しい問題と日を空けた復習を組み合わせる。`;
-  const goal=`進学校の高校1年を目安に、${purposeLabel}に向けて練習する。${sourceDescription}、${subject}の${focus==='おまかせ' ? '理解を確認できる内容' : focus}を${effectiveDifficulty}で練習する。${timing}${volume ? `${volume}を用意し、1回10問を目安に取り組む。` : 'まず3問のサンプルで出し方と難しさを確かめる。作る総数はサンプルを見てから決める。'}${comment ? `\n追加の希望：${comment}` : ''}`;
+  const authoringInstructions=kobunAuthoringInstructions(input);
+  const goal=`進学校の高校1年を目安に、${purposeLabel}に向けて練習する。${sourceDescription}、${subject}の${focus==='おまかせ' ? '理解を確認できる内容' : focus}を${effectiveDifficulty}で練習する。${timing}${volume ? `${volume}を用意し、1回10問を目安に取り組む。` : 'まず3問のサンプルで出し方と難しさを確かめる。作る総数はサンプルを見てから決める。'}${authoringInstructions ? `\n${authoringInstructions}` : ''}${comment ? `\n追加の希望：${comment}` : ''}`;
   const plan:QuickStartPlan={title,subject,goal,difficulty:effectiveDifficulty,targetDate,
     dailyQuestionTarget:10,sourceIds,...(input.totalQuestions === undefined ? {} : {requestedQuestionCount:input.totalQuestions})};
   const message=[
@@ -82,8 +119,10 @@ export function buildQuickStart(input:QuickStartInput):{plan:QuickStartPlan;mess
         : `1日${minutesPerDay}分の中で新しい問題・解説の確認・日を空けた復習を配分してください。1か月なら週ごとの目安も示し、全体の問題を一度で解く前提にしないでください。`,
     'タイトルは内容から付けてください。選択済みの内容で提案し、名前や目標の入力を必須にしないでください。後からコメントで範囲・難しさ・問題数を調整できる案にしてください。',
     input.materialMode==='sources' ? '選んだ教材の範囲と読み取れた内容を使ってください。問題数に対して内容が足りなければ、その理由と作れる範囲を提案してください。' : '資料は使わず、一般的な学習内容から作ってください。',
+    authoringInstructions,
     targetDate ? `目標の日付：${targetDate}` : '',
     comment ? '追加の希望は、保存した目標に記載しています。あわせて反映してください。' : '',
   ].filter(Boolean).join('\n\n');
+  if(goal.length>4000||message.length>4000) throw new Error('コメントや選択内容を短くしてください。');
   return {plan,message};
 }

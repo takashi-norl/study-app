@@ -7,6 +7,7 @@ import { canAccessSource } from '@/server/access';
 import { materializeQuestions } from '@/server/generated-batch';
 import { assertGenerationAccess } from '@/server/proposal-selection';
 import { countForBatch,groupSources,plannedBatchCount,promptBudget } from '@/server/generation-plan';
+import { latestSourceAnalysis, assertSourceAnalysesCurrent } from '@/server/source-analysis';
 
 type JobInput=GenerationJob & {sourceIds:string[];requestedBy:string};
 function inputFromEvents(jobId:string,events:Awaited<ReturnType<typeof getFullState>>['events']):JobInput {
@@ -16,9 +17,11 @@ function inputFromEvents(jobId:string,events:Awaited<ReturnType<typeof getFullSt
 }
 
 function sourcesFromState(input:JobInput,data:Awaited<ReturnType<typeof getFullState>>['data'],events:Awaited<ReturnType<typeof getFullState>>['events']) {
+  const turn=data.planningTurns.find(turn=>turn.id===input.turnId && turn.planId===input.planId);
+  assertSourceAnalysesCurrent(events,input.sourceIds,turn?.createdAt ?? input.createdAt);
   return input.sourceIds.map(id=>{
     const source=data.sources.find(s=>s.id===id);
-    const analysis=events.find(e=>e.id===`source-analysis:${id}`)?.payload as {text:string}|undefined;
+    const analysis=latestSourceAnalysis(events,id)?.payload as {text:string}|undefined;
     if(!source || !analysis) throw new ApiError(422,'資料の読み取りがまだ完了していません。');
     return {id,name:source.name,text:analysis.text};
   });
@@ -57,7 +60,7 @@ export async function analyzeSource(jobId:string,sourceId:string) {
   const source=data.sources.find(s=>s.id===sourceId && requester && canAccessSource(s,requester));
   if(!source?.storagePath || !input.sourceIds.includes(sourceId)) throw new FatalError('資料が見つかりません。');
   if(data.jobs.find(job=>job.id===jobId)?.status==='failed') throw new FatalError('作問依頼が終了しています。');
-  if(events.some(e=>e.id===`source-analysis:${sourceId}` && e.type==='source.analysis')) return;
+  if(latestSourceAnalysis(events,sourceId)) return;
   try {
     requireGenerationEnabled();
     assertGenerationCallNotSent(events,{actorId:input.requestedBy,feature:'source-analysis',requestId:`generation:${jobId}:source:${sourceId}`});
