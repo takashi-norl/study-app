@@ -45,13 +45,12 @@ test('Safari ranges support first bytes, open ranges and suffixes without leakin
   assert.equal((await head.arrayBuffer()).byteLength, 0);
 });
 
-test('sample provider verifies both voices and emits one fixed dialogue request with no paid retry', async () => {
+test('sample provider uses both fixed voices without requiring voice-management permissions or paid retries', async () => {
   const original = globalThis.fetch; const oldKey = process.env.ELEVENLABS_API_KEY;
   process.env.ELEVENLABS_API_KEY = 'TEST_ONLY'; let paid = 0;
   try {
     globalThis.fetch = async (input, init) => {
       const url = String(input);
-      if (url.includes('/v1/voices/')) return new Response('{}', { headers: { 'Content-Type': 'application/json' } });
       paid++;
       assert.equal(url, 'https://api.elevenlabs.io/v1/text-to-dialogue?output_format=mp3_44100_128');
       assert.equal(init?.method, 'POST');

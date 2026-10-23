@@ -42,19 +42,6 @@ export async function samplePreview(profile: Profile) {
   return { samples, audio };
 }
 
-/** Free preflight occurs before reserving a paid request, so temporary failures remain recoverable. */
-async function validateSampleVoices(spec: ReturnType<typeof sampleAudioSpec>) {
-  const key = requiredEnv('ELEVENLABS_API_KEY').trim();
-  // Validate availability before a paid request. Never substitute a different voice silently.
-  for (const id of new Set(spec.body.inputs.map(input => input.voice_id))) {
-    const voice = await fetch(`https://api.elevenlabs.io/v1/voices/${id}`, {
-      headers: { 'xi-api-key': key }, signal: AbortSignal.timeout(15000), redirect: 'error', cache: 'no-store',
-    });
-    if (!voice.ok) { await voice.body?.cancel(); throw new ApiError(503, '見本用の声が利用できません。設定を確認してください。', 'SAMPLE_VOICE_UNAVAILABLE'); }
-    await voice.body?.cancel();
-  }
-}
-
 /** Official multi-speaker API. Saved once; repeat listening never invokes the provider. */
 export async function createSampleProviderAudio(spec: ReturnType<typeof sampleAudioSpec>): Promise<Uint8Array> {
   const key = requiredEnv('ELEVENLABS_API_KEY').trim();
@@ -63,6 +50,7 @@ export async function createSampleProviderAudio(spec: ReturnType<typeof sampleAu
     body: JSON.stringify(spec.body), signal: AbortSignal.timeout(90000), redirect: 'error', cache: 'no-store',
   });
   if (!response.ok || !response.headers.get('content-type')?.includes('audio/') || !response.body) {
+    console.error('Eiken sample provider status:', response.status);
     await response.body?.cancel(); throw new ApiError(503, '音声を準備できませんでした。自動で再生成はしません。', 'SAMPLE_AUDIO_UNAVAILABLE');
   }
   const reader = response.body.getReader(); const chunks: Uint8Array[] = []; let size = 0;
@@ -85,7 +73,6 @@ export async function prepareSampleAudio(profile: Profile, sampleId: string) {
   if (previous) throw new ApiError(409, previous.failed ? '準備に失敗しています。内容を確認してから再試行します。' : '音声を準備中です。状況を確認してください。', previous.failed ? 'SAMPLE_AUDIO_FAILED' : 'AUDIO_PENDING');
   requiredEnv('ELEVENLABS_API_KEY');
   checkAudioQuota(events, spec.characters);
-  await validateSampleVoices(spec);
   const slotId = audioSlotId(events); const requestToken = randomUUID();
   await appendEvent({ id: slotId, type: 'audio.requested', actorId: profile.id, createdAt: new Date().toISOString(), payload: {
     cacheKey: spec.cacheKey, requestToken, characters: spec.characters,
