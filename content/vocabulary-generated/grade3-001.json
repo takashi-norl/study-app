@@ -1,0 +1,759 @@
+{
+  "schemaVersion": 2,
+  "entries": [
+    {
+      "id": "vocab-able",
+      "word": "able",
+      "level": "3級",
+      "ipa": "/ˈeɪbəl/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "形容詞",
+      "definition": "Having the skill, time, or chance to do something.",
+      "meaning": "〜できる、能力がある",
+      "usageTip": "be able to + 動詞の原形で「〜できる」。can が使えない未来形や完了形で便利。例: I will be able to go. 過去の一度の達成にも was able to を使う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "練習の成果",
+          "text": "After a week of practice, she was able to swim across the pool.",
+          "translation": "1週間練習して、彼女はプールを泳いで渡ることができた。"
+        },
+        {
+          "id": "example-2",
+          "context": "予定の断り",
+          "text": "I won't be able to come to the meeting on Friday.",
+          "translation": "金曜日の会議には出席できません。"
+        },
+        {
+          "id": "example-3",
+          "context": "頼みごと",
+          "text": "Are you able to help me carry these boxes?",
+          "translation": "この箱を運ぶのを手伝うことはできますか。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "able",
+          "choices": [
+            {
+              "text": "〜に慣れている",
+              "meaning": "used to"
+            },
+            {
+              "text": "〜できる、能力がある",
+              "meaning": "having the ability to do"
+            },
+            {
+              "text": "〜を恐れている",
+              "meaning": "afraid of"
+            },
+            {
+              "text": "〜に興味がある",
+              "meaning": "interested in"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "able は何かをする能力や機会があることを表し、be able to の形でよく使われる。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "〜できる、能力がある",
+          "choices": [
+            {
+              "text": "busy",
+              "meaning": "忙しい"
+            },
+            {
+              "text": "ready",
+              "meaning": "準備ができた"
+            },
+            {
+              "text": "afraid",
+              "meaning": "恐れて"
+            },
+            {
+              "text": "able",
+              "meaning": "〜できる、能力がある"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "「〜できる」という能力を表す形容詞は able。他の語は忙しさ、準備、恐れを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "友人にパーティーへの出欠を聞かれ、行けないと断る場面。\nI'm sorry, but I won't be ___ to come on Saturday.",
+          "choices": [
+            {
+              "text": "able",
+              "meaning": "できる"
+            },
+            {
+              "text": "enough",
+              "meaning": "十分な"
+            },
+            {
+              "text": "quiet",
+              "meaning": "静かな"
+            },
+            {
+              "text": "heavy",
+              "meaning": "重い"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "be able to come で「来ることができる」。won't be able to で「来られない」になる。他の語は to come と自然につながらない。",
+          "alternatives": []
+        },
+        {
+          "mode": "usage",
+          "prompt": "able を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I was able finish my homework last night.",
+              "meaning": "昨夜、宿題を終えることができた。(to が抜けている)"
+            },
+            {
+              "text": "She able to finish the report before lunch.",
+              "meaning": "彼女は昼食前に報告書を終えられた。(be 動詞が抜けている)"
+            },
+            {
+              "text": "We were able to see the stars from the hill.",
+              "meaning": "私たちは丘から星を見ることができた。"
+            },
+            {
+              "text": "He is able for swim very fast.",
+              "meaning": "彼はとても速く泳げる。(for は不適切)"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "be able to の後に動詞の原形が続く形が正しい。他の文は to の欠落、be 動詞の欠落、for の誤用がある。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "友人にパーティーへの出欠を聞かれ、行けないと断る場面。\nI'm sorry, but I won't be ___ to come on Saturday.",
+        "answers": [
+          "able"
+        ],
+        "explanation": "be able to come で「来ることができる」。won't be able to で「来られない」になる。他の語は to come と自然につながらない。",
+        "alternatives": []
+      },
+      "production": {
+        "prompt": "ableを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "After a week of practice, she was able to swim across the pool.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-able-usage",
+          "type": "usage",
+          "prompt": "able を正しく使った文を選んでください。",
+          "choices": [
+            "I was able finish my homework last night.",
+            "She able to finish the report before lunch.",
+            "We were able to see the stars from the hill.",
+            "He is able for swim very fast."
+          ],
+          "correctIndex": 2,
+          "explanation": "be able to の後に動詞の原形が続く形が正しい。他の文は to の欠落、be 動詞の欠落、for の誤用がある。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A1",
+        "domains": [
+          "日常生活",
+          "教育",
+          "仕事"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-accept",
+      "word": "accept",
+      "level": "3級",
+      "ipa": "/əkˈsɛpt/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "accept"
+        ],
+        "past": [
+          "accepted"
+        ],
+        "pastParticiple": [
+          "accepted"
+        ],
+        "presentParticiple": [
+          "accepting"
+        ],
+        "thirdPersonSingular": [
+          "accepts"
+        ]
+      },
+      "definition": "To take something that is offered, or to agree to receive or approve it.",
+      "meaning": "受け入れる、承諾する",
+      "usageTip": "accept + 名詞で「(申し出・招待・支払いなど)を受け入れる」。accept to do は誤りで、I agreed to go のように agree to + 動詞を使う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "仕事のオファー",
+          "text": "She accepted the job offer after thinking about it for two days.",
+          "translation": "彼女は2日間考えた後、その仕事の申し出を受け入れた。"
+        },
+        {
+          "id": "example-2",
+          "context": "謝罪",
+          "text": "Please accept my apology for being late this morning.",
+          "translation": "今朝遅れたことへの私のお詫びを、どうか受け入れてください。"
+        },
+        {
+          "id": "example-3",
+          "context": "お店の支払い",
+          "text": "The shop only accepts cash, so I went to find an ATM.",
+          "translation": "その店は現金のみ受け付けるので、私はATMを探しに行った。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "accept",
+          "choices": [
+            {
+              "text": "断る、拒否する",
+              "meaning": "refuse"
+            },
+            {
+              "text": "延期する",
+              "meaning": "postpone"
+            },
+            {
+              "text": "受け入れる、承諾する",
+              "meaning": "take or agree to something offered"
+            },
+            {
+              "text": "調べる",
+              "meaning": "check"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "accept は申し出や意見などを受け入れる意味。断る意味の refuse とは反対。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "受け入れる、承諾する",
+          "choices": [
+            {
+              "text": "refuse",
+              "meaning": "断る"
+            },
+            {
+              "text": "explain",
+              "meaning": "説明する"
+            },
+            {
+              "text": "borrow",
+              "meaning": "借りる"
+            },
+            {
+              "text": "accept",
+              "meaning": "受け入れる、承諾する"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "申し出などを受け入れる動詞は accept。refuse は逆の意味で、他の語も別の動作を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "仕事の申し出に前向きに返事をする場面。\nI'm happy to ___ your offer and start next month.",
+          "choices": [
+            {
+              "text": "accept",
+              "meaning": "受け入れる"
+            },
+            {
+              "text": "wash",
+              "meaning": "洗う"
+            },
+            {
+              "text": "lend",
+              "meaning": "貸す"
+            },
+            {
+              "text": "cancel",
+              "meaning": "取り消す"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "happy to に続き、offer を受けて来月始めるという流れに合うのは accept。cancel などは前向きな文脈に合わない。",
+          "alternatives": [
+            {
+              "answer": "take",
+              "explanation": "take your offer も「申し出を受ける」と言えるが、accept より口語的。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "accept を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "He accepted to join our team last week.",
+              "meaning": "彼は先週チームに加わることを承諾した。(不定詞は不適切)"
+            },
+            {
+              "text": "She accepted with the invitation to the party.",
+              "meaning": "彼女はパーティーへの招待を受けた。(with は不要)"
+            },
+            {
+              "text": "They accepted of my advice and changed plans.",
+              "meaning": "彼らは私の助言を受け入れて計画を変えた。(of は不要)"
+            },
+            {
+              "text": "He accepted the invitation and promised to bring dessert.",
+              "meaning": "彼は招待を受け入れ、デザートを持ってくると約束した。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "accept は直後に名詞(目的語)を置く他動詞。他の文は不定詞を続けたり、余計な前置詞 with や of を入れている。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "仕事の申し出に前向きに返事をする場面。\nI'm happy to ___ your offer and start next month.",
+        "answers": [
+          "accept"
+        ],
+        "explanation": "happy to に続き、offer を受けて来月始めるという流れに合うのは accept。cancel などは前向きな文脈に合わない。",
+        "alternatives": [
+          {
+            "answer": "take",
+            "explanation": "take your offer も「申し出を受ける」と言えるが、accept より口語的。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "acceptを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "She accepted the job offer after thinking about it for two days.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-accept-usage",
+          "type": "usage",
+          "prompt": "accept を正しく使った文を選んでください。",
+          "choices": [
+            "He accepted to join our team last week.",
+            "She accepted with the invitation to the party.",
+            "They accepted of my advice and changed plans.",
+            "He accepted the invitation and promised to bring dessert."
+          ],
+          "correctIndex": 3,
+          "explanation": "accept は直後に名詞(目的語)を置く他動詞。他の文は不定詞を続けたり、余計な前置詞 with や of を入れている。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "日常生活",
+          "社会",
+          "仕事"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-action",
+      "word": "action",
+      "level": "3級",
+      "ipa": "/ˈækʃən/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "Something a person does, or a step taken to deal with a problem.",
+      "meaning": "行動、措置",
+      "usageTip": "take action で「行動を起こす、対策を取る」。「行動を取る」は take action と言い、do action とは言わない。具体的な行為は an action でも使うが、一般には不可算が多い。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "問題への対応",
+          "text": "We need to take action before the problem gets worse.",
+          "translation": "問題が悪化する前に、行動を起こす必要がある。"
+        },
+        {
+          "id": "example-2",
+          "context": "救助",
+          "text": "His quick action saved the little boy from the river.",
+          "translation": "彼の素早い行動が、小さな男の子を川から救った。"
+        },
+        {
+          "id": "example-3",
+          "context": "学校の対応",
+          "text": "The school took action against bullying after parents complained.",
+          "translation": "保護者の苦情を受けて、学校はいじめに対する措置を取った。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "action",
+          "choices": [
+            {
+              "text": "会話",
+              "meaning": "conversation"
+            },
+            {
+              "text": "休憩",
+              "meaning": "break"
+            },
+            {
+              "text": "記憶",
+              "meaning": "memory"
+            },
+            {
+              "text": "行動、措置",
+              "meaning": "something done, a step taken"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "action は人が行うことや、問題に対して取る措置を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "行動、措置",
+          "choices": [
+            {
+              "text": "account",
+              "meaning": "口座、説明"
+            },
+            {
+              "text": "action",
+              "meaning": "行動、措置"
+            },
+            {
+              "text": "advice",
+              "meaning": "助言"
+            },
+            {
+              "text": "airport",
+              "meaning": "空港"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "「行動、措置」を表す名詞は action。他の語は口座、助言、空港という別の意味。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "海岸のごみ問題について、市が対策を取るべきだと話す場面。\nThe city must take ___ now to reduce the trash on the beach.",
+          "choices": [
+            {
+              "text": "luck",
+              "meaning": "運"
+            },
+            {
+              "text": "ticket",
+              "meaning": "切符"
+            },
+            {
+              "text": "action",
+              "meaning": "行動、対策"
+            },
+            {
+              "text": "weather",
+              "meaning": "天気"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "take action は「対策を取る」という自然な組み合わせ。他の語は take と組んでもごみを減らす意味にならない。",
+          "alternatives": [
+            {
+              "answer": "steps",
+              "explanation": "take steps も「対策を講じる」と言え、具体的な手順を思わせる。"
+            },
+            {
+              "answer": "measures",
+              "explanation": "take measures は公的で正式な対策の印象が強い。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "action を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "The mayor did action to clean the river.",
+              "meaning": "市長は川をきれいにする行動を取った。(do は不自然)"
+            },
+            {
+              "text": "The teacher took quick action when the fire alarm rang.",
+              "meaning": "火災報知器が鳴ったとき、先生はすぐに行動した。"
+            },
+            {
+              "text": "We must make action before it is too late.",
+              "meaning": "手遅れになる前に行動しなければならない。(make は不自然)"
+            },
+            {
+              "text": "She did a quick action for the problem yesterday.",
+              "meaning": "彼女は昨日その問題にすぐ対処した。(do は不自然)"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "「行動を起こす」は take action と言う。do や make と組む言い方は不自然。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "海岸のごみ問題について、市が対策を取るべきだと話す場面。\nThe city must take ___ now to reduce the trash on the beach.",
+        "answers": [
+          "action"
+        ],
+        "explanation": "take action は「対策を取る」という自然な組み合わせ。他の語は take と組んでもごみを減らす意味にならない。",
+        "alternatives": [
+          {
+            "answer": "steps",
+            "explanation": "take steps も「対策を講じる」と言え、具体的な手順を思わせる。"
+          },
+          {
+            "answer": "measures",
+            "explanation": "take measures は公的で正式な対策の印象が強い。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "actionを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "We need to take action before the problem gets worse.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-action-usage",
+          "type": "usage",
+          "prompt": "action を正しく使った文を選んでください。",
+          "choices": [
+            "The mayor did action to clean the river.",
+            "The teacher took quick action when the fire alarm rang.",
+            "We must make action before it is too late.",
+            "She did a quick action for the problem yesterday."
+          ],
+          "correctIndex": 1,
+          "explanation": "「行動を起こす」は take action と言う。do や make と組む言い方は不自然。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "日常生活",
+          "社会",
+          "仕事"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-age",
+      "word": "age",
+      "level": "3級",
+      "ipa": "/eɪdʒ/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "The number of years someone has lived, or a long period of history.",
+      "meaning": "年齢、時代",
+      "usageTip": "at the age of 10 や at age 10 で「10歳のときに」。年齢を言う場合は前置詞 at を使い、in や on は使わない。the Stone Age のように「時代」の意味でも使う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "英語学習の開始",
+          "text": "At what age did you start learning English?",
+          "translation": "何歳のときに英語を学び始めましたか。"
+        },
+        {
+          "id": "example-2",
+          "context": "祖父の様子",
+          "text": "Despite his age, my grandfather still walks every morning.",
+          "translation": "年齢にもかかわらず、祖父は今も毎朝歩いている。"
+        },
+        {
+          "id": "example-3",
+          "context": "歴史の授業",
+          "text": "The Stone Age lasted for thousands of years in many places.",
+          "translation": "石器時代は多くの地域で何千年も続いた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "age",
+          "choices": [
+            {
+              "text": "住所",
+              "meaning": "address"
+            },
+            {
+              "text": "年齢、時代",
+              "meaning": "years lived, a period of history"
+            },
+            {
+              "text": "重さ",
+              "meaning": "weight"
+            },
+            {
+              "text": "色",
+              "meaning": "color"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "age は生きてきた年数や、歴史上の長い時代を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "年齢、時代",
+          "choices": [
+            {
+              "text": "edge",
+              "meaning": "端、縁"
+            },
+            {
+              "text": "wage",
+              "meaning": "賃金"
+            },
+            {
+              "text": "image",
+              "meaning": "画像、印象"
+            },
+            {
+              "text": "age",
+              "meaning": "年齢、時代"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "「年齢、時代」を表すのは age。他の語は綴りが似ているが、縁、賃金、画像という別の意味。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "子どもの頃に何歳で自転車に乗れたかを尋ねる場面。\nAt what ___ did you learn to ride a bike?",
+          "choices": [
+            {
+              "text": "color",
+              "meaning": "色"
+            },
+            {
+              "text": "shoe",
+              "meaning": "靴"
+            },
+            {
+              "text": "floor",
+              "meaning": "階、床"
+            },
+            {
+              "text": "age",
+              "meaning": "年齢"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "At what age は「何歳のときに」を尋ねる自然な言い方。他の語では習った時期を尋ねる意味にならない。",
+          "alternatives": []
+        },
+        {
+          "mode": "usage",
+          "prompt": "「〜歳のときに」と言う場合に age を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "She learned to swim in the age of six.",
+              "meaning": "彼女は6歳のときに泳ぎを習った。(前置詞が不適切)"
+            },
+            {
+              "text": "My brother started school on age five.",
+              "meaning": "兄は5歳で学校に入った。(前置詞が不適切)"
+            },
+            {
+              "text": "He moved to Canada at the age of twelve.",
+              "meaning": "彼は12歳のときにカナダへ引っ越した。"
+            },
+            {
+              "text": "I began piano lessons by age of seven.",
+              "meaning": "私は7歳でピアノを始めた。(冠詞と前置詞が不適切)"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "「〜歳のときに」は at the age of ... で表す。他の文は in、on、by など前置詞が合わなかったり、the が抜けていたりする。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "子どもの頃に何歳で自転車に乗れたかを尋ねる場面。\nAt what ___ did you learn to ride a bike?",
+        "answers": [
+          "age"
+        ],
+        "explanation": "At what age は「何歳のときに」を尋ねる自然な言い方。他の語では習った時期を尋ねる意味にならない。",
+        "alternatives": []
+      },
+      "production": {
+        "prompt": "ageを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "At what age did you start learning English?",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-age-usage",
+          "type": "usage",
+          "prompt": "「〜歳のときに」と言う場合に age を正しく使った文を選んでください。",
+          "choices": [
+            "She learned to swim in the age of six.",
+            "My brother started school on age five.",
+            "He moved to Canada at the age of twelve.",
+            "I began piano lessons by age of seven."
+          ],
+          "correctIndex": 2,
+          "explanation": "「〜歳のときに」は at the age of ... で表す。他の文は in、on、by など前置詞が合わなかったり、the が抜けていたりする。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A1",
+        "domains": [
+          "日常生活",
+          "社会",
+          "科学"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    }
+  ],
+  "audio": []
+}

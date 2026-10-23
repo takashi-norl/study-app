@@ -50,6 +50,28 @@ const catalog = (['vocabulary-grade2.json', 'vocabulary-pre1.json'].flatMap(file
   .map(entry => ({ ...entry, recall: { ...entry.recall, alternatives: recallAlternatives[entry.id] } }));
 const modes: VocabularyTestMode[] = ['meaning', 'word', 'context', 'usage'];
 
+test('new grade3 and pre2 batches use authored choices without a catalog-sized distractor pool', () => {
+  for (const level of ['3級', '準2級'] as const) {
+    const word: VocabularyEntry = { ...catalog[0], id: 'new-word', word: 'freshword', level,
+      tests: (['meaning', 'word', 'context', 'usage'] as const).map(mode => ({ mode, prompt: `${mode} prompt`,
+        choices: [0, 1, 2, 3].map(index => ({ text: `choice-${index}`, meaning: `意味${index}` })),
+        correctIndex: 2, explanation: 'choice-2 is appropriate.', alternatives: [{ answer: 'another', explanation: '近い表現' }] })) };
+    assert.equal(vocabularyGroups([word], level)[0].length, 1);
+    for (const mode of ['meaning', 'word', 'context', 'usage'] as const) {
+      for (let round = 0; round < 10; round++) {
+        const item = buildVocabularyTest([word], round, mode)[0];
+        assert.equal(item.prompt, `${mode} prompt`);
+        assert.equal(item.choices![item.correctIndex!], 'choice-2');
+        assert.ok(item.choices!.every((choice, index) => item.choiceMeanings![index] === `意味${choice.at(-1)}`));
+        assert.deepEqual(item.alternatives, [{ answer: 'another', explanation: '近い表現' }]);
+        assert.equal(checkVocabularyAnswer(item, item.correctIndex!), true);
+      }
+    }
+    const incomplete = { ...word, tests: word.tests!.filter(test => test.mode !== 'context') };
+    assert.throws(() => buildVocabularyTest([incomplete], 0, 'context'), /まだ準備されていません/);
+  }
+});
+
 test('all 100 catalog words have one complete, deterministic four-choice question in each of the four selectable modes', () => {
   assert.equal(catalog.length, 100);
   assert.deepEqual(VOCABULARY_TEST_MODES.map(mode => mode.id), modes);

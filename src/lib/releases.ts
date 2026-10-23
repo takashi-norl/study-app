@@ -8,6 +8,15 @@ export interface AppRelease {
 
 // Newest first. This is the source for Settings, public history and update notices.
 export const APP_RELEASES: readonly AppRelease[] = [{
+  version: '0.11.0',
+  date: '2026-10-23',
+  title: '単語教材を、級とセットから選べるように',
+  announcement: '管理者向けの単語教材に、級とセットを選ぶ入口を追加しました。単語をまとめて学び、4種類の選択問題で確かめられます。',
+  changes: [
+    { title: '級・セットごとに教材を選択', description: '3級〜準1級の教材を、追加済みのセットから選べます。最初の100語はそのまま使えます。教材はAIによる点検を終えたものから順次追加します。' },
+    { title: '単語と3つの例文の音声を再利用', description: '作成済みの音声を保存して使います。新しい教材も、再生や選択問題の採点のたびにAIを呼び出しません。' },
+  ],
+}, {
   version: '0.10.2',
   date: '2026-10-23',
   title: '答え合わせで、選択肢の単語も学ぶ',

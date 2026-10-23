@@ -15,7 +15,8 @@ export async function POST(request: Request) {
 async function serve(request: Request, head = false) {
   try {
     const { profile } = await requireProfile('parent');
-    const bytes = await readVocabularyAudio(profile, new URL(request.url).searchParams.get('wordId') ?? '');
+    const query = new URL(request.url).searchParams;
+    const bytes = await readVocabularyAudio(profile, query.get('wordId') ?? '', query.get('batch') ?? undefined);
     return sampleAudioResponse(bytes, request.headers.get('range'), head);
   } catch (error) { return api(async () => { throw error; }); }
 }

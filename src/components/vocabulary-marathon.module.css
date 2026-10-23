@@ -8,6 +8,10 @@
 .intro h1{font-size:clamp(22px,5vw,28px);line-height:1.5;margin:4px 0}
 .intro>p{font-size:12px;color:#677866}
 .levels{display:flex;gap:8px;margin-bottom:10px}
+.libraryPicker{border:1px solid #dce6d7;border-radius:12px;padding:14px;margin-bottom:14px;background:#fff;min-width:0}
+.libraryPicker label{display:block;font-size:13px;font-weight:700;margin-bottom:7px}
+.libraryPicker select{width:100%;max-width:100%;min-height:46px;border:1px solid #cfdcc8;border-radius:9px;background:#fff;padding:8px;font-size:16px}
+.libraryPicker p{font-size:11px;line-height:1.7;color:#687c60;margin-top:7px}
 .levels button{flex:1;display:flex;align-items:center;justify-content:center;gap:10px;min-height:46px;background:#fff;border:1px solid #cfdcc8;border-radius:10px;font-size:16px;font-weight:700}
 .levels small{font-size:11px;font-weight:400}
 .levels button[aria-pressed=true]{background:#28674e;border-color:#28674e;color:#fff}

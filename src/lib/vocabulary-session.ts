@@ -11,6 +11,7 @@ export const VOCABULARY_TEST_MODES: ReadonlyArray<{ id: VocabularyTestMode; labe
 export type VocabularyTestItem = {
   id: string; wordId: string; kind: 'choice' | 'recall'; prompt: string;
   choices?: string[]; correctIndex?: number; answers?: string[]; explanation: string;
+  choiceMeanings?: string[];
   alternatives?: { answer: string; explanation: string }[];
   mode?: VocabularyTestMode;
 };
@@ -142,6 +143,22 @@ function usageItem(entry: VocabularyEntry, attempt: number): VocabularyTestItem 
     choices: order.map(index => question.choices[index]), correctIndex: order.indexOf(question.correctIndex), explanation };
 }
 
+/** New batches carry complete reviewed choices; they never need an unrelated catalog word pool. */
+function authoredItem(entry: VocabularyEntry, mode: Exclude<VocabularyTestMode, 'recall'>, attempt: number): VocabularyTestItem | undefined {
+  if (!entry.tests) return undefined;
+  const candidates = entry.tests.filter(test => test.mode === mode);
+  const question = candidates[attempt % candidates.length];
+  if (!question) throw new Error(`「${entry.word}」のテストがまだ準備されていません。`);
+  const order = shuffle(question.choices.map((_, index) => index), seedFor(`${entry.id}:${mode}`) + attempt * 31);
+  return {
+    id: `${entry.id}:${mode}`, wordId: entry.id, mode, kind: 'choice', prompt: question.prompt,
+    choices: order.map(index => question.choices[index].text),
+    choiceMeanings: order.map(index => question.choices[index].meaning),
+    correctIndex: order.indexOf(question.correctIndex), explanation: question.explanation,
+    alternatives: question.alternatives.map(alternative => ({ ...alternative })),
+  };
+}
+
 /** Without a mode, retain the original recall-then-usage test for saved callers. */
 export function buildVocabularyTest(entries: VocabularyEntry[], round = 0, mode?: VocabularyTestMode, distractorPool: VocabularyEntry[] = entries): VocabularyTestItem[] {
   const unique = [...new Map(entries.map(entry => [entry.id, entry])).values()];
@@ -151,6 +168,8 @@ export function buildVocabularyTest(entries: VocabularyEntry[], round = 0, mode?
     return shuffle(unique, seedFor(mode) + attempt * 47).map(entry => {
       if (mode === 'recall') return { id: `${entry.id}:recall`, wordId: entry.id, mode, kind: 'recall', prompt: entry.recall.prompt, answers: [...entry.recall.answers], explanation: entry.recall.explanation,
         ...(entry.recall.alternatives?.length ? { alternatives: entry.recall.alternatives.map(alternative => ({ ...alternative })) } : {}) };
+      const authored = authoredItem(entry, mode, attempt);
+      if (authored) return authored;
       if (mode === 'usage') return usageItem(entry, attempt);
       return choiceItem(entry, mode, attempt, pool);
     });

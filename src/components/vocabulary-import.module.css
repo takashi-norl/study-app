@@ -1,0 +1,21 @@
+.page { width: min(100%, 760px); margin: 0 auto; padding: max(20px, env(safe-area-inset-top)) 18px calc(32px + env(safe-area-inset-bottom)); color: #233b32; overflow-wrap: anywhere; }
+.page h1 { font-size: clamp(24px, 5vw, 34px); line-height: 1.35; margin: 28px 0 12px; }
+.page h2 { font-size: 18px; margin: 0 0 18px; }
+.header { display: flex; justify-content: space-between; gap: 16px; align-items: center; font-size: 13px; }
+.header a { min-height: 44px; display: flex; align-items: center; color: #2c7056; }
+.lead, .note { color: #627858; line-height: 1.8; }
+.note { font-size: 13px; margin-bottom: 0; }
+.card { border: 1px solid #d9e5d0; border-radius: 20px; background: #fff; padding: 22px; margin: 20px 0; min-width: 0; }
+.file { display: grid; gap: 12px; font-size: 14px; line-height: 1.6; }
+.file input { width: 100%; min-width: 0; font-size: 16px; padding: 12px 0; }
+.count { display: flex; gap: 12px; align-items: baseline; }
+.count strong { font-size: 26px; }
+.count span { color: #627858; font-size: 14px; }
+.progress { width: 100%; height: 12px; accent-color: #32775c; margin: 16px 0; }
+.actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+.actions button { min-height: 48px; flex: 1 1 170px; }
+.status { padding: 14px 20px; border-radius: 14px; background: #eef4e7; line-height: 1.8; }
+.status p { margin: 6px 0; }
+.status p[role="alert"] { color: #8c4d24; }
+.receipt { display: block; width: 100%; text-align: left; border: 1px solid #d9e5d0; border-radius: 12px; padding: 14px; margin-top: 12px; background: #f4f8ee; color: #2c7056; min-height: 48px; font: inherit; overflow-wrap: anywhere; cursor: pointer; }
+@media (max-width: 430px) { .card { padding: 18px; } .header { gap: 8px; } }

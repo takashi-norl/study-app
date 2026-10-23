@@ -672,6 +672,27 @@ export async function downloadAudioCache(fileId:string,cacheKey:string):Promise<
   return new Uint8Array(await new Response(createBoundedSourceStream(media.body,size)).arrayBuffer());
 }
 
+/** Find only this app's private cache; a repeated import reuses the existing Drive object. */
+export async function findAudioCache(cacheKey: string): Promise<string | null> {
+  requireAudioCacheKey(cacheKey);
+  const folderId = getDriveConfig().folderId;
+  const query = `'${folderId}' in parents and trashed = false and mimeType = 'audio/mpeg' and appProperties has { key='purpose' and value='hibi-study-audio' } and appProperties has { key='cacheKey' and value='${cacheKey}' }`;
+  const params = new URLSearchParams({ q: query, pageSize: '100', orderBy: 'createdTime', fields: 'files(id,mimeType,size,parents,appProperties,trashed)' });
+  const response = await googleFetch(`https://www.googleapis.com/drive/v3/files?${params}`);
+  const body = await response.json() as { files?: (DriveFileMetadata & { trashed?: boolean })[] };
+  if (!Array.isArray(body.files)) throw new ApiError(502, '保存済み音声を確認できませんでした。', 'AUDIO_CACHE_FAILED');
+  for (const file of body.files) {
+    const size = Number(file.size);
+    if (typeof file.id !== 'string' || !/^[a-zA-Z0-9_-]{8,200}$/.test(file.id)
+      || file.trashed || !Array.isArray(file.parents) || !file.parents.includes(folderId) || file.mimeType !== 'audio/mpeg'
+      || file.appProperties?.purpose !== 'hibi-study-audio' || file.appProperties.cacheKey !== cacheKey
+      || !Number.isSafeInteger(size) || size < 1 || size > MAX_AUDIO_BYTES) continue;
+    requireDriveFileId(file.id);
+    return file.id;
+  }
+  return null;
+}
+
 export async function saveAudioCache(cacheKey:string,bytes:Uint8Array):Promise<string> {
   requireAudioCacheKey(cacheKey);
   if(!bytes.byteLength || bytes.byteLength>MAX_AUDIO_BYTES) throw new ApiError(413,'音声が長すぎます。','AUDIO_TOO_LARGE');

@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight, Check, CheckCircle2, ChevronLeft, ChevronRight, Headphones, RotateCcw, Square, Volume2 } from 'lucide-react';
-import type { VocabularyAudio, VocabularyEntry } from '@/lib/vocabulary-types';
+import { VOCABULARY_LEVELS, type VocabularyAudio, type VocabularyEntry } from '@/lib/vocabulary-types';
 import type { GlossaryEntry } from '@/lib/vocabulary-glossary';
 import { buildVocabularyTest, checkVocabularyAnswer, summarizeVocabularyTest, vocabularyGroups, type VocabularyTestItem, type VocabularyTestMode } from '@/lib/vocabulary-session';
 import { selectVocabularyAudio } from '@/lib/vocabulary-playback';
@@ -41,12 +41,13 @@ const testModes: { id: ChoiceTestMode; label: string; shortLabel: string; descri
   { id: 'usage', label: '使い方を選ぶ', shortLabel: '使い方を選ぶ', description: '自然な使い方や、文脈に合う表現を選びます。', resultLabel: '使い方を選べた', success: 'その使い方で合っています' },
 ];
 
-function WordAudio({ entry, clips, example, stopKey, busy, onPrepare, onRefresh }: {
+function WordAudio({ entry, clips, example, stopKey, busy, canPrepare, onPrepare, onRefresh }: {
   entry: VocabularyEntry;
   clips: VocabularyAudio[];
   example: number;
   stopKey: string;
   busy: boolean;
+  canPrepare: boolean;
   onPrepare: () => void;
   onRefresh: () => void;
 }) {
@@ -216,15 +217,16 @@ function WordAudio({ entry, clips, example, stopKey, busy, onPrepare, onRefresh 
       <div className={styles.audioActions}>{button('word', '単語を聞く')}{button(`example-${example + 1}`, `例文${example + 1}を聞く`)}</div>
       <p className={styles.audioHint}>単語と例文を、それぞれ何度でも聞けます。</p>
     </> : <div className={styles.audioStatus} aria-live="polite">
-      <p>{state === 'missing' ? '単語の発音と3つの例文の音声を準備します。' : state === 'pending' ? '音声を準備しています。別の単語へ移動しても大丈夫です。' : '音声の準備が完了しませんでした。準備状況を確認してください。'}</p>
-      <button type="button" className={styles.secondary} disabled={busy} onClick={state === 'missing' ? onPrepare : onRefresh}>{busy ? '音声を準備しています…' : state === 'missing' ? 'この単語の音声を準備' : '準備状況を確認'}</button>
+      <p>{state === 'missing' ? canPrepare ? '単語の発音と3つの例文の音声を準備します。' : '音声はまとめて準備中です。文章の学習とテストは先に使えます。' : state === 'pending' ? '音声を準備しています。別の単語へ移動しても大丈夫です。' : '音声の準備が完了しませんでした。準備状況を確認してください。'}</p>
+      <button type="button" className={styles.secondary} disabled={busy} onClick={state === 'missing' && canPrepare ? onPrepare : onRefresh}>{busy ? '音声を準備しています…' : state === 'missing' && canPrepare ? 'この単語の音声を準備' : '準備状況を確認'}</button>
     </div>}
     {error && <p className={styles.error} role="alert">{error}<button type="button" onClick={() => { stop(); setError(''); player.current?.load(); onRefresh(); }}>準備状況を確認</button></p>}
   </section>;
 }
 
-export default function VocabularyMarathon({ entries, audio, preparation, glossary }: { entries: VocabularyEntry[]; audio: VocabularyAudio[]; preparation?: ReactNode; glossary: GlossaryEntry[] }) {
-  const [level, setLevel] = useState<VocabularyEntry['level']>('2級');
+export default function VocabularyMarathon({ entries, audio, preparation, glossary, batchId = 'legacy-100', canPrepareAudio = true }: { entries: VocabularyEntry[]; audio: VocabularyAudio[]; preparation?: ReactNode; glossary: GlossaryEntry[]; batchId?: string; canPrepareAudio?: boolean }) {
+  const levels = VOCABULARY_LEVELS.filter(level => entries.some(entry => entry.level === level));
+  const [level, setLevel] = useState<VocabularyEntry['level']>(levels[0] ?? '2級');
   const [groupIndex, setGroupIndex] = useState(0);
   const [mode, setMode] = useState<ChoiceTestMode>('meaning');
   const [sessions, setSessions] = useState<Record<string, GroupState>>({});
@@ -260,10 +262,10 @@ export default function VocabularyMarathon({ entries, audio, preparation, glossa
   const score = summary?.choice;
   const correct = !!item && checked && checkVocabularyAnswer(item, answer ?? '');
   const choiceMeanings = checked && (mode === 'word' || mode === 'context')
-    ? new Map(entries.map(word => [word.word.toLowerCase(), word.meaning]))
+    ? item?.choiceMeanings ? new Map(item.choices?.map((choice, index) => [choice.trim().toLowerCase(), item.choiceMeanings![index]])) : new Map(entries.map(word => [word.word.toLowerCase(), word.meaning]))
     : undefined;
   const alternativeExpressions = mode === 'context' && correct
-    ? entries.find(word => word.id === item?.wordId)?.recall.alternatives?.slice(0, 3) ?? []
+    ? (item?.alternatives ?? entries.find(word => word.id === item?.wordId)?.recall.alternatives)?.slice(0, 3) ?? []
     : [];
   const weakEntries = group.filter(word => summary?.wrongWordIds.includes(word.id));
   const productionEntry = group.find(word => word.id === session.productionWordId) ?? weakEntries[0] ?? group[0];
@@ -324,7 +326,7 @@ export default function VocabularyMarathon({ entries, audio, preparation, glossa
     focusCard();
   };
   const fetchAudioStatus = async () => {
-    const response = await fetch('/api/admin/vocabulary-samples', { credentials: 'same-origin', cache: 'no-store' });
+    const response = await fetch(`/api/admin/vocabulary-samples?batch=${encodeURIComponent(batchId)}`, { credentials: 'same-origin', cache: 'no-store' });
     if (!response.ok) throw new Error('音声の準備状況を確認できませんでした。');
     const data: { audio?: VocabularyAudio[] } = await response.json();
     if (!Array.isArray(data.audio)) throw new Error('音声の準備状況を読み込めませんでした。');
@@ -336,7 +338,7 @@ export default function VocabularyMarathon({ entries, audio, preparation, glossa
     catch (error) { setAudioError(error instanceof Error ? error.message : '準備状況を確認できませんでした。'); }
   };
   const prepare = async () => {
-    if (busyWord || !entry) return;
+    if (busyWord || !entry || !canPrepareAudio) return;
     const id = entry.id;
     setBusyWord(id);
     setAudioError('');
@@ -361,7 +363,8 @@ export default function VocabularyMarathon({ entries, audio, preparation, glossa
 
   if (!entry || !example) return <main className={styles.page}><Link className={styles.back} href="/admin/eiken-samples"><ArrowLeft size={18} />英検サンプルへ</Link><p>単語セットを準備しています。</p></main>;
 
-  const nextSet = groupIndex < groups.length - 1 ? { level, index: groupIndex + 1 } : level === '2級' && entries.some(word => word.level === '準1級') ? { level: '準1級' as const, index: 0 } : undefined;
+  const nextLevel = levels[levels.indexOf(level) + 1];
+  const nextSet = groupIndex < groups.length - 1 ? { level, index: groupIndex + 1 } : nextLevel ? { level: nextLevel, index: 0 } : undefined;
   const testLabel = test && !resultReady ? '途中のテストに戻る' : isReview ? `${learningEntries.length}語を再テスト` : `${group.length}語をまとめてテスト`;
   const nextLearn = () => {
     if (learningIndex < learningEntries.length - 1) moveLearningWord(learningIndex + 1);
@@ -382,7 +385,7 @@ export default function VocabularyMarathon({ entries, audio, preparation, glossa
     {stage !== 'test' && stage !== 'production' && preparation}
     {stage !== 'test' && stage !== 'production' && <>
       <div className={styles.levels} aria-label="英検の級">
-        {(['2級', '準1級'] as const).map(value => <button type="button" key={value} aria-pressed={value === level} onClick={() => navigateSet(value, 0)}>{value}<small>{entries.filter(word => word.level === value).length}語</small></button>)}
+        {levels.map(value => <button type="button" key={value} aria-pressed={value === level} onClick={() => navigateSet(value, 0)}>{value}<small>{entries.filter(word => word.level === value).length}語</small></button>)}
       </div>
       <div className={styles.sets} aria-label="学ぶ単語セット">
         {groups.map((words, index) => <button type="button" key={index} aria-pressed={groupIndex === index} onClick={() => navigateSet(level, index)}><span>セット{index + 1}</span><small>{words.length}語</small></button>)}
@@ -409,7 +412,7 @@ export default function VocabularyMarathon({ entries, audio, preparation, glossa
           <div><p>{learningIndex + 1} / {learningEntries.length}語目</p><h2 ref={heading} tabIndex={-1} lang="en">{entry.word}</h2></div><span>{entry.partOfSpeech}</span>
         </div>
         <p className={styles.ipa}><span lang="en">{entry.ipa}</span><small>{entry.ipaLabel}</small></p>
-        <WordAudio key={`audio-${entry.id}`} entry={entry} clips={availableAudio} example={exampleIndex} stopKey={`${entry.id}-${stage}-${exampleIndex}`} busy={!!busyWord} onPrepare={() => void prepare()} onRefresh={() => void refresh()} />
+        <WordAudio key={`audio-${entry.id}`} entry={entry} clips={availableAudio} example={exampleIndex} stopKey={`${entry.id}-${stage}-${exampleIndex}`} busy={!!busyWord} canPrepare={canPrepareAudio} onPrepare={() => void prepare()} onRefresh={() => void refresh()} />
         {audioError && <p role="alert" className={styles.error}>{audioError}</p>}
         <div className={styles.definition}><p lang="en">{entry.definition}</p><p>{entry.meaning}</p></div>
         <VerbForms key={`forms-${entry.id}`} forms={entry.verbForms} />

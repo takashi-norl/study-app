@@ -11,26 +11,30 @@ import { appendEvent, downloadAudioCache, loadEvents, saveAudioCache } from './g
 import { createVocabularyProviderAudio, vocabularyAudioSpec } from './vocabulary-audio';
 import { assertSuperUser } from './env';
 import { checkVocabularyBuildQuota } from './vocabulary-build-budget';
+import { LEGACY_VOCABULARY_BATCH, vocabularyBatchAudio, vocabularyBatchEntries, vocabularyBatchIndex } from './vocabulary-generated';
 
 const entries = vocabularyEntries;
-export function vocabularyEntry(wordId: string): VocabularyEntry {
-  const entry = entries.find(item => item.id === wordId);
+export function vocabularyEntry(wordId: string, batchId = LEGACY_VOCABULARY_BATCH): VocabularyEntry {
+  const entry = vocabularyBatchEntries(batchId).find(item => item.id === wordId);
   if (!entry) throw new ApiError(404, '単語の見本が見つかりません。', 'SAMPLE_NOT_FOUND');
   return entry;
 }
 
-export async function vocabularyPreview(profile: Profile) {
+export async function vocabularyPreview(profile: Profile, batchId = LEGACY_VOCABULARY_BATCH) {
   assertSampleAccess(profile);
-  const events = await loadEvents();
+  const entries = vocabularyBatchEntries(batchId);
+  const events = batchId === LEGACY_VOCABULARY_BATCH ? await loadEvents() : [];
+  const importedAudio = vocabularyBatchAudio(batchId);
   const audio: VocabularyAudio[] = entries.map(entry => {
     const spec = vocabularyAudioSpec(entry);
-    const record = audioRecord(events, spec.cacheKey);
-    return { wordId: entry.id, url: `/api/admin/vocabulary-samples/audio?wordId=${entry.id}`, voiceLabel: spec.voiceLabel,
-      state: record?.fileId && record.segments ? 'ready' : record?.failed ? 'failed' : record ? 'pending' : 'missing',
+    const imported = importedAudio.find(audio => audio.wordId === entry.id);
+    const record = imported ?? audioRecord(events, spec.cacheKey);
+    return { wordId: entry.id, url: `/api/admin/vocabulary-samples/audio?wordId=${encodeURIComponent(entry.id)}&batch=${encodeURIComponent(batchId)}`, voiceLabel: spec.voiceLabel,
+      state: record?.fileId && record.segments ? 'ready' : record && 'failed' in record && record.failed ? 'failed' : record ? 'pending' : 'missing',
       ...(record?.fileId && record.segments ? { segments: record.segments } : {}),
     };
   });
-  return { entries, audio };
+  return { entries, audio, batchId, batches: vocabularyBatchIndex(), canPrepareAudio: batchId === LEGACY_VOCABULARY_BATCH };
 }
 
 /** A fixed catalog and an append-only reservation prevent arbitrary text and repeat paid requests. */
@@ -65,10 +69,10 @@ export async function prepareVocabularyAudio(profile: Profile, wordId: string, c
 }
 
 /** Playback only downloads saved audio; it cannot start a provider request. */
-export async function readVocabularyAudio(profile: Profile, wordId: string) {
+export async function readVocabularyAudio(profile: Profile, wordId: string, batchId = LEGACY_VOCABULARY_BATCH) {
   assertSampleAccess(profile);
-  const spec = vocabularyAudioSpec(vocabularyEntry(wordId));
-  const record = audioRecord(await loadEvents(), spec.cacheKey);
+  const spec = vocabularyAudioSpec(vocabularyEntry(wordId, batchId));
+  const record = batchId === LEGACY_VOCABULARY_BATCH ? audioRecord(await loadEvents(), spec.cacheKey) : vocabularyBatchAudio(batchId).find(audio => audio.wordId === wordId);
   if (!record?.fileId || !record.segments) throw new ApiError(404, 'この音声はまだ準備されていません。', 'SAMPLE_NOT_READY');
   return downloadAudioCache(record.fileId, spec.cacheKey);
 }

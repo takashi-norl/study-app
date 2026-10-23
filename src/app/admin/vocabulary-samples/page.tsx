@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { glossaryEntries } from '@/server/vocabulary-glossary-catalog';
-import VocabularyMarathon from '@/components/vocabulary-marathon';
+import VocabularyLibraryPreview from '@/components/vocabulary-library-preview';
 import { requireProfile } from '@/server/auth';
 import { vocabularyPreview } from '@/server/vocabulary-samples';
 import { ApiError } from '@/server/config';
@@ -22,5 +22,5 @@ export default async function Page() {
   const initial = { total: preview.audio.length, ready: preview.audio.filter(item => item.state === 'ready').length,
     failed: preview.audio.filter(item => item.state === 'failed').length, pending: preview.audio.filter(item => item.state === 'pending').length,
     missing: preview.audio.filter(item => item.state === 'missing').length, running: false };
-  return <VocabularyMarathon {...preview} glossary={glossaryEntries} preparation={<VocabularyAudioBuild canBuild={canBuild} initial={initial} />} />;
+  return <VocabularyLibraryPreview initial={preview} batches={preview.batches} glossary={glossaryEntries} preparation={<VocabularyAudioBuild canBuild={canBuild} initial={initial} />} />;
 }

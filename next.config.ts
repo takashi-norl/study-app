@@ -4,6 +4,12 @@ import { withWorkflow } from 'workflow/next';
 const config: NextConfig = {
   poweredByHeader: false,
   devIndicators: false,
+  outputFileTracingIncludes: {
+    '/admin/vocabulary-samples': ['./content/vocabulary-generated/*.json'],
+    '/api/admin/vocabulary-samples': ['./content/vocabulary-generated/*.json'],
+    '/api/admin/vocabulary-samples/audio': ['./content/vocabulary-generated/*.json'],
+    '/api/admin/vocabulary-import': ['./content/vocabulary-generated/*.json'],
+  },
   async headers() {
     return [{ source: '/(.*)', headers: [
       { key: 'X-Content-Type-Options', value: 'nosniff' },
