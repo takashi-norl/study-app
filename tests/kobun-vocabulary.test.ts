@@ -36,8 +36,14 @@ test('uncertain evidence, leaked basic answers, duplicate choices and unlabeled 
 });
 
 test('position-dependent explanations are rejected before choices can be reordered',()=>{
-  for(const explanation of ['正解はAです。','Bの選択肢は意味が違います。','選択肢1が正しい。','上の選択肢が正しい。']) {
+  for(const explanation of ['正解はAです。','Bの選択肢は意味が違います。','選択肢1が正しい。','上の選択肢が正しい。','①が正解です。','正解は④です。','答えは「②」です。','1番が正解です。','３番目が適切です。','イが正解です。']) {
     assert.throws(()=>validateVocabularyQuestions([{...sample,explanation}]));
+  }
+});
+
+test('ordinary quantity wording is not confused with a positional answer reference',()=>{
+  for(const wording of ['正解は1つです。','正解は１つです。','正解は1個だけです。','２つの語義を確認しましょう。','No.51が今回の範囲です。']) {
+    assert.doesNotThrow(()=>validateVocabularyQuestions([{...sample,prompt:`${sample.prompt}${wording}`,explanation:`${sample.explanation}${wording}`}]),wording);
   }
 });
 

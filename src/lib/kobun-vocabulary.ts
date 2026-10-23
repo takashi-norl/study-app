@@ -26,7 +26,9 @@ export function validateVocabularyQuestions<T extends VocabularyQuestion>(questi
       throw new Error('単語問題の形式や根拠を確認できません。教材の読める範囲を確認して、もう一度試作してください。');
     }
     const prose = `${question.prompt} ${question.explanation} ${question.choices.join(' ')}`;
-    if (/(?:選択肢|正解|答え)(?:の|は|が|：|:|\s)*[A-DＡ-Ｄ1-4１-４]|[A-DＡ-Ｄ](?:が|は|を|と|では|の選択肢)|(?:上|下|前|後)の選択肢/u.test(prose)) {
+    const label = '(?:[A-DＡ-Ｄ①-④アイウエ]|(?<![0-9０-９])[1-4１-４](?![0-9０-９つ個問字語文回日人年]))';
+    const positionReference = new RegExp(`(?:選択肢|正解|答え)(?:の|は|が|：|:|\\s)*[「（(]?${label}|${label}(?:番(?:目)?)?(?:が|は|を|と|では|の選択肢)|(?:上|下|前|後)の選択肢`, 'u');
+    if (positionReference.test(prose)) {
       throw new Error('選択肢の記号や位置を解説で参照せず、意味の内容で説明してください。');
     }
     const choices = question.choices.map(choice => choice.trim().replace(/^[A-DＡ-Ｄ][.．、:：)）]\s*/u, '').trim());
