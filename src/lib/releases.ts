@@ -8,6 +8,14 @@ export interface AppRelease {
 
 // Newest first. This is the source for Settings, public history and update notices.
 export const APP_RELEASES: readonly AppRelease[] = [{
+  version: '0.9.1',
+  date: '2026-10-23',
+  title: '試作の操作ボタンを押しやすく',
+  announcement: '小さめの画面でも、試作の調整・作成ボタンが下のメニューに隠れないようにしました。',
+  changes: [
+    { title: '下メニューと作問ボタンの重なりを修正', description: '下メニューが表示されるすべての画面幅で、試作の操作ボタンをメニューの上に配置します。' },
+  ],
+}, {
   version: '0.9.0',
   date: '2026-10-23',
   title: '教材から、中間テストの学習セットへ',
