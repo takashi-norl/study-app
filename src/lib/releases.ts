@@ -8,6 +8,16 @@ export interface AppRelease {
 
 // Newest first. This is the source for Settings, public history and update notices.
 export const APP_RELEASES: readonly AppRelease[] = [{
+  version: '0.7.0',
+  date: '2026-10-23',
+  title: '一覧レビューと、学習プランごとの進み具合',
+  announcement: '問題を一覧で見渡し、管理者はユーザーの表示を確認。学習者はタグで計画をまとめて進み具合を見られます。',
+  changes: [
+    { title: '全体を見てから、気になる問題を編集', description: '問題文・正解・学習ポイントを一覧で確認できます。教材やポイントごとの傾向、要確認の絞り込み、前後の問題への移動でレビューを進められます。公開範囲と問題集単位の公開操作も同じ画面で確認できます。' },
+    { title: '管理者がユーザーの表示を確認', description: '対象の学習者を選び、現在見える問題集・追加済みの公開問題集・解答から解説までの流れを試せます。試し解きは本人の成績や復習予定に保存されません。' },
+    { title: '中間テストなどのタグで計画をまとめる', description: '学習プランにタグを付け、同じ目的の計画をまとめて確認できます。プランとタグごとに、取り組んだ問題数・初回正答率・復習の時期になった問題を表示します。' },
+  ],
+}, {
   version: '0.6.3',
   date: '2026-10-23',
   title: '答え合わせの理由を、すぐ目の前に',

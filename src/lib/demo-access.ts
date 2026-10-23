@@ -122,7 +122,7 @@ export function addDemoLibraryPlan(data: StudyData, profile: Profile, topicId: s
 }
 
 function demoSamples(data: StudyData, plan: LearningPlan): PlanningSample[] {
-  const topicIds = new Set(data.topics.filter(topic => topic.subject === plan.subject && !topic.libraryPublished && !topic.testOnly && !topic.planId).map(topic=>topic.id));
+  const topicIds = new Set(data.topics.filter(topic => topic.subject === plan.subject && !topic.libraryPublished && !topic.testOnly).map(topic=>topic.id));
   const source = plan.arrangementExamples?.length ? plan.arrangementExamples : data.questions.filter(question=>topicIds.has(question.topicId)&&question.status!=='archived');
   const fallback: PlanningSample[] = [
     {prompt:'この画面の試作3問は、何を確かめるためのもの？',choices:['出し方と難しさ','試験の合否','学校の成績','他の人の点数'],correctIndex:0,explanation:'少ない問題で出し方を確かめてから、まとめて作る数を選びます。',learningPoint:'試作を見てから分量を決める',sourceIds:[],sourceNote:'操作確認用の例題です。',needsReview:false},

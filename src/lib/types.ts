@@ -56,6 +56,7 @@ export interface GenerationJob {
 }
 export interface LearningPlan {
   id: string; ownerId: string; title: string; subject: Subject;
+  tags?: string[];
   goal: string; difficulty: string; targetDate?: string; dailyQuestionTarget: number;
   requestedQuestionCount?: number;
   sampleFirst?: boolean; arrangedFromTopicId?: string; arrangementExamples?: PlanningSample[]; arrangementInstructions?: string; plannedDays?: number;
