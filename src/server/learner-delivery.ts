@@ -140,10 +140,10 @@ export function prepareLearnerDelivery(data: StudyData, events: StudyEvent[], ac
     if (existing && canonical(existing) !== canonical(question)) conflict();
   }
   const plan: LearningPlan = { id: planId, ownerId: learner.id, title: source.title.trim().slice(0, 150) || '届いた問題集',
-    subject: source.subject, tags, goal: '管理者から届いた問題を練習し、間違えた内容を復習する。', difficulty: '元の問題集の難しさ',
+    subject: source.subject, questionTemplate:source.questionTemplate, tags, goal: '管理者から届いた問題を練習し、間違えた内容を復習する。', difficulty: '元の問題集の難しさ',
     dailyQuestionTarget: 10, sourceIds: [], requestedQuestionCount: questions.length, version: 1, createdAt, updatedAt: createdAt };
   const topic: Topic = { id: topicId, ownerId: learner.id, audienceUserId: learner.id, planId, title: plan.title,
-    subject: source.subject, description: '管理者から届いた、あなたの学習用の問題集です。', targetCount: questions.length, createdAt };
+    subject: source.subject, questionTemplate:source.questionTemplate, description: '管理者から届いた、あなたの学習用の問題集です。', targetCount: questions.length, createdAt };
   receipt = { requestId: input.requestId, actorId: administrator.id, sourceTopicId: source.id, learnerId: learner.id,
     tags, sourceRevision, createdAt, planId, topicId, questionIds };
   const event = (suffix: string, type: StudyEvent['type'], payload: object): StudyEvent => ({

@@ -99,7 +99,7 @@ export async function generateBatch(jobId:string,batch:number,totalBatches:numbe
     const prior=data.questions.filter(q=>q.topicId===topic.id);
     const sourceIds=new Set(sources.map(s=>s.id));
     const desiredCount=countForBatch(remaining,batch,totalBatches);
-    const result=await generateQuestions({title:topic.title,subject:topic.subject,count:desiredCount,sources,instructions:input.instructions,approvedSamples:input.approvedSamples,approvedInstructions:input.approvedInstructions,existing:promptBudget([...(input.approvedSamples?.map(sample=>sample.prompt) ?? []),...prior.filter(q=>!sources.length || q.sourceIds.some(id=>sourceIds.has(id))).map(q=>q.prompt)])},{actorId:input.requestedBy,feature:'question-generation',requestId:`generation:${jobId}:batch:${batch}`});
+    const result=await generateQuestions({questionTemplate:input.questionTemplate,existingVocabulary:prior,title:topic.title,subject:topic.subject,count:desiredCount,sources,instructions:input.instructions,approvedSamples:input.approvedSamples,approvedInstructions:input.approvedInstructions,existing:promptBudget([...(input.approvedSamples?.map(sample=>sample.prompt) ?? []),...prior.filter(q=>!sources.length || q.sourceIds.some(id=>sourceIds.has(id))).map(q=>q.prompt)])},{actorId:input.requestedBy,feature:'question-generation',requestId:`generation:${jobId}:batch:${batch}`});
     const now=new Date().toISOString();
     const questions=materializeQuestions(result.questions,{job:input,sourceIds:[...sourceIds],prior,excludedPrompts:input.approvedSamples?.map(sample=>sample.prompt),count:desiredCount,createdAt:now});
     const updated:GenerationJob={...job,status:'running',generatedCount:job.generatedCount+questions.length};
