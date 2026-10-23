@@ -10,9 +10,6 @@ export const planTagsSchema = z.array(z.string().trim().min(1).max(40)).max(64)
   .transform(tags => [...new Set(tags)])
   .refine(tags => tags.length <= 8, 'タグは8個まで設定できます。');
 export const planTagsUpdateSchema = z.object({ tags: planTagsSchema }).strict();
-export const planTagsUpdatedEventSchema = z.object({
-  planId: z.string().min(1).max(200), ownerId: z.string().min(1).max(200), tags: planTagsSchema,
-}).strict();
 
 /** Tags organize plans without changing the version used to approve AI proposals. */
 export function preparePlanTagsUpdate(data: StudyData, profile: Profile, planId: string, tags: unknown,
@@ -31,7 +28,8 @@ export function preparePlanTagsUpdate(data: StudyData, profile: Profile, planId:
   const updated = { ...plan, tags: normalized, updatedAt: now.toISOString() };
   return {
     plan: structuredClone(updated),
-    event: { id: `plan-tags:${createId()}`, type: 'plan.tags.updated', actorId: member.id,
-      createdAt: updated.updatedAt, payload: { planId: plan.id, ownerId: member.id, tags: normalized } },
+    // Old deployments recognize plan.updated, parse the full plan, and ignore its unchanged version.
+    event: { id: `plan-tags:${createId()}`, type: 'plan.updated', actorId: member.id,
+      createdAt: updated.updatedAt, payload: { ...updated, tagsOnly: true } },
   };
 }

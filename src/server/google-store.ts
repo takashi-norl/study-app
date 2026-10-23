@@ -14,13 +14,13 @@ import { planningSamplesSchema, planningSampleSchema } from './planning-samples'
 import { aiRequestedSchema, aiUsageSchema } from './ai-usage-schema';
 import { audioSegmentsSchema } from './audio-segments';
 import { personalProfileSavedEventSchema, personalProfileChatRequestedEventSchema, personalProfileChatCompletedEventSchema, personalProfileChatFailedEventSchema } from './personal-profile-schemas';
-import { planTagsSchema, planTagsUpdatedEventSchema } from './plan-tags';
+import { planTagsSchema } from './plan-tags';
 
 const EVENT_TYPES = [
   'topic.created', 'source.created', 'question.upserted', 'questions.published', 'session.created',
   'session.completed', 'attempt.recorded', 'exposure.recorded', 'job.upserted', 'push.subscribed',
   'generation.batch', 'generation.requested', 'source.analysis',
-  'plan.created', 'plan.updated', 'plan.tags.updated', 'planning.turn.upserted',
+  'plan.created', 'plan.updated', 'planning.turn.upserted',
   'audio.requested', 'audio.ready', 'audio.failed',
   'library.questions', 'library.published', 'library.adopted', 'library.publication-requested',
   'ai.requested', 'ai.usage',
@@ -74,6 +74,7 @@ const planSchema = z.object({
   sampleFirst:z.boolean().optional(),arrangedFromTopicId:idSchema.optional(),arrangementExamples:z.array(planningSampleSchema).max(3).optional(),arrangementInstructions:z.string().max(4000).optional(),plannedDays:z.number().int().min(1).max(300).optional(),
   version: z.number().int().min(1), createdAt: isoSchema, updatedAt: isoSchema,
 });
+const planTagsEventSchema = planSchema.extend({ tags: planTagsSchema, tagsOnly: z.literal(true) }).strict();
 const proposalSchema = z.object({
   id: idSchema, title: z.string().trim().min(1).max(150), subject: subjectSchema,
   description: z.string().max(2000), instructions: z.string().max(4000), difficulty: z.string().max(200),
@@ -197,8 +198,11 @@ function validateEvent(input: StudyEvent): StudyEvent {
       if(requested.updatedPlan && (requested.updatedPlan.id!==requested.job.planId || requested.updatedPlan.ownerId!==requested.job.requestedBy)) throw new ApiError(400,'学習プランの作成者が一致しません。','INVALID_GENERATION');
       break;
     }
-    case 'plan.created': case 'plan.updated': planSchema.parse(payload); break;
-    case 'plan.tags.updated': planTagsUpdatedEventSchema.parse(payload); break;
+    case 'plan.created': planSchema.parse(payload); break;
+    case 'plan.updated':
+      if (payload?.tagsOnly !== undefined) planTagsEventSchema.parse(payload);
+      else planSchema.parse(payload);
+      break;
     case 'library.publication-requested': {
       const pending=z.object({sourceTopicId:idSchema,requestedBy:idSchema,requestedAt:isoSchema,revision:z.string().length(64),sequence:z.number().int().positive()}).strict().parse(payload);
       if(pending.requestedBy!==metadata.actorId) throw new ApiError(400,'公開依頼者が一致しません。','INVALID_LIBRARY');
@@ -392,16 +396,15 @@ export function foldEvents(events: StudyEvent[], profiles: Profile[] = []): Stud
       case 'plan.updated': {
         const plan = planSchema.parse(payload);
         const previous = plans.get(plan.id);
-        if (previous && plan.ownerId === previous.ownerId && plan.version > previous.version) plans.set(plan.id, { ...plan, tags: previous.tags });
-        break;
-      }
-      case 'plan.tags.updated': {
-        const update = planTagsUpdatedEventSchema.parse(payload);
-        const plan = plans.get(update.planId);
-        const owner = profiles.find(profile => profile.id === event.actorId && profile.familyId === getFamilyId());
-        if (plan && owner && plan.ownerId === update.ownerId && event.actorId === plan.ownerId
-          && (!plan.testOnly || owner?.role === 'parent')) {
-          plans.set(plan.id, { ...plan, tags: update.tags, updatedAt: event.createdAt });
+        if (payload.tagsOnly === true) {
+          const owner = profiles.find(profile => profile.id === event.actorId && profile.familyId === getFamilyId());
+          // An in-flight AI update may already have advanced the version. Never replace its content.
+          if (previous && owner && plan.ownerId === previous.ownerId && event.actorId === previous.ownerId
+            && plan.version <= previous.version && (!previous.testOnly || owner.role === 'parent')) {
+            plans.set(previous.id, { ...previous, tags: plan.tags, updatedAt: event.createdAt });
+          }
+        } else if (previous && plan.ownerId === previous.ownerId && plan.version > previous.version) {
+          plans.set(plan.id, { ...plan, tags: previous.tags });
         }
         break;
       }
