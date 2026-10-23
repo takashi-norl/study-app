@@ -1146,6 +1146,200 @@
       }
     },
     {
+      "id": "vocab-tomorrow",
+      "word": "tomorrow",
+      "level": "3級",
+      "ipa": "təˈmɑːroʊ",
+      "ipaLabel": "米音",
+      "partOfSpeech": "副詞",
+      "definition": "on the day after today",
+      "meaning": "明日",
+      "usageTip": "副詞として使うときは on や at などの前置詞を付けない。tomorrow morning や tomorrow night のように時間帯を続けられる。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "約束",
+          "text": "Let's meet in front of the station tomorrow at nine.",
+          "translation": "明日9時に駅の前で会いましょう。"
+        },
+        {
+          "id": "example-2",
+          "context": "天気",
+          "text": "The forecast says it will rain tomorrow, so take an umbrella.",
+          "translation": "予報では明日は雨なので、傘を持って行ってね。"
+        },
+        {
+          "id": "example-3",
+          "context": "学校",
+          "text": "We have a math test tomorrow morning.",
+          "translation": "明日の朝に数学のテストがあります。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "tomorrow",
+          "choices": [
+            {
+              "text": "昨日",
+              "meaning": "今日の前の日"
+            },
+            {
+              "text": "明日",
+              "meaning": "今日の次の日"
+            },
+            {
+              "text": "今夜",
+              "meaning": "今日の夜"
+            },
+            {
+              "text": "先月",
+              "meaning": "今月の前の月"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "tomorrow は今日の次の日、つまり「明日」を表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "明日",
+          "choices": [
+            {
+              "text": "today",
+              "meaning": "今日"
+            },
+            {
+              "text": "yesterday",
+              "meaning": "昨日"
+            },
+            {
+              "text": "season",
+              "meaning": "季節"
+            },
+            {
+              "text": "tomorrow",
+              "meaning": "明日"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "「明日」は英語で tomorrow です。today は今日、yesterday は昨日の意味です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "今は忙しいので、話を翌日に延ばしたい場面：I am busy now, so can we talk ___ morning?",
+          "choices": [
+            {
+              "text": "yesterday",
+              "meaning": "昨日"
+            },
+            {
+              "text": "last",
+              "meaning": "この前の"
+            },
+            {
+              "text": "tomorrow",
+              "meaning": "明日"
+            },
+            {
+              "text": "every",
+              "meaning": "毎〜"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "今は忙しく話を先に延ばしたいので、morning の前に置いて「明日の朝」となる tomorrow が自然です。yesterday morning や last morning では過去になり、every morning では毎朝になります。",
+          "alternatives": [
+            {
+              "answer": "later this",
+              "explanation": "later this morning なら今日の後ほどという意味になります。"
+            },
+            {
+              "answer": "Monday",
+              "explanation": "Monday morning と具体的な曜日を指定する言い方もできます。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "tomorrow を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "We will visit my aunt on tomorrow.",
+              "meaning": "明日おばを訪ねる（前置詞の誤り）"
+            },
+            {
+              "text": "We will visit my aunt at tomorrow.",
+              "meaning": "明日おばを訪ねる（前置詞の誤り）"
+            },
+            {
+              "text": "We will visit my aunt in tomorrow.",
+              "meaning": "明日おばを訪ねる（前置詞の誤り）"
+            },
+            {
+              "text": "We will visit my aunt tomorrow.",
+              "meaning": "明日おばを訪ねる"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "tomorrow は副詞として単独で時を表すので、前置詞は不要です。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "今は忙しいので、話を翌日に延ばしたい場面：I am busy now, so can we talk ___ morning?",
+        "answers": [
+          "tomorrow"
+        ],
+        "explanation": "今は忙しく話を先に延ばしたいので、morning の前に置いて「明日の朝」となる tomorrow が自然です。yesterday morning や last morning では過去になり、every morning では毎朝になります。",
+        "alternatives": [
+          {
+            "answer": "later this",
+            "explanation": "later this morning なら今日の後ほどという意味になります。"
+          },
+          {
+            "answer": "Monday",
+            "explanation": "Monday morning と具体的な曜日を指定する言い方もできます。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "tomorrowを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Let's meet in front of the station tomorrow at nine.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-tomorrow-usage",
+          "type": "usage",
+          "prompt": "tomorrow を正しく使った文を選んでください。",
+          "choices": [
+            "We will visit my aunt on tomorrow.",
+            "We will visit my aunt at tomorrow.",
+            "We will visit my aunt in tomorrow.",
+            "We will visit my aunt tomorrow."
+          ],
+          "correctIndex": 3,
+          "explanation": "tomorrow は副詞として単独で時を表すので、前置詞は不要です。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A1",
+        "domains": [
+          "daily-life",
+          "education"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-yesterday",
       "word": "yesterday",
       "level": "3級",
@@ -8724,6 +8918,200 @@
       }
     },
     {
+      "id": "vocab-painter",
+      "word": "painter",
+      "level": "3級",
+      "ipa": "ˈpeɪntə",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "A person who creates pictures with paint, or whose job is painting walls and buildings.",
+      "meaning": "画家、ペンキ職人",
+      "usageTip": "文脈で意味が変わります。美術なら「画家」、家や壁の仕事なら「塗装職人」です。仕事の意味をはっきりさせたいときは house painter と言います。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "美術館",
+          "text": "The painter used bright colors to show a quiet village by the sea.",
+          "translation": "その画家は明るい色を使って、海辺の静かな村を表現した。"
+        },
+        {
+          "id": "example-2",
+          "context": "住宅工事",
+          "text": "We hired a painter to repaint the kitchen walls before we moved in.",
+          "translation": "私たちは入居前に台所の壁を塗り直すため、塗装職人を雇った。"
+        },
+        {
+          "id": "example-3",
+          "context": "将来の夢",
+          "text": "My cousin wants to become a painter after she finishes art school.",
+          "translation": "私のいとこは美術学校を卒業したら画家になりたいと思っている。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "painter",
+          "choices": [
+            {
+              "text": "料理人",
+              "meaning": "cook"
+            },
+            {
+              "text": "画家、ペンキ職人",
+              "meaning": "painter"
+            },
+            {
+              "text": "運転手",
+              "meaning": "driver"
+            },
+            {
+              "text": "記者",
+              "meaning": "reporter"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "painter は絵を描く人、または壁などを塗る仕事をする人を指します。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "画家、ペンキ職人",
+          "choices": [
+            {
+              "text": "farmer",
+              "meaning": "農家"
+            },
+            {
+              "text": "teacher",
+              "meaning": "教師"
+            },
+            {
+              "text": "driver",
+              "meaning": "運転手"
+            },
+            {
+              "text": "painter",
+              "meaning": "画家、ペンキ職人"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "絵を描いたり壁を塗ったりする職業の人は painter です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "古い柵を塗り直す場面：A ___ came with a ladder and paint to repaint the old fence.",
+          "choices": [
+            {
+              "text": "singer",
+              "meaning": "歌手"
+            },
+            {
+              "text": "pilot",
+              "meaning": "操縦士"
+            },
+            {
+              "text": "dentist",
+              "meaning": "歯科医"
+            },
+            {
+              "text": "painter",
+              "meaning": "塗装職人"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "はしごとペンキを持って柵を塗り直しに来る人なので painter が合います。他の職業は塗装作業と結びつきません。",
+          "alternatives": [
+            {
+              "answer": "decorator",
+              "explanation": "主に英国で、内装や塗装を行う人を指します。"
+            },
+            {
+              "answer": "house painter",
+              "explanation": "家の塗装職人であることをはっきり示す言い方です。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "painter を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "She is a painter of famous.",
+              "meaning": "of famous は誤りです。"
+            },
+            {
+              "text": "The painter is painting to the wall.",
+              "meaning": "to が不要です。"
+            },
+            {
+              "text": "He is a painter at the paintings.",
+              "meaning": "at は不適切です。"
+            },
+            {
+              "text": "The painter painted a portrait of the mayor.",
+              "meaning": "画家が市長の肖像画を描いた。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "paint は目的語を直接取り、portrait of ~ で「~の肖像画」と表せます。他は前置詞や語の組み合わせが誤っています。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "古い柵を塗り直す場面：A ___ came with a ladder and paint to repaint the old fence.",
+        "answers": [
+          "painter"
+        ],
+        "explanation": "はしごとペンキを持って柵を塗り直しに来る人なので painter が合います。他の職業は塗装作業と結びつきません。",
+        "alternatives": [
+          {
+            "answer": "decorator",
+            "explanation": "主に英国で、内装や塗装を行う人を指します。"
+          },
+          {
+            "answer": "house painter",
+            "explanation": "家の塗装職人であることをはっきり示す言い方です。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "painterを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The painter used bright colors to show a quiet village by the sea.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-painter-usage",
+          "type": "usage",
+          "prompt": "painter を正しく使った文を選んでください。",
+          "choices": [
+            "She is a painter of famous.",
+            "The painter is painting to the wall.",
+            "He is a painter at the paintings.",
+            "The painter painted a portrait of the mayor."
+          ],
+          "correctIndex": 3,
+          "explanation": "paint は目的語を直接取り、portrait of ~ で「~の肖像画」と表せます。他は前置詞や語の組み合わせが誤っています。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "arts-culture",
+          "work"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-singer",
       "word": "singer",
       "level": "3級",
@@ -9862,6 +10250,199 @@
       }
     },
     {
+      "id": "vocab-software",
+      "word": "software",
+      "level": "3級",
+      "ipa": "ˈsɔːftˌwɛr",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "programs and apps that tell a computer or device what to do",
+      "meaning": "ソフトウェア",
+      "usageTip": "不可算名詞。a software や softwares は避け、some software や a piece of software と言う。install software、update software のように使う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "職場",
+          "text": "The company bought new software to manage customer records.",
+          "translation": "その会社は顧客記録を管理する新しいソフトウェアを購入した。"
+        },
+        {
+          "id": "example-2",
+          "context": "自宅",
+          "text": "You should update the software before you use the printer.",
+          "translation": "プリンターを使う前にソフトウェアを更新した方がいい。"
+        },
+        {
+          "id": "example-3",
+          "context": "学校",
+          "text": "Our class uses free software to edit short videos.",
+          "translation": "私たちのクラスは短い動画を編集するのに無料のソフトウェアを使う。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "software",
+          "choices": [
+            {
+              "text": "柔らかい布",
+              "meaning": "soft cloth"
+            },
+            {
+              "text": "電池",
+              "meaning": "battery"
+            },
+            {
+              "text": "机",
+              "meaning": "desk"
+            },
+            {
+              "text": "ソフトウェア",
+              "meaning": "software"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "software はコンピューターや機器を動かすプログラムやアプリの総称。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "コンピューターを動かすプログラム類",
+          "choices": [
+            {
+              "text": "furniture",
+              "meaning": "家具"
+            },
+            {
+              "text": "jewelry",
+              "meaning": "宝石類"
+            },
+            {
+              "text": "software",
+              "meaning": "ソフトウェア"
+            },
+            {
+              "text": "luggage",
+              "meaning": "荷物"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "プログラム類を指す語は software。他は別の物の総称。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "PCの不具合を相談する場面。The app keeps crashing, so please update the ___ first.",
+          "choices": [
+            {
+              "text": "kitchen",
+              "meaning": "台所"
+            },
+            {
+              "text": "sofa",
+              "meaning": "ソファ"
+            },
+            {
+              "text": "software",
+              "meaning": "ソフトウェア"
+            },
+            {
+              "text": "umbrella",
+              "meaning": "傘"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "アプリが落ちる問題は、更新すべきソフトウェアの問題と考えられる。",
+          "alternatives": [
+            {
+              "answer": "program",
+              "explanation": "個別のプログラムを指し、software より限定的。"
+            },
+            {
+              "answer": "system",
+              "explanation": "OSなど全体を指す場合に使える。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "software を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "I installed a software on my laptop.",
+              "meaning": "ノートパソコンにソフトを入れた。(冠詞の誤り)"
+            },
+            {
+              "text": "I installed some software on my laptop.",
+              "meaning": "ノートパソコンにソフトを入れた。"
+            },
+            {
+              "text": "I installed many softwares on my laptop.",
+              "meaning": "たくさんソフトを入れた。(複数形の誤り)"
+            },
+            {
+              "text": "I installed a software for my laptop yesterday.",
+              "meaning": "昨日ソフトを入れた。(冠詞の誤り)"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "software は不可算名詞なので a や複数形 -s は付けず、some software と言う。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "PCの不具合を相談する場面。The app keeps crashing, so please update the ___ first.",
+        "answers": [
+          "software"
+        ],
+        "explanation": "アプリが落ちる問題は、更新すべきソフトウェアの問題と考えられる。",
+        "alternatives": [
+          {
+            "answer": "program",
+            "explanation": "個別のプログラムを指し、software より限定的。"
+          },
+          {
+            "answer": "system",
+            "explanation": "OSなど全体を指す場合に使える。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "softwareを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The company bought new software to manage customer records.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-software-usage",
+          "type": "usage",
+          "prompt": "software を正しく使った文を選びなさい。",
+          "choices": [
+            "I installed a software on my laptop.",
+            "I installed some software on my laptop.",
+            "I installed many softwares on my laptop.",
+            "I installed a software for my laptop yesterday."
+          ],
+          "correctIndex": 1,
+          "explanation": "software は不可算名詞なので a や複数形 -s は付けず、some software と言う。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "technology"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-password",
       "word": "password",
       "level": "3級",
@@ -10049,6 +10630,200 @@
         "cefrEstimate": "A2",
         "domains": [
           "technology"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-online",
+      "word": "online",
+      "level": "3級",
+      "ipa": "ˌɑːnˈlaɪn",
+      "ipaLabel": "米音",
+      "partOfSpeech": "形容詞",
+      "definition": "connected to the internet, or done through the internet",
+      "meaning": "オンラインの",
+      "usageTip": "名詞の前に置く（an online class）ほか、be online の形でも使う。副詞の shop online もあるが、ここでは形容詞を中心に覚える。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "授業",
+          "text": "My sister takes an online English class every Saturday morning.",
+          "translation": "姉は毎週土曜の朝にオンラインの英語の授業を受けています。"
+        },
+        {
+          "id": "example-2",
+          "context": "買い物",
+          "text": "The store has an online shop with free delivery.",
+          "translation": "その店には送料無料のオンラインショップがあります。"
+        },
+        {
+          "id": "example-3",
+          "context": "友人との連絡",
+          "text": "Are you online now, or should I call you later?",
+          "translation": "今オンラインですか、それとも後で電話しましょうか。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "online",
+          "choices": [
+            {
+              "text": "屋外の",
+              "meaning": "outdoor"
+            },
+            {
+              "text": "古い",
+              "meaning": "old"
+            },
+            {
+              "text": "無料の",
+              "meaning": "free"
+            },
+            {
+              "text": "オンラインの",
+              "meaning": "online"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "online はネットにつながっている、またはネットを通した、という意味。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "オンラインの",
+          "choices": [
+            {
+              "text": "robot",
+              "meaning": "ロボット"
+            },
+            {
+              "text": "online",
+              "meaning": "オンラインの"
+            },
+            {
+              "text": "battery",
+              "meaning": "電池"
+            },
+            {
+              "text": "password",
+              "meaning": "パスワード"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "形容詞で「オンラインの」を表すのは online。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "遠くに住む人との会議の場面。We couldn't meet in person, so we had an ___ meeting.",
+          "choices": [
+            {
+              "text": "outdoor",
+              "meaning": "屋外の"
+            },
+            {
+              "text": "empty",
+              "meaning": "空の"
+            },
+            {
+              "text": "quiet",
+              "meaning": "静かな"
+            },
+            {
+              "text": "online",
+              "meaning": "オンラインの"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "直接会えないので、ネットを通した会議が自然。an に続くので母音で始まる語である点も合う。",
+          "alternatives": [
+            {
+              "answer": "virtual",
+              "explanation": "ネット上で行う会議という点を強調する。"
+            },
+            {
+              "answer": "remote",
+              "explanation": "離れた場所から参加する形式を表す。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "online を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "I bought the ticket in online yesterday.",
+              "meaning": "昨日オンラインでチケットを買った。(in が不要)"
+            },
+            {
+              "text": "He online studies math at home.",
+              "meaning": "彼は家でオンラインで数学を勉強する。(語順の誤り)"
+            },
+            {
+              "text": "The class is online of Monday.",
+              "meaning": "授業は月曜にオンラインだ。(前置詞の誤り)"
+            },
+            {
+              "text": "She is online, so you can message her now.",
+              "meaning": "彼女はオンラインなので今メッセージできる。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "be online は「ネットにつながっている」という自然な形。他は前置詞の余分な使用、語順、前置詞の誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "遠くに住む人との会議の場面。We couldn't meet in person, so we had an ___ meeting.",
+        "answers": [
+          "online"
+        ],
+        "explanation": "直接会えないので、ネットを通した会議が自然。an に続くので母音で始まる語である点も合う。",
+        "alternatives": [
+          {
+            "answer": "virtual",
+            "explanation": "ネット上で行う会議という点を強調する。"
+          },
+          {
+            "answer": "remote",
+            "explanation": "離れた場所から参加する形式を表す。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "onlineを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "My sister takes an online English class every Saturday morning.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-online-usage",
+          "type": "usage",
+          "prompt": "online を正しく使った文を選びなさい。",
+          "choices": [
+            "I bought the ticket in online yesterday.",
+            "He online studies math at home.",
+            "The class is online of Monday.",
+            "She is online, so you can message her now."
+          ],
+          "correctIndex": 3,
+          "explanation": "be online は「ネットにつながっている」という自然な形。他は前置詞の余分な使用、語順、前置詞の誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "technology",
+          "media"
         ],
         "gradeEstimate": "3級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -16713,6 +17488,200 @@
       }
     },
     {
+      "id": "vocab-medicine",
+      "word": "medicine",
+      "level": "3級",
+      "ipa": "/ˈmedsən/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "A substance you take to treat or prevent illness, or the field of study and practice of treating illness.",
+      "meaning": "薬、医学",
+      "usageTip": "「薬」の意味では通常は不可算で、take medicine や some medicine と言う。種類を区別するときは a medicine / medicines も使える。「医学」の意味では study medicine のように使う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "家庭",
+          "text": "You should take this medicine after dinner every day.",
+          "translation": "この薬は毎日夕食後に飲んだほうがいいですよ。"
+        },
+        {
+          "id": "example-2",
+          "context": "学習",
+          "text": "She studied medicine because she wanted to work in a hospital.",
+          "translation": "彼女は病院で働きたかったので、医学を学んだ。"
+        },
+        {
+          "id": "example-3",
+          "context": "旅行",
+          "text": "I forgot my medicine at the hotel, so I went back for it.",
+          "translation": "ホテルに薬を忘れたので、取りに戻った。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "medicine",
+          "choices": [
+            {
+              "text": "地図",
+              "meaning": "場所を示す図"
+            },
+            {
+              "text": "鍵",
+              "meaning": "扉を開ける道具"
+            },
+            {
+              "text": "切符",
+              "meaning": "乗り物に乗る券"
+            },
+            {
+              "text": "薬、医学",
+              "meaning": "病気を治す物、またその学問"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "medicine は「薬」または「医学」を意味する。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "薬、医学",
+          "choices": [
+            {
+              "text": "machine",
+              "meaning": "機械"
+            },
+            {
+              "text": "medicine",
+              "meaning": "薬、医学"
+            },
+            {
+              "text": "magazine",
+              "meaning": "雑誌"
+            },
+            {
+              "text": "mountain",
+              "meaning": "山"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "薬や医学を表す語は medicine である。他は機械、雑誌、山を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "風邪をひいた場面：The doctor told me to take this ___ twice a day until Friday.",
+          "choices": [
+            {
+              "text": "umbrella",
+              "meaning": "傘"
+            },
+            {
+              "text": "ticket",
+              "meaning": "切符"
+            },
+            {
+              "text": "medicine",
+              "meaning": "薬"
+            },
+            {
+              "text": "blanket",
+              "meaning": "毛布"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "医者の指示、take、twice a day から、飲む薬だと分かる。",
+          "alternatives": [
+            {
+              "answer": "medication",
+              "explanation": "ややかたい語で、処方薬など治療用の薬を指す場面に合う。"
+            },
+            {
+              "answer": "pills",
+              "explanation": "錠剤だと分かっている場合に使える、より具体的な言い方。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "「薬」の意味で medicine を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "I ate a medicines for my cough.",
+              "meaning": "咳のために薬を食べた（a と複数形が合わない）"
+            },
+            {
+              "text": "I made medicine to my cough.",
+              "meaning": "咳に薬を作った（動詞と前置詞が不自然）"
+            },
+            {
+              "text": "I took some medicine for my cough.",
+              "meaning": "咳のために薬を飲んだ。"
+            },
+            {
+              "text": "I did medicine for my cough yesterday.",
+              "meaning": "昨日咳のために薬をした（動詞が不自然）"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "薬を飲むときは take medicine が自然で、for my cough で目的を表せる。a medicines は冠詞と複数形が合わず、make や do では「薬を飲む」にならない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "風邪をひいた場面：The doctor told me to take this ___ twice a day until Friday.",
+        "answers": [
+          "medicine"
+        ],
+        "explanation": "医者の指示、take、twice a day から、飲む薬だと分かる。",
+        "alternatives": [
+          {
+            "answer": "medication",
+            "explanation": "ややかたい語で、処方薬など治療用の薬を指す場面に合う。"
+          },
+          {
+            "answer": "pills",
+            "explanation": "錠剤だと分かっている場合に使える、より具体的な言い方。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "medicineを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "You should take this medicine after dinner every day.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-medicine-usage",
+          "type": "usage",
+          "prompt": "「薬」の意味で medicine を正しく使った文を選びなさい。",
+          "choices": [
+            "I ate a medicines for my cough.",
+            "I made medicine to my cough.",
+            "I took some medicine for my cough.",
+            "I did medicine for my cough yesterday."
+          ],
+          "correctIndex": 2,
+          "explanation": "薬を飲むときは take medicine が自然で、for my cough で目的を表せる。a medicines は冠詞と複数形が合わず、make や do では「薬を飲む」にならない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "medical",
+          "health"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-pill",
       "word": "pill",
       "level": "3級",
@@ -17890,6 +18859,62 @@
       "voiceLabel": "Sarah（女性）"
     },
     {
+      "wordId": "vocab-month",
+      "cacheKey": "8cbd6370431a536f14552c00a20381bd9fd32ee14740510e619e59fffcc88bdf",
+      "fileId": "1RK1e53hvBd1uYg_00tGRyZxdkVcJ_k70",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.627
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.635,
+          "endSeconds": 3.3030000000000004
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.467,
+          "endSeconds": 6.403
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.5089999999999995,
+          "endSeconds": 9.288
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-morning",
+      "cacheKey": "7ca31218a9515a385a66a2c6a4f87400e32a21c80662156f2e6723e32204cf36",
+      "fileId": "1oFI4Vj1jZEV2UKwuFg9WpV1Gs6rLcDH_",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.813
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.813,
+          "endSeconds": 3.4770000000000003
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.4770000000000003,
+          "endSeconds": 6.037
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.037,
+          "endSeconds": 9.52
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
       "wordId": "vocab-evening",
       "cacheKey": "36db737650e90c98c8c61509287abaf9e1b4b794aafdc759bab1b0228daeba61",
       "fileId": "1dTZ8-_p5CwxHffaGmP4QO8oRQ-4_Q4NH",
@@ -17944,6 +18969,118 @@
         }
       ],
       "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-today",
+      "cacheKey": "11090a3cd581877c54150e615dfabc5951a4c497a5c23b45630abc9d538a441b",
+      "fileId": "1IqsphjdYv1Y2yWpZEjTzg07hn0Lm4-SC",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.714
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.714,
+          "endSeconds": 4.5395
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.547,
+          "endSeconds": 7.215999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.45,
+          "endSeconds": 10.031
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-yesterday",
+      "cacheKey": "2bc76af20583b078b331281b2d3fc0104bcf0c7a08b801feee385363cfa74c98",
+      "fileId": "1jQZQikr0_zfGonVyrV3utOaPQuguB_5V",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9115
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9115,
+          "endSeconds": 3.733
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.839,
+          "endSeconds": 6.763
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.927,
+          "endSeconds": 9.66
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-weekend",
+      "cacheKey": "00cf3c2ebb55cd0c34df12364db70bd3b644d15d1e285d17bbaa9b394eb259c8",
+      "fileId": "1f8Pty0SBJcAWxy_KRfkMQ9gofC2tKPR2",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9695
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9695,
+          "endSeconds": 3.2625
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.2625,
+          "endSeconds": 5.4045000000000005
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.43,
+          "endSeconds": 7.988
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-season",
+      "cacheKey": "e9d543437f1a2941df2a303a57ffac6da741d4d347e2bc305ca0f81df0ccfe36",
+      "fileId": "1K1ttHodLpb-w9jpU4NHpTI6eOVpcmUgM",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.819
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.157,
+          "endSeconds": 3.849
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.013,
+          "endSeconds": 6.646999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.811,
+          "endSeconds": 10.077
+        }
+      ],
+      "voiceLabel": "George（男性）"
     },
     {
       "wordId": "vocab-spring",
@@ -18282,6 +19419,34 @@
       "voiceLabel": "George（男性）"
     },
     {
+      "wordId": "vocab-temperature",
+      "cacheKey": "002db50783ae0f1a3e5e1115dd196ec7b086ffbcfb69947a0a3bcfc63a19583b",
+      "fileId": "1OuIhGMJLevMAJ_grqkc65Yij9-G_qS_O",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8995
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9480000000000001,
+          "endSeconds": 4.104
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.129,
+          "endSeconds": 6.8149999999999995
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.8229999999999995,
+          "endSeconds": 9.799
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
       "wordId": "vocab-power",
       "cacheKey": "478be44de0154e9dafb96e9466a8e39eed1caa054d374ce804ae904f6285acc6",
       "fileId": "1uTWos28jjtSoVMS-Afq98rujvQ4qXYJS",
@@ -18336,6 +19501,34 @@
         }
       ],
       "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-gas",
+      "cacheKey": "740f8f5dfb6b6426dfbeb1f3f27e4d80979e2b816025f2eea562a40c789f6f07",
+      "fileId": "1CXSv91F0Uo53M5fOx_B9uDkgmXqzkARn",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7255
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.7255,
+          "endSeconds": 3.733
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.839,
+          "endSeconds": 6.461
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.5089999999999995,
+          "endSeconds": 9.799
+        }
+      ],
+      "voiceLabel": "George（男性）"
     },
     {
       "wordId": "vocab-oxygen",
@@ -18506,6 +19699,34 @@
       "voiceLabel": "George（男性）"
     },
     {
+      "wordId": "vocab-lesson",
+      "cacheKey": "61dbb8722dbd4b3bee6fcadf27ab3ab0fd544bf8f9aac987d64ac021a3af8cd2",
+      "fileId": "1-P8Gj0CU232Bc0AMi4e33he_hNIN5S5J",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8185
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.867,
+          "endSeconds": 3.779
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.827,
+          "endSeconds": 6.937
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.985,
+          "endSeconds": 10.077
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
       "wordId": "vocab-subject",
       "cacheKey": "08ca6780fb735f93198ebd597db8e500a4f1fbb0e409ca27b984a023ff7ca861",
       "fileId": "1E59AAme8n4NgHMEye--7Y0T7EyXvKM4P",
@@ -18532,6 +19753,34 @@
         }
       ],
       "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-course",
+      "cacheKey": "f4f6d0bb80ceea358f534f76efa4d5214ffe06f6201bb0268e98e833849502a7",
+      "fileId": "1-pWovJbKBmAEsKwcwtSRxF5PLLznLRGX",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7025
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.728,
+          "endSeconds": 3.953
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.9779999999999998,
+          "endSeconds": 7.384
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.3919999999999995,
+          "endSeconds": 9.938
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
     },
     {
       "wordId": "vocab-project",
@@ -18926,6 +20175,202 @@
       "voiceLabel": "George（男性）"
     },
     {
+      "wordId": "vocab-theme",
+      "cacheKey": "d6bcf2d38603004eaad9bee2fca75569d8fc84c97b01e4ba973f82d2e7417bde",
+      "fileId": "1peUGYBc0ijhFwLg_aBQf3A9uuVHJuKdc",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8185
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.867,
+          "endSeconds": 4.1739999999999995
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.199,
+          "endSeconds": 7.3085
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.3085,
+          "endSeconds": 10.542
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-stage",
+      "cacheKey": "598895ae08869b5d8a0bb498e828bc651b41fa88074aec4d679148fab2f0165c",
+      "fileId": "14wDgC0UVg-MPnR535P2yKsxlQUs0I_L2",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8069999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.8069999999999999,
+          "endSeconds": 4.3709999999999996
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.6049999999999995,
+          "endSeconds": 8.551
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.576,
+          "endSeconds": 12.214
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-camera",
+      "cacheKey": "39429dd3ca0fe4c69c130538c33623eafa7f17f60bd3ea5d898167d92846c24d",
+      "fileId": "11Fwkqxssdwx1SAlRxb_yFaNj_JZq884h",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8360000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.8360000000000001,
+          "endSeconds": 4.0115
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.06,
+          "endSeconds": 7.088
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.088,
+          "endSeconds": 9.752
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-laptop",
+      "cacheKey": "5fd18d8faf1b5d1012084190318ab0e8a42e24d464e526449679c00755e21ddd",
+      "fileId": "1bllC7pKdnrlenjupQ2jOn3OdlT8J-YuG",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9115
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9600000000000001,
+          "endSeconds": 4.023
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.187,
+          "endSeconds": 7.111
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.345,
+          "endSeconds": 10.542
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-password",
+      "cacheKey": "86603eb52f09d9f426ac5f0e0682485d0432e298368fb7771bffe212e7a9b0fd",
+      "fileId": "1E_tUZ7VNuvYctiNskUOeHDv-GuUmjWDD",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8765000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.8765000000000001,
+          "endSeconds": 4.428999999999999
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.768,
+          "endSeconds": 8.249
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.483,
+          "endSeconds": 11.471
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-robot",
+      "cacheKey": "b9454ceb038ce427605b4d1ff109b25569a3c9d6fa00468ee076a7e8a083f738",
+      "fileId": "1mxS9XBfWQjS_773bNLAnCBFgn1MrKFvU",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.836
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.844,
+          "endSeconds": 4.2780000000000005
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.303,
+          "endSeconds": 7.6105
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.659,
+          "endSeconds": 10.681
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-battery",
+      "cacheKey": "fb14594735d20dd059eb38d6dc85bbb2040dfade3a8790a87a39749c0f5a89ba",
+      "fileId": "1x9KBHDB7rgjBHRkbnaYEokW8T_qHaFHU",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.911
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.076,
+          "endSeconds": 4.418
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.582,
+          "endSeconds": 7.593
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.601,
+          "endSeconds": 10.449
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
       "wordId": "vocab-machine",
       "cacheKey": "48a6286b9f2928cf246575cfd3d112e236b6b5c758317425ba25e30673f61d2e",
       "fileId": "10q9UbIGeEQe_BKAhX1DSfFoeEmLxMC27",
@@ -18949,6 +20394,62 @@
           "id": "example-3",
           "startSeconds": 7.252,
           "endSeconds": 10.774
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-tool",
+      "cacheKey": "750ebc3053b9c1d996abfc37b23d4ace194af5dd45190a6b6c8a58356f2d8085",
+      "fileId": "158NK_i95L2eCopSrMO-e9Fiq6a8Gq8Oy",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.6385000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.6385000000000001,
+          "endSeconds": 3.8600000000000003
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.0249999999999995,
+          "endSeconds": 7.3549999999999995
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.519,
+          "endSeconds": 11.099
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-job",
+      "cacheKey": "d40fcf9648945a13263e60ce874f498bc84a195e146d47a1c337bddcedcb9f63",
+      "fileId": "1asglGXI1GKr88Re7FnzYF60kkV5ZqlcL",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8420000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9480000000000001,
+          "endSeconds": 3.431
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.537,
+          "endSeconds": 5.7299999999999995
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.836,
+          "endSeconds": 8.777
         }
       ],
       "voiceLabel": "Sarah（女性）"
@@ -18980,6 +20481,34 @@
         }
       ],
       "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-career",
+      "cacheKey": "f7910d9ae105896bf8041a125eca9c70c1132adddae2f7e9f297f5b713801b7f",
+      "fileId": "19O2dHxIw_mDZjbLGE4xkto6t7PGLXC_w",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.917
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9249999999999999,
+          "endSeconds": 4.0809999999999995
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.129,
+          "endSeconds": 8.133000000000001
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.158000000000001,
+          "endSeconds": 11.378
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
     },
     {
       "wordId": "vocab-manager",
@@ -19344,6 +20873,34 @@
         }
       ],
       "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-trade",
+      "cacheKey": "fb867970f267615e40754b9abd527be6fd8b3370ca89c66bd31a0075a5c5f569",
+      "fileId": "1NWhE5aqPHWO2SXAvLA-C1bAMdmAtdEuW",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.882
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.882,
+          "endSeconds": 4.5569999999999995
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.663,
+          "endSeconds": 8.278
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.286000000000001,
+          "endSeconds": 11.749
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
     },
     {
       "wordId": "vocab-supply",

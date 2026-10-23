@@ -6862,6 +6862,200 @@
       }
     },
     {
+      "id": "vocab-mammal",
+      "word": "mammal",
+      "level": "3級",
+      "ipa": "/ˈmæməl/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "a warm-blooded animal that feeds its young with milk and usually has hair or fur",
+      "meaning": "哺乳類",
+      "usageTip": "可算名詞で、複数形は mammals。人間、犬、クジラ、コウモリなども含む。a marine mammal(海の哺乳類)、a small mammal(小型哺乳類)の形でよく使う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "動物園",
+          "text": "The whale is a huge mammal, not a fish.",
+          "translation": "クジラは魚ではなく、巨大な哺乳類だ。"
+        },
+        {
+          "id": "example-2",
+          "context": "授業",
+          "text": "Every mammal feeds its young with milk when they are born.",
+          "translation": "すべての哺乳類は、子が生まれると乳で育てる。"
+        },
+        {
+          "id": "example-3",
+          "context": "自然観察",
+          "text": "We saw a small mammal run across the path at dusk.",
+          "translation": "夕暮れに小さな哺乳類が道を横切るのを見た。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "mammal",
+          "choices": [
+            {
+              "text": "哺乳類",
+              "meaning": "乳で子を育てる動物"
+            },
+            {
+              "text": "鉱物",
+              "meaning": "地中の無機物"
+            },
+            {
+              "text": "浸食",
+              "meaning": "土地が削られること"
+            },
+            {
+              "text": "昆虫",
+              "meaning": "小さな虫"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "mammal は乳で子を育てる動物、哺乳類を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "哺乳類",
+          "choices": [
+            {
+              "text": "lava",
+              "meaning": "溶岩"
+            },
+            {
+              "text": "insect",
+              "meaning": "昆虫"
+            },
+            {
+              "text": "mineral",
+              "meaning": "鉱物"
+            },
+            {
+              "text": "mammal",
+              "meaning": "哺乳類"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "哺乳類は mammal。insect は昆虫で別の分類を指す。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "動物の分類を学ぶ場面:A dolphin lives in water, but it is a ___ because it feeds milk to its babies.",
+          "choices": [
+            {
+              "text": "mineral",
+              "meaning": "鉱物"
+            },
+            {
+              "text": "insect",
+              "meaning": "昆虫"
+            },
+            {
+              "text": "mammal",
+              "meaning": "哺乳類"
+            },
+            {
+              "text": "lava",
+              "meaning": "溶岩"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "乳で子を育てるという理由に合うのは mammal。他の語は動物の分類として合わない、または動物ではない。",
+          "alternatives": [
+            {
+              "answer": "animal",
+              "explanation": "間違いではないが広い語で、乳で育てる理由との結びつきが弱い。"
+            },
+            {
+              "answer": "sea creature",
+              "explanation": "水中にいる点は合うが、乳で育てる分類の説明にはならない。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "mammal の使い方が正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "I saw many mammal at the zoo yesterday.",
+              "meaning": "昨日動物園で多くの哺乳類を見た。(複数形の誤り)"
+            },
+            {
+              "text": "A mammal are a warm-blooded animal.",
+              "meaning": "哺乳類は恒温動物だ。(動詞の一致の誤り)"
+            },
+            {
+              "text": "She is studying about mammals' of Japan.",
+              "meaning": "彼女は日本の哺乳類を研究している。(所有格・前置詞の誤り)"
+            },
+            {
+              "text": "A dog is a mammal, so it feeds its puppies milk.",
+              "meaning": "犬は哺乳類なので、子犬に乳を与える。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "単数の a mammal と is、他の文では many の後に複数形が必要、主語と動詞の一致、study の不要な about と所有格の誤りがある。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "動物の分類を学ぶ場面:A dolphin lives in water, but it is a ___ because it feeds milk to its babies.",
+        "answers": [
+          "mammal"
+        ],
+        "explanation": "乳で子を育てるという理由に合うのは mammal。他の語は動物の分類として合わない、または動物ではない。",
+        "alternatives": [
+          {
+            "answer": "animal",
+            "explanation": "間違いではないが広い語で、乳で育てる理由との結びつきが弱い。"
+          },
+          {
+            "answer": "sea creature",
+            "explanation": "水中にいる点は合うが、乳で育てる分類の説明にはならない。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "mammalを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The whale is a huge mammal, not a fish.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-mammal-usage",
+          "type": "usage",
+          "prompt": "mammal の使い方が正しい文を選んでください。",
+          "choices": [
+            "I saw many mammal at the zoo yesterday.",
+            "A mammal are a warm-blooded animal.",
+            "She is studying about mammals' of Japan.",
+            "A dog is a mammal, so it feeds its puppies milk."
+          ],
+          "correctIndex": 3,
+          "explanation": "単数の a mammal と is、他の文では many の後に複数形が必要、主語と動詞の一致、study の不要な about と所有格の誤りがある。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "science",
+          "environment"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-insect",
       "word": "insect",
       "level": "3級",
@@ -17377,6 +17571,208 @@
       }
     },
     {
+      "id": "vocab-coal",
+      "word": "coal",
+      "level": "3級",
+      "ipa": "/kəʊl/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a hard black rock that is burned as fuel to produce heat or electricity",
+      "meaning": "石炭",
+      "usageTip": "燃料の物質としては不可算名詞で、a piece of coal のように数える。a coal mine は「炭鉱」。燃えている小片を指して coals と言うこともあるが、学習者は不可算で使うのが安全。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "歴史",
+          "text": "Coal was once the main fuel for trains and factories.",
+          "translation": "石炭はかつて列車や工場の主な燃料でした。"
+        },
+        {
+          "id": "example-2",
+          "context": "環境",
+          "text": "Burning coal produces a large amount of carbon dioxide.",
+          "translation": "石炭を燃やすと大量の二酸化炭素が出ます。"
+        },
+        {
+          "id": "example-3",
+          "context": "仕事",
+          "text": "His grandfather worked in a coal mine for thirty years.",
+          "translation": "彼の祖父は三十年間、炭鉱で働きました。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "coal",
+          "choices": [
+            {
+              "text": "氷",
+              "meaning": "凍った水"
+            },
+            {
+              "text": "木材",
+              "meaning": "木の材料"
+            },
+            {
+              "text": "砂糖",
+              "meaning": "甘い調味料"
+            },
+            {
+              "text": "石炭",
+              "meaning": "燃料にする黒い岩"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "coal は燃料として使う石炭です。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "石炭",
+          "choices": [
+            {
+              "text": "coat",
+              "meaning": "上着"
+            },
+            {
+              "text": "coal",
+              "meaning": "石炭"
+            },
+            {
+              "text": "coach",
+              "meaning": "指導者"
+            },
+            {
+              "text": "cold",
+              "meaning": "寒さ"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "「石炭」は coal です。coat は綴りが似た別語です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "発電所の話: Some power stations still burn ___ to make electricity.",
+          "choices": [
+            {
+              "text": "milk",
+              "meaning": "牛乳"
+            },
+            {
+              "text": "cotton",
+              "meaning": "綿"
+            },
+            {
+              "text": "glass",
+              "meaning": "ガラス"
+            },
+            {
+              "text": "coal",
+              "meaning": "石炭"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "発電のために燃やす燃料として合うのは石炭です。他は燃料として使う話に合いません。",
+          "alternatives": [
+            {
+              "answer": "gas",
+              "explanation": "天然ガスを燃やす発電も一般的です。"
+            },
+            {
+              "answer": "oil",
+              "explanation": "石油を燃料にする発電所もあります。"
+            },
+            {
+              "answer": "wood",
+              "explanation": "木材を燃料にする場合もありますが小規模です。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "coal を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "There are many coals in the ground here.",
+              "meaning": "誤り: 埋蔵資源は不可算で使う"
+            },
+            {
+              "text": "A lot of coal are under the ground.",
+              "meaning": "誤り: 不可算名詞に複数形の動詞"
+            },
+            {
+              "text": "The coal mine closed many years ago.",
+              "meaning": "その炭鉱は何年も前に閉鎖された。"
+            },
+            {
+              "text": "Coal is an energy that many coals produce.",
+              "meaning": "誤り: 不自然な複数形の使い方"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "coal mine は「炭鉱」という自然な複合語です。地中の資源としての coal は不可算で、単数扱いにします。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "発電所の話: Some power stations still burn ___ to make electricity.",
+        "answers": [
+          "coal"
+        ],
+        "explanation": "発電のために燃やす燃料として合うのは石炭です。他は燃料として使う話に合いません。",
+        "alternatives": [
+          {
+            "answer": "gas",
+            "explanation": "天然ガスを燃やす発電も一般的です。"
+          },
+          {
+            "answer": "oil",
+            "explanation": "石油を燃料にする発電所もあります。"
+          },
+          {
+            "answer": "wood",
+            "explanation": "木材を燃料にする場合もありますが小規模です。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "coalを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Coal was once the main fuel for trains and factories.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-coal-usage",
+          "type": "usage",
+          "prompt": "coal を正しく使った文を選んでください。",
+          "choices": [
+            "There are many coals in the ground here.",
+            "A lot of coal are under the ground.",
+            "The coal mine closed many years ago.",
+            "Coal is an energy that many coals produce."
+          ],
+          "correctIndex": 2,
+          "explanation": "coal mine は「炭鉱」という自然な複合語です。地中の資源としての coal は不可算で、単数扱いにします。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "environment",
+          "economics"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-habitat",
       "word": "habitat",
       "level": "3級",
@@ -19243,6 +19639,34 @@
       "voiceLabel": "Sarah（女性）"
     },
     {
+      "wordId": "vocab-helmet",
+      "cacheKey": "694d55f55e4ed7c91155d1c4c6a223a54ed26434aa28878baead5c3a109bcf0d",
+      "fileId": "1T-gLYsbowed-2xdoqpnO7SLDQ6WynfQv",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8420000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0059999999999998,
+          "endSeconds": 3.9299999999999997
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.9299999999999997,
+          "endSeconds": 6.774
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.0089999999999995,
+          "endSeconds": 10.217
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
       "wordId": "vocab-sunscreen",
       "cacheKey": "7d34b37a5c60db3e255db0538732de562a0a4d3e82e2168f42e8fcbd073903cb",
       "fileId": "1Loy9HwaMowzYDfnbrItMt0s6bsvOR5xq",
@@ -19299,6 +19723,34 @@
       "voiceLabel": "George（男性）"
     },
     {
+      "wordId": "vocab-deposit",
+      "cacheKey": "6a39c032d326e1eab79183e7a5a58f7a7b67fd3f5f1107abe8c10a7633eb825b",
+      "fileId": "1vFrrX1SzmHXz6j5H-J_gbg9ihF8-SepO",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.911
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.076,
+          "endSeconds": 4.023
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.071,
+          "endSeconds": 7.3085
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.357,
+          "endSeconds": 10.31
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
       "wordId": "vocab-bargain",
       "cacheKey": "3785bdbe98bb60792a377e74ca0b5b59d89c123367273bd8deac55f3e99c8d2d",
       "fileId": "1BuYtMG3uD1vmx2b5ylQ_UVXHNAdaviEC",
@@ -19325,6 +19777,34 @@
         }
       ],
       "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-brochure",
+      "cacheKey": "2a6a2e8aecb18feadd3256eae0eefa5d03736c1c16f97bbbc09deb3169a5b445",
+      "fileId": "1hwctMXePm3-hFOcIVa1nQEwtkzoKD4YR",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9465
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.995,
+          "endSeconds": 3.7385
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.746,
+          "endSeconds": 6.548
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.556,
+          "endSeconds": 9.938
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
     },
     {
       "wordId": "vocab-parcel",
@@ -19381,6 +19861,34 @@
         }
       ],
       "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-landlord",
+      "cacheKey": "37c746039a69f0e4c88cd684d1429a1e1805e53a65a570188f4e274efb5548c0",
+      "fileId": "17b6D5N5qBemdLeOj0BQqdS76pVFSt_Oe",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.755
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.755,
+          "endSeconds": 4.174
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.6049999999999995,
+          "endSeconds": 7.691999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.798,
+          "endSeconds": 10.31
+        }
+      ],
+      "voiceLabel": "George（男性）"
     },
     {
       "wordId": "vocab-suburb",
@@ -20111,6 +20619,34 @@
       "voiceLabel": "Sarah（女性）"
     },
     {
+      "wordId": "vocab-remote",
+      "cacheKey": "7294451a1a0e21fe31986e0a6882c2d5692f6608ea7c24423523933d8c320791",
+      "fileId": "1ZIPVOvr7M_gWVsjgZBhDYm7QgrQBKqAh",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.784
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9480000000000001,
+          "endSeconds": 5.242
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.476,
+          "endSeconds": 9.654
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 9.818000000000001,
+          "endSeconds": 13.653
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
       "wordId": "vocab-sibling",
       "cacheKey": "a03d78450c4cf3dfb6f871da98274eb766e6541c09695aa628d8795063e62ad8",
       "fileId": "1SkWWTZBmYzRzOVWLbUSfUySBzM7amJ_6",
@@ -20195,6 +20731,34 @@
       "voiceLabel": "Sarah（女性）"
     },
     {
+      "wordId": "vocab-greet",
+      "cacheKey": "11d7d5ab69398f86655fbc19190454fc2ce62343ac41521c5df8f9285f8dfa0d",
+      "fileId": "1HDiJvqnndP3jaIGBxYwl2vMYeKatNK2o",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.772
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.1110000000000002,
+          "endSeconds": 4.5045
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.512,
+          "endSeconds": 7.1
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.2059999999999995,
+          "endSeconds": 9.52
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
       "wordId": "vocab-compliment",
       "cacheKey": "7a6419a40c99efa2e5b6290627d93299effa76a63525ae9c217017bfb5f42cd8",
       "fileId": "1kKpwyl9L38shUsGijC9UnkuGY5rhmV4o",
@@ -20249,6 +20813,34 @@
         }
       ],
       "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-negotiate",
+      "cacheKey": "737fe9ad1bd0e146e7761a605fccc2885a554285bea87134c288257ed6588da0",
+      "fileId": "1upEr6-B3_gh-a5p2RqtmgIw5bjjGEAmX",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9929999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0179999999999998,
+          "endSeconds": 4.6495
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.6979999999999995,
+          "endSeconds": 7.947
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.995,
+          "endSeconds": 11.192
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
     },
     {
       "wordId": "vocab-guardian",
@@ -20333,6 +20925,34 @@
         }
       ],
       "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-hurry",
+      "cacheKey": "f181a3c87e005e68c9981fa9b2ac3867610eb327714b819900882ab77d9a3baf",
+      "fileId": "1H0IT6jqJoE_rg4wxQO2D6wjdarOIemq-",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.493
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.493,
+          "endSeconds": 3.152
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.3169999999999997,
+          "endSeconds": 5.8805
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.906,
+          "endSeconds": 8.777
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
     },
     {
       "wordId": "vocab-cancel",
@@ -20582,6 +21202,62 @@
           "id": "example-3",
           "startSeconds": 6.4399999999999995,
           "endSeconds": 9.288
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-wound",
+      "cacheKey": "480639c5a8c3a04f5dd0ea702ec29147dbd28fc49d97e89d3540f199d671665a",
+      "fileId": "1meVjdpTnNdM76C9IqOz0SQB9DIBJIYG6",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.0274999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.076,
+          "endSeconds": 4.3825
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.431,
+          "endSeconds": 7.221500000000001
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.229,
+          "endSeconds": 10.495
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-cure",
+      "cacheKey": "b052fbd04c7cb13110218514bd2f37d4a4e783aaff05af5e8c6d2ae9683c1406",
+      "fileId": "1STiX2S4EXM9aw2v_ip7pmEhF7NN9B2pY",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.76
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9249999999999999,
+          "endSeconds": 4.302
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.536,
+          "endSeconds": 7.2445
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.252,
+          "endSeconds": 10.728
         }
       ],
       "voiceLabel": "George（男性）"
@@ -21091,6 +21767,118 @@
       "voiceLabel": "George（男性）"
     },
     {
+      "wordId": "vocab-oil",
+      "cacheKey": "f5815737f54514043976d0662f0b54eb397b773ab12d703aef375b9807a42026",
+      "fileId": "1Wwgb5wq4zA8fYIDawmxh-az5UdnbVF7j",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.6795
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.728,
+          "endSeconds": 3.8605
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.909,
+          "endSeconds": 7.0065
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.0065,
+          "endSeconds": 9.752
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-habitat",
+      "cacheKey": "f39cd55dbff1af505748a1f37caa98548af7030e830526c0ccaad18fad67228a",
+      "fileId": "1tjib_BlxqiYBTt6kWqzHCiPT_Q3LEE_x",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.045
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.053,
+          "endSeconds": 4.8759999999999994
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.8839999999999995,
+          "endSeconds": 8.8235
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.831000000000001,
+          "endSeconds": 11.889
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-extinct",
+      "cacheKey": "48e7285dce794b1d56dba63791ff6c2ad952b040a29b28d47aa67d3927115362",
+      "fileId": "1UBNklvhuErjehDoyg-yndw564em_oU9W",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9115
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9369999999999999,
+          "endSeconds": 4.811999999999999
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.977,
+          "endSeconds": 9.247
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 9.412,
+          "endSeconds": 13.7
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-email",
+      "cacheKey": "088fcd9a8bb39feb98cb2b47e99083a2a67bcb16023b96dc684ce43493956946",
+      "fileId": "15AUYZEbxdPHLqZ3UeX0zeT-LKbV_hVag",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8765
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.8765,
+          "endSeconds": 3.715
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.723,
+          "endSeconds": 6.554
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.554,
+          "endSeconds": 9.613
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
       "wordId": "vocab-menu",
       "cacheKey": "0022eef0b2d005b64ce795d5d0ed2aaccaeda70a834963b1b81947c17bf594c7",
       "fileId": "18UbYvrq9gd39ApydQjOlnaYVHkzniIdv",
@@ -21173,6 +21961,34 @@
         }
       ],
       "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-boat",
+      "cacheKey": "1710d5eeed34286637db03b6fcd3db6e2596fb854c27e3b63ae47baf12464f3c",
+      "fileId": "1KMGGzOviaN_b-h_huI0z_l3wbRP_n-FV",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7375
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.786,
+          "endSeconds": 3.1175
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.1175,
+          "endSeconds": 5.509
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.5569999999999995,
+          "endSeconds": 8.452
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
     },
     {
       "wordId": "vocab-ship",

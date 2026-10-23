@@ -3841,6 +3841,199 @@
       }
     },
     {
+      "id": "vocab-butter",
+      "word": "butter",
+      "level": "3級",
+      "ipa": "/ˈbʌtə/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "A soft yellow food made from cream, used on bread or in cooking.",
+      "meaning": "バター",
+      "usageTip": "ふつう不可算名詞として使う。量は some butter や a piece of butter、a stick of butter で表す。many butter は誤り。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "朝食",
+          "text": "I spread some butter on my toast every morning.",
+          "translation": "私は毎朝トーストにバターを塗る。"
+        },
+        {
+          "id": "example-2",
+          "context": "料理",
+          "text": "Melt the butter in a pan before adding the onions.",
+          "translation": "玉ねぎを入れる前にフライパンでバターを溶かして。"
+        },
+        {
+          "id": "example-3",
+          "context": "買い物",
+          "text": "We need a block of butter for the cake.",
+          "translation": "ケーキ用にバターがひとかたまり必要だ。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "butter",
+          "choices": [
+            {
+              "text": "牛乳",
+              "meaning": "飲み物の乳"
+            },
+            {
+              "text": "砂糖",
+              "meaning": "甘い調味料"
+            },
+            {
+              "text": "米",
+              "meaning": "主食の穀物"
+            },
+            {
+              "text": "バター",
+              "meaning": "クリームから作る食品"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "butter はパンや料理に使うバター。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "バター",
+          "choices": [
+            {
+              "text": "butter",
+              "meaning": "バター"
+            },
+            {
+              "text": "egg",
+              "meaning": "卵"
+            },
+            {
+              "text": "pepper",
+              "meaning": "コショウ"
+            },
+            {
+              "text": "apple",
+              "meaning": "リンゴ"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "バターは butter。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 朝食でパンに塗る、クリームから作る食品を頼む。 Could you pass the ___ for my bread?",
+          "choices": [
+            {
+              "text": "meat",
+              "meaning": "肉"
+            },
+            {
+              "text": "butter",
+              "meaning": "バター"
+            },
+            {
+              "text": "soup",
+              "meaning": "スープ"
+            },
+            {
+              "text": "rice",
+              "meaning": "米"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "パンに塗るものとして自然なのは butter。",
+          "alternatives": [
+            {
+              "answer": "jam",
+              "explanation": "ジャムでも自然だが、味は甘くなる。"
+            },
+            {
+              "answer": "margarine",
+              "explanation": "バターの代用品として使われる食品。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "butter を正しく使った文はどれ?",
+          "choices": [
+            {
+              "text": "I bought many butter at the store.",
+              "meaning": "私は店でバターをたくさん買った。"
+            },
+            {
+              "text": "I bought a piece of butter at the store.",
+              "meaning": "私は店でバターを一つ買った。"
+            },
+            {
+              "text": "I bought butters of milk at the store.",
+              "meaning": "私は店でミルクのバターを買った。"
+            },
+            {
+              "text": "I bought a few butter at the store.",
+              "meaning": "私は店でバターを少し買った。"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "butter は不可算名詞なので、a piece of butter のように単位を付けて数える。many や a few は数えられる名詞に使う語で、butter の直前には合わない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 朝食でパンに塗る、クリームから作る食品を頼む。 Could you pass the ___ for my bread?",
+        "answers": [
+          "butter"
+        ],
+        "explanation": "パンに塗るものとして自然なのは butter。",
+        "alternatives": [
+          {
+            "answer": "jam",
+            "explanation": "ジャムでも自然だが、味は甘くなる。"
+          },
+          {
+            "answer": "margarine",
+            "explanation": "バターの代用品として使われる食品。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "butterを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I spread some butter on my toast every morning.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-butter-usage",
+          "type": "usage",
+          "prompt": "butter を正しく使った文はどれ?",
+          "choices": [
+            "I bought many butter at the store.",
+            "I bought a piece of butter at the store.",
+            "I bought butters of milk at the store.",
+            "I bought a few butter at the store."
+          ],
+          "correctIndex": 1,
+          "explanation": "butter は不可算名詞なので、a piece of butter のように単位を付けて数える。many や a few は数えられる名詞に使う語で、butter の直前には合わない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "food"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-egg",
       "word": "egg",
       "level": "3級",
@@ -18597,9 +18790,342 @@
         "gradeEstimate": "3級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
       }
+    },
+    {
+      "id": "vocab-tiny",
+      "word": "tiny",
+      "level": "3級",
+      "ipa": "ˈtaɪni",
+      "ipaLabel": "英音",
+      "partOfSpeech": "形容詞",
+      "definition": "extremely small in size or amount",
+      "meaning": "とても小さい",
+      "usageTip": "small より強く「極めて小さい」を表す。a tiny bird のように名詞の前、または The room is tiny. のように be 動詞の後ろで使う。very tiny や really tiny のように強めることもできる。ただし tiny 自体がすでに強い語なので、使いすぎないほうが自然。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "自然",
+          "text": "A tiny bird landed on the branch outside my window.",
+          "translation": "小さな鳥が窓の外の枝にとまった。"
+        },
+        {
+          "id": "example-2",
+          "context": "住まい",
+          "text": "Their first apartment was tiny, but they loved it.",
+          "translation": "彼らの最初のアパートはとても狭かったが、気に入っていた。"
+        },
+        {
+          "id": "example-3",
+          "context": "科学",
+          "text": "Tiny drops of water covered the cold glass.",
+          "translation": "小さな水滴が冷たいガラスを覆っていた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "tiny",
+          "choices": [
+            {
+              "text": "とても大きい",
+              "meaning": "サイズが非常に大きい"
+            },
+            {
+              "text": "とても速い",
+              "meaning": "速度が非常に高い"
+            },
+            {
+              "text": "とても古い",
+              "meaning": "長い年月を経ている"
+            },
+            {
+              "text": "とても小さい",
+              "meaning": "サイズが極めて小さい"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "tiny は大きさや量が極めて小さいことを表す形容詞である。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "とても小さい",
+          "choices": [
+            {
+              "text": "tiny",
+              "meaning": "とても小さい"
+            },
+            {
+              "text": "planet",
+              "meaning": "惑星"
+            },
+            {
+              "text": "fossil",
+              "meaning": "化石"
+            },
+            {
+              "text": "chemistry",
+              "meaning": "化学"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "形容詞で「とても小さい」を表すのは tiny。他は名詞で意味も異なる。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "虫眼鏡で虫を見る場面: The insect was so ___ that I could hardly see it.",
+          "choices": [
+            {
+              "text": "fossil",
+              "meaning": "化石"
+            },
+            {
+              "text": "planet",
+              "meaning": "惑星"
+            },
+            {
+              "text": "tiny",
+              "meaning": "とても小さい"
+            },
+            {
+              "text": "chemistry",
+              "meaning": "化学"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "ほとんど見えないほどなので、極めて小さいことを表す形容詞 tiny が合う。他は名詞で so の後に入らない。",
+          "alternatives": [
+            {
+              "answer": "small",
+              "explanation": "small も自然だが、tiny ほど極端な小ささは表さない。"
+            },
+            {
+              "answer": "little",
+              "explanation": "little も使えるが、やや幼い・かわいらしい響きがある。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "tiny の使い方が正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "The kitten was very tinier than the puppy.",
+              "meaning": "比較の形の誤り。"
+            },
+            {
+              "text": "The kitten was tiny in the puppy.",
+              "meaning": "前置詞の誤り。"
+            },
+            {
+              "text": "The kitten was a tiny of the puppy.",
+              "meaning": "品詞の誤り。"
+            },
+            {
+              "text": "The kitten was tiny compared with the puppy.",
+              "meaning": "子猫は子犬と比べて小さかった。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "tiny は形容詞で、compared with ~ で比較を表せる。他は比較の形、前置詞、品詞が誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "虫眼鏡で虫を見る場面: The insect was so ___ that I could hardly see it.",
+        "answers": [
+          "tiny"
+        ],
+        "explanation": "ほとんど見えないほどなので、極めて小さいことを表す形容詞 tiny が合う。他は名詞で so の後に入らない。",
+        "alternatives": [
+          {
+            "answer": "small",
+            "explanation": "small も自然だが、tiny ほど極端な小ささは表さない。"
+          },
+          {
+            "answer": "little",
+            "explanation": "little も使えるが、やや幼い・かわいらしい響きがある。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "tinyを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "A tiny bird landed on the branch outside my window.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-tiny-usage",
+          "type": "usage",
+          "prompt": "tiny の使い方が正しい文を選んでください。",
+          "choices": [
+            "The kitten was very tinier than the puppy.",
+            "The kitten was tiny in the puppy.",
+            "The kitten was a tiny of the puppy.",
+            "The kitten was tiny compared with the puppy."
+          ],
+          "correctIndex": 3,
+          "explanation": "tiny は形容詞で、compared with ~ で比較を表せる。他は比較の形、前置詞、品詞が誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A1",
+        "domains": [
+          "daily-life"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
     }
   ],
   "audio": [
+    {
+      "wordId": "vocab-finger",
+      "cacheKey": "f9b804130892b7d12a24c258eb2f70ee3dc5f871144611d7b42f94f3f269964d",
+      "fileId": "176hCshXliNf9fxaewS0I8aTxGJqCbVHn",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8069999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.971,
+          "endSeconds": 3.5934999999999997
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.642,
+          "endSeconds": 6.356999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.521,
+          "endSeconds": 9.149
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-toilet",
+      "cacheKey": "b17da139bded61fb549ff237e52bf2791390a7fab5c5fa1098e9a87a7f4fb982",
+      "fileId": "1CM2arpwW5VxfQj716U1Bf-1vBtmVzgP1",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.784
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9480000000000001,
+          "endSeconds": 3.1060000000000003
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.27,
+          "endSeconds": 5.596
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.596,
+          "endSeconds": 8.638
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-shower",
+      "cacheKey": "8e6a7683130103d0784392f4aaa7640947036ce624f61019de1be8ae7ad58d37",
+      "fileId": "1QlR1z92pkWZh1fgBT_Up2oWYiDvzxvDx",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.853
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.1920000000000002,
+          "endSeconds": 3.57
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.5949999999999998,
+          "endSeconds": 6.715999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.741,
+          "endSeconds": 9.892
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-bathroom",
+      "cacheKey": "81bad0348d14eec3dd53ff3f83ec51a202c6c3eae238ac1ef56a2859fcd39fb4",
+      "fileId": "13DRoGyDKACNnhb281Ffptau5LqSCCAvN",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7665
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.7665,
+          "endSeconds": 3.7670000000000003
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.9319999999999995,
+          "endSeconds": 5.997
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.428,
+          "endSeconds": 8.963
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-wear",
+      "cacheKey": "e8d0bcff853f11485cecb33d203f2c0eb1dd24d640072c924e61011097ef72b3",
+      "fileId": "10DwNveLzHiNfE7WduyOwMQHxa2D7uLxq",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.714
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.82,
+          "endSeconds": 3.1985
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.247,
+          "endSeconds": 5.9155
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.9639999999999995,
+          "endSeconds": 8.591
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
     {
       "wordId": "vocab-shirt",
       "cacheKey": "08c5eb0e88cf3fa8ad0161be568ec00f803278bab19a83c40bd54c5d16c3f776",
@@ -18935,6 +19461,34 @@
         }
       ],
       "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-fry",
+      "cacheKey": "09dfc41ea1ec8fbca6ea12cd64641bb9fda02de3178015767941053bb2d63bbe",
+      "fileId": "1Wg1AWq5EPeV65rMIi2MyS71I5MsHKB9z",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7895
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.7895,
+          "endSeconds": 3.3555
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.363,
+          "endSeconds": 6.8035
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.811,
+          "endSeconds": 9.381
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
     },
     {
       "wordId": "vocab-grill",
@@ -19861,6 +20415,34 @@
       "voiceLabel": "Sarah（女性）"
     },
     {
+      "wordId": "vocab-bandage",
+      "cacheKey": "8f6fa8333bdd4e5aec1b46754bb27847887919d54607a306afa8ccb794e92bff",
+      "fileId": "1cjvQ1PQsF1MGwCxA1KDUQjqJRTwBZbJd",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.726
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.726,
+          "endSeconds": 3.0940000000000003
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.259,
+          "endSeconds": 6.124
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.463,
+          "endSeconds": 9.381
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
       "wordId": "vocab-surgeon",
       "cacheKey": "454f1397f53136759262d0aac2ad5bdc9fe4519f4babc0c40c9ee907530dc56c",
       "fileId": "1--zZOCq-FqWrSAGJQiBmUPf-5e88snSw",
@@ -20337,6 +20919,34 @@
       "voiceLabel": "Sarah（女性）"
     },
     {
+      "wordId": "vocab-teach",
+      "cacheKey": "880b7d030c3804ca93ca6f5c22dd87d9e5f3b9dc4eccdd2ab0d29ab67083e362",
+      "fileId": "1qHmKVB2fjCOCHs7E89DA6xSvB02h1KWd",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.6735
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.681,
+          "endSeconds": 3.686
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.851,
+          "endSeconds": 6.2055
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.231,
+          "endSeconds": 9.149
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
       "wordId": "vocab-pupil",
       "cacheKey": "da5dc2d64384095262b9d51bad317e9c04d9f5da433a993dc5b636e90a7f8b3f",
       "fileId": "1PZBmXMAaiapvYanY4wY3mdfhYWb9T3Cq",
@@ -20421,6 +21031,62 @@
       "voiceLabel": "Sarah（女性）"
     },
     {
+      "wordId": "vocab-test",
+      "cacheKey": "0d47dec8190123dcd83b98d6284edc9fdcc54a7cc06e7cbb06b70f3f5f7e74cd",
+      "fileId": "1CNS6ZkUa3RPke3E1gLGDYjNDTk_HR226",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7255
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.7255,
+          "endSeconds": 3.442
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.6069999999999998,
+          "endSeconds": 6.583
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.591,
+          "endSeconds": 9.845
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-score",
+      "cacheKey": "9b69621311880033c53c751846058b7be1e37a20e3425e116d5ceea44cd555f3",
+      "fileId": "1FZjfmjGP_x5yPyXOtfwIXFDgqKiNM2rs",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8360000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.8360000000000001,
+          "endSeconds": 3.7035
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.711,
+          "endSeconds": 5.944
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.944,
+          "endSeconds": 8.777
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
       "wordId": "vocab-study",
       "cacheKey": "dbce4c66e199df7e347a0e1eef5a73e5a5055e2024df47883755baecc11645dd",
       "fileId": "1svxAiD2LcvyfTF9icXU42fAyX0U6APDX",
@@ -20449,6 +21115,34 @@
       "voiceLabel": "George（男性）"
     },
     {
+      "wordId": "vocab-skill",
+      "cacheKey": "88a79be59782280ce884cd7ff9a6942d2e395b074e3032972f34f8fa57ee9b2b",
+      "fileId": "10KeBwzXaG9JtzCnvNOjRG9iVN4Igq6XW",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.877
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.983,
+          "endSeconds": 4.5335
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.582,
+          "endSeconds": 7.413
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.413,
+          "endSeconds": 10.263
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
       "wordId": "vocab-employer",
       "cacheKey": "f9ebeef5a6f4489d15919302f414323684abadbae72c542b8346a4f9a1180483",
       "fileId": "1BwkJbv4zu8OD5qY7gK28F_M9Sr2qWIyj",
@@ -20472,6 +21166,62 @@
           "id": "example-3",
           "startSeconds": 7.5889999999999995,
           "endSeconds": 10.542
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-shift",
+      "cacheKey": "53d2f9f329efa4b76246b15f65fb93618831be696519d8b121a7853010f44440",
+      "fileId": "10RZ8lmHaXNjRcE5qs2Od5xwPGc4OiguD",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.819
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9249999999999999,
+          "endSeconds": 4.023
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.048,
+          "endSeconds": 7.7325
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.74,
+          "endSeconds": 11.331
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-retire",
+      "cacheKey": "2620f4565353df511ea7240abd792a03e887959a1aa64117c2201e12ae06b36f",
+      "fileId": "1h0VJhpEPo4Elk2ReD8xFaQc8oqXprf9M",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8300000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.855,
+          "endSeconds": 3.918
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.083,
+          "endSeconds": 7.795999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.030000000000001,
+          "endSeconds": 11.471
         }
       ],
       "voiceLabel": "George（男性）"
@@ -20587,6 +21337,90 @@
         }
       ],
       "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-brand",
+      "cacheKey": "eb835d0aadf01433672ba6043aa5f62d56c7f85eab9c4f89561587784c6111fb",
+      "fileId": "1Zk4i0Sl2dnw3m_qFFpWeIGJ7czy1b4w_",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.958
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.064,
+          "endSeconds": 4.76
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.768,
+          "endSeconds": 7.802
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.81,
+          "endSeconds": 11.099
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-save",
+      "cacheKey": "ee6d8109c76df943e2ecd6a4965302df3788880a7df1306ea1e705a7764e5ef6",
+      "fileId": "1EXTzGlcO_SqTmHflT9ibc9pCJBddYDgB",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7484999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.797,
+          "endSeconds": 3.7790000000000004
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.9429999999999996,
+          "endSeconds": 7.226999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.334,
+          "endSeconds": 10.17
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-credit",
+      "cacheKey": "1f43fbd5e3399c5ea74b93e729744ddde4440462646ed02a47818e786d390ade",
+      "fileId": "1Cw6-YXefHqnYIUcD1bGTO3jE9cnbC1kW",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8420000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0059999999999998,
+          "endSeconds": 4.348
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.454,
+          "endSeconds": 7.2855
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.334,
+          "endSeconds": 9.659
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
     },
     {
       "wordId": "vocab-rainbow",

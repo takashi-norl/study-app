@@ -2114,6 +2114,208 @@
       }
     },
     {
+      "id": "vocab-do",
+      "word": "do",
+      "level": "3級",
+      "ipa": "duː",
+      "ipaLabel": "英音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "do"
+        ],
+        "past": [
+          "did"
+        ],
+        "pastParticiple": [
+          "done"
+        ],
+        "presentParticiple": [
+          "doing"
+        ],
+        "thirdPersonSingular": [
+          "does"
+        ]
+      },
+      "definition": "To carry out an action, task or activity; also used as a helper verb in questions and negatives.",
+      "meaning": "する、行う",
+      "usageTip": "do homework、do the dishes、do the laundry のように、家事や作業など具体的な活動を表します。疑問文・否定文では助動詞 do も使います。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "宿題",
+          "text": "I usually do my homework at the kitchen table after school.",
+          "translation": "私はたいてい放課後にキッチンのテーブルで宿題をします。"
+        },
+        {
+          "id": "example-2",
+          "context": "家事",
+          "text": "Could you do the dishes while I cook dinner tonight?",
+          "translation": "今夜私が夕食を作る間に、皿洗いをしてくれますか。"
+        },
+        {
+          "id": "example-3",
+          "context": "週末の予定",
+          "text": "What do you usually do on weekends besides sleeping in?",
+          "translation": "週末は寝坊する以外に普段何をしますか。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "do",
+          "choices": [
+            {
+              "text": "集める",
+              "meaning": "collect の意味"
+            },
+            {
+              "text": "する、行う",
+              "meaning": "動作や作業を実行する"
+            },
+            {
+              "text": "待つ",
+              "meaning": "wait の意味"
+            },
+            {
+              "text": "閉じる",
+              "meaning": "close の意味"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "do は「する、行う」を表す基本動詞で、さまざまな活動や作業に使えます。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "「洗濯をする」と言うときに laundry の前に使う動詞",
+          "choices": [
+            {
+              "text": "make",
+              "meaning": "作る"
+            },
+            {
+              "text": "take",
+              "meaning": "取る"
+            },
+            {
+              "text": "do",
+              "meaning": "する"
+            },
+            {
+              "text": "put",
+              "meaning": "置く"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "「洗濯をする」は do the laundry という決まった言い方です。make は物を作る場合に使います。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "家事の場面：夕食後に皿を洗うと伝える。 I will ___ the dishes after dinner.",
+          "choices": [
+            {
+              "text": "do",
+              "meaning": "する"
+            },
+            {
+              "text": "say",
+              "meaning": "言う"
+            },
+            {
+              "text": "hear",
+              "meaning": "聞く"
+            },
+            {
+              "text": "fall",
+              "meaning": "落ちる"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "the dishes と結びついて「皿洗いをする」を表せるのは do だけです。他の動詞は意味が合いません。",
+          "alternatives": [
+            {
+              "answer": "wash",
+              "explanation": "wash the dishes も自然で、洗う動作をより直接的に表します。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "動詞 do の使い方が正しい文を選びましょう。",
+          "choices": [
+            {
+              "text": "She does her homework yesterday.",
+              "meaning": "過去を表す語があるのに現在形（誤）"
+            },
+            {
+              "text": "I didn't did my homework last night.",
+              "meaning": "didn't の後に過去形を使っている（誤）"
+            },
+            {
+              "text": "Do you doing your homework now?",
+              "meaning": "do の後に doing を続けている（誤）"
+            },
+            {
+              "text": "I did my homework before dinner.",
+              "meaning": "夕食前に宿題をしました。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "過去の行動なので did を使い、目的語 my homework が自然に続きます。他の文は時制や動詞の形が誤りです。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "家事の場面：夕食後に皿を洗うと伝える。 I will ___ the dishes after dinner.",
+        "answers": [
+          "do"
+        ],
+        "explanation": "the dishes と結びついて「皿洗いをする」を表せるのは do だけです。他の動詞は意味が合いません。",
+        "alternatives": [
+          {
+            "answer": "wash",
+            "explanation": "wash the dishes も自然で、洗う動作をより直接的に表します。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "doを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I usually do my homework at the kitchen table after school.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-do-usage",
+          "type": "usage",
+          "prompt": "動詞 do の使い方が正しい文を選びましょう。",
+          "choices": [
+            "She does her homework yesterday.",
+            "I didn't did my homework last night.",
+            "Do you doing your homework now?",
+            "I did my homework before dinner."
+          ],
+          "correctIndex": 3,
+          "explanation": "過去の行動なので did を使い、目的語 my homework が自然に続きます。他の文は時制や動詞の形が誤りです。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A1",
+        "domains": [
+          "daily-life"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-go",
       "word": "go",
       "level": "3級",
@@ -6256,6 +6458,217 @@
       }
     },
     {
+      "id": "vocab-turn",
+      "word": "turn",
+      "level": "3級",
+      "ipa": "/tɝːn/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "turn"
+        ],
+        "past": [
+          "turned"
+        ],
+        "pastParticiple": [
+          "turned"
+        ],
+        "presentParticiple": [
+          "turning"
+        ],
+        "thirdPersonSingular": [
+          "turns"
+        ]
+      },
+      "definition": "to move around a point, or to change direction or position",
+      "meaning": "回す、曲がる",
+      "usageTip": "turn left で左に曲がる、turn on/off で機器をつける・消す。turn into ~ は「~に変わる」、色や状態の変化は turn red のように形容詞を直接続ける。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "道案内",
+          "text": "Turn left at the bank, and you will see the station.",
+          "translation": "銀行で左に曲がると、駅が見えます。"
+        },
+        {
+          "id": "example-2",
+          "context": "家",
+          "text": "Please turn off the lights before you leave the room.",
+          "translation": "部屋を出る前に電気を消してください。"
+        },
+        {
+          "id": "example-3",
+          "context": "天気",
+          "text": "The rain turned into snow late in the evening.",
+          "translation": "夕方遅くに雨が雪に変わった。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "turn",
+          "choices": [
+            {
+              "text": "急ぐ",
+              "meaning": "速く動く"
+            },
+            {
+              "text": "止まる",
+              "meaning": "動きをやめる"
+            },
+            {
+              "text": "回す、曲がる",
+              "meaning": "向きを変える"
+            },
+            {
+              "text": "登る",
+              "meaning": "上へ進む"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "turn は物を回す、または向きを変えて曲がる意味を表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "回す、曲がる",
+          "choices": [
+            {
+              "text": "pull",
+              "meaning": "引く"
+            },
+            {
+              "text": "turn",
+              "meaning": "回す、曲がる"
+            },
+            {
+              "text": "push",
+              "meaning": "押す"
+            },
+            {
+              "text": "fall",
+              "meaning": "落ちる"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "向きを変える、回す、曲がるという意味を表すのは turn です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 道を右へ進む指示。 When you reach the corner, ___ right.",
+          "choices": [
+            {
+              "text": "cook",
+              "meaning": "料理する"
+            },
+            {
+              "text": "borrow",
+              "meaning": "借りる"
+            },
+            {
+              "text": "paint",
+              "meaning": "塗る"
+            },
+            {
+              "text": "turn",
+              "meaning": "曲がる"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "角で右へ向きを変えるので turn が合います。",
+          "alternatives": [
+            {
+              "answer": "go",
+              "explanation": "go right でも通じますが、曲がる動作は turn のほうが明確です。"
+            },
+            {
+              "answer": "bear",
+              "explanation": "bear right は道が右に分かれる所で右寄りに進む言い方で、やや限定的です。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "turn を正しく使った文はどれですか。",
+          "choices": [
+            {
+              "text": "She turned at me and smiled.",
+              "meaning": "彼女は私の方を向いて笑った。(at ではなく to / toward が自然)"
+            },
+            {
+              "text": "Please turn off the radio.",
+              "meaning": "ラジオを消してください。"
+            },
+            {
+              "text": "The leaves turned for red in autumn.",
+              "meaning": "秋に葉が赤くなった。(for は不適切)"
+            },
+            {
+              "text": "He turned up the TV off.",
+              "meaning": "彼はテレビを消した。(語順と句動詞が不適切)"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "turn off は機器を消す表現で、Please turn off the radio は自然です。他は前置詞や句動詞の使い方が不適切です。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 道を右へ進む指示。 When you reach the corner, ___ right.",
+        "answers": [
+          "turn"
+        ],
+        "explanation": "角で右へ向きを変えるので turn が合います。",
+        "alternatives": [
+          {
+            "answer": "go",
+            "explanation": "go right でも通じますが、曲がる動作は turn のほうが明確です。"
+          },
+          {
+            "answer": "bear",
+            "explanation": "bear right は道が右に分かれる所で右寄りに進む言い方で、やや限定的です。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "turnを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Turn left at the bank, and you will see the station.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-turn-usage",
+          "type": "usage",
+          "prompt": "turn を正しく使った文はどれですか。",
+          "choices": [
+            "She turned at me and smiled.",
+            "Please turn off the radio.",
+            "The leaves turned for red in autumn.",
+            "He turned up the TV off."
+          ],
+          "correctIndex": 1,
+          "explanation": "turn off は機器を消す表現で、Please turn off the radio は自然です。他は前置詞や句動詞の使い方が不適切です。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "transport",
+          "daily-life"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-open",
       "word": "open",
       "level": "3級",
@@ -7903,6 +8316,217 @@
         "domains": [
           "travel",
           "communication"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-offer",
+      "word": "offer",
+      "level": "3級",
+      "ipa": "/ˈɒfə/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "offer"
+        ],
+        "past": [
+          "offered"
+        ],
+        "pastParticiple": [
+          "offered"
+        ],
+        "presentParticiple": [
+          "offering"
+        ],
+        "thirdPersonSingular": [
+          "offers"
+        ]
+      },
+      "definition": "to say you will give something or do something for someone if they want it",
+      "meaning": "申し出る、提供する",
+      "usageTip": "offer A B または offer B to A の形で使う。offer to do は「自分から～しようと申し出る」の意味。offer me to help のように offer + 人 + to do の形にはならない。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "職場",
+          "text": "The company offered her a job in Osaka last week.",
+          "translation": "その会社は先週、彼女に大阪での仕事を提示した。"
+        },
+        {
+          "id": "example-2",
+          "context": "日常",
+          "text": "He offered to carry my heavy bag up the stairs.",
+          "translation": "彼は私の重いかばんを階段の上まで運ぼうと申し出てくれた。"
+        },
+        {
+          "id": "example-3",
+          "context": "店",
+          "text": "The shop offers free delivery on large orders over fifty pounds.",
+          "translation": "その店は50ポンド以上の大口注文に無料配送を提供している。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "offer",
+          "choices": [
+            {
+              "text": "断る",
+              "meaning": "受け入れない"
+            },
+            {
+              "text": "急ぐ",
+              "meaning": "素早く動く"
+            },
+            {
+              "text": "申し出る、提供する",
+              "meaning": "相手に示して差し出す"
+            },
+            {
+              "text": "疑う",
+              "meaning": "信じない"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "offer は何かを提供する、または自分からしようと申し出るという意味の動詞です。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "申し出る、提供する",
+          "choices": [
+            {
+              "text": "refuse",
+              "meaning": "断る"
+            },
+            {
+              "text": "expect",
+              "meaning": "期待する"
+            },
+            {
+              "text": "avoid",
+              "meaning": "避ける"
+            },
+            {
+              "text": "offer",
+              "meaning": "申し出る、提供する"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "何かを提供したり申し出たりする意味を表すのは offer です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "職場の場面：会社が彼に新しい仕事を提示した。 The company ___ him a new job.",
+          "choices": [
+            {
+              "text": "forgot",
+              "meaning": "忘れた"
+            },
+            {
+              "text": "offered",
+              "meaning": "提示した"
+            },
+            {
+              "text": "joined",
+              "meaning": "参加した"
+            },
+            {
+              "text": "refused",
+              "meaning": "断った"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "人に仕事を提示する文脈で、後ろに him a new job が続くので offered が自然です。",
+          "alternatives": [
+            {
+              "answer": "gave",
+              "explanation": "実際に与えたニュアンスで、提示の段階より進んだ印象です。"
+            },
+            {
+              "answer": "proposed",
+              "explanation": "案として示す感じで、やや硬い表現です。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "「彼女は私を手伝おうと申し出た」という意味で、offer を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "She offered me to help.",
+              "meaning": "彼女は私に手伝うよう申し出た。(誤:offer+人+to do)"
+            },
+            {
+              "text": "She offered helping me.",
+              "meaning": "彼女は手伝おうと申し出た。(誤:動名詞)"
+            },
+            {
+              "text": "She offered for help me.",
+              "meaning": "彼女は手伝おうと申し出た。(誤:for)"
+            },
+            {
+              "text": "She offered to help me.",
+              "meaning": "彼女は私を手伝おうと申し出た。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "offer は to 不定詞を直接取り、offer to do の形で使います。人を直後に置く形や動名詞、for は不自然です。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "職場の場面：会社が彼に新しい仕事を提示した。 The company ___ him a new job.",
+        "answers": [
+          "offered"
+        ],
+        "explanation": "人に仕事を提示する文脈で、後ろに him a new job が続くので offered が自然です。",
+        "alternatives": [
+          {
+            "answer": "gave",
+            "explanation": "実際に与えたニュアンスで、提示の段階より進んだ印象です。"
+          },
+          {
+            "answer": "proposed",
+            "explanation": "案として示す感じで、やや硬い表現です。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "offerを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The company offered her a job in Osaka last week.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-offer-usage",
+          "type": "usage",
+          "prompt": "「彼女は私を手伝おうと申し出た」という意味で、offer を正しく使った文を選んでください。",
+          "choices": [
+            "She offered me to help.",
+            "She offered helping me.",
+            "She offered for help me.",
+            "She offered to help me."
+          ],
+          "correctIndex": 3,
+          "explanation": "offer は to 不定詞を直接取り、offer to do の形で使います。人を直後に置く形や動名詞、for は不自然です。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "business",
+          "daily-life"
         ],
         "gradeEstimate": "3級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -10442,6 +11066,199 @@
       }
     },
     {
+      "id": "vocab-sometimes",
+      "word": "sometimes",
+      "level": "3級",
+      "ipa": "ˈsʌmtaɪmz",
+      "ipaLabel": "英音",
+      "partOfSpeech": "副詞",
+      "definition": "on some occasions, but not always or very often",
+      "meaning": "ときどき",
+      "usageTip": "頻度を表す副詞。一般動詞の前、be動詞の後ろに置くのが基本。文頭にも置けるが、動詞と目的語の間には入れない。「some times(何回か)」と分けて書かないよう注意。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "通勤",
+          "text": "I sometimes walk to work when the weather is nice.",
+          "translation": "天気がいいとき、私はときどき歩いて通勤します。"
+        },
+        {
+          "id": "example-2",
+          "context": "家族",
+          "text": "My brother sometimes forgets to turn off the lights.",
+          "translation": "兄はときどき電気を消し忘れます。"
+        },
+        {
+          "id": "example-3",
+          "context": "会話",
+          "text": "Sometimes I just want to stay home and rest.",
+          "translation": "ときどき、ただ家で休みたくなります。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "sometimes",
+          "choices": [
+            {
+              "text": "ときどき",
+              "meaning": "on some occasions"
+            },
+            {
+              "text": "いつも",
+              "meaning": "always の意味"
+            },
+            {
+              "text": "決して〜ない",
+              "meaning": "never の意味"
+            },
+            {
+              "text": "すぐに",
+              "meaning": "soon の意味"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "sometimes は「ときどき」。always はいつも、never は決して〜ない、soon はすぐに。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "ときどき",
+          "choices": [
+            {
+              "text": "never",
+              "meaning": "決して〜ない"
+            },
+            {
+              "text": "always",
+              "meaning": "いつも"
+            },
+            {
+              "text": "already",
+              "meaning": "すでに"
+            },
+            {
+              "text": "sometimes",
+              "meaning": "ときどき"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "「ときどき」は sometimes。他は頻度や時期の意味が異なる。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "友達と週末の過ごし方を話している場面：I usually stay home, but ___ I go hiking with friends.",
+          "choices": [
+            {
+              "text": "yesterday",
+              "meaning": "昨日"
+            },
+            {
+              "text": "sometimes",
+              "meaning": "ときどき"
+            },
+            {
+              "text": "ago",
+              "meaning": "〜前に"
+            },
+            {
+              "text": "soon",
+              "meaning": "まもなく"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "usually と対比して「ときどき」を表す sometimes が自然。他は時を示す語で頻度を表さない、または文法的に合わない。",
+          "alternatives": [
+            {
+              "answer": "occasionally",
+              "explanation": "sometimes より少し改まり、頻度がやや低い印象。"
+            },
+            {
+              "answer": "now and then",
+              "explanation": "会話的で「ときおり」のニュアンス。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "sometimes の使い方が正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "I am sometimes tired after lunch.",
+              "meaning": "昼食後ときどき疲れる。"
+            },
+            {
+              "text": "I sometimes to be tired after lunch.",
+              "meaning": "動詞の形が誤り"
+            },
+            {
+              "text": "I go sometimes the library on Sundays.",
+              "meaning": "語順が誤り"
+            },
+            {
+              "text": "I sometimes am go to the library on Sundays.",
+              "meaning": "動詞の使い方が誤り"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "sometimes は be動詞の後ろに置ける。他は to be を続けたり、動詞と目的語の間に入れたり、be動詞と一般動詞を重ねたりして文法的に不自然。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "友達と週末の過ごし方を話している場面：I usually stay home, but ___ I go hiking with friends.",
+        "answers": [
+          "sometimes"
+        ],
+        "explanation": "usually と対比して「ときどき」を表す sometimes が自然。他は時を示す語で頻度を表さない、または文法的に合わない。",
+        "alternatives": [
+          {
+            "answer": "occasionally",
+            "explanation": "sometimes より少し改まり、頻度がやや低い印象。"
+          },
+          {
+            "answer": "now and then",
+            "explanation": "会話的で「ときおり」のニュアンス。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "sometimesを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I sometimes walk to work when the weather is nice.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-sometimes-usage",
+          "type": "usage",
+          "prompt": "sometimes の使い方が正しい文を選んでください。",
+          "choices": [
+            "I am sometimes tired after lunch.",
+            "I sometimes to be tired after lunch.",
+            "I go sometimes the library on Sundays.",
+            "I sometimes am go to the library on Sundays."
+          ],
+          "correctIndex": 0,
+          "explanation": "sometimes は be動詞の後ろに置ける。他は to be を続けたり、動詞と目的語の間に入れたり、be動詞と一般動詞を重ねたりして文法的に不自然。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A1",
+        "domains": [
+          "daily-life"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-usually",
       "word": "usually",
       "level": "3級",
@@ -11933,6 +12750,208 @@
           ],
           "correctIndex": 2,
           "explanation": "however は独立した文頭に置き、後ろにコンマを付けて対比を示します。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "logic-reasoning",
+          "communication"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-therefore",
+      "word": "therefore",
+      "level": "3級",
+      "ipa": "/ˈðɛrfɔːr/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "副詞",
+      "definition": "as a result of what has just been said; for that reason",
+      "meaning": "それゆえに、したがって",
+      "usageTip": "原因・理由から結論や結果へ進むときに使う、やや硬い語です。文頭では Therefore, と書き、文中ではセミコロンの後や動詞の前に置きます。接続詞ではないので、コンマだけで二つの文をつなぐのは避けます。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "レポート",
+          "text": "The road was closed after the storm. Therefore, we took another route.",
+          "translation": "嵐の後で道路が閉鎖されていました。したがって、私たちは別の道を通りました。"
+        },
+        {
+          "id": "example-2",
+          "context": "学習",
+          "text": "She practiced every day; therefore, her speech improved quickly.",
+          "translation": "彼女は毎日練習したので、スピーチは急速に上達しました。"
+        },
+        {
+          "id": "example-3",
+          "context": "仕事",
+          "text": "The shop was very busy, and we therefore waited almost an hour.",
+          "translation": "その店はとても混んでいたので、私たちは結果として一時間近く待ちました。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "therefore",
+          "choices": [
+            {
+              "text": "それにもかかわらず",
+              "meaning": "nevertheless の意味"
+            },
+            {
+              "text": "それゆえに",
+              "meaning": "therefore の意味"
+            },
+            {
+              "text": "たとえば",
+              "meaning": "for example の意味"
+            },
+            {
+              "text": "ところで",
+              "meaning": "by the way の意味"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "therefore は前の内容を理由として、結果や結論を導く副詞です。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "それゆえに",
+          "choices": [
+            {
+              "text": "however",
+              "meaning": "しかしながら"
+            },
+            {
+              "text": "although",
+              "meaning": "~だけれども"
+            },
+            {
+              "text": "otherwise",
+              "meaning": "さもなければ"
+            },
+            {
+              "text": "therefore",
+              "meaning": "それゆえに"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "因果関係の結果や結論を示す語は therefore です。他の語は逆接や条件の意味です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 電池切れが原因で電話できなかったと説明する。 The battery was dead. ___, I could not call you.",
+          "choices": [
+            {
+              "text": "However",
+              "meaning": "しかしながら"
+            },
+            {
+              "text": "Therefore",
+              "meaning": "それゆえに"
+            },
+            {
+              "text": "Besides",
+              "meaning": "その上"
+            },
+            {
+              "text": "Instead",
+              "meaning": "代わりに"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "電池切れが電話できなかった理由なので、結果を導く語が合います。他の語は逆接や追加、代替の意味です。",
+          "alternatives": [
+            {
+              "answer": "So",
+              "explanation": "より口語的で、同じ因果関係を示します。"
+            },
+            {
+              "answer": "As a result",
+              "explanation": "結果であることをやや説明的に示します。"
+            },
+            {
+              "answer": "Consequently",
+              "explanation": "therefore より硬く、論文や報告書向きです。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "therefore の使い方が正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "It was late, therefore we left.",
+              "meaning": "コンマだけで二文をつなぐ誤り。"
+            },
+            {
+              "text": "Therefore it was late, we left.",
+              "meaning": "接続詞のように使う誤り。"
+            },
+            {
+              "text": "It was late. Therefore, we left.",
+              "meaning": "遅かったので、私たちは帰りました。"
+            },
+            {
+              "text": "We left therefore because it was late.",
+              "meaning": "because と重ねる誤り。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "therefore は接続詞ではなく副詞なので、独立した文の文頭で前の文の結果を導くのが標準的です。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 電池切れが原因で電話できなかったと説明する。 The battery was dead. ___, I could not call you.",
+        "answers": [
+          "Therefore"
+        ],
+        "explanation": "電池切れが電話できなかった理由なので、結果を導く語が合います。他の語は逆接や追加、代替の意味です。",
+        "alternatives": [
+          {
+            "answer": "So",
+            "explanation": "より口語的で、同じ因果関係を示します。"
+          },
+          {
+            "answer": "As a result",
+            "explanation": "結果であることをやや説明的に示します。"
+          },
+          {
+            "answer": "Consequently",
+            "explanation": "therefore より硬く、論文や報告書向きです。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "thereforeを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The road was closed after the storm. Therefore, we took another route.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-therefore-usage",
+          "type": "usage",
+          "prompt": "therefore の使い方が正しい文を選んでください。",
+          "choices": [
+            "It was late, therefore we left.",
+            "Therefore it was late, we left.",
+            "It was late. Therefore, we left.",
+            "We left therefore because it was late."
+          ],
+          "correctIndex": 2,
+          "explanation": "therefore は接続詞ではなく副詞なので、独立した文の文頭で前の文の結果を導くのが標準的です。"
         }
       ],
       "metadata": {
@@ -18307,6 +19326,200 @@
       }
     },
     {
+      "id": "vocab-compost",
+      "word": "compost",
+      "level": "3級",
+      "ipa": "/ˈkɑːmpoʊst/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "a mixture of rotted plants and food waste used to enrich soil",
+      "meaning": "堆肥",
+      "usageTip": "ふつう不可算名詞で、add compost to soil や a compost bin のように使う。a compost や many composts は、種類を言う場合を除き学習者には避けたい形。動詞（堆肥にする）の用法もあるが、ここでは名詞の用法。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "家庭菜園",
+          "text": "We add compost to the soil before planting tomatoes.",
+          "translation": "トマトを植える前に、土に堆肥を混ぜる。"
+        },
+        {
+          "id": "example-2",
+          "context": "台所",
+          "text": "Vegetable peels go into the compost instead of the trash.",
+          "translation": "野菜の皮はごみ箱ではなく堆肥に入れる。"
+        },
+        {
+          "id": "example-3",
+          "context": "学校",
+          "text": "Students made compost from leaves and fruit scraps in the garden.",
+          "translation": "生徒たちは庭で落ち葉と果物の切れ端から堆肥を作った。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "compost",
+          "choices": [
+            {
+              "text": "小テスト",
+              "meaning": "短い試験"
+            },
+            {
+              "text": "都市の",
+              "meaning": "都会に関する"
+            },
+            {
+              "text": "堆肥",
+              "meaning": "土を良くする腐った有機物"
+            },
+            {
+              "text": "髪の毛",
+              "meaning": "頭に生える毛"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "compostは植物や生ごみから作る堆肥を指します。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "堆肥",
+          "choices": [
+            {
+              "text": "quiz",
+              "meaning": "小テスト"
+            },
+            {
+              "text": "rural",
+              "meaning": "田舎の"
+            },
+            {
+              "text": "urban",
+              "meaning": "都市の"
+            },
+            {
+              "text": "compost",
+              "meaning": "堆肥"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "堆肥を表す英語はcompostです。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "庭の土を良くする話です。 She mixed some ___ into the garden soil to help the vegetables grow.",
+          "choices": [
+            {
+              "text": "quiz",
+              "meaning": "小テスト"
+            },
+            {
+              "text": "compost",
+              "meaning": "堆肥"
+            },
+            {
+              "text": "hair",
+              "meaning": "髪の毛"
+            },
+            {
+              "text": "urban",
+              "meaning": "都市の"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "土に混ぜて野菜の成長を助けるものなので、堆肥のcompostが合います。",
+          "alternatives": [
+            {
+              "answer": "fertilizer",
+              "explanation": "肥料全般を表し、化学肥料も含む広い語。"
+            },
+            {
+              "answer": "manure",
+              "explanation": "動物のふんを使った肥料で、compostより限定的。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "compost（名詞：堆肥）の使い方として正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "We put the apple cores into a compost.",
+              "meaning": "リンゴの芯を一つの堆肥に入れた。（不可算名詞に a を付けた誤り）"
+            },
+            {
+              "text": "I made many composts for my garden.",
+              "meaning": "庭のために多くの堆肥を作った。（不可算名詞を複数形にした誤り）"
+            },
+            {
+              "text": "The compost are ready to use in spring.",
+              "meaning": "堆肥は春に使える状態だ。（動詞の一致の誤り）"
+            },
+            {
+              "text": "We keep a compost bin behind the house.",
+              "meaning": "家の裏に堆肥用の容器を置いている。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "compost bin は堆肥を作る容器を表す自然な表現です。他は、不可算名詞に a や複数形を付けたり、単数扱いの語に複数の動詞を使ったりしていて不自然です。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "庭の土を良くする話です。 She mixed some ___ into the garden soil to help the vegetables grow.",
+        "answers": [
+          "compost"
+        ],
+        "explanation": "土に混ぜて野菜の成長を助けるものなので、堆肥のcompostが合います。",
+        "alternatives": [
+          {
+            "answer": "fertilizer",
+            "explanation": "肥料全般を表し、化学肥料も含む広い語。"
+          },
+          {
+            "answer": "manure",
+            "explanation": "動物のふんを使った肥料で、compostより限定的。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "compostを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "We add compost to the soil before planting tomatoes.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-compost-usage",
+          "type": "usage",
+          "prompt": "compost（名詞：堆肥）の使い方として正しい文を選んでください。",
+          "choices": [
+            "We put the apple cores into a compost.",
+            "I made many composts for my garden.",
+            "The compost are ready to use in spring.",
+            "We keep a compost bin behind the house."
+          ],
+          "correctIndex": 3,
+          "explanation": "compost bin は堆肥を作る容器を表す自然な表現です。他は、不可算名詞に a や複数形を付けたり、単数扱いの語に複数の動詞を使ったりしていて不自然です。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "environment",
+          "daily-life"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-hair",
       "word": "hair",
       "level": "3級",
@@ -18803,6 +20016,34 @@
       "voiceLabel": "Sarah（女性）"
     },
     {
+      "wordId": "vocab-go",
+      "cacheKey": "8a601c252a721f4078ea76d86db969549ab1b7bd4e33c28cdbf9e8697d45380b",
+      "fileId": "1m6frGUHTFTf-C-Qf8IV4jzr2jGmsCnhY",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.627
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.627,
+          "endSeconds": 2.6064999999999996
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 2.6319999999999997,
+          "endSeconds": 4.702
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 4.702,
+          "endSeconds": 6.873
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
       "wordId": "vocab-come",
       "cacheKey": "5df878298312c6a349cca0f31d4b2e45fa7aef3e01d1b0c1fe15bfd21acf46c0",
       "fileId": "1-dD_0Ea9mxbAYUJ-ywErl9Po4ACIj5Dh",
@@ -18941,6 +20182,34 @@
         }
       ],
       "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-know",
+      "cacheKey": "3c79895ebe549686ab5089dbda215386af7d3312acb6bb9fec1b5a4731b95ecb",
+      "fileId": "1l67v63f6KeuhVPVNciRgfBnLp-OlXX-h",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.6675
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.6675,
+          "endSeconds": 3.454
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.56,
+          "endSeconds": 5.8515
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.859,
+          "endSeconds": 8.545
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
     },
     {
       "wordId": "vocab-think",
@@ -19111,6 +20380,62 @@
       "voiceLabel": "Sarah（女性）"
     },
     {
+      "wordId": "vocab-try",
+      "cacheKey": "fa08dabd7ede1b03dee9fcfa410a999961fca5d3579ad50c23b9f80543c8b27b",
+      "fileId": "1ms9Q8CqA3adN3MMbzYjOYPQ_fo3rgymP",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7375
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.7375,
+          "endSeconds": 3.3960000000000004
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.56,
+          "endSeconds": 6.2755
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.324,
+          "endSeconds": 9.706
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-use",
+      "cacheKey": "a51a1f6ee5ffb1d0314a41ee985f28d5319af67341210f7ef438dfa1fbf4fcec",
+      "fileId": "1tF-jbvnY53p8h0W5PAZl3Mm8Bv_AzUaH",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.6910000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.716,
+          "endSeconds": 2.955
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.061,
+          "endSeconds": 6.287
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.393,
+          "endSeconds": 9.427
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
       "wordId": "vocab-become",
       "cacheKey": "e10f9a6fa627ead2cbe95a4cf78790973e1bb45d65914c7baa44d918c8233c50",
       "fileId": "1o-VYHG1eBrHlUO7Xd7skEy5aYQIjMgJv",
@@ -19223,6 +20548,34 @@
       "voiceLabel": "Sarah（女性）"
     },
     {
+      "wordId": "vocab-hold",
+      "cacheKey": "1b977db2cf38923420800392c56fdc153854f34f3283ecebd871fa3dc6bc71f1",
+      "fileId": "105JOcNppQxdvm2d5nCGdK02854hZnsLz",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.685
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.693,
+          "endSeconds": 3.2680000000000002
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.433,
+          "endSeconds": 6.298
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.405,
+          "endSeconds": 8.777
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
       "wordId": "vocab-open",
       "cacheKey": "a6bff40903e569bbd5e1701a36da9fd9c11562956962419362420084d12dddfd",
       "fileId": "10h92tuQtyLijtvEWZglOCAVW12eg-2Hz",
@@ -19249,6 +20602,34 @@
         }
       ],
       "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-close",
+      "cacheKey": "f6b1b0c7371cb1b9a1128dc1cfbd020ff8f861b585e5673dca3cc6f4c0e2a814",
+      "fileId": "1Z75AUE8keW8RnWiOlpSoZrulL0tHS4SL",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.766
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.766,
+          "endSeconds": 3.6395
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.6395,
+          "endSeconds": 6.6579999999999995
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.8229999999999995,
+          "endSeconds": 9.474
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
     },
     {
       "wordId": "vocab-meet",
@@ -19587,6 +20968,34 @@
       "voiceLabel": "George（男性）"
     },
     {
+      "wordId": "vocab-not",
+      "cacheKey": "52a670a598e91e0365b8892a58e59406b1e4e31f00c8dd091a33a90931ef120e",
+      "fileId": "1WkbrF4Gjjb9uPIsUroDUTe36uYfL5cCt",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.6385000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.6385000000000001,
+          "endSeconds": 3.396
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.444,
+          "endSeconds": 5.904
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.929,
+          "endSeconds": 8.22
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
       "wordId": "vocab-please",
       "cacheKey": "aeb3d5c5e113b1a28e4b1dcd2796b666dfa127da5938b191677b8453af9b2991",
       "fileId": "1LpWnvhB_k00taRw9gKY0DYzBsUBD65oa",
@@ -19671,6 +21080,34 @@
       "voiceLabel": "George（男性）"
     },
     {
+      "wordId": "vocab-sorry",
+      "cacheKey": "00387335001a357b0830064f6a5b4f8c57b6ecc04a3ef803d3f7aa5332360ac2",
+      "fileId": "1Me0ZlYQThG7x3Io9WzXj7ExBS9zvXlM6",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.923
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9480000000000001,
+          "endSeconds": 2.9894999999999996
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.0149999999999997,
+          "endSeconds": 5.2885
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.337,
+          "endSeconds": 8.034
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
       "wordId": "vocab-okay",
       "cacheKey": "d7cfafb6fcf40b350a109d741026223c06ca271072bb7c9928875d5f6e0611cd",
       "fileId": "1Xjy1rkFZbqayOLEwjvpM8QDql2-84rqc",
@@ -19697,6 +21134,34 @@
         }
       ],
       "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-already",
+      "cacheKey": "0b9394b180ad2783899d8b45b6a3e750efb784da588c0ecd063227b418aef138",
+      "fileId": "15EpC_RpZlOSnLwdY6Qd4pJQaAfEMPa1F",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.882
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.882,
+          "endSeconds": 3.5235000000000003
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.572,
+          "endSeconds": 6.217
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.324,
+          "endSeconds": 10.077
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
     },
     {
       "wordId": "vocab-usually",
@@ -19755,6 +21220,34 @@
       "voiceLabel": "George（男性）"
     },
     {
+      "wordId": "vocab-late",
+      "cacheKey": "29dec43b12a673211ccbe0cee052910b2c089881ffa14a4cf642724716ddff9f",
+      "fileId": "1Zvt3TegwstASrXs7hSnXaToRCvgOiFiE",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.6559999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.704,
+          "endSeconds": 3.344
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.344,
+          "endSeconds": 5.126
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.126,
+          "endSeconds": 6.966
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
       "wordId": "vocab-later",
       "cacheKey": "233e5e2e46abf8fe51713e5e9ccb5fd877bc21d0351628bc48430ca03fde5a81",
       "fileId": "1rxP8rad0laAuUZvWKKW2hetO-994eziO",
@@ -19778,6 +21271,118 @@
           "id": "example-3",
           "startSeconds": 6.289,
           "endSeconds": 8.684
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-too",
+      "cacheKey": "85149ac45d37fc58849c0e16e8adf5a3c7668db3e527c20a8af3ce1e4facdc57",
+      "fileId": "1_Lpxothh8Pg8dAEL97SQCsGOIxSFHgsh",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7895000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.797,
+          "endSeconds": 3.431
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.456,
+          "endSeconds": 6.2985
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.3469999999999995,
+          "endSeconds": 9.706
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-quite",
+      "cacheKey": "0dbe62bdb2adca4fd80ebb20706825dfa6ac1107f6ea6ff0ea9f82879f2ec459",
+      "fileId": "176A7sMWoVnCOo-Uk2prlyA05m95_F6Fz",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.702
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.809,
+          "endSeconds": 3.4770000000000003
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.642,
+          "endSeconds": 5.6075
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.615,
+          "endSeconds": 8.406
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-almost",
+      "cacheKey": "d990c69cf0ab22606a7d04067479bd715a019d814b49a7bf650fe9734cbd3dd7",
+      "fileId": "1SGLJOSOoDvrzFlqS2wucSFfZXgcWY6jr",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8885
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9369999999999999,
+          "endSeconds": 3.2215
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.27,
+          "endSeconds": 6.246
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.254,
+          "endSeconds": 8.916
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-however",
+      "cacheKey": "820358ac506b9cd39dda32c9075c76d87de9feebc9734893e729c635c4a45a82",
+      "fileId": "1ut0VpMVEka3GlplJr7ihSiB5muh_jbS7",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.563
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.563,
+          "endSeconds": 4.428999999999999
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.594,
+          "endSeconds": 8.237
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.262,
+          "endSeconds": 11.424
         }
       ],
       "voiceLabel": "George（男性）"
@@ -19837,6 +21442,34 @@
         }
       ],
       "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-myself",
+      "cacheKey": "012a0e442355ea2b5cd8cd05b28e63049144afd37b55aecb02d84f2820d60072",
+      "fileId": "1N-VXJ9oWoyhceR4rImMPDVta242q5b0-",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8474999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.855,
+          "endSeconds": 3.2800000000000002
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.444,
+          "endSeconds": 6.391
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.625,
+          "endSeconds": 9.659
+        }
+      ],
+      "voiceLabel": "George（男性）"
     },
     {
       "wordId": "vocab-yourself",
@@ -20203,6 +21836,34 @@
       "voiceLabel": "Sarah（女性）"
     },
     {
+      "wordId": "vocab-ride",
+      "cacheKey": "384d5773a4cf37102d8eff79ab7a97ab51cfa8dee169865bf25c666ef304775d",
+      "fileId": "1sGk0bsc-GKtL89KroriPPl77XofyXIkq",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7024999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.7024999999999999,
+          "endSeconds": 3.059
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.2239999999999998,
+          "endSeconds": 5.7005
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.708,
+          "endSeconds": 8.545
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
       "wordId": "vocab-flour",
       "cacheKey": "30c70a1908b8f6fc6569391b2a389248d4eb08c1c98d4a471d3b18be8ed795d9",
       "fileId": "1Vz294jYDdzlQuW39l39SR_hZRx1Rck9N",
@@ -20483,6 +22144,34 @@
       "voiceLabel": "George（男性）"
     },
     {
+      "wordId": "vocab-tuition",
+      "cacheKey": "4d11448337ffd122d077a546b9b56bf97e287ce3231bd3ffd15c45b7193bc014",
+      "fileId": "1PHzQdLrTn_JOyM7bKhvxW8nQitd8KiPv",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.888
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.888,
+          "endSeconds": 4.8705
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.919,
+          "endSeconds": 8.2025
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.228000000000002,
+          "endSeconds": 10.681
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
       "wordId": "vocab-scholarship",
       "cacheKey": "5a996a06a1445fea76ba5e81f6ae6a190ab2be78deb46031ef281b6e49b5d31b",
       "fileId": "1Kr72RBFzD1Fq5CWWngvVEbJsBIQV5WFv",
@@ -20537,6 +22226,118 @@
         }
       ],
       "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-quiz",
+      "cacheKey": "7c0c77bdd83a846b673690517870158cc78aa8561d3df582e366e49aa3236904",
+      "fileId": "1ViWmghkIImaYoRZ9GQWgS3KZvd0RF0Ku",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.6905
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.6905,
+          "endSeconds": 4.174
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.338,
+          "endSeconds": 7.691999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.856,
+          "endSeconds": 11.192
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-rural",
+      "cacheKey": "1fcbe34f6ace92107bb9269baedb6be7fbdcec368e0aec242c59b5829c085703",
+      "fileId": "130X8WU11dznAATK8mSOWAlxHz9Nsgr6z",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.097
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.1219999999999999,
+          "endSeconds": 5.6135
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.662,
+          "endSeconds": 9.096
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 9.203000000000001,
+          "endSeconds": 12.957
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-urban",
+      "cacheKey": "6d9480927d8c8a847ba9084b9f36f82080f166dc0d8ff7135286d8dd621f0ac1",
+      "fileId": "1Xki80DlCZ9wsxHh0WbVocR4xNY6wLTS2",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7315
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.739,
+          "endSeconds": 4.3709999999999996
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.536,
+          "endSeconds": 7.901
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.065000000000001,
+          "endSeconds": 11.796
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-hair",
+      "cacheKey": "ba8b372acd7229befb99ad5f3f00a2dcf1ad4e97feabcf881ea1dc0d95d408db",
+      "fileId": "1ckZc1parJeBlShSYKXrRLs3jKUHk_hAJ",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8420000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0059999999999998,
+          "endSeconds": 4.011
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.176,
+          "endSeconds": 6.925
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.032,
+          "endSeconds": 9.706
+        }
+      ],
+      "voiceLabel": "George（男性）"
     }
   ]
 }

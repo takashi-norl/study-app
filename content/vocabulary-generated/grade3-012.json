@@ -3816,6 +3816,217 @@
       }
     },
     {
+      "id": "vocab-climb",
+      "word": "climb",
+      "level": "3級",
+      "ipa": "/klaɪm/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "climb"
+        ],
+        "past": [
+          "climbed"
+        ],
+        "pastParticiple": [
+          "climbed"
+        ],
+        "presentParticiple": [
+          "climbing"
+        ],
+        "thirdPersonSingular": [
+          "climbs"
+        ]
+      },
+      "definition": "to go up something such as a hill, wall or ladder, often using your hands and feet",
+      "meaning": "登る、よじ登る",
+      "usageTip": "climb a mountain や climb the stairs のように直接目的語を取れる。語末の b は発音しない。「降りる」は climb down と言う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "登山",
+          "text": "We plan to climb Mount Fuji early next summer.",
+          "translation": "私たちは来年の夏の初めに富士山に登る予定です。"
+        },
+        {
+          "id": "example-2",
+          "context": "公園",
+          "text": "The little boy climbed the ladder and slid down the slide.",
+          "translation": "小さな男の子ははしごを登って、滑り台を滑り降りた。"
+        },
+        {
+          "id": "example-3",
+          "context": "スポーツ",
+          "text": "She climbs indoor walls every Saturday to stay fit.",
+          "translation": "彼女は体力維持のため毎週土曜に室内の壁を登る。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "climb",
+          "choices": [
+            {
+              "text": "泳ぐ",
+              "meaning": "水の中を進む"
+            },
+            {
+              "text": "滑る",
+              "meaning": "表面を滑って動く"
+            },
+            {
+              "text": "曲がる",
+              "meaning": "方向を変える"
+            },
+            {
+              "text": "登る、よじ登る",
+              "meaning": "上へ上がっていく"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "climb は山、はしご、壁などを登ることを表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "登る、よじ登る",
+          "choices": [
+            {
+              "text": "pour",
+              "meaning": "注ぐ"
+            },
+            {
+              "text": "climb",
+              "meaning": "登る、よじ登る"
+            },
+            {
+              "text": "pull",
+              "meaning": "引く"
+            },
+            {
+              "text": "push",
+              "meaning": "押す"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "山や壁などを登る動作は climb で表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "週末に山頂を目指す場面: We will ___ the mountain and have lunch at the top.",
+          "choices": [
+            {
+              "text": "pour",
+              "meaning": "注ぐ"
+            },
+            {
+              "text": "pull",
+              "meaning": "引く"
+            },
+            {
+              "text": "climb",
+              "meaning": "登る"
+            },
+            {
+              "text": "lift",
+              "meaning": "持ち上げる"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "山頂で昼食を取るという流れなので、山に登る climb が合います。",
+          "alternatives": [
+            {
+              "answer": "hike up",
+              "explanation": "歩いて登るニュアンスで、よじ登る感じは弱くなります。"
+            },
+            {
+              "answer": "go up",
+              "explanation": "単に上がる意味で、登山の努力感は弱めです。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "「彼らは先週末に山に登った」という意味で climb を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "They climbed the mountain last weekend.",
+              "meaning": "彼らは先週末に山に登った。"
+            },
+            {
+              "text": "They climbed to the mountain last weekend.",
+              "meaning": "彼らは先週末に山へ登った。(不要な前置詞の誤り)"
+            },
+            {
+              "text": "They climbing the mountain last weekend.",
+              "meaning": "彼らは先週末に山に登っている。(動詞の形の誤り)"
+            },
+            {
+              "text": "They climbs the mountain last weekend.",
+              "meaning": "彼らは先週末に山に登る。(時制と主語の一致の誤り)"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "過去の出来事なので climbed を使い、the mountain を直接目的語にします。他の文は不要な前置詞、動詞の形、時制と主語の一致に誤りがあります。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "週末に山頂を目指す場面: We will ___ the mountain and have lunch at the top.",
+        "answers": [
+          "climb"
+        ],
+        "explanation": "山頂で昼食を取るという流れなので、山に登る climb が合います。",
+        "alternatives": [
+          {
+            "answer": "hike up",
+            "explanation": "歩いて登るニュアンスで、よじ登る感じは弱くなります。"
+          },
+          {
+            "answer": "go up",
+            "explanation": "単に上がる意味で、登山の努力感は弱めです。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "climbを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "We plan to climb Mount Fuji early next summer.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-climb-usage",
+          "type": "usage",
+          "prompt": "「彼らは先週末に山に登った」という意味で climb を正しく使った文を選んでください。",
+          "choices": [
+            "They climbed the mountain last weekend.",
+            "They climbed to the mountain last weekend.",
+            "They climbing the mountain last weekend.",
+            "They climbs the mountain last weekend."
+          ],
+          "correctIndex": 0,
+          "explanation": "過去の出来事なので climbed を使い、the mountain を直接目的語にします。他の文は不要な前置詞、動詞の形、時制と主語の一致に誤りがあります。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "sports",
+          "travel"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-fall",
       "word": "fall",
       "level": "3級",
@@ -10837,6 +11048,208 @@
       }
     },
     {
+      "id": "vocab-deliberate",
+      "word": "deliberate",
+      "level": "3級",
+      "ipa": "dɪˈlɪbərət",
+      "ipaLabel": "英音",
+      "partOfSpeech": "形容詞",
+      "definition": "Done on purpose, or done slowly and carefully with full thought.",
+      "meaning": "意図的な、慎重な",
+      "usageTip": "形容詞では「わざとの」「慎重な」の意味。a deliberate choice / deliberate steps のように名詞の前で使うことが多い。副詞は deliberately。動詞(熟考する)は語尾の発音が異なる。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "会話",
+          "text": "Her silence was a deliberate choice, not a mistake.",
+          "translation": "彼女の沈黙はミスではなく、意図的な選択だった。"
+        },
+        {
+          "id": "example-2",
+          "context": "仕事",
+          "text": "He made a deliberate effort to speak more slowly in meetings.",
+          "translation": "彼は会議でもっとゆっくり話すよう意識的に努めた。"
+        },
+        {
+          "id": "example-3",
+          "context": "舞台",
+          "text": "She walked with slow, deliberate steps across the stage.",
+          "translation": "彼女は舞台をゆっくりと慎重な足取りで歩いた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "deliberate",
+          "choices": [
+            {
+              "text": "偶然の",
+              "meaning": "思いがけず起きた"
+            },
+            {
+              "text": "意図的な",
+              "meaning": "わざとした、慎重な"
+            },
+            {
+              "text": "退屈な",
+              "meaning": "面白くない"
+            },
+            {
+              "text": "危険な",
+              "meaning": "害のおそれがある"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "deliberate は「わざとの」「慎重な」を表す形容詞で、偶然の反対の意味。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "意図的な、慎重な",
+          "choices": [
+            {
+              "text": "casual",
+              "meaning": "気軽な"
+            },
+            {
+              "text": "random",
+              "meaning": "無作為の"
+            },
+            {
+              "text": "sudden",
+              "meaning": "突然の"
+            },
+            {
+              "text": "deliberate",
+              "meaning": "意図的な、慎重な"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "意図的で慎重な様子は deliberate。他は計画性がない、または別の意味。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面:先生が、生徒に任せたのはわざとだと説明している。 The teacher made a ___ decision to let the students solve it alone.",
+          "choices": [
+            {
+              "text": "accidental",
+              "meaning": "偶然の"
+            },
+            {
+              "text": "forgetful",
+              "meaning": "忘れっぽい"
+            },
+            {
+              "text": "deliberate",
+              "meaning": "意図的な"
+            },
+            {
+              "text": "cheerful",
+              "meaning": "陽気な"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "生徒に任せる決定は考えた上でのものなので deliberate が合う。他は decision を修飾すると不自然か、文脈に合わない。",
+          "alternatives": [
+            {
+              "answer": "intentional",
+              "explanation": "「故意の」を表し、より一般的な言い方。"
+            },
+            {
+              "answer": "conscious",
+              "explanation": "自覚した上での、という意識面を強調する。"
+            },
+            {
+              "answer": "careful",
+              "explanation": "注意深さに重点があり、意図性は弱い。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "形容詞 deliberate の「わざとの」の意味を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "He deliberate to leave the room quietly.",
+              "meaning": "彼は静かに部屋を出ようと決めた(品詞の誤用)。"
+            },
+            {
+              "text": "It was a deliberately mistake.",
+              "meaning": "それはわざとの間違いだった(副詞の誤用)。"
+            },
+            {
+              "text": "The delay was a deliberate attempt to confuse us.",
+              "meaning": "その遅れは私たちを混乱させるための意図的な試みだった。"
+            },
+            {
+              "text": "She felt deliberate because the exam was hard.",
+              "meaning": "試験が難しくて不安だった(意味の誤用)。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "deliberate は名詞 attempt を修飾して「意図的な」を表せる。他は動詞扱い、副詞の誤用、意味の取り違え。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面:先生が、生徒に任せたのはわざとだと説明している。 The teacher made a ___ decision to let the students solve it alone.",
+        "answers": [
+          "deliberate"
+        ],
+        "explanation": "生徒に任せる決定は考えた上でのものなので deliberate が合う。他は decision を修飾すると不自然か、文脈に合わない。",
+        "alternatives": [
+          {
+            "answer": "intentional",
+            "explanation": "「故意の」を表し、より一般的な言い方。"
+          },
+          {
+            "answer": "conscious",
+            "explanation": "自覚した上での、という意識面を強調する。"
+          },
+          {
+            "answer": "careful",
+            "explanation": "注意深さに重点があり、意図性は弱い。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "deliberateを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Her silence was a deliberate choice, not a mistake.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-deliberate-usage",
+          "type": "usage",
+          "prompt": "形容詞 deliberate の「わざとの」の意味を正しく使った文を選んでください。",
+          "choices": [
+            "He deliberate to leave the room quietly.",
+            "It was a deliberately mistake.",
+            "The delay was a deliberate attempt to confuse us.",
+            "She felt deliberate because the exam was hard."
+          ],
+          "correctIndex": 2,
+          "explanation": "deliberate は名詞 attempt を修飾して「意図的な」を表せる。他は動詞扱い、副詞の誤用、意味の取り違え。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "logic-reasoning",
+          "communication"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-fluent",
       "word": "fluent",
       "level": "3級",
@@ -11025,6 +11438,216 @@
         "domains": [
           "education",
           "communication"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-graduate",
+      "word": "graduate",
+      "level": "3級",
+      "ipa": "ˈɡrædʒueɪt",
+      "ipaLabel": "英音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "graduate"
+        ],
+        "past": [
+          "graduated"
+        ],
+        "pastParticiple": [
+          "graduated"
+        ],
+        "presentParticiple": [
+          "graduating"
+        ],
+        "thirdPersonSingular": [
+          "graduates"
+        ]
+      },
+      "definition": "To finish a course of study at a school or university.",
+      "meaning": "卒業する",
+      "usageTip": "graduate from + 学校 が基本の形。例: graduate from high school。名詞(卒業生)は語尾の発音が異なる。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "進路",
+          "text": "She will graduate from university in March next year.",
+          "translation": "彼女は来年の3月に大学を卒業する予定だ。"
+        },
+        {
+          "id": "example-2",
+          "context": "自己紹介",
+          "text": "I graduated from a small college and then joined a laboratory.",
+          "translation": "私は小さな大学を卒業して、その後研究所に入った。"
+        },
+        {
+          "id": "example-3",
+          "context": "家族",
+          "text": "My brother graduated from high school with excellent grades.",
+          "translation": "兄は優秀な成績で高校を卒業した。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "graduate",
+          "choices": [
+            {
+              "text": "入学する",
+              "meaning": "学校に入る"
+            },
+            {
+              "text": "転校する",
+              "meaning": "別の学校へ移る"
+            },
+            {
+              "text": "復習する",
+              "meaning": "もう一度学ぶ"
+            },
+            {
+              "text": "卒業する",
+              "meaning": "課程を終える"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "動詞の graduate は課程を修了して卒業することを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "卒業する",
+          "choices": [
+            {
+              "text": "gather",
+              "meaning": "集める"
+            },
+            {
+              "text": "graduate",
+              "meaning": "卒業する"
+            },
+            {
+              "text": "guide",
+              "meaning": "案内する"
+            },
+            {
+              "text": "grade",
+              "meaning": "採点する"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "「卒業する」は graduate。grade は成績をつけること。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面:大学を卒業する時期を話している。 My sister will ___ from college next spring.",
+          "choices": [
+            {
+              "text": "enter",
+              "meaning": "入る"
+            },
+            {
+              "text": "attend",
+              "meaning": "出席する"
+            },
+            {
+              "text": "advise",
+              "meaning": "助言する"
+            },
+            {
+              "text": "graduate",
+              "meaning": "卒業する"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "from college が続き、来春の予定なので卒業を表す graduate が合う。",
+          "alternatives": [
+            {
+              "answer": "finish",
+              "explanation": "「終える」という一般的な言い方。ただし from は続けにくい。"
+            },
+            {
+              "answer": "leave",
+              "explanation": "退学の場合にも使え、卒業の意味は弱い。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "動詞 graduate を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "She graduated to university last year.",
+              "meaning": "彼女は昨年大学を卒業した(前置詞の誤り)。"
+            },
+            {
+              "text": "They graduated the exam yesterday.",
+              "meaning": "彼らは昨日試験を終えた(目的語の誤り)。"
+            },
+            {
+              "text": "He graduated at the law school.",
+              "meaning": "彼は法科大学院を卒業した(前置詞の誤り)。"
+            },
+            {
+              "text": "I graduated from the design school.",
+              "meaning": "私はそのデザイン学校を卒業した。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "graduate from + 学校 が標準形。他は前置詞や目的語が不適切。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面:大学を卒業する時期を話している。 My sister will ___ from college next spring.",
+        "answers": [
+          "graduate"
+        ],
+        "explanation": "from college が続き、来春の予定なので卒業を表す graduate が合う。",
+        "alternatives": [
+          {
+            "answer": "finish",
+            "explanation": "「終える」という一般的な言い方。ただし from は続けにくい。"
+          },
+          {
+            "answer": "leave",
+            "explanation": "退学の場合にも使え、卒業の意味は弱い。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "graduateを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "She will graduate from university in March next year.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-graduate-usage",
+          "type": "usage",
+          "prompt": "動詞 graduate を正しく使った文を選んでください。",
+          "choices": [
+            "She graduated to university last year.",
+            "They graduated the exam yesterday.",
+            "He graduated at the law school.",
+            "I graduated from the design school."
+          ],
+          "correctIndex": 3,
+          "explanation": "graduate from + 学校 が標準形。他は前置詞や目的語が不適切。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "education"
         ],
         "gradeEstimate": "3級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -17024,6 +17647,427 @@
       }
     },
     {
+      "id": "vocab-donate",
+      "word": "donate",
+      "level": "3級",
+      "ipa": "/ˈdoʊneɪt/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "donate"
+        ],
+        "past": [
+          "donated"
+        ],
+        "pastParticiple": [
+          "donated"
+        ],
+        "presentParticiple": [
+          "donating"
+        ],
+        "thirdPersonSingular": [
+          "donates"
+        ]
+      },
+      "definition": "to give money, goods or blood to help a person or group, without asking for payment",
+      "meaning": "寄付する、提供する",
+      "usageTip": "基本形は donate A to B「AをBに寄付する」。to を使うこの形が最も標準的で、学習中はこれを使うのが安全。血液や臓器の提供にも使える。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "学校",
+          "text": "Our class donated old books to the town library last week.",
+          "translation": "私たちのクラスは先週、古い本を町の図書館に寄付しました。"
+        },
+        {
+          "id": "example-2",
+          "context": "医療",
+          "text": "She donates blood twice a year at the hospital.",
+          "translation": "彼女は年に二回、病院で献血をしています。"
+        },
+        {
+          "id": "example-3",
+          "context": "社会",
+          "text": "Many people donated money to help the flood victims.",
+          "translation": "多くの人が洪水の被災者を助けるためにお金を寄付しました。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "donate",
+          "choices": [
+            {
+              "text": "寄付する",
+              "meaning": "無償で金品を提供する"
+            },
+            {
+              "text": "借りる",
+              "meaning": "後で返すために使う"
+            },
+            {
+              "text": "集める",
+              "meaning": "一か所に寄せる"
+            },
+            {
+              "text": "売る",
+              "meaning": "お金と引き換えに渡す"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "donate は見返りを求めず金品などを提供することです。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "寄付する",
+          "choices": [
+            {
+              "text": "borrow",
+              "meaning": "借りる"
+            },
+            {
+              "text": "charge",
+              "meaning": "請求する"
+            },
+            {
+              "text": "donate",
+              "meaning": "寄付する"
+            },
+            {
+              "text": "spend",
+              "meaning": "使う"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "「寄付する」は donate です。他の語は受け取る、請求する、使うなど別の動作です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "古着をチャリティーに出す場面: We decided to ___ our old clothes to a charity shop.",
+          "choices": [
+            {
+              "text": "borrow",
+              "meaning": "借りる"
+            },
+            {
+              "text": "waste",
+              "meaning": "無駄にする"
+            },
+            {
+              "text": "donate",
+              "meaning": "寄付する"
+            },
+            {
+              "text": "repair",
+              "meaning": "修理する"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "charity shop に古着を無償で提供するので donate が合います。",
+          "alternatives": [
+            {
+              "answer": "give",
+              "explanation": "一般的な「あげる」で、寄付の意味も表せますが少しくだけます。"
+            },
+            {
+              "answer": "give away",
+              "explanation": "不要な物を無料で人にあげる含みがあります。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "donate を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "He donated a lot of money to the school.",
+              "meaning": "彼は学校に多額のお金を寄付した。"
+            },
+            {
+              "text": "He donated to money the school.",
+              "meaning": "誤り: to の位置が不適切"
+            },
+            {
+              "text": "He donated for the school a lot of money to.",
+              "meaning": "誤り: 語順と前置詞が不適切"
+            },
+            {
+              "text": "He donated at the school a lot of money.",
+              "meaning": "誤り: 受け取り先に at は使わない"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "donate は donate 物 to 相手 の形で、寄付先を to で示します。他の文は to の位置や前置詞が不適切です。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "古着をチャリティーに出す場面: We decided to ___ our old clothes to a charity shop.",
+        "answers": [
+          "donate"
+        ],
+        "explanation": "charity shop に古着を無償で提供するので donate が合います。",
+        "alternatives": [
+          {
+            "answer": "give",
+            "explanation": "一般的な「あげる」で、寄付の意味も表せますが少しくだけます。"
+          },
+          {
+            "answer": "give away",
+            "explanation": "不要な物を無料で人にあげる含みがあります。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "donateを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Our class donated old books to the town library last week.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-donate-usage",
+          "type": "usage",
+          "prompt": "donate を正しく使った文を選んでください。",
+          "choices": [
+            "He donated a lot of money to the school.",
+            "He donated to money the school.",
+            "He donated for the school a lot of money to.",
+            "He donated at the school a lot of money."
+          ],
+          "correctIndex": 0,
+          "explanation": "donate は donate 物 to 相手 の形で、寄付先を to で示します。他の文は to の位置や前置詞が不適切です。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "society"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-drive",
+      "word": "drive",
+      "level": "3級",
+      "ipa": "/draɪv/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "drive"
+        ],
+        "past": [
+          "drove"
+        ],
+        "pastParticiple": [
+          "driven"
+        ],
+        "presentParticiple": [
+          "driving"
+        ],
+        "thirdPersonSingular": [
+          "drives"
+        ]
+      },
+      "definition": "to control a vehicle and make it move; also to take someone somewhere in a car",
+      "meaning": "運転する、車で送る",
+      "usageTip": "drive a car「車を運転する」、drive to 場所「車で行く」、drive 人 to 場所「人を車で送る」。「車で」は by car だが、drive と一緒に by car を重ねる必要はない。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "日常",
+          "text": "My father drives to work every morning.",
+          "translation": "父は毎朝、車で通勤しています。"
+        },
+        {
+          "id": "example-2",
+          "context": "旅行",
+          "text": "We drove along the coast and stopped at a small café.",
+          "translation": "私たちは海岸沿いを運転し、小さなカフェに寄りました。"
+        },
+        {
+          "id": "example-3",
+          "context": "家族",
+          "text": "Could you drive me to the station tomorrow?",
+          "translation": "明日、駅まで車で送ってくれませんか。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "drive",
+          "choices": [
+            {
+              "text": "歩く",
+              "meaning": "足で進む"
+            },
+            {
+              "text": "洗う",
+              "meaning": "水できれいにする"
+            },
+            {
+              "text": "運転する",
+              "meaning": "車などを操作する"
+            },
+            {
+              "text": "止まる",
+              "meaning": "動きをやめる"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "drive は車などを運転することを表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "運転する",
+          "choices": [
+            {
+              "text": "drive",
+              "meaning": "運転する"
+            },
+            {
+              "text": "drink",
+              "meaning": "飲む"
+            },
+            {
+              "text": "dream",
+              "meaning": "夢を見る"
+            },
+            {
+              "text": "draw",
+              "meaning": "描く"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "「運転する」は drive です。他は綴りが似た別の動詞です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "車で空港へ送ってもらう場面: Can you ___ me to the airport on Friday?",
+          "choices": [
+            {
+              "text": "carry",
+              "meaning": "手で運ぶ"
+            },
+            {
+              "text": "walk",
+              "meaning": "歩く"
+            },
+            {
+              "text": "drive",
+              "meaning": "車で送る"
+            },
+            {
+              "text": "ride",
+              "meaning": "乗る"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "drive 人 to 場所 で車で送る意味になります。carry は人を送る意味では不自然で、walk と ride は me を目的語にとって送る意味になりません。",
+          "alternatives": [
+            {
+              "answer": "take",
+              "explanation": "take me to the airport は手段を問わず連れて行く表現です。"
+            },
+            {
+              "answer": "give me a ride",
+              "explanation": "主に米国で、車に乗せてもらう口語表現です。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "drive を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I drive by my car to the office.",
+              "meaning": "誤り: drive と by my car を重ねない"
+            },
+            {
+              "text": "They drove at the beach last summer.",
+              "meaning": "誤り: 行き先には at でなく to を使う"
+            },
+            {
+              "text": "She drove to the city to the shopping.",
+              "meaning": "誤り: to が重なり不自然"
+            },
+            {
+              "text": "He drove to the city yesterday.",
+              "meaning": "彼は昨日、車で街へ行った。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "drive to 場所 は車で行く意味で自然です。drive 自体に「車で」の意味があるので by my car は重ねません。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "車で空港へ送ってもらう場面: Can you ___ me to the airport on Friday?",
+        "answers": [
+          "drive"
+        ],
+        "explanation": "drive 人 to 場所 で車で送る意味になります。carry は人を送る意味では不自然で、walk と ride は me を目的語にとって送る意味になりません。",
+        "alternatives": [
+          {
+            "answer": "take",
+            "explanation": "take me to the airport は手段を問わず連れて行く表現です。"
+          },
+          {
+            "answer": "give me a ride",
+            "explanation": "主に米国で、車に乗せてもらう口語表現です。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "driveを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "My father drives to work every morning.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-drive-usage",
+          "type": "usage",
+          "prompt": "drive を正しく使った文を選んでください。",
+          "choices": [
+            "I drive by my car to the office.",
+            "They drove at the beach last summer.",
+            "She drove to the city to the shopping.",
+            "He drove to the city yesterday."
+          ],
+          "correctIndex": 3,
+          "explanation": "drive to 場所 は車で行く意味で自然です。drive 自体に「車で」の意味があるので by my car は重ねません。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "transport",
+          "daily-life"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-ethics",
       "word": "ethics",
       "level": "3級",
@@ -19609,6 +20653,62 @@
       "voiceLabel": "George（男性）"
     },
     {
+      "wordId": "vocab-throw",
+      "cacheKey": "fa280a137ebd19dd3c201eca5ee67ca09ef855c699dd3f6c98a21abd0317130f",
+      "fileId": "1bIOlQWjRddODI4vPNl9eRArGFioJIIax",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8069999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.832,
+          "endSeconds": 2.5835
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 2.6319999999999997,
+          "endSeconds": 5.224500000000001
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.232,
+          "endSeconds": 7.291
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-catch",
+      "cacheKey": "7ed1ae26fc09fa57fc2e0c0c3fbdc9412c5c8a329e9ed573c3be242bd18b1da6",
+      "fileId": "1zYgcdPJVZNc4kArx_rYjP4H6st0BnMVf",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.72
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.728,
+          "endSeconds": 3.442
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.6759999999999997,
+          "endSeconds": 6.0895
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.115,
+          "endSeconds": 8.638
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
       "wordId": "vocab-forget",
       "cacheKey": "03cb834656f4fbaba93eebffce0b0d68e74438831f8eebd7f28cd4fd73cdb0b6",
       "fileId": "1br2HZ6YFb7UjOZ_ELgbH4kaJZwBt-zqM",
@@ -19719,6 +20819,34 @@
         }
       ],
       "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-cry",
+      "cacheKey": "b3bbab6ec7ff5f18252f34fba20e1b648fefa2ee53fc6a11d21df3643154c76b",
+      "fileId": "1z6dy_jPmJb0XljOvQdQ27e98tISMle45",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.929
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9369999999999999,
+          "endSeconds": 3.2275
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.2275,
+          "endSeconds": 5.712
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.72,
+          "endSeconds": 9.288
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
     },
     {
       "wordId": "vocab-cut",
@@ -20113,6 +21241,62 @@
       "voiceLabel": "Sarah（女性）"
     },
     {
+      "wordId": "vocab-print",
+      "cacheKey": "0187c3072604c0d00973f2a848d605740cab8cee144fbed829236290cc753853",
+      "fileId": "11Hwz3haiBsM5eVob0uQsq3aRdQg5sHKR",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7370000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.902,
+          "endSeconds": 3.849
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.28,
+          "endSeconds": 7.274
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.438,
+          "endSeconds": 10.728
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-copy",
+      "cacheKey": "90c9212e809a26d072c0d52495ddae3c437ccee7709e4742c442dad85aae8c76",
+      "fileId": "16wNNC-0dod1lp0-d7WF3LgpbWXbOfmhE",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8885
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9369999999999999,
+          "endSeconds": 4.1625000000000005
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.211,
+          "endSeconds": 7.3665
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.415,
+          "endSeconds": 10.681
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
       "wordId": "vocab-file",
       "cacheKey": "b32ac0177595dd64bce63324e3a76fd16ce1afffba490be2085894597eff7015",
       "fileId": "1FWEafPql2ACfT1RQUNyb4crYq5u_RR2A",
@@ -20141,6 +21325,34 @@
       "voiceLabel": "George（男性）"
     },
     {
+      "wordId": "vocab-record",
+      "cacheKey": "31f666c4a3d9b64be0c6ef7f85d00b2b2fbb5c2e2e50c01ae9d4edd9488e71e4",
+      "fileId": "1INqfZyYakISrRDasUQ0PwljDWaqR-uNw",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8360000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.8360000000000001,
+          "endSeconds": 3.8485
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.8485,
+          "endSeconds": 6.542
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.567,
+          "endSeconds": 9.52
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
       "wordId": "vocab-list",
       "cacheKey": "588c476765acec2614996eacf7a8bed4e5079e9f1fc1cf0dd06505285e286f17",
       "fileId": "1zToHMRQXuB4W8vpI6j8477jisKBDSydN",
@@ -20167,6 +21379,34 @@
         }
       ],
       "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-name",
+      "cacheKey": "ed9e23ee77dbe7453e8a2c51060c1c8dc65499c5936c99ab9aa443f0484e932b",
+      "fileId": "1Py5C4lMRcnFLW5ws0CCygIgIlcjuXQ4M",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.6910000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.855,
+          "endSeconds": 3.1055
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.1055,
+          "endSeconds": 5.3
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.348,
+          "endSeconds": 7.895
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
     },
     {
       "wordId": "vocab-guilty",
@@ -20335,6 +21575,90 @@
         }
       ],
       "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-fluent",
+      "cacheKey": "42e476ec4930d831ec42bcbbb78b0cef98e5909ecb87015619ca9ac094809e37",
+      "fileId": "1hMIDjjKICH5v-crSsTSHnCUVdX-u74vs",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9115
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9600000000000001,
+          "endSeconds": 4.4875
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.4875,
+          "endSeconds": 8.1905
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.239,
+          "endSeconds": 12.121
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-researcher",
+      "cacheKey": "72c9c0fa7664cb558295a9df7983087383e2d8dc9bbf3614f98afb4c33f952b8",
+      "fileId": "12k82G_EQMlslPLubdKizBJcEhbA6KK3N",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.3059999999999998
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.471,
+          "endSeconds": 5.2185
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.2669999999999995,
+          "endSeconds": 8.655
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.762,
+          "endSeconds": 12.028
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-sample",
+      "cacheKey": "afe4b5f6c25c6c5affe1ca866db8cd090c5e3948f16af108fe0d44504e839a0e",
+      "fileId": "1jCxihfp4D46p9PySJWMmscpiDi3H_sHQ",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.6619999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.6619999999999999,
+          "endSeconds": 3.303
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.351,
+          "endSeconds": 6.02
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.184,
+          "endSeconds": 9.242
+        }
+      ],
+      "voiceLabel": "George（男性）"
     },
     {
       "wordId": "vocab-adjust",
@@ -20645,6 +21969,34 @@
       "voiceLabel": "Sarah（女性）"
     },
     {
+      "wordId": "vocab-athlete",
+      "cacheKey": "903c96ef9fa85548b94b0a02b6ac73edd55cb12bf8e084f434145349ceae10fe",
+      "fileId": "1xFWwnyTp2aZ2SyYp5kvhf-pfY65Luvw_",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.778
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.786,
+          "endSeconds": 4.335999999999999
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.501,
+          "endSeconds": 7.994
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.100000000000001,
+          "endSeconds": 11.935
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
       "wordId": "vocab-attitude",
       "cacheKey": "c46528c8940df39332f0c88018237fc6a56b1c11dffd027ccedcef1180d54ce3",
       "fileId": "1rUrmCHZoB1FageufrMlSAu-L6AWErsom",
@@ -20671,6 +22023,34 @@
         }
       ],
       "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-bother",
+      "cacheKey": "654784bed89dc8c440e2965075aa1e49e39b06a8026f66d661e46f830d40f8d2",
+      "fileId": "1n1xQXYPOi0Ta5PS_5VjyaaLFvl3gZuhy",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.563
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.563,
+          "endSeconds": 2.966
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.131,
+          "endSeconds": 5.949999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.289,
+          "endSeconds": 9.102
+        }
+      ],
+      "voiceLabel": "George（男性）"
     },
     {
       "wordId": "vocab-boundary",
@@ -20981,6 +22361,90 @@
       "voiceLabel": "Sarah（女性）"
     },
     {
+      "wordId": "vocab-consume",
+      "cacheKey": "9af410ab0b1673839ce15087ddc98cc206c63d33ad92d850b3cb0dae7fe0c5ce",
+      "fileId": "1jv_YrAzySkNuasPhjF2PY4Wn795-zH1S",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.917
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9249999999999999,
+          "endSeconds": 4.058
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.2219999999999995,
+          "endSeconds": 7.367
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.531,
+          "endSeconds": 10.403
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-dessert",
+      "cacheKey": "b26dedaba42d985e243f31febe9e63d5c57303cae01015398ed86dc2ceff8a47",
+      "fileId": "1MKA9BOKNX0UQKyBezsYuOESVsDxf-9Ut",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.929
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.929,
+          "endSeconds": 3.6510000000000002
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.758,
+          "endSeconds": 6.6819999999999995
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.788,
+          "endSeconds": 9.195
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-dispute",
+      "cacheKey": "437396450d96749d3fbb59fbf30ca557c683dc2648b0d923ca4a29616812652f",
+      "fileId": "1VEDuFDCTjmXvVOd1zKefKr2xot-1frY4",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.865
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.865,
+          "endSeconds": 3.617
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.7809999999999997,
+          "endSeconds": 7.169
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.334,
+          "endSeconds": 10.124
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
       "wordId": "vocab-ethics",
       "cacheKey": "5848d6e8240bc688e404dab00e5df65a0bbedc9a34fc7ba12c2eefdd3cb71a0e",
       "fileId": "1lCorxbKmgZraxPnl9P5Qd6Kl0hlePw4K",
@@ -21009,6 +22473,34 @@
       "voiceLabel": "Sarah（女性）"
     },
     {
+      "wordId": "vocab-evaluate",
+      "cacheKey": "2f995275aa394aee6f7f17045ceaa1bfaab3d75fbdce3b6426236ad038ffdab4",
+      "fileId": "1YSRxnCDlbR9uVB43DFbC9XwtOdbr_8QQ",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9404999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9404999999999999,
+          "endSeconds": 5.7299999999999995
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.894,
+          "endSeconds": 9.398
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 9.563,
+          "endSeconds": 12.817
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
       "wordId": "vocab-extend",
       "cacheKey": "93506533d4369d2a8047efff13d5f45fb009670378fab75afdcae073e5dd4ca3",
       "fileId": "1Tbs-2XT-N7j4r90eWS98BDz_0_7y3YiU",
@@ -21032,6 +22524,62 @@
           "id": "example-3",
           "startSeconds": 7.531,
           "endSeconds": 10.96
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-factor",
+      "cacheKey": "5bb0ab94ca20e0ff6606cd89f9a50a32503d142526a7ea49f2e41c12c62a2551",
+      "fileId": "1J_bF0ORgL5VA84LcjhWqMbvcBfzuNI2F",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7665
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.774,
+          "endSeconds": 3.535
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.6999999999999997,
+          "endSeconds": 7.319999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.485,
+          "endSeconds": 10.449
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-flexible",
+      "cacheKey": "1d2c701c34c1781f93b6ff4ca351c9584e211bce86cf45bb0717fc473cae5abf",
+      "fileId": "1_Jeg_FI7YjscehoJGYsRW2v62wZYFqly",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.923
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.262,
+          "endSeconds": 5.532
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.697,
+          "endSeconds": 9.491
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 9.598,
+          "endSeconds": 13.421
         }
       ],
       "voiceLabel": "Sarah（女性）"
@@ -21147,6 +22695,34 @@
         }
       ],
       "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-identify",
+      "cacheKey": "e165da28b99040c25feed1642246caf0d5c0dc278bf791c5c0efa67c7547df5e",
+      "fileId": "1sicdNcnGcnxLjFgaX3-MYUWQCQUtabjR",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.987
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.995,
+          "endSeconds": 4.29
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.454,
+          "endSeconds": 7.4479999999999995
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.612,
+          "endSeconds": 11.517
+        }
+      ],
+      "voiceLabel": "George（男性）"
     }
   ]
 }

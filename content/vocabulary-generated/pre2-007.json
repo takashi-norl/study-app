@@ -3072,6 +3072,393 @@
       }
     },
     {
+      "id": "vocab-victory",
+      "word": "victory",
+      "level": "準2級",
+      "ipa": "ˈvɪktəri",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "the success of winning a game, battle, or election",
+      "meaning": "勝利",
+      "usageTip": "「〜に対する勝利」は victory over ~ が最も定番。a narrow victory(僅差の勝利)、claim victory(勝利を宣言する)、celebrate a victory のように使う。「勝つ」という動作は win を動詞で使うのが日常的。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "スポーツ",
+          "text": "The home team celebrated a narrow victory over their rivals.",
+          "translation": "地元チームはライバルに対する僅差の勝利を祝った。"
+        },
+        {
+          "id": "example-2",
+          "context": "政治",
+          "text": "The party claimed victory after counting most of the votes.",
+          "translation": "その党は大半の票が開票された後に勝利を宣言した。"
+        },
+        {
+          "id": "example-3",
+          "context": "日常",
+          "text": "Finishing the hike felt like a personal victory for her.",
+          "translation": "ハイキングを完走できたことは、彼女にとって個人的な勝利のように感じられた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "victory",
+          "choices": [
+            {
+              "text": "失敗",
+              "meaning": "うまくいかないこと"
+            },
+            {
+              "text": "引き分け",
+              "meaning": "勝敗がつかないこと"
+            },
+            {
+              "text": "参加",
+              "meaning": "加わること"
+            },
+            {
+              "text": "勝利",
+              "meaning": "勝つこと"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "victory は試合や選挙などで勝つことを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "勝利",
+          "choices": [
+            {
+              "text": "victory",
+              "meaning": "勝利"
+            },
+            {
+              "text": "training",
+              "meaning": "訓練"
+            },
+            {
+              "text": "tour",
+              "meaning": "周遊"
+            },
+            {
+              "text": "rumor",
+              "meaning": "うわさ"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "勝つことやその成功は victory で表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "決勝戦で相手に勝った後の場面。 After the final whistle, the players shouted with joy because the ___ was theirs.",
+          "choices": [
+            {
+              "text": "rumor",
+              "meaning": "うわさ"
+            },
+            {
+              "text": "training",
+              "meaning": "訓練"
+            },
+            {
+              "text": "victory",
+              "meaning": "勝利"
+            },
+            {
+              "text": "conversation",
+              "meaning": "会話"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "試合終了後に喜ぶ理由として、勝利が自分たちのものになったという意味が合う。",
+          "alternatives": [
+            {
+              "answer": "win",
+              "explanation": "日常的で口語的。victory よりやや軽い。"
+            },
+            {
+              "answer": "triumph",
+              "explanation": "大きな成功を強調する、やや文語的な語。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "victory を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "The team victory a big game yesterday.",
+              "meaning": "チームは昨日大きな試合を勝利した。(動詞として誤用)"
+            },
+            {
+              "text": "They had a victory of the final match.",
+              "meaning": "彼らは決勝戦の勝利を得た。(前置詞の誤り)"
+            },
+            {
+              "text": "Their victory over the champions surprised everyone.",
+              "meaning": "王者に対する彼らの勝利は皆を驚かせた。"
+            },
+            {
+              "text": "We were victory in the final match.",
+              "meaning": "私たちは決勝戦で勝利だった。(形容詞として誤用)"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "victory は名詞で、「〜に対する勝利」は victory over ~。動詞や形容詞のように使う文は誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "決勝戦で相手に勝った後の場面。 After the final whistle, the players shouted with joy because the ___ was theirs.",
+        "answers": [
+          "victory"
+        ],
+        "explanation": "試合終了後に喜ぶ理由として、勝利が自分たちのものになったという意味が合う。",
+        "alternatives": [
+          {
+            "answer": "win",
+            "explanation": "日常的で口語的。victory よりやや軽い。"
+          },
+          {
+            "answer": "triumph",
+            "explanation": "大きな成功を強調する、やや文語的な語。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "victoryを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The home team celebrated a narrow victory over their rivals.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-victory-usage",
+          "type": "usage",
+          "prompt": "victory を正しく使った文を選んでください。",
+          "choices": [
+            "The team victory a big game yesterday.",
+            "They had a victory of the final match.",
+            "Their victory over the champions surprised everyone.",
+            "We were victory in the final match."
+          ],
+          "correctIndex": 2,
+          "explanation": "victory は名詞で、「〜に対する勝利」は victory over ~。動詞や形容詞のように使う文は誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "sports",
+          "politics"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-tour",
+      "word": "tour",
+      "level": "準2級",
+      "ipa": "tʊə",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a trip in which you visit several places or look around one place",
+      "meaning": "周遊、ツアー",
+      "usageTip": "go on a tour of ~ や take a tour of ~ で「〜を見て回る」。guided tour は案内付きの見学。バンドなどの巡業にも使い、a world tour のように言う。動詞では toured the castle のように of を付けない。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "旅行",
+          "text": "We went on a walking tour of the old town.",
+          "translation": "私たちは旧市街を歩いて巡るツアーに参加した。"
+        },
+        {
+          "id": "example-2",
+          "context": "学校",
+          "text": "Our class took a tour of the factory last week.",
+          "translation": "私たちのクラスは先週、工場見学をした。"
+        },
+        {
+          "id": "example-3",
+          "context": "音楽",
+          "text": "The band will start a European tour next spring.",
+          "translation": "そのバンドは来春、ヨーロッパツアーを始める。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "tour",
+          "choices": [
+            {
+              "text": "宿泊",
+              "meaning": "泊まること"
+            },
+            {
+              "text": "地図",
+              "meaning": "場所を示す図"
+            },
+            {
+              "text": "周遊、ツアー",
+              "meaning": "各地を巡る旅"
+            },
+            {
+              "text": "切符",
+              "meaning": "乗る券"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "tour は各地や施設を見て回る旅や見学を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "周遊、ツアー",
+          "choices": [
+            {
+              "text": "victory",
+              "meaning": "勝利"
+            },
+            {
+              "text": "conversation",
+              "meaning": "会話"
+            },
+            {
+              "text": "rumor",
+              "meaning": "うわさ"
+            },
+            {
+              "text": "tour",
+              "meaning": "周遊、ツアー"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "各地を巡る旅や見学は tour で表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "博物館でガイドと一緒に館内を回る場面。 We joined a guided ___ of the museum.",
+          "choices": [
+            {
+              "text": "tour",
+              "meaning": "見学ツアー"
+            },
+            {
+              "text": "rumor",
+              "meaning": "うわさ"
+            },
+            {
+              "text": "training",
+              "meaning": "訓練"
+            },
+            {
+              "text": "victory",
+              "meaning": "勝利"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "guided tour は案内付きの見学ツアーという定型表現。",
+          "alternatives": [
+            {
+              "answer": "visit",
+              "explanation": "訪問を表すが、ガイド付きで回る感じは弱い。"
+            },
+            {
+              "answer": "trip",
+              "explanation": "旅行全般で、館内を回る見学の意味では広すぎる。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "tour を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "We toured of the castle.",
+              "meaning": "私たちは城を巡った。(動詞に of は不要)"
+            },
+            {
+              "text": "We took a tour of the castle.",
+              "meaning": "私たちは城を見て回った。"
+            },
+            {
+              "text": "We toured to the castle.",
+              "meaning": "私たちは城を巡った。(動詞に to は不要)"
+            },
+            {
+              "text": "We went a tour of the castle.",
+              "meaning": "私たちは城を見て回った。(動詞の誤り)"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "take a tour of ~ が自然な型。動詞 tour は目的語を直接取るので of や to は付けず、go は on a tour の形で使う。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "博物館でガイドと一緒に館内を回る場面。 We joined a guided ___ of the museum.",
+        "answers": [
+          "tour"
+        ],
+        "explanation": "guided tour は案内付きの見学ツアーという定型表現。",
+        "alternatives": [
+          {
+            "answer": "visit",
+            "explanation": "訪問を表すが、ガイド付きで回る感じは弱い。"
+          },
+          {
+            "answer": "trip",
+            "explanation": "旅行全般で、館内を回る見学の意味では広すぎる。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "tourを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "We went on a walking tour of the old town.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-tour-usage",
+          "type": "usage",
+          "prompt": "tour を正しく使った文を選んでください。",
+          "choices": [
+            "We toured of the castle.",
+            "We took a tour of the castle.",
+            "We toured to the castle.",
+            "We went a tour of the castle."
+          ],
+          "correctIndex": 1,
+          "explanation": "take a tour of ~ が自然な型。動詞 tour は目的語を直接取るので of や to は付けず、go は on a tour の形で使う。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "travel"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-conversation",
       "word": "conversation",
       "level": "準2級",
@@ -6722,6 +7109,191 @@
       }
     },
     {
+      "id": "vocab-niece",
+      "word": "niece",
+      "level": "準2級",
+      "ipa": "niːs",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "The daughter of your brother or sister, or of your spouse's brother or sister.",
+      "meaning": "姪(兄弟姉妹の娘)",
+      "usageTip": "兄弟姉妹や配偶者の兄弟姉妹の娘を指す。男の子は nephew。複数形は nieces。my niece や a niece of mine の形でよく使う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "家族",
+          "text": "My niece loves drawing animals with colored pencils.",
+          "translation": "姪は色鉛筆で動物の絵を描くのが大好きだ。"
+        },
+        {
+          "id": "example-2",
+          "context": "訪問",
+          "text": "We visited my brother and played board games with his daughter, my niece.",
+          "translation": "私たちは兄を訪ね、姪である彼の娘とボードゲームをした。"
+        },
+        {
+          "id": "example-3",
+          "context": "贈り物",
+          "text": "She sent her niece a postcard from Italy last week.",
+          "translation": "彼女は先週、イタリアから姪に絵はがきを送った。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "niece",
+          "choices": [
+            {
+              "text": "甥",
+              "meaning": "兄弟姉妹の息子"
+            },
+            {
+              "text": "祖母",
+              "meaning": "親の母"
+            },
+            {
+              "text": "姪",
+              "meaning": "兄弟姉妹の娘"
+            },
+            {
+              "text": "娘",
+              "meaning": "自分の女の子"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "niece は兄弟姉妹の娘、つまり姪を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "姪",
+          "choices": [
+            {
+              "text": "niece",
+              "meaning": "姪"
+            },
+            {
+              "text": "nephew",
+              "meaning": "甥"
+            },
+            {
+              "text": "grandparent",
+              "meaning": "祖父母"
+            },
+            {
+              "text": "cousin",
+              "meaning": "いとこ"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "姪は niece。nephew は男の子の甥で、意味が異なる。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "兄の娘に本をあげる場面。 My brother's daughter is my ___, and she likes books.",
+          "choices": [
+            {
+              "text": "nephew",
+              "meaning": "甥"
+            },
+            {
+              "text": "cousin",
+              "meaning": "いとこ"
+            },
+            {
+              "text": "niece",
+              "meaning": "姪"
+            },
+            {
+              "text": "aunt",
+              "meaning": "叔母"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "兄の娘は自分から見て姪なので niece が入る。nephew は男の子なので合わない。",
+          "alternatives": [
+            {
+              "answer": "goddaughter",
+              "explanation": "洗礼上の関係の女の子で、血縁とは別の関係。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "niece を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "My niece are five years old.",
+              "meaning": "動詞の一致が誤り。"
+            },
+            {
+              "text": "I am a niece of my sister.",
+              "meaning": "姉の姪ではなく、関係が合わない。"
+            },
+            {
+              "text": "My niece is learning to swim.",
+              "meaning": "姪は水泳を習っている。"
+            },
+            {
+              "text": "My niece is a son of my brother.",
+              "meaning": "niece と son が矛盾している。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "単数の niece には is を使い、意味も自然。他は動詞の一致や親族関係の説明が誤っている。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "兄の娘に本をあげる場面。 My brother's daughter is my ___, and she likes books.",
+        "answers": [
+          "niece"
+        ],
+        "explanation": "兄の娘は自分から見て姪なので niece が入る。nephew は男の子なので合わない。",
+        "alternatives": [
+          {
+            "answer": "goddaughter",
+            "explanation": "洗礼上の関係の女の子で、血縁とは別の関係。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "nieceを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "My niece loves drawing animals with colored pencils.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-niece-usage",
+          "type": "usage",
+          "prompt": "niece を正しく使った文を選びなさい。",
+          "choices": [
+            "My niece are five years old.",
+            "I am a niece of my sister.",
+            "My niece is learning to swim.",
+            "My niece is a son of my brother."
+          ],
+          "correctIndex": 2,
+          "explanation": "単数の niece には is を使い、意味も自然。他は動詞の一致や親族関係の説明が誤っている。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "relationships"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-timber",
       "word": "timber",
       "level": "準2級",
@@ -7112,6 +7684,216 @@
         "domains": [
           "education",
           "work"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-upgrade",
+      "word": "upgrade",
+      "level": "準2級",
+      "ipa": "ˈʌpɡreɪd",
+      "ipaLabel": "米音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "upgrade"
+        ],
+        "past": [
+          "upgraded"
+        ],
+        "pastParticiple": [
+          "upgraded"
+        ],
+        "presentParticiple": [
+          "upgrading"
+        ],
+        "thirdPersonSingular": [
+          "upgrades"
+        ]
+      },
+      "definition": "to improve something by replacing it with a better or newer version",
+      "meaning": "アップグレードする、性能を上げる",
+      "usageTip": "upgrade A to B や upgrade to B の形でよく使う。ソフトや機器、座席などに使える。名詞の upgrade は ˈʌpɡreɪd と発音する。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "スマホ",
+          "text": "I need to upgrade my phone before the old one stops working.",
+          "translation": "古いスマホが動かなくなる前に、買い替えて性能を上げる必要がある。"
+        },
+        {
+          "id": "example-2",
+          "context": "ソフト",
+          "text": "You should upgrade the app to get the new features.",
+          "translation": "新機能を使うには、そのアプリをアップグレードしたほうがいい。"
+        },
+        {
+          "id": "example-3",
+          "context": "旅行",
+          "text": "The airline upgraded us to business class for free.",
+          "translation": "航空会社は私たちを無料でビジネスクラスに格上げしてくれた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "upgrade",
+          "choices": [
+            {
+              "text": "性能を上げる、新しい版にする",
+              "meaning": "to make something better or newer"
+            },
+            {
+              "text": "電源を切る",
+              "meaning": "to turn something off"
+            },
+            {
+              "text": "価格を比べる",
+              "meaning": "to compare prices"
+            },
+            {
+              "text": "データを消す",
+              "meaning": "to delete data"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "upgrade は、より良いものや新しい版にすることを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "アップグレードする",
+          "choices": [
+            {
+              "text": "borrow",
+              "meaning": "借りる"
+            },
+            {
+              "text": "cancel",
+              "meaning": "取り消す"
+            },
+            {
+              "text": "upgrade",
+              "meaning": "アップグレードする"
+            },
+            {
+              "text": "ignore",
+              "meaning": "無視する"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "アップグレードするは upgrade で表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "パソコンが古くて遅いので、新しい部品に替えたい。 I want to ___ my computer so it runs faster.",
+          "choices": [
+            {
+              "text": "upgrade",
+              "meaning": "性能を上げる"
+            },
+            {
+              "text": "forget",
+              "meaning": "忘れる"
+            },
+            {
+              "text": "apologize",
+              "meaning": "謝る"
+            },
+            {
+              "text": "borrow",
+              "meaning": "借りる"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "速く動かすために性能を上げる意味なので upgrade が合う。",
+          "alternatives": [
+            {
+              "answer": "improve",
+              "explanation": "改善するという広い意味で、部品交換までは示さない。"
+            },
+            {
+              "answer": "update",
+              "explanation": "最新の状態にする意味で、性能向上とは少し違う。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "upgrade の使い方が正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "I upgraded my laptop to a faster model.",
+              "meaning": "ノートPCをより速いモデルに替えた。"
+            },
+            {
+              "text": "I upgraded to my laptop a faster model.",
+              "meaning": "語順が誤った文。"
+            },
+            {
+              "text": "I upgraded about my laptop yesterday.",
+              "meaning": "不要な前置詞を使った文。"
+            },
+            {
+              "text": "I upgraded my laptop from a faster model to slow.",
+              "meaning": "向きが不自然な文。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "upgrade の後に目的語を置き、to で新しいものを示せる。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "パソコンが古くて遅いので、新しい部品に替えたい。 I want to ___ my computer so it runs faster.",
+        "answers": [
+          "upgrade"
+        ],
+        "explanation": "速く動かすために性能を上げる意味なので upgrade が合う。",
+        "alternatives": [
+          {
+            "answer": "improve",
+            "explanation": "改善するという広い意味で、部品交換までは示さない。"
+          },
+          {
+            "answer": "update",
+            "explanation": "最新の状態にする意味で、性能向上とは少し違う。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "upgradeを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I need to upgrade my phone before the old one stops working.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-upgrade-usage",
+          "type": "usage",
+          "prompt": "upgrade の使い方が正しい文を選んでください。",
+          "choices": [
+            "I upgraded my laptop to a faster model.",
+            "I upgraded to my laptop a faster model.",
+            "I upgraded about my laptop yesterday.",
+            "I upgraded my laptop from a faster model to slow."
+          ],
+          "correctIndex": 0,
+          "explanation": "upgrade の後に目的語を置き、to で新しいものを示せる。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "technology"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -7511,6 +8293,192 @@
           "science",
           "medical",
           "technology"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-extinction",
+      "word": "extinction",
+      "level": "準2級",
+      "ipa": "ɪkˈstɪŋkʃn",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "the complete disappearance of a species or group",
+      "meaning": "絶滅",
+      "usageTip": "in danger of extinction や drive A to extinction の形でよく使う。動物や植物の種に使うのが基本。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "環境",
+          "text": "Many rare birds are in danger of extinction.",
+          "translation": "多くの珍しい鳥が絶滅の危機にある。"
+        },
+        {
+          "id": "example-2",
+          "context": "歴史",
+          "text": "Scientists study why the dinosaurs faced extinction.",
+          "translation": "科学者は恐竜がなぜ絶滅したのかを研究している。"
+        },
+        {
+          "id": "example-3",
+          "context": "自然保護",
+          "text": "Hunting drove the species close to extinction.",
+          "translation": "狩猟のせいでその種は絶滅寸前になった。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "extinction",
+          "choices": [
+            {
+              "text": "移動",
+              "meaning": "movement"
+            },
+            {
+              "text": "絶滅",
+              "meaning": "disappearance of a species"
+            },
+            {
+              "text": "成長",
+              "meaning": "growth"
+            },
+            {
+              "text": "競争",
+              "meaning": "competition"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "extinction は種が完全にいなくなることを指す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "絶滅",
+          "choices": [
+            {
+              "text": "extinction",
+              "meaning": "絶滅"
+            },
+            {
+              "text": "extension",
+              "meaning": "延長"
+            },
+            {
+              "text": "expression",
+              "meaning": "表現"
+            },
+            {
+              "text": "exhibition",
+              "meaning": "展示"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "絶滅は extinction で表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "絶滅しそうな動物の話。 The panda was once close to ___.",
+          "choices": [
+            {
+              "text": "holiday",
+              "meaning": "休日"
+            },
+            {
+              "text": "fashion",
+              "meaning": "流行"
+            },
+            {
+              "text": "weather",
+              "meaning": "天気"
+            },
+            {
+              "text": "extinction",
+              "meaning": "絶滅"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "close to extinction で絶滅寸前という意味になる。",
+          "alternatives": [
+            {
+              "answer": "disappearance",
+              "explanation": "消えることを表すが、種の絶滅ほど決定的ではない。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "extinction の使い方が正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "The tiger is in danger of extinct.",
+              "meaning": "品詞が誤った文。"
+            },
+            {
+              "text": "The tiger extinctions every year.",
+              "meaning": "動詞として誤用した文。"
+            },
+            {
+              "text": "The tiger is extinction now.",
+              "meaning": "形容詞のように誤用した文。"
+            },
+            {
+              "text": "The tiger is in danger of extinction.",
+              "meaning": "トラは絶滅の危機にある。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "in danger of の後には名詞 extinction が来る。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "絶滅しそうな動物の話。 The panda was once close to ___.",
+        "answers": [
+          "extinction"
+        ],
+        "explanation": "close to extinction で絶滅寸前という意味になる。",
+        "alternatives": [
+          {
+            "answer": "disappearance",
+            "explanation": "消えることを表すが、種の絶滅ほど決定的ではない。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "extinctionを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Many rare birds are in danger of extinction.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-extinction-usage",
+          "type": "usage",
+          "prompt": "extinction の使い方が正しい文を選んでください。",
+          "choices": [
+            "The tiger is in danger of extinct.",
+            "The tiger extinctions every year.",
+            "The tiger is extinction now.",
+            "The tiger is in danger of extinction."
+          ],
+          "correctIndex": 3,
+          "explanation": "in danger of の後には名詞 extinction が来る。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "environment",
+          "science"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -9067,6 +10035,199 @@
       }
     },
     {
+      "id": "vocab-logo",
+      "word": "logo",
+      "level": "準2級",
+      "ipa": "ˈloʊɡoʊ",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "a symbol or design that represents a company or brand",
+      "meaning": "ロゴ、商標マーク",
+      "usageTip": "company logo や logo design のように使う。会社や商品を表す図案や文字に使う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "服",
+          "text": "The shirt has a small logo on the pocket.",
+          "translation": "そのシャツはポケットに小さなロゴが付いている。"
+        },
+        {
+          "id": "example-2",
+          "context": "仕事",
+          "text": "She designed a new logo for our bakery.",
+          "translation": "彼女は私たちのパン屋の新しいロゴをデザインした。"
+        },
+        {
+          "id": "example-3",
+          "context": "ウェブ",
+          "text": "Click the logo to go back to the home page.",
+          "translation": "ロゴをクリックするとホームページに戻る。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "logo",
+          "choices": [
+            {
+              "text": "会社を表すマーク",
+              "meaning": "a symbol for a company"
+            },
+            {
+              "text": "長い手紙",
+              "meaning": "a long letter"
+            },
+            {
+              "text": "古い地図",
+              "meaning": "an old map"
+            },
+            {
+              "text": "小さな部屋",
+              "meaning": "a small room"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "logo は会社や商品を表す図案や文字。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "ロゴ、商標マーク",
+          "choices": [
+            {
+              "text": "ticket",
+              "meaning": "切符"
+            },
+            {
+              "text": "logo",
+              "meaning": "ロゴ"
+            },
+            {
+              "text": "budget",
+              "meaning": "予算"
+            },
+            {
+              "text": "menu",
+              "meaning": "メニュー"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "ロゴは logo で表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "会社の帽子に付いているマークの話。 The company ___ is printed on every cap.",
+          "choices": [
+            {
+              "text": "weather",
+              "meaning": "天気"
+            },
+            {
+              "text": "schedule",
+              "meaning": "予定"
+            },
+            {
+              "text": "homework",
+              "meaning": "宿題"
+            },
+            {
+              "text": "logo",
+              "meaning": "ロゴ"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "会社のマークが印刷されているので logo が合う。",
+          "alternatives": [
+            {
+              "answer": "symbol",
+              "explanation": "記号一般を指し、会社専用の印という意味は弱い。"
+            },
+            {
+              "answer": "emblem",
+              "explanation": "紋章のような公式なしるしで、やや硬い。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "logo の使い方が正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "The logo of the brand is easy to remember.",
+              "meaning": "そのブランドのロゴは覚えやすい。"
+            },
+            {
+              "text": "The brand logoed me yesterday.",
+              "meaning": "動詞として誤用した文。"
+            },
+            {
+              "text": "I logo the brand very much.",
+              "meaning": "動詞として誤用した文。"
+            },
+            {
+              "text": "The logo is very hungry today.",
+              "meaning": "不自然な文。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "logo は名詞で、ブランドのロゴを説明する文に合う。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "会社の帽子に付いているマークの話。 The company ___ is printed on every cap.",
+        "answers": [
+          "logo"
+        ],
+        "explanation": "会社のマークが印刷されているので logo が合う。",
+        "alternatives": [
+          {
+            "answer": "symbol",
+            "explanation": "記号一般を指し、会社専用の印という意味は弱い。"
+          },
+          {
+            "answer": "emblem",
+            "explanation": "紋章のような公式なしるしで、やや硬い。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "logoを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The shirt has a small logo on the pocket.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-logo-usage",
+          "type": "usage",
+          "prompt": "logo の使い方が正しい文を選んでください。",
+          "choices": [
+            "The logo of the brand is easy to remember.",
+            "The brand logoed me yesterday.",
+            "I logo the brand very much.",
+            "The logo is very hungry today."
+          ],
+          "correctIndex": 0,
+          "explanation": "logo は名詞で、ブランドのロゴを説明する文に合う。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "business"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-proposal",
       "word": "proposal",
       "level": "準2級",
@@ -10597,6 +11758,191 @@
       "metadata": {
         "schemaVersion": 2,
         "cefrEstimate": "B1",
+        "domains": [
+          "science"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-velocity",
+      "word": "velocity",
+      "level": "準2級",
+      "ipa": "vəˈlɑːsəti",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "the speed of something in a particular direction",
+      "meaning": "速度(向きを含む)",
+      "usageTip": "物理では speed と違い、向きを含む量として使う。日常では speed の硬い言い方としても見られる。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "理科",
+          "text": "The teacher explained how to measure the velocity of a moving car.",
+          "translation": "先生は動く車の速度の測り方を説明した。"
+        },
+        {
+          "id": "example-2",
+          "context": "実験",
+          "text": "The ball's velocity changed when it hit the wall.",
+          "translation": "ボールは壁に当たると速度が変わった。"
+        },
+        {
+          "id": "example-3",
+          "context": "宇宙",
+          "text": "The rocket reached a very high velocity.",
+          "translation": "ロケットは非常に高い速度に達した。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "velocity",
+          "choices": [
+            {
+              "text": "向きを含む速さ",
+              "meaning": "speed with direction"
+            },
+            {
+              "text": "物の重さ",
+              "meaning": "weight"
+            },
+            {
+              "text": "部屋の温度",
+              "meaning": "temperature"
+            },
+            {
+              "text": "道の長さ",
+              "meaning": "length"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "velocity は向きを含む速度を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "速度(向きを含む)",
+          "choices": [
+            {
+              "text": "density",
+              "meaning": "密度"
+            },
+            {
+              "text": "humidity",
+              "meaning": "湿度"
+            },
+            {
+              "text": "velocity",
+              "meaning": "速度"
+            },
+            {
+              "text": "quantity",
+              "meaning": "量"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "向きを含む速度は velocity。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "物理の授業で、物体の速さと向きを調べる。 We measured the ball's ___ and direction.",
+          "choices": [
+            {
+              "text": "color",
+              "meaning": "色"
+            },
+            {
+              "text": "price",
+              "meaning": "値段"
+            },
+            {
+              "text": "velocity",
+              "meaning": "速度"
+            },
+            {
+              "text": "name",
+              "meaning": "名前"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "ボールの動きを測る文脈なので velocity が合う。",
+          "alternatives": [
+            {
+              "answer": "speed",
+              "explanation": "速さを表すが、向きを含む物理用語ではない。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "velocity の使い方が正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "The velocity is very sweet.",
+              "meaning": "不自然な文。"
+            },
+            {
+              "text": "The car velocitied down the road.",
+              "meaning": "動詞として誤用した文。"
+            },
+            {
+              "text": "The velocity of the train increased.",
+              "meaning": "電車の速度が上がった。"
+            },
+            {
+              "text": "The train is velocity today.",
+              "meaning": "形容詞のように誤用した文。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "velocity は名詞なので、The velocity of ... のように使う。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "物理の授業で、物体の速さと向きを調べる。 We measured the ball's ___ and direction.",
+        "answers": [
+          "velocity"
+        ],
+        "explanation": "ボールの動きを測る文脈なので velocity が合う。",
+        "alternatives": [
+          {
+            "answer": "speed",
+            "explanation": "速さを表すが、向きを含む物理用語ではない。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "velocityを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The teacher explained how to measure the velocity of a moving car.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-velocity-usage",
+          "type": "usage",
+          "prompt": "velocity の使い方が正しい文を選んでください。",
+          "choices": [
+            "The velocity is very sweet.",
+            "The car velocitied down the road.",
+            "The velocity of the train increased.",
+            "The train is velocity today."
+          ],
+          "correctIndex": 2,
+          "explanation": "velocity は名詞なので、The velocity of ... のように使う。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "C1",
         "domains": [
           "science"
         ],
@@ -12566,6 +13912,199 @@
       }
     },
     {
+      "id": "vocab-match",
+      "word": "match",
+      "level": "準2級",
+      "ipa": "mætʃ",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "A sports contest in which two players or teams compete against each other.",
+      "meaning": "試合、対戦",
+      "usageTip": "スポーツの「試合」の意味。watch a match、win/lose a match、a tennis match のように使う。英国ではサッカーやラグビーにもよく使い、米国では team sports に game を多く使う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "スポーツ観戦",
+          "text": "We watched the final match on a big screen at the pub.",
+          "translation": "私たちはパブの大きな画面で決勝戦を観戦しました。"
+        },
+        {
+          "id": "example-2",
+          "context": "テニス",
+          "text": "She won the tennis match after three very tough sets.",
+          "translation": "彼女は非常に厳しい3セットの末にテニスの試合に勝ちました。"
+        },
+        {
+          "id": "example-3",
+          "context": "天候",
+          "text": "The match was postponed because of the heavy snow.",
+          "translation": "大雪のため、その試合は延期されました。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "match",
+          "choices": [
+            {
+              "text": "試合、対戦",
+              "meaning": "選手やチームが競い合う催し"
+            },
+            {
+              "text": "財布",
+              "meaning": "お金を入れる小さな入れ物"
+            },
+            {
+              "text": "地図",
+              "meaning": "場所を示した図"
+            },
+            {
+              "text": "約束",
+              "meaning": "会う日時などの取り決め"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "スポーツの文脈では match は「試合、対戦」を表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "試合、対戦",
+          "choices": [
+            {
+              "text": "menu",
+              "meaning": "メニュー"
+            },
+            {
+              "text": "mirror",
+              "meaning": "鏡"
+            },
+            {
+              "text": "market",
+              "meaning": "市場"
+            },
+            {
+              "text": "match",
+              "meaning": "試合、対戦"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "選手やチームが競う試合は match です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "サッカーのファンがスタジアムで話す場面: Our team lost the ___ by one goal yesterday.",
+          "choices": [
+            {
+              "text": "recipe",
+              "meaning": "レシピ"
+            },
+            {
+              "text": "match",
+              "meaning": "試合"
+            },
+            {
+              "text": "pillow",
+              "meaning": "枕"
+            },
+            {
+              "text": "coin",
+              "meaning": "硬貨"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "1点差で負けたものなので、試合を表す match が合います。",
+          "alternatives": [
+            {
+              "answer": "game",
+              "explanation": "ほぼ同じ意味で、特に米国でよく使われます。"
+            },
+            {
+              "answer": "final",
+              "explanation": "決勝戦に限られるため、意味が狭くなります。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "スポーツの試合の意味で match を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "We will do a match against Osaka tomorrow.",
+              "meaning": "明日大阪と試合をします。(動詞が不自然)"
+            },
+            {
+              "text": "He made a tennis match yesterday.",
+              "meaning": "昨日テニスの試合をしました。(動詞が不自然)"
+            },
+            {
+              "text": "I played a tennis match in the stadium on Sunday.",
+              "meaning": "日曜に競技場でテニスの試合をしました。"
+            },
+            {
+              "text": "She joined to a match with her friend.",
+              "meaning": "友人との試合に参加しました。(動詞の形が不自然)"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "試合は play a match のように言います。do や make は不自然で、join に to は不要です。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "サッカーのファンがスタジアムで話す場面: Our team lost the ___ by one goal yesterday.",
+        "answers": [
+          "match"
+        ],
+        "explanation": "1点差で負けたものなので、試合を表す match が合います。",
+        "alternatives": [
+          {
+            "answer": "game",
+            "explanation": "ほぼ同じ意味で、特に米国でよく使われます。"
+          },
+          {
+            "answer": "final",
+            "explanation": "決勝戦に限られるため、意味が狭くなります。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "matchを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "We watched the final match on a big screen at the pub.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-match-usage",
+          "type": "usage",
+          "prompt": "スポーツの試合の意味で match を正しく使った文を選んでください。",
+          "choices": [
+            "We will do a match against Osaka tomorrow.",
+            "He made a tennis match yesterday.",
+            "I played a tennis match in the stadium on Sunday.",
+            "She joined to a match with her friend."
+          ],
+          "correctIndex": 2,
+          "explanation": "試合は play a match のように言います。do や make は不自然で、join に to は不要です。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "sports"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-tackle",
       "word": "tackle",
       "level": "準2級",
@@ -14170,6 +15709,200 @@
       }
     },
     {
+      "id": "vocab-president",
+      "word": "president",
+      "level": "準2級",
+      "ipa": "ˈprezɪdənt",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "The elected leader of a country, or the top person in a company or organization.",
+      "meaning": "大統領、社長",
+      "usageTip": "国家元首のほか、会社・団体・学校などの長にも使う。唯一の役職を述べるときは She is president of the club. のように冠詞なしが自然。名前の前では President Lincoln のように大文字にする。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "政治",
+          "text": "The president spoke to citizens about the new plan.",
+          "translation": "大統領は新しい計画について国民に語った。"
+        },
+        {
+          "id": "example-2",
+          "context": "会社",
+          "text": "She became president of the company at thirty-five.",
+          "translation": "彼女は35歳でその会社の社長になった。"
+        },
+        {
+          "id": "example-3",
+          "context": "学校",
+          "text": "Our club president organizes every weekly meeting.",
+          "translation": "私たちのクラブの会長が毎週の会合を取りまとめている。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "president",
+          "choices": [
+            {
+              "text": "出版社",
+              "meaning": "本を発行する会社"
+            },
+            {
+              "text": "大統領、社長",
+              "meaning": "国や組織の最高位の人"
+            },
+            {
+              "text": "ブログ",
+              "meaning": "ウェブ上の記事サイト"
+            },
+            {
+              "text": "内容",
+              "meaning": "中身"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "president は国や組織の長を表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "大統領、社長",
+          "choices": [
+            {
+              "text": "blog",
+              "meaning": "ブログ"
+            },
+            {
+              "text": "content",
+              "meaning": "内容"
+            },
+            {
+              "text": "publisher",
+              "meaning": "出版社"
+            },
+            {
+              "text": "president",
+              "meaning": "大統領、社長"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "国や組織の長は president です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "国のリーダーが国民に向けて演説した場面: The ___ gave a speech on television last night.",
+          "choices": [
+            {
+              "text": "content",
+              "meaning": "内容"
+            },
+            {
+              "text": "blog",
+              "meaning": "ブログ"
+            },
+            {
+              "text": "president",
+              "meaning": "大統領"
+            },
+            {
+              "text": "publisher",
+              "meaning": "出版社"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "国のリーダーが演説する場面なので president が合います。",
+          "alternatives": [
+            {
+              "answer": "prime minister",
+              "explanation": "議院内閣制の国の首相を指します。"
+            },
+            {
+              "answer": "leader",
+              "explanation": "より広く指導者を表します。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "president を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "She is president of our student council.",
+              "meaning": "彼女は私たちの生徒会の会長だ。"
+            },
+            {
+              "text": "They presidented the meeting yesterday.",
+              "meaning": "彼らは昨日会議を取り仕切った。(品詞の誤り)"
+            },
+            {
+              "text": "He is president in our company's.",
+              "meaning": "彼は私たちの会社の社長だ。(前置詞と所有格の誤り)"
+            },
+            {
+              "text": "She became a president with the club.",
+              "meaning": "彼女はクラブの会長になった。(前置詞の誤り)"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "president は名詞で、president of ~ の形で組織の長を表します。動詞としては使えず、of 以外の前置詞も不自然です。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "国のリーダーが国民に向けて演説した場面: The ___ gave a speech on television last night.",
+        "answers": [
+          "president"
+        ],
+        "explanation": "国のリーダーが演説する場面なので president が合います。",
+        "alternatives": [
+          {
+            "answer": "prime minister",
+            "explanation": "議院内閣制の国の首相を指します。"
+          },
+          {
+            "answer": "leader",
+            "explanation": "より広く指導者を表します。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "presidentを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The president spoke to citizens about the new plan.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-president-usage",
+          "type": "usage",
+          "prompt": "president を正しく使った文を選んでください。",
+          "choices": [
+            "She is president of our student council.",
+            "They presidented the meeting yesterday.",
+            "He is president in our company's.",
+            "She became a president with the club."
+          ],
+          "correctIndex": 0,
+          "explanation": "president は名詞で、president of ~ の形で組織の長を表します。動詞としては使えず、of 以外の前置詞も不自然です。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "politics",
+          "business"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-senator",
       "word": "senator",
       "level": "準2級",
@@ -15137,6 +16870,216 @@
       }
     },
     {
+      "id": "vocab-scrub",
+      "word": "scrub",
+      "level": "準2級",
+      "ipa": "skrʌb",
+      "ipaLabel": "米音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "scrub"
+        ],
+        "past": [
+          "scrubbed"
+        ],
+        "pastParticiple": [
+          "scrubbed"
+        ],
+        "presentParticiple": [
+          "scrubbing"
+        ],
+        "thirdPersonSingular": [
+          "scrubs"
+        ]
+      },
+      "definition": "To clean something by rubbing it hard, usually with a brush.",
+      "meaning": "ごしごし洗う、磨く",
+      "usageTip": "scrub A (with B) や scrub A off の形で使う。強くこすって汚れを落とすイメージ。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "掃除",
+          "text": "I had to scrub the bathtub to remove the stains.",
+          "translation": "汚れを落とすために浴槽をごしごし洗わなければならなかった。"
+        },
+        {
+          "id": "example-2",
+          "context": "料理",
+          "text": "Scrub the potatoes well before you put them in the pot.",
+          "translation": "鍋に入れる前にじゃがいもをよく洗ってください。"
+        },
+        {
+          "id": "example-3",
+          "context": "家庭",
+          "text": "He scrubbed his hands with soap after working in the garden.",
+          "translation": "彼は庭仕事の後、石けんで手をごしごし洗った。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "scrub",
+          "choices": [
+            {
+              "text": "軽く触る",
+              "meaning": "そっと触れる"
+            },
+            {
+              "text": "急いで走る",
+              "meaning": "速く走る"
+            },
+            {
+              "text": "ごしごし洗う",
+              "meaning": "強くこすって洗う"
+            },
+            {
+              "text": "紙を折る",
+              "meaning": "紙を曲げる"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "scrub は汚れを落とすために強くこすることです。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "ごしごし洗う、磨く",
+          "choices": [
+            {
+              "text": "scratch",
+              "meaning": "ひっかく"
+            },
+            {
+              "text": "shrink",
+              "meaning": "縮む"
+            },
+            {
+              "text": "script",
+              "meaning": "台本"
+            },
+            {
+              "text": "scrub",
+              "meaning": "ごしごし洗う"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "ブラシなどで強く洗う意味は scrub です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "頑固な汚れの場面: You need to ___ the pan hard to remove the burnt food.",
+          "choices": [
+            {
+              "text": "scrub",
+              "meaning": "ごしごし洗う"
+            },
+            {
+              "text": "admire",
+              "meaning": "称賛する"
+            },
+            {
+              "text": "sign",
+              "meaning": "署名する"
+            },
+            {
+              "text": "promise",
+              "meaning": "約束する"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "焦げ付きを落とすには強くこする scrub が自然です。",
+          "alternatives": [
+            {
+              "answer": "scour",
+              "explanation": "強くこすって磨く意味で、やや硬い言い方です。"
+            },
+            {
+              "answer": "clean",
+              "explanation": "洗う一般的な語で、強さは含みません。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "scrub を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "She scrubbed to the floor a brush.",
+              "meaning": "彼女は床へブラシをごしごし洗った。(語順・前置詞の誤り)"
+            },
+            {
+              "text": "She scrubbed the floor with a brush.",
+              "meaning": "彼女はブラシで床をごしごし洗った。"
+            },
+            {
+              "text": "She scrubbing the floor yesterday.",
+              "meaning": "彼女は昨日床をごしごし洗っている。(動詞形の誤り)"
+            },
+            {
+              "text": "She scrubbed the floor by a brush of.",
+              "meaning": "彼女はブラシので床をこすった。(語順と前置詞の誤り)"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "scrub + 対象 + with + 道具の形で、過去形も合っています。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "頑固な汚れの場面: You need to ___ the pan hard to remove the burnt food.",
+        "answers": [
+          "scrub"
+        ],
+        "explanation": "焦げ付きを落とすには強くこする scrub が自然です。",
+        "alternatives": [
+          {
+            "answer": "scour",
+            "explanation": "強くこすって磨く意味で、やや硬い言い方です。"
+          },
+          {
+            "answer": "clean",
+            "explanation": "洗う一般的な語で、強さは含みません。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "scrubを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I had to scrub the bathtub to remove the stains.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-scrub-usage",
+          "type": "usage",
+          "prompt": "scrub を正しく使った文を選びなさい。",
+          "choices": [
+            "She scrubbed to the floor a brush.",
+            "She scrubbed the floor with a brush.",
+            "She scrubbing the floor yesterday.",
+            "She scrubbed the floor by a brush of."
+          ],
+          "correctIndex": 1,
+          "explanation": "scrub + 対象 + with + 道具の形で、過去形も合っています。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-yacht",
       "word": "yacht",
       "level": "準2級",
@@ -15525,6 +17468,200 @@
       }
     },
     {
+      "id": "vocab-wrench",
+      "word": "wrench",
+      "level": "準2級",
+      "ipa": "rentʃ",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "A hand tool used to grip and turn nuts, bolts or pipes.",
+      "meaning": "レンチ、スパナ",
+      "usageTip": "tighten a bolt with a wrench のように使う。英国では一般的な工具を spanner と呼ぶことが多く、wrench は調整式やパイプ用などを指しやすい。語頭の w は発音しない。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "自転車修理",
+          "text": "I used a wrench to tighten the loose bolt on my bike.",
+          "translation": "私はレンチで自転車の緩んだボルトを締めた。"
+        },
+        {
+          "id": "example-2",
+          "context": "配管",
+          "text": "The plumber grabbed a wrench and fixed the leaking pipe under the sink.",
+          "translation": "配管工はレンチをつかみ、流しの下の水漏れするパイプを直した。"
+        },
+        {
+          "id": "example-3",
+          "context": "工具箱",
+          "text": "Please pass me the wrench from the toolbox by the door.",
+          "translation": "ドアのそばの工具箱からレンチを取ってください。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "wrench",
+          "choices": [
+            {
+              "text": "蒸気",
+              "meaning": "液体が熱で気体になったもの"
+            },
+            {
+              "text": "ヨット",
+              "meaning": "帆で走る小型の船"
+            },
+            {
+              "text": "灯台",
+              "meaning": "海辺で光を出す塔"
+            },
+            {
+              "text": "レンチ",
+              "meaning": "ナットやボルトを回す工具"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "wrench はナットやボルトを回す手工具、つまりレンチやスパナのことです。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "レンチ、スパナ",
+          "choices": [
+            {
+              "text": "crane",
+              "meaning": "起重機"
+            },
+            {
+              "text": "wrench",
+              "meaning": "レンチ、スパナ"
+            },
+            {
+              "text": "yacht",
+              "meaning": "ヨット"
+            },
+            {
+              "text": "lighthouse",
+              "meaning": "灯台"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "レンチやスパナにあたる英語は wrench です。他は機械、船、建物を表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "自転車の修理中の場面: I need a ___ to loosen this rusty bolt.",
+          "choices": [
+            {
+              "text": "vapor",
+              "meaning": "蒸気"
+            },
+            {
+              "text": "lighthouse",
+              "meaning": "灯台"
+            },
+            {
+              "text": "yacht",
+              "meaning": "ヨット"
+            },
+            {
+              "text": "wrench",
+              "meaning": "レンチ"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "錆びたボルトを緩めるには回す工具が必要なので、wrench が合います。",
+          "alternatives": [
+            {
+              "answer": "spanner",
+              "explanation": "英国で一般的なレンチの呼び方で、ほぼ同じ意味です。"
+            },
+            {
+              "answer": "tool",
+              "explanation": "道具全般を表す広い語で、具体性は下がります。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "wrench の使い方として正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "He tightened the pipe by a wrench.",
+              "meaning": "彼はレンチでパイプを締めた。(前置詞の誤り)"
+            },
+            {
+              "text": "He tightened the pipe with wrench.",
+              "meaning": "彼はレンチでパイプを締めた。(冠詞の欠落)"
+            },
+            {
+              "text": "He tightened the pipe using of a wrench.",
+              "meaning": "彼はレンチでパイプを締めた。(using of の誤り)"
+            },
+            {
+              "text": "He tightened the pipe with a wrench.",
+              "meaning": "彼はレンチでパイプを締めた。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "道具を表す with と、数えられる名詞に必要な冠詞 a がそろっています。他は前置詞、冠詞、using の形が誤りです。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "自転車の修理中の場面: I need a ___ to loosen this rusty bolt.",
+        "answers": [
+          "wrench"
+        ],
+        "explanation": "錆びたボルトを緩めるには回す工具が必要なので、wrench が合います。",
+        "alternatives": [
+          {
+            "answer": "spanner",
+            "explanation": "英国で一般的なレンチの呼び方で、ほぼ同じ意味です。"
+          },
+          {
+            "answer": "tool",
+            "explanation": "道具全般を表す広い語で、具体性は下がります。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "wrenchを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I used a wrench to tighten the loose bolt on my bike.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-wrench-usage",
+          "type": "usage",
+          "prompt": "wrench の使い方として正しい文を選んでください。",
+          "choices": [
+            "He tightened the pipe by a wrench.",
+            "He tightened the pipe with wrench.",
+            "He tightened the pipe using of a wrench.",
+            "He tightened the pipe with a wrench."
+          ],
+          "correctIndex": 3,
+          "explanation": "道具を表す with と、数えられる名詞に必要な冠詞 a がそろっています。他は前置詞、冠詞、using の形が誤りです。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "daily-life",
+          "technology"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-lighthouse",
       "word": "lighthouse",
       "level": "準2級",
@@ -15705,6 +17842,192 @@
         "domains": [
           "travel",
           "transport"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-vapor",
+      "word": "vapor",
+      "level": "準2級",
+      "ipa": "ˈveɪpə",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "A gas formed when a liquid, especially water, is heated or evaporates.",
+      "meaning": "蒸気、水蒸気",
+      "usageTip": "water vapor は「水蒸気」。多くは数えない名詞として使う。綴りは米国では vapor、英国では vapour。日常の湯気は steam とも言う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "理科",
+          "text": "Water vapor rises when the sun warms the lake.",
+          "translation": "太陽が湖を温めると水蒸気が立ち上る。"
+        },
+        {
+          "id": "example-2",
+          "context": "台所",
+          "text": "Vapor escaped from the pot as soon as I lifted the lid.",
+          "translation": "ふたを持ち上げるとすぐ鍋から蒸気が逃げた。"
+        },
+        {
+          "id": "example-3",
+          "context": "天気",
+          "text": "The air near the coast contains a lot of vapor on summer days.",
+          "translation": "夏の日は海岸近くの空気に多くの水蒸気が含まれている。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "vapor",
+          "choices": [
+            {
+              "text": "ヨット",
+              "meaning": "帆で走る小型の船"
+            },
+            {
+              "text": "レンチ",
+              "meaning": "ナットを回す工具"
+            },
+            {
+              "text": "蒸気、水蒸気",
+              "meaning": "液体が熱で気体になったもの"
+            },
+            {
+              "text": "灯台",
+              "meaning": "海辺の光の塔"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "vapor は液体、特に水が気体になったものを表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "蒸気、水蒸気",
+          "choices": [
+            {
+              "text": "vapor",
+              "meaning": "蒸気、水蒸気"
+            },
+            {
+              "text": "crane",
+              "meaning": "起重機"
+            },
+            {
+              "text": "yacht",
+              "meaning": "ヨット"
+            },
+            {
+              "text": "wrench",
+              "meaning": "レンチ"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "水が気体になったものは vapor です。他は機械、船、工具です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "お湯を沸かした場面: When the kettle boiled, ___ came out of the spout.",
+          "choices": [
+            {
+              "text": "wrench",
+              "meaning": "レンチ"
+            },
+            {
+              "text": "yacht",
+              "meaning": "ヨット"
+            },
+            {
+              "text": "vapor",
+              "meaning": "蒸気"
+            },
+            {
+              "text": "lighthouse",
+              "meaning": "灯台"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "沸騰したやかんの口から出るものは蒸気なので vapor が合います。",
+          "alternatives": [
+            {
+              "answer": "steam",
+              "explanation": "日常会話で最も一般的で、目に見える湯気を指しやすい語です。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "vapor の使い方として正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "There are many vapors in the cold air.",
+              "meaning": "冷たい空気に多くの水蒸気がある。(数え方が不自然)"
+            },
+            {
+              "text": "The kettle vapored when it boiled.",
+              "meaning": "やかんは沸騰して蒸気を出した。(動詞の誤用)"
+            },
+            {
+              "text": "Water vapor formed on the cold window.",
+              "meaning": "冷たい窓に水蒸気が生じた。"
+            },
+            {
+              "text": "Water vapor formed at the cold window of.",
+              "meaning": "冷たい窓に水蒸気が生じた。(語順の誤り)"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "vapor は名詞で、water vapor の形が自然です。複数形 vapors にしたり動詞として使うのは不自然で、最後の文は語順が崩れています。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "お湯を沸かした場面: When the kettle boiled, ___ came out of the spout.",
+        "answers": [
+          "vapor"
+        ],
+        "explanation": "沸騰したやかんの口から出るものは蒸気なので vapor が合います。",
+        "alternatives": [
+          {
+            "answer": "steam",
+            "explanation": "日常会話で最も一般的で、目に見える湯気を指しやすい語です。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "vaporを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Water vapor rises when the sun warms the lake.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-vapor-usage",
+          "type": "usage",
+          "prompt": "vapor の使い方として正しい文を選んでください。",
+          "choices": [
+            "There are many vapors in the cold air.",
+            "The kettle vapored when it boiled.",
+            "Water vapor formed on the cold window.",
+            "Water vapor formed at the cold window of."
+          ],
+          "correctIndex": 2,
+          "explanation": "vapor は名詞で、water vapor の形が自然です。複数形 vapors にしたり動詞として使うのは不自然で、最後の文は語順が崩れています。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "science",
+          "environment"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -16471,5 +18794,118 @@
       }
     }
   ],
-  "audio": []
+  "audio": [
+    {
+      "wordId": "vocab-herb",
+      "cacheKey": "d3dbfc29608cd3d5711b98e9ca0698e393c9b3749a7426b9d39d049cfe3deda4",
+      "fileId": "1WNs365Vxr_QJqwbTIXpKhHtjgJ4crjgb",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8300000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.878,
+          "endSeconds": 4.0925
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.141,
+          "endSeconds": 7.587
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.635,
+          "endSeconds": 11.192
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-predator",
+      "cacheKey": "3270b7d4d7c5122da529d21bafa0d10a6cf284351444116f00e029a5726a5a1e",
+      "fileId": "1ETRR5fOIqJW6hgI6T4fwTaQPeP-FSDV9",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8879999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.053,
+          "endSeconds": 4.428999999999999
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.594,
+          "endSeconds": 8.783
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 9.214,
+          "endSeconds": 12.91
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-prey",
+      "cacheKey": "c80c4dee54401d39411c73d757e544f07a5f06f356d6cb47b925bde3934dfd5a",
+      "fileId": "1cgT8kdyKSKZMjYH0WEyxkdEUBtc3YdQF",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8240000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.8240000000000001,
+          "endSeconds": 3.918
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.0249999999999995,
+          "endSeconds": 7.1345
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.183,
+          "endSeconds": 10.449
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-friction",
+      "cacheKey": "c4951d6f5a8e19ab35cd8a0fd5236d39dc610fa6ae18e56b74497d122c3ab675",
+      "fileId": "1aFxQ_03KCBuh4hdQe5PYMdiCxmFYhQDz",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.877
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.041,
+          "endSeconds": 4.569
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.733,
+          "endSeconds": 8.133000000000001
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.367,
+          "endSeconds": 12.399
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    }
+  ]
 }

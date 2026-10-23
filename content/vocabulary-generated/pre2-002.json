@@ -7163,6 +7163,199 @@
       }
     },
     {
+      "id": "vocab-incredible",
+      "word": "incredible",
+      "level": "準2級",
+      "ipa": "/ɪnˈkrɛdəbəl/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "形容詞",
+      "definition": "extremely good, large or surprising; very hard to believe",
+      "meaning": "信じられないほどの",
+      "usageTip": "良い意味で「すごい」とよく使う。文脈により「信じがたい」という否定的な驚きにもなる。It is incredible that ~ の形も自然。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "旅行",
+          "text": "The view from the mountain top was incredible.",
+          "translation": "山頂からの眺めは信じられないほど素晴らしかった。"
+        },
+        {
+          "id": "example-2",
+          "context": "日常",
+          "text": "It's incredible that you finished the whole report in one night.",
+          "translation": "一晩でレポートを全部仕上げたなんて信じられない。"
+        },
+        {
+          "id": "example-3",
+          "context": "スポーツ",
+          "text": "The goalkeeper made an incredible save in the last minute.",
+          "translation": "ゴールキーパーは最後の場面で驚異的なセーブをした。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "incredible",
+          "choices": [
+            {
+              "text": "退屈な",
+              "meaning": "boring の意味。"
+            },
+            {
+              "text": "信じられないほどの",
+              "meaning": "正解。incredible の意味。"
+            },
+            {
+              "text": "ごく普通の",
+              "meaning": "ordinary の意味。"
+            },
+            {
+              "text": "危険な",
+              "meaning": "dangerous の意味。"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "incredible は信じがたいほどすごい様子を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "信じられないほどの",
+          "choices": [
+            {
+              "text": "common",
+              "meaning": "よくある"
+            },
+            {
+              "text": "incredible",
+              "meaning": "信じられないほどの"
+            },
+            {
+              "text": "modest",
+              "meaning": "控えめな"
+            },
+            {
+              "text": "familiar",
+              "meaning": "なじみのある"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "「信じられないほどの」は incredible。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "【感動した旅行の感想】We saw an ___ sunset over the sea last night.",
+          "choices": [
+            {
+              "text": "ordinary",
+              "meaning": "普通の"
+            },
+            {
+              "text": "awkward",
+              "meaning": "気まずい"
+            },
+            {
+              "text": "careless",
+              "meaning": "不注意な"
+            },
+            {
+              "text": "incredible",
+              "meaning": "信じられないほど美しい"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "感動的な夕日を表すので incredible が自然。an に続く母音始まりの語でもある。",
+          "alternatives": [
+            {
+              "answer": "amazing",
+              "explanation": "口語で驚きと感動を表す自然な語。"
+            },
+            {
+              "answer": "stunning",
+              "explanation": "息をのむ美しさを強調する。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "incredible を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "She sang incredible at the concert.",
+              "meaning": "副詞が必要で誤り。"
+            },
+            {
+              "text": "He is incredible of his talent.",
+              "meaning": "前置詞が不自然。"
+            },
+            {
+              "text": "It is incredible that he won.",
+              "meaning": "彼が勝ったなんて信じられない。"
+            },
+            {
+              "text": "I was incredible by the news.",
+              "meaning": "surprised などが必要で誤り。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "It is incredible that ~ は「~とは信じられない」という自然な型である。他は品詞や前置詞の使い方が誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "【感動した旅行の感想】We saw an ___ sunset over the sea last night.",
+        "answers": [
+          "incredible"
+        ],
+        "explanation": "感動的な夕日を表すので incredible が自然。an に続く母音始まりの語でもある。",
+        "alternatives": [
+          {
+            "answer": "amazing",
+            "explanation": "口語で驚きと感動を表す自然な語。"
+          },
+          {
+            "answer": "stunning",
+            "explanation": "息をのむ美しさを強調する。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "incredibleを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The view from the mountain top was incredible.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-incredible-usage",
+          "type": "usage",
+          "prompt": "incredible を正しく使った文を選びなさい。",
+          "choices": [
+            "She sang incredible at the concert.",
+            "He is incredible of his talent.",
+            "It is incredible that he won.",
+            "I was incredible by the news."
+          ],
+          "correctIndex": 2,
+          "explanation": "It is incredible that ~ は「~とは信じられない」という自然な型である。他は品詞や前置詞の使い方が誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-infection",
       "word": "infection",
       "level": "準2級",
@@ -8714,6 +8907,201 @@
         "domains": [
           "law",
           "finance"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-mandatory",
+      "word": "mandatory",
+      "level": "準2級",
+      "ipa": "/ˈmændətri/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "形容詞",
+      "definition": "required by a rule or law, so that you must do it and cannot choose",
+      "meaning": "義務的な、必須の",
+      "usageTip": "規則や法律で「必ずしなければならない」ときに使う。be mandatory for + 人、It is mandatory to + 動詞、mandatory training のように名詞の前でも使える。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "学校",
+          "text": "Attendance at the safety training is mandatory for all new students.",
+          "translation": "安全講習への出席は、すべての新入生に義務付けられている。"
+        },
+        {
+          "id": "example-2",
+          "context": "法律",
+          "text": "In many countries, wearing a seat belt in a car is mandatory.",
+          "translation": "多くの国で、車でのシートベルト着用は義務である。"
+        },
+        {
+          "id": "example-3",
+          "context": "職場",
+          "text": "The company made it mandatory to report accidents within one day.",
+          "translation": "会社は事故を一日以内に報告することを義務にした。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "mandatory",
+          "choices": [
+            {
+              "text": "任意の",
+              "meaning": "optional"
+            },
+            {
+              "text": "危険な",
+              "meaning": "dangerous"
+            },
+            {
+              "text": "義務的な、必須の",
+              "meaning": "required by a rule"
+            },
+            {
+              "text": "人気のある",
+              "meaning": "popular"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "mandatory は規則や法律で必ずしなければならないことを表す。optional は反対の意味。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "義務的な、必須の",
+          "choices": [
+            {
+              "text": "optional",
+              "meaning": "任意の"
+            },
+            {
+              "text": "mandatory",
+              "meaning": "義務的な"
+            },
+            {
+              "text": "rare",
+              "meaning": "まれな"
+            },
+            {
+              "text": "generous",
+              "meaning": "寛大な"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "「必須の」は mandatory。optional は選んでよいという反対の意味になる。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "学校の規則の場面：Wearing a helmet is ___ for everyone who rides a bike to school.",
+          "choices": [
+            {
+              "text": "casual",
+              "meaning": "気軽な"
+            },
+            {
+              "text": "tasty",
+              "meaning": "おいしい"
+            },
+            {
+              "text": "distant",
+              "meaning": "遠い"
+            },
+            {
+              "text": "mandatory",
+              "meaning": "義務の"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "規則で全員にヘルメットが求められる文脈なので mandatory が合う。",
+          "alternatives": [
+            {
+              "answer": "required",
+              "explanation": "「求められている」の意味で、ほぼ同じように使える。"
+            },
+            {
+              "answer": "compulsory",
+              "explanation": "特に学校や法律上の義務で使われ、やや堅い。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "mandatory を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "Voting is mandatory to adults in some countries.",
+              "meaning": "誤：to ではなく for が自然"
+            },
+            {
+              "text": "The course is mandatory, so we cannot skip it.",
+              "meaning": "その授業は必修なので欠席できない"
+            },
+            {
+              "text": "It is mandatory for me wear a uniform.",
+              "meaning": "誤：to wear が必要"
+            },
+            {
+              "text": "She mandatory finished the report.",
+              "meaning": "誤：副詞のようには使えない"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "mandatory は be 動詞の後で形容詞として使う。他の文は前置詞の誤り、to の欠落、品詞の誤りがある。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "学校の規則の場面：Wearing a helmet is ___ for everyone who rides a bike to school.",
+        "answers": [
+          "mandatory"
+        ],
+        "explanation": "規則で全員にヘルメットが求められる文脈なので mandatory が合う。",
+        "alternatives": [
+          {
+            "answer": "required",
+            "explanation": "「求められている」の意味で、ほぼ同じように使える。"
+          },
+          {
+            "answer": "compulsory",
+            "explanation": "特に学校や法律上の義務で使われ、やや堅い。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "mandatoryを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Attendance at the safety training is mandatory for all new students.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-mandatory-usage",
+          "type": "usage",
+          "prompt": "mandatory を正しく使った文を選びなさい。",
+          "choices": [
+            "Voting is mandatory to adults in some countries.",
+            "The course is mandatory, so we cannot skip it.",
+            "It is mandatory for me wear a uniform.",
+            "She mandatory finished the report."
+          ],
+          "correctIndex": 1,
+          "explanation": "mandatory は be 動詞の後で形容詞として使う。他の文は前置詞の誤り、to の欠落、品詞の誤りがある。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "education",
+          "law",
+          "work"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -13743,6 +14131,199 @@
       }
     },
     {
+      "id": "vocab-tendency",
+      "word": "tendency",
+      "level": "準2級",
+      "ipa": "/ˈtɛndənsi/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a way that a person or thing often behaves or changes",
+      "meaning": "傾向、性向",
+      "usageTip": "have a tendency to do が基本の形。a tendency of ではなく to を使う。「Aが~する傾向」は a tendency for A to do も使える。悪い癖にも使われやすい。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "日常",
+          "text": "My brother has a tendency to forget his keys when he is rushing.",
+          "translation": "兄は急いでいると鍵を忘れる傾向がある。"
+        },
+        {
+          "id": "example-2",
+          "context": "経済",
+          "text": "Prices show a tendency to rise during the holiday season.",
+          "translation": "物価は休暇シーズンに上がる傾向を示す。"
+        },
+        {
+          "id": "example-3",
+          "context": "健康",
+          "text": "Some people have a tendency to eat more when they feel stressed.",
+          "translation": "ストレスを感じると食べ過ぎる傾向のある人もいる。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "tendency",
+          "choices": [
+            {
+              "text": "約束、契約",
+              "meaning": "取り決め"
+            },
+            {
+              "text": "機会、好機",
+              "meaning": "チャンス"
+            },
+            {
+              "text": "傾向、性向",
+              "meaning": "よくそうなる性質"
+            },
+            {
+              "text": "違い、差",
+              "meaning": "差異"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "tendency はある行動や変化が起こりやすいことを表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "傾向、性向",
+          "choices": [
+            {
+              "text": "treasure",
+              "meaning": "宝"
+            },
+            {
+              "text": "tension",
+              "meaning": "緊張"
+            },
+            {
+              "text": "territory",
+              "meaning": "領土"
+            },
+            {
+              "text": "tendency",
+              "meaning": "傾向"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "よくそうなる性質を表す名詞は tendency です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "友人の癖について。Tom has a ___ to talk too fast when he is nervous.",
+          "choices": [
+            {
+              "text": "reason",
+              "meaning": "理由"
+            },
+            {
+              "text": "tendency",
+              "meaning": "傾向"
+            },
+            {
+              "text": "journey",
+              "meaning": "旅"
+            },
+            {
+              "text": "promise",
+              "meaning": "約束"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "緊張すると早口になる癖を表し、a tendency to talk の形が合います。",
+          "alternatives": [
+            {
+              "answer": "habit",
+              "explanation": "習慣的な癖という意味が強くなります。"
+            },
+            {
+              "answer": "inclination",
+              "explanation": "やや硬く、気持ちの傾きを表します。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "tendency を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "There is a tendency for young people to move to cities.",
+              "meaning": "若者が都市へ移る傾向がある。"
+            },
+            {
+              "text": "She has a tendency of arrive late.",
+              "meaning": "彼女は遅れて来る傾向がある。"
+            },
+            {
+              "text": "He tendency to complain a lot.",
+              "meaning": "彼はよく文句を言う傾向がある。"
+            },
+            {
+              "text": "I tendency be tired after lunch.",
+              "meaning": "昼食後は疲れる傾向がある。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "a tendency for A to do の形が正しいです。他は前置詞や動詞の形が誤りです。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "友人の癖について。Tom has a ___ to talk too fast when he is nervous.",
+        "answers": [
+          "tendency"
+        ],
+        "explanation": "緊張すると早口になる癖を表し、a tendency to talk の形が合います。",
+        "alternatives": [
+          {
+            "answer": "habit",
+            "explanation": "習慣的な癖という意味が強くなります。"
+          },
+          {
+            "answer": "inclination",
+            "explanation": "やや硬く、気持ちの傾きを表します。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "tendencyを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "My brother has a tendency to forget his keys when he is rushing.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-tendency-usage",
+          "type": "usage",
+          "prompt": "tendency を正しく使った文を選んでください。",
+          "choices": [
+            "There is a tendency for young people to move to cities.",
+            "She has a tendency of arrive late.",
+            "He tendency to complain a lot.",
+            "I tendency be tired after lunch."
+          ],
+          "correctIndex": 0,
+          "explanation": "a tendency for A to do の形が正しいです。他は前置詞や動詞の形が誤りです。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "society"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-transform",
       "word": "transform",
       "level": "準2級",
@@ -14574,6 +15155,200 @@
         "domains": [
           "politics",
           "law"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-valid",
+      "word": "valid",
+      "level": "準2級",
+      "ipa": "/ˈvælɪd/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "形容詞",
+      "definition": "acceptable by rules or law, or based on good reasons",
+      "meaning": "有効な、妥当な",
+      "usageTip": "ticket, passport, reason, point などに使う。期限内で使える意味と、理屈が通る意味がある。反対は invalid。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "旅行",
+          "text": "You need a valid passport to enter that country.",
+          "translation": "その国に入るには有効なパスポートが必要だ。"
+        },
+        {
+          "id": "example-2",
+          "context": "議論",
+          "text": "She made a valid point about the cost of the project.",
+          "translation": "彼女は計画の費用について妥当な指摘をした。"
+        },
+        {
+          "id": "example-3",
+          "context": "買い物",
+          "text": "This coupon is valid only until the end of the month.",
+          "translation": "このクーポンは月末までしか有効ではない。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "valid",
+          "choices": [
+            {
+              "text": "危険な",
+              "meaning": "害がありうる"
+            },
+            {
+              "text": "退屈な",
+              "meaning": "面白くない"
+            },
+            {
+              "text": "空の",
+              "meaning": "中身がない"
+            },
+            {
+              "text": "有効な、妥当な",
+              "meaning": "認められる、筋が通る"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "valid は規則上有効、または理由として妥当という意味。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "有効な、妥当な",
+          "choices": [
+            {
+              "text": "wary",
+              "meaning": "用心深い"
+            },
+            {
+              "text": "valid",
+              "meaning": "有効な"
+            },
+            {
+              "text": "unanimous",
+              "meaning": "全員一致の"
+            },
+            {
+              "text": "versatile",
+              "meaning": "多用途の"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "有効なチケットや妥当な理由は valid。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "空港での場面。期限が切れていない航空券が必要。 You can only board if your ticket is still ___.",
+          "choices": [
+            {
+              "text": "wary",
+              "meaning": "用心深い"
+            },
+            {
+              "text": "loyal",
+              "meaning": "忠実な"
+            },
+            {
+              "text": "valid",
+              "meaning": "有効な"
+            },
+            {
+              "text": "humble",
+              "meaning": "謙虚な"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "チケットが使える状態なので valid が合う。",
+          "alternatives": [
+            {
+              "answer": "usable",
+              "explanation": "使える状態を表すが、公式な有効性では valid が自然。"
+            },
+            {
+              "answer": "acceptable",
+              "explanation": "受け入れられる意味で、期限の有効性は弱い。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "valid の使い方が正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "He had a valid reason for being late.",
+              "meaning": "彼には遅れた妥当な理由があった。"
+            },
+            {
+              "text": "She gave a valid for being late.",
+              "meaning": "名詞として使った誤り。"
+            },
+            {
+              "text": "The rule validly her request.",
+              "meaning": "動詞のように使った誤り。"
+            },
+            {
+              "text": "I am valid to the meeting.",
+              "meaning": "人の状態として誤用。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "valid は reason を修飾する形容詞として自然。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "空港での場面。期限が切れていない航空券が必要。 You can only board if your ticket is still ___.",
+        "answers": [
+          "valid"
+        ],
+        "explanation": "チケットが使える状態なので valid が合う。",
+        "alternatives": [
+          {
+            "answer": "usable",
+            "explanation": "使える状態を表すが、公式な有効性では valid が自然。"
+          },
+          {
+            "answer": "acceptable",
+            "explanation": "受け入れられる意味で、期限の有効性は弱い。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "validを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "You need a valid passport to enter that country.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-valid-usage",
+          "type": "usage",
+          "prompt": "valid の使い方が正しい文を選んでください。",
+          "choices": [
+            "He had a valid reason for being late.",
+            "She gave a valid for being late.",
+            "The rule validly her request.",
+            "I am valid to the meeting."
+          ],
+          "correctIndex": 0,
+          "explanation": "valid は reason を修飾する形容詞として自然。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "law",
+          "logic-reasoning"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -16319,6 +17094,191 @@
       }
     },
     {
+      "id": "vocab-back",
+      "word": "back",
+      "level": "準2級",
+      "ipa": "/bæk/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "副詞",
+      "definition": "toward a place or state where someone or something was before, or toward the rear",
+      "meaning": "後ろへ、元の場所へ",
+      "usageTip": "come back、go back、give back のように動詞と組み合わせて使う。「戻って」という意味が基本。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "帰宅",
+          "text": "I will come back home before dinner tonight.",
+          "translation": "今夜は夕食前に家へ戻ります。"
+        },
+        {
+          "id": "example-2",
+          "context": "返却",
+          "text": "Please give the book back to me tomorrow.",
+          "translation": "明日その本を私に返してください。"
+        },
+        {
+          "id": "example-3",
+          "context": "移動",
+          "text": "He stepped back when the dog barked.",
+          "translation": "犬が吠えたとき、彼は後ろへ下がった。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "back",
+          "choices": [
+            {
+              "text": "上へ",
+              "meaning": "上方向"
+            },
+            {
+              "text": "中へ",
+              "meaning": "内側"
+            },
+            {
+              "text": "遠くへ",
+              "meaning": "遠方"
+            },
+            {
+              "text": "後ろへ、元の場所へ",
+              "meaning": "正解"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "back は後ろや元の場所への移動を表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "後ろへ、元の場所へ",
+          "choices": [
+            {
+              "text": "near",
+              "meaning": "近くに"
+            },
+            {
+              "text": "above",
+              "meaning": "上に"
+            },
+            {
+              "text": "back",
+              "meaning": "後ろへ、戻って"
+            },
+            {
+              "text": "inside",
+              "meaning": "中に"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "戻る方向を表す副詞は back です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "貸したペンを返してもらう場面:Could you give my pen ___ after class?",
+          "choices": [
+            {
+              "text": "up",
+              "meaning": "上へ"
+            },
+            {
+              "text": "back",
+              "meaning": "元へ"
+            },
+            {
+              "text": "out",
+              "meaning": "外へ"
+            },
+            {
+              "text": "over",
+              "meaning": "越えて"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "持ち主に戻すので give back が自然です。",
+          "alternatives": [
+            {
+              "answer": "returned",
+              "explanation": "Could you return my pen と言い換えられ、やや丁寧です。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "back を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I will back to the office soon.",
+              "meaning": "誤り:動詞がない"
+            },
+            {
+              "text": "He went back at home late.",
+              "meaning": "誤り:at が不要"
+            },
+            {
+              "text": "She came back from Osaka yesterday.",
+              "meaning": "彼女は昨日大阪から戻った。"
+            },
+            {
+              "text": "I came back to home after work.",
+              "meaning": "誤り:home の前の to が不要"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "come back from で戻る意味を自然に表せる。他の文は動詞の欠落や不要な前置詞があり誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "貸したペンを返してもらう場面:Could you give my pen ___ after class?",
+        "answers": [
+          "back"
+        ],
+        "explanation": "持ち主に戻すので give back が自然です。",
+        "alternatives": [
+          {
+            "answer": "returned",
+            "explanation": "Could you return my pen と言い換えられ、やや丁寧です。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "backを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I will come back home before dinner tonight.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-back-usage",
+          "type": "usage",
+          "prompt": "back を正しく使った文を選んでください。",
+          "choices": [
+            "I will back to the office soon.",
+            "He went back at home late.",
+            "She came back from Osaka yesterday.",
+            "I came back to home after work."
+          ],
+          "correctIndex": 2,
+          "explanation": "come back from で戻る意味を自然に表せる。他の文は動詞の欠落や不要な前置詞があり誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A1",
+        "domains": [
+          "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-around",
       "word": "around",
       "level": "準2級",
@@ -17640,6 +18600,181 @@
       }
     },
     {
+      "id": "vocab-alphabet",
+      "word": "alphabet",
+      "level": "準2級",
+      "ipa": "ˈælfəˌbɛt",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "a set of letters used to write a language",
+      "meaning": "アルファベット、文字体系",
+      "usageTip": "可算名詞。the English alphabet や the Greek alphabet のように言語名と使う。順番は in alphabetical order(アルファベット順に)と言う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "授業で",
+          "text": "Children in the class are learning to sing the alphabet.",
+          "translation": "クラスの子どもたちはアルファベットの歌を覚えている。"
+        },
+        {
+          "id": "example-2",
+          "context": "語学学習",
+          "text": "The Greek alphabet has twenty-four letters in total.",
+          "translation": "ギリシャ語のアルファベットは全部で二十四文字ある。"
+        },
+        {
+          "id": "example-3",
+          "context": "図書館",
+          "text": "The books are arranged in alphabetical order by the author's last name.",
+          "translation": "本は著者の姓のアルファベット順に並べられている。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "alphabet",
+          "choices": [
+            {
+              "text": "数字",
+              "meaning": "number"
+            },
+            {
+              "text": "辞書",
+              "meaning": "dictionary"
+            },
+            {
+              "text": "文法",
+              "meaning": "grammar"
+            },
+            {
+              "text": "アルファベット",
+              "meaning": "set of letters"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "alphabet は言語を書き表す文字の体系を指す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "アルファベット、文字体系",
+          "choices": [
+            {
+              "text": "alphabet",
+              "meaning": "アルファベット"
+            },
+            {
+              "text": "algebra",
+              "meaning": "代数"
+            },
+            {
+              "text": "album",
+              "meaning": "アルバム"
+            },
+            {
+              "text": "alarm",
+              "meaning": "警報"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "文字の体系を表す語は alphabet。他は綴りが似ているだけで意味が違う。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "英語の文字を最初に習う場面: Young learners start by memorizing the 26 letters of the English ___.",
+          "choices": [
+            {
+              "text": "calendar",
+              "meaning": "暦"
+            },
+            {
+              "text": "sentence",
+              "meaning": "文"
+            },
+            {
+              "text": "alphabet",
+              "meaning": "アルファベット"
+            },
+            {
+              "text": "dictionary",
+              "meaning": "辞書"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "26 の文字からなる体系なので alphabet が合う。",
+          "alternatives": []
+        },
+        {
+          "mode": "usage",
+          "prompt": "alphabet を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "The Russian alphabet looks different from the English one.",
+              "meaning": "ロシア語のアルファベットは英語のものと違って見える。"
+            },
+            {
+              "text": "This alphabets has many letters.",
+              "meaning": "このアルファベットは文字が多い。(文法の誤り)"
+            },
+            {
+              "text": "I have a alphabet in my name.",
+              "meaning": "私の名前にはアルファベットがある。(冠詞の誤り)"
+            },
+            {
+              "text": "Please put the names in alphabet.",
+              "meaning": "名前をアルファベット順に並べて。(語形の誤り)"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "言語名と alphabet を組み合わせる使い方が自然。他は単複の不一致、冠詞の誤り、順番を表す alphabetical order の誤りがある。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "英語の文字を最初に習う場面: Young learners start by memorizing the 26 letters of the English ___.",
+        "answers": [
+          "alphabet"
+        ],
+        "explanation": "26 の文字からなる体系なので alphabet が合う。",
+        "alternatives": []
+      },
+      "production": {
+        "prompt": "alphabetを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Children in the class are learning to sing the alphabet.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-alphabet-usage",
+          "type": "usage",
+          "prompt": "alphabet を正しく使った文を選んでください。",
+          "choices": [
+            "The Russian alphabet looks different from the English one.",
+            "This alphabets has many letters.",
+            "I have a alphabet in my name.",
+            "Please put the names in alphabet."
+          ],
+          "correctIndex": 0,
+          "explanation": "言語名と alphabet を組み合わせる使い方が自然。他は単複の不一致、冠詞の誤り、順番を表す alphabetical order の誤りがある。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "education"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-anniversary",
       "word": "anniversary",
       "level": "準2級",
@@ -18408,7 +19543,314 @@
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
       }
+    },
+    {
+      "id": "vocab-capsule",
+      "word": "capsule",
+      "level": "準2級",
+      "ipa": "ˈkæpsjuːl",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a small case containing medicine that is swallowed; also a small sealed container or spacecraft section",
+      "meaning": "カプセル",
+      "usageTip": "薬の意味が基本で、take a capsule と言う。space capsule(宇宙カプセル)のように密閉された小さな容器にも使う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "病院",
+          "text": "The doctor told me to take one capsule after each meal.",
+          "translation": "医師は毎食後にカプセルを1錠飲むよう私に言った。"
+        },
+        {
+          "id": "example-2",
+          "context": "薬局",
+          "text": "This capsule is easier to swallow than the large tablet.",
+          "translation": "このカプセルは大きな錠剤より飲み込みやすい。"
+        },
+        {
+          "id": "example-3",
+          "context": "宇宙",
+          "text": "The astronauts returned to Earth in a small space capsule.",
+          "translation": "宇宙飛行士たちは小さな宇宙カプセルで地球に帰還した。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "capsule",
+          "choices": [
+            {
+              "text": "体温計",
+              "meaning": "熱を測る道具"
+            },
+            {
+              "text": "包帯",
+              "meaning": "傷を巻く布"
+            },
+            {
+              "text": "カプセル",
+              "meaning": "薬などを入れる小さな容器"
+            },
+            {
+              "text": "注射器",
+              "meaning": "薬を体に入れる器具"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "capsule は薬などを入れた小さな容器を指す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "カプセル",
+          "choices": [
+            {
+              "text": "capital",
+              "meaning": "首都、資本"
+            },
+            {
+              "text": "cable",
+              "meaning": "ケーブル"
+            },
+            {
+              "text": "capsule",
+              "meaning": "カプセル"
+            },
+            {
+              "text": "canvas",
+              "meaning": "キャンバス"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "薬のカプセルは capsule。形が似た語とは意味が違う。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "薬を飲む場面。 The nurse gave him water to help him swallow the ___.",
+          "choices": [
+            {
+              "text": "ticket",
+              "meaning": "切符"
+            },
+            {
+              "text": "pencil",
+              "meaning": "鉛筆"
+            },
+            {
+              "text": "mirror",
+              "meaning": "鏡"
+            },
+            {
+              "text": "capsule",
+              "meaning": "カプセル"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "水で飲み込むものとして自然なのは薬の capsule。",
+          "alternatives": [
+            {
+              "answer": "tablet",
+              "explanation": "固めた錠剤を指し、ここでも自然に使える。"
+            },
+            {
+              "answer": "pill",
+              "explanation": "丸薬や錠剤全般を指し、自然に使える。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "capsule を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "She capsuled two medicines after breakfast.",
+              "meaning": "彼女は朝食後に薬をカプセルした。(品詞の誤り)"
+            },
+            {
+              "text": "She takes one capsule with water every morning.",
+              "meaning": "彼女は毎朝水でカプセルを1錠飲む。"
+            },
+            {
+              "text": "She makes one capsule with water every morning.",
+              "meaning": "彼女は毎朝水でカプセルを作る。(動詞の誤り)"
+            },
+            {
+              "text": "She eats a capsule of water every morning.",
+              "meaning": "彼女は毎朝水のカプセルを食べる。(コロケーションの誤り)"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "薬を飲むは take a capsule が自然。capsule は動詞として使えず、薬に make や eat は合わない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "薬を飲む場面。 The nurse gave him water to help him swallow the ___.",
+        "answers": [
+          "capsule"
+        ],
+        "explanation": "水で飲み込むものとして自然なのは薬の capsule。",
+        "alternatives": [
+          {
+            "answer": "tablet",
+            "explanation": "固めた錠剤を指し、ここでも自然に使える。"
+          },
+          {
+            "answer": "pill",
+            "explanation": "丸薬や錠剤全般を指し、自然に使える。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "capsuleを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The doctor told me to take one capsule after each meal.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-capsule-usage",
+          "type": "usage",
+          "prompt": "capsule を正しく使った文を選びなさい。",
+          "choices": [
+            "She capsuled two medicines after breakfast.",
+            "She takes one capsule with water every morning.",
+            "She makes one capsule with water every morning.",
+            "She eats a capsule of water every morning."
+          ],
+          "correctIndex": 1,
+          "explanation": "薬を飲むは take a capsule が自然。capsule は動詞として使えず、薬に make や eat は合わない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "medical",
+          "health"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
     }
   ],
-  "audio": []
+  "audio": [
+    {
+      "wordId": "vocab-anniversary",
+      "cacheKey": "8addc9d4db14deeb0df653d78e27ab3eac671a689fcaf6315143fd7ef0009118",
+      "fileId": "1kgV8b9DqK23_K49mpvL2GGfF0VqwNYzC",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.074
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.1800000000000002,
+          "endSeconds": 5.473999999999999
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.708,
+          "endSeconds": 10.234
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 10.399000000000001,
+          "endSeconds": 14.071
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-assumption",
+      "cacheKey": "6f1a7997c446c98c0e70caf9eff01780aa95eb5c3712b6a99b7d914bd5de07c1",
+      "fileId": "1wq5ySVuFFccMbqANfl3Bg8aPp486Vm_j",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9345000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9600000000000001,
+          "endSeconds": 4.231999999999999
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.257,
+          "endSeconds": 8.2315
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.239,
+          "endSeconds": 11.61
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-blossom",
+      "cacheKey": "8ceaee574fb7a26744e9cb771c33d3f3ed73aa815638af12bb82a4b6680fd24a",
+      "fileId": "1B8BlVGJW5k0ef8p-MGXO7hhRcWDfdGfe",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8879999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.2269999999999999,
+          "endSeconds": 5.045
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.151,
+          "endSeconds": 9.004
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 9.168000000000001,
+          "endSeconds": 12.307
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-brainstorm",
+      "cacheKey": "d9bcf00b63200064cfe8d0ddf11125982399ff063958dbc867f33cbe68b37de6",
+      "fileId": "1z3ccNWexvm1izJUEajDzZyE6QrBCX20b",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.0505
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0505,
+          "endSeconds": 4.3595
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.4079999999999995,
+          "endSeconds": 8.551
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.576,
+          "endSeconds": 12.074
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    }
+  ]
 }

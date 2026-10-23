@@ -424,6 +424,420 @@
       }
     },
     {
+      "id": "vocab-soothe",
+      "word": "soothe",
+      "level": "準2級",
+      "ipa": "/suːð/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "soothe"
+        ],
+        "past": [
+          "soothed"
+        ],
+        "pastParticiple": [
+          "soothed"
+        ],
+        "presentParticiple": [
+          "soothing"
+        ],
+        "thirdPersonSingular": [
+          "soothes"
+        ]
+      },
+      "definition": "to make a person calmer or make pain or discomfort less strong",
+      "meaning": "和らげる、落ち着かせる",
+      "usageTip": "soothe + 人/痛み/不安 の形で、前置詞なしで直接目的語を取る。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "育児",
+          "text": "She sang softly to soothe the crying baby.",
+          "translation": "彼女は泣いている赤ちゃんを落ち着かせるためにやさしく歌った。"
+        },
+        {
+          "id": "example-2",
+          "context": "健康",
+          "text": "Warm tea can soothe a sore throat.",
+          "translation": "温かいお茶はのどの痛みを和らげることがある。"
+        },
+        {
+          "id": "example-3",
+          "context": "友人関係",
+          "text": "His kind words helped soothe my nerves before the speech.",
+          "translation": "彼の優しい言葉はスピーチ前の緊張を和らげてくれた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "soothe",
+          "choices": [
+            {
+              "text": "奪う",
+              "meaning": "無理に取る"
+            },
+            {
+              "text": "和らげる",
+              "meaning": "痛みや不安を軽くする"
+            },
+            {
+              "text": "競う",
+              "meaning": "勝とうとする"
+            },
+            {
+              "text": "拒む",
+              "meaning": "受け入れない"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "soothe は不安や痛みを和らげる、落ち着かせるという意味。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "和らげる、落ち着かせる",
+          "choices": [
+            {
+              "text": "sharp",
+              "meaning": "鋭い"
+            },
+            {
+              "text": "reclaim",
+              "meaning": "取り戻す"
+            },
+            {
+              "text": "refuse",
+              "meaning": "拒否する"
+            },
+            {
+              "text": "soothe",
+              "meaning": "和らげる"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "落ち着かせる意味を表すのは soothe。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "のどが痛い友人にはちみつ入りの飲み物を勧める場面：Honey in hot water may help ___ your throat.",
+          "choices": [
+            {
+              "text": "soothe",
+              "meaning": "和らげる"
+            },
+            {
+              "text": "reclaim",
+              "meaning": "取り戻す"
+            },
+            {
+              "text": "paddle",
+              "meaning": "櫂でこぐ"
+            },
+            {
+              "text": "refuse",
+              "meaning": "拒否する"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "のどの不快感を和らげる意味なので soothe が合う。",
+          "alternatives": [
+            {
+              "answer": "ease",
+              "explanation": "痛みを軽くする一般的な語。"
+            },
+            {
+              "answer": "relieve",
+              "explanation": "症状を取り除いて楽にする、やや改まった語。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "soothe を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "The music soothed to the child.",
+              "meaning": "不要な to がある文。"
+            },
+            {
+              "text": "The music soothed for the child.",
+              "meaning": "for の使い方が誤り。"
+            },
+            {
+              "text": "The music soothed the child to sleeping.",
+              "meaning": "to sleeping が不自然。"
+            },
+            {
+              "text": "The music soothed the child.",
+              "meaning": "音楽がその子を落ち着かせた。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "soothe は人を直接目的語に取る他動詞で、前置詞は不要。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "のどが痛い友人にはちみつ入りの飲み物を勧める場面：Honey in hot water may help ___ your throat.",
+        "answers": [
+          "soothe"
+        ],
+        "explanation": "のどの不快感を和らげる意味なので soothe が合う。",
+        "alternatives": [
+          {
+            "answer": "ease",
+            "explanation": "痛みを軽くする一般的な語。"
+          },
+          {
+            "answer": "relieve",
+            "explanation": "症状を取り除いて楽にする、やや改まった語。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "sootheを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "She sang softly to soothe the crying baby.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-soothe-usage",
+          "type": "usage",
+          "prompt": "soothe を正しく使った文を選んでください。",
+          "choices": [
+            "The music soothed to the child.",
+            "The music soothed for the child.",
+            "The music soothed the child to sleeping.",
+            "The music soothed the child."
+          ],
+          "correctIndex": 3,
+          "explanation": "soothe は人を直接目的語に取る他動詞で、前置詞は不要。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "C1",
+        "domains": [
+          "health",
+          "relationships"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-refuse",
+      "word": "refuse",
+      "level": "準2級",
+      "ipa": "/rɪˈfjuːz/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "refuse"
+        ],
+        "past": [
+          "refused"
+        ],
+        "pastParticiple": [
+          "refused"
+        ],
+        "presentParticiple": [
+          "refusing"
+        ],
+        "thirdPersonSingular": [
+          "refuses"
+        ]
+      },
+      "definition": "to say that you will not do or accept something",
+      "meaning": "拒否する",
+      "usageTip": "refuse to do または refuse + 名詞の形で使う。refuse doing とは言わない。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "職場",
+          "text": "He refused to sign the contract without reading it first.",
+          "translation": "彼は先に読まずに契約書へ署名することを拒んだ。"
+        },
+        {
+          "id": "example-2",
+          "context": "買い物",
+          "text": "The shop refused my request for a refund yesterday.",
+          "translation": "その店は昨日、私の返金の要求を断った。"
+        },
+        {
+          "id": "example-3",
+          "context": "家庭",
+          "text": "My little brother refuses to eat vegetables.",
+          "translation": "弟は野菜を食べるのを嫌がる。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "refuse",
+          "choices": [
+            {
+              "text": "急ぐ",
+              "meaning": "早く動く"
+            },
+            {
+              "text": "思い出す",
+              "meaning": "記憶を呼び戻す"
+            },
+            {
+              "text": "拒否する",
+              "meaning": "受け入れない"
+            },
+            {
+              "text": "手伝う",
+              "meaning": "助ける"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "refuse は依頼や申し出を受け入れないことを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "拒否する",
+          "choices": [
+            {
+              "text": "refuse",
+              "meaning": "拒否する"
+            },
+            {
+              "text": "soothe",
+              "meaning": "和らげる"
+            },
+            {
+              "text": "paddle",
+              "meaning": "櫂でこぐ"
+            },
+            {
+              "text": "sharp",
+              "meaning": "鋭い"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "拒否する意味の動詞は refuse。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "乗客が危険な指示に従うことを断る場面：During the turbulence, the passenger continued to ___ to leave his seat.",
+          "choices": [
+            {
+              "text": "reclaim",
+              "meaning": "取り戻す"
+            },
+            {
+              "text": "refuse",
+              "meaning": "拒否する"
+            },
+            {
+              "text": "soothe",
+              "meaning": "和らげる"
+            },
+            {
+              "text": "paddle",
+              "meaning": "櫂でこぐ"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "to 不定詞が続き、席を離れることを拒む意味なので refuse が合う。",
+          "alternatives": [
+            {
+              "answer": "decline",
+              "explanation": "丁寧に断るニュアンスで、to 不定詞も取れる。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "refuse を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "She refused answering the question.",
+              "meaning": "動名詞を続けた誤り。"
+            },
+            {
+              "text": "She refused for answer the question.",
+              "meaning": "for が不適切な文。"
+            },
+            {
+              "text": "She refused me to answer the question.",
+              "meaning": "目的語+to の型が誤り。"
+            },
+            {
+              "text": "She refused to answer the question.",
+              "meaning": "彼女はその質問に答えるのを拒んだ。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "refuse は to 不定詞を続けて、何をしないと拒むかを表す。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "乗客が危険な指示に従うことを断る場面：During the turbulence, the passenger continued to ___ to leave his seat.",
+        "answers": [
+          "refuse"
+        ],
+        "explanation": "to 不定詞が続き、席を離れることを拒む意味なので refuse が合う。",
+        "alternatives": [
+          {
+            "answer": "decline",
+            "explanation": "丁寧に断るニュアンスで、to 不定詞も取れる。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "refuseを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "He refused to sign the contract without reading it first.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-refuse-usage",
+          "type": "usage",
+          "prompt": "refuse を正しく使った文を選んでください。",
+          "choices": [
+            "She refused answering the question.",
+            "She refused for answer the question.",
+            "She refused me to answer the question.",
+            "She refused to answer the question."
+          ],
+          "correctIndex": 3,
+          "explanation": "refuse は to 不定詞を続けて、何をしないと拒むかを表す。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "communication",
+          "work"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-paddle",
       "word": "paddle",
       "level": "準2級",
@@ -6711,6 +7125,217 @@
       }
     },
     {
+      "id": "vocab-diversify",
+      "word": "diversify",
+      "level": "準2級",
+      "ipa": "/dɪˈvɜːrsɪfaɪ/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "diversify"
+        ],
+        "past": [
+          "diversified"
+        ],
+        "pastParticiple": [
+          "diversified"
+        ],
+        "presentParticiple": [
+          "diversifying"
+        ],
+        "thirdPersonSingular": [
+          "diversifies"
+        ]
+      },
+      "definition": "to add variety to something, or to spread money or activities across different areas",
+      "meaning": "多様化する・分散させる",
+      "usageTip": "diversify into 新分野、diversify by doing、diversify A のように使う。自動詞でも他動詞でも使える。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "会社の戦略",
+          "text": "The company plans to diversify into online services next year.",
+          "translation": "その会社は来年、オンラインサービスへ事業を多角化する予定だ。"
+        },
+        {
+          "id": "example-2",
+          "context": "投資",
+          "text": "It is wise to diversify your savings instead of trusting one bank.",
+          "translation": "一つの銀行を信用せず、貯蓄を分散させるのが賢明だ。"
+        },
+        {
+          "id": "example-3",
+          "context": "農業",
+          "text": "The farmers decided to diversify their crops to reduce the risk of bad weather.",
+          "translation": "農家は悪天候のリスクを減らすため、作物を多様化することにした。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "diversify",
+          "choices": [
+            {
+              "text": "簡単にする",
+              "meaning": "複雑さを減らす"
+            },
+            {
+              "text": "禁止する",
+              "meaning": "許可しない"
+            },
+            {
+              "text": "延期する",
+              "meaning": "後に回す"
+            },
+            {
+              "text": "多様化する",
+              "meaning": "種類や分野を増やす"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "diversify は事業や投資などを多様化・分散させることを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "事業や投資を多様化する、分散させる",
+          "choices": [
+            {
+              "text": "postpone",
+              "meaning": "延期する"
+            },
+            {
+              "text": "diversify",
+              "meaning": "多様化する"
+            },
+            {
+              "text": "simplify",
+              "meaning": "簡単にする"
+            },
+            {
+              "text": "cancel",
+              "meaning": "取り消す"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "多様化・分散を意味する動詞は diversify。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "投資の場面：リスクを下げるため、資産を一つに集中させない。 The investor should ___ her assets to lower the risk.",
+          "choices": [
+            {
+              "text": "diversify",
+              "meaning": "分散させる"
+            },
+            {
+              "text": "hide",
+              "meaning": "隠す"
+            },
+            {
+              "text": "borrow",
+              "meaning": "借りる"
+            },
+            {
+              "text": "ignore",
+              "meaning": "無視する"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "リスクを下げるために資産を分散させる、という流れに合う。",
+          "alternatives": [
+            {
+              "answer": "spread out",
+              "explanation": "口語的で、広げて分ける感じが強い。"
+            },
+            {
+              "answer": "balance",
+              "explanation": "配分の釣り合いを取るニュアンス。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "diversify を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "The shop diversified selling books and coffee.",
+              "meaning": "into や by が抜けている。"
+            },
+            {
+              "text": "The shop diversified for books and coffee on.",
+              "meaning": "語順が不自然な文。"
+            },
+            {
+              "text": "The shop diversified that books and coffee.",
+              "meaning": "接続の仕方が不自然な文。"
+            },
+            {
+              "text": "The shop diversified into selling books and coffee.",
+              "meaning": "その店は本とコーヒーの販売にも事業を広げた。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "diversify into + 新しい分野で、事業を広げる先を示す。他の文は語法が不自然。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "投資の場面：リスクを下げるため、資産を一つに集中させない。 The investor should ___ her assets to lower the risk.",
+        "answers": [
+          "diversify"
+        ],
+        "explanation": "リスクを下げるために資産を分散させる、という流れに合う。",
+        "alternatives": [
+          {
+            "answer": "spread out",
+            "explanation": "口語的で、広げて分ける感じが強い。"
+          },
+          {
+            "answer": "balance",
+            "explanation": "配分の釣り合いを取るニュアンス。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "diversifyを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The company plans to diversify into online services next year.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-diversify-usage",
+          "type": "usage",
+          "prompt": "diversify を正しく使った文を選びなさい。",
+          "choices": [
+            "The shop diversified selling books and coffee.",
+            "The shop diversified for books and coffee on.",
+            "The shop diversified that books and coffee.",
+            "The shop diversified into selling books and coffee."
+          ],
+          "correctIndex": 3,
+          "explanation": "diversify into + 新しい分野で、事業を広げる先を示す。他の文は語法が不自然。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "C1",
+        "domains": [
+          "business",
+          "finance"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-recreation",
       "word": "recreation",
       "level": "準2級",
@@ -8089,6 +8714,200 @@
         "domains": [
           "law",
           "politics"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-jackpot",
+      "word": "jackpot",
+      "level": "準2級",
+      "ipa": "/ˈdʒækˌpɑːt/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "a very large prize in a game or lottery, or a big unexpected success",
+      "meaning": "大当たり・高額賞金",
+      "usageTip": "win the jackpot や hit the jackpot の形でよく使う。比喩的に、思わぬ大成功を表すこともある。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "日常生活",
+          "text": "He bought one ticket and unexpectedly won the lottery jackpot.",
+          "translation": "彼は券を1枚買っただけで、思いがけず宝くじの高額賞金を当てた。"
+        },
+        {
+          "id": "example-2",
+          "context": "ゲーム",
+          "text": "The jackpot grows larger every week until someone wins it.",
+          "translation": "高額賞金は、誰かが当てるまで毎週大きくなっていく。"
+        },
+        {
+          "id": "example-3",
+          "context": "仕事",
+          "text": "We hit the jackpot when we found such a reliable designer.",
+          "translation": "あれほど信頼できるデザイナーを見つけて、私たちは大当たりだった。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "jackpot",
+          "choices": [
+            {
+              "text": "小さな景品",
+              "meaning": "価値の低い賞品"
+            },
+            {
+              "text": "参加費",
+              "meaning": "参加するために払うお金"
+            },
+            {
+              "text": "抽選の結果表",
+              "meaning": "当選番号などの一覧"
+            },
+            {
+              "text": "大当たり・高額賞金",
+              "meaning": "非常に大きな賞金や成功"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "jackpot は宝くじやゲームの非常に大きな賞金、または大成功を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "大当たり・高額賞金",
+          "choices": [
+            {
+              "text": "budget",
+              "meaning": "予算"
+            },
+            {
+              "text": "jackpot",
+              "meaning": "大当たり・高額賞金"
+            },
+            {
+              "text": "receipt",
+              "meaning": "領収書"
+            },
+            {
+              "text": "discount",
+              "meaning": "割引"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "最高額の賞金や大当たりを指す語は jackpot。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "くじで大金を当てた場面：She cried when she learned she had won the ___.",
+          "choices": [
+            {
+              "text": "schedule",
+              "meaning": "予定"
+            },
+            {
+              "text": "invoice",
+              "meaning": "請求書"
+            },
+            {
+              "text": "jackpot",
+              "meaning": "高額賞金"
+            },
+            {
+              "text": "password",
+              "meaning": "パスワード"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "泣くほど驚く大きな当選なので jackpot が合う。won the jackpot は自然な連語。",
+          "alternatives": [
+            {
+              "answer": "lottery",
+              "explanation": "won the lottery も自然。くじ自体に当たったという言い方になる。"
+            },
+            {
+              "answer": "top prize",
+              "explanation": "最高賞を表す自然な言い方で、jackpot よりやや説明的。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "jackpot の使い方として正しい文はどれ？",
+          "choices": [
+            {
+              "text": "She made the jackpot in the lottery.",
+              "meaning": "動詞が不自然。"
+            },
+            {
+              "text": "She did the jackpot in the lottery.",
+              "meaning": "動詞が不自然。"
+            },
+            {
+              "text": "She took the jackpot by the lottery.",
+              "meaning": "前置詞が不自然。"
+            },
+            {
+              "text": "She won the jackpot in the lottery.",
+              "meaning": "彼女は宝くじで大当たりした。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "jackpot は win や hit と結びつく。make や do では自然な連語にならない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "くじで大金を当てた場面：She cried when she learned she had won the ___.",
+        "answers": [
+          "jackpot"
+        ],
+        "explanation": "泣くほど驚く大きな当選なので jackpot が合う。won the jackpot は自然な連語。",
+        "alternatives": [
+          {
+            "answer": "lottery",
+            "explanation": "won the lottery も自然。くじ自体に当たったという言い方になる。"
+          },
+          {
+            "answer": "top prize",
+            "explanation": "最高賞を表す自然な言い方で、jackpot よりやや説明的。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "jackpotを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "He bought one ticket and unexpectedly won the lottery jackpot.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-jackpot-usage",
+          "type": "usage",
+          "prompt": "jackpot の使い方として正しい文はどれ？",
+          "choices": [
+            "She made the jackpot in the lottery.",
+            "She did the jackpot in the lottery.",
+            "She took the jackpot by the lottery.",
+            "She won the jackpot in the lottery."
+          ],
+          "correctIndex": 3,
+          "explanation": "jackpot は win や hit と結びつく。make や do では自然な連語にならない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "finance",
+          "daily-life"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -10498,6 +11317,192 @@
       }
     },
     {
+      "id": "vocab-lab",
+      "word": "lab",
+      "level": "準2級",
+      "ipa": "/læb/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a room or building where scientific tests or experiments are done",
+      "meaning": "研究室、実験室",
+      "usageTip": "laboratory の短縮形で日常的に使う。in the lab や lab work などの形でよく使う。名詞で、動詞としては使わない。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "学校",
+          "text": "Our class spent the afternoon in the lab testing water samples.",
+          "translation": "私たちのクラスは午後ずっと実験室で水のサンプルを調べた。"
+        },
+        {
+          "id": "example-2",
+          "context": "研究",
+          "text": "She works in a medical lab and studies how viruses spread.",
+          "translation": "彼女は医療研究室で働き、ウイルスの広がり方を研究している。"
+        },
+        {
+          "id": "example-3",
+          "context": "安全",
+          "text": "Students must wear safety glasses whenever they enter the lab.",
+          "translation": "生徒は実験室に入る時は必ず保護メガネをかけなければならない。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "lab",
+          "choices": [
+            {
+              "text": "図書館",
+              "meaning": "本を借りる場所"
+            },
+            {
+              "text": "体育館",
+              "meaning": "運動する場所"
+            },
+            {
+              "text": "研究室、実験室",
+              "meaning": "実験や研究をする場所"
+            },
+            {
+              "text": "食堂",
+              "meaning": "食事をする場所"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "lab は laboratory の短縮形で、実験や研究を行う場所。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "研究室、実験室",
+          "choices": [
+            {
+              "text": "lap",
+              "meaning": "膝、一周"
+            },
+            {
+              "text": "lab",
+              "meaning": "研究室、実験室"
+            },
+            {
+              "text": "lane",
+              "meaning": "車線、細道"
+            },
+            {
+              "text": "lamp",
+              "meaning": "ランプ"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "実験室は lab。lap や lamp は綴りが似ているが別の意味。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面：理科の授業で薬品を使う。 We put on gloves before doing the experiment in the school ___.",
+          "choices": [
+            {
+              "text": "garden",
+              "meaning": "庭"
+            },
+            {
+              "text": "station",
+              "meaning": "駅"
+            },
+            {
+              "text": "theater",
+              "meaning": "劇場"
+            },
+            {
+              "text": "lab",
+              "meaning": "実験室"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "手袋をして実験をする場所なので lab が自然。",
+          "alternatives": [
+            {
+              "answer": "laboratory",
+              "explanation": "lab の正式な形で、やや硬い印象。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "lab の使い方として正しい文を選びなさい。",
+          "choices": [
+            {
+              "text": "She labs in the science class every day.",
+              "meaning": "lab を動詞として使っている誤り。"
+            },
+            {
+              "text": "She did a lab of the chemistry yesterday.",
+              "meaning": "of の使い方が不自然。"
+            },
+            {
+              "text": "She lab to the science room every day.",
+              "meaning": "lab を動詞のように使っている誤り。"
+            },
+            {
+              "text": "She finished her lab report this afternoon.",
+              "meaning": "彼女は今日の午後、実験レポートを仕上げた。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "lab report は「実験レポート」という自然な名詞の組み合わせ。他の文は lab を動詞のように使うか、不自然な形になっている。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面：理科の授業で薬品を使う。 We put on gloves before doing the experiment in the school ___.",
+        "answers": [
+          "lab"
+        ],
+        "explanation": "手袋をして実験をする場所なので lab が自然。",
+        "alternatives": [
+          {
+            "answer": "laboratory",
+            "explanation": "lab の正式な形で、やや硬い印象。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "labを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Our class spent the afternoon in the lab testing water samples.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-lab-usage",
+          "type": "usage",
+          "prompt": "lab の使い方として正しい文を選びなさい。",
+          "choices": [
+            "She labs in the science class every day.",
+            "She did a lab of the chemistry yesterday.",
+            "She lab to the science room every day.",
+            "She finished her lab report this afternoon."
+          ],
+          "correctIndex": 3,
+          "explanation": "lab report は「実験レポート」という自然な名詞の組み合わせ。他の文は lab を動詞のように使うか、不自然な形になっている。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "education",
+          "science"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-lighten",
       "word": "lighten",
       "level": "準2級",
@@ -10886,6 +11891,209 @@
       }
     },
     {
+      "id": "vocab-honk",
+      "word": "honk",
+      "level": "準2級",
+      "ipa": "/hɑːŋk/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "honk"
+        ],
+        "past": [
+          "honked"
+        ],
+        "pastParticiple": [
+          "honked"
+        ],
+        "presentParticiple": [
+          "honking"
+        ],
+        "thirdPersonSingular": [
+          "honks"
+        ]
+      },
+      "definition": "to make a loud short sound with a car horn, or to make a sound like a goose",
+      "meaning": "（クラクションを）鳴らす",
+      "usageTip": "honk the horn や honk at + 人/車 の形で使う。ガチョウの鳴き声にも使う。名詞でも使う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "交差点",
+          "text": "The taxi driver honked when the car ahead did not move.",
+          "translation": "前の車が動かなかったので、タクシーの運転手がクラクションを鳴らした。"
+        },
+        {
+          "id": "example-2",
+          "context": "渋滞",
+          "text": "Drivers began to honk their horns during the long traffic jam.",
+          "translation": "長い渋滞の間、運転手たちがクラクションを鳴らし始めた。"
+        },
+        {
+          "id": "example-3",
+          "context": "公園",
+          "text": "A goose honked loudly at us as we walked past the pond.",
+          "translation": "池のそばを通ると、ガチョウが私たちに大声で鳴いた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "honk",
+          "choices": [
+            {
+              "text": "道を譲る",
+              "meaning": "先に行かせる"
+            },
+            {
+              "text": "急ブレーキをかける",
+              "meaning": "突然止まる"
+            },
+            {
+              "text": "クラクションを鳴らす",
+              "meaning": "警笛で音を出す"
+            },
+            {
+              "text": "窓を開ける",
+              "meaning": "窓を動かす"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "honk は車の警笛を短く鳴らすこと。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "（クラクションを）鳴らす",
+          "choices": [
+            {
+              "text": "hook",
+              "meaning": "引っかける"
+            },
+            {
+              "text": "hunt",
+              "meaning": "狩る"
+            },
+            {
+              "text": "honk",
+              "meaning": "クラクションを鳴らす"
+            },
+            {
+              "text": "hum",
+              "meaning": "鼻歌を歌う"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "クラクションを鳴らすは honk。他は綴りや音が似た別語。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面：信号が青になっても前の車が動かない。 The driver behind us began to ___ impatiently.",
+          "choices": [
+            {
+              "text": "bake",
+              "meaning": "焼く"
+            },
+            {
+              "text": "honk",
+              "meaning": "クラクションを鳴らす"
+            },
+            {
+              "text": "graduate",
+              "meaning": "卒業する"
+            },
+            {
+              "text": "whisper",
+              "meaning": "ささやく"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "動かない車にいらだつ運転手の行動として honk が自然。",
+          "alternatives": [
+            {
+              "answer": "beep",
+              "explanation": "軽く短い音のニュアンスで、honk より穏やか。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "honk の使い方として正しい文を選びなさい。",
+          "choices": [
+            {
+              "text": "He honked the car in front of him.",
+              "meaning": "honk に直接目的語として車を置く誤り。"
+            },
+            {
+              "text": "He honked at the car in front of him.",
+              "meaning": "彼は前の車にクラクションを鳴らした。"
+            },
+            {
+              "text": "He honked of the car in front of him.",
+              "meaning": "前置詞 of が不適切。"
+            },
+            {
+              "text": "He honked with the car in front of him.",
+              "meaning": "前置詞 with が不適切。"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "相手に向けて鳴らす時は honk at を使う。honk は直接人や車を目的語にせず、of や with では意図が伝わりにくい。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面：信号が青になっても前の車が動かない。 The driver behind us began to ___ impatiently.",
+        "answers": [
+          "honk"
+        ],
+        "explanation": "動かない車にいらだつ運転手の行動として honk が自然。",
+        "alternatives": [
+          {
+            "answer": "beep",
+            "explanation": "軽く短い音のニュアンスで、honk より穏やか。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "honkを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The taxi driver honked when the car ahead did not move.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-honk-usage",
+          "type": "usage",
+          "prompt": "honk の使い方として正しい文を選びなさい。",
+          "choices": [
+            "He honked the car in front of him.",
+            "He honked at the car in front of him.",
+            "He honked of the car in front of him.",
+            "He honked with the car in front of him."
+          ],
+          "correctIndex": 1,
+          "explanation": "相手に向けて鳴らす時は honk at を使う。honk は直接人や車を目的語にせず、of や with では意図が伝わりにくい。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "transport",
+          "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-grocer",
       "word": "grocer",
       "level": "準2級",
@@ -11074,6 +12282,200 @@
         "domains": [
           "food",
           "business"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-hallmark",
+      "word": "hallmark",
+      "level": "準2級",
+      "ipa": "/ˈhɔːlˌmɑːrk/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "a typical feature that clearly shows the quality or character of something",
+      "meaning": "特徴、特質",
+      "usageTip": "the hallmark of A の形が基本。良い特質を示すことが多い。a hallmark of good teaching のように使う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "文化の話",
+          "text": "Careful craftsmanship is the hallmark of this traditional furniture maker.",
+          "translation": "丁寧な職人技は、この伝統的な家具職人の特徴だ。"
+        },
+        {
+          "id": "example-2",
+          "context": "教育",
+          "text": "Clear explanations are a hallmark of good teaching.",
+          "translation": "分かりやすい説明は良い指導の特徴だ。"
+        },
+        {
+          "id": "example-3",
+          "context": "料理",
+          "text": "Simple ingredients are the hallmark of her cooking style.",
+          "translation": "素朴な食材が彼女の料理スタイルの特徴だ。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "hallmark",
+          "choices": [
+            {
+              "text": "締め切り",
+              "meaning": "提出期限"
+            },
+            {
+              "text": "危険",
+              "meaning": "危ないこと"
+            },
+            {
+              "text": "祝日",
+              "meaning": "休みの日"
+            },
+            {
+              "text": "特徴、特質",
+              "meaning": "ものを特徴づける性質"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "hallmark は、ある物や人を特徴づける性質を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "特徴、特質",
+          "choices": [
+            {
+              "text": "hallmark",
+              "meaning": "特徴、特質"
+            },
+            {
+              "text": "shortcut",
+              "meaning": "近道"
+            },
+            {
+              "text": "outcome",
+              "meaning": "結果"
+            },
+            {
+              "text": "rumor",
+              "meaning": "噂"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "特徴を示す名詞は hallmark。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 優れた作家の文章の特徴を説明している。 Clear and simple language is the ___ of her writing.",
+          "choices": [
+            {
+              "text": "cost",
+              "meaning": "費用"
+            },
+            {
+              "text": "delay",
+              "meaning": "遅れ"
+            },
+            {
+              "text": "hallmark",
+              "meaning": "特徴"
+            },
+            {
+              "text": "refund",
+              "meaning": "返金"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "文章を特徴づける性質なので hallmark が合う。",
+          "alternatives": [
+            {
+              "answer": "trademark",
+              "explanation": "その人らしい特徴を表せるが、商標の意味も強い。"
+            },
+            {
+              "answer": "signature",
+              "explanation": "その人らしい独特の特徴を表す。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "hallmark を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "Honesty hallmarks a good leader of.",
+              "meaning": "語順が不自然な文。"
+            },
+            {
+              "text": "Honesty is hallmark to a good leader.",
+              "meaning": "冠詞と前置詞が不自然な文。"
+            },
+            {
+              "text": "Honesty is the hallmark of a good leader.",
+              "meaning": "正直さは良い指導者の特徴だ。"
+            },
+            {
+              "text": "Honesty is the hallmark at a good leader.",
+              "meaning": "前置詞 at が不自然な文。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "hallmark は the hallmark of A の形で特徴の持ち主を示す。他の文は語順、冠詞、前置詞が不自然。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 優れた作家の文章の特徴を説明している。 Clear and simple language is the ___ of her writing.",
+        "answers": [
+          "hallmark"
+        ],
+        "explanation": "文章を特徴づける性質なので hallmark が合う。",
+        "alternatives": [
+          {
+            "answer": "trademark",
+            "explanation": "その人らしい特徴を表せるが、商標の意味も強い。"
+          },
+          {
+            "answer": "signature",
+            "explanation": "その人らしい独特の特徴を表す。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "hallmarkを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Careful craftsmanship is the hallmark of this traditional furniture maker.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-hallmark-usage",
+          "type": "usage",
+          "prompt": "hallmark を正しく使った文を選んでください。",
+          "choices": [
+            "Honesty hallmarks a good leader of.",
+            "Honesty is hallmark to a good leader.",
+            "Honesty is the hallmark of a good leader.",
+            "Honesty is the hallmark at a good leader."
+          ],
+          "correctIndex": 2,
+          "explanation": "hallmark は the hallmark of A の形で特徴の持ち主を示す。他の文は語順、冠詞、前置詞が不自然。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "C1",
+        "domains": [
+          "logic-reasoning",
+          "arts-culture"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -13248,6 +14650,192 @@
       }
     },
     {
+      "id": "vocab-mascot",
+      "word": "mascot",
+      "level": "準2級",
+      "ipa": "/ˈmæskɑːt/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "a person, animal or character chosen to represent a team or group",
+      "meaning": "マスコット",
+      "usageTip": "チームや団体、イベントを象徴するキャラクターに使う。the team's mascot のように言う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "スポーツ",
+          "text": "The team's mascot danced in front of the crowd.",
+          "translation": "チームのマスコットは観客の前で踊った。"
+        },
+        {
+          "id": "example-2",
+          "context": "学校",
+          "text": "Our school chose a small owl as its mascot.",
+          "translation": "私たちの学校は小さなフクロウをマスコットに選んだ。"
+        },
+        {
+          "id": "example-3",
+          "context": "イベント",
+          "text": "Children lined up to take photos with the festival mascot.",
+          "translation": "子どもたちは祭りのマスコットと写真を撮るために並んだ。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "mascot",
+          "choices": [
+            {
+              "text": "マスコット",
+              "meaning": "団体を象徴するキャラクター"
+            },
+            {
+              "text": "審判",
+              "meaning": "試合を裁く人"
+            },
+            {
+              "text": "観客席",
+              "meaning": "見る席"
+            },
+            {
+              "text": "賞金",
+              "meaning": "優勝の金"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "mascot はチームや団体を象徴する人物や動物、キャラクター。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "マスコット",
+          "choices": [
+            {
+              "text": "sphere",
+              "meaning": "球体"
+            },
+            {
+              "text": "rental",
+              "meaning": "賃貸"
+            },
+            {
+              "text": "mascot",
+              "meaning": "マスコット"
+            },
+            {
+              "text": "rigid",
+              "meaning": "硬い"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "マスコットを表す英語は mascot。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "野球場の場面：The team's furry ___ waved to fans before the game.",
+          "choices": [
+            {
+              "text": "dimension",
+              "meaning": "次元"
+            },
+            {
+              "text": "rental",
+              "meaning": "賃貸"
+            },
+            {
+              "text": "sphere",
+              "meaning": "球体"
+            },
+            {
+              "text": "mascot",
+              "meaning": "マスコット"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "毛むくじゃらで、試合前にファンに手を振るのはマスコット。",
+          "alternatives": [
+            {
+              "answer": "character",
+              "explanation": "character も使えるが、チームの象徴という意味は弱い。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "mascot を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "The club is mascot a tiger.",
+              "meaning": "be 動詞の使い方が不自然。"
+            },
+            {
+              "text": "He mascots the team every day.",
+              "meaning": "mascot を動詞として使う誤り。"
+            },
+            {
+              "text": "This is a very mascot idea.",
+              "meaning": "名詞を形容詞のように使う誤り。"
+            },
+            {
+              "text": "Our mascot is a friendly bear.",
+              "meaning": "私たちのマスコットは親しみやすいクマだ。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "mascot は名詞で、Our mascot is ... のように主語や補語になる。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "野球場の場面：The team's furry ___ waved to fans before the game.",
+        "answers": [
+          "mascot"
+        ],
+        "explanation": "毛むくじゃらで、試合前にファンに手を振るのはマスコット。",
+        "alternatives": [
+          {
+            "answer": "character",
+            "explanation": "character も使えるが、チームの象徴という意味は弱い。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "mascotを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The team's mascot danced in front of the crowd.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-mascot-usage",
+          "type": "usage",
+          "prompt": "mascot を正しく使った文を選んでください。",
+          "choices": [
+            "The club is mascot a tiger.",
+            "He mascots the team every day.",
+            "This is a very mascot idea.",
+            "Our mascot is a friendly bear."
+          ],
+          "correctIndex": 3,
+          "explanation": "mascot は名詞で、Our mascot is ... のように主語や補語になる。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "sports",
+          "arts-culture"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-rigid",
       "word": "rigid",
       "level": "準2級",
@@ -14473,6 +16061,225 @@
         "domains": [
           "media",
           "business"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-entrust",
+      "word": "entrust",
+      "level": "準2級",
+      "ipa": "ɪnˈtrʌst",
+      "ipaLabel": "英音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "entrust"
+        ],
+        "past": [
+          "entrusted"
+        ],
+        "pastParticiple": [
+          "entrusted"
+        ],
+        "presentParticiple": [
+          "entrusting"
+        ],
+        "thirdPersonSingular": [
+          "entrusts"
+        ]
+      },
+      "definition": "to give someone the responsibility for a task or a valuable thing because you trust them",
+      "meaning": "(仕事や責任を)任せる、託す",
+      "usageTip": "「物・仕事 to 人」または「人 with 物・仕事」の形で使う。entrust the task to him と entrust him with the task は同じ意味。役割(人と物)を逆にしないよう注意。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "職場",
+          "text": "The manager entrusted the new project to her most reliable engineer.",
+          "translation": "部長は最も信頼できる技術者に新しいプロジェクトを任せた。"
+        },
+        {
+          "id": "example-2",
+          "context": "家庭",
+          "text": "I would never entrust my children to a stranger.",
+          "translation": "見知らぬ人に子どもを預けることは決してしない。"
+        },
+        {
+          "id": "example-3",
+          "context": "友人関係",
+          "text": "He entrusted me with the key to his apartment while he was abroad.",
+          "translation": "彼は海外にいる間、私にアパートの鍵を託した。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "entrust",
+          "choices": [
+            {
+              "text": "任せる、託す",
+              "meaning": "信頼して責任を渡す"
+            },
+            {
+              "text": "断る",
+              "meaning": "受け入れない"
+            },
+            {
+              "text": "調べる",
+              "meaning": "詳しく確認する"
+            },
+            {
+              "text": "想像する",
+              "meaning": "心に思い描く"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "entrustは信頼して仕事や責任を相手に任せることを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "(仕事や責任を)任せる、託す",
+          "choices": [
+            {
+              "text": "restrain",
+              "meaning": "抑える"
+            },
+            {
+              "text": "conform",
+              "meaning": "従う"
+            },
+            {
+              "text": "contemplate",
+              "meaning": "熟考する"
+            },
+            {
+              "text": "entrust",
+              "meaning": "任せる、託す"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "信頼して責任を渡すのはentrust。他は抑える、従う、熟考するの意味。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "会社で大切な顧客対応を信頼できる部下に任せる場面: The director decided to ___ the client account to Mika.",
+          "choices": [
+            {
+              "text": "deny",
+              "meaning": "否定する"
+            },
+            {
+              "text": "borrow",
+              "meaning": "借りる"
+            },
+            {
+              "text": "entrust",
+              "meaning": "任せる"
+            },
+            {
+              "text": "imagine",
+              "meaning": "想像する"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "to Mikaと続き、責任ある仕事を任せる意味になるのでentrustが合う。",
+          "alternatives": [
+            {
+              "answer": "hand over",
+              "explanation": "引き渡すという意味で、信頼のニュアンスは弱めで日常的。"
+            },
+            {
+              "answer": "assign",
+              "explanation": "役割を割り当てる意味で、より事務的。"
+            },
+            {
+              "answer": "leave",
+              "explanation": "leave A to Bで任せるが、くだけた響き。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "entrustを正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "She entrusted her savings with her brother.",
+              "meaning": "withの使い方を誤った文"
+            },
+            {
+              "text": "She entrusted to her brother her savings for.",
+              "meaning": "語順が不自然な文"
+            },
+            {
+              "text": "She entrusted her savings to her brother.",
+              "meaning": "彼女は貯金を兄に託した。"
+            },
+            {
+              "text": "She entrusted her brother to her savings.",
+              "meaning": "人と物の関係が逆の文"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "物をtoの前に置き、託す相手をtoの後に置く。withを使うなら entrusted her brother with her savings の形になる。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "会社で大切な顧客対応を信頼できる部下に任せる場面: The director decided to ___ the client account to Mika.",
+        "answers": [
+          "entrust"
+        ],
+        "explanation": "to Mikaと続き、責任ある仕事を任せる意味になるのでentrustが合う。",
+        "alternatives": [
+          {
+            "answer": "hand over",
+            "explanation": "引き渡すという意味で、信頼のニュアンスは弱めで日常的。"
+          },
+          {
+            "answer": "assign",
+            "explanation": "役割を割り当てる意味で、より事務的。"
+          },
+          {
+            "answer": "leave",
+            "explanation": "leave A to Bで任せるが、くだけた響き。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "entrustを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The manager entrusted the new project to her most reliable engineer.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-entrust-usage",
+          "type": "usage",
+          "prompt": "entrustを正しく使った文を選びなさい。",
+          "choices": [
+            "She entrusted her savings with her brother.",
+            "She entrusted to her brother her savings for.",
+            "She entrusted her savings to her brother.",
+            "She entrusted her brother to her savings."
+          ],
+          "correctIndex": 2,
+          "explanation": "物をtoの前に置き、託す相手をtoの後に置く。withを使うなら entrusted her brother with her savings の形になる。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "C1",
+        "domains": [
+          "work",
+          "relationships"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -15915,6 +17722,225 @@
       }
     },
     {
+      "id": "vocab-hasten",
+      "word": "hasten",
+      "level": "準2級",
+      "ipa": "ˈheɪsən",
+      "ipaLabel": "英音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "hasten"
+        ],
+        "past": [
+          "hastened"
+        ],
+        "pastParticiple": [
+          "hastened"
+        ],
+        "presentParticiple": [
+          "hastening"
+        ],
+        "thirdPersonSingular": [
+          "hastens"
+        ]
+      },
+      "definition": "to hurry, or to make something happen sooner",
+      "meaning": "急ぐ、早める",
+      "usageTip": "hasten to do は「急いで〜する」。I hasten to add(念のため言うと)は決まり文句。物を目的語にして「早める」の意味でも使う。やや文語的。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "旅行",
+          "text": "We hastened to the station when we heard the last train was leaving.",
+          "translation": "最終電車が出ると聞いて、私たちは急いで駅へ向かった。"
+        },
+        {
+          "id": "example-2",
+          "context": "説明",
+          "text": "I hasten to add that the delay was not your fault.",
+          "translation": "念のため言っておきますが、遅れはあなたのせいではありません。"
+        },
+        {
+          "id": "example-3",
+          "context": "環境",
+          "text": "Heavy rain can hasten the erosion of the hillside.",
+          "translation": "大雨は丘の斜面の浸食を早めることがある。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "hasten",
+          "choices": [
+            {
+              "text": "遅らせる",
+              "meaning": "予定より後にする"
+            },
+            {
+              "text": "断る",
+              "meaning": "受け入れない"
+            },
+            {
+              "text": "急ぐ、早める",
+              "meaning": "速く動く、早く進める"
+            },
+            {
+              "text": "隠す",
+              "meaning": "見えないようにする"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "hastenは急ぐ、または物事を早めることを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "急ぐ、早める",
+          "choices": [
+            {
+              "text": "hatch",
+              "meaning": "孵化する"
+            },
+            {
+              "text": "harvest",
+              "meaning": "収穫する"
+            },
+            {
+              "text": "handle",
+              "meaning": "扱う"
+            },
+            {
+              "text": "hasten",
+              "meaning": "急ぐ、早める"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "急ぐ・早めるはhasten。他は孵化する、収穫する、扱うの意味。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "駅で、発車間際の電車に間に合うよう動いた場面: We ___ to the platform because our train was about to leave.",
+          "choices": [
+            {
+              "text": "stayed",
+              "meaning": "とどまった"
+            },
+            {
+              "text": "hastened",
+              "meaning": "急いだ"
+            },
+            {
+              "text": "wandered",
+              "meaning": "さまよった"
+            },
+            {
+              "text": "waited",
+              "meaning": "待った"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "発車直前でホームへ向かうので、急いだという意味のhastenedが合う。",
+          "alternatives": [
+            {
+              "answer": "hurried",
+              "explanation": "より日常的で同じ意味。"
+            },
+            {
+              "answer": "rushed",
+              "explanation": "慌ただしさが強い。"
+            },
+            {
+              "answer": "raced",
+              "explanation": "全力で走るような勢いを表す。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "hastenの使い方として正しい文はどれ?",
+          "choices": [
+            {
+              "text": "Stress can hasten the aging process.",
+              "meaning": "ストレスは老化を早めうる。"
+            },
+            {
+              "text": "I hasten you to come now.",
+              "meaning": "人を目的語にして急かす誤用"
+            },
+            {
+              "text": "I hastened my homework to be late.",
+              "meaning": "「遅れるために」という不自然な目的の文"
+            },
+            {
+              "text": "She hastened finishing to the report.",
+              "meaning": "動名詞とtoの使い方を誤った文"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "hastenは物事を目的語にして「早める」を表せる。人を急かすならhurry youなどを使う。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "駅で、発車間際の電車に間に合うよう動いた場面: We ___ to the platform because our train was about to leave.",
+        "answers": [
+          "hastened"
+        ],
+        "explanation": "発車直前でホームへ向かうので、急いだという意味のhastenedが合う。",
+        "alternatives": [
+          {
+            "answer": "hurried",
+            "explanation": "より日常的で同じ意味。"
+          },
+          {
+            "answer": "rushed",
+            "explanation": "慌ただしさが強い。"
+          },
+          {
+            "answer": "raced",
+            "explanation": "全力で走るような勢いを表す。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "hastenを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "We hastened to the station when we heard the last train was leaving.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-hasten-usage",
+          "type": "usage",
+          "prompt": "hastenの使い方として正しい文はどれ?",
+          "choices": [
+            "Stress can hasten the aging process.",
+            "I hasten you to come now.",
+            "I hastened my homework to be late.",
+            "She hastened finishing to the report."
+          ],
+          "correctIndex": 0,
+          "explanation": "hastenは物事を目的語にして「早める」を表せる。人を急かすならhurry youなどを使う。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "C1",
+        "domains": [
+          "travel",
+          "environment"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-sentiment",
       "word": "sentiment",
       "level": "準2級",
@@ -16104,6 +18130,225 @@
           "relationships",
           "society",
           "communication"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-defer",
+      "word": "defer",
+      "level": "準2級",
+      "ipa": "dɪˈfɜː",
+      "ipaLabel": "英音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "defer"
+        ],
+        "past": [
+          "deferred"
+        ],
+        "pastParticiple": [
+          "deferred"
+        ],
+        "presentParticiple": [
+          "deferring"
+        ],
+        "thirdPersonSingular": [
+          "defers"
+        ]
+      },
+      "definition": "to delay something until a later time",
+      "meaning": "延期する、先送りにする",
+      "usageTip": "defer + 名詞 / 動名詞 の形で使い、to不定詞は取らない(defer making a decision)。defer to ~ は「~の意見に従う」という別の意味。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "会議",
+          "text": "The manager decided to defer the meeting until next week.",
+          "translation": "部長は会議を来週まで延期することにした。"
+        },
+        {
+          "id": "example-2",
+          "context": "学校",
+          "text": "She deferred her university entrance for a year to travel.",
+          "translation": "彼女は旅行のために大学への入学を1年延期した。"
+        },
+        {
+          "id": "example-3",
+          "context": "支払い",
+          "text": "You can defer paying the fee until the end of the month.",
+          "translation": "料金の支払いは月末まで先送りにできます。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "defer",
+          "choices": [
+            {
+              "text": "拒否する",
+              "meaning": "受け入れない"
+            },
+            {
+              "text": "確認する",
+              "meaning": "正しいか調べる"
+            },
+            {
+              "text": "延期する",
+              "meaning": "後の時点まで遅らせる"
+            },
+            {
+              "text": "短縮する",
+              "meaning": "短くする"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "deferは予定や決定を後の時点まで遅らせることを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "延期する、先送りにする",
+          "choices": [
+            {
+              "text": "deny",
+              "meaning": "否定する"
+            },
+            {
+              "text": "defend",
+              "meaning": "守る"
+            },
+            {
+              "text": "deliver",
+              "meaning": "届ける"
+            },
+            {
+              "text": "defer",
+              "meaning": "延期する"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "日本語の意味に合うのはdefer。他の語は形が似ていても意味が異なる。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "予算が足りないので、新しいソフトの購入を来年まで延ばすことにした。 We decided to ___ buying the new software until next year.",
+          "choices": [
+            {
+              "text": "deserve",
+              "meaning": "値する"
+            },
+            {
+              "text": "defer",
+              "meaning": "延期する"
+            },
+            {
+              "text": "describe",
+              "meaning": "説明する"
+            },
+            {
+              "text": "detect",
+              "meaning": "見つける"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "購入を来年まで延ばす文脈で、動名詞buyingを取れるdeferが自然。",
+          "alternatives": [
+            {
+              "answer": "postpone",
+              "explanation": "deferと近く、予定を後に動かす一般的な語。"
+            },
+            {
+              "answer": "delay",
+              "explanation": "遅らせる意味で使えるが、意図的な延期とは限らない。"
+            },
+            {
+              "answer": "put off",
+              "explanation": "口語的で、先送りにするという意味。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "「延期する」の意味でdeferを正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "They deferred to make the decision until Monday.",
+              "meaning": "to不定詞を直接続けた誤用"
+            },
+            {
+              "text": "The bank deferred for the loan payment.",
+              "meaning": "不要な前置詞forを入れた誤用"
+            },
+            {
+              "text": "The committee deferred making the decision until Monday.",
+              "meaning": "委員会は決定を月曜まで先送りにした。"
+            },
+            {
+              "text": "He deferred about the trip for a month.",
+              "meaning": "前置詞aboutを入れた誤用"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "「延期する」の意味ではdeferの後に名詞か動名詞を直接置く。to不定詞や前置詞を続ける形は誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "予算が足りないので、新しいソフトの購入を来年まで延ばすことにした。 We decided to ___ buying the new software until next year.",
+        "answers": [
+          "defer"
+        ],
+        "explanation": "購入を来年まで延ばす文脈で、動名詞buyingを取れるdeferが自然。",
+        "alternatives": [
+          {
+            "answer": "postpone",
+            "explanation": "deferと近く、予定を後に動かす一般的な語。"
+          },
+          {
+            "answer": "delay",
+            "explanation": "遅らせる意味で使えるが、意図的な延期とは限らない。"
+          },
+          {
+            "answer": "put off",
+            "explanation": "口語的で、先送りにするという意味。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "deferを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The manager decided to defer the meeting until next week.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-defer-usage",
+          "type": "usage",
+          "prompt": "「延期する」の意味でdeferを正しく使った文を選びなさい。",
+          "choices": [
+            "They deferred to make the decision until Monday.",
+            "The bank deferred for the loan payment.",
+            "The committee deferred making the decision until Monday.",
+            "He deferred about the trip for a month."
+          ],
+          "correctIndex": 2,
+          "explanation": "「延期する」の意味ではdeferの後に名詞か動名詞を直接置く。to不定詞や前置詞を続ける形は誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "C1",
+        "domains": [
+          "business",
+          "work"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -16946,6 +19191,200 @@
       }
     },
     {
+      "id": "vocab-rationale",
+      "word": "rationale",
+      "level": "準2級",
+      "ipa": "ˌræʃəˈnæl",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "the set of reasons or logic behind a decision, plan or belief",
+      "meaning": "根拠、理由づけ",
+      "usageTip": "the rationale for / behind ~ の形でよく使う。発音は最後の -nale に強勢があり「ナール」のように長めに言う。reasonより公式で論理的な響きがある。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "会議",
+          "text": "The manager explained the rationale for changing the schedule.",
+          "translation": "部長はスケジュールを変更する根拠を説明した。"
+        },
+        {
+          "id": "example-2",
+          "context": "学校",
+          "text": "I don't understand the rationale behind this new rule.",
+          "translation": "この新しい規則の理由づけが私にはわからない。"
+        },
+        {
+          "id": "example-3",
+          "context": "研究",
+          "text": "The report gives a clear rationale for choosing this method.",
+          "translation": "その報告書はこの方法を選んだ明確な根拠を示している。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "rationale",
+          "choices": [
+            {
+              "text": "割合、比率",
+              "meaning": "二つの量の関係"
+            },
+            {
+              "text": "配給、割り当て",
+              "meaning": "限られた量の分配"
+            },
+            {
+              "text": "感情、気分",
+              "meaning": "心の状態"
+            },
+            {
+              "text": "根拠、理由づけ",
+              "meaning": "決定の背後にある理由"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "rationaleは決定や計画の背後にある論理的な理由を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "根拠、理由づけ",
+          "choices": [
+            {
+              "text": "ration",
+              "meaning": "配給量"
+            },
+            {
+              "text": "rational",
+              "meaning": "理性的な"
+            },
+            {
+              "text": "rationale",
+              "meaning": "根拠、理由づけ"
+            },
+            {
+              "text": "reaction",
+              "meaning": "反応"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "名詞で「理由づけ」を表すのはrationale。rationalは形容詞。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "会議で方針変更の理由を問われた場面: The director explained the ___ for the budget cut.",
+          "choices": [
+            {
+              "text": "brightness",
+              "meaning": "明るさ"
+            },
+            {
+              "text": "journey",
+              "meaning": "旅"
+            },
+            {
+              "text": "balcony",
+              "meaning": "バルコニー"
+            },
+            {
+              "text": "rationale",
+              "meaning": "根拠"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "予算削減の理由を説明する文なので、根拠を表すrationaleが合う。",
+          "alternatives": [
+            {
+              "answer": "reason",
+              "explanation": "より一般的で日常的な言い方。"
+            },
+            {
+              "answer": "justification",
+              "explanation": "正当化の意味が強く、弁明の響きがある。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "rationaleを正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "She rationale the decision very carefully.",
+              "meaning": "名詞を動詞として使った誤用"
+            },
+            {
+              "text": "We need a clear rationale for this change.",
+              "meaning": "この変更には明確な根拠が必要だ。"
+            },
+            {
+              "text": "He rationale to be late yesterday.",
+              "meaning": "動詞のように使った誤用"
+            },
+            {
+              "text": "They rationaled the new plan to us.",
+              "meaning": "語形を勝手に動詞化した誤用"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "rationaleは名詞で、a rationale for ~ の形で使う。他の文は動詞のように使っているため誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "会議で方針変更の理由を問われた場面: The director explained the ___ for the budget cut.",
+        "answers": [
+          "rationale"
+        ],
+        "explanation": "予算削減の理由を説明する文なので、根拠を表すrationaleが合う。",
+        "alternatives": [
+          {
+            "answer": "reason",
+            "explanation": "より一般的で日常的な言い方。"
+          },
+          {
+            "answer": "justification",
+            "explanation": "正当化の意味が強く、弁明の響きがある。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "rationaleを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The manager explained the rationale for changing the schedule.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-rationale-usage",
+          "type": "usage",
+          "prompt": "rationaleを正しく使った文を選びなさい。",
+          "choices": [
+            "She rationale the decision very carefully.",
+            "We need a clear rationale for this change.",
+            "He rationale to be late yesterday.",
+            "They rationaled the new plan to us."
+          ],
+          "correctIndex": 1,
+          "explanation": "rationaleは名詞で、a rationale for ~ の形で使う。他の文は動詞のように使っているため誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "C1",
+        "domains": [
+          "logic-reasoning",
+          "work"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-erect",
       "word": "erect",
       "level": "準2級",
@@ -17562,5 +20001,146 @@
       }
     }
   ],
-  "audio": []
+  "audio": [
+    {
+      "wordId": "vocab-stimulus",
+      "cacheKey": "d08b1ac54a2df97cca240d349ff32bb7e3acd050b319afbc53bb9967aea66b3d",
+      "fileId": "1vn4fchbWldiw1o11fx08-B_cb0X-qCS-",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.1375
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.145,
+          "endSeconds": 5.3815
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.43,
+          "endSeconds": 9.665
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 9.83,
+          "endSeconds": 13.746
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-kindly",
+      "cacheKey": "263610c06f9e843dd2398423cd7a242b4aab0a44fb537ad166a0f1b09540cad5",
+      "fileId": "115QCiBGn_yVduix3EMgKRs14qAuDToPC",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.6679999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.6679999999999999,
+          "endSeconds": 3.4080000000000004
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.572,
+          "endSeconds": 6.531
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.765,
+          "endSeconds": 9.474
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-wizard",
+      "cacheKey": "07e2aea6ba89c0d10d6386f58b790734938d547744e0718ff7eaf312f56bc776",
+      "fileId": "11-P8pI5lLmoVfhnW2g7BbSC4YvaSdawe",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.859
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.859,
+          "endSeconds": 4.22
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.327,
+          "endSeconds": 8.306999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.355,
+          "endSeconds": 11.424
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-fairly",
+      "cacheKey": "8a7af8c693477fd75c0d0c9be386c7641d66021490eb49f708ea76a5eabcad96",
+      "fileId": "1-FjJFhsDEGGCwaH9xEfX6tLIL0YAtswe",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.5860000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.5860000000000001,
+          "endSeconds": 3.709
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.9429999999999996,
+          "endSeconds": 6.856
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.881,
+          "endSeconds": 10.403
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-bravely",
+      "cacheKey": "3a1238d51d8f258d77cb002cc62f73fa03b04ad0b9232517f26e8700d58cd8d1",
+      "fileId": "1rhdAtly0hmfMTZ6AFUOVNAO90lJl7Aks",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9929999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0179999999999998,
+          "endSeconds": 4.615
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.64,
+          "endSeconds": 8.934000000000001
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.982000000000001,
+          "endSeconds": 12.214
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    }
+  ]
 }

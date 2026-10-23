@@ -1731,6 +1731,200 @@
       }
     },
     {
+      "id": "vocab-throat",
+      "word": "throat",
+      "level": "準2級",
+      "ipa": "θrəʊt",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "The passage at the back of the mouth and inside the neck, or the front part of the neck.",
+      "meaning": "のど",
+      "usageTip": "have a sore throat「のどが痛い」は定番表現。clear your throat は「咳払いをする」。のどの痛みは in my throat や my throat hurts とも言える。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "体調",
+          "text": "I have a sore throat, so I am drinking warm tea.",
+          "translation": "のどが痛いので、温かいお茶を飲んでいる。"
+        },
+        {
+          "id": "example-2",
+          "context": "診察",
+          "text": "The doctor looked at my throat with a small light.",
+          "translation": "医者は小さなライトで私ののどを見た。"
+        },
+        {
+          "id": "example-3",
+          "context": "話す前",
+          "text": "He cleared his throat before he started his speech.",
+          "translation": "彼はスピーチを始める前に咳払いをした。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "throat",
+          "choices": [
+            {
+              "text": "のど",
+              "meaning": "首の内側の通り道"
+            },
+            {
+              "text": "肩",
+              "meaning": "首と腕の間の部分"
+            },
+            {
+              "text": "背中",
+              "meaning": "体の後ろ側"
+            },
+            {
+              "text": "ひざ",
+              "meaning": "脚の関節"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "throat は首の内側、口から体の中へ続く部分で「のど」。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "のど",
+          "choices": [
+            {
+              "text": "thumb",
+              "meaning": "親指"
+            },
+            {
+              "text": "through",
+              "meaning": "〜を通って"
+            },
+            {
+              "text": "throat",
+              "meaning": "のど"
+            },
+            {
+              "text": "thought",
+              "meaning": "考え"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "「のど」は throat。他は綴りや発音が似ているが意味が違う。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "風邪の場面：I cannot talk much today because my ___ hurts.",
+          "choices": [
+            {
+              "text": "ticket",
+              "meaning": "切符"
+            },
+            {
+              "text": "pocket",
+              "meaning": "ポケット"
+            },
+            {
+              "text": "window",
+              "meaning": "窓"
+            },
+            {
+              "text": "throat",
+              "meaning": "のど"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "話しにくい理由として痛む体の部位は throat が自然。",
+          "alternatives": [
+            {
+              "answer": "neck",
+              "explanation": "首が痛いという意味になり、話しにくい理由としてはのどほど直接的ではない。"
+            },
+            {
+              "answer": "tooth",
+              "explanation": "歯が痛くて話しにくい場面でも使えるが、風邪の文脈ではのどが自然。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "「のどが痛い」という意味で正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "I have a pain throat today.",
+              "meaning": "形容詞の使い方が不自然。"
+            },
+            {
+              "text": "I have a sore throat today.",
+              "meaning": "今日はのどが痛い。"
+            },
+            {
+              "text": "I have sore of throat today.",
+              "meaning": "前置詞の使い方が不自然。"
+            },
+            {
+              "text": "I have a throat sore pain today.",
+              "meaning": "語順が不自然。"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "「のどが痛い」は have a sore throat という決まった形で言う。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "風邪の場面：I cannot talk much today because my ___ hurts.",
+        "answers": [
+          "throat"
+        ],
+        "explanation": "話しにくい理由として痛む体の部位は throat が自然。",
+        "alternatives": [
+          {
+            "answer": "neck",
+            "explanation": "首が痛いという意味になり、話しにくい理由としてはのどほど直接的ではない。"
+          },
+          {
+            "answer": "tooth",
+            "explanation": "歯が痛くて話しにくい場面でも使えるが、風邪の文脈ではのどが自然。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "throatを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I have a sore throat, so I am drinking warm tea.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-throat-usage",
+          "type": "usage",
+          "prompt": "「のどが痛い」という意味で正しい文を選んでください。",
+          "choices": [
+            "I have a pain throat today.",
+            "I have a sore throat today.",
+            "I have sore of throat today.",
+            "I have a throat sore pain today."
+          ],
+          "correctIndex": 1,
+          "explanation": "「のどが痛い」は have a sore throat という決まった形で言う。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "health",
+          "medical"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-mushroom",
       "word": "mushroom",
       "level": "準2級",
@@ -2313,6 +2507,377 @@
       }
     },
     {
+      "id": "vocab-echo",
+      "word": "echo",
+      "level": "準2級",
+      "ipa": "ˈekəʊ",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "A sound that you hear again after it bounces off a wall, cliff or other hard surface.",
+      "meaning": "こだま、反響",
+      "usageTip": "ここでは名詞の意味を扱う。an echo of ~ は「~を思わせるもの」の意味でも使う。動詞の echo は別の用法なので、名詞では冠詞や複数形に注意する。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "自然",
+          "text": "We shouted across the valley and heard our echo a moment later.",
+          "translation": "私たちは谷に向かって叫び、少し後に自分たちのこだまを聞いた。"
+        },
+        {
+          "id": "example-2",
+          "context": "建物",
+          "text": "The empty hall made every footstep produce a clear echo.",
+          "translation": "空っぽのホールでは、足音がすべてはっきり反響した。"
+        },
+        {
+          "id": "example-3",
+          "context": "洞窟",
+          "text": "There was a strange echo inside the cave when we clapped.",
+          "translation": "私たちが手をたたくと、洞窟の中で不思議な反響が起きた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "echo",
+          "choices": [
+            {
+              "text": "こだま、反響",
+              "meaning": "跳ね返って聞こえる音"
+            },
+            {
+              "text": "電池",
+              "meaning": "電力をためる装置"
+            },
+            {
+              "text": "祝日",
+              "meaning": "休みの日"
+            },
+            {
+              "text": "毛布",
+              "meaning": "体にかける布"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "echo は音が跳ね返って再び聞こえることを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "こだま、反響",
+          "choices": [
+            {
+              "text": "edge",
+              "meaning": "端"
+            },
+            {
+              "text": "echo",
+              "meaning": "こだま、反響"
+            },
+            {
+              "text": "entry",
+              "meaning": "入口"
+            },
+            {
+              "text": "effort",
+              "meaning": "努力"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "音の跳ね返りを表す語は echo。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "山での場面：叫ぶと声が戻ってきた。When I shouted on the mountain, I heard an ___ from the cliff.",
+          "choices": [
+            {
+              "text": "anchor",
+              "meaning": "錨"
+            },
+            {
+              "text": "engine",
+              "meaning": "エンジン"
+            },
+            {
+              "text": "empire",
+              "meaning": "帝国"
+            },
+            {
+              "text": "echo",
+              "meaning": "こだま"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "崖から自分の声が戻ってきたので echo が合う。",
+          "alternatives": [
+            {
+              "answer": "answer",
+              "explanation": "返事の意味になり、物理的な反響より人の応答を連想させる。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "名詞 echo の使い方として正しい文を選びなさい。",
+          "choices": [
+            {
+              "text": "The echo of the bell filled the empty church.",
+              "meaning": "鐘の反響が空の教会に満ちた。"
+            },
+            {
+              "text": "The echo of the bell filled in the empty church by.",
+              "meaning": "語順が崩れていて不自然。"
+            },
+            {
+              "text": "I heard echo of my voice in a cave yesterday.",
+              "meaning": "冠詞が抜けていて不自然。"
+            },
+            {
+              "text": "The cave has many echo when we shout.",
+              "meaning": "複数形が必要なのに単数形で不自然。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "echo は音の反響を表す可算名詞で、the echo of ~ が自然。他は語順、冠詞、複数形に誤りがある。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "山での場面：叫ぶと声が戻ってきた。When I shouted on the mountain, I heard an ___ from the cliff.",
+        "answers": [
+          "echo"
+        ],
+        "explanation": "崖から自分の声が戻ってきたので echo が合う。",
+        "alternatives": [
+          {
+            "answer": "answer",
+            "explanation": "返事の意味になり、物理的な反響より人の応答を連想させる。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "echoを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "We shouted across the valley and heard our echo a moment later.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-echo-usage",
+          "type": "usage",
+          "prompt": "名詞 echo の使い方として正しい文を選びなさい。",
+          "choices": [
+            "The echo of the bell filled the empty church.",
+            "The echo of the bell filled in the empty church by.",
+            "I heard echo of my voice in a cave yesterday.",
+            "The cave has many echo when we shout."
+          ],
+          "correctIndex": 0,
+          "explanation": "echo は音の反響を表す可算名詞で、the echo of ~ が自然。他は語順、冠詞、複数形に誤りがある。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "science"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-ratio",
+      "word": "ratio",
+      "level": "準2級",
+      "ipa": "ˈreɪʃioʊ",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "A comparison of two amounts that shows how large one is compared with the other.",
+      "meaning": "比率、割合",
+      "usageTip": "the ratio of A to B（AのBに対する比率）が基本形。数値は 3 to 1 や 3:1 と表す。二つを比べるときは ratio、全体に占める割合は proportion が近い。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "料理",
+          "text": "The recipe uses a ratio of two cups of water to one of rice.",
+          "translation": "そのレシピでは水2カップに対して米1カップの比率を使う。"
+        },
+        {
+          "id": "example-2",
+          "context": "学校",
+          "text": "The ratio of teachers to students in this school is quite low.",
+          "translation": "この学校の生徒に対する教師の比率はかなり低い。"
+        },
+        {
+          "id": "example-3",
+          "context": "経済",
+          "text": "Investors checked the ratio of debt to income before buying.",
+          "translation": "投資家は購入前に収入に対する負債の比率を確認した。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "ratio",
+          "choices": [
+            {
+              "text": "理由",
+              "meaning": "物事の原因"
+            },
+            {
+              "text": "比率、割合",
+              "meaning": "二つの量の関係"
+            },
+            {
+              "text": "記録",
+              "meaning": "記したもの"
+            },
+            {
+              "text": "地域",
+              "meaning": "一定の範囲"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "ratio は二つの量の関係を示す比率を指す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "比率、割合",
+          "choices": [
+            {
+              "text": "ratio",
+              "meaning": "比率、割合"
+            },
+            {
+              "text": "radio",
+              "meaning": "ラジオ"
+            },
+            {
+              "text": "region",
+              "meaning": "地域"
+            },
+            {
+              "text": "racket",
+              "meaning": "ラケット"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "比率は ratio。radio は綴りが似ているが別の語。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "学校の話題：先生の数が生徒の数に比べて少ない。The ___ of teachers to students is too low in this class.",
+          "choices": [
+            {
+              "text": "moment",
+              "meaning": "瞬間"
+            },
+            {
+              "text": "habit",
+              "meaning": "習慣"
+            },
+            {
+              "text": "ratio",
+              "meaning": "比率"
+            },
+            {
+              "text": "garden",
+              "meaning": "庭"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "of teachers to students が続くので比率の ratio が合う。",
+          "alternatives": [
+            {
+              "answer": "proportion",
+              "explanation": "全体に占める割合を表し、二つの量を直接比べる ratio とは少し違う。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "名詞 ratio の使い方として正しい文を選びなさい。",
+          "choices": [
+            {
+              "text": "The ratio between boys with girls is equal.",
+              "meaning": "前置詞の誤用。"
+            },
+            {
+              "text": "The ratio of sugar for flour is one to two.",
+              "meaning": "前置詞の誤用。"
+            },
+            {
+              "text": "The ratio of sugar to flour is one to two.",
+              "meaning": "砂糖と小麦粉の比率は1対2。"
+            },
+            {
+              "text": "The ratio from sugar to flour is one to two.",
+              "meaning": "前置詞の誤用。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "ratio of A to B が基本形。他は前置詞が正しくない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "学校の話題：先生の数が生徒の数に比べて少ない。The ___ of teachers to students is too low in this class.",
+        "answers": [
+          "ratio"
+        ],
+        "explanation": "of teachers to students が続くので比率の ratio が合う。",
+        "alternatives": [
+          {
+            "answer": "proportion",
+            "explanation": "全体に占める割合を表し、二つの量を直接比べる ratio とは少し違う。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "ratioを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The recipe uses a ratio of two cups of water to one of rice.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-ratio-usage",
+          "type": "usage",
+          "prompt": "名詞 ratio の使い方として正しい文を選びなさい。",
+          "choices": [
+            "The ratio between boys with girls is equal.",
+            "The ratio of sugar for flour is one to two.",
+            "The ratio of sugar to flour is one to two.",
+            "The ratio from sugar to flour is one to two."
+          ],
+          "correctIndex": 2,
+          "explanation": "ratio of A to B が基本形。他は前置詞が正しくない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "economics",
+          "science"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-greeting",
       "word": "greeting",
       "level": "準2級",
@@ -2701,6 +3266,200 @@
       }
     },
     {
+      "id": "vocab-laughter",
+      "word": "laughter",
+      "level": "準2級",
+      "ipa": "ˈlɑːftə",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "The sound or act of laughing, often showing amusement or joy.",
+      "meaning": "笑い声、笑うこと",
+      "usageTip": "不可算名詞なので a laughter や laughters とは言わない。burst into laughter, roar with laughter などで使う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "教室",
+          "text": "Laughter filled the classroom when the teacher told a funny story.",
+          "translation": "先生がおもしろい話をすると、教室は笑い声に包まれた。"
+        },
+        {
+          "id": "example-2",
+          "context": "家族",
+          "text": "We could hear laughter from the kitchen while we were studying.",
+          "translation": "勉強中、台所から笑い声が聞こえてきた。"
+        },
+        {
+          "id": "example-3",
+          "context": "映画",
+          "text": "Everyone burst into laughter at the end of the short film.",
+          "translation": "短編映画の終わりで、全員がどっと笑い出した。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "laughter",
+          "choices": [
+            {
+              "text": "涙、泣くこと",
+              "meaning": "悲しみなどで泣くこと"
+            },
+            {
+              "text": "叫び声",
+              "meaning": "大きく叫ぶ声"
+            },
+            {
+              "text": "ため息",
+              "meaning": "息を長く吐くこと"
+            },
+            {
+              "text": "笑い声、笑うこと",
+              "meaning": "笑う音や行為"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "laughter は laugh の名詞で、笑い声や笑うことを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "笑い声、笑うこと",
+          "choices": [
+            {
+              "text": "slaughter",
+              "meaning": "虐殺"
+            },
+            {
+              "text": "laughter",
+              "meaning": "笑い声、笑うこと"
+            },
+            {
+              "text": "daughter",
+              "meaning": "娘"
+            },
+            {
+              "text": "letter",
+              "meaning": "手紙"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "「笑い声」は laughter。daughter などは形が似ているが別の意味。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "パーティーで楽しそうな音が聞こえる場面。We heard music and ___ coming from the living room.",
+          "choices": [
+            {
+              "text": "silence",
+              "meaning": "静けさ"
+            },
+            {
+              "text": "pressure",
+              "meaning": "圧力"
+            },
+            {
+              "text": "distance",
+              "meaning": "距離"
+            },
+            {
+              "text": "laughter",
+              "meaning": "笑い声"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "music と並び、居間から聞こえるものとして自然なのは laughter。",
+          "alternatives": [
+            {
+              "answer": "chatter",
+              "explanation": "おしゃべりの声で、笑い声とは違うが場面には合う。"
+            },
+            {
+              "answer": "cheering",
+              "explanation": "歓声を表し、盛り上がった雰囲気が伝わる。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "laughter を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I heard a laughter in the hall.",
+              "meaning": "不可算名詞に a を付けている誤り。"
+            },
+            {
+              "text": "The children were full of laughters.",
+              "meaning": "複数形にしている誤り。"
+            },
+            {
+              "text": "The audience roared with laughter.",
+              "meaning": "観客は大笑いした。"
+            },
+            {
+              "text": "He laughter at my joke.",
+              "meaning": "動詞として使っている誤り。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "laughter は不可算名詞で、roar with laughter は自然な表現。他は冠詞、複数形、品詞の誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "パーティーで楽しそうな音が聞こえる場面。We heard music and ___ coming from the living room.",
+        "answers": [
+          "laughter"
+        ],
+        "explanation": "music と並び、居間から聞こえるものとして自然なのは laughter。",
+        "alternatives": [
+          {
+            "answer": "chatter",
+            "explanation": "おしゃべりの声で、笑い声とは違うが場面には合う。"
+          },
+          {
+            "answer": "cheering",
+            "explanation": "歓声を表し、盛り上がった雰囲気が伝わる。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "laughterを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Laughter filled the classroom when the teacher told a funny story.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-laughter-usage",
+          "type": "usage",
+          "prompt": "laughter を正しく使った文を選んでください。",
+          "choices": [
+            "I heard a laughter in the hall.",
+            "The children were full of laughters.",
+            "The audience roared with laughter.",
+            "He laughter at my joke."
+          ],
+          "correctIndex": 2,
+          "explanation": "laughter は不可算名詞で、roar with laughter は自然な表現。他は冠詞、複数形、品詞の誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "relationships",
+          "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-architecture",
       "word": "architecture",
       "level": "準2級",
@@ -2889,6 +3648,200 @@
         "domains": [
           "arts-culture",
           "society"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-gear",
+      "word": "gear",
+      "level": "準2級",
+      "ipa": "/ɡɪə/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "the equipment or clothing needed for a particular activity",
+      "meaning": "装備、道具一式",
+      "usageTip": "この意味では不可算名詞で、camping gear や rain gear のように使う。a gear は歯車や変速ギアを指す別の意味になる。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "登山",
+          "text": "We checked our hiking gear carefully before leaving the cabin.",
+          "translation": "私たちは山小屋を出る前に登山用の装備を念入りに確認した。"
+        },
+        {
+          "id": "example-2",
+          "context": "スポーツ",
+          "text": "He keeps all his baseball gear in a large blue bag.",
+          "translation": "彼は野球道具をすべて大きな青いバッグに入れている。"
+        },
+        {
+          "id": "example-3",
+          "context": "天気",
+          "text": "You should bring rain gear because it may pour this afternoon.",
+          "translation": "午後は土砂降りかもしれないので、雨具を持って行った方がいい。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "gear",
+          "choices": [
+            {
+              "text": "装備、道具一式",
+              "meaning": "活動に必要な用具"
+            },
+            {
+              "text": "天気、気候",
+              "meaning": "空模様"
+            },
+            {
+              "text": "到着、到達",
+              "meaning": "着くこと"
+            },
+            {
+              "text": "危険、危機",
+              "meaning": "悪いことが起きる可能性"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "この意味の gear は、活動に必要な装備や道具一式を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "装備、道具一式",
+          "choices": [
+            {
+              "text": "fear",
+              "meaning": "恐怖"
+            },
+            {
+              "text": "hear",
+              "meaning": "聞く"
+            },
+            {
+              "text": "gear",
+              "meaning": "装備、道具一式"
+            },
+            {
+              "text": "year",
+              "meaning": "年"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "「装備」は gear。他は語尾が似ているが別の語。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "キャンプに必要な物を準備する場面。 Don't forget your camping ___, such as the tent and sleeping bag.",
+          "choices": [
+            {
+              "text": "mood",
+              "meaning": "気分"
+            },
+            {
+              "text": "habit",
+              "meaning": "習慣"
+            },
+            {
+              "text": "gear",
+              "meaning": "装備"
+            },
+            {
+              "text": "rule",
+              "meaning": "規則"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "テントや寝袋は camping gear の例なので gear が合う。",
+          "alternatives": [
+            {
+              "answer": "equipment",
+              "explanation": "より一般的で、少しかたい印象の言い方。"
+            },
+            {
+              "answer": "supplies",
+              "explanation": "食料や消耗品など必要物資を含む言い方。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "装備の意味の gear を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I bought a new ski gears yesterday.",
+              "meaning": "複数形にしている誤り。"
+            },
+            {
+              "text": "She gear her bag for the trip.",
+              "meaning": "動詞として使っている誤り。"
+            },
+            {
+              "text": "I need two gears for the hiking trip.",
+              "meaning": "装備を数えている誤り。"
+            },
+            {
+              "text": "All my diving gear is in the car.",
+              "meaning": "ダイビング用具はすべて車の中にある。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "装備の gear は不可算名詞なので、複数形にしたり数えたりせず、All my diving gear is ... のように使う。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "キャンプに必要な物を準備する場面。 Don't forget your camping ___, such as the tent and sleeping bag.",
+        "answers": [
+          "gear"
+        ],
+        "explanation": "テントや寝袋は camping gear の例なので gear が合う。",
+        "alternatives": [
+          {
+            "answer": "equipment",
+            "explanation": "より一般的で、少しかたい印象の言い方。"
+          },
+          {
+            "answer": "supplies",
+            "explanation": "食料や消耗品など必要物資を含む言い方。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "gearを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "We checked our hiking gear carefully before leaving the cabin.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-gear-usage",
+          "type": "usage",
+          "prompt": "装備の意味の gear を正しく使った文を選んでください。",
+          "choices": [
+            "I bought a new ski gears yesterday.",
+            "She gear her bag for the trip.",
+            "I need two gears for the hiking trip.",
+            "All my diving gear is in the car."
+          ],
+          "correctIndex": 3,
+          "explanation": "装備の gear は不可算名詞なので、複数形にしたり数えたりせず、All my diving gear is ... のように使う。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "sports",
+          "transport"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -5225,6 +6178,216 @@
         "domains": [
           "politics",
           "relationships"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-prosecute",
+      "word": "prosecute",
+      "level": "準2級",
+      "ipa": "/ˈprɑːsɪkjuːt/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "prosecute"
+        ],
+        "past": [
+          "prosecuted"
+        ],
+        "pastParticiple": [
+          "prosecuted"
+        ],
+        "presentParticiple": [
+          "prosecuting"
+        ],
+        "thirdPersonSingular": [
+          "prosecutes"
+        ]
+      },
+      "definition": "to officially charge someone with a crime and try to prove it in court",
+      "meaning": "起訴する",
+      "usageTip": "prosecute someone for a crime の形で使う。検察側の行為を表し、受け身の be prosecuted for ... もよく使う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "法律",
+          "text": "The state decided to prosecute the company for fraud.",
+          "translation": "州はその会社を詐欺で起訴することを決めた。"
+        },
+        {
+          "id": "example-2",
+          "context": "ニュース",
+          "text": "Police said the driver would be prosecuted for dangerous driving.",
+          "translation": "警察は運転手が危険運転で起訴されると述べた。"
+        },
+        {
+          "id": "example-3",
+          "context": "検察",
+          "text": "Officials will not prosecute anyone without enough evidence.",
+          "translation": "当局は十分な証拠がなければ誰も起訴しない。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "prosecute",
+          "choices": [
+            {
+              "text": "弁護する",
+              "meaning": "被告の側に立つ"
+            },
+            {
+              "text": "釈放する",
+              "meaning": "自由にする"
+            },
+            {
+              "text": "起訴する",
+              "meaning": "罪で正式に訴える"
+            },
+            {
+              "text": "賛成する",
+              "meaning": "同意する"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "prosecute は犯罪で正式に起訴すること。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "起訴する",
+          "choices": [
+            {
+              "text": "borrow",
+              "meaning": "借りる"
+            },
+            {
+              "text": "prosecute",
+              "meaning": "起訴する"
+            },
+            {
+              "text": "deliver",
+              "meaning": "届ける"
+            },
+            {
+              "text": "adopt",
+              "meaning": "採用する"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "「起訴する」は prosecute。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "裁判のニュースの場面。 The attorney said they would ___ the man for theft.",
+          "choices": [
+            {
+              "text": "decorate",
+              "meaning": "飾る"
+            },
+            {
+              "text": "invite",
+              "meaning": "招く"
+            },
+            {
+              "text": "measure",
+              "meaning": "測る"
+            },
+            {
+              "text": "prosecute",
+              "meaning": "起訴する"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "for theft と合うのは、起訴する意味の prosecute。",
+          "alternatives": [
+            {
+              "answer": "charge",
+              "explanation": "charge ... with theft の形になり、前置詞が異なる。"
+            },
+            {
+              "answer": "sue",
+              "explanation": "民事で訴える意味合いが強い。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "prosecute を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "He prosecuted the police to the court.",
+              "meaning": "意味・構文が不適切。"
+            },
+            {
+              "text": "He was prosecuted for stealing the car.",
+              "meaning": "彼は車を盗んで起訴された。"
+            },
+            {
+              "text": "He prosecuted a lawyer of stealing.",
+              "meaning": "前置詞の誤り。"
+            },
+            {
+              "text": "He was prosecuted with stealing the car.",
+              "meaning": "前置詞の誤り。"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "be prosecuted for ... で「〜の罪で起訴される」。of や with は誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "裁判のニュースの場面。 The attorney said they would ___ the man for theft.",
+        "answers": [
+          "prosecute"
+        ],
+        "explanation": "for theft と合うのは、起訴する意味の prosecute。",
+        "alternatives": [
+          {
+            "answer": "charge",
+            "explanation": "charge ... with theft の形になり、前置詞が異なる。"
+          },
+          {
+            "answer": "sue",
+            "explanation": "民事で訴える意味合いが強い。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "prosecuteを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The state decided to prosecute the company for fraud.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-prosecute-usage",
+          "type": "usage",
+          "prompt": "prosecute を正しく使った文を選びなさい。",
+          "choices": [
+            "He prosecuted the police to the court.",
+            "He was prosecuted for stealing the car.",
+            "He prosecuted a lawyer of stealing.",
+            "He was prosecuted with stealing the car."
+          ],
+          "correctIndex": 1,
+          "explanation": "be prosecuted for ... で「〜の罪で起訴される」。of や with は誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "C1",
+        "domains": [
+          "law"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -8641,6 +9804,200 @@
         "domains": [
           "communication",
           "relationships"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-nostalgia",
+      "word": "nostalgia",
+      "level": "準2級",
+      "ipa": "/nɑːˈstældʒə/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "a warm, slightly sad longing for happy times or places in the past",
+      "meaning": "郷愁・懐かしさ",
+      "usageTip": "nostalgia for ~ の形で、懐かしむ対象を示す。過去を温かく思い出す気持ちを表し、「ノスタルジー」とほぼ同じ意味。a wave of nostalgia もよく使う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "音楽",
+          "text": "The old song filled him with nostalgia for his school days.",
+          "translation": "その古い歌は彼に学生時代への懐かしさを抱かせた。"
+        },
+        {
+          "id": "example-2",
+          "context": "旅行",
+          "text": "Walking through my hometown, I felt a wave of nostalgia.",
+          "translation": "故郷を歩くと、懐かしさがこみ上げてきた。"
+        },
+        {
+          "id": "example-3",
+          "context": "文化",
+          "text": "Many adults feel nostalgia for the toys they played with as children.",
+          "translation": "多くの大人は子どもの頃に遊んだおもちゃに懐かしさを感じる。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "nostalgia",
+          "choices": [
+            {
+              "text": "不安",
+              "meaning": "心配で落ち着かない気持ち"
+            },
+            {
+              "text": "郷愁・懐かしさ",
+              "meaning": "過去を懐かしむ気持ち"
+            },
+            {
+              "text": "退屈",
+              "meaning": "つまらなく感じること"
+            },
+            {
+              "text": "競争",
+              "meaning": "勝ちを争うこと"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "nostalgia は過去の楽しかった時を懐かしむ気持ちを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "郷愁・懐かしさ",
+          "choices": [
+            {
+              "text": "neglect",
+              "meaning": "怠ること"
+            },
+            {
+              "text": "nutrition",
+              "meaning": "栄養"
+            },
+            {
+              "text": "novelty",
+              "meaning": "目新しさ"
+            },
+            {
+              "text": "nostalgia",
+              "meaning": "懐かしさ"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "過去を懐かしむ感情を表す語は nostalgia。novelty は新しさ、neglect は怠ること。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "古い写真を見て昔を思い出す場面。Looking at the old photos, she felt a gentle ___ for her childhood.",
+          "choices": [
+            {
+              "text": "invoice",
+              "meaning": "請求書"
+            },
+            {
+              "text": "nostalgia",
+              "meaning": "懐かしさ"
+            },
+            {
+              "text": "pressure",
+              "meaning": "圧力"
+            },
+            {
+              "text": "engine",
+              "meaning": "エンジン"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "子ども時代への温かい思いを表すので nostalgia が合う。",
+          "alternatives": [
+            {
+              "answer": "longing",
+              "explanation": "強く恋しがる気持ち。悲しみがやや強めに響く。"
+            },
+            {
+              "answer": "fondness",
+              "explanation": "愛着のある気持ち。過去に限らず使える。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "nostalgia を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "I felt nostalgia for my school days.",
+              "meaning": "学生時代を懐かしく感じた。"
+            },
+            {
+              "text": "I felt nostalgia to my school days.",
+              "meaning": "前置詞の誤り。"
+            },
+            {
+              "text": "I felt nostalgia of my school days.",
+              "meaning": "前置詞の誤り。"
+            },
+            {
+              "text": "I felt nostalgia with my school days.",
+              "meaning": "前置詞の誤り。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "懐かしむ対象は nostalgia for ~ で示す。to, of, with は不自然。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "古い写真を見て昔を思い出す場面。Looking at the old photos, she felt a gentle ___ for her childhood.",
+        "answers": [
+          "nostalgia"
+        ],
+        "explanation": "子ども時代への温かい思いを表すので nostalgia が合う。",
+        "alternatives": [
+          {
+            "answer": "longing",
+            "explanation": "強く恋しがる気持ち。悲しみがやや強めに響く。"
+          },
+          {
+            "answer": "fondness",
+            "explanation": "愛着のある気持ち。過去に限らず使える。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "nostalgiaを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The old song filled him with nostalgia for his school days.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-nostalgia-usage",
+          "type": "usage",
+          "prompt": "nostalgia を正しく使った文を選びなさい。",
+          "choices": [
+            "I felt nostalgia for my school days.",
+            "I felt nostalgia to my school days.",
+            "I felt nostalgia of my school days.",
+            "I felt nostalgia with my school days."
+          ],
+          "correctIndex": 0,
+          "explanation": "懐かしむ対象は nostalgia for ~ で示す。to, of, with は不自然。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "arts-culture",
+          "daily-life"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -13613,6 +14970,225 @@
       }
     },
     {
+      "id": "vocab-distribute",
+      "word": "distribute",
+      "level": "準2級",
+      "ipa": "/dɪˈstrɪbjuːt/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "distribute"
+        ],
+        "past": [
+          "distributed"
+        ],
+        "pastParticiple": [
+          "distributed"
+        ],
+        "presentParticiple": [
+          "distributing"
+        ],
+        "thirdPersonSingular": [
+          "distributes"
+        ]
+      },
+      "definition": "to give or send out things to many people or places",
+      "meaning": "配る、流通させる",
+      "usageTip": "distribute A to B(AをBに配る)の形が基本。×distribute B A の語順にはできない。商品なら「流通させる」、物なら「配布する」の意味。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "ビジネス",
+          "text": "The company distributes its drinks to supermarkets across the country.",
+          "translation": "その会社は全国のスーパーに飲料を流通させている。"
+        },
+        {
+          "id": "example-2",
+          "context": "学校",
+          "text": "The teacher distributed the worksheets to every student before the quiz.",
+          "translation": "先生は小テストの前に全員の生徒へ問題用紙を配った。"
+        },
+        {
+          "id": "example-3",
+          "context": "地域",
+          "text": "Volunteers distribute food to families who need help every weekend.",
+          "translation": "ボランティアは毎週末、助けが必要な家庭に食料を配っている。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "distribute",
+          "choices": [
+            {
+              "text": "集める",
+              "meaning": "一か所に集める"
+            },
+            {
+              "text": "禁止する",
+              "meaning": "してはいけないと決める"
+            },
+            {
+              "text": "配る、流通させる",
+              "meaning": "多くの人や場所に行き渡らせる"
+            },
+            {
+              "text": "保存する",
+              "meaning": "長く取っておく"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "distribute は物を多くの人や場所に行き渡らせる、または商品を流通させる意味。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "配る、流通させる",
+          "choices": [
+            {
+              "text": "distribute",
+              "meaning": "配る、流通させる"
+            },
+            {
+              "text": "borrow",
+              "meaning": "借りる"
+            },
+            {
+              "text": "estimate",
+              "meaning": "見積もる"
+            },
+            {
+              "text": "collect",
+              "meaning": "集める"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "「配る、流通させる」は distribute。他は別の動作を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "学校で先生がプリントを配る場面。 The teacher will ___ the worksheets before the quiz starts.",
+          "choices": [
+            {
+              "text": "delete",
+              "meaning": "削除する"
+            },
+            {
+              "text": "repair",
+              "meaning": "修理する"
+            },
+            {
+              "text": "invent",
+              "meaning": "発明する"
+            },
+            {
+              "text": "distribute",
+              "meaning": "配る"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "小テスト前にプリントを生徒へ行き渡らせるので distribute が自然。",
+          "alternatives": [
+            {
+              "answer": "hand out",
+              "explanation": "日常的で口語的。少しカジュアル。"
+            },
+            {
+              "answer": "pass out",
+              "explanation": "主に米国の口語で、その場で配る感じが強い。"
+            },
+            {
+              "answer": "give out",
+              "explanation": "一般的な言い方で、無料で配る場面にもよく使う。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "distribute を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "The teacher distributed the students some handouts.",
+              "meaning": "二重目的語の誤り。"
+            },
+            {
+              "text": "She distributed about the plan to everyone.",
+              "meaning": "不要な前置詞の誤り。"
+            },
+            {
+              "text": "The company distributes its products to stores nationwide.",
+              "meaning": "その会社は製品を全国の店に流通させている。"
+            },
+            {
+              "text": "The charity distributed to families free food.",
+              "meaning": "語順の誤り。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "distribute は distribute A to B の形をとる。他は二重目的語、不要な about、語順の誤りがある。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "学校で先生がプリントを配る場面。 The teacher will ___ the worksheets before the quiz starts.",
+        "answers": [
+          "distribute"
+        ],
+        "explanation": "小テスト前にプリントを生徒へ行き渡らせるので distribute が自然。",
+        "alternatives": [
+          {
+            "answer": "hand out",
+            "explanation": "日常的で口語的。少しカジュアル。"
+          },
+          {
+            "answer": "pass out",
+            "explanation": "主に米国の口語で、その場で配る感じが強い。"
+          },
+          {
+            "answer": "give out",
+            "explanation": "一般的な言い方で、無料で配る場面にもよく使う。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "distributeを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The company distributes its drinks to supermarkets across the country.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-distribute-usage",
+          "type": "usage",
+          "prompt": "distribute を正しく使った文を選びなさい。",
+          "choices": [
+            "The teacher distributed the students some handouts.",
+            "She distributed about the plan to everyone.",
+            "The company distributes its products to stores nationwide.",
+            "The charity distributed to families free food."
+          ],
+          "correctIndex": 2,
+          "explanation": "distribute は distribute A to B の形をとる。他は二重目的語、不要な about、語順の誤りがある。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "business",
+          "economics"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-transport",
       "word": "transport",
       "level": "準2級",
@@ -14045,6 +15621,208 @@
         "domains": [
           "technology",
           "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-scenario",
+      "word": "scenario",
+      "level": "準2級",
+      "ipa": "/səˈnɑːriəʊ/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a description of how a situation might develop in the future",
+      "meaning": "想定される状況、筋書き",
+      "usageTip": "best-case / worst-case scenario のように使うことが多い。可算名詞で複数形は scenarios。計画やリスクを考える場面でよく使う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "リスク管理",
+          "text": "The manager prepared a plan for the worst-case scenario.",
+          "translation": "部長は最悪の場合の想定に備えた計画を用意した。"
+        },
+        {
+          "id": "example-2",
+          "context": "会議",
+          "text": "In this scenario, our costs would rise by about ten percent.",
+          "translation": "この想定では、私たちの費用は約10%上がることになる。"
+        },
+        {
+          "id": "example-3",
+          "context": "防災訓練",
+          "text": "Students practiced a fire scenario so they could stay calm in a real emergency.",
+          "translation": "生徒たちは本番で落ち着けるよう、火災の想定訓練を行った。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "scenario",
+          "choices": [
+            {
+              "text": "風景",
+              "meaning": "目に見える景色"
+            },
+            {
+              "text": "資格",
+              "meaning": "能力を示す証明"
+            },
+            {
+              "text": "成績",
+              "meaning": "学習の結果"
+            },
+            {
+              "text": "想定される状況、筋書き",
+              "meaning": "起こり得る展開の説明"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "scenario は将来起こり得る状況や展開の筋書きを指す。景色の意味ではない。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "想定される状況、筋書き",
+          "choices": [
+            {
+              "text": "scenery",
+              "meaning": "風景"
+            },
+            {
+              "text": "scenario",
+              "meaning": "想定される状況"
+            },
+            {
+              "text": "salary",
+              "meaning": "給料"
+            },
+            {
+              "text": "schedule",
+              "meaning": "予定表"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "「想定される状況」は scenario。scenery は景色で、形が似ているが別の語。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "会議で最悪の展開を想定する場面。We should think about the worst-case ___ before we sign the contract.",
+          "choices": [
+            {
+              "text": "scenario",
+              "meaning": "想定される状況"
+            },
+            {
+              "text": "holiday",
+              "meaning": "休日"
+            },
+            {
+              "text": "ticket",
+              "meaning": "切符"
+            },
+            {
+              "text": "mirror",
+              "meaning": "鏡"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "worst-case に続けて「最悪の想定」を表すのは scenario。",
+          "alternatives": [
+            {
+              "answer": "outcome",
+              "explanation": "最終的な結果を指す。展開全体より結果に焦点がある。"
+            },
+            {
+              "answer": "situation",
+              "explanation": "状況を表す一般的な語。将来の仮定のニュアンスは弱い。"
+            },
+            {
+              "answer": "possibility",
+              "explanation": "起こり得ること自体を指す。筋書きという具体性は弱い。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "scenario を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "We discussed about the scenario at the meeting.",
+              "meaning": "不要な about の誤り。"
+            },
+            {
+              "text": "Please consider other scenario before you decide.",
+              "meaning": "複数形が必要な誤り。"
+            },
+            {
+              "text": "The scenario was happened differently from our plan.",
+              "meaning": "happen の受動態の誤り。"
+            },
+            {
+              "text": "In the best-case scenario, the project finishes early.",
+              "meaning": "最善の想定では、計画は早く終わる。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "best-case scenario は定型表現。他は discuss about、単数形、happen の受動態という誤りがある。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "会議で最悪の展開を想定する場面。We should think about the worst-case ___ before we sign the contract.",
+        "answers": [
+          "scenario"
+        ],
+        "explanation": "worst-case に続けて「最悪の想定」を表すのは scenario。",
+        "alternatives": [
+          {
+            "answer": "outcome",
+            "explanation": "最終的な結果を指す。展開全体より結果に焦点がある。"
+          },
+          {
+            "answer": "situation",
+            "explanation": "状況を表す一般的な語。将来の仮定のニュアンスは弱い。"
+          },
+          {
+            "answer": "possibility",
+            "explanation": "起こり得ること自体を指す。筋書きという具体性は弱い。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "scenarioを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The manager prepared a plan for the worst-case scenario.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-scenario-usage",
+          "type": "usage",
+          "prompt": "scenario を正しく使った文を選びなさい。",
+          "choices": [
+            "We discussed about the scenario at the meeting.",
+            "Please consider other scenario before you decide.",
+            "The scenario was happened differently from our plan.",
+            "In the best-case scenario, the project finishes early."
+          ],
+          "correctIndex": 3,
+          "explanation": "best-case scenario は定型表現。他は discuss about、単数形、happen の受動態という誤りがある。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "logic-reasoning",
+          "work"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -15812,6 +17590,208 @@
       }
     },
     {
+      "id": "vocab-surge",
+      "word": "surge",
+      "level": "準2級",
+      "ipa": "/sɜːdʒ/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a sudden strong increase in amount, demand, or feeling",
+      "meaning": "急増、急な高まり",
+      "usageTip": "数量には a surge in demand のように in を使う。感情には a surge of pride のように of を使う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "店",
+          "text": "There was a surge in demand for umbrellas after the heavy rain began.",
+          "translation": "大雨が降り始めると、傘の需要が急増した。"
+        },
+        {
+          "id": "example-2",
+          "context": "経済",
+          "text": "A sudden surge in prices worried many families last winter.",
+          "translation": "物価の急上昇が、昨年の冬に多くの家庭を不安にさせた。"
+        },
+        {
+          "id": "example-3",
+          "context": "感情",
+          "text": "She felt a surge of pride when her name was called.",
+          "translation": "名前を呼ばれたとき、彼女は誇りがこみ上げた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "surge",
+          "choices": [
+            {
+              "text": "急増",
+              "meaning": "突然大きく増えること"
+            },
+            {
+              "text": "停止",
+              "meaning": "止まること"
+            },
+            {
+              "text": "約束",
+              "meaning": "取り決め"
+            },
+            {
+              "text": "不足",
+              "meaning": "足りないこと"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "surge は量や感情が突然強く増えることを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "急増、急な高まり",
+          "choices": [
+            {
+              "text": "shortage",
+              "meaning": "不足"
+            },
+            {
+              "text": "survey",
+              "meaning": "調査"
+            },
+            {
+              "text": "surge",
+              "meaning": "急増"
+            },
+            {
+              "text": "surface",
+              "meaning": "表面"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "突然の増加や高まりを表す名詞は surge。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "雨の日にタクシーの依頼が急に増えた場面：There was a sudden ___ in taxi requests.",
+          "choices": [
+            {
+              "text": "silence",
+              "meaning": "沈黙"
+            },
+            {
+              "text": "recipe",
+              "meaning": "レシピ"
+            },
+            {
+              "text": "surge",
+              "meaning": "急増"
+            },
+            {
+              "text": "border",
+              "meaning": "境界"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "依頼数が急に増えたので surge が合う。",
+          "alternatives": [
+            {
+              "answer": "jump",
+              "explanation": "口語的で、数字が急に上がる感じを表す。"
+            },
+            {
+              "answer": "rise",
+              "explanation": "増加一般を表し、急激さは弱い。"
+            },
+            {
+              "answer": "increase",
+              "explanation": "最も一般的な語で、急激さは含まない。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "数量の急増を表す、surge の正しい使い方を選びなさい。",
+          "choices": [
+            {
+              "text": "There was a surge demand for masks.",
+              "meaning": "前置詞が抜けている。"
+            },
+            {
+              "text": "There was a surge in demand for masks.",
+              "meaning": "マスクの需要が急増した。"
+            },
+            {
+              "text": "There was a surge on demand to masks.",
+              "meaning": "前置詞が誤り。"
+            },
+            {
+              "text": "There was a surge at demand for masks.",
+              "meaning": "前置詞が誤り。"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "数量の急増は a surge in の形で表す。in が変化の対象を示す。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "雨の日にタクシーの依頼が急に増えた場面：There was a sudden ___ in taxi requests.",
+        "answers": [
+          "surge"
+        ],
+        "explanation": "依頼数が急に増えたので surge が合う。",
+        "alternatives": [
+          {
+            "answer": "jump",
+            "explanation": "口語的で、数字が急に上がる感じを表す。"
+          },
+          {
+            "answer": "rise",
+            "explanation": "増加一般を表し、急激さは弱い。"
+          },
+          {
+            "answer": "increase",
+            "explanation": "最も一般的な語で、急激さは含まない。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "surgeを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "There was a surge in demand for umbrellas after the heavy rain began.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-surge-usage",
+          "type": "usage",
+          "prompt": "数量の急増を表す、surge の正しい使い方を選びなさい。",
+          "choices": [
+            "There was a surge demand for masks.",
+            "There was a surge in demand for masks.",
+            "There was a surge on demand to masks.",
+            "There was a surge at demand for masks."
+          ],
+          "correctIndex": 1,
+          "explanation": "数量の急増は a surge in の形で表す。in が変化の対象を示す。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "economics",
+          "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-pace",
       "word": "pace",
       "level": "準2級",
@@ -15992,6 +17972,200 @@
         "domains": [
           "work",
           "sports"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-hierarchy",
+      "word": "hierarchy",
+      "level": "準2級",
+      "ipa": "/ˈhaɪərɑːki/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a system that arranges people or things in ranked levels from highest to lowest",
+      "meaning": "階層、序列",
+      "usageTip": "a hierarchy of ranks や the hierarchy in a company の形で使う。組織の上下関係や、重要度の順位づけにも使える。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "会社",
+          "text": "In a traditional company, decisions often move down through a strict hierarchy.",
+          "translation": "従来型の会社では、決定は厳格な序列を通って下りてくることが多い。"
+        },
+        {
+          "id": "example-2",
+          "context": "動物",
+          "text": "Wolves in a pack form a clear social hierarchy.",
+          "translation": "群れのオオカミははっきりした社会的序列をつくる。"
+        },
+        {
+          "id": "example-3",
+          "context": "優先順位",
+          "text": "She made a hierarchy of goals, starting with her health.",
+          "translation": "彼女は健康を最優先にして、目標に順位をつけた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "hierarchy",
+          "choices": [
+            {
+              "text": "偶然",
+              "meaning": "chance"
+            },
+            {
+              "text": "報酬",
+              "meaning": "payment for work"
+            },
+            {
+              "text": "階層、序列",
+              "meaning": "ranked levels from top to bottom"
+            },
+            {
+              "text": "伝統行事",
+              "meaning": "a traditional event"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "hierarchy は上から下へ順位づけられた段階の仕組みを指す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "階層、序列",
+          "choices": [
+            {
+              "text": "hierarchy",
+              "meaning": "階層、序列"
+            },
+            {
+              "text": "minimum",
+              "meaning": "最小限"
+            },
+            {
+              "text": "prevail",
+              "meaning": "優勢になる"
+            },
+            {
+              "text": "constituency",
+              "meaning": "選挙区"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "上下に順位づけられた仕組みを表す語は hierarchy。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "新人が部長に直接話しにくい理由を説明する場面：Younger staff found it hard to speak to the director because of the strict ___ in the company.",
+          "choices": [
+            {
+              "text": "weather",
+              "meaning": "天気"
+            },
+            {
+              "text": "recipe",
+              "meaning": "レシピ"
+            },
+            {
+              "text": "balance",
+              "meaning": "均衡"
+            },
+            {
+              "text": "hierarchy",
+              "meaning": "序列"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "上下関係が厳しいため話しにくいという文脈に hierarchy が合う。",
+          "alternatives": [
+            {
+              "answer": "chain of command",
+              "explanation": "指揮命令系統を強調し、報告経路に焦点が当たる。"
+            },
+            {
+              "answer": "pecking order",
+              "explanation": "口語的で、非公式な力関係の序列を表す。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "hierarchy の使い方が正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "The army has a clear hierarchy for ranks of.",
+              "meaning": "語順が不自然な文。"
+            },
+            {
+              "text": "The army hierarchies at ranks clearly.",
+              "meaning": "名詞を動詞として誤用した文。"
+            },
+            {
+              "text": "The army has a clear hierarchy of ranks.",
+              "meaning": "軍隊には階級のはっきりした序列がある。"
+            },
+            {
+              "text": "The army is hierarchy of ranks clear.",
+              "meaning": "冠詞と語順が誤った文。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "hierarchy は名詞で、a hierarchy of ranks の形が自然。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "新人が部長に直接話しにくい理由を説明する場面：Younger staff found it hard to speak to the director because of the strict ___ in the company.",
+        "answers": [
+          "hierarchy"
+        ],
+        "explanation": "上下関係が厳しいため話しにくいという文脈に hierarchy が合う。",
+        "alternatives": [
+          {
+            "answer": "chain of command",
+            "explanation": "指揮命令系統を強調し、報告経路に焦点が当たる。"
+          },
+          {
+            "answer": "pecking order",
+            "explanation": "口語的で、非公式な力関係の序列を表す。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "hierarchyを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "In a traditional company, decisions often move down through a strict hierarchy.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-hierarchy-usage",
+          "type": "usage",
+          "prompt": "hierarchy の使い方が正しい文を選んでください。",
+          "choices": [
+            "The army has a clear hierarchy for ranks of.",
+            "The army hierarchies at ranks clearly.",
+            "The army has a clear hierarchy of ranks.",
+            "The army is hierarchy of ranks clear."
+          ],
+          "correctIndex": 2,
+          "explanation": "hierarchy は名詞で、a hierarchy of ranks の形が自然。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "society",
+          "work"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."

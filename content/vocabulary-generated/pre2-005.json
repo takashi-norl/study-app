@@ -197,6 +197,199 @@
       }
     },
     {
+      "id": "vocab-classmate",
+      "word": "classmate",
+      "level": "準2級",
+      "ipa": "ˈklɑːsmeɪt",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a person who is in the same class as you at school",
+      "meaning": "同級生、クラスメート",
+      "usageTip": "同じクラスの人を指す。同じ学校の生徒全般なら schoolmate と区別する。a classmate of mine の形もよく使う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "学校",
+          "text": "My classmate lent me her notes after I missed the lesson.",
+          "translation": "授業を休んだ後、同級生がノートを貸してくれた。"
+        },
+        {
+          "id": "example-2",
+          "context": "放課後",
+          "text": "I often walk home with a classmate from my English class.",
+          "translation": "私はよく英語クラスの同級生と歩いて帰る。"
+        },
+        {
+          "id": "example-3",
+          "context": "行事",
+          "text": "Every classmate brought something for the school festival.",
+          "translation": "クラスの全員が文化祭に何か持ってきた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "classmate",
+          "choices": [
+            {
+              "text": "校長先生",
+              "meaning": "学校の責任者"
+            },
+            {
+              "text": "近所の人",
+              "meaning": "近くに住む人"
+            },
+            {
+              "text": "同級生",
+              "meaning": "同じクラスの人"
+            },
+            {
+              "text": "卒業式",
+              "meaning": "学校を卒業する式"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "classmate は同じクラスにいる人。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "同級生、クラスメート",
+          "choices": [
+            {
+              "text": "classroom",
+              "meaning": "教室"
+            },
+            {
+              "text": "teacher",
+              "meaning": "教師"
+            },
+            {
+              "text": "stranger",
+              "meaning": "知らない人"
+            },
+            {
+              "text": "classmate",
+              "meaning": "同級生"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "同じクラスの人は classmate。classroom は場所。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "学校での場面。I sat next to a ___ who helped me with the math homework.",
+          "choices": [
+            {
+              "text": "customer",
+              "meaning": "客"
+            },
+            {
+              "text": "classmate",
+              "meaning": "同級生"
+            },
+            {
+              "text": "passenger",
+              "meaning": "乗客"
+            },
+            {
+              "text": "neighbor",
+              "meaning": "隣人"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "学校で隣に座り宿題を助けてくれる相手として自然なのは classmate。",
+          "alternatives": [
+            {
+              "answer": "friend",
+              "explanation": "友人という関係を表し、同じクラスとは限らない。"
+            },
+            {
+              "answer": "student",
+              "explanation": "生徒という意味で、同じクラスという関係は示さない。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "classmate を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I classmate with her every day.",
+              "meaning": "誤り：名詞を動詞として使っている。"
+            },
+            {
+              "text": "She is a classmate for mine.",
+              "meaning": "誤り：for ではなく of mine が正しい。"
+            },
+            {
+              "text": "He is a classmate of mine.",
+              "meaning": "彼は私の同級生だ。"
+            },
+            {
+              "text": "He is classmate to me class.",
+              "meaning": "誤り：冠詞と語順が不自然。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "a classmate of mine は自然な形。他は動詞扱いや前置詞、語順の誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "学校での場面。I sat next to a ___ who helped me with the math homework.",
+        "answers": [
+          "classmate"
+        ],
+        "explanation": "学校で隣に座り宿題を助けてくれる相手として自然なのは classmate。",
+        "alternatives": [
+          {
+            "answer": "friend",
+            "explanation": "友人という関係を表し、同じクラスとは限らない。"
+          },
+          {
+            "answer": "student",
+            "explanation": "生徒という意味で、同じクラスという関係は示さない。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "classmateを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "My classmate lent me her notes after I missed the lesson.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-classmate-usage",
+          "type": "usage",
+          "prompt": "classmate を正しく使った文を選んでください。",
+          "choices": [
+            "I classmate with her every day.",
+            "She is a classmate for mine.",
+            "He is a classmate of mine.",
+            "He is classmate to me class."
+          ],
+          "correctIndex": 2,
+          "explanation": "a classmate of mine は自然な形。他は動詞扱いや前置詞、語順の誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "education"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-careless",
       "word": "careless",
       "level": "準2級",
@@ -391,6 +584,392 @@
       }
     },
     {
+      "id": "vocab-lately",
+      "word": "lately",
+      "level": "準2級",
+      "ipa": "ˈleɪtli",
+      "ipaLabel": "英音",
+      "partOfSpeech": "副詞",
+      "definition": "during the last few weeks or months, up to the present",
+      "meaning": "最近、近頃",
+      "usageTip": "現在完了や現在完了進行形とよく使い、ここ最近続いている状況や変化を表す。I saw him lately のような単純過去とは通常合わない。過去の一時点には recently を使う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "日常",
+          "text": "I have been sleeping badly lately because of the noise outside.",
+          "translation": "外の騒音のせいで、最近よく眠れていない。"
+        },
+        {
+          "id": "example-2",
+          "context": "友人との会話",
+          "text": "Have you seen Mia lately? She seems very busy these days.",
+          "translation": "最近ミアに会った？近頃とても忙しそうだよ。"
+        },
+        {
+          "id": "example-3",
+          "context": "通勤",
+          "text": "Lately, I have been walking to work every morning.",
+          "translation": "最近、私は毎朝歩いて通勤している。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "lately",
+          "choices": [
+            {
+              "text": "遅れて",
+              "meaning": "時間に遅れて"
+            },
+            {
+              "text": "いつも",
+              "meaning": "毎回"
+            },
+            {
+              "text": "最近",
+              "meaning": "ここ最近"
+            },
+            {
+              "text": "まもなく",
+              "meaning": "近いうちに"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "lately は現在に至る最近の期間を表す副詞で、「最近」の意味になる。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "最近、近頃",
+          "choices": [
+            {
+              "text": "nearly",
+              "meaning": "ほとんど"
+            },
+            {
+              "text": "hardly",
+              "meaning": "ほとんど〜ない"
+            },
+            {
+              "text": "usually",
+              "meaning": "普通は"
+            },
+            {
+              "text": "lately",
+              "meaning": "最近"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "最近の状況を述べる副詞は lately。他は程度や頻度を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "友人への発言。I have not been feeling well ___, so I may see a doctor.",
+          "choices": [
+            {
+              "text": "tomorrow",
+              "meaning": "明日"
+            },
+            {
+              "text": "lately",
+              "meaning": "最近"
+            },
+            {
+              "text": "yesterday",
+              "meaning": "昨日"
+            },
+            {
+              "text": "someday",
+              "meaning": "いつか"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "現在完了進行形と合い、ここ最近の体調不良を表せる。他は特定の日やいつかを表し、文脈に合わない。",
+          "alternatives": [
+            {
+              "answer": "recently",
+              "explanation": "ほぼ同じ意味で、過去形の文でも使える。"
+            },
+            {
+              "answer": "these days",
+              "explanation": "今の時期の傾向を表す会話的な表現。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "lately を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I met him lately at the station yesterday.",
+              "meaning": "誤り：過去の一時点には使えない。"
+            },
+            {
+              "text": "I will go there lately next week.",
+              "meaning": "誤り：未来には使えない。"
+            },
+            {
+              "text": "I have been tired lately.",
+              "meaning": "私は最近疲れている。"
+            },
+            {
+              "text": "I am lately tired since a long time.",
+              "meaning": "誤り：現在完了を使うべき。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "lately は現在完了と合い、最近続く状態を表す。過去の一時点や未来には使わない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "友人への発言。I have not been feeling well ___, so I may see a doctor.",
+        "answers": [
+          "lately"
+        ],
+        "explanation": "現在完了進行形と合い、ここ最近の体調不良を表せる。他は特定の日やいつかを表し、文脈に合わない。",
+        "alternatives": [
+          {
+            "answer": "recently",
+            "explanation": "ほぼ同じ意味で、過去形の文でも使える。"
+          },
+          {
+            "answer": "these days",
+            "explanation": "今の時期の傾向を表す会話的な表現。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "latelyを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I have been sleeping badly lately because of the noise outside.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-lately-usage",
+          "type": "usage",
+          "prompt": "lately を正しく使った文を選んでください。",
+          "choices": [
+            "I met him lately at the station yesterday.",
+            "I will go there lately next week.",
+            "I have been tired lately.",
+            "I am lately tired since a long time."
+          ],
+          "correctIndex": 2,
+          "explanation": "lately は現在完了と合い、最近続く状態を表す。過去の一時点や未来には使わない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-somewhat",
+      "word": "somewhat",
+      "level": "準2級",
+      "ipa": "ˈsʌmˌwʌt",
+      "ipaLabel": "米音",
+      "partOfSpeech": "副詞",
+      "definition": "to a limited degree; a little",
+      "meaning": "いくぶん、やや",
+      "usageTip": "形容詞・副詞・比較級の前で程度をやわらげる。somewhat different のように使う。somewhat of a surprise という形もあるが、まずは形容詞の前の用法を覚えよう。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "会議",
+          "text": "The results were somewhat different from what we expected.",
+          "translation": "結果は私たちの予想とはいくぶん違っていた。"
+        },
+        {
+          "id": "example-2",
+          "context": "天気",
+          "text": "It is somewhat colder today than it was yesterday.",
+          "translation": "今日は昨日よりやや寒い。"
+        },
+        {
+          "id": "example-3",
+          "context": "意見交換",
+          "text": "I was somewhat surprised by her sudden decision.",
+          "translation": "私は彼女の突然の決断に少し驚いた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "somewhat",
+          "choices": [
+            {
+              "text": "完全に",
+              "meaning": "すべてにわたって"
+            },
+            {
+              "text": "決して〜ない",
+              "meaning": "否定の強調"
+            },
+            {
+              "text": "突然",
+              "meaning": "急に"
+            },
+            {
+              "text": "いくぶん",
+              "meaning": "少しだけ"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "somewhat は程度が少しあることを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "いくぶん、やや",
+          "choices": [
+            {
+              "text": "somewhere",
+              "meaning": "どこかで"
+            },
+            {
+              "text": "sometimes",
+              "meaning": "ときどき"
+            },
+            {
+              "text": "somewhat",
+              "meaning": "いくぶん"
+            },
+            {
+              "text": "somehow",
+              "meaning": "何とかして"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "程度を表すのは somewhat。他は場所・頻度・方法を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "映画の感想を述べる場面。The ending was ___ confusing, but I still enjoyed the film.",
+          "choices": [
+            {
+              "text": "hardly",
+              "meaning": "ほとんど〜ない"
+            },
+            {
+              "text": "somewhat",
+              "meaning": "いくぶん"
+            },
+            {
+              "text": "never",
+              "meaning": "決して〜ない"
+            },
+            {
+              "text": "away",
+              "meaning": "離れて"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "少し分かりにくかったという程度を表せるのは somewhat。他は意味や文法が合わない。",
+          "alternatives": [
+            {
+              "answer": "a little",
+              "explanation": "くだけた言い方で、somewhat より日常的。"
+            },
+            {
+              "answer": "rather",
+              "explanation": "「かなり」に近く、somewhat より程度がやや強い。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "somewhat を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I am somewhat tired for the trip yesterday.",
+              "meaning": "誤り：前置詞が不自然。"
+            },
+            {
+              "text": "She is somewhat very happy today.",
+              "meaning": "誤り：very と重ねられない。"
+            },
+            {
+              "text": "He has somewhat many books.",
+              "meaning": "誤り：数量には使えない。"
+            },
+            {
+              "text": "The room was somewhat small.",
+              "meaning": "その部屋はやや狭かった。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "somewhat は形容詞 small の前で程度を和らげる。very と重ねたり many の前に置いたりしない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "映画の感想を述べる場面。The ending was ___ confusing, but I still enjoyed the film.",
+        "answers": [
+          "somewhat"
+        ],
+        "explanation": "少し分かりにくかったという程度を表せるのは somewhat。他は意味や文法が合わない。",
+        "alternatives": [
+          {
+            "answer": "a little",
+            "explanation": "くだけた言い方で、somewhat より日常的。"
+          },
+          {
+            "answer": "rather",
+            "explanation": "「かなり」に近く、somewhat より程度がやや強い。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "somewhatを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The results were somewhat different from what we expected.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-somewhat-usage",
+          "type": "usage",
+          "prompt": "somewhat を正しく使った文を選んでください。",
+          "choices": [
+            "I am somewhat tired for the trip yesterday.",
+            "She is somewhat very happy today.",
+            "He has somewhat many books.",
+            "The room was somewhat small."
+          ],
+          "correctIndex": 3,
+          "explanation": "somewhat は形容詞 small の前で程度を和らげる。very と重ねたり many の前に置いたりしない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "communication"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-per",
       "word": "per",
       "level": "準2級",
@@ -579,6 +1158,200 @@
         "domains": [
           "economics",
           "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-whereas",
+      "word": "whereas",
+      "level": "準2級",
+      "ipa": "/wɛɹˈæz/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "接続詞",
+      "definition": "used to show that two facts or situations are clearly different from each other",
+      "meaning": "～であるのに対して",
+      "usageTip": "2つの事実の対比を表す接続詞で、文頭にも文中にも置けます。文頭の場合は前半の節の後ろにカンマを置きます。理由や時間を表す文では使いません。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "学校",
+          "text": "My sister loves maths, whereas I prefer history and languages.",
+          "translation": "姉は数学が好きなのに対して、私は歴史と語学が好きだ。"
+        },
+        {
+          "id": "example-2",
+          "context": "気候",
+          "text": "Summers here are dry, whereas winters are often wet and cold.",
+          "translation": "ここの夏は乾燥しているのに対して、冬は雨が多く寒いことが多い。"
+        },
+        {
+          "id": "example-3",
+          "context": "仕事",
+          "text": "Whereas the old system was slow, the new one responds instantly.",
+          "translation": "古いシステムは遅かったのに対して、新しいものはすぐに反応する。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "whereas",
+          "choices": [
+            {
+              "text": "～の間ずっと",
+              "meaning": "期間を表す"
+            },
+            {
+              "text": "～であるのに対して",
+              "meaning": "2つの事柄の対比を表す"
+            },
+            {
+              "text": "～しない限り",
+              "meaning": "条件を表す"
+            },
+            {
+              "text": "～なので",
+              "meaning": "理由を表す"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "whereas は2つの事柄の違いを対比する接続詞です。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "～であるのに対して",
+          "choices": [
+            {
+              "text": "unless",
+              "meaning": "～しない限り"
+            },
+            {
+              "text": "because",
+              "meaning": "～なので"
+            },
+            {
+              "text": "whereas",
+              "meaning": "～に対して"
+            },
+            {
+              "text": "until",
+              "meaning": "～まで"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "対比を表す接続詞は whereas です。他は条件、理由、期限を表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 兄弟の性格の違いを説明している。Tom is very talkative, ___ his brother is quiet.",
+          "choices": [
+            {
+              "text": "unless",
+              "meaning": "～しない限り"
+            },
+            {
+              "text": "because",
+              "meaning": "～なので"
+            },
+            {
+              "text": "until",
+              "meaning": "～まで"
+            },
+            {
+              "text": "whereas",
+              "meaning": "～に対して"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "おしゃべりと静かという対照を示すので、対比を表す語が合います。",
+          "alternatives": [
+            {
+              "answer": "while",
+              "explanation": "while も対比を表せる、より日常的な言い方です。"
+            },
+            {
+              "answer": "but",
+              "explanation": "but でも対比できますが、前に置く語がカンマ付きの接続になり、やや単純な印象です。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "whereas を対比の意味で正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I will call you whereas I get home.",
+              "meaning": "帰宅したら電話する(誤用)"
+            },
+            {
+              "text": "Whereas I like tea, my friend prefers coffee.",
+              "meaning": "私は紅茶が好きだが、友人はコーヒーを好む。"
+            },
+            {
+              "text": "She was tired whereas she kept working.",
+              "meaning": "疲れていたが働き続けた(誤用)"
+            },
+            {
+              "text": "I stayed home whereas I had a bad cold.",
+              "meaning": "ひどい風邪だったので家にいた(誤用)"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "whereas は好みの違いのように、2つの事実を対比する時に使います。時間や理由、単なる逆接には不自然です。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 兄弟の性格の違いを説明している。Tom is very talkative, ___ his brother is quiet.",
+        "answers": [
+          "whereas"
+        ],
+        "explanation": "おしゃべりと静かという対照を示すので、対比を表す語が合います。",
+        "alternatives": [
+          {
+            "answer": "while",
+            "explanation": "while も対比を表せる、より日常的な言い方です。"
+          },
+          {
+            "answer": "but",
+            "explanation": "but でも対比できますが、前に置く語がカンマ付きの接続になり、やや単純な印象です。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "whereasを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "My sister loves maths, whereas I prefer history and languages.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-whereas-usage",
+          "type": "usage",
+          "prompt": "whereas を対比の意味で正しく使った文を選んでください。",
+          "choices": [
+            "I will call you whereas I get home.",
+            "Whereas I like tea, my friend prefers coffee.",
+            "She was tired whereas she kept working.",
+            "I stayed home whereas I had a bad cold."
+          ],
+          "correctIndex": 1,
+          "explanation": "whereas は好みの違いのように、2つの事実を対比する時に使います。時間や理由、単なる逆接には不自然です。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "logic-reasoning",
+          "communication"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -3853,6 +4626,193 @@
       }
     },
     {
+      "id": "vocab-reporter",
+      "word": "reporter",
+      "level": "準2級",
+      "ipa": "/ɹɪˈpɔɹɾɚ/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "a person whose job is to collect news and tell it to the public",
+      "meaning": "記者、レポーター",
+      "usageTip": "a reporter for ~ のように所属先を for で示します。interview や cover と相性が良い語です。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "ニュース",
+          "text": "A reporter asked the mayor about the new bus system.",
+          "translation": "記者は市長に新しいバス制度について質問した。"
+        },
+        {
+          "id": "example-2",
+          "context": "仕事",
+          "text": "She became a reporter for a local newspaper after college.",
+          "translation": "彼女は大学卒業後、地元新聞の記者になった。"
+        },
+        {
+          "id": "example-3",
+          "context": "メディア",
+          "text": "The reporter stood outside the station and described the situation.",
+          "translation": "そのレポーターは駅の外に立ち、状況を伝えた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "reporter",
+          "choices": [
+            {
+              "text": "消防士",
+              "meaning": "火事に対応する人"
+            },
+            {
+              "text": "記者、レポーター",
+              "meaning": "ニュースを取材し伝える人"
+            },
+            {
+              "text": "図書館員",
+              "meaning": "図書館で働く人"
+            },
+            {
+              "text": "設計者",
+              "meaning": "設計する人"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "reporter は、ニュースを取材して伝える職業の人です。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "記者、レポーター",
+          "choices": [
+            {
+              "text": "repair",
+              "meaning": "修理"
+            },
+            {
+              "text": "receiver",
+              "meaning": "受け取る人"
+            },
+            {
+              "text": "reporter",
+              "meaning": "記者"
+            },
+            {
+              "text": "reader",
+              "meaning": "読者"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "ニュースを取材して伝える人は reporter です。他は綴りが似ていたり、情報に関わる別の語です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 事故現場で人々に話を聞く職業の人。The ___ interviewed several people near the accident scene.",
+          "choices": [
+            {
+              "text": "gardener",
+              "meaning": "庭師"
+            },
+            {
+              "text": "cashier",
+              "meaning": "レジ係"
+            },
+            {
+              "text": "pilot",
+              "meaning": "パイロット"
+            },
+            {
+              "text": "reporter",
+              "meaning": "記者"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "現場で人々に取材するのは記者の仕事です。",
+          "alternatives": [
+            {
+              "answer": "journalist",
+              "explanation": "journalist は報道に携わる人を広く指し、ここでも自然です。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "reporter を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "He works as a reporter for a local newspaper.",
+              "meaning": "彼は地元新聞の記者として働いている。"
+            },
+            {
+              "text": "He works as a reporter in a local newspaper yesterday.",
+              "meaning": "時の表現が不自然"
+            },
+            {
+              "text": "She reporter the accident on television.",
+              "meaning": "名詞を動詞として誤用している"
+            },
+            {
+              "text": "The reporter was very report about the case.",
+              "meaning": "動詞形を形容詞のように誤用している"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "所属先は for で表し、work as a reporter が自然です。他は品詞や語形が誤りです。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 事故現場で人々に話を聞く職業の人。The ___ interviewed several people near the accident scene.",
+        "answers": [
+          "reporter"
+        ],
+        "explanation": "現場で人々に取材するのは記者の仕事です。",
+        "alternatives": [
+          {
+            "answer": "journalist",
+            "explanation": "journalist は報道に携わる人を広く指し、ここでも自然です。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "reporterを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "A reporter asked the mayor about the new bus system.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-reporter-usage",
+          "type": "usage",
+          "prompt": "reporter を正しく使った文を選んでください。",
+          "choices": [
+            "He works as a reporter for a local newspaper.",
+            "He works as a reporter in a local newspaper yesterday.",
+            "She reporter the accident on television.",
+            "The reporter was very report about the case."
+          ],
+          "correctIndex": 0,
+          "explanation": "所属先は for で表し、work as a reporter が自然です。他は品詞や語形が誤りです。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "media",
+          "work",
+          "communication"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-column",
       "word": "column",
       "level": "準2級",
@@ -5388,6 +6348,200 @@
           ],
           "correctIndex": 0,
           "explanation": "sprain は他動詞で、前置詞なしに体の部位を直接目的語にとる。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "medical",
+          "sports"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-stretcher",
+      "word": "stretcher",
+      "level": "準2級",
+      "ipa": "/ˈstɹɛtʃə/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a light bed with handles, used to carry a sick or injured person",
+      "meaning": "担架",
+      "usageTip": "on a stretcher(担架に乗せて)が基本形。carry someone on a stretcher や be taken away on a stretcher のように使います。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "スポーツ",
+          "text": "The injured player was carried off the pitch on a stretcher.",
+          "translation": "けがをした選手は担架でピッチから運び出された。"
+        },
+        {
+          "id": "example-2",
+          "context": "災害",
+          "text": "Rescue workers brought a stretcher to the damaged building.",
+          "translation": "救助隊員は壊れた建物に担架を運び込んだ。"
+        },
+        {
+          "id": "example-3",
+          "context": "病院",
+          "text": "Two nurses lifted the patient gently onto the stretcher.",
+          "translation": "二人の看護師が患者をそっと担架に乗せた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "stretcher",
+          "choices": [
+            {
+              "text": "車椅子",
+              "meaning": "座って移動する椅子"
+            },
+            {
+              "text": "松葉づえ",
+              "meaning": "歩行を支える杖"
+            },
+            {
+              "text": "包帯",
+              "meaning": "傷を巻く布"
+            },
+            {
+              "text": "担架",
+              "meaning": "負傷者を運ぶ道具"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "stretcher は負傷者や病人を寝かせて運ぶ担架です。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "担架",
+          "choices": [
+            {
+              "text": "stretcher",
+              "meaning": "担架"
+            },
+            {
+              "text": "syringe",
+              "meaning": "注射器"
+            },
+            {
+              "text": "ladder",
+              "meaning": "はしご"
+            },
+            {
+              "text": "blanket",
+              "meaning": "毛布"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "負傷者を運ぶ道具は stretcher です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 試合中に選手が倒れて動けない。Medical staff ran onto the field with a ___ to carry him off.",
+          "choices": [
+            {
+              "text": "menu",
+              "meaning": "メニュー"
+            },
+            {
+              "text": "stretcher",
+              "meaning": "担架"
+            },
+            {
+              "text": "curtain",
+              "meaning": "カーテン"
+            },
+            {
+              "text": "bicycle",
+              "meaning": "自転車"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "動けない選手を運ぶために必要なのは担架です。",
+          "alternatives": [
+            {
+              "answer": "trolley",
+              "explanation": "病院では車輪付きの患者用ベッドを指すこともあります。"
+            },
+            {
+              "answer": "litter",
+              "explanation": "litter は古風・専門的な「担架」で、日常ではあまり使いません。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "stretcher を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "They carried him in the stretcher's.",
+              "meaning": "所有格の誤用"
+            },
+            {
+              "text": "They carried him on a stretcher to the ambulance.",
+              "meaning": "彼らは彼を担架で救急車まで運んだ。"
+            },
+            {
+              "text": "They carried him stretcher to the ambulance.",
+              "meaning": "前置詞と冠詞が欠けている"
+            },
+            {
+              "text": "They carried him at a stretcher to the ambulance.",
+              "meaning": "前置詞の誤り"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "担架の上に乗せて運ぶので on a stretcher が自然です。他は前置詞、冠詞、所有格の形が誤りです。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 試合中に選手が倒れて動けない。Medical staff ran onto the field with a ___ to carry him off.",
+        "answers": [
+          "stretcher"
+        ],
+        "explanation": "動けない選手を運ぶために必要なのは担架です。",
+        "alternatives": [
+          {
+            "answer": "trolley",
+            "explanation": "病院では車輪付きの患者用ベッドを指すこともあります。"
+          },
+          {
+            "answer": "litter",
+            "explanation": "litter は古風・専門的な「担架」で、日常ではあまり使いません。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "stretcherを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The injured player was carried off the pitch on a stretcher.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-stretcher-usage",
+          "type": "usage",
+          "prompt": "stretcher を正しく使った文を選びなさい。",
+          "choices": [
+            "They carried him in the stretcher's.",
+            "They carried him on a stretcher to the ambulance.",
+            "They carried him stretcher to the ambulance.",
+            "They carried him at a stretcher to the ambulance."
+          ],
+          "correctIndex": 1,
+          "explanation": "担架の上に乗せて運ぶので on a stretcher が自然です。他は前置詞、冠詞、所有格の形が誤りです。"
         }
       ],
       "metadata": {
@@ -7130,6 +8284,217 @@
         "domains": [
           "daily-life",
           "relationships"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-bounce",
+      "word": "bounce",
+      "level": "準2級",
+      "ipa": "/baʊns/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "bounce"
+        ],
+        "past": [
+          "bounced"
+        ],
+        "pastParticiple": [
+          "bounced"
+        ],
+        "presentParticiple": [
+          "bouncing"
+        ],
+        "thirdPersonSingular": [
+          "bounces"
+        ]
+      },
+      "definition": "to spring back after hitting a surface, or to make something do this",
+      "meaning": "弾む、跳ね返る",
+      "usageTip": "自動詞にも他動詞にも使えます。The ball bounced.(弾んだ)/ bounce a ball(ボールを弾ませる)。bounce back は「立ち直る」という意味の句動詞です。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "スポーツ",
+          "text": "The tennis ball bounced twice before she reached it.",
+          "translation": "テニスボールは、彼女が追いつく前に2回弾んだ。"
+        },
+        {
+          "id": "example-2",
+          "context": "遊び",
+          "text": "The children bounce a ball against the wall after school.",
+          "translation": "子どもたちは放課後、壁にボールを当てて弾ませる。"
+        },
+        {
+          "id": "example-3",
+          "context": "比喩",
+          "text": "The team bounced back quickly after losing the first game.",
+          "translation": "チームは初戦に負けた後、すぐに立ち直った。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "bounce",
+          "choices": [
+            {
+              "text": "沈む",
+              "meaning": "下へ入り込む"
+            },
+            {
+              "text": "溶ける",
+              "meaning": "液体になる"
+            },
+            {
+              "text": "弾む、跳ね返る",
+              "meaning": "当たって跳ね上がる"
+            },
+            {
+              "text": "割れる",
+              "meaning": "壊れて分かれる"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "bounce はボールなどが当たって弾む、跳ね返る動きを表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "弾む、跳ね返る",
+          "choices": [
+            {
+              "text": "borrow",
+              "meaning": "借りる"
+            },
+            {
+              "text": "bother",
+              "meaning": "悩ませる"
+            },
+            {
+              "text": "boil",
+              "meaning": "沸く"
+            },
+            {
+              "text": "bounce",
+              "meaning": "弾む"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "ボールなどが跳ね返る動きを表す動詞は bounce です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: ゴムボールが階段を跳ねながら落ちていく。The rubber ball began to ___ down the stairs.",
+          "choices": [
+            {
+              "text": "sleep",
+              "meaning": "眠る"
+            },
+            {
+              "text": "cook",
+              "meaning": "料理する"
+            },
+            {
+              "text": "bounce",
+              "meaning": "弾む"
+            },
+            {
+              "text": "explain",
+              "meaning": "説明する"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "ゴムボールが階段を跳ねながら落ちる様子なので bounce が合います。他の語は動作として意味が合いません。",
+          "alternatives": [
+            {
+              "answer": "roll",
+              "explanation": "転がる動きを表します。跳ねる感じはなくなりますが、文として自然です。"
+            },
+            {
+              "answer": "tumble",
+              "explanation": "転げ落ちる様子を表し、弾む感じは弱くなります。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "ボールが床で弾んだという意味で、bounce を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "The ball bounce on the floor yesterday.",
+              "meaning": "過去の文なのに原形を使っている"
+            },
+            {
+              "text": "The ball was bounced on the floor by itself.",
+              "meaning": "自動詞の動きに受け身を使っている"
+            },
+            {
+              "text": "The ball bouncing on the floor yesterday.",
+              "meaning": "述語動詞がなく文として不完全"
+            },
+            {
+              "text": "The ball bounced on the floor yesterday.",
+              "meaning": "ボールは昨日床で弾んだ。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "過去の出来事なので過去形 bounced を使います。他は時制の誤り、不自然な受け身、述語動詞の欠如があります。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: ゴムボールが階段を跳ねながら落ちていく。The rubber ball began to ___ down the stairs.",
+        "answers": [
+          "bounce"
+        ],
+        "explanation": "ゴムボールが階段を跳ねながら落ちる様子なので bounce が合います。他の語は動作として意味が合いません。",
+        "alternatives": [
+          {
+            "answer": "roll",
+            "explanation": "転がる動きを表します。跳ねる感じはなくなりますが、文として自然です。"
+          },
+          {
+            "answer": "tumble",
+            "explanation": "転げ落ちる様子を表し、弾む感じは弱くなります。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "bounceを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The tennis ball bounced twice before she reached it.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-bounce-usage",
+          "type": "usage",
+          "prompt": "ボールが床で弾んだという意味で、bounce を正しく使った文を選びなさい。",
+          "choices": [
+            "The ball bounce on the floor yesterday.",
+            "The ball was bounced on the floor by itself.",
+            "The ball bouncing on the floor yesterday.",
+            "The ball bounced on the floor yesterday."
+          ],
+          "correctIndex": 3,
+          "explanation": "過去の出来事なので過去形 bounced を使います。他は時制の誤り、不自然な受け身、述語動詞の欠如があります。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "sports",
+          "daily-life"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -9908,6 +11273,225 @@
       }
     },
     {
+      "id": "vocab-trim",
+      "word": "trim",
+      "level": "準2級",
+      "ipa": "trɪm",
+      "ipaLabel": "米音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "trim"
+        ],
+        "past": [
+          "trimmed"
+        ],
+        "pastParticiple": [
+          "trimmed"
+        ],
+        "presentParticiple": [
+          "trimming"
+        ],
+        "thirdPersonSingular": [
+          "trims"
+        ]
+      },
+      "definition": "to cut off a small amount to make something neat, or to reduce the size or amount of something",
+      "meaning": "切り揃える、削減する",
+      "usageTip": "髪・ひげ・植木などを整える場面と、予算・経費などを削る場面の両方で使う。trim the budget は「予算を削る」。他動詞なので前置詞なしで目的語を取る。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "美容室",
+          "text": "Could you trim my hair just a little at the back?",
+          "translation": "後ろの髪を少しだけ切り揃えてもらえますか。"
+        },
+        {
+          "id": "example-2",
+          "context": "庭仕事",
+          "text": "He trims the bushes every spring to keep them tidy.",
+          "translation": "彼は毎春、茂みを整えるために刈り込む。"
+        },
+        {
+          "id": "example-3",
+          "context": "会社",
+          "text": "The company plans to trim costs without losing any staff.",
+          "translation": "その会社は人員を減らさずに経費を削減する予定だ。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "trim",
+          "choices": [
+            {
+              "text": "切り揃える",
+              "meaning": "少し切って整える"
+            },
+            {
+              "text": "預ける",
+              "meaning": "人に任せて保管してもらう"
+            },
+            {
+              "text": "無視する",
+              "meaning": "気にかけず放っておく"
+            },
+            {
+              "text": "運ぶ",
+              "meaning": "別の場所へ持っていく"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "trim は余分な部分を少し切って整える、または量を減らす意味です。他の選択肢は動作が異なります。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "切り揃える、削減する",
+          "choices": [
+            {
+              "text": "borrow",
+              "meaning": "借りる"
+            },
+            {
+              "text": "wander",
+              "meaning": "歩き回る"
+            },
+            {
+              "text": "survive",
+              "meaning": "生き延びる"
+            },
+            {
+              "text": "trim",
+              "meaning": "切り揃える、削減する"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "「切り揃える、削減する」にあたる動詞は trim です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "庭の木が伸びすぎた場面: I need to ___ the hedge before the neighbors complain.",
+          "choices": [
+            {
+              "text": "remind",
+              "meaning": "思い出させる"
+            },
+            {
+              "text": "trim",
+              "meaning": "刈り込む"
+            },
+            {
+              "text": "unlock",
+              "meaning": "鍵を開ける"
+            },
+            {
+              "text": "measure",
+              "meaning": "測る"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "伸びすぎた生け垣を整えるには trim が自然です。他の動詞は生け垣に対する動作として合いません。",
+          "alternatives": [
+            {
+              "answer": "cut",
+              "explanation": "cut は一般的な「切る」で、整えるニュアンスは trim より弱い。"
+            },
+            {
+              "answer": "prune",
+              "explanation": "prune は成長を助けるために枝を切るときに使う。"
+            },
+            {
+              "answer": "clip",
+              "explanation": "clip はハサミなどで短く切り取る感じを表す。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "trim を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "She trimmed at her hair a few centimeters.",
+              "meaning": "誤り：trim は at を使わず目的語を直接取る。"
+            },
+            {
+              "text": "She trimmed for her hair a few centimeters.",
+              "meaning": "誤り：for は不要。"
+            },
+            {
+              "text": "She trimmed her hair a few centimeters yesterday.",
+              "meaning": "彼女は昨日髪を数センチ切り揃えた。"
+            },
+            {
+              "text": "She trimmed to her hair a few centimeters.",
+              "meaning": "誤り：to は不要。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "trim は他動詞なので、前置詞を置かずに目的語を直接取ります。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "庭の木が伸びすぎた場面: I need to ___ the hedge before the neighbors complain.",
+        "answers": [
+          "trim"
+        ],
+        "explanation": "伸びすぎた生け垣を整えるには trim が自然です。他の動詞は生け垣に対する動作として合いません。",
+        "alternatives": [
+          {
+            "answer": "cut",
+            "explanation": "cut は一般的な「切る」で、整えるニュアンスは trim より弱い。"
+          },
+          {
+            "answer": "prune",
+            "explanation": "prune は成長を助けるために枝を切るときに使う。"
+          },
+          {
+            "answer": "clip",
+            "explanation": "clip はハサミなどで短く切り取る感じを表す。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "trimを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Could you trim my hair just a little at the back?",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-trim-usage",
+          "type": "usage",
+          "prompt": "trim を正しく使った文を選んでください。",
+          "choices": [
+            "She trimmed at her hair a few centimeters.",
+            "She trimmed for her hair a few centimeters.",
+            "She trimmed her hair a few centimeters yesterday.",
+            "She trimmed to her hair a few centimeters."
+          ],
+          "correctIndex": 2,
+          "explanation": "trim は他動詞なので、前置詞を置かずに目的語を直接取ります。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "daily-life",
+          "business"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-vow",
       "word": "vow",
       "level": "準2級",
@@ -10087,6 +11671,192 @@
         "cefrEstimate": "B2",
         "domains": [
           "relationships"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-wrinkle",
+      "word": "wrinkle",
+      "level": "準2級",
+      "ipa": "/ˈɹɪŋkl̩/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a small line or fold on skin or cloth",
+      "meaning": "しわ、ひだ",
+      "usageTip": "顔の皮膚にも服や紙にも使います。位置は in the middle や around the eyes のように表し、数えられる名詞なので a wrinkle / wrinkles と言います。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "服",
+          "text": "There was a deep wrinkle across the front of my shirt.",
+          "translation": "シャツの前に深いしわが一本入っていた。"
+        },
+        {
+          "id": "example-2",
+          "context": "加齢",
+          "text": "Her smile made small wrinkles appear around her eyes.",
+          "translation": "彼女が笑うと目の周りに小さなしわができた。"
+        },
+        {
+          "id": "example-3",
+          "context": "家事",
+          "text": "Hang the dress up so it doesn't get wrinkles.",
+          "translation": "しわにならないように、ドレスを吊るしておいて。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "wrinkle",
+          "choices": [
+            {
+              "text": "しわ",
+              "meaning": "皮膚や布の線"
+            },
+            {
+              "text": "傷跡",
+              "meaning": "けがの跡"
+            },
+            {
+              "text": "影",
+              "meaning": "光が遮られた所"
+            },
+            {
+              "text": "汚れ",
+              "meaning": "付いた汚れ"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "wrinkle は皮膚や布にできるしわを指します。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "しわ、ひだ",
+          "choices": [
+            {
+              "text": "bubble",
+              "meaning": "泡"
+            },
+            {
+              "text": "crowd",
+              "meaning": "群衆"
+            },
+            {
+              "text": "tunnel",
+              "meaning": "トンネル"
+            },
+            {
+              "text": "wrinkle",
+              "meaning": "しわ"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "しわは wrinkle で表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: アイロンをかける前。I need to iron this shirt because it has too many ___.",
+          "choices": [
+            {
+              "text": "flavors",
+              "meaning": "味"
+            },
+            {
+              "text": "visitors",
+              "meaning": "訪問者"
+            },
+            {
+              "text": "wrinkles",
+              "meaning": "しわ"
+            },
+            {
+              "text": "echoes",
+              "meaning": "こだま"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "アイロンで取るのはしわなので wrinkles が合います。",
+          "alternatives": [
+            {
+              "answer": "creases",
+              "explanation": "折り目のような線を指し、wrinkles より整った線を連想させます。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "wrinkle を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "The paper has a wrinkle on the middle.",
+              "meaning": "紙の真ん中にしわがある。(前置詞の誤り)"
+            },
+            {
+              "text": "The paper has wrinkle in middle.",
+              "meaning": "紙の真ん中にしわがある。(冠詞の誤り)"
+            },
+            {
+              "text": "The paper has a wrinkle in the middle.",
+              "meaning": "紙の真ん中にしわがある。"
+            },
+            {
+              "text": "The paper has a wrinkle at the middle.",
+              "meaning": "紙の真ん中にしわがある。(前置詞の誤り)"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "紙の真ん中という位置は in the middle が自然で、数えられる名詞なので a wrinkle と冠詞も必要です。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: アイロンをかける前。I need to iron this shirt because it has too many ___.",
+        "answers": [
+          "wrinkles"
+        ],
+        "explanation": "アイロンで取るのはしわなので wrinkles が合います。",
+        "alternatives": [
+          {
+            "answer": "creases",
+            "explanation": "折り目のような線を指し、wrinkles より整った線を連想させます。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "wrinkleを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "There was a deep wrinkle across the front of my shirt.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-wrinkle-usage",
+          "type": "usage",
+          "prompt": "wrinkle を正しく使った文を選びなさい。",
+          "choices": [
+            "The paper has a wrinkle on the middle.",
+            "The paper has wrinkle in middle.",
+            "The paper has a wrinkle in the middle.",
+            "The paper has a wrinkle at the middle."
+          ],
+          "correctIndex": 2,
+          "explanation": "紙の真ん中という位置は in the middle が自然で、数えられる名詞なので a wrinkle と冠詞も必要です。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "health",
+          "daily-life"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -13875,6 +15645,217 @@
       }
     },
     {
+      "id": "vocab-blur",
+      "word": "blur",
+      "level": "準2級",
+      "ipa": "blɜː",
+      "ipaLabel": "英音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "blur"
+        ],
+        "past": [
+          "blurred"
+        ],
+        "pastParticiple": [
+          "blurred"
+        ],
+        "presentParticiple": [
+          "blurring"
+        ],
+        "thirdPersonSingular": [
+          "blurs"
+        ]
+      },
+      "definition": "to make the edges or details of something unclear, or to become unclear",
+      "meaning": "ぼやけさせる、曖昧にする",
+      "usageTip": "他動詞では blur + 名詞(ぼかす)、自動詞では「ぼやける」。blur the line between A and B で「AとBの境界を曖昧にする」。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "雨の日",
+          "text": "Rain blurred the lights of the cars on the road.",
+          "translation": "雨が道路を走る車の明かりをぼんやりとにじませた。"
+        },
+        {
+          "id": "example-2",
+          "context": "写真",
+          "text": "If you move while I press the button, the picture will come out blurred.",
+          "translation": "ボタンを押す間に動くと、写真はぶれて写ってしまうよ。"
+        },
+        {
+          "id": "example-3",
+          "context": "仕事",
+          "text": "Working from home can blur the line between work and rest.",
+          "translation": "在宅勤務は仕事と休息の境目を曖昧にすることがある。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "blur",
+          "choices": [
+            {
+              "text": "曖昧にする",
+              "meaning": "はっきりさせなくする"
+            },
+            {
+              "text": "組み立てる",
+              "meaning": "部品をつなぎ合わせる"
+            },
+            {
+              "text": "禁止する",
+              "meaning": "してはいけないとする"
+            },
+            {
+              "text": "返却する",
+              "meaning": "元の場所に戻す"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "blur は輪郭や区別をぼやけさせる、または曖昧にする意味です。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "ぼやけさせる、曖昧にする",
+          "choices": [
+            {
+              "text": "tighten",
+              "meaning": "締める"
+            },
+            {
+              "text": "blur",
+              "meaning": "ぼやけさせる"
+            },
+            {
+              "text": "deliver",
+              "meaning": "届ける"
+            },
+            {
+              "text": "praise",
+              "meaning": "ほめる"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "ぼやけさせる意味の英単語は blur です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "眼鏡を外したら文字が見にくくなった場面: Without my glasses, the words on the screen begin to ___.",
+          "choices": [
+            {
+              "text": "cheer",
+              "meaning": "歓声をあげる"
+            },
+            {
+              "text": "borrow",
+              "meaning": "借りる"
+            },
+            {
+              "text": "depend",
+              "meaning": "頼る"
+            },
+            {
+              "text": "blur",
+              "meaning": "ぼやける"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "眼鏡がなく見えにくいので、文字がぼやける blur が合います。",
+          "alternatives": [
+            {
+              "answer": "fade",
+              "explanation": "徐々に薄れる意味で、視力の問題とは少し違う。"
+            },
+            {
+              "answer": "swim",
+              "explanation": "文字が揺らいで見える口語的な表現。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "blur の使い方が正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "The photo blurs clearly every detail.",
+              "meaning": "写真ははっきり全ての細部をぼかす(不自然)"
+            },
+            {
+              "text": "The rain blurred of the street lights.",
+              "meaning": "雨が街灯のをぼかした(of が不要)"
+            },
+            {
+              "text": "The rain was blur the street lights.",
+              "meaning": "be 動詞と原形の誤り"
+            },
+            {
+              "text": "The rain blurred the street lights.",
+              "meaning": "雨が街灯をぼんやりさせた。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "blur は他動詞として直接目的語を取るため、of は不要で、過去形 blurred を使います。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "眼鏡を外したら文字が見にくくなった場面: Without my glasses, the words on the screen begin to ___.",
+        "answers": [
+          "blur"
+        ],
+        "explanation": "眼鏡がなく見えにくいので、文字がぼやける blur が合います。",
+        "alternatives": [
+          {
+            "answer": "fade",
+            "explanation": "徐々に薄れる意味で、視力の問題とは少し違う。"
+          },
+          {
+            "answer": "swim",
+            "explanation": "文字が揺らいで見える口語的な表現。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "blurを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Rain blurred the lights of the cars on the road.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-blur-usage",
+          "type": "usage",
+          "prompt": "blur の使い方が正しい文を選んでください。",
+          "choices": [
+            "The photo blurs clearly every detail.",
+            "The rain blurred of the street lights.",
+            "The rain was blur the street lights.",
+            "The rain blurred the street lights."
+          ],
+          "correctIndex": 3,
+          "explanation": "blur は他動詞として直接目的語を取るため、of は不要で、過去形 blurred を使います。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "science",
+          "media"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-soak",
       "word": "soak",
       "level": "準2級",
@@ -17548,5 +19529,510 @@
       }
     }
   ],
-  "audio": []
+  "audio": [
+    {
+      "wordId": "vocab-virtual",
+      "cacheKey": "a3abcbf98b23a7bf0ce238e27d2bf32c8d4fe4024b1ae264539a264d7174a710",
+      "fileId": "1n-l7_Z5Cmh3HwCqaC_7Tq2EOTDS9wONq",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.0855000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.134,
+          "endSeconds": 4.441000000000001
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.441000000000001,
+          "endSeconds": 8.086500000000001
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.135000000000002,
+          "endSeconds": 12.446
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-adapter",
+      "cacheKey": "fdb44a15a09ed8a4fc526df2cbe1a07ed3b22e117b13fc33944c371c1e910a29",
+      "fileId": "12JPf6Nl0PcUtVFOIdfyi6RnhQH20WcpB",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8360000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.8360000000000001,
+          "endSeconds": 4.29
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.628,
+          "endSeconds": 8.017
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.181000000000001,
+          "endSeconds": 10.96
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-newsletter",
+      "cacheKey": "1f316ba984306c327a68ecf901957fd53a21b41d11ef2b8a6b0fbdba7cda9f4d",
+      "fileId": "1aWhyJmxUQ2zSLiE8BJ_A1auEgvFE3Xno",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8995
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.8995,
+          "endSeconds": 4.2780000000000005
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.303,
+          "endSeconds": 7.947
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.972,
+          "endSeconds": 11.285
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-editor",
+      "cacheKey": "60661113cbdef3775744eb5c9f2ff45b3bf8e3008a1ef3a7105d0625aa4d8f46",
+      "fileId": "1JXSeyCqRhxxWtC3nyCMLMCzQNShJ6h0G",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8069999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.041,
+          "endSeconds": 4.1215
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.129,
+          "endSeconds": 6.925
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.09,
+          "endSeconds": 10.124
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-calcium",
+      "cacheKey": "36011534254ab24f01fb0c76bd73c0a4b6ae8b459a73bc3eb01911bc7e1fb619",
+      "fileId": "1iuGWO9EntemAXyQa3bXa-8DC3VXpigqJ",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9924999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.041,
+          "endSeconds": 4.673
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.721,
+          "endSeconds": 7.877000000000001
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.902,
+          "endSeconds": 11.889
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-nausea",
+      "cacheKey": "b0112bab8536a6d31283b0ace9c3a0d8ac517167aeaaea370da134b075cc80c7",
+      "fileId": "1DxA-KbpC5frDjVNf1GMJGj7g8QR7_BoR",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.016
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.1800000000000002,
+          "endSeconds": 4.476
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.582,
+          "endSeconds": 7.7905
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.798,
+          "endSeconds": 11.146
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-sprain",
+      "cacheKey": "bd4a6951c0c53e4d6967f3d17243f4e3ff820eb123bfc349a5ff7f9c77f84fed",
+      "fileId": "1RTNF67Hinn4pqDZGjlK5G-rgBfADmGEH",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.283
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.331,
+          "endSeconds": 5.207
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.255,
+          "endSeconds": 8.4405
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.448,
+          "endSeconds": 11.703
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-voter",
+      "cacheKey": "2264c4923abd0e9677b6e93cb7ec4a2642b46146a29d3dd432d7e0a876069271",
+      "fileId": "1UCOlKb0UAK5TL07Vfp7V0XT96cr1Okuu",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7949999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.902,
+          "endSeconds": 4.302
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.4079999999999995,
+          "endSeconds": 7.442
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.45,
+          "endSeconds": 11.378
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-tremble",
+      "cacheKey": "c1a178da4d6db4fe3e4ba2d7f4f0ea2811386e9ec0655b2743c40b4be92e8c02",
+      "fileId": "1BP-LvL-ZtJax2GYmwvisWCgf8XHvY9sW",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8300000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.995,
+          "endSeconds": 4.127
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.361,
+          "endSeconds": 7.7379999999999995
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.902,
+          "endSeconds": 11.238
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-hasty",
+      "cacheKey": "592a4ea5ed50f69a16ddee91ec0fd913442330c83be0d46e319c27ae8e1e3e03",
+      "fileId": "1cpVZQo76_K9bXrE-WUyejkD9r_Rw7gLc",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.097
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.436,
+          "endSeconds": 5.1259999999999994
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.232,
+          "endSeconds": 9.1545
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 9.203000000000001,
+          "endSeconds": 12.539
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-blunt",
+      "cacheKey": "d166c5ea0f244dd43d11a876d0b7468fc9d295547870f8a54bd595d49abdeae4",
+      "fileId": "1e_Jlm6IGF6stgwct2ojwTCidt38X7Vie",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.784
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.1219999999999999,
+          "endSeconds": 3.965
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.965,
+          "endSeconds": 6.902
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.067,
+          "endSeconds": 10.077
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-graph",
+      "cacheKey": "2e6ca89521d17d8d24218a6e4d8b450538427ddb169dc49a8c4667785b33aece",
+      "fileId": "1JGm__h2yxkn4jEt_cR0kPnO4Sg5pf-l7",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8999999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9249999999999999,
+          "endSeconds": 4.58
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.628,
+          "endSeconds": 8.127
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.135000000000002,
+          "endSeconds": 11.61
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-crust",
+      "cacheKey": "dc3fbfe343b6729a4707777eab9796b1d89aeacbb49cf4cb2b21c04dcf99ea08",
+      "fileId": "1JJyyUtCZUL0IzTI9fN9QnZa7bl3jKWTF",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.877
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.1110000000000002,
+          "endSeconds": 3.907
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.141,
+          "endSeconds": 7.436
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.601,
+          "endSeconds": 11.099
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-plot",
+      "cacheKey": "cf256035ef141647dc1a20053de166e6d29494f058a630b7d45d0e6f8be1358f",
+      "fileId": "1vJw-9CVZrPDl4WeUAl1XUxb0n0LNf7j1",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7489999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0870000000000002,
+          "endSeconds": 4.569
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.733,
+          "endSeconds": 8.017
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.181000000000001,
+          "endSeconds": 11.331
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-sequel",
+      "cacheKey": "fc6072143e9097c7097177a890ae3dd2c8c50ae0c7751347aafa1feeab896b34",
+      "fileId": "1ineL7fIenkHTpB8DUCu9cxOU42u9rHZ-",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.917
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.917,
+          "endSeconds": 3.5525
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.56,
+          "endSeconds": 6.635
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.683,
+          "endSeconds": 9.474
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-villain",
+      "cacheKey": "eb56191e75a9aaae19abd749d4b4295ee379ae0cc56fce9f28eddadabc13f3fa",
+      "fileId": "1PhuRBSQs_H7ZzhYA9LoTmhRT6SZJGzqp",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.6910000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.855,
+          "endSeconds": 3.4890000000000003
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.723,
+          "endSeconds": 6.2749999999999995
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.4399999999999995,
+          "endSeconds": 9.334
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-hum",
+      "cacheKey": "8e225950292bf04fbfd0b1fd1834356f09c3c3cc97d97a499d7b33ebe8b3e088",
+      "fileId": "1InTAmjiqx84xNOVkBP_PooACwEE0hSJn",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.853
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0179999999999998,
+          "endSeconds": 3.21
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.375,
+          "endSeconds": 6.3215
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.37,
+          "endSeconds": 9.149
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-whistle",
+      "cacheKey": "4979fa5d959f09c0110dca4f824c5fe4343d558d89bad30c347a432c452c5c2d",
+      "fileId": "1VX_a8avziAqW37IgP2gPpBlm2MlxKrmp",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.772
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9369999999999999,
+          "endSeconds": 3.5004999999999997
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.549,
+          "endSeconds": 6.808999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.974,
+          "endSeconds": 9.288
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    }
+  ]
 }

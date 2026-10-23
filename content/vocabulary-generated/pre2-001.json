@@ -2222,6 +2222,216 @@
       }
     },
     {
+      "id": "vocab-cast",
+      "word": "cast",
+      "level": "準2級",
+      "ipa": "kɑːst",
+      "ipaLabel": "英音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "cast"
+        ],
+        "past": [
+          "cast"
+        ],
+        "pastParticiple": [
+          "cast"
+        ],
+        "presentParticiple": [
+          "casting"
+        ],
+        "thirdPersonSingular": [
+          "casts"
+        ]
+      },
+      "definition": "to throw something, or to choose an actor for a role in a play or film",
+      "meaning": "投げる・配役する",
+      "usageTip": "cast A as B で「AをBの役に配役する」。cast a shadow や cast doubt のような決まった表現も多い。過去形・過去分詞も cast で変わらない。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "演劇",
+          "text": "The director cast a young actor as the king.",
+          "translation": "監督は若い俳優を王役に配役した。"
+        },
+        {
+          "id": "example-2",
+          "context": "釣り",
+          "text": "He cast his fishing line into the quiet lake.",
+          "translation": "彼は静かな湖に釣り糸を投げ入れた。"
+        },
+        {
+          "id": "example-3",
+          "context": "風景",
+          "text": "The tall tree cast a long shadow across the yard.",
+          "translation": "その高い木は庭に長い影を落とした。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "cast",
+          "choices": [
+            {
+              "text": "忘れる",
+              "meaning": "記憶から消える"
+            },
+            {
+              "text": "投げる・配役する",
+              "meaning": "投げたり役を割り当てたりする"
+            },
+            {
+              "text": "掃除する",
+              "meaning": "きれいにする"
+            },
+            {
+              "text": "急ぐ",
+              "meaning": "速く動く"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "cast は物を投げる意味と、俳優に役を割り当てる意味があります。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "投げる・配役する",
+          "choices": [
+            {
+              "text": "cancel",
+              "meaning": "取り消す"
+            },
+            {
+              "text": "carry",
+              "meaning": "運ぶ"
+            },
+            {
+              "text": "cast",
+              "meaning": "投げる・配役する"
+            },
+            {
+              "text": "collect",
+              "meaning": "集める"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "投げる、配役するという意味の語は cast です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面:映画監督が主役の俳優を決める。 The director decided to ___ her as the lead.",
+          "choices": [
+            {
+              "text": "repair",
+              "meaning": "修理する"
+            },
+            {
+              "text": "predict",
+              "meaning": "予測する"
+            },
+            {
+              "text": "deliver",
+              "meaning": "届ける"
+            },
+            {
+              "text": "cast",
+              "meaning": "配役する"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "cast her as the lead で「彼女を主役に配役する」となります。",
+          "alternatives": [
+            {
+              "answer": "choose",
+              "explanation": "choose も選ぶ意味で使えるが、役を割り当てる専門的な響きは cast の方が強い。"
+            },
+            {
+              "answer": "pick",
+              "explanation": "pick はよりくだけた言い方で、会話的に選ぶ感じ。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "cast を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "The clouds casted a shadow over the field.",
+              "meaning": "雲が野原に影を落とした。(活用誤り)"
+            },
+            {
+              "text": "The clouds cast to the field a shadow.",
+              "meaning": "雲が野原に影を落とした。(語順誤り)"
+            },
+            {
+              "text": "The clouds cast a shadow over the field.",
+              "meaning": "雲が野原に影を落とした。"
+            },
+            {
+              "text": "The clouds cast the field with a shadow.",
+              "meaning": "雲が影で野原を落とした。(構文誤り)"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "cast は不規則動詞で過去形も cast です。cast a shadow over ~ が自然な形です。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面:映画監督が主役の俳優を決める。 The director decided to ___ her as the lead.",
+        "answers": [
+          "cast"
+        ],
+        "explanation": "cast her as the lead で「彼女を主役に配役する」となります。",
+        "alternatives": [
+          {
+            "answer": "choose",
+            "explanation": "choose も選ぶ意味で使えるが、役を割り当てる専門的な響きは cast の方が強い。"
+          },
+          {
+            "answer": "pick",
+            "explanation": "pick はよりくだけた言い方で、会話的に選ぶ感じ。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "castを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The director cast a young actor as the king.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-cast-usage",
+          "type": "usage",
+          "prompt": "cast を正しく使った文を選んでください。",
+          "choices": [
+            "The clouds casted a shadow over the field.",
+            "The clouds cast to the field a shadow.",
+            "The clouds cast a shadow over the field.",
+            "The clouds cast the field with a shadow."
+          ],
+          "correctIndex": 2,
+          "explanation": "cast は不規則動詞で過去形も cast です。cast a shadow over ~ が自然な形です。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "arts-culture"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-chamber",
       "word": "chamber",
       "level": "準2級",
@@ -2612,6 +2822,199 @@
         "domains": [
           "society",
           "work"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-clumsy",
+      "word": "clumsy",
+      "level": "準2級",
+      "ipa": "ˈklʌmzi",
+      "ipaLabel": "米音",
+      "partOfSpeech": "形容詞",
+      "definition": "moving or doing things in an awkward way, often dropping or hitting things",
+      "meaning": "不器用な",
+      "usageTip": "人の動作や手先の不器用さに使う。clumsy with ~ で「~の扱いが下手な」。言葉や対応が不手際な場合にも使える。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "日常",
+          "text": "I am so clumsy that I spill my drink almost every week.",
+          "translation": "私はとても不器用で、ほぼ毎週飲み物をこぼす。"
+        },
+        {
+          "id": "example-2",
+          "context": "料理",
+          "text": "He felt clumsy with the knife at first.",
+          "translation": "彼は最初、包丁の扱いが不器用だと感じた。"
+        },
+        {
+          "id": "example-3",
+          "context": "会話",
+          "text": "Her clumsy apology only made the situation more awkward.",
+          "translation": "彼女のぎこちない謝罪は状況をさらに気まずくしただけだった。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "clumsy",
+          "choices": [
+            {
+              "text": "静かな",
+              "meaning": "音が少ない"
+            },
+            {
+              "text": "親切な",
+              "meaning": "思いやりがある"
+            },
+            {
+              "text": "不器用な",
+              "meaning": "動作がぎこちない"
+            },
+            {
+              "text": "裕福な",
+              "meaning": "お金がある"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "clumsy は動きや手先がぎこちなく、物を落としやすい様子を表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "不器用な",
+          "choices": [
+            {
+              "text": "crowded",
+              "meaning": "混雑した"
+            },
+            {
+              "text": "curious",
+              "meaning": "好奇心の強い"
+            },
+            {
+              "text": "cheerful",
+              "meaning": "陽気な"
+            },
+            {
+              "text": "clumsy",
+              "meaning": "不器用な"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "動作がぎこちない人を表す形容詞は clumsy です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面:急いで歩いてコップを倒してしまった。 I am sorry, I was ___ and knocked over your glass.",
+          "choices": [
+            {
+              "text": "generous",
+              "meaning": "気前がよい"
+            },
+            {
+              "text": "clumsy",
+              "meaning": "不器用な"
+            },
+            {
+              "text": "honest",
+              "meaning": "正直な"
+            },
+            {
+              "text": "patient",
+              "meaning": "我慢強い"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "コップを倒した理由として、動作が不器用だったという clumsy が合います。",
+          "alternatives": [
+            {
+              "answer": "careless",
+              "explanation": "careless は注意不足を強調し、能力より不注意を示す。"
+            },
+            {
+              "answer": "awkward",
+              "explanation": "awkward は動きのぎこちなさや気まずさを表せる。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "clumsy を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "He is clumsy in his hands of cooking.",
+              "meaning": "彼は料理の手が不器用だ。(語法誤り)"
+            },
+            {
+              "text": "He clumsy dropped the plate again.",
+              "meaning": "彼はまた皿を落とした。(品詞誤り)"
+            },
+            {
+              "text": "He is clumsy at the hurry every day.",
+              "meaning": "彼は毎日急ぎで不器用だ。(前置詞誤り)"
+            },
+            {
+              "text": "He is clumsy with tools, so he asked for help.",
+              "meaning": "彼は道具の扱いが不器用なので助けを求めた。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "clumsy は形容詞で、clumsy with tools のように with を使って対象を示せます。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面:急いで歩いてコップを倒してしまった。 I am sorry, I was ___ and knocked over your glass.",
+        "answers": [
+          "clumsy"
+        ],
+        "explanation": "コップを倒した理由として、動作が不器用だったという clumsy が合います。",
+        "alternatives": [
+          {
+            "answer": "careless",
+            "explanation": "careless は注意不足を強調し、能力より不注意を示す。"
+          },
+          {
+            "answer": "awkward",
+            "explanation": "awkward は動きのぎこちなさや気まずさを表せる。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "clumsyを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I am so clumsy that I spill my drink almost every week.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-clumsy-usage",
+          "type": "usage",
+          "prompt": "clumsy を正しく使った文を選んでください。",
+          "choices": [
+            "He is clumsy in his hands of cooking.",
+            "He clumsy dropped the plate again.",
+            "He is clumsy at the hurry every day.",
+            "He is clumsy with tools, so he asked for help."
+          ],
+          "correctIndex": 3,
+          "explanation": "clumsy は形容詞で、clumsy with tools のように with を使って対象を示せます。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "daily-life"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -7091,6 +7494,217 @@
       }
     },
     {
+      "id": "vocab-dispatch",
+      "word": "dispatch",
+      "level": "準2級",
+      "ipa": "dɪˈspætʃ",
+      "ipaLabel": "英音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "dispatch"
+        ],
+        "past": [
+          "dispatched"
+        ],
+        "pastParticiple": [
+          "dispatched"
+        ],
+        "presentParticiple": [
+          "dispatching"
+        ],
+        "thirdPersonSingular": [
+          "dispatches"
+        ]
+      },
+      "definition": "to send someone or something to a place for a particular purpose",
+      "meaning": "派遣する・発送する",
+      "usageTip": "人を現場へ送る場合と荷物を送る場合の両方で使う。dispatch A to B の形が基本。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "緊急対応",
+          "text": "The city dispatched two ambulances to the scene within minutes.",
+          "translation": "市は数分以内に救急車2台を現場へ派遣した。"
+        },
+        {
+          "id": "example-2",
+          "context": "発送",
+          "text": "The shop will dispatch your order as soon as payment arrives.",
+          "translation": "支払いが届き次第、店は注文品を発送する。"
+        },
+        {
+          "id": "example-3",
+          "context": "会社",
+          "text": "Our manager dispatched a technician to the customer's office.",
+          "translation": "上司は技術者を顧客のオフィスへ派遣した。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "dispatch",
+          "choices": [
+            {
+              "text": "延期する",
+              "meaning": "後に回す"
+            },
+            {
+              "text": "派遣する・発送する",
+              "meaning": "人や物を送り出す"
+            },
+            {
+              "text": "受け取る",
+              "meaning": "受領する"
+            },
+            {
+              "text": "禁止する",
+              "meaning": "してはいけないとする"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "dispatch は人や物をある場所へ送り出すことです。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "派遣する・発送する",
+          "choices": [
+            {
+              "text": "distract",
+              "meaning": "気を散らす"
+            },
+            {
+              "text": "display",
+              "meaning": "展示する"
+            },
+            {
+              "text": "dismiss",
+              "meaning": "解雇する"
+            },
+            {
+              "text": "dispatch",
+              "meaning": "派遣する・発送する"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "人や荷物を送り出す意味は dispatch です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面:通報を受けた消防署。 The fire station quickly decided to ___ three trucks to the building.",
+          "choices": [
+            {
+              "text": "decorate",
+              "meaning": "飾る"
+            },
+            {
+              "text": "borrow",
+              "meaning": "借りる"
+            },
+            {
+              "text": "dispatch",
+              "meaning": "派遣する"
+            },
+            {
+              "text": "ignore",
+              "meaning": "無視する"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "消防車を建物へ向かわせる意味なので dispatch が合います。",
+          "alternatives": [
+            {
+              "answer": "send",
+              "explanation": "最も一般的で、緊急性の含みは弱い。"
+            },
+            {
+              "answer": "deploy",
+              "explanation": "配置して活動させる、やや軍事的・組織的な語。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "dispatch を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "They dispatched a doctor at the village.",
+              "meaning": "彼らは村で医者を派遣した。(前置詞誤り)"
+            },
+            {
+              "text": "They dispatched the village a doctor to.",
+              "meaning": "語順誤り"
+            },
+            {
+              "text": "They dispatched a doctor to the village.",
+              "meaning": "彼らは村へ医者を派遣した。"
+            },
+            {
+              "text": "They dispatched for a doctor the village.",
+              "meaning": "語順・前置詞誤り"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "dispatch A to B で、AをBへ送る意味になります。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面:通報を受けた消防署。 The fire station quickly decided to ___ three trucks to the building.",
+        "answers": [
+          "dispatch"
+        ],
+        "explanation": "消防車を建物へ向かわせる意味なので dispatch が合います。",
+        "alternatives": [
+          {
+            "answer": "send",
+            "explanation": "最も一般的で、緊急性の含みは弱い。"
+          },
+          {
+            "answer": "deploy",
+            "explanation": "配置して活動させる、やや軍事的・組織的な語。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "dispatchを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The city dispatched two ambulances to the scene within minutes.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-dispatch-usage",
+          "type": "usage",
+          "prompt": "dispatch を正しく使った文を選んでください。",
+          "choices": [
+            "They dispatched a doctor at the village.",
+            "They dispatched the village a doctor to.",
+            "They dispatched a doctor to the village.",
+            "They dispatched for a doctor the village."
+          ],
+          "correctIndex": 2,
+          "explanation": "dispatch A to B で、AをBへ送る意味になります。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "business",
+          "transport"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-drastic",
       "word": "drastic",
       "level": "準2級",
@@ -7279,6 +7893,217 @@
         "domains": [
           "economics",
           "business"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-drift",
+      "word": "drift",
+      "level": "準2級",
+      "ipa": "drɪft",
+      "ipaLabel": "英音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "drift"
+        ],
+        "past": [
+          "drifted"
+        ],
+        "pastParticiple": [
+          "drifted"
+        ],
+        "presentParticiple": [
+          "drifting"
+        ],
+        "thirdPersonSingular": [
+          "drifts"
+        ]
+      },
+      "definition": "to move slowly on water or in the air, or through life, without strong control",
+      "meaning": "漂う・流される",
+      "usageTip": "水や風に流される動きのほか、drift apart のように関係が自然に離れる意味でも使う。方向は into, along, away などで示す。自動詞。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "海",
+          "text": "The small boat drifted slowly along the coast with the current.",
+          "translation": "小さなボートは潮流に乗って海岸沿いをゆっくり漂った。"
+        },
+        {
+          "id": "example-2",
+          "context": "友情",
+          "text": "After they moved to different cities, the two friends drifted apart.",
+          "translation": "別々の都市へ引っ越した後、二人の友人は疎遠になった。"
+        },
+        {
+          "id": "example-3",
+          "context": "空",
+          "text": "Light clouds drifted across the sky during the picnic.",
+          "translation": "ピクニックの間、薄い雲が空を流れていった。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "drift",
+          "choices": [
+            {
+              "text": "急いで走る",
+              "meaning": "速く移動する"
+            },
+            {
+              "text": "強く押す",
+              "meaning": "力を加える"
+            },
+            {
+              "text": "漂う・流される",
+              "meaning": "ゆっくり流れて動く"
+            },
+            {
+              "text": "深く掘る",
+              "meaning": "地面を下へ削る"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "drift は強い制御なしにゆっくり動くことを表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "漂う・流される",
+          "choices": [
+            {
+              "text": "drill",
+              "meaning": "穴を開ける"
+            },
+            {
+              "text": "drain",
+              "meaning": "排水する"
+            },
+            {
+              "text": "drag",
+              "meaning": "引きずる"
+            },
+            {
+              "text": "drift",
+              "meaning": "漂う"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "水や風に流されて動くのは drift です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面:湖でのんびりする。 The empty boat began to ___ away from the shore.",
+          "choices": [
+            {
+              "text": "march",
+              "meaning": "行進する"
+            },
+            {
+              "text": "drift",
+              "meaning": "漂う"
+            },
+            {
+              "text": "jump",
+              "meaning": "跳ぶ"
+            },
+            {
+              "text": "crash",
+              "meaning": "衝突する"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "無人のボートが岸から離れていくので、漂う意味の drift が合います。",
+          "alternatives": [
+            {
+              "answer": "float",
+              "explanation": "浮かんでいる状態に重点がある。"
+            },
+            {
+              "answer": "move",
+              "explanation": "最も一般的で、ゆっくり流れる感じは弱い。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "drift を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "The balloon drifted the hill slowly.",
+              "meaning": "気球は丘をゆっくり漂った。(前置詞が必要)"
+            },
+            {
+              "text": "The balloon drifted slowly over the hill.",
+              "meaning": "気球は丘の上をゆっくり漂った。"
+            },
+            {
+              "text": "The balloon drifted the wind over hill.",
+              "meaning": "気球が風を丘の上で漂った。(目的語誤り)"
+            },
+            {
+              "text": "The balloon was drifted over the hill.",
+              "meaning": "気球は丘の上で漂わされた。(受け身誤り)"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "drift は自動詞なので、場所や方向は over などの前置詞句で示します。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面:湖でのんびりする。 The empty boat began to ___ away from the shore.",
+        "answers": [
+          "drift"
+        ],
+        "explanation": "無人のボートが岸から離れていくので、漂う意味の drift が合います。",
+        "alternatives": [
+          {
+            "answer": "float",
+            "explanation": "浮かんでいる状態に重点がある。"
+          },
+          {
+            "answer": "move",
+            "explanation": "最も一般的で、ゆっくり流れる感じは弱い。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "driftを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The small boat drifted slowly along the coast with the current.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-drift-usage",
+          "type": "usage",
+          "prompt": "drift を正しく使った文を選んでください。",
+          "choices": [
+            "The balloon drifted the hill slowly.",
+            "The balloon drifted slowly over the hill.",
+            "The balloon drifted the wind over hill.",
+            "The balloon was drifted over the hill."
+          ],
+          "correctIndex": 1,
+          "explanation": "drift は自動詞なので、場所や方向は over などの前置詞句で示します。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "environment",
+          "relationships"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -9930,6 +10755,217 @@
       }
     },
     {
+      "id": "vocab-fascinate",
+      "word": "fascinate",
+      "level": "準2級",
+      "ipa": "ˈfæsɪneɪt",
+      "ipaLabel": "英音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "fascinate"
+        ],
+        "past": [
+          "fascinated"
+        ],
+        "pastParticiple": [
+          "fascinated"
+        ],
+        "presentParticiple": [
+          "fascinating"
+        ],
+        "thirdPersonSingular": [
+          "fascinates"
+        ]
+      },
+      "definition": "to attract someone's strong interest so that they want to watch, learn or think more",
+      "meaning": "魅了する",
+      "usageTip": "主語が人を魅了する側。人が感じる側なら be fascinated by を使う。進行形はあまり使わない。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "科学",
+          "text": "Space has always fascinated me since I was a child.",
+          "translation": "子どものころから宇宙は私を魅了し続けている。"
+        },
+        {
+          "id": "example-2",
+          "context": "旅行",
+          "text": "The old streets of the town fascinate many visitors.",
+          "translation": "その町の古い通りは多くの訪問者を魅了する。"
+        },
+        {
+          "id": "example-3",
+          "context": "教室",
+          "text": "Her story about deep-sea animals fascinated the whole class.",
+          "translation": "深海生物についての彼女の話はクラス全員を魅了した。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "fascinate",
+          "choices": [
+            {
+              "text": "怖がらせる",
+              "meaning": "恐怖を与える"
+            },
+            {
+              "text": "疲れさせる",
+              "meaning": "疲労させる"
+            },
+            {
+              "text": "混乱させる",
+              "meaning": "分からなくさせる"
+            },
+            {
+              "text": "魅了する",
+              "meaning": "強く引きつける"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "fascinate は強い興味で人を引きつけることです。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "魅了する",
+          "choices": [
+            {
+              "text": "fascinate",
+              "meaning": "魅了する"
+            },
+            {
+              "text": "fasten",
+              "meaning": "留める"
+            },
+            {
+              "text": "frighten",
+              "meaning": "怖がらせる"
+            },
+            {
+              "text": "flatter",
+              "meaning": "お世辞を言う"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "「魅了する」は fascinate です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面:博物館で古代の道具に夢中になる弟。 Ancient tools always ___ my little brother at the museum.",
+          "choices": [
+            {
+              "text": "bore",
+              "meaning": "退屈させる"
+            },
+            {
+              "text": "avoid",
+              "meaning": "避ける"
+            },
+            {
+              "text": "fascinate",
+              "meaning": "魅了する"
+            },
+            {
+              "text": "delay",
+              "meaning": "遅らせる"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "主語 Ancient tools は複数なので動詞は原形で、道具が弟を強く引きつけるという意味から fascinate が合います。",
+          "alternatives": [
+            {
+              "answer": "captivate",
+              "explanation": "心をとらえて離さない、やや文学的な表現です。"
+            },
+            {
+              "answer": "intrigue",
+              "explanation": "好奇心を刺激するニュアンスです。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "fascinate を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I was fascinated the magic show.",
+              "meaning": "by が必要"
+            },
+            {
+              "text": "I was fascinated by the magic show.",
+              "meaning": "私はそのマジックショーに魅了された。"
+            },
+            {
+              "text": "I fascinated by the magic show.",
+              "meaning": "be 動詞が必要"
+            },
+            {
+              "text": "The magic show was fascinated me.",
+              "meaning": "受け身と能動が混在"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "人が魅了される側なので be fascinated by が正しい形です。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面:博物館で古代の道具に夢中になる弟。 Ancient tools always ___ my little brother at the museum.",
+        "answers": [
+          "fascinate"
+        ],
+        "explanation": "主語 Ancient tools は複数なので動詞は原形で、道具が弟を強く引きつけるという意味から fascinate が合います。",
+        "alternatives": [
+          {
+            "answer": "captivate",
+            "explanation": "心をとらえて離さない、やや文学的な表現です。"
+          },
+          {
+            "answer": "intrigue",
+            "explanation": "好奇心を刺激するニュアンスです。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "fascinateを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Space has always fascinated me since I was a child.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-fascinate-usage",
+          "type": "usage",
+          "prompt": "fascinate を正しく使った文を選んでください。",
+          "choices": [
+            "I was fascinated the magic show.",
+            "I was fascinated by the magic show.",
+            "I fascinated by the magic show.",
+            "The magic show was fascinated me."
+          ],
+          "correctIndex": 1,
+          "explanation": "人が魅了される側なので be fascinated by が正しい形です。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "arts-culture",
+          "education"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-feeble",
       "word": "feeble",
       "level": "準2級",
@@ -11986,6 +13022,218 @@
       }
     },
     {
+      "id": "vocab-impose",
+      "word": "impose",
+      "level": "準2級",
+      "ipa": "ɪmˈpoʊz",
+      "ipaLabel": "米音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "impose"
+        ],
+        "past": [
+          "imposed"
+        ],
+        "pastParticiple": [
+          "imposed"
+        ],
+        "presentParticiple": [
+          "imposing"
+        ],
+        "thirdPersonSingular": [
+          "imposes"
+        ]
+      },
+      "definition": "to force a rule, tax, opinion or burden on people or situations",
+      "meaning": "課す・押しつける",
+      "usageTip": "impose A on B の形が基本。規則・税・罰を課す場合と、意見や負担を押しつける場合がある。impose on 人 は「迷惑をかける」の意味もある。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "行政",
+          "text": "The city decided to impose a fee on plastic bags.",
+          "translation": "市はレジ袋に料金を課すことを決めた。"
+        },
+        {
+          "id": "example-2",
+          "context": "家庭",
+          "text": "Parents should not impose their own dreams on their children.",
+          "translation": "親は自分の夢を子どもに押しつけるべきではない。"
+        },
+        {
+          "id": "example-3",
+          "context": "学校",
+          "text": "The school imposed strict limits on phone use in class.",
+          "translation": "学校は授業中の携帯電話の使用に厳しい制限を課した。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "impose",
+          "choices": [
+            {
+              "text": "課す・押しつける",
+              "meaning": "規則や負担を強いる"
+            },
+            {
+              "text": "思い出す",
+              "meaning": "記憶を呼び戻す"
+            },
+            {
+              "text": "取り除く",
+              "meaning": "なくす"
+            },
+            {
+              "text": "見直す",
+              "meaning": "もう一度調べる"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "impose は規則・税・意見などを相手に課す、押しつけるという意味です。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "課す・押しつける",
+          "choices": [
+            {
+              "text": "identity",
+              "meaning": "身元"
+            },
+            {
+              "text": "ideal",
+              "meaning": "理想的な"
+            },
+            {
+              "text": "grasp",
+              "meaning": "つかむ"
+            },
+            {
+              "text": "impose",
+              "meaning": "課す"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "「課す・押しつける」は impose です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "政治の場面：政府が輸入品に新しい税を課した。 The government decided to ___ a new tax on imported goods.",
+          "choices": [
+            {
+              "text": "hinder",
+              "meaning": "妨げる"
+            },
+            {
+              "text": "grasp",
+              "meaning": "つかむ"
+            },
+            {
+              "text": "impose",
+              "meaning": "課す"
+            },
+            {
+              "text": "admire",
+              "meaning": "称賛する"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "税を課すという意味なので impose a tax on ... が自然です。",
+          "alternatives": [
+            {
+              "answer": "levy",
+              "explanation": "税や料金を徴収する、やや硬い語です。"
+            },
+            {
+              "answer": "place",
+              "explanation": "place a tax on ... でも使えますが、impose より一般的で強制の響きは弱めです。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "impose を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "They imposed a curfew to the town.",
+              "meaning": "町に夜間外出禁止令を課した、の意図の誤用（前置詞の誤り）"
+            },
+            {
+              "text": "They imposed the town a curfew.",
+              "meaning": "町に夜間外出禁止令を課した、の意図の誤用（語順の誤り）"
+            },
+            {
+              "text": "They imposed a curfew on the town.",
+              "meaning": "彼らは町に夜間外出禁止令を課した。"
+            },
+            {
+              "text": "They imposed a curfew for the town.",
+              "meaning": "町に夜間外出禁止令を課した、の意図の誤用（前置詞の誤り）"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "impose は impose A on B の形で、課す対象に on を使います。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "政治の場面：政府が輸入品に新しい税を課した。 The government decided to ___ a new tax on imported goods.",
+        "answers": [
+          "impose"
+        ],
+        "explanation": "税を課すという意味なので impose a tax on ... が自然です。",
+        "alternatives": [
+          {
+            "answer": "levy",
+            "explanation": "税や料金を徴収する、やや硬い語です。"
+          },
+          {
+            "answer": "place",
+            "explanation": "place a tax on ... でも使えますが、impose より一般的で強制の響きは弱めです。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "imposeを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The city decided to impose a fee on plastic bags.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-impose-usage",
+          "type": "usage",
+          "prompt": "impose を正しく使った文を選んでください。",
+          "choices": [
+            "They imposed a curfew to the town.",
+            "They imposed the town a curfew.",
+            "They imposed a curfew on the town.",
+            "They imposed a curfew for the town."
+          ],
+          "correctIndex": 2,
+          "explanation": "impose は impose A on B の形で、課す対象に on を使います。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "law",
+          "politics",
+          "society"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-incline",
       "word": "incline",
       "level": "準2級",
@@ -12596,6 +13844,209 @@
         "domains": [
           "environment",
           "society"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-insist",
+      "word": "insist",
+      "level": "準2級",
+      "ipa": "ɪnˈsɪst",
+      "ipaLabel": "米音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "insist"
+        ],
+        "past": [
+          "insisted"
+        ],
+        "pastParticiple": [
+          "insisted"
+        ],
+        "presentParticiple": [
+          "insisting"
+        ],
+        "thirdPersonSingular": [
+          "insists"
+        ]
+      },
+      "definition": "to say firmly that something is true or must happen, even when others disagree",
+      "meaning": "主張する・言い張る",
+      "usageTip": "insist on + 名詞/動名詞、insist that + 節の形が基本。要求を表す that 節では動詞は原形（例: insisted that everyone arrive）を使う。事実の主張なら通常の時制を使う。insist to do は誤り。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "レストラン",
+          "text": "He insisted on paying for dinner after the long meeting.",
+          "translation": "長い会議の後、彼は夕食代を払うと言って譲らなかった。"
+        },
+        {
+          "id": "example-2",
+          "context": "事実の主張",
+          "text": "She insists that she locked the door before leaving.",
+          "translation": "彼女は出かける前にドアの鍵をかけたと言い張っている。"
+        },
+        {
+          "id": "example-3",
+          "context": "職場",
+          "text": "The manager insisted that everyone arrive ten minutes early.",
+          "translation": "部長は全員が10分早く来るよう強く求めた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "insist",
+          "choices": [
+            {
+              "text": "こっそり逃げる",
+              "meaning": "sneak away の意味"
+            },
+            {
+              "text": "ためらって待つ",
+              "meaning": "hesitate and wait の意味"
+            },
+            {
+              "text": "静かに同意する",
+              "meaning": "quietly agree の意味"
+            },
+            {
+              "text": "強く主張する",
+              "meaning": "insist の意味"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "insist は自分の考えや要求を強く主張する意味です。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "主張する・言い張る",
+          "choices": [
+            {
+              "text": "consider",
+              "meaning": "検討する"
+            },
+            {
+              "text": "suggest",
+              "meaning": "提案する"
+            },
+            {
+              "text": "insist",
+              "meaning": "主張する"
+            },
+            {
+              "text": "ignore",
+              "meaning": "無視する"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "強く言い張る意味は insist です。suggest は提案で、強さが弱い語です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "友人が会計を自分で払うと譲らない場面: Mika ___ on paying for the tickets.",
+          "choices": [
+            {
+              "text": "wished",
+              "meaning": "願った"
+            },
+            {
+              "text": "insisted",
+              "meaning": "言い張った"
+            },
+            {
+              "text": "hoped",
+              "meaning": "望んだ"
+            },
+            {
+              "text": "complained",
+              "meaning": "不満を言った"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "on paying と結びつき、払うと譲らない意味になるのは insisted です。",
+          "alternatives": [
+            {
+              "answer": "persisted",
+              "explanation": "persisted in/with なら粘り強く続ける意味になり、on paying とは合いません。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "insist を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "She insisted on a full refund.",
+              "meaning": "彼女は全額返金を強く求めた。"
+            },
+            {
+              "text": "They insisted to leave early.",
+              "meaning": "彼らは早く出ると言い張った。(型の誤り)"
+            },
+            {
+              "text": "He insisted me to join the team.",
+              "meaning": "彼は私にチーム加入を言い張った。(型の誤り)"
+            },
+            {
+              "text": "She insisted for a refund.",
+              "meaning": "彼女は返金を言い張った。(前置詞の誤り)"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "insist on + 名詞が正しい形です。to 不定詞や for は使えません。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "友人が会計を自分で払うと譲らない場面: Mika ___ on paying for the tickets.",
+        "answers": [
+          "insisted"
+        ],
+        "explanation": "on paying と結びつき、払うと譲らない意味になるのは insisted です。",
+        "alternatives": [
+          {
+            "answer": "persisted",
+            "explanation": "persisted in/with なら粘り強く続ける意味になり、on paying とは合いません。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "insistを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "He insisted on paying for dinner after the long meeting.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-insist-usage",
+          "type": "usage",
+          "prompt": "insist を正しく使った文を選びなさい。",
+          "choices": [
+            "She insisted on a full refund.",
+            "They insisted to leave early.",
+            "He insisted me to join the team.",
+            "She insisted for a refund."
+          ],
+          "correctIndex": 0,
+          "explanation": "insist on + 名詞が正しい形です。to 不定詞や for は使えません。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "communication",
+          "relationships"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -15408,6 +16859,208 @@
       }
     },
     {
+      "id": "vocab-obscure",
+      "word": "obscure",
+      "level": "準2級",
+      "ipa": "əbˈskjʊə",
+      "ipaLabel": "英音",
+      "partOfSpeech": "形容詞",
+      "definition": "hard to understand or see clearly, or known by very few people",
+      "meaning": "分かりにくい・無名の",
+      "usageTip": "「意味が不明瞭」と「あまり知られていない」の2つの意味がある。obscure writer のように名詞の前でも、The reason is obscure. のように補語としても使える。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "説明",
+          "text": "The instructions were so obscure that nobody could follow them.",
+          "translation": "その説明は非常に分かりにくく、誰も従えなかった。"
+        },
+        {
+          "id": "example-2",
+          "context": "文学",
+          "text": "He loves reading poems by obscure writers from small towns.",
+          "translation": "彼は小さな町出身の無名な作家の詩を読むのが好きだ。"
+        },
+        {
+          "id": "example-3",
+          "context": "歴史",
+          "text": "The origin of the festival remains obscure to historians.",
+          "translation": "その祭りの起源は歴史家にも不明なままである。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "obscure",
+          "choices": [
+            {
+              "text": "明白な",
+              "meaning": "はっきりしている"
+            },
+            {
+              "text": "分かりにくい・無名の",
+              "meaning": "不明瞭または知られていない"
+            },
+            {
+              "text": "親切な",
+              "meaning": "優しい"
+            },
+            {
+              "text": "有名な",
+              "meaning": "広く知られている"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "obscure は意味が不明瞭であること、または広く知られていないことを表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "分かりにくい・無名の",
+          "choices": [
+            {
+              "text": "mutual",
+              "meaning": "相互の"
+            },
+            {
+              "text": "negligent",
+              "meaning": "怠慢な"
+            },
+            {
+              "text": "familiar",
+              "meaning": "よく知られた"
+            },
+            {
+              "text": "obscure",
+              "meaning": "分かりにくい・無名の"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "不明瞭、または無名という意味に合うのは obscure です。familiar は逆の意味です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 先生の説明が曖昧で、生徒が理解できなかった。 English: The teacher's explanation was too ___ for the students to understand.",
+          "choices": [
+            {
+              "text": "simple",
+              "meaning": "簡単な"
+            },
+            {
+              "text": "obscure",
+              "meaning": "分かりにくい"
+            },
+            {
+              "text": "clear",
+              "meaning": "明確な"
+            },
+            {
+              "text": "direct",
+              "meaning": "率直な"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "理解できなかったという結果から、分かりにくいという意味の obscure が合います。他は理解しやすい方向の語です。",
+          "alternatives": [
+            {
+              "answer": "unclear",
+              "explanation": "最も一般的で自然な言い換えです。"
+            },
+            {
+              "answer": "vague",
+              "explanation": "内容がぼんやりして具体的でない感じです。"
+            },
+            {
+              "answer": "confusing",
+              "explanation": "混乱させる、という感じが強くなります。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "obscure の使い方が正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "The band obscure until a film used its song.",
+              "meaning": "be動詞がなく文が成り立たない誤り"
+            },
+            {
+              "text": "The band was obscure until a film used its song.",
+              "meaning": "そのバンドは映画で曲が使われるまで無名だった。"
+            },
+            {
+              "text": "The band was obscurely singer until a film.",
+              "meaning": "副詞と名詞の混同による誤り"
+            },
+            {
+              "text": "The band made obscure of its song.",
+              "meaning": "品詞と構造の誤り"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "obscure は形容詞なので be 動詞の補語になれます。他は動詞の欠落や品詞の誤りがあります。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 先生の説明が曖昧で、生徒が理解できなかった。 English: The teacher's explanation was too ___ for the students to understand.",
+        "answers": [
+          "obscure"
+        ],
+        "explanation": "理解できなかったという結果から、分かりにくいという意味の obscure が合います。他は理解しやすい方向の語です。",
+        "alternatives": [
+          {
+            "answer": "unclear",
+            "explanation": "最も一般的で自然な言い換えです。"
+          },
+          {
+            "answer": "vague",
+            "explanation": "内容がぼんやりして具体的でない感じです。"
+          },
+          {
+            "answer": "confusing",
+            "explanation": "混乱させる、という感じが強くなります。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "obscureを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The instructions were so obscure that nobody could follow them.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-obscure-usage",
+          "type": "usage",
+          "prompt": "obscure の使い方が正しい文を選んでください。",
+          "choices": [
+            "The band obscure until a film used its song.",
+            "The band was obscure until a film used its song.",
+            "The band was obscurely singer until a film.",
+            "The band made obscure of its song."
+          ],
+          "correctIndex": 1,
+          "explanation": "obscure は形容詞なので be 動詞の補語になれます。他は動詞の欠落や品詞の誤りがあります。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "communication",
+          "media"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-occupy",
       "word": "occupy",
       "level": "準2級",
@@ -16018,6 +17671,208 @@
         "domains": [
           "communication",
           "work"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-pledge",
+      "word": "pledge",
+      "level": "準2級",
+      "ipa": "plɛdʒ",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a serious promise to do something or to give something",
+      "meaning": "誓約・公約",
+      "usageTip": "名詞では make a pledge to do(〜すると誓う)、keep a pledge(守る)、sign a pledge の形でよく使う。政治家の公約や寄付の約束にも使える。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "政治",
+          "text": "The mayor made a pledge to improve local bus services.",
+          "translation": "市長は地域のバス路線を改善すると公約した。"
+        },
+        {
+          "id": "example-2",
+          "context": "寄付",
+          "text": "Many residents signed a pledge to support the new library.",
+          "translation": "多くの住民が新しい図書館を支援する誓約書に署名した。"
+        },
+        {
+          "id": "example-3",
+          "context": "環境",
+          "text": "The company kept its pledge to reduce plastic packaging.",
+          "translation": "その会社はプラスチック包装を減らすという約束を守った。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "pledge",
+          "choices": [
+            {
+              "text": "苦情",
+              "meaning": "不満の訴え"
+            },
+            {
+              "text": "予算",
+              "meaning": "使える金額"
+            },
+            {
+              "text": "危険",
+              "meaning": "悪い事態の可能性"
+            },
+            {
+              "text": "誓約・公約",
+              "meaning": "固い約束"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "名詞の pledge は、何かをすると固く約束することを表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "誓約・公約",
+          "choices": [
+            {
+              "text": "pledge",
+              "meaning": "誓約・公約"
+            },
+            {
+              "text": "ledge",
+              "meaning": "出っ張り"
+            },
+            {
+              "text": "plague",
+              "meaning": "疫病"
+            },
+            {
+              "text": "budget",
+              "meaning": "予算"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "「公約」を表す単語は pledge です。ledge は棚状の出っ張り、plague は疫病です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 選挙で候補者が家庭の税負担を軽くすると約束した。 English: The candidate made a ___ to lower taxes for families.",
+          "choices": [
+            {
+              "text": "fever",
+              "meaning": "発熱"
+            },
+            {
+              "text": "pledge",
+              "meaning": "公約"
+            },
+            {
+              "text": "basket",
+              "meaning": "かご"
+            },
+            {
+              "text": "shadow",
+              "meaning": "影"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "候補者が税金を下げると約束する場面なので、made a pledge が自然です。",
+          "alternatives": [
+            {
+              "answer": "promise",
+              "explanation": "より一般的で日常的な約束です。"
+            },
+            {
+              "answer": "commitment",
+              "explanation": "責任を持って取り組む約束のニュアンスです。"
+            },
+            {
+              "answer": "vow",
+              "explanation": "より強く厳かな誓いの響きがあります。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "名詞の pledge を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "They made a pledge for donate money.",
+              "meaning": "不定詞の形が誤り"
+            },
+            {
+              "text": "They pledge of money to the school.",
+              "meaning": "名詞と動詞の混同による誤り"
+            },
+            {
+              "text": "They made a pledge to donate money to the school.",
+              "meaning": "彼らは学校に寄付をすると約束した。"
+            },
+            {
+              "text": "They did a pledge donating the school.",
+              "meaning": "動詞と構造の誤り"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "名詞 pledge は make a pledge to do の形で使います。他は不定詞の形や動詞の選択が誤っています。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 選挙で候補者が家庭の税負担を軽くすると約束した。 English: The candidate made a ___ to lower taxes for families.",
+        "answers": [
+          "pledge"
+        ],
+        "explanation": "候補者が税金を下げると約束する場面なので、made a pledge が自然です。",
+        "alternatives": [
+          {
+            "answer": "promise",
+            "explanation": "より一般的で日常的な約束です。"
+          },
+          {
+            "answer": "commitment",
+            "explanation": "責任を持って取り組む約束のニュアンスです。"
+          },
+          {
+            "answer": "vow",
+            "explanation": "より強く厳かな誓いの響きがあります。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "pledgeを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The mayor made a pledge to improve local bus services.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-pledge-usage",
+          "type": "usage",
+          "prompt": "名詞の pledge を正しく使った文を選んでください。",
+          "choices": [
+            "They made a pledge for donate money.",
+            "They pledge of money to the school.",
+            "They made a pledge to donate money to the school.",
+            "They did a pledge donating the school."
+          ],
+          "correctIndex": 2,
+          "explanation": "名詞 pledge は make a pledge to do の形で使います。他は不定詞の形や動詞の選択が誤っています。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "politics",
+          "society"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -17890,6 +19745,225 @@
       }
     },
     {
+      "id": "vocab-reveal",
+      "word": "reveal",
+      "level": "準2級",
+      "ipa": "rɪˈviːl",
+      "ipaLabel": "英音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "reveal"
+        ],
+        "past": [
+          "revealed"
+        ],
+        "pastParticiple": [
+          "revealed"
+        ],
+        "presentParticiple": [
+          "revealing"
+        ],
+        "thirdPersonSingular": [
+          "reveals"
+        ]
+      },
+      "definition": "to make something known or visible that was hidden before",
+      "meaning": "明らかにする",
+      "usageTip": "reveal A to B で「AをBに明かす」。reveal that ... も頻出。調査結果や秘密、感情に使う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "報道",
+          "text": "The report revealed that many students were sleeping less than six hours.",
+          "translation": "その報告は、多くの生徒の睡眠が六時間未満だと明らかにした。"
+        },
+        {
+          "id": "example-2",
+          "context": "人間関係",
+          "text": "She did not reveal the secret to anyone, not even her sister.",
+          "translation": "彼女はその秘密を誰にも、姉にさえも明かさなかった。"
+        },
+        {
+          "id": "example-3",
+          "context": "日常",
+          "text": "When the curtain opened, it revealed a small garden behind the house.",
+          "translation": "カーテンが開くと、家の裏の小さな庭が現れた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "reveal",
+          "choices": [
+            {
+              "text": "忘れる",
+              "meaning": "記憶から消える"
+            },
+            {
+              "text": "禁止する",
+              "meaning": "してはいけないとする"
+            },
+            {
+              "text": "修理する",
+              "meaning": "直す"
+            },
+            {
+              "text": "明らかにする",
+              "meaning": "隠れていたことを示す"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "reveal は隠れていた事実や物を明らかにする意味です。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "明らかにする",
+          "choices": [
+            {
+              "text": "hide",
+              "meaning": "隠す"
+            },
+            {
+              "text": "reveal",
+              "meaning": "明らかにする"
+            },
+            {
+              "text": "waste",
+              "meaning": "無駄にする"
+            },
+            {
+              "text": "follow",
+              "meaning": "従う"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "隠れていたことを示すのは reveal です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "調査の結果、多くの家庭が節電していると分かった。 The survey ___ that many families were saving electricity.",
+          "choices": [
+            {
+              "text": "prevented",
+              "meaning": "防いだ"
+            },
+            {
+              "text": "borrowed",
+              "meaning": "借りた"
+            },
+            {
+              "text": "revealed",
+              "meaning": "明らかにした"
+            },
+            {
+              "text": "canceled",
+              "meaning": "取り消した"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "調査が事実を示したので revealed が自然です。",
+          "alternatives": [
+            {
+              "answer": "showed",
+              "explanation": "一般的で、事実を示す意味です。"
+            },
+            {
+              "answer": "found",
+              "explanation": "調査で分かった結果を述べる言い方です。"
+            },
+            {
+              "answer": "disclosed",
+              "explanation": "非公開の情報を公にする響きがあります。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "reveal を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "He revealed his plan to the team yesterday.",
+              "meaning": "彼は昨日チームに計画を明かした。"
+            },
+            {
+              "text": "He revealed me his plan yesterday.",
+              "meaning": "目的語の順序が誤り。"
+            },
+            {
+              "text": "He revealed about his plan yesterday.",
+              "meaning": "about が不要。"
+            },
+            {
+              "text": "He revealed to tell his plan yesterday.",
+              "meaning": "to不定詞の使い方が誤り。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "reveal は他動詞で、reveal A to B の形をとります。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "調査の結果、多くの家庭が節電していると分かった。 The survey ___ that many families were saving electricity.",
+        "answers": [
+          "revealed"
+        ],
+        "explanation": "調査が事実を示したので revealed が自然です。",
+        "alternatives": [
+          {
+            "answer": "showed",
+            "explanation": "一般的で、事実を示す意味です。"
+          },
+          {
+            "answer": "found",
+            "explanation": "調査で分かった結果を述べる言い方です。"
+          },
+          {
+            "answer": "disclosed",
+            "explanation": "非公開の情報を公にする響きがあります。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "revealを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The report revealed that many students were sleeping less than six hours.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-reveal-usage",
+          "type": "usage",
+          "prompt": "reveal を正しく使った文を選びなさい。",
+          "choices": [
+            "He revealed his plan to the team yesterday.",
+            "He revealed me his plan yesterday.",
+            "He revealed about his plan yesterday.",
+            "He revealed to tell his plan yesterday."
+          ],
+          "correctIndex": 0,
+          "explanation": "reveal は他動詞で、reveal A to B の形をとります。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "communication",
+          "media"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-scatter",
       "word": "scatter",
       "level": "準2級",
@@ -18321,5 +20395,118 @@
       }
     }
   ],
-  "audio": []
+  "audio": [
+    {
+      "wordId": "vocab-outlook",
+      "cacheKey": "50b424a4a064eadd95f1d5fc12cf63c18177ffa62386d6ef4c3e3a61914742f4",
+      "fileId": "1bakBNHErXTaO9TANh1xXI1nzmZl2zwQY",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8300000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.169,
+          "endSeconds": 4.406
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.512,
+          "endSeconds": 7.609999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.7749999999999995,
+          "endSeconds": 10.635
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-overlook",
+      "cacheKey": "dbc5c52df4b703939c8bcd449732e898536342e691f09b023e39a32b33b84e1e",
+      "fileId": "1GknKWQSI3SvlARWLikGe80jzYE7Z14pK",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.0505
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0990000000000002,
+          "endSeconds": 4.0575
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.106,
+          "endSeconds": 7.111
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.159,
+          "endSeconds": 10.263
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-plunge",
+      "cacheKey": "7df16aff52a816ddb3d279f6de4ab211c7ad5feb71a39c7d7c80cbb8173fa34f",
+      "fileId": "1plC5wCwRZvCPF7aT29_MeMZUZsFF0W7R",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9924999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.041,
+          "endSeconds": 4.8355
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.8839999999999995,
+          "endSeconds": 8.213999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.262,
+          "endSeconds": 10.82
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-quota",
+      "cacheKey": "432ed1839ed38091f1ca3e29dc6a6c5e9db61046f289b817e3872c8f3a634cfc",
+      "fileId": "1orKt-EYdZpFYGGPHHgU4bRa_U4yBIMvL",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.749
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.749,
+          "endSeconds": 3.5
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.665,
+          "endSeconds": 6.3915
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.3915,
+          "endSeconds": 9.752
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    }
+  ]
 }

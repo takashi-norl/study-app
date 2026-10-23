@@ -213,6 +213,580 @@
       }
     },
     {
+      "id": "vocab-cultural",
+      "word": "cultural",
+      "level": "準2級",
+      "ipa": "ˈkʌltʃərəl",
+      "ipaLabel": "英音",
+      "partOfSpeech": "形容詞",
+      "definition": "relating to the shared customs, arts, beliefs and ways of life of a group of people",
+      "meaning": "文化の・文化的な",
+      "usageTip": "名詞の前に置き、cultural differences や cultural events のように使う。名詞 culture と区別する。「培養の」という特殊な意味ではなく、社会や芸術の「文化」を指す。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "留学",
+          "text": "Living abroad helped me understand cultural differences more deeply.",
+          "translation": "海外で暮らして、文化の違いをより深く理解できた。"
+        },
+        {
+          "id": "example-2",
+          "context": "地域行事",
+          "text": "The town holds a cultural festival every autumn.",
+          "translation": "その町は毎年秋に文化的な祭りを開く。"
+        },
+        {
+          "id": "example-3",
+          "context": "職場",
+          "text": "Our team has members from many cultural backgrounds.",
+          "translation": "私たちのチームには、さまざまな文化的背景を持つ人がいる。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "cultural",
+          "choices": [
+            {
+              "text": "文化の",
+              "meaning": "cultural の意味"
+            },
+            {
+              "text": "経済の",
+              "meaning": "economic の意味"
+            },
+            {
+              "text": "頻繁に",
+              "meaning": "frequently の意味"
+            },
+            {
+              "text": "最近",
+              "meaning": "recently の意味"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "cultural は習慣・芸術・価値観など文化に関することを表す。他は経済、頻度、時期を表す語である。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "文化の・文化的な",
+          "choices": [
+            {
+              "text": "frequently",
+              "meaning": "頻繁に"
+            },
+            {
+              "text": "economic",
+              "meaning": "経済の"
+            },
+            {
+              "text": "recently",
+              "meaning": "最近"
+            },
+            {
+              "text": "cultural",
+              "meaning": "文化の"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "「文化の」を表す形容詞は cultural である。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "美術館や伝統芸能の公演が多い町の話。 The city is famous for its museums, theaters and other ___ attractions.",
+          "choices": [
+            {
+              "text": "economic",
+              "meaning": "経済の"
+            },
+            {
+              "text": "cultural",
+              "meaning": "文化の"
+            },
+            {
+              "text": "frequent",
+              "meaning": "頻繁な"
+            },
+            {
+              "text": "recent",
+              "meaning": "最近の"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "美術館や劇場は文化的な見どころなので cultural が合う。",
+          "alternatives": [
+            {
+              "answer": "artistic",
+              "explanation": "芸術面に焦点を当てた言い方になる。"
+            },
+            {
+              "answer": "historical",
+              "explanation": "歴史に関わる見どころを強調する言い方になる。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "形容詞 cultural を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "The museum offers a cultural of Japan.",
+              "meaning": "その博物館は日本の文化を提供する。"
+            },
+            {
+              "text": "They cultural enjoyed the festival.",
+              "meaning": "彼らは文化的に祭りを楽しんだ。"
+            },
+            {
+              "text": "She is interested in cultural of food.",
+              "meaning": "彼女は食の文化に興味がある。"
+            },
+            {
+              "text": "Cultural events bring neighbors together.",
+              "meaning": "文化行事は近所の人々を結びつける。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "cultural は名詞 events を修飾する形容詞である。他は名詞や動詞の位置に cultural を置いており、文法的に誤っている。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "美術館や伝統芸能の公演が多い町の話。 The city is famous for its museums, theaters and other ___ attractions.",
+        "answers": [
+          "cultural"
+        ],
+        "explanation": "美術館や劇場は文化的な見どころなので cultural が合う。",
+        "alternatives": [
+          {
+            "answer": "artistic",
+            "explanation": "芸術面に焦点を当てた言い方になる。"
+          },
+          {
+            "answer": "historical",
+            "explanation": "歴史に関わる見どころを強調する言い方になる。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "culturalを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Living abroad helped me understand cultural differences more deeply.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-cultural-usage",
+          "type": "usage",
+          "prompt": "形容詞 cultural を正しく使った文を選びなさい。",
+          "choices": [
+            "The museum offers a cultural of Japan.",
+            "They cultural enjoyed the festival.",
+            "She is interested in cultural of food.",
+            "Cultural events bring neighbors together."
+          ],
+          "correctIndex": 3,
+          "explanation": "cultural は名詞 events を修飾する形容詞である。他は名詞や動詞の位置に cultural を置いており、文法的に誤っている。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "arts-culture",
+          "society"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-national",
+      "word": "national",
+      "level": "準2級",
+      "ipa": "ˈnæʃənəl",
+      "ipaLabel": "米音",
+      "partOfSpeech": "形容詞",
+      "definition": "relating to a whole country rather than one region or town",
+      "meaning": "国の・全国的な",
+      "usageTip": "national park、national team、national news のように名詞の前で使う。国籍を表す nationality とは別の語である。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "ニュース",
+          "text": "The storm was reported on the national news last night.",
+          "translation": "その嵐は昨夜、全国ニュースで報じられた。"
+        },
+        {
+          "id": "example-2",
+          "context": "スポーツ",
+          "text": "She hopes to join the national swimming team someday.",
+          "translation": "彼女はいつか水泳のナショナルチームに入りたいと思っている。"
+        },
+        {
+          "id": "example-3",
+          "context": "旅行",
+          "text": "We spent the weekend hiking in a national park.",
+          "translation": "私たちは週末に国立公園でハイキングをして過ごした。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "national",
+          "choices": [
+            {
+              "text": "経済の",
+              "meaning": "economic の意味"
+            },
+            {
+              "text": "頻繁に",
+              "meaning": "frequently の意味"
+            },
+            {
+              "text": "文化の",
+              "meaning": "cultural の意味"
+            },
+            {
+              "text": "国の・全国的な",
+              "meaning": "national の意味"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "national は一国全体に関わることを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "国の・全国的な",
+          "choices": [
+            {
+              "text": "national",
+              "meaning": "国の"
+            },
+            {
+              "text": "recently",
+              "meaning": "最近"
+            },
+            {
+              "text": "cultural",
+              "meaning": "文化の"
+            },
+            {
+              "text": "frequently",
+              "meaning": "頻繁に"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "「国の・全国的な」を表すのは national である。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "全国の視聴者が見る夜のテレビ放送の話。 The prime minister spoke on ___ television last night.",
+          "choices": [
+            {
+              "text": "frequent",
+              "meaning": "頻繁な"
+            },
+            {
+              "text": "cultural",
+              "meaning": "文化の"
+            },
+            {
+              "text": "economic",
+              "meaning": "経済の"
+            },
+            {
+              "text": "national",
+              "meaning": "全国の"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "全国放送の文脈なので national television が自然である。他は television と結びつきにくい。",
+          "alternatives": [
+            {
+              "answer": "live",
+              "explanation": "生放送であることを強調する言い方になる。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "形容詞 national を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "He is a national of Japan citizen.",
+              "meaning": "彼は日本の国民だ。"
+            },
+            {
+              "text": "She national visited the museum.",
+              "meaning": "彼女は国立で博物館を訪れた。"
+            },
+            {
+              "text": "This is a very nationally tradition.",
+              "meaning": "これはとても全国的な伝統だ。"
+            },
+            {
+              "text": "The national holiday is celebrated across the country.",
+              "meaning": "その国民の祝日は全国で祝われる。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "national は名詞 holiday を修飾する形容詞である。他は語順や品詞が誤っている。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "全国の視聴者が見る夜のテレビ放送の話。 The prime minister spoke on ___ television last night.",
+        "answers": [
+          "national"
+        ],
+        "explanation": "全国放送の文脈なので national television が自然である。他は television と結びつきにくい。",
+        "alternatives": [
+          {
+            "answer": "live",
+            "explanation": "生放送であることを強調する言い方になる。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "nationalを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The storm was reported on the national news last night.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-national-usage",
+          "type": "usage",
+          "prompt": "形容詞 national を正しく使った文を選びなさい。",
+          "choices": [
+            "He is a national of Japan citizen.",
+            "She national visited the museum.",
+            "This is a very nationally tradition.",
+            "The national holiday is celebrated across the country."
+          ],
+          "correctIndex": 3,
+          "explanation": "national は名詞 holiday を修飾する形容詞である。他は語順や品詞が誤っている。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "politics",
+          "society"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-economic",
+      "word": "economic",
+      "level": "準2級",
+      "ipa": "ˌiːkəˈnɒmɪk",
+      "ipaLabel": "英音",
+      "partOfSpeech": "形容詞",
+      "definition": "relating to money, trade, industry and how a country or business manages them",
+      "meaning": "経済の",
+      "usageTip": "economic growth のように「経済に関する」意味で使う。「安上がりな」を表す economical とは意味が異なる。学問の「経済学」は economics。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "ニュース",
+          "text": "The country faces serious economic problems this year.",
+          "translation": "その国は今年、深刻な経済問題に直面している。"
+        },
+        {
+          "id": "example-2",
+          "context": "授業",
+          "text": "Our teacher explained the economic effects of rising prices.",
+          "translation": "先生は物価上昇の経済的影響を説明した。"
+        },
+        {
+          "id": "example-3",
+          "context": "ビジネス",
+          "text": "Economic growth can create new jobs in small towns.",
+          "translation": "経済成長は小さな町に新しい仕事を生み出すことがある。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "economic",
+          "choices": [
+            {
+              "text": "文化の",
+              "meaning": "cultural の意味"
+            },
+            {
+              "text": "最近",
+              "meaning": "recently の意味"
+            },
+            {
+              "text": "経済の",
+              "meaning": "economic の意味"
+            },
+            {
+              "text": "頻繁に",
+              "meaning": "frequently の意味"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "economic は経済に関することを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "経済の",
+          "choices": [
+            {
+              "text": "recently",
+              "meaning": "最近"
+            },
+            {
+              "text": "cultural",
+              "meaning": "文化の"
+            },
+            {
+              "text": "frequently",
+              "meaning": "頻繁に"
+            },
+            {
+              "text": "economic",
+              "meaning": "経済の"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "「経済の」を表す形容詞は economic である。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "物価や失業率など、お金の動きの悪化を伝えるニュース。 The ___ downturn caused many companies to cut jobs.",
+          "choices": [
+            {
+              "text": "cultural",
+              "meaning": "文化の"
+            },
+            {
+              "text": "frequent",
+              "meaning": "頻繁な"
+            },
+            {
+              "text": "economic",
+              "meaning": "経済の"
+            },
+            {
+              "text": "recent",
+              "meaning": "最近の"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "景気の悪化(downturn)と人員削減は経済の話なので economic が合う。",
+          "alternatives": [
+            {
+              "answer": "financial",
+              "explanation": "お金や金融面の落ち込みをより直接的に指す。"
+            },
+            {
+              "answer": "business",
+              "explanation": "企業活動の落ち込みという見方になる。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "形容詞 economic を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "She studies economic at university.",
+              "meaning": "彼女は大学で経済を学ぶ。"
+            },
+            {
+              "text": "The economic of Japan is large.",
+              "meaning": "日本の経済は大きい。"
+            },
+            {
+              "text": "Economic growth slowed during the winter.",
+              "meaning": "冬の間、経済成長が鈍った。"
+            },
+            {
+              "text": "He is a very economic person.",
+              "meaning": "彼はとても経済的な人だ。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "economic は名詞 growth を修飾する。他は名詞 economics や economy、または economical が必要である。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "物価や失業率など、お金の動きの悪化を伝えるニュース。 The ___ downturn caused many companies to cut jobs.",
+        "answers": [
+          "economic"
+        ],
+        "explanation": "景気の悪化(downturn)と人員削減は経済の話なので economic が合う。",
+        "alternatives": [
+          {
+            "answer": "financial",
+            "explanation": "お金や金融面の落ち込みをより直接的に指す。"
+          },
+          {
+            "answer": "business",
+            "explanation": "企業活動の落ち込みという見方になる。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "economicを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The country faces serious economic problems this year.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-economic-usage",
+          "type": "usage",
+          "prompt": "形容詞 economic を正しく使った文を選びなさい。",
+          "choices": [
+            "She studies economic at university.",
+            "The economic of Japan is large.",
+            "Economic growth slowed during the winter.",
+            "He is a very economic person."
+          ],
+          "correctIndex": 2,
+          "explanation": "economic は名詞 growth を修飾する。他は名詞 economics や economy、または economical が必要である。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "economics",
+          "business"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-minor",
       "word": "minor",
       "level": "準2級",
@@ -795,6 +1369,200 @@
       }
     },
     {
+      "id": "vocab-frequently",
+      "word": "frequently",
+      "level": "準2級",
+      "ipa": "ˈfriːkwəntli",
+      "ipaLabel": "英音",
+      "partOfSpeech": "副詞",
+      "definition": "very often, or many times within a period",
+      "meaning": "頻繁に",
+      "usageTip": "often よりややかたい語。通常は一般動詞の前、be動詞や助動詞の後ろに置く。形容詞 frequent と混同しない。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "仕事",
+          "text": "Our manager frequently changes the meeting schedule at the last minute.",
+          "translation": "私たちの上司は会議の予定を直前に頻繁に変える。"
+        },
+        {
+          "id": "example-2",
+          "context": "日常",
+          "text": "I frequently forget my umbrella when I leave the office.",
+          "translation": "私は退社するときによく傘を忘れる。"
+        },
+        {
+          "id": "example-3",
+          "context": "学校",
+          "text": "Students are frequently asked to work in small groups.",
+          "translation": "生徒は少人数のグループで活動するよう頻繁に求められる。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "frequently",
+          "choices": [
+            {
+              "text": "めったに~ない",
+              "meaning": "rarely の意味"
+            },
+            {
+              "text": "頻繁に",
+              "meaning": "frequently の意味"
+            },
+            {
+              "text": "突然に",
+              "meaning": "suddenly の意味"
+            },
+            {
+              "text": "正確に",
+              "meaning": "exactly の意味"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "frequently は「頻繁に」という意味の副詞である。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "頻繁に",
+          "choices": [
+            {
+              "text": "cultural",
+              "meaning": "文化の"
+            },
+            {
+              "text": "economic",
+              "meaning": "経済の"
+            },
+            {
+              "text": "national",
+              "meaning": "国の"
+            },
+            {
+              "text": "frequently",
+              "meaning": "頻繁に"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "「頻繁に」に当たる副詞は frequently である。他は形容詞である。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "彼は図書館に通う常連である。 He visits the library ___, almost every other day.",
+          "choices": [
+            {
+              "text": "rarely",
+              "meaning": "めったに~ない"
+            },
+            {
+              "text": "never",
+              "meaning": "決して~ない"
+            },
+            {
+              "text": "barely",
+              "meaning": "かろうじて"
+            },
+            {
+              "text": "frequently",
+              "meaning": "頻繁に"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "almost every other day とあるので、頻度が高い frequently が合う。",
+          "alternatives": [
+            {
+              "answer": "often",
+              "explanation": "より日常的で口語的な言い方になる。"
+            },
+            {
+              "answer": "regularly",
+              "explanation": "定期的に、というニュアンスが加わる。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "副詞 frequently を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "She is frequent late for class.",
+              "meaning": "彼女はよく授業に遅れる。"
+            },
+            {
+              "text": "She is late frequently for class.",
+              "meaning": "彼女は授業によく遅れる。"
+            },
+            {
+              "text": "She is frequently late for class.",
+              "meaning": "彼女はよく授業に遅れる。"
+            },
+            {
+              "text": "She frequently late is for class.",
+              "meaning": "彼女は授業によく遅れる。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "be動詞の後ろ、形容詞 late の前に frequently を置くのが自然である。frequent は形容詞で副詞の代わりにならず、他は語順が崩れている。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "彼は図書館に通う常連である。 He visits the library ___, almost every other day.",
+        "answers": [
+          "frequently"
+        ],
+        "explanation": "almost every other day とあるので、頻度が高い frequently が合う。",
+        "alternatives": [
+          {
+            "answer": "often",
+            "explanation": "より日常的で口語的な言い方になる。"
+          },
+          {
+            "answer": "regularly",
+            "explanation": "定期的に、というニュアンスが加わる。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "frequentlyを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Our manager frequently changes the meeting schedule at the last minute.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-frequently-usage",
+          "type": "usage",
+          "prompt": "副詞 frequently を正しく使った文を選びなさい。",
+          "choices": [
+            "She is frequent late for class.",
+            "She is late frequently for class.",
+            "She is frequently late for class.",
+            "She frequently late is for class."
+          ],
+          "correctIndex": 2,
+          "explanation": "be動詞の後ろ、形容詞 late の前に frequently を置くのが自然である。frequent は形容詞で副詞の代わりにならず、他は語順が崩れている。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "daily-life",
+          "work"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-gradually",
       "word": "gradually",
       "level": "準2級",
@@ -1177,6 +1945,199 @@
         "domains": [
           "daily-life",
           "communication"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-recently",
+      "word": "recently",
+      "level": "準2級",
+      "ipa": "ˈriːsntli",
+      "ipaLabel": "米音",
+      "partOfSpeech": "副詞",
+      "definition": "during the last few days, weeks or months",
+      "meaning": "最近",
+      "usageTip": "過去形や現在完了形とよく使う。習慣を表す現在形とは合いにくい。形容詞 recent と区別する。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "近況",
+          "text": "I recently started learning how to cook Italian food.",
+          "translation": "私は最近、イタリア料理の作り方を習い始めた。"
+        },
+        {
+          "id": "example-2",
+          "context": "仕事",
+          "text": "Have you spoken with the new client recently?",
+          "translation": "最近、新しい顧客と話しましたか。"
+        },
+        {
+          "id": "example-3",
+          "context": "町",
+          "text": "A small bakery recently opened near the station.",
+          "translation": "駅の近くに最近、小さなパン屋が開店した。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "recently",
+          "choices": [
+            {
+              "text": "いつも",
+              "meaning": "always の意味"
+            },
+            {
+              "text": "すぐに",
+              "meaning": "soon の意味"
+            },
+            {
+              "text": "昔",
+              "meaning": "long ago の意味"
+            },
+            {
+              "text": "最近",
+              "meaning": "recently の意味"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "recently は「最近」を表す副詞である。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "最近",
+          "choices": [
+            {
+              "text": "recently",
+              "meaning": "最近"
+            },
+            {
+              "text": "national",
+              "meaning": "国の"
+            },
+            {
+              "text": "cultural",
+              "meaning": "文化の"
+            },
+            {
+              "text": "economic",
+              "meaning": "経済の"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "「最近」に当たる副詞は recently である。他は名詞を修飾する形容詞である。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "近所に新しい店ができた話をする場面。 A new bookstore opened ___ on our street.",
+          "choices": [
+            {
+              "text": "tomorrow",
+              "meaning": "明日"
+            },
+            {
+              "text": "recently",
+              "meaning": "最近"
+            },
+            {
+              "text": "someday",
+              "meaning": "いつか"
+            },
+            {
+              "text": "forever",
+              "meaning": "永遠に"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "opened は過去形なので、過去の近い時期を表す recently が合う。",
+          "alternatives": [
+            {
+              "answer": "just last month",
+              "explanation": "時期を具体的にし、ごく最近だと強調する言い方になる。"
+            },
+            {
+              "answer": "not long ago",
+              "explanation": "少し前という意味で、会話でよく使われる。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "副詞 recently を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "I recently go to the gym every day.",
+              "meaning": "私は最近毎日ジムに行く。"
+            },
+            {
+              "text": "I will recently visit my aunt.",
+              "meaning": "私は最近おばを訪ねる予定だ。"
+            },
+            {
+              "text": "I have recent seen that movie.",
+              "meaning": "私は最近その映画を見た。"
+            },
+            {
+              "text": "I have recently seen that movie.",
+              "meaning": "私は最近その映画を見た。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "recently は現在完了や過去形と使う。習慣の現在形や未来形とは合わず、recent は形容詞なので動詞を修飾できない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "近所に新しい店ができた話をする場面。 A new bookstore opened ___ on our street.",
+        "answers": [
+          "recently"
+        ],
+        "explanation": "opened は過去形なので、過去の近い時期を表す recently が合う。",
+        "alternatives": [
+          {
+            "answer": "just last month",
+            "explanation": "時期を具体的にし、ごく最近だと強調する言い方になる。"
+          },
+          {
+            "answer": "not long ago",
+            "explanation": "少し前という意味で、会話でよく使われる。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "recentlyを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I recently started learning how to cook Italian food.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-recently-usage",
+          "type": "usage",
+          "prompt": "副詞 recently を正しく使った文を選びなさい。",
+          "choices": [
+            "I recently go to the gym every day.",
+            "I will recently visit my aunt.",
+            "I have recent seen that movie.",
+            "I have recently seen that movie."
+          ],
+          "correctIndex": 3,
+          "explanation": "recently は現在完了や過去形と使う。習慣の現在形や未来形とは合わず、recent は形容詞なので動詞を修飾できない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "daily-life"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -1781,6 +2742,200 @@
       }
     },
     {
+      "id": "vocab-none",
+      "word": "none",
+      "level": "準2級",
+      "ipa": "nʌn",
+      "ipaLabel": "米音",
+      "partOfSpeech": "代名詞",
+      "definition": "not one person or thing, or not any amount, of a group or whole",
+      "meaning": "どれも〜ない・誰も〜ない",
+      "usageTip": "none of the + 名詞 の形が基本で、動詞は否定形にしない。複数名詞が続くときは複数扱い(were)が自然。単独では「少しもない」の意味でも使える。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "買い物",
+          "text": "I tried on three jackets, but none of them fit me.",
+          "translation": "上着を3着試着したが、どれも私には合わなかった。"
+        },
+        {
+          "id": "example-2",
+          "context": "学校",
+          "text": "None of my classmates knew the answer to the last question.",
+          "translation": "クラスメートの誰も最後の問題の答えを知らなかった。"
+        },
+        {
+          "id": "example-3",
+          "context": "食事",
+          "text": "There was some soup yesterday, but now there is none.",
+          "translation": "昨日はスープがあったが、今はまったくない。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "none",
+          "choices": [
+            {
+              "text": "どれも〜ない・誰も〜ない",
+              "meaning": "none の意味"
+            },
+            {
+              "text": "いくつか",
+              "meaning": "some の意味"
+            },
+            {
+              "text": "ほとんどすべて",
+              "meaning": "most の意味"
+            },
+            {
+              "text": "それぞれ",
+              "meaning": "each の意味"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "none は、ひとつも、または誰もいないことを表す全否定の代名詞です。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "どれも〜ない・誰も〜ない",
+          "choices": [
+            {
+              "text": "both",
+              "meaning": "両方"
+            },
+            {
+              "text": "many",
+              "meaning": "たくさん"
+            },
+            {
+              "text": "none",
+              "meaning": "どれも〜ない"
+            },
+            {
+              "text": "each",
+              "meaning": "それぞれ"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "全否定を表す代名詞は none です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "【場面：友人が来たが、誰も答えられなかった】 I asked five people for directions, but ___ of them knew the way.",
+          "choices": [
+            {
+              "text": "all",
+              "meaning": "全員"
+            },
+            {
+              "text": "some",
+              "meaning": "何人か"
+            },
+            {
+              "text": "none",
+              "meaning": "誰も〜ない"
+            },
+            {
+              "text": "every",
+              "meaning": "すべての"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "but の後で「誰も道を知らなかった」という流れなので、none of them が合います。",
+          "alternatives": [
+            {
+              "answer": "not one",
+              "explanation": "「ひとりも〜ない」と数を強調する言い方です。"
+            },
+            {
+              "answer": "neither",
+              "explanation": "2人の場合に使うので、5人には不向きです。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "none の使い方が正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "None the students were late today.",
+              "meaning": "of が抜けている"
+            },
+            {
+              "text": "Not none of the students were late today.",
+              "meaning": "否定が重複している"
+            },
+            {
+              "text": "None of the students were late today.",
+              "meaning": "今日は誰も遅刻しなかった。"
+            },
+            {
+              "text": "None students of the were late today.",
+              "meaning": "語順が誤り"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "none of the + 複数名詞 が正しい形です。of の脱落、二重否定、語順の誤りは不適切です。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "【場面：友人が来たが、誰も答えられなかった】 I asked five people for directions, but ___ of them knew the way.",
+        "answers": [
+          "none"
+        ],
+        "explanation": "but の後で「誰も道を知らなかった」という流れなので、none of them が合います。",
+        "alternatives": [
+          {
+            "answer": "not one",
+            "explanation": "「ひとりも〜ない」と数を強調する言い方です。"
+          },
+          {
+            "answer": "neither",
+            "explanation": "2人の場合に使うので、5人には不向きです。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "noneを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I tried on three jackets, but none of them fit me.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-none-usage",
+          "type": "usage",
+          "prompt": "none の使い方が正しい文を選んでください。",
+          "choices": [
+            "None the students were late today.",
+            "Not none of the students were late today.",
+            "None of the students were late today.",
+            "None students of the were late today."
+          ],
+          "correctIndex": 2,
+          "explanation": "none of the + 複数名詞 が正しい形です。of の脱落、二重否定、語順の誤りは不適切です。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "logic-reasoning",
+          "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-as",
       "word": "as",
       "level": "準2級",
@@ -1969,6 +3124,385 @@
         "domains": [
           "daily-life",
           "communication"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-by",
+      "word": "by",
+      "level": "準2級",
+      "ipa": "baɪ",
+      "ipaLabel": "米音",
+      "partOfSpeech": "前置詞",
+      "definition": "used to show who does something, how something is done, how near something is, or the latest time",
+      "meaning": "〜によって・〜のそばに・〜までに",
+      "usageTip": "受け身の行為者(written by Ann)、場所(by the window)、期限(by Friday)を表す。手段の by bus / by train は冠詞をつけない。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "受け身",
+          "text": "This song was written by my younger brother last year.",
+          "translation": "この曲は去年、弟によって書かれました。"
+        },
+        {
+          "id": "example-2",
+          "context": "場所",
+          "text": "I like to sit by the window when I read.",
+          "translation": "私は読書をするとき、窓のそばに座るのが好きです。"
+        },
+        {
+          "id": "example-3",
+          "context": "期限",
+          "text": "Please send me the report by Friday afternoon.",
+          "translation": "金曜の午後までにレポートを送ってください。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "by",
+          "choices": [
+            {
+              "text": "〜の中へ",
+              "meaning": "into の意味"
+            },
+            {
+              "text": "〜なしで",
+              "meaning": "without の意味"
+            },
+            {
+              "text": "〜の上に",
+              "meaning": "over の意味"
+            },
+            {
+              "text": "〜によって・〜のそばに",
+              "meaning": "by の意味"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "by は行為者、近くの場所、期限などを表す前置詞です。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "〜によって・〜のそばに",
+          "choices": [
+            {
+              "text": "over",
+              "meaning": "〜の上に"
+            },
+            {
+              "text": "by",
+              "meaning": "〜によって・〜のそばに"
+            },
+            {
+              "text": "toward",
+              "meaning": "〜の方へ"
+            },
+            {
+              "text": "during",
+              "meaning": "〜の間に"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "行為者や近くの場所を表すのは by です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "【場面：提出期限の話】 The students must finish the essay ___ Monday morning.",
+          "choices": [
+            {
+              "text": "for",
+              "meaning": "〜の間"
+            },
+            {
+              "text": "since",
+              "meaning": "〜以来"
+            },
+            {
+              "text": "by",
+              "meaning": "〜までに"
+            },
+            {
+              "text": "from",
+              "meaning": "〜から"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "期限を表す「〜までに」は by を使います。",
+          "alternatives": [
+            {
+              "answer": "before",
+              "explanation": "「〜の前に」で、期限の意味でも使えますがやや緩い言い方です。"
+            },
+            {
+              "answer": "no later than",
+              "explanation": "「遅くとも〜まで」と期限を厳格に示します。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "by を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I go to school by a bus every day.",
+              "meaning": "冠詞は不要"
+            },
+            {
+              "text": "I go to school by the foot every day.",
+              "meaning": "on foot が正しい"
+            },
+            {
+              "text": "I go to school by my bike every day.",
+              "meaning": "by bike が正しい"
+            },
+            {
+              "text": "I go to school by bus every day.",
+              "meaning": "私は毎日バスで通学します。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "手段の by は by bus のように冠詞や所有格をつけません。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "【場面：提出期限の話】 The students must finish the essay ___ Monday morning.",
+        "answers": [
+          "by"
+        ],
+        "explanation": "期限を表す「〜までに」は by を使います。",
+        "alternatives": [
+          {
+            "answer": "before",
+            "explanation": "「〜の前に」で、期限の意味でも使えますがやや緩い言い方です。"
+          },
+          {
+            "answer": "no later than",
+            "explanation": "「遅くとも〜まで」と期限を厳格に示します。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "byを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "This song was written by my younger brother last year.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-by-usage",
+          "type": "usage",
+          "prompt": "by を正しく使った文を選んでください。",
+          "choices": [
+            "I go to school by a bus every day.",
+            "I go to school by the foot every day.",
+            "I go to school by my bike every day.",
+            "I go to school by bus every day."
+          ],
+          "correctIndex": 3,
+          "explanation": "手段の by は by bus のように冠詞や所有格をつけません。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A1",
+        "domains": [
+          "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-from",
+      "word": "from",
+      "level": "準2級",
+      "ipa": "frɒm",
+      "ipaLabel": "英音",
+      "partOfSpeech": "前置詞",
+      "definition": "showing the place, person, time or source where something starts",
+      "meaning": "〜から",
+      "usageTip": "出発点・出身・送り主・原料・開始時刻などを表す。come from / be from で出身、from A to B で範囲を表す。弱形は /frəm/ で、文中では弱く発音されることが多い。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "出身",
+          "text": "My neighbor is from a small town near Kyoto.",
+          "translation": "隣人は京都近郊の小さな町の出身です。"
+        },
+        {
+          "id": "example-2",
+          "context": "移動",
+          "text": "The last train from Osaka arrives at platform three at midnight.",
+          "translation": "大阪発の最終電車は真夜中に3番ホームへ到着します。"
+        },
+        {
+          "id": "example-3",
+          "context": "時間",
+          "text": "The museum is open from nine to five every day.",
+          "translation": "その博物館は毎日9時から5時まで開いています。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "from",
+          "choices": [
+            {
+              "text": "〜へ向かって",
+              "meaning": "to の意味"
+            },
+            {
+              "text": "〜から",
+              "meaning": "from の意味"
+            },
+            {
+              "text": "〜を通って",
+              "meaning": "through の意味"
+            },
+            {
+              "text": "〜の間に",
+              "meaning": "between の意味"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "from は出発点や出所を表す前置詞で、「〜から」という意味です。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "〜から(出発点・出身)",
+          "choices": [
+            {
+              "text": "among",
+              "meaning": "〜の間で"
+            },
+            {
+              "text": "against",
+              "meaning": "〜に反対して"
+            },
+            {
+              "text": "beside",
+              "meaning": "〜の隣に"
+            },
+            {
+              "text": "from",
+              "meaning": "〜から"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "出発点や出身を表す語は from です。他は意味が異なります。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "【場面：出身を聞かれた】 My teacher comes ___ Canada, but she lives in Japan.",
+          "choices": [
+            {
+              "text": "in",
+              "meaning": "〜の中で"
+            },
+            {
+              "text": "at",
+              "meaning": "〜で"
+            },
+            {
+              "text": "on",
+              "meaning": "〜の上に"
+            },
+            {
+              "text": "from",
+              "meaning": "〜から"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "come from で出身を表します。他の前置詞ではこの意味になりません。",
+          "alternatives": [
+            {
+              "answer": "originally from",
+              "explanation": "「もともと〜出身」と、現在の居住地との違いを強調します。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "from を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I received a letter to my friend.",
+              "meaning": "友達への手紙を受け取った、の意味になり不自然"
+            },
+            {
+              "text": "I received a letter of my friend.",
+              "meaning": "送り主を of で表すのは誤り"
+            },
+            {
+              "text": "I received a letter from my friend.",
+              "meaning": "友達から手紙を受け取った。"
+            },
+            {
+              "text": "I received a letter by my friend.",
+              "meaning": "送り主を by で表すのは不自然"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "手紙の送り主は from で表します。to は宛先、of や by は送り主の表し方として不自然です。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "【場面：出身を聞かれた】 My teacher comes ___ Canada, but she lives in Japan.",
+        "answers": [
+          "from"
+        ],
+        "explanation": "come from で出身を表します。他の前置詞ではこの意味になりません。",
+        "alternatives": [
+          {
+            "answer": "originally from",
+            "explanation": "「もともと〜出身」と、現在の居住地との違いを強調します。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "fromを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "My neighbor is from a small town near Kyoto.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-from-usage",
+          "type": "usage",
+          "prompt": "from を正しく使った文を選んでください。",
+          "choices": [
+            "I received a letter to my friend.",
+            "I received a letter of my friend.",
+            "I received a letter from my friend.",
+            "I received a letter by my friend."
+          ],
+          "correctIndex": 2,
+          "explanation": "手紙の送り主は from で表します。to は宛先、of や by は送り主の表し方として不自然です。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A1",
+        "domains": [
+          "travel",
+          "daily-life"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -2742,6 +4276,209 @@
       }
     },
     {
+      "id": "vocab-target",
+      "word": "target",
+      "level": "準2級",
+      "ipa": "ˈtɑːrɡɪt",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "a goal or amount you try to reach, or an object you aim at",
+      "meaning": "目標・標的",
+      "usageTip": "set a target(目標を設定する)、meet a target(目標を達成する)の形でよく使う。数値や期限のある目標に向く。的や標的の意味もある。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "仕事",
+          "text": "Our sales team met its monthly target for the first time.",
+          "translation": "私たちの営業チームは初めて月間目標を達成した。"
+        },
+        {
+          "id": "example-2",
+          "context": "スポーツ",
+          "text": "The archer hit the target from fifty meters away.",
+          "translation": "その射手は50メートル離れたところから的に当てた。"
+        },
+        {
+          "id": "example-3",
+          "context": "広告",
+          "text": "The campaign's target audience is young people who use public transport.",
+          "translation": "そのキャンペーンの対象層は公共交通を使う若者だ。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "target",
+          "choices": [
+            {
+              "text": "義務・任務",
+              "meaning": "duty の意味"
+            },
+            {
+              "text": "財産・不動産",
+              "meaning": "property の意味"
+            },
+            {
+              "text": "会員",
+              "meaning": "member の意味"
+            },
+            {
+              "text": "目標・標的",
+              "meaning": "target の意味"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "target は達成すべき目標や狙う的を表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "目標・標的",
+          "choices": [
+            {
+              "text": "target",
+              "meaning": "目標・標的"
+            },
+            {
+              "text": "host",
+              "meaning": "主催者"
+            },
+            {
+              "text": "property",
+              "meaning": "財産"
+            },
+            {
+              "text": "member",
+              "meaning": "会員"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "数値目標や的を表す英語は target です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "【場面：会議で】 We need to reach our sales ___ before the end of March.",
+          "choices": [
+            {
+              "text": "host",
+              "meaning": "主催者"
+            },
+            {
+              "text": "duty",
+              "meaning": "義務"
+            },
+            {
+              "text": "target",
+              "meaning": "目標"
+            },
+            {
+              "text": "member",
+              "meaning": "会員"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "期限までに達成する sales の対象なので target が合います。",
+          "alternatives": [
+            {
+              "answer": "goal",
+              "explanation": "より一般的な目標で、数値とは限りません。"
+            },
+            {
+              "answer": "quota",
+              "explanation": "割り当てられた販売量というニュアンスです。"
+            },
+            {
+              "answer": "figure",
+              "explanation": "目標の数字そのものを指します。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "名詞 target の使い方が正しい文を選びなさい。",
+          "choices": [
+            {
+              "text": "We target to finish the report today.",
+              "meaning": "to 不定詞は直接続かない"
+            },
+            {
+              "text": "She made a target of her English.",
+              "meaning": "不自然な表現"
+            },
+            {
+              "text": "He hit the target on his first shot.",
+              "meaning": "彼は最初の一射で的に当てた。"
+            },
+            {
+              "text": "The target is for being on time.",
+              "meaning": "不自然な表現"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "hit the target は「的に当てる」という自然な表現です。他の文は動詞の形や結びつきが不自然です。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "【場面：会議で】 We need to reach our sales ___ before the end of March.",
+        "answers": [
+          "target"
+        ],
+        "explanation": "期限までに達成する sales の対象なので target が合います。",
+        "alternatives": [
+          {
+            "answer": "goal",
+            "explanation": "より一般的な目標で、数値とは限りません。"
+          },
+          {
+            "answer": "quota",
+            "explanation": "割り当てられた販売量というニュアンスです。"
+          },
+          {
+            "answer": "figure",
+            "explanation": "目標の数字そのものを指します。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "targetを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Our sales team met its monthly target for the first time.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-target-usage",
+          "type": "usage",
+          "prompt": "名詞 target の使い方が正しい文を選びなさい。",
+          "choices": [
+            "We target to finish the report today.",
+            "She made a target of her English.",
+            "He hit the target on his first shot.",
+            "The target is for being on time."
+          ],
+          "correctIndex": 2,
+          "explanation": "hit the target は「的に当てる」という自然な表現です。他の文は動詞の形や結びつきが不自然です。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "work",
+          "business",
+          "sports"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-member",
       "word": "member",
       "level": "準2級",
@@ -2938,6 +4675,208 @@
         "domains": [
           "relationships",
           "society"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-host",
+      "word": "host",
+      "level": "準2級",
+      "ipa": "hoʊst",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "a person who invites guests, organizes an event, or presents a show",
+      "meaning": "主催者・司会者",
+      "usageTip": "客を迎える側や番組の司会者を指す名詞。ホームステイ先の家族は host family と言う。動詞としても host an event の形で使えるが、ここでは名詞の用法を中心に学ぶ。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "パーティー",
+          "text": "Our host welcomed everyone and showed us to the garden.",
+          "translation": "主催者は皆を迎え、庭へ案内してくれた。"
+        },
+        {
+          "id": "example-2",
+          "context": "テレビ",
+          "text": "The host asked the singer about her new album.",
+          "translation": "司会者は歌手に新しいアルバムについて尋ねた。"
+        },
+        {
+          "id": "example-3",
+          "context": "ホームステイ",
+          "text": "My host mother cooked dinner for the students every evening.",
+          "translation": "ホストマザーは毎晩、学生たちに夕食を作ってくれた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "host",
+          "choices": [
+            {
+              "text": "財産",
+              "meaning": "property の意味"
+            },
+            {
+              "text": "義務",
+              "meaning": "duty の意味"
+            },
+            {
+              "text": "主催者・司会者",
+              "meaning": "host の意味"
+            },
+            {
+              "text": "会員",
+              "meaning": "member の意味"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "host は客を迎える人や番組の司会者を表す名詞です。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "主催者・司会者",
+          "choices": [
+            {
+              "text": "host",
+              "meaning": "主催者・司会者"
+            },
+            {
+              "text": "target",
+              "meaning": "目標"
+            },
+            {
+              "text": "member",
+              "meaning": "会員"
+            },
+            {
+              "text": "property",
+              "meaning": "財産"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "客を迎える側や司会者は host です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "【場面：テレビ番組で】 The ___ of the quiz show always makes the guests laugh.",
+          "choices": [
+            {
+              "text": "duty",
+              "meaning": "義務"
+            },
+            {
+              "text": "property",
+              "meaning": "財産"
+            },
+            {
+              "text": "host",
+              "meaning": "司会者"
+            },
+            {
+              "text": "member",
+              "meaning": "会員"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "番組を進行してゲストを笑わせる人なので host が合います。他の語は文意に合いません。",
+          "alternatives": [
+            {
+              "answer": "presenter",
+              "explanation": "番組を紹介・進行する人で、英国でよく使います。"
+            },
+            {
+              "answer": "emcee",
+              "explanation": "イベントの司会者というニュアンスです。"
+            },
+            {
+              "answer": "anchor",
+              "explanation": "ニュース番組の中心的キャスターを指します。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "名詞 host の使い方が正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "Our host welcomed us at the door.",
+              "meaning": "主催者が玄関で私たちを迎えた。"
+            },
+            {
+              "text": "Our host welcome us at the door.",
+              "meaning": "動詞の形が誤り"
+            },
+            {
+              "text": "Our host welcoming us at the door.",
+              "meaning": "文として動詞が不足している"
+            },
+            {
+              "text": "Our host to welcome us at the door.",
+              "meaning": "to 不定詞だけでは文にならない"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "host は主語になる名詞で、過去形の welcomed が続く文が正しい形です。他は動詞の形が誤りで、文が成立しません。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "【場面：テレビ番組で】 The ___ of the quiz show always makes the guests laugh.",
+        "answers": [
+          "host"
+        ],
+        "explanation": "番組を進行してゲストを笑わせる人なので host が合います。他の語は文意に合いません。",
+        "alternatives": [
+          {
+            "answer": "presenter",
+            "explanation": "番組を紹介・進行する人で、英国でよく使います。"
+          },
+          {
+            "answer": "emcee",
+            "explanation": "イベントの司会者というニュアンスです。"
+          },
+          {
+            "answer": "anchor",
+            "explanation": "ニュース番組の中心的キャスターを指します。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "hostを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Our host welcomed everyone and showed us to the garden.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-host-usage",
+          "type": "usage",
+          "prompt": "名詞 host の使い方が正しい文を選んでください。",
+          "choices": [
+            "Our host welcomed us at the door.",
+            "Our host welcome us at the door.",
+            "Our host welcoming us at the door.",
+            "Our host to welcome us at the door."
+          ],
+          "correctIndex": 0,
+          "explanation": "host は主語になる名詞で、過去形の welcomed が続く文が正しい形です。他は動詞の形が誤りで、文が成立しません。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "relationships",
+          "media"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -3141,6 +5080,1010 @@
           "law",
           "work",
           "society"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-outstanding",
+      "word": "outstanding",
+      "level": "準2級",
+      "ipa": "aʊtˈstændɪŋ",
+      "ipaLabel": "米音",
+      "partOfSpeech": "形容詞",
+      "definition": "Much better than most others; very impressive in quality or achievement.",
+      "meaning": "際立った、優れた",
+      "usageTip": "outstanding performance や outstanding student のように名詞を修飾する。「未払いの」の意味もあるが、ここでは「優れた」の意味。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "学校",
+          "text": "She received an award for her outstanding results in science.",
+          "translation": "彼女は理科での優れた成績により賞を受けた。"
+        },
+        {
+          "id": "example-2",
+          "context": "仕事",
+          "text": "The team did an outstanding job on the project this year.",
+          "translation": "そのチームは今年のプロジェクトで見事な仕事をした。"
+        },
+        {
+          "id": "example-3",
+          "context": "スポーツ",
+          "text": "He was the most outstanding player in the final match.",
+          "translation": "彼は決勝戦で最も際立った選手だった。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "outstanding",
+          "choices": [
+            {
+              "text": "平凡な",
+              "meaning": "特別でない"
+            },
+            {
+              "text": "優れた",
+              "meaning": "他より際立って良い"
+            },
+            {
+              "text": "屋外の",
+              "meaning": "建物の外の"
+            },
+            {
+              "text": "遅れた",
+              "meaning": "予定より後になった"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "この意味の outstanding は「際立って優れた」。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "際立った、優れた",
+          "choices": [
+            {
+              "text": "ordinary",
+              "meaning": "普通の"
+            },
+            {
+              "text": "familiar",
+              "meaning": "よく知られた"
+            },
+            {
+              "text": "nervous",
+              "meaning": "緊張した"
+            },
+            {
+              "text": "outstanding",
+              "meaning": "際立った、優れた"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "優れた、際立ったは outstanding。ordinary は逆の意味。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "生徒の素晴らしい発表をほめる場面: Your presentation was ___, and everyone enjoyed it.",
+          "choices": [
+            {
+              "text": "careless",
+              "meaning": "不注意な"
+            },
+            {
+              "text": "outstanding",
+              "meaning": "優れた"
+            },
+            {
+              "text": "unclear",
+              "meaning": "不明瞭な"
+            },
+            {
+              "text": "ordinary",
+              "meaning": "普通の"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "みんなが楽しんだと続くため、肯定的な outstanding が合う。",
+          "alternatives": [
+            {
+              "answer": "excellent",
+              "explanation": "「素晴らしい」を表す最も一般的な語。"
+            },
+            {
+              "answer": "remarkable",
+              "explanation": "「注目に値する」というニュアンスが強い。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "outstanding の使い方が正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "She is outstanding at solving math problems.",
+              "meaning": "彼女は数学の問題を解くのが抜群にうまい。"
+            },
+            {
+              "text": "She is outstanding to solve math problems.",
+              "meaning": "不定詞の型が不自然。"
+            },
+            {
+              "text": "She outstandings in math problems.",
+              "meaning": "outstanding は動詞ではない。"
+            },
+            {
+              "text": "She is outstanding for solving math problems at.",
+              "meaning": "語順が誤り。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "be outstanding at ~ing で「~が抜群に得意」と言える。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "生徒の素晴らしい発表をほめる場面: Your presentation was ___, and everyone enjoyed it.",
+        "answers": [
+          "outstanding"
+        ],
+        "explanation": "みんなが楽しんだと続くため、肯定的な outstanding が合う。",
+        "alternatives": [
+          {
+            "answer": "excellent",
+            "explanation": "「素晴らしい」を表す最も一般的な語。"
+          },
+          {
+            "answer": "remarkable",
+            "explanation": "「注目に値する」というニュアンスが強い。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "outstandingを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "She received an award for her outstanding results in science.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-outstanding-usage",
+          "type": "usage",
+          "prompt": "outstanding の使い方が正しい文を選んでください。",
+          "choices": [
+            "She is outstanding at solving math problems.",
+            "She is outstanding to solve math problems.",
+            "She outstandings in math problems.",
+            "She is outstanding for solving math problems at."
+          ],
+          "correctIndex": 0,
+          "explanation": "be outstanding at ~ing で「~が抜群に得意」と言える。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "education",
+          "work"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-embarrass",
+      "word": "embarrass",
+      "level": "準2級",
+      "ipa": "ɪmˈbærəs",
+      "ipaLabel": "英音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "embarrass"
+        ],
+        "past": [
+          "embarrassed"
+        ],
+        "pastParticiple": [
+          "embarrassed"
+        ],
+        "presentParticiple": [
+          "embarrassing"
+        ],
+        "thirdPersonSingular": [
+          "embarrasses"
+        ]
+      },
+      "definition": "To make someone feel shy, awkward, or ashamed in front of other people.",
+      "meaning": "恥ずかしい思いをさせる",
+      "usageTip": "人を目的語にする。感情を表す形は be embarrassed(恥ずかしい)、原因は embarrassing(恥ずかしい状況)。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "家族",
+          "text": "Please don't embarrass me by telling that story to my friends.",
+          "translation": "その話を友達にして私に恥をかかせないで。"
+        },
+        {
+          "id": "example-2",
+          "context": "学校",
+          "text": "The teacher's question embarrassed him because he hadn't read the book.",
+          "translation": "本を読んでいなかったので、先生の質問に彼は恥ずかしくなった。"
+        },
+        {
+          "id": "example-3",
+          "context": "職場",
+          "text": "I didn't want to embarrass her in front of the whole team.",
+          "translation": "チーム全員の前で彼女に恥をかかせたくなかった。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "embarrass",
+          "choices": [
+            {
+              "text": "励ます",
+              "meaning": "元気づける"
+            },
+            {
+              "text": "驚かせる",
+              "meaning": "びっくりさせる"
+            },
+            {
+              "text": "恥ずかしい思いをさせる",
+              "meaning": "きまり悪くさせる"
+            },
+            {
+              "text": "退屈させる",
+              "meaning": "つまらなく感じさせる"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "embarrass は人を恥ずかしい気持ちにさせること。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "恥ずかしい思いをさせる",
+          "choices": [
+            {
+              "text": "embarrass",
+              "meaning": "恥ずかしい思いをさせる"
+            },
+            {
+              "text": "encourage",
+              "meaning": "励ます"
+            },
+            {
+              "text": "employ",
+              "meaning": "雇う"
+            },
+            {
+              "text": "enjoy",
+              "meaning": "楽しむ"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "「恥をかかせる」は embarrass。他は意味が異なる。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "皆の前で間違いを指摘されたくない場面: I don't want to ___ him by correcting him in public.",
+          "choices": [
+            {
+              "text": "invite",
+              "meaning": "招待する"
+            },
+            {
+              "text": "follow",
+              "meaning": "従う"
+            },
+            {
+              "text": "embarrass",
+              "meaning": "恥をかかせる"
+            },
+            {
+              "text": "borrow",
+              "meaning": "借りる"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "人前で訂正すると恥をかかせるので embarrass が合う。",
+          "alternatives": [
+            {
+              "answer": "humiliate",
+              "explanation": "さらに強く、屈辱を与えるニュアンス。"
+            },
+            {
+              "answer": "upset",
+              "explanation": "「動揺させる、悲しませる」で、恥の意味は弱い。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "embarrass の使い方が正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "I was embarrassing when I forgot her name.",
+              "meaning": "形が誤り。「恥ずかしい」は embarrassed。"
+            },
+            {
+              "text": "I embarrassed to forget her name.",
+              "meaning": "be動詞がない。"
+            },
+            {
+              "text": "I embarrass at forgetting her name.",
+              "meaning": "動詞の型が誤り。"
+            },
+            {
+              "text": "I was embarrassed when I forgot her name.",
+              "meaning": "彼女の名前を忘れて恥ずかしかった。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "自分が恥ずかしく感じる時は be embarrassed を使う。embarrassing は状況側を表す。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "皆の前で間違いを指摘されたくない場面: I don't want to ___ him by correcting him in public.",
+        "answers": [
+          "embarrass"
+        ],
+        "explanation": "人前で訂正すると恥をかかせるので embarrass が合う。",
+        "alternatives": [
+          {
+            "answer": "humiliate",
+            "explanation": "さらに強く、屈辱を与えるニュアンス。"
+          },
+          {
+            "answer": "upset",
+            "explanation": "「動揺させる、悲しませる」で、恥の意味は弱い。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "embarrassを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Please don't embarrass me by telling that story to my friends.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-embarrass-usage",
+          "type": "usage",
+          "prompt": "embarrass の使い方が正しい文を選んでください。",
+          "choices": [
+            "I was embarrassing when I forgot her name.",
+            "I embarrassed to forget her name.",
+            "I embarrass at forgetting her name.",
+            "I was embarrassed when I forgot her name."
+          ],
+          "correctIndex": 3,
+          "explanation": "自分が恥ずかしく感じる時は be embarrassed を使う。embarrassing は状況側を表す。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "relationships",
+          "communication"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-exclude",
+      "word": "exclude",
+      "level": "準2級",
+      "ipa": "ɪkˈskluːd",
+      "ipaLabel": "米音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "exclude"
+        ],
+        "past": [
+          "excluded"
+        ],
+        "pastParticiple": [
+          "excluded"
+        ],
+        "presentParticiple": [
+          "excluding"
+        ],
+        "thirdPersonSingular": [
+          "excludes"
+        ]
+      },
+      "definition": "To leave someone or something out, or not allow them to take part or be included.",
+      "meaning": "除外する、締め出す",
+      "usageTip": "exclude A from B(AをBから除外する)の形が基本。反意語は include。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "ゲーム",
+          "text": "They excluded the new boy from the game, and he felt sad.",
+          "translation": "彼らは新しい男の子をゲームに入れず、彼は悲しくなった。"
+        },
+        {
+          "id": "example-2",
+          "context": "買い物",
+          "text": "The price excludes tax, so you'll pay a little more.",
+          "translation": "その価格は税抜きなので、少し多く払うことになる。"
+        },
+        {
+          "id": "example-3",
+          "context": "調査",
+          "text": "Researchers excluded unclear answers from the final survey results.",
+          "translation": "研究者たちは不明確な回答を最終的な調査結果から除いた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "exclude",
+          "choices": [
+            {
+              "text": "含める",
+              "meaning": "中に入れる"
+            },
+            {
+              "text": "説明する",
+              "meaning": "分かるように話す"
+            },
+            {
+              "text": "交換する",
+              "meaning": "取り替える"
+            },
+            {
+              "text": "除外する",
+              "meaning": "仲間や対象から外す"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "exclude は「除外する、締め出す」。include の反対。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "除外する、締め出す",
+          "choices": [
+            {
+              "text": "exclude",
+              "meaning": "除外する"
+            },
+            {
+              "text": "include",
+              "meaning": "含める"
+            },
+            {
+              "text": "explore",
+              "meaning": "探検する"
+            },
+            {
+              "text": "Express",
+              "meaning": "表現する"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "「除外する」は exclude。include は反対の意味。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "仲間はずれにしたくない場面: We should not ___ anyone from the club because of their age.",
+          "choices": [
+            {
+              "text": "remember",
+              "meaning": "覚えている"
+            },
+            {
+              "text": "exclude",
+              "meaning": "除外する"
+            },
+            {
+              "text": "prepare",
+              "meaning": "準備する"
+            },
+            {
+              "text": "remind",
+              "meaning": "思い出させる"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "from the club と合うのは exclude ... from。",
+          "alternatives": [
+            {
+              "answer": "leave out",
+              "explanation": "口語的で「除外する」に近い。"
+            },
+            {
+              "answer": "shut out",
+              "explanation": "強く締め出す響きがある。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "exclude の使い方が正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "They excluded him to join the trip.",
+              "meaning": "不定詞の型が不自然。"
+            },
+            {
+              "text": "They excluded him of the trip.",
+              "meaning": "前置詞が誤り。"
+            },
+            {
+              "text": "They excluded him from the trip.",
+              "meaning": "彼らは彼を旅行から外した。"
+            },
+            {
+              "text": "They excluded the trip him.",
+              "meaning": "語順が誤り。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "exclude A from B の形が正しい。of や to は使わない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "仲間はずれにしたくない場面: We should not ___ anyone from the club because of their age.",
+        "answers": [
+          "exclude"
+        ],
+        "explanation": "from the club と合うのは exclude ... from。",
+        "alternatives": [
+          {
+            "answer": "leave out",
+            "explanation": "口語的で「除外する」に近い。"
+          },
+          {
+            "answer": "shut out",
+            "explanation": "強く締め出す響きがある。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "excludeを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "They excluded the new boy from the game, and he felt sad.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-exclude-usage",
+          "type": "usage",
+          "prompt": "exclude の使い方が正しい文を選んでください。",
+          "choices": [
+            "They excluded him to join the trip.",
+            "They excluded him of the trip.",
+            "They excluded him from the trip.",
+            "They excluded the trip him."
+          ],
+          "correctIndex": 2,
+          "explanation": "exclude A from B の形が正しい。of や to は使わない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "society",
+          "relationships"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-vacant",
+      "word": "vacant",
+      "level": "準2級",
+      "ipa": "ˈveɪkənt",
+      "ipaLabel": "英音",
+      "partOfSpeech": "形容詞",
+      "definition": "Not being used or occupied by anyone; empty and available.",
+      "meaning": "空いている、空室の",
+      "usageTip": "席、部屋、土地、職などが空いている時に使う。トイレなどの使用中表示では vacant/occupied も見られる。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "電車",
+          "text": "There was one vacant seat near the door, so I sat down.",
+          "translation": "ドアの近くに空席が一つあったので、私は座った。"
+        },
+        {
+          "id": "example-2",
+          "context": "ホテル",
+          "text": "The hotel has no vacant rooms this weekend because of a festival.",
+          "translation": "お祭りのため、そのホテルは今週末に空室がない。"
+        },
+        {
+          "id": "example-3",
+          "context": "町",
+          "text": "A vacant lot beside the station will become a small park.",
+          "translation": "駅の隣の空き地は小さな公園になる予定だ。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "vacant",
+          "choices": [
+            {
+              "text": "空いている",
+              "meaning": "誰も使っていない"
+            },
+            {
+              "text": "混雑した",
+              "meaning": "人が多い"
+            },
+            {
+              "text": "危険な",
+              "meaning": "安全でない"
+            },
+            {
+              "text": "高価な",
+              "meaning": "値段が高い"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "vacant は席や部屋などが空いている状態を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "空いている、空室の",
+          "choices": [
+            {
+              "text": "valuable",
+              "meaning": "価値のある"
+            },
+            {
+              "text": "various",
+              "meaning": "様々な"
+            },
+            {
+              "text": "vacant",
+              "meaning": "空いている"
+            },
+            {
+              "text": "visible",
+              "meaning": "目に見える"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "「空いている」は vacant。他は形が似ているが意味が違う。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "ホテルで部屋を探す場面: Do you have any ___ rooms for tonight?",
+          "choices": [
+            {
+              "text": "noisy",
+              "meaning": "うるさい"
+            },
+            {
+              "text": "vacant",
+              "meaning": "空いている"
+            },
+            {
+              "text": "fresh",
+              "meaning": "新鮮な"
+            },
+            {
+              "text": "narrow",
+              "meaning": "狭い"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "今夜泊まれる部屋を尋ねるので、空室を表す vacant が合う。",
+          "alternatives": [
+            {
+              "answer": "available",
+              "explanation": "「利用可能な」で、最も一般的な言い方。"
+            },
+            {
+              "answer": "free",
+              "explanation": "口語的で「空いている」を表すが、ホテルではやや砕ける。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "vacant の使い方が正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "The vacant seat is next to the window.",
+              "meaning": "空いている席は窓の隣だ。"
+            },
+            {
+              "text": "I am vacant this evening for dinner.",
+              "meaning": "人の予定には free を使う。"
+            },
+            {
+              "text": "The bus was vacant of many people.",
+              "meaning": "表現が不自然。"
+            },
+            {
+              "text": "She vacanted her room yesterday.",
+              "meaning": "vacant は動詞ではない。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "vacant は席や部屋など場所・物に使う。人の空き時間には free が自然。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "ホテルで部屋を探す場面: Do you have any ___ rooms for tonight?",
+        "answers": [
+          "vacant"
+        ],
+        "explanation": "今夜泊まれる部屋を尋ねるので、空室を表す vacant が合う。",
+        "alternatives": [
+          {
+            "answer": "available",
+            "explanation": "「利用可能な」で、最も一般的な言い方。"
+          },
+          {
+            "answer": "free",
+            "explanation": "口語的で「空いている」を表すが、ホテルではやや砕ける。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "vacantを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "There was one vacant seat near the door, so I sat down.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-vacant-usage",
+          "type": "usage",
+          "prompt": "vacant の使い方が正しい文を選んでください。",
+          "choices": [
+            "The vacant seat is next to the window.",
+            "I am vacant this evening for dinner.",
+            "The bus was vacant of many people.",
+            "She vacanted her room yesterday."
+          ],
+          "correctIndex": 0,
+          "explanation": "vacant は席や部屋など場所・物に使う。人の空き時間には free が自然。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "daily-life",
+          "travel"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-expertise",
+      "word": "expertise",
+      "level": "準2級",
+      "ipa": "ˌɛkspɝˈtiz",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "special knowledge or skill gained through training and long experience in a particular field.",
+      "meaning": "専門知識・専門技能",
+      "usageTip": "expertise in ~ や expertise on ~ の形でよく使う。不可算名詞なので an expertise や expertises とは言わない。人を指す語ではなく、人が持つ知識や技能を表す。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "仕事",
+          "text": "Her expertise in data analysis helped the team solve the problem quickly.",
+          "translation": "彼女のデータ分析の専門知識のおかげで、チームは問題を素早く解決できた。"
+        },
+        {
+          "id": "example-2",
+          "context": "採用",
+          "text": "We are looking for someone with expertise in teaching young children.",
+          "translation": "私たちは幼い子どもを教える専門技能のある人を探しています。"
+        },
+        {
+          "id": "example-3",
+          "context": "相談",
+          "text": "I asked my uncle for advice because he has a lot of expertise in cars.",
+          "translation": "叔父は車の専門知識が豊富なので、アドバイスを求めた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "expertise",
+          "choices": [
+            {
+              "text": "経費・出費",
+              "meaning": "使うお金"
+            },
+            {
+              "text": "専門知識・専門技能",
+              "meaning": "特定分野の高度な知識や技能"
+            },
+            {
+              "text": "遠征・探検",
+              "meaning": "遠くへ行く旅"
+            },
+            {
+              "text": "説明・解説",
+              "meaning": "わかりやすく述べること"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "expertise は特定分野での高度な知識や技能を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "専門知識・専門技能",
+          "choices": [
+            {
+              "text": "experience",
+              "meaning": "経験"
+            },
+            {
+              "text": "expense",
+              "meaning": "出費"
+            },
+            {
+              "text": "exercise",
+              "meaning": "運動・練習"
+            },
+            {
+              "text": "expertise",
+              "meaning": "専門知識・専門技能"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "特定分野の専門的な知識や技能は expertise。experience は経験そのものを指す。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "会議で、医療分野に詳しい人について話している場面: Dr. Lee has great ___ in heart surgery, so we trust her opinion.",
+          "choices": [
+            {
+              "text": "weather",
+              "meaning": "天気"
+            },
+            {
+              "text": "distance",
+              "meaning": "距離"
+            },
+            {
+              "text": "expertise",
+              "meaning": "専門知識"
+            },
+            {
+              "text": "holiday",
+              "meaning": "休日"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "心臓手術に関する信頼できる専門知識を表すので expertise が合う。",
+          "alternatives": [
+            {
+              "answer": "knowledge",
+              "explanation": "知識全般を表す。専門性の高さは expertise ほど強くない。"
+            },
+            {
+              "answer": "experience",
+              "explanation": "経験を強調する表現で、実績の長さに焦点がある。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "expertise を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "She has an expertise of website design.",
+              "meaning": "冠詞と前置詞が不自然。"
+            },
+            {
+              "text": "She has many expertises in website design.",
+              "meaning": "不可算名詞を複数形にしている。"
+            },
+            {
+              "text": "She has expertise to website design.",
+              "meaning": "前置詞が不適切。"
+            },
+            {
+              "text": "She has expertise in website design.",
+              "meaning": "彼女はウェブデザインの専門知識がある。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "expertise は不可算名詞で、分野には in を使う。他の文は冠詞、複数形、前置詞が不自然。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "会議で、医療分野に詳しい人について話している場面: Dr. Lee has great ___ in heart surgery, so we trust her opinion.",
+        "answers": [
+          "expertise"
+        ],
+        "explanation": "心臓手術に関する信頼できる専門知識を表すので expertise が合う。",
+        "alternatives": [
+          {
+            "answer": "knowledge",
+            "explanation": "知識全般を表す。専門性の高さは expertise ほど強くない。"
+          },
+          {
+            "answer": "experience",
+            "explanation": "経験を強調する表現で、実績の長さに焦点がある。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "expertiseを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Her expertise in data analysis helped the team solve the problem quickly.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-expertise-usage",
+          "type": "usage",
+          "prompt": "expertise を正しく使った文を選びなさい。",
+          "choices": [
+            "She has an expertise of website design.",
+            "She has many expertises in website design.",
+            "She has expertise to website design.",
+            "She has expertise in website design."
+          ],
+          "correctIndex": 3,
+          "explanation": "expertise は不可算名詞で、分野には in を使う。他の文は冠詞、複数形、前置詞が不自然。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "work",
+          "education"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -4143,6 +7086,392 @@
       }
     },
     {
+      "id": "vocab-inspiration",
+      "word": "inspiration",
+      "level": "準2級",
+      "ipa": "ˌɪnspəˈreɪʃən",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "a sudden good idea, or a person or thing that makes you want to create or do something",
+      "meaning": "ひらめき、インスピレーション",
+      "usageTip": "「inspiration for ~」で「~の着想の源」、「inspiration from ~」で「~から得た着想」。人が inspiration になる言い方も多い。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "絵を描く場面",
+          "text": "The quiet lake gave her inspiration for a new painting.",
+          "translation": "静かな湖が、彼女に新しい絵のひらめきを与えた。"
+        },
+        {
+          "id": "example-2",
+          "context": "家族への感謝",
+          "text": "My grandmother has been a great inspiration to me all my life.",
+          "translation": "祖母は私の人生を通じて大きな心の支えとなる存在だ。"
+        },
+        {
+          "id": "example-3",
+          "context": "作曲の場面",
+          "text": "He found inspiration in the sounds of the city at night.",
+          "translation": "彼は夜の街の音の中にインスピレーションを見つけた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "inspiration",
+          "choices": [
+            {
+              "text": "ひらめき、着想",
+              "meaning": "新しいアイデアや創作意欲"
+            },
+            {
+              "text": "説明、指示",
+              "meaning": "やり方を伝えること"
+            },
+            {
+              "text": "検査、点検",
+              "meaning": "よく調べること"
+            },
+            {
+              "text": "設置、導入",
+              "meaning": "機器などを取り付けること"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "inspiration は創作や行動のきっかけとなるひらめき・着想を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "ひらめき、インスピレーション",
+          "choices": [
+            {
+              "text": "reputation",
+              "meaning": "評判"
+            },
+            {
+              "text": "burden",
+              "meaning": "負担"
+            },
+            {
+              "text": "concise",
+              "meaning": "簡潔な"
+            },
+            {
+              "text": "inspiration",
+              "meaning": "ひらめき"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "創作のきっかけとなるひらめきは inspiration である。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "小説家が旅先で新作の着想を得た場面。The writer found ___ for her new novel during the trip.",
+          "choices": [
+            {
+              "text": "permission",
+              "meaning": "許可"
+            },
+            {
+              "text": "inspiration",
+              "meaning": "ひらめき"
+            },
+            {
+              "text": "suspicion",
+              "meaning": "疑い"
+            },
+            {
+              "text": "injection",
+              "meaning": "注射"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "新作小説の着想を旅で得たので inspiration が自然。他は意味が合わない。",
+          "alternatives": [
+            {
+              "answer": "ideas",
+              "explanation": "具体的なアイデアを複数得たというニュアンスになる。"
+            },
+            {
+              "answer": "motivation",
+              "explanation": "書く意欲ややる気を得たという意味合いになる。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "inspiration を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "She drew inspiration to nature for her songs.",
+              "meaning": "前置詞が誤り。"
+            },
+            {
+              "text": "She inspiration nature for her songs.",
+              "meaning": "動詞がなく文法が誤り。"
+            },
+            {
+              "text": "She drew inspiration from nature for her songs.",
+              "meaning": "彼女は自然から曲の着想を得た。"
+            },
+            {
+              "text": "She was very inspiration by her teacher.",
+              "meaning": "品詞の誤り。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "draw inspiration from ~ で「~から着想を得る」。他は前置詞や品詞が誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "小説家が旅先で新作の着想を得た場面。The writer found ___ for her new novel during the trip.",
+        "answers": [
+          "inspiration"
+        ],
+        "explanation": "新作小説の着想を旅で得たので inspiration が自然。他は意味が合わない。",
+        "alternatives": [
+          {
+            "answer": "ideas",
+            "explanation": "具体的なアイデアを複数得たというニュアンスになる。"
+          },
+          {
+            "answer": "motivation",
+            "explanation": "書く意欲ややる気を得たという意味合いになる。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "inspirationを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The quiet lake gave her inspiration for a new painting.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-inspiration-usage",
+          "type": "usage",
+          "prompt": "inspiration を正しく使った文を選びなさい。",
+          "choices": [
+            "She drew inspiration to nature for her songs.",
+            "She inspiration nature for her songs.",
+            "She drew inspiration from nature for her songs.",
+            "She was very inspiration by her teacher."
+          ],
+          "correctIndex": 2,
+          "explanation": "draw inspiration from ~ で「~から着想を得る」。他は前置詞や品詞が誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "arts-culture"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-reputation",
+      "word": "reputation",
+      "level": "準2級",
+      "ipa": "ˌrepjuˈteɪʃn",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "the general opinion people have about how good or bad someone or something is",
+      "meaning": "評判、名声",
+      "usageTip": "「a good/bad reputation」「reputation for ~」の形でよく使う。for の後には名詞や -ing が来る。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "レストランの話",
+          "text": "The restaurant has a good reputation for fresh seafood.",
+          "translation": "そのレストランは新鮮な海鮮で評判が良い。"
+        },
+        {
+          "id": "example-2",
+          "context": "職場での信頼",
+          "text": "She built a reputation as a careful and honest manager.",
+          "translation": "彼女は慎重で誠実な管理者という評判を築いた。"
+        },
+        {
+          "id": "example-3",
+          "context": "企業の不祥事",
+          "text": "One serious mistake can damage a company's reputation quickly.",
+          "translation": "一度の重大なミスで会社の評判は急速に傷つく。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "reputation",
+          "choices": [
+            {
+              "text": "予約、取り置き",
+              "meaning": "席などを確保すること"
+            },
+            {
+              "text": "繰り返し",
+              "meaning": "同じことを何度もすること"
+            },
+            {
+              "text": "評判、名声",
+              "meaning": "世間からの評価"
+            },
+            {
+              "text": "代表者",
+              "meaning": "団体を代表する人"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "reputation は人や組織に対する世間の評価を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "評判、名声",
+          "choices": [
+            {
+              "text": "reputation",
+              "meaning": "評判"
+            },
+            {
+              "text": "inspiration",
+              "meaning": "ひらめき"
+            },
+            {
+              "text": "emotional",
+              "meaning": "感情的な"
+            },
+            {
+              "text": "concise",
+              "meaning": "簡潔な"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "世間の評価・評判は reputation である。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "その病院は丁寧な対応で知られている場面。The hospital has an excellent ___ for caring for patients.",
+          "choices": [
+            {
+              "text": "burden",
+              "meaning": "負担"
+            },
+            {
+              "text": "distance",
+              "meaning": "距離"
+            },
+            {
+              "text": "balance",
+              "meaning": "均衡"
+            },
+            {
+              "text": "reputation",
+              "meaning": "評判"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "reputation for ~ で「~という評判」。他は意味が合わない。",
+          "alternatives": [
+            {
+              "answer": "name",
+              "explanation": "a good name for ~ で評判を表すが、やや口語的。"
+            },
+            {
+              "answer": "record",
+              "explanation": "実績としての記録を強調する言い方になる。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "reputation を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "The shop reputation us about good service.",
+              "meaning": "動詞の使い方が誤り。"
+            },
+            {
+              "text": "The shop has a reputation for good service.",
+              "meaning": "その店は良いサービスで評判だ。"
+            },
+            {
+              "text": "The shop is very reputation among people.",
+              "meaning": "品詞の誤り。"
+            },
+            {
+              "text": "The shop has a reputation to good service.",
+              "meaning": "前置詞が誤り。"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "reputation for ~ が定番の形。reputation は名詞なので is very の後に形容詞のようには使えず、to も不適切。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "その病院は丁寧な対応で知られている場面。The hospital has an excellent ___ for caring for patients.",
+        "answers": [
+          "reputation"
+        ],
+        "explanation": "reputation for ~ で「~という評判」。他は意味が合わない。",
+        "alternatives": [
+          {
+            "answer": "name",
+            "explanation": "a good name for ~ で評判を表すが、やや口語的。"
+          },
+          {
+            "answer": "record",
+            "explanation": "実績としての記録を強調する言い方になる。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "reputationを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The restaurant has a good reputation for fresh seafood.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-reputation-usage",
+          "type": "usage",
+          "prompt": "reputation を正しく使った文を選びなさい。",
+          "choices": [
+            "The shop reputation us about good service.",
+            "The shop has a reputation for good service.",
+            "The shop is very reputation among people.",
+            "The shop has a reputation to good service."
+          ],
+          "correctIndex": 1,
+          "explanation": "reputation for ~ が定番の形。reputation は名詞なので is very の後に形容詞のようには使えず、to も不適切。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "business"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-concise",
       "word": "concise",
       "level": "準2級",
@@ -4531,6 +7860,199 @@
         "cefrEstimate": "B2",
         "domains": [
           "society"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-emotional",
+      "word": "emotional",
+      "level": "準2級",
+      "ipa": "ɪˈmoʊʃənl",
+      "ipaLabel": "米音",
+      "partOfSpeech": "形容詞",
+      "definition": "relating to feelings, or showing strong feelings",
+      "meaning": "感情的な、感情の",
+      "usageTip": "「感情に関する」(emotional support)と「感情的な」(an emotional person)の両方で使う。become / get emotional も便利。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "友人への支え",
+          "text": "She gave me a lot of emotional support during a hard year.",
+          "translation": "彼女は大変な一年の間、私を精神的に大きく支えてくれた。"
+        },
+        {
+          "id": "example-2",
+          "context": "卒業式の場面",
+          "text": "The graduation speech was so emotional that many people cried.",
+          "translation": "卒業式のスピーチはとても感動的で、多くの人が泣いた。"
+        },
+        {
+          "id": "example-3",
+          "context": "話し合いの場面",
+          "text": "Let's not make an emotional decision when we are angry.",
+          "translation": "怒っているときに感情的な決断をするのはやめよう。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "emotional",
+          "choices": [
+            {
+              "text": "経済的な",
+              "meaning": "お金に関する"
+            },
+            {
+              "text": "論理的な",
+              "meaning": "筋道が通った"
+            },
+            {
+              "text": "身体的な",
+              "meaning": "体に関する"
+            },
+            {
+              "text": "感情的な、感情の",
+              "meaning": "気持ちに関する"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "emotional は感情に関する、または感情が強く表れる様子を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "感情的な、感情の",
+          "choices": [
+            {
+              "text": "concise",
+              "meaning": "簡潔な"
+            },
+            {
+              "text": "emotional",
+              "meaning": "感情的な"
+            },
+            {
+              "text": "reputation",
+              "meaning": "評判"
+            },
+            {
+              "text": "burden",
+              "meaning": "負担"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "感情に関する意味の形容詞は emotional である。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "友人が悩んでいるとき、気持ちの面で支えたい場面。I want to give him some ___ support.",
+          "choices": [
+            {
+              "text": "legal",
+              "meaning": "法律上の"
+            },
+            {
+              "text": "technical",
+              "meaning": "技術的な"
+            },
+            {
+              "text": "financial",
+              "meaning": "金銭的な"
+            },
+            {
+              "text": "emotional",
+              "meaning": "感情面の"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "悩む友人を気持ちの面で支えるので emotional が合う。",
+          "alternatives": [
+            {
+              "answer": "moral",
+              "explanation": "道徳的・精神的な励ましを表し、気持ちに寄り添うより励ます印象。"
+            },
+            {
+              "answer": "mental",
+              "explanation": "心の健康や精神面を指す言い方になる。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "形容詞 emotional を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "He talked about it very emotional.",
+              "meaning": "副詞が必要。"
+            },
+            {
+              "text": "He is an emotional of the team.",
+              "meaning": "名詞として使っていて誤り。"
+            },
+            {
+              "text": "He became emotional when he heard the news.",
+              "meaning": "彼はその知らせを聞いて感情的になった。"
+            },
+            {
+              "text": "He was emotionally person when he heard it.",
+              "meaning": "副詞を名詞の前に使っていて誤り。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "emotional は形容詞なので become の補語になれる。他は副詞が必要な位置に形容詞を置く、名詞として使う、副詞を名詞の前に置くなどの誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "友人が悩んでいるとき、気持ちの面で支えたい場面。I want to give him some ___ support.",
+        "answers": [
+          "emotional"
+        ],
+        "explanation": "悩む友人を気持ちの面で支えるので emotional が合う。",
+        "alternatives": [
+          {
+            "answer": "moral",
+            "explanation": "道徳的・精神的な励ましを表し、気持ちに寄り添うより励ます印象。"
+          },
+          {
+            "answer": "mental",
+            "explanation": "心の健康や精神面を指す言い方になる。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "emotionalを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "She gave me a lot of emotional support during a hard year.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-emotional-usage",
+          "type": "usage",
+          "prompt": "形容詞 emotional を正しく使った文を選びなさい。",
+          "choices": [
+            "He talked about it very emotional.",
+            "He is an emotional of the team.",
+            "He became emotional when he heard the news.",
+            "He was emotionally person when he heard it."
+          ],
+          "correctIndex": 2,
+          "explanation": "emotional は形容詞なので become の補語になれる。他は副詞が必要な位置に形容詞を置く、名詞として使う、副詞を名詞の前に置くなどの誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "relationships"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -6298,6 +9820,199 @@
       }
     },
     {
+      "id": "vocab-spontaneous",
+      "word": "spontaneous",
+      "level": "準2級",
+      "ipa": "spɑːnˈteɪniəs",
+      "ipaLabel": "米音",
+      "partOfSpeech": "形容詞",
+      "definition": "done naturally and suddenly, without careful planning",
+      "meaning": "自発的な、思いつきの",
+      "usageTip": "計画なしに自然に起きる行動や反応に使う。spontaneous trip, laugh, applause などが定番。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "旅行",
+          "text": "We took a spontaneous trip to the coast last Saturday.",
+          "translation": "私たちは先週の土曜日、思いつきで海辺へ旅行した。"
+        },
+        {
+          "id": "example-2",
+          "context": "観客",
+          "text": "The audience broke into spontaneous applause after the final song.",
+          "translation": "最後の曲の後、観客から自然に拍手が起こった。"
+        },
+        {
+          "id": "example-3",
+          "context": "性格",
+          "text": "My sister is spontaneous, so she rarely follows a fixed schedule.",
+          "translation": "姉は思いつきで動く性格なので、決まった予定にあまり従わない。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "spontaneous",
+          "choices": [
+            {
+              "text": "慎重に計画された",
+              "meaning": "carefully planned"
+            },
+            {
+              "text": "とても高価な",
+              "meaning": "very expensive"
+            },
+            {
+              "text": "目立たない",
+              "meaning": "not noticeable"
+            },
+            {
+              "text": "自発的な、思いつきの",
+              "meaning": "計画なしに自然に起こる"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "spontaneous は計画せず自然に起こることを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "自発的な、思いつきの",
+          "choices": [
+            {
+              "text": "permanent",
+              "meaning": "永続的な"
+            },
+            {
+              "text": "cautious",
+              "meaning": "慎重な"
+            },
+            {
+              "text": "spontaneous",
+              "meaning": "自発的な"
+            },
+            {
+              "text": "formal",
+              "meaning": "堅苦しい"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "思いつきで自然に起こる様子は spontaneous。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "友人との週末の場面。We had no plan, so it was a ___ decision to visit the museum.",
+          "choices": [
+            {
+              "text": "strict",
+              "meaning": "厳格な"
+            },
+            {
+              "text": "spontaneous",
+              "meaning": "思いつきの"
+            },
+            {
+              "text": "scheduled",
+              "meaning": "予定された"
+            },
+            {
+              "text": "reluctant",
+              "meaning": "気が進まない"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "計画がなかったという文脈なので spontaneous が合う。",
+          "alternatives": [
+            {
+              "answer": "impulsive",
+              "explanation": "衝動的という意味で、軽率さを含むことがある。"
+            },
+            {
+              "answer": "last-minute",
+              "explanation": "直前に決めたというニュアンスで、より口語的。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "spontaneous を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "Their spontaneous laughter filled the room.",
+              "meaning": "自然に起きた笑いが部屋に満ちた。"
+            },
+            {
+              "text": "She gave a spontaneously speech.",
+              "meaning": "副詞の使い方が誤り。"
+            },
+            {
+              "text": "He is spontaneous to the meeting.",
+              "meaning": "前置詞の使い方が不自然。"
+            },
+            {
+              "text": "The spontaneous of music made us smile.",
+              "meaning": "名詞として誤用。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "spontaneous は laughter を修飾する形容詞として自然。他は副詞形や名詞用法の誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "友人との週末の場面。We had no plan, so it was a ___ decision to visit the museum.",
+        "answers": [
+          "spontaneous"
+        ],
+        "explanation": "計画がなかったという文脈なので spontaneous が合う。",
+        "alternatives": [
+          {
+            "answer": "impulsive",
+            "explanation": "衝動的という意味で、軽率さを含むことがある。"
+          },
+          {
+            "answer": "last-minute",
+            "explanation": "直前に決めたというニュアンスで、より口語的。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "spontaneousを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "We took a spontaneous trip to the coast last Saturday.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-spontaneous-usage",
+          "type": "usage",
+          "prompt": "spontaneous を正しく使った文を選んでください。",
+          "choices": [
+            "Their spontaneous laughter filled the room.",
+            "She gave a spontaneously speech.",
+            "He is spontaneous to the meeting.",
+            "The spontaneous of music made us smile."
+          ],
+          "correctIndex": 0,
+          "explanation": "spontaneous は laughter を修飾する形容詞として自然。他は副詞形や名詞用法の誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-shortcut",
       "word": "shortcut",
       "level": "準2級",
@@ -7090,6 +10805,200 @@
       }
     },
     {
+      "id": "vocab-backup",
+      "word": "backup",
+      "level": "準2級",
+      "ipa": "ˈbækʌp",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "an extra copy, supply, or person kept ready in case the main one fails or is not enough",
+      "meaning": "予備、バックアップ",
+      "usageTip": "名詞は backup、動詞は back up と分ける。a backup plan や make a backup of ~ の形が便利。人員の「応援」の意味でも使える。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "パソコン",
+          "text": "Make a backup of your files before updating the computer.",
+          "translation": "パソコンを更新する前に、ファイルのバックアップを取ってください。"
+        },
+        {
+          "id": "example-2",
+          "context": "計画",
+          "text": "We have a backup plan in case it rains during the festival.",
+          "translation": "祭りの間に雨が降った場合に備えて、予備の計画があります。"
+        },
+        {
+          "id": "example-3",
+          "context": "職場",
+          "text": "The manager called in backup when the shop suddenly became crowded.",
+          "translation": "店が急に混み合うと、店長は応援の人員を呼びました。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "backup",
+          "choices": [
+            {
+              "text": "宣伝",
+              "meaning": "商品を広く知らせること"
+            },
+            {
+              "text": "故障",
+              "meaning": "動かなくなること"
+            },
+            {
+              "text": "予備、バックアップ",
+              "meaning": "失敗に備えるコピーや人"
+            },
+            {
+              "text": "背景",
+              "meaning": "後ろの景色や事情"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "backup は主要なものが使えない時のための予備やコピーを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "予備、バックアップ",
+          "choices": [
+            {
+              "text": "backup",
+              "meaning": "予備、バックアップ"
+            },
+            {
+              "text": "backlash",
+              "meaning": "強い反発"
+            },
+            {
+              "text": "background",
+              "meaning": "背景"
+            },
+            {
+              "text": "upload",
+              "meaning": "アップロード"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "予備やバックアップを表す英語は backup である。他の語は形が似ていたり関連したりするが意味が異なる。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "データを守る場面。Before replacing the old laptop, I saved a ___ of all my photos.",
+          "choices": [
+            {
+              "text": "weather",
+              "meaning": "天気"
+            },
+            {
+              "text": "backup",
+              "meaning": "バックアップ"
+            },
+            {
+              "text": "journey",
+              "meaning": "旅"
+            },
+            {
+              "text": "mood",
+              "meaning": "気分"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "古いパソコンを替える前に写真の控えを保存する場面なので、backup が自然に合う。",
+          "alternatives": [
+            {
+              "answer": "copy",
+              "explanation": "一般的な複製を指し、日常的で自然な言い方です。"
+            },
+            {
+              "answer": "duplicate",
+              "explanation": "同一の複製を指す、やや硬い言い方です。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "名詞・形容詞としての backup の使い方が正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "I backup my phone every night.",
+              "meaning": "動詞は back up と分けるべき。"
+            },
+            {
+              "text": "I have a back up plan to the trip.",
+              "meaning": "表記と前置詞が不適切。"
+            },
+            {
+              "text": "I made a backup for my phone's every night.",
+              "meaning": "所有格の使い方が誤り。"
+            },
+            {
+              "text": "I have a backup plan for the trip.",
+              "meaning": "旅行の予備の計画がある。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "名詞や形容詞では backup と1語で書く。動詞として使う時は back up と分ける必要があるため、最初の文は不適切。他の文は表記や語順にも問題がある。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "データを守る場面。Before replacing the old laptop, I saved a ___ of all my photos.",
+        "answers": [
+          "backup"
+        ],
+        "explanation": "古いパソコンを替える前に写真の控えを保存する場面なので、backup が自然に合う。",
+        "alternatives": [
+          {
+            "answer": "copy",
+            "explanation": "一般的な複製を指し、日常的で自然な言い方です。"
+          },
+          {
+            "answer": "duplicate",
+            "explanation": "同一の複製を指す、やや硬い言い方です。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "backupを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Make a backup of your files before updating the computer.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-backup-usage",
+          "type": "usage",
+          "prompt": "名詞・形容詞としての backup の使い方が正しい文を選んでください。",
+          "choices": [
+            "I backup my phone every night.",
+            "I have a back up plan to the trip.",
+            "I made a backup for my phone's every night.",
+            "I have a backup plan for the trip."
+          ],
+          "correctIndex": 3,
+          "explanation": "名詞や形容詞では backup と1語で書く。動詞として使う時は back up と分ける必要があるため、最初の文は不適切。他の文は表記や語順にも問題がある。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "technology",
+          "work"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-producer",
       "word": "producer",
       "level": "準2級",
@@ -7473,6 +11382,217 @@
           "work",
           "health",
           "society"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-transfer",
+      "word": "transfer",
+      "level": "準2級",
+      "ipa": "/trænsˈfɜː/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "transfer"
+        ],
+        "past": [
+          "transferred"
+        ],
+        "pastParticiple": [
+          "transferred"
+        ],
+        "presentParticiple": [
+          "transferring"
+        ],
+        "thirdPersonSingular": [
+          "transfers"
+        ]
+      },
+      "definition": "to move someone or something from one place, person, group or job to another",
+      "meaning": "移す、転勤する",
+      "usageTip": "transfer A to B の形が基本。人が主語なら転勤・乗り換え・転校、お金やデータなら移動を表す。名詞でも使うが、名詞は最初の音節を強く読む。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "職場",
+          "text": "The company will transfer him to the Osaka office in April.",
+          "translation": "会社は4月に彼を大阪支店へ転勤させる予定だ。"
+        },
+        {
+          "id": "example-2",
+          "context": "銀行",
+          "text": "I need to transfer some money to my sister's account.",
+          "translation": "私は妹の口座にお金を少し振り込む必要がある。"
+        },
+        {
+          "id": "example-3",
+          "context": "電車",
+          "text": "You should transfer to the blue line at the next station.",
+          "translation": "次の駅で青い路線に乗り換えるといい。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "transfer",
+          "choices": [
+            {
+              "text": "忘れる",
+              "meaning": "記憶から消える"
+            },
+            {
+              "text": "壊す",
+              "meaning": "使えなくする"
+            },
+            {
+              "text": "移す、転勤する",
+              "meaning": "別の場所や人へ移る・移す"
+            },
+            {
+              "text": "断る",
+              "meaning": "受け入れない"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "transfer は場所・口座・職場などを移す意味で使う。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "移す、転勤する",
+          "choices": [
+            {
+              "text": "transfer",
+              "meaning": "移す、転勤する"
+            },
+            {
+              "text": "borrow",
+              "meaning": "借りる"
+            },
+            {
+              "text": "repair",
+              "meaning": "修理する"
+            },
+            {
+              "text": "choose",
+              "meaning": "選ぶ"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "移す・転勤するに当たる動詞は transfer である。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "駅での会話：東京駅で別の電車に___必要があります。 You need to ___ to another train at Tokyo Station.",
+          "choices": [
+            {
+              "text": "apologize",
+              "meaning": "謝る"
+            },
+            {
+              "text": "describe",
+              "meaning": "説明する"
+            },
+            {
+              "text": "compare",
+              "meaning": "比べる"
+            },
+            {
+              "text": "transfer",
+              "meaning": "乗り換える"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "別の電車へ移るので transfer が自然。他の動詞は to another train と合わない。",
+          "alternatives": [
+            {
+              "answer": "change",
+              "explanation": "英国英語でよく使う。change trains の形も自然。"
+            },
+            {
+              "answer": "switch",
+              "explanation": "別の電車へ切り替える感じで、やや口語的。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "transfer を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "He transferred the school from another city.",
+              "meaning": "彼は別の都市から学校を移した。"
+            },
+            {
+              "text": "She transferred at Kyoto to a local train.",
+              "meaning": "彼女は京都でローカル線に乗り換えた。"
+            },
+            {
+              "text": "I transferred my teacher yesterday.",
+              "meaning": "私は昨日先生を転勤させた。"
+            },
+            {
+              "text": "The money transferred to a mistake.",
+              "meaning": "お金が間違いに移された。"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "乗り換えの意味で transfer to a local train は自然。他は目的語や前置詞が不自然。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "駅での会話：東京駅で別の電車に___必要があります。 You need to ___ to another train at Tokyo Station.",
+        "answers": [
+          "transfer"
+        ],
+        "explanation": "別の電車へ移るので transfer が自然。他の動詞は to another train と合わない。",
+        "alternatives": [
+          {
+            "answer": "change",
+            "explanation": "英国英語でよく使う。change trains の形も自然。"
+          },
+          {
+            "answer": "switch",
+            "explanation": "別の電車へ切り替える感じで、やや口語的。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "transferを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The company will transfer him to the Osaka office in April.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-transfer-usage",
+          "type": "usage",
+          "prompt": "transfer を正しく使った文を選びなさい。",
+          "choices": [
+            "He transferred the school from another city.",
+            "She transferred at Kyoto to a local train.",
+            "I transferred my teacher yesterday.",
+            "The money transferred to a mistake."
+          ],
+          "correctIndex": 1,
+          "explanation": "乗り換えの意味で transfer to a local train は自然。他は目的語や前置詞が不自然。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "transport",
+          "work"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -7887,6 +12007,200 @@
       }
     },
     {
+      "id": "vocab-loud",
+      "word": "loud",
+      "level": "準2級",
+      "ipa": "laʊd",
+      "ipaLabel": "米音",
+      "partOfSpeech": "形容詞",
+      "definition": "producing a lot of sound, or easily heard",
+      "meaning": "大声の、騒がしい",
+      "usageTip": "音量が大きいことを表す形容詞。be動詞の後や名詞の前で使う。動詞を修飾するときは通常 loudly を使い、out loud(声に出して)は決まった形。派手な色にも使える。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "教室",
+          "text": "Please don't be so loud while others are studying.",
+          "translation": "他の人が勉強している間は、そんなに騒がないでください。"
+        },
+        {
+          "id": "example-2",
+          "context": "音楽",
+          "text": "The music was too loud for us to talk comfortably.",
+          "translation": "音楽がうるさすぎて、楽に話せなかった。"
+        },
+        {
+          "id": "example-3",
+          "context": "街",
+          "text": "A loud noise from the street woke the baby last night.",
+          "translation": "昨夜、通りからの大きな音で赤ちゃんが起きた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "loud",
+          "choices": [
+            {
+              "text": "遅い",
+              "meaning": "速くない"
+            },
+            {
+              "text": "柔らかい",
+              "meaning": "硬くない"
+            },
+            {
+              "text": "大声の、騒がしい",
+              "meaning": "音が大きい"
+            },
+            {
+              "text": "危険な",
+              "meaning": "安全でない"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "loud は音が大きいことを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "大声の、騒がしい",
+          "choices": [
+            {
+              "text": "quiet",
+              "meaning": "静かな"
+            },
+            {
+              "text": "narrow",
+              "meaning": "狭い"
+            },
+            {
+              "text": "loud",
+              "meaning": "大声の"
+            },
+            {
+              "text": "empty",
+              "meaning": "空の"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "音が大きい・騒がしいは loud である。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "隣の部屋のテレビがうるさい場面：The TV is so ___ that I can't hear my phone call.",
+          "choices": [
+            {
+              "text": "loud",
+              "meaning": "うるさい"
+            },
+            {
+              "text": "late",
+              "meaning": "遅い"
+            },
+            {
+              "text": "cheap",
+              "meaning": "安い"
+            },
+            {
+              "text": "thin",
+              "meaning": "薄い"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "電話が聞こえないほどなので、音が大きい loud が合う。",
+          "alternatives": [
+            {
+              "answer": "noisy",
+              "explanation": "音が多くうるさい様子を表し、ここでも自然。"
+            },
+            {
+              "answer": "deafening",
+              "explanation": "耳をつんざくほどの強い表現。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "図書館での場面。loud(形容詞)の使い方として正しい文を選びなさい。",
+          "choices": [
+            {
+              "text": "He speaks very loud voice in the library.",
+              "meaning": "彼は図書館でとても大きい声を話す。"
+            },
+            {
+              "text": "The music was loudly to me.",
+              "meaning": "その音楽は私にうるさくだった。"
+            },
+            {
+              "text": "His voice was too loud for the library.",
+              "meaning": "彼の声は図書館には大きすぎた。"
+            },
+            {
+              "text": "She made a loudly noise in class.",
+              "meaning": "彼女は授業中に大きくな音を立てた。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "be動詞の後で形容詞 loud が主語の声を説明する自然な形。他は副詞と形容詞の使い分けや語順の誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "隣の部屋のテレビがうるさい場面：The TV is so ___ that I can't hear my phone call.",
+        "answers": [
+          "loud"
+        ],
+        "explanation": "電話が聞こえないほどなので、音が大きい loud が合う。",
+        "alternatives": [
+          {
+            "answer": "noisy",
+            "explanation": "音が多くうるさい様子を表し、ここでも自然。"
+          },
+          {
+            "answer": "deafening",
+            "explanation": "耳をつんざくほどの強い表現。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "loudを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Please don't be so loud while others are studying.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-loud-usage",
+          "type": "usage",
+          "prompt": "図書館での場面。loud(形容詞)の使い方として正しい文を選びなさい。",
+          "choices": [
+            "He speaks very loud voice in the library.",
+            "The music was loudly to me.",
+            "His voice was too loud for the library.",
+            "She made a loudly noise in class."
+          ],
+          "correctIndex": 2,
+          "explanation": "be動詞の後で形容詞 loud が主語の声を説明する自然な形。他は副詞と形容詞の使い分けや語順の誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "communication",
+          "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-relate",
       "word": "relate",
       "level": "準2級",
@@ -8083,6 +12397,199 @@
         "cefrEstimate": "B2",
         "domains": [
           "logic-reasoning",
+          "communication"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-likewise",
+      "word": "likewise",
+      "level": "準2級",
+      "ipa": "ˈlaɪkwaɪz",
+      "ipaLabel": "米音",
+      "partOfSpeech": "副詞",
+      "definition": "in the same way, or also",
+      "meaning": "同様に、同じく",
+      "usageTip": "前の内容と同じことをする・言うときに使う。do likewise の形が定番。挨拶への返事の単独の Likewise.(こちらこそ)も便利。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "挨拶",
+          "text": "\"Nice to meet you.\" \"Likewise. I've heard a lot about you.\"",
+          "translation": "「はじめまして」「こちらこそ。お噂はかねがね伺っています」"
+        },
+        {
+          "id": "example-2",
+          "context": "会議",
+          "text": "She submitted her report early, and he did likewise.",
+          "translation": "彼女は報告書を早く提出し、彼も同じようにした。"
+        },
+        {
+          "id": "example-3",
+          "context": "指示",
+          "text": "Please turn off your phone and ask your friends to do likewise.",
+          "translation": "携帯の電源を切り、友人にも同様にするよう頼んでください。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "likewise",
+          "choices": [
+            {
+              "text": "めったに",
+              "meaning": "rarely"
+            },
+            {
+              "text": "同様に、同じく",
+              "meaning": "in the same way"
+            },
+            {
+              "text": "突然",
+              "meaning": "suddenly"
+            },
+            {
+              "text": "遠くに",
+              "meaning": "far away"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "likewise は同じように、という意味の副詞。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "同様に、同じく",
+          "choices": [
+            {
+              "text": "hardly",
+              "meaning": "ほとんど〜ない"
+            },
+            {
+              "text": "nearby",
+              "meaning": "近くに"
+            },
+            {
+              "text": "almost",
+              "meaning": "ほとんど"
+            },
+            {
+              "text": "likewise",
+              "meaning": "同様に"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "同様には likewise である。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "友人が丁寧に手を洗い、あなたも同じようにした場面：He washed his hands carefully, and I did ___.",
+          "choices": [
+            {
+              "text": "seldom",
+              "meaning": "めったに"
+            },
+            {
+              "text": "likewise",
+              "meaning": "同様に"
+            },
+            {
+              "text": "instead",
+              "meaning": "代わりに"
+            },
+            {
+              "text": "rather",
+              "meaning": "むしろ"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "同じ行動をしたので、同様にを表す likewise が合う。",
+          "alternatives": [
+            {
+              "answer": "the same",
+              "explanation": "did the same も自然で、日常的。"
+            },
+            {
+              "answer": "so",
+              "explanation": "and so did I の形なら自然だが、語順が変わる。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "likewise を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "She apologized, and her brother did likewise to.",
+              "meaning": "彼女は謝り、弟も同じようにした。"
+            },
+            {
+              "text": "She apologized, and her brother likewise of it.",
+              "meaning": "彼女は謝り、弟もそれの同様に。"
+            },
+            {
+              "text": "She apologized likewise than her brother.",
+              "meaning": "彼女は弟より同様に謝った。"
+            },
+            {
+              "text": "She apologized, and her brother did likewise.",
+              "meaning": "彼女は謝り、弟も同じようにした。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "do likewise で「同じことをする」という自然な形。他は不要な to や of、比較の than が誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "友人が丁寧に手を洗い、あなたも同じようにした場面：He washed his hands carefully, and I did ___.",
+        "answers": [
+          "likewise"
+        ],
+        "explanation": "同じ行動をしたので、同様にを表す likewise が合う。",
+        "alternatives": [
+          {
+            "answer": "the same",
+            "explanation": "did the same も自然で、日常的。"
+          },
+          {
+            "answer": "so",
+            "explanation": "and so did I の形なら自然だが、語順が変わる。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "likewiseを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "\"Nice to meet you.\" \"Likewise. I've heard a lot about you.\"",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-likewise-usage",
+          "type": "usage",
+          "prompt": "likewise を正しく使った文を選びなさい。",
+          "choices": [
+            "She apologized, and her brother did likewise to.",
+            "She apologized, and her brother likewise of it.",
+            "She apologized likewise than her brother.",
+            "She apologized, and her brother did likewise."
+          ],
+          "correctIndex": 3,
+          "explanation": "do likewise で「同じことをする」という自然な形。他は不要な to や of、比較の than が誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
           "communication"
         ],
         "gradeEstimate": "準2級",
@@ -11436,6 +15943,217 @@
       }
     },
     {
+      "id": "vocab-dissect",
+      "word": "dissect",
+      "level": "準2級",
+      "ipa": "dɪˈsɛkt",
+      "ipaLabel": "米音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "dissect"
+        ],
+        "past": [
+          "dissected"
+        ],
+        "pastParticiple": [
+          "dissected"
+        ],
+        "presentParticiple": [
+          "dissecting"
+        ],
+        "thirdPersonSingular": [
+          "dissects"
+        ]
+      },
+      "definition": "to cut something apart carefully to study it, or to analyze something in great detail",
+      "meaning": "解剖する、詳しく分析する",
+      "usageTip": "他動詞なので前置詞なしで目的語を取る。生物の解剖のほか、議論・報告書などを細かく分析する比喩でも使う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "理科の授業",
+          "text": "Students dissected a frog in biology class today.",
+          "translation": "生徒たちは今日、生物の授業でカエルを解剖した。"
+        },
+        {
+          "id": "example-2",
+          "context": "スポーツ",
+          "text": "The coach dissected the video to find our weak points.",
+          "translation": "コーチは私たちの弱点を見つけるため、映像を細かく分析した。"
+        },
+        {
+          "id": "example-3",
+          "context": "議論",
+          "text": "Critics dissected every line of the new proposal.",
+          "translation": "批評家たちは新しい提案の一文一文を詳しく分析した。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "dissect",
+          "choices": [
+            {
+              "text": "合併する",
+              "meaning": "一つにまとめる"
+            },
+            {
+              "text": "隠す",
+              "meaning": "見えないようにする"
+            },
+            {
+              "text": "解剖する、詳しく分析する",
+              "meaning": "切り開いて調べる"
+            },
+            {
+              "text": "飾る",
+              "meaning": "美しく見せる"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "dissect は体などを切り開いて調べる、または細かく分析する意味。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "解剖する、詳しく分析する",
+          "choices": [
+            {
+              "text": "bury",
+              "meaning": "埋める"
+            },
+            {
+              "text": "dissect",
+              "meaning": "解剖する、分析する"
+            },
+            {
+              "text": "borrow",
+              "meaning": "借りる"
+            },
+            {
+              "text": "praise",
+              "meaning": "ほめる"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "切り開いて調べる意味の動詞は dissect。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "理科の実験の場面：In biology class, we had to ___ a frog to study its organs.",
+          "choices": [
+            {
+              "text": "borrow",
+              "meaning": "借りる"
+            },
+            {
+              "text": "forgive",
+              "meaning": "許す"
+            },
+            {
+              "text": "dissect",
+              "meaning": "解剖する"
+            },
+            {
+              "text": "decorate",
+              "meaning": "飾る"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "臓器を調べるために切り開くので dissect が合う。",
+          "alternatives": [
+            {
+              "answer": "cut open",
+              "explanation": "切り開く動作に焦点があり、分析の意味は弱い。"
+            },
+            {
+              "answer": "examine",
+              "explanation": "調べるという広い意味で、切り開く動作までは含まない。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "dissect を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "The students dissected about the frog.",
+              "meaning": "生徒たちはカエルについて解剖した。"
+            },
+            {
+              "text": "The students were dissect the frog.",
+              "meaning": "生徒たちはカエルを解剖していた。"
+            },
+            {
+              "text": "The students dissect to the frog.",
+              "meaning": "生徒たちはカエルへ解剖する。"
+            },
+            {
+              "text": "The students dissected the frog carefully.",
+              "meaning": "生徒たちは慎重にカエルを解剖した。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "dissect は他動詞で、前置詞なしに目的語を直接取る。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "理科の実験の場面：In biology class, we had to ___ a frog to study its organs.",
+        "answers": [
+          "dissect"
+        ],
+        "explanation": "臓器を調べるために切り開くので dissect が合う。",
+        "alternatives": [
+          {
+            "answer": "cut open",
+            "explanation": "切り開く動作に焦点があり、分析の意味は弱い。"
+          },
+          {
+            "answer": "examine",
+            "explanation": "調べるという広い意味で、切り開く動作までは含まない。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "dissectを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Students dissected a frog in biology class today.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-dissect-usage",
+          "type": "usage",
+          "prompt": "dissect を正しく使った文を選びなさい。",
+          "choices": [
+            "The students dissected about the frog.",
+            "The students were dissect the frog.",
+            "The students dissect to the frog.",
+            "The students dissected the frog carefully."
+          ],
+          "correctIndex": 3,
+          "explanation": "dissect は他動詞で、前置詞なしに目的語を直接取る。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "C1",
+        "domains": [
+          "science",
+          "education"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-auction",
       "word": "auction",
       "level": "準2級",
@@ -11825,6 +16543,207 @@
         "cefrEstimate": "C1",
         "domains": [
           "finance",
+          "business"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-subsidiary",
+      "word": "subsidiary",
+      "level": "準2級",
+      "ipa": "səbˈsɪdiəri",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "A company that is owned or controlled by a larger company.",
+      "meaning": "子会社",
+      "usageTip": "a subsidiary of ~ で親会社を示す。wholly-owned subsidiary は完全子会社。形容詞では「補助的な」の意味もあるが、ここでは名詞を扱う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "企業ニュース",
+          "text": "The firm opened a subsidiary in Singapore to serve customers across Asia.",
+          "translation": "その会社はアジア全域の顧客に対応するため、シンガポールに子会社を設立した。"
+        },
+        {
+          "id": "example-2",
+          "context": "会議",
+          "text": "Our subsidiary in Brazil reported strong sales growth this quarter.",
+          "translation": "ブラジルの当社子会社は、今四半期に好調な売上の伸びを報告した。"
+        },
+        {
+          "id": "example-3",
+          "context": "買収",
+          "text": "After the merger, the small bank became a subsidiary of a larger group.",
+          "translation": "合併後、その小さな銀行は大手グループの子会社になった。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "subsidiary",
+          "choices": [
+            {
+              "text": "競合会社",
+              "meaning": "市場で争う相手の会社"
+            },
+            {
+              "text": "子会社",
+              "meaning": "親会社に所有・支配される会社"
+            },
+            {
+              "text": "取引先",
+              "meaning": "商売の相手"
+            },
+            {
+              "text": "株主",
+              "meaning": "株を持つ人"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "subsidiary は大きな会社に所有・支配される子会社を指す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "子会社",
+          "choices": [
+            {
+              "text": "customer",
+              "meaning": "顧客"
+            },
+            {
+              "text": "competitor",
+              "meaning": "競合他社"
+            },
+            {
+              "text": "investor",
+              "meaning": "投資家"
+            },
+            {
+              "text": "subsidiary",
+              "meaning": "子会社"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "親会社に支配される会社を表す名詞は subsidiary。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "企業グループの説明：The parent company owns the ___ completely and controls its decisions.",
+          "choices": [
+            {
+              "text": "holiday",
+              "meaning": "休日"
+            },
+            {
+              "text": "vacancy",
+              "meaning": "空き"
+            },
+            {
+              "text": "subsidiary",
+              "meaning": "子会社"
+            },
+            {
+              "text": "deadline",
+              "meaning": "締め切り"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "親会社が完全に所有し、意思決定も支配する対象は子会社である。",
+          "alternatives": [
+            {
+              "answer": "branch",
+              "explanation": "同じ会社の支店を指し、別法人の子会社とは異なる。"
+            },
+            {
+              "answer": "affiliate",
+              "explanation": "関連会社を指し、支配の度合いが弱いこともある。"
+            },
+            {
+              "answer": "unit",
+              "explanation": "組織の一部門を広く指す語。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "subsidiary を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "It is a subsidiary to a Swiss company.",
+              "meaning": "それはスイス企業への子会社だ。（前置詞の誤り）"
+            },
+            {
+              "text": "It is a subsidiary for a Swiss company.",
+              "meaning": "それはスイス企業のための子会社だ。（前置詞の誤り）"
+            },
+            {
+              "text": "It is a subsidiary from a Swiss company.",
+              "meaning": "それはスイス企業からの子会社だ。（前置詞の誤り）"
+            },
+            {
+              "text": "It is a subsidiary of a Swiss company.",
+              "meaning": "それはスイス企業の子会社だ。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "親会社との関係は a subsidiary of ~ で表す。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "企業グループの説明：The parent company owns the ___ completely and controls its decisions.",
+        "answers": [
+          "subsidiary"
+        ],
+        "explanation": "親会社が完全に所有し、意思決定も支配する対象は子会社である。",
+        "alternatives": [
+          {
+            "answer": "branch",
+            "explanation": "同じ会社の支店を指し、別法人の子会社とは異なる。"
+          },
+          {
+            "answer": "affiliate",
+            "explanation": "関連会社を指し、支配の度合いが弱いこともある。"
+          },
+          {
+            "answer": "unit",
+            "explanation": "組織の一部門を広く指す語。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "subsidiaryを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The firm opened a subsidiary in Singapore to serve customers across Asia.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-subsidiary-usage",
+          "type": "usage",
+          "prompt": "subsidiary を正しく使った文を選びなさい。",
+          "choices": [
+            "It is a subsidiary to a Swiss company.",
+            "It is a subsidiary for a Swiss company.",
+            "It is a subsidiary from a Swiss company.",
+            "It is a subsidiary of a Swiss company."
+          ],
+          "correctIndex": 3,
+          "explanation": "親会社との関係は a subsidiary of ~ で表す。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "C1",
+        "domains": [
           "business"
         ],
         "gradeEstimate": "準2級",
@@ -14577,5 +19496,286 @@
       }
     }
   ],
-  "audio": []
+  "audio": [
+    {
+      "wordId": "vocab-minor",
+      "cacheKey": "88c56d1c46df82fd35ff4aed558b54f48af9fff8e69d4f7270ae94ba2c889247",
+      "fileId": "1C7JjQLeR80oK5Sp1gg1qiKWcme11-8ic",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.679
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.704,
+          "endSeconds": 3.6515
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.6999999999999997,
+          "endSeconds": 5.956
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.956,
+          "endSeconds": 9.009
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-major",
+      "cacheKey": "a958a37b9181c25ec6ebd39f7dbb8bd44de988c83c26cc6b7c6f7441de847d3f",
+      "fileId": "1LqoLJ0a6rM1F7vh3rC9GyMwMvbedD1Xs",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.865
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.029,
+          "endSeconds": 4.139
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.164,
+          "endSeconds": 6.949
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.183,
+          "endSeconds": 9.938
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-spoil",
+      "cacheKey": "f3574982fe502a96b1cf4fe0907ea391c5b8aed6d944a797c230fcea7d1b6912",
+      "fileId": "1KB8cMvBRRy0osuAH6hCZJ3-uKvs6tDZP",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8879999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.053,
+          "endSeconds": 4.569
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.733,
+          "endSeconds": 8.098
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.262,
+          "endSeconds": 11.656
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-relate",
+      "cacheKey": "0a5935b5c6fece48634992e1951f7a870313cf3353c149321d7c0498882564c3",
+      "fileId": "1BtfY6UROgk_D6R6EzpS8gO8T879_vIXL",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.853
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0870000000000002,
+          "endSeconds": 5.161
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.395,
+          "endSeconds": 8.33
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.495000000000001,
+          "endSeconds": 11.285
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-nonetheless",
+      "cacheKey": "c0a488bb10bbc9bf9657f0d13a6bcb8362765396c0b37d9c2c06e18894885cc4",
+      "fileId": "1-JQCGeSvDk36unGt4HoI8vER925vZimC",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9635
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.971,
+          "endSeconds": 4.824
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.824,
+          "endSeconds": 8.1905
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.239,
+          "endSeconds": 12.214
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-testimony",
+      "cacheKey": "5e23997124d77af2cdcec8e6772028a53184cad28f222edf534a9023f1764e67",
+      "fileId": "1oxc-4l52U1SKmJKFKs7uZKwffIQceGOr",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.894
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.894,
+          "endSeconds": 4.835999999999999
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5,
+          "endSeconds": 8.493
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.657,
+          "endSeconds": 12.725
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-tragedy",
+      "cacheKey": "d396bfe3e22546df72658a8f65969d4018c0cbf8590e591f96e82a6db7e7aeec",
+      "fileId": "1N1H26OhsdfIkZgta8MDILLqrdDb-SOxx",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.0215
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.029,
+          "endSeconds": 4.499
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.663,
+          "endSeconds": 8.306999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.355,
+          "endSeconds": 12.028
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-treatment",
+      "cacheKey": "ad69af46f4be755dab17740c4ab3075a1b47144fe52f1069b739c0c70aa64bc2",
+      "fileId": "1ePzxISs-zf-F6VUn54W3AHyVUex30Gvg",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8999999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.238,
+          "endSeconds": 4.348
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.512,
+          "endSeconds": 8.76
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 9.098,
+          "endSeconds": 12.771
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-leftover",
+      "cacheKey": "1832d64481fccecd2c6acd73fbaecaca87aceb02ed64ba80c958e6975f4bf06c",
+      "fileId": "1qdgfHiYHnM9ce8P6k-Ey1PKtoQe7sfN3",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9810000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.145,
+          "endSeconds": 4.174
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.28,
+          "endSeconds": 7.436
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.543,
+          "endSeconds": 10.17
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-errand",
+      "cacheKey": "e4784a79b966ee36f615c9c83615c0da7617ac21e8a8fb30b5b049606314254a",
+      "fileId": "1Vz2sKGqTFOTp1knbM29KFIBOn0mBMuDP",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8300000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.169,
+          "endSeconds": 4.242999999999999
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.4079999999999995,
+          "endSeconds": 7.146
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.38,
+          "endSeconds": 10.774
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    }
+  ]
 }

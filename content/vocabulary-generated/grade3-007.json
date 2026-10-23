@@ -2427,6 +2427,200 @@
       }
     },
     {
+      "id": "vocab-sick",
+      "word": "sick",
+      "level": "3級",
+      "ipa": "sɪk",
+      "ipaLabel": "英音",
+      "partOfSpeech": "形容詞",
+      "definition": "not in good health, or feeling that you might vomit",
+      "meaning": "病気の、気分が悪い",
+      "usageTip": "be sick は病気である意味(英国では「吐く」の意味も)。feel sick は吐き気がする意味が強い。英国では ill もよく使う。sick of ～ は「～にうんざり」という別の意味。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "学校",
+          "text": "Mai stayed home from school because she was sick.",
+          "translation": "マイは病気だったので学校を休んで家にいました。"
+        },
+        {
+          "id": "example-2",
+          "context": "乗り物",
+          "text": "I always feel sick when I read on a bus.",
+          "translation": "バスで読書をするといつも気分が悪くなります。"
+        },
+        {
+          "id": "example-3",
+          "context": "看病",
+          "text": "He took care of his sick child all night.",
+          "translation": "彼は一晩中、病気の子どもの世話をしました。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "sick",
+          "choices": [
+            {
+              "text": "病気の、気分が悪い",
+              "meaning": "体調がよくない"
+            },
+            {
+              "text": "眠い",
+              "meaning": "寝たい状態"
+            },
+            {
+              "text": "健康的な",
+              "meaning": "体によい"
+            },
+            {
+              "text": "薬局",
+              "meaning": "薬を買う場所"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "sick は病気で具合が悪い、または吐き気がする状態を表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "病気の、気分が悪い",
+          "choices": [
+            {
+              "text": "healthy",
+              "meaning": "健康的な"
+            },
+            {
+              "text": "fruit",
+              "meaning": "果物"
+            },
+            {
+              "text": "sleepy",
+              "meaning": "眠い"
+            },
+            {
+              "text": "sick",
+              "meaning": "病気の"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "病気や吐き気を表す形容詞は sick です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "風邪で欠席した理由を伝える場面：Ken is absent today because he is ___.",
+          "choices": [
+            {
+              "text": "healthy",
+              "meaning": "健康な"
+            },
+            {
+              "text": "sick",
+              "meaning": "病気の"
+            },
+            {
+              "text": "fruit",
+              "meaning": "果物"
+            },
+            {
+              "text": "pharmacy",
+              "meaning": "薬局"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "欠席の理由として自然なのは病気であることです。healthy は理由として合わず、他は品詞も合いません。",
+          "alternatives": [
+            {
+              "answer": "ill",
+              "explanation": "sick と近く、特に英国英語でよく使う。"
+            },
+            {
+              "answer": "unwell",
+              "explanation": "婉曲的で丁寧に体調不良を伝える。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "sick の使い方として正しい文を選びなさい。",
+          "choices": [
+            {
+              "text": "I sick yesterday and stayed home.",
+              "meaning": "誤り：be動詞が必要(I was sick)。"
+            },
+            {
+              "text": "He sicks in bed with a fever.",
+              "meaning": "誤り：sick は動詞ではなく形容詞。"
+            },
+            {
+              "text": "I feel sick after the boat ride.",
+              "meaning": "船に乗った後、気分が悪いです。"
+            },
+            {
+              "text": "I feel sickly after the boat ride.",
+              "meaning": "誤り：sickly は「病弱な」で、一時的な気分の悪さには不適切。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "feel sick で気分が悪いことを自然に表せます。他は be動詞の欠落、動詞としての誤用、似た語 sickly の誤用です。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "風邪で欠席した理由を伝える場面：Ken is absent today because he is ___.",
+        "answers": [
+          "sick"
+        ],
+        "explanation": "欠席の理由として自然なのは病気であることです。healthy は理由として合わず、他は品詞も合いません。",
+        "alternatives": [
+          {
+            "answer": "ill",
+            "explanation": "sick と近く、特に英国英語でよく使う。"
+          },
+          {
+            "answer": "unwell",
+            "explanation": "婉曲的で丁寧に体調不良を伝える。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "sickを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Mai stayed home from school because she was sick.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-sick-usage",
+          "type": "usage",
+          "prompt": "sick の使い方として正しい文を選びなさい。",
+          "choices": [
+            "I sick yesterday and stayed home.",
+            "He sicks in bed with a fever.",
+            "I feel sick after the boat ride.",
+            "I feel sickly after the boat ride."
+          ],
+          "correctIndex": 2,
+          "explanation": "feel sick で気分が悪いことを自然に表せます。他は be動詞の欠落、動詞としての誤用、似た語 sickly の誤用です。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A1",
+        "domains": [
+          "health",
+          "daily-life"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-pharmacy",
       "word": "pharmacy",
       "level": "3級",
@@ -2994,6 +3188,192 @@
         "cefrEstimate": "A1",
         "domains": [
           "food"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-fruit",
+      "word": "fruit",
+      "level": "3級",
+      "ipa": "fruːt",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a sweet or juicy food that grows on plants, such as an apple",
+      "meaning": "果物、果実",
+      "usageTip": "一般には不可算で a lot of fruit や some fruit と言う。種類を言うときは fruits も使う。1個は a piece of fruit や an apple のように言う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "朝食",
+          "text": "I usually eat some fruit before I leave home.",
+          "translation": "私はたいてい家を出る前に果物を食べます。"
+        },
+        {
+          "id": "example-2",
+          "context": "買い物",
+          "text": "We need more fresh fruit for the party.",
+          "translation": "パーティー用に新鮮な果物がもっと必要です。"
+        },
+        {
+          "id": "example-3",
+          "context": "健康",
+          "text": "Fruit is a good snack between classes.",
+          "translation": "果物は授業の合間の良い軽食です。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "fruit",
+          "choices": [
+            {
+              "text": "魚",
+              "meaning": "水中の動物"
+            },
+            {
+              "text": "果物、果実",
+              "meaning": "甘くて水分のある食べ物"
+            },
+            {
+              "text": "紙",
+              "meaning": "書くための素材"
+            },
+            {
+              "text": "天気",
+              "meaning": "空模様"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "fruit は果物や果実を表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "果物、果実",
+          "choices": [
+            {
+              "text": "sleepy",
+              "meaning": "眠い"
+            },
+            {
+              "text": "pharmacy",
+              "meaning": "薬局"
+            },
+            {
+              "text": "sick",
+              "meaning": "病気の"
+            },
+            {
+              "text": "fruit",
+              "meaning": "果物"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "果物を表す名詞は fruit です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "りんごやみかんを食べたい場面：I want to eat more ___, especially apples and oranges.",
+          "choices": [
+            {
+              "text": "furniture",
+              "meaning": "家具"
+            },
+            {
+              "text": "traffic",
+              "meaning": "交通"
+            },
+            {
+              "text": "fruit",
+              "meaning": "果物"
+            },
+            {
+              "text": "homework",
+              "meaning": "宿題"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "りんごやみかんは果物なので fruit が合います。他は意味が合いません。",
+          "alternatives": [
+            {
+              "answer": "fruits",
+              "explanation": "使えるが、種類の多さを意識した響きになる。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "fruit の使い方として正しい文を選びなさい。",
+          "choices": [
+            {
+              "text": "There are much fruit in the box.",
+              "meaning": "誤り：much は不適切。a lot of を使う。"
+            },
+            {
+              "text": "I eat a piece of fruit every morning.",
+              "meaning": "私は毎朝果物を一つ食べます。"
+            },
+            {
+              "text": "I ate many fruit for breakfast.",
+              "meaning": "誤り：fruit は通常不可算で many は不自然。"
+            },
+            {
+              "text": "She bought three fruit of apples.",
+              "meaning": "誤り：of の使い方が不適切。three apples と言う。"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "a piece of fruit は果物1個を表す自然な言い方です。他は数量表現や of の使い方に誤りがあります。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "りんごやみかんを食べたい場面：I want to eat more ___, especially apples and oranges.",
+        "answers": [
+          "fruit"
+        ],
+        "explanation": "りんごやみかんは果物なので fruit が合います。他は意味が合いません。",
+        "alternatives": [
+          {
+            "answer": "fruits",
+            "explanation": "使えるが、種類の多さを意識した響きになる。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "fruitを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I usually eat some fruit before I leave home.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-fruit-usage",
+          "type": "usage",
+          "prompt": "fruit の使い方として正しい文を選びなさい。",
+          "choices": [
+            "There are much fruit in the box.",
+            "I eat a piece of fruit every morning.",
+            "I ate many fruit for breakfast.",
+            "She bought three fruit of apples."
+          ],
+          "correctIndex": 1,
+          "explanation": "a piece of fruit は果物1個を表す自然な言い方です。他は数量表現や of の使い方に誤りがあります。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A1",
+        "domains": [
+          "food",
+          "health"
         ],
         "gradeEstimate": "3級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -5671,6 +6051,385 @@
           ],
           "correctIndex": 3,
           "explanation": "目的は to 不定詞で表す。for の後に動詞原形は置けず、可算名詞には冠詞が必要。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "daily-life"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-clothing",
+      "word": "clothing",
+      "level": "3級",
+      "ipa": "ˈkloʊðɪŋ",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "items such as shirts, pants and coats that people wear on their bodies",
+      "meaning": "衣類、衣料品",
+      "usageTip": "ふつう不可算名詞として使い、a clothing や two clothings とは言わない。数えるときは a piece of clothing や an item of clothing を使う。「衣類」という総称で、店や産業の話でもよく使う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "旅行準備",
+          "text": "Pack warm clothing because the mountains get cold at night.",
+          "translation": "山は夜に冷えるので、暖かい衣類を荷造りしてください。"
+        },
+        {
+          "id": "example-2",
+          "context": "店",
+          "text": "The shop sells children's clothing at reasonable prices.",
+          "translation": "その店は手頃な価格で子ども服を売っている。"
+        },
+        {
+          "id": "example-3",
+          "context": "寄付",
+          "text": "We collected old clothing for the local charity event.",
+          "translation": "私たちは地域の慈善イベント用に古着を集めた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "clothing",
+          "choices": [
+            {
+              "text": "家具",
+              "meaning": "furniture"
+            },
+            {
+              "text": "衣類",
+              "meaning": "clothing"
+            },
+            {
+              "text": "食器",
+              "meaning": "tableware"
+            },
+            {
+              "text": "文房具",
+              "meaning": "stationery"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "clothing は着る物の総称で「衣類」を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "衣類、衣料品",
+          "choices": [
+            {
+              "text": "towel",
+              "meaning": "タオル"
+            },
+            {
+              "text": "wallet",
+              "meaning": "財布"
+            },
+            {
+              "text": "mirror",
+              "meaning": "鏡"
+            },
+            {
+              "text": "clothing",
+              "meaning": "衣類"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "衣類の総称は clothing。他は身の回りの物だが衣類ではない。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "寒い地域へ旅行する場面: You should bring warm ___ for the trip.",
+          "choices": [
+            {
+              "text": "clothing",
+              "meaning": "衣類"
+            },
+            {
+              "text": "mirror",
+              "meaning": "鏡"
+            },
+            {
+              "text": "wallet",
+              "meaning": "財布"
+            },
+            {
+              "text": "pocket",
+              "meaning": "ポケット"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "warm と合い、旅行に持っていく物として clothing が自然。",
+          "alternatives": [
+            {
+              "answer": "clothes",
+              "explanation": "ほぼ同じ意味で、日常会話でよく使う。複数扱いになる。"
+            },
+            {
+              "answer": "jackets",
+              "explanation": "上着に限定した言い方になる。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "clothing を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I bought two clothings at the sale.",
+              "meaning": "セールで衣類を2点買った（clothings は誤り）。"
+            },
+            {
+              "text": "She packed a few clothings in her bag.",
+              "meaning": "彼女はバッグに衣類を少し詰めた（clothings は誤り）。"
+            },
+            {
+              "text": "Winter clothing is on sale this week.",
+              "meaning": "冬物衣料が今週セール中だ。"
+            },
+            {
+              "text": "He bought a clothing for the party.",
+              "meaning": "彼はパーティー用に衣類を買った（a clothing は誤り）。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "clothing は不可算名詞なので複数形の clothings や a clothing にはしない。単数扱いの Winter clothing is ... が正しい。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "寒い地域へ旅行する場面: You should bring warm ___ for the trip.",
+        "answers": [
+          "clothing"
+        ],
+        "explanation": "warm と合い、旅行に持っていく物として clothing が自然。",
+        "alternatives": [
+          {
+            "answer": "clothes",
+            "explanation": "ほぼ同じ意味で、日常会話でよく使う。複数扱いになる。"
+          },
+          {
+            "answer": "jackets",
+            "explanation": "上着に限定した言い方になる。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "clothingを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Pack warm clothing because the mountains get cold at night.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-clothing-usage",
+          "type": "usage",
+          "prompt": "clothing を正しく使った文を選んでください。",
+          "choices": [
+            "I bought two clothings at the sale.",
+            "She packed a few clothings in her bag.",
+            "Winter clothing is on sale this week.",
+            "He bought a clothing for the party."
+          ],
+          "correctIndex": 2,
+          "explanation": "clothing は不可算名詞なので複数形の clothings や a clothing にはしない。単数扱いの Winter clothing is ... が正しい。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "daily-life",
+          "business"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-pocket",
+      "word": "pocket",
+      "level": "3級",
+      "ipa": "ˈpɒkɪt",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a small bag sewn into clothing, used for carrying small things",
+      "meaning": "ポケット",
+      "usageTip": "可算名詞。in my pocket のように in を使う。coat pocket, back pocket などの複合語も多い。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "外出",
+          "text": "I put my keys in my jacket pocket.",
+          "translation": "私は鍵を上着のポケットに入れた。"
+        },
+        {
+          "id": "example-2",
+          "context": "探し物",
+          "text": "He searched every pocket but could not find his ticket.",
+          "translation": "彼はすべてのポケットを探したが切符が見つからなかった。"
+        },
+        {
+          "id": "example-3",
+          "context": "服選び",
+          "text": "I like this coat because it has deep pockets.",
+          "translation": "深いポケットがあるので、このコートが気に入っている。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "pocket",
+          "choices": [
+            {
+              "text": "袖",
+              "meaning": "sleeve"
+            },
+            {
+              "text": "襟",
+              "meaning": "collar"
+            },
+            {
+              "text": "ポケット",
+              "meaning": "pocket"
+            },
+            {
+              "text": "ボタン",
+              "meaning": "button"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "pocket は服に付いた「ポケット」。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "ポケット",
+          "choices": [
+            {
+              "text": "mirror",
+              "meaning": "鏡"
+            },
+            {
+              "text": "towel",
+              "meaning": "タオル"
+            },
+            {
+              "text": "wallet",
+              "meaning": "財布"
+            },
+            {
+              "text": "pocket",
+              "meaning": "ポケット"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "ポケットは pocket。他は別の物を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "コートを着ている場面: She kept her gloves in her coat ___.",
+          "choices": [
+            {
+              "text": "mirror",
+              "meaning": "鏡"
+            },
+            {
+              "text": "pocket",
+              "meaning": "ポケット"
+            },
+            {
+              "text": "towel",
+              "meaning": "タオル"
+            },
+            {
+              "text": "wallet",
+              "meaning": "財布"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "coat に付いていて手袋を入れられる場所なので pocket が合う。",
+          "alternatives": [
+            {
+              "answer": "sleeve",
+              "explanation": "袖の中に入れるという別の場所を表し、手袋の保管場所としては不自然。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "pocket を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "He kept the coin on his pocket.",
+              "meaning": "on が誤り。"
+            },
+            {
+              "text": "He kept the coin at his pocket.",
+              "meaning": "at が誤り。"
+            },
+            {
+              "text": "He kept the coin in his pocket.",
+              "meaning": "彼はコインをポケットに入れていた。"
+            },
+            {
+              "text": "He kept the coin into his pocket.",
+              "meaning": "into が誤り。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "ポケットの中にある状態は in his pocket で表す。into は中へ入る動きを表すので、kept とは合わない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "コートを着ている場面: She kept her gloves in her coat ___.",
+        "answers": [
+          "pocket"
+        ],
+        "explanation": "coat に付いていて手袋を入れられる場所なので pocket が合う。",
+        "alternatives": [
+          {
+            "answer": "sleeve",
+            "explanation": "袖の中に入れるという別の場所を表し、手袋の保管場所としては不自然。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "pocketを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I put my keys in my jacket pocket.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-pocket-usage",
+          "type": "usage",
+          "prompt": "pocket を正しく使った文を選んでください。",
+          "choices": [
+            "He kept the coin on his pocket.",
+            "He kept the coin at his pocket.",
+            "He kept the coin in his pocket.",
+            "He kept the coin into his pocket."
+          ],
+          "correctIndex": 2,
+          "explanation": "ポケットの中にある状態は in his pocket で表す。into は中へ入る動きを表すので、kept とは合わない。"
         }
       ],
       "metadata": {
@@ -18479,6 +19238,34 @@
       "voiceLabel": "Sarah（女性）"
     },
     {
+      "wordId": "vocab-station",
+      "cacheKey": "e61717993d8ca86e2961a75306e47ba992cef3e8d4647bbab2be982663f87678",
+      "fileId": "1ol6Qy42lsBKqYgjaWQE9CQJ8UbIlqooD",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8414999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.8414999999999999,
+          "endSeconds": 3.4890000000000003
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.5949999999999998,
+          "endSeconds": 6.367999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.602,
+          "endSeconds": 9.52
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
       "wordId": "vocab-railway",
       "cacheKey": "2d7804f39d4098c5baff6999cf0804cc11252ee1b6414d67530701e34f1a42cd",
       "fileId": "1uemb1qj7l-M5LpdyoVLbZS7PCoFfl1ve",
@@ -18645,6 +19432,118 @@
         }
       ],
       "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-vitamin",
+      "cacheKey": "92974eb88fd8ba4ff2bc03de2a8f4fd5bbe626ea1f38d68fe357f5efabf46d25",
+      "fileId": "1KZUqkuFZganeScyr9MK7G4CzWrN1ogcO",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8185
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.867,
+          "endSeconds": 3.4074999999999998
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.456,
+          "endSeconds": 6.0545
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.08,
+          "endSeconds": 9.892
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-sleepy",
+      "cacheKey": "39fc8aa9629c5e04a6da903f1d90845cae884b44aa393a4ef0914cbf75f6adb7",
+      "fileId": "1Yt_CLOmRVtoyvPWH_cBfE_duF2UCiTWY",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8999999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.134,
+          "endSeconds": 3.965
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.965,
+          "endSeconds": 6.995
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.159,
+          "endSeconds": 10.681
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-healthy",
+      "cacheKey": "f17b11af8300bbdbb42b7912609149515710413892b1e04e9afea268a7ab930b",
+      "fileId": "1cqunizb0tSwPIuhlbEcsExQqHF2PcY2N",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.865
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9129999999999999,
+          "endSeconds": 3.0709999999999997
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.0709999999999997,
+          "endSeconds": 5.8919999999999995
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.9399999999999995,
+          "endSeconds": 8.081
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-pharmacy",
+      "cacheKey": "0bb89e2a28381e4708fde8640f04c9f08e8cc01aced63996dd040d6b7d75f3d8",
+      "fileId": "1lIJwN8Wqmh2m12mA2_WCk9IoRuqfl6dl",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9635
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.971,
+          "endSeconds": 3.239
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.239,
+          "endSeconds": 5.439
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.4639999999999995,
+          "endSeconds": 8.591
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
     },
     {
       "wordId": "vocab-emergency",
@@ -19037,6 +19936,90 @@
         }
       ],
       "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-mirror",
+      "cacheKey": "6097f3b9c6d87a092612c8caa47c8bcb472775beb2b46a9f3f718381706d6ebb",
+      "fileId": "1hgdtdOBn-z0z5dTVXfXy1Gx1XsXDVzVm",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8415
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.89,
+          "endSeconds": 3.6745
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.723,
+          "endSeconds": 6.890499999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.9159999999999995,
+          "endSeconds": 9.845
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-towel",
+      "cacheKey": "95becd06cd6bbb0121fb3f17439281652688c9387ac4470ce85abd8e65c9f829",
+      "fileId": "1n48SSNzQDtSrgdmZBqKtW2eFXkO1v9LW",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.685
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.685,
+          "endSeconds": 3.036
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.142,
+          "endSeconds": 5.463
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.801,
+          "endSeconds": 8.127
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-wallet",
+      "cacheKey": "46610ace8758cb6f6964c959042e04874ff4f905849c711ddc3af3f2d7b1362e",
+      "fileId": "1T_YRv6tpxeGChuaMOe1Ef9kUfyHne063",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.853
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0179999999999998,
+          "endSeconds": 4.242999999999999
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.35,
+          "endSeconds": 7.308999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.415,
+          "endSeconds": 10.31
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
     },
     {
       "wordId": "vocab-receipt",
@@ -19963,6 +20946,34 @@
       "voiceLabel": "George（男性）"
     },
     {
+      "wordId": "vocab-broadcast",
+      "cacheKey": "46f18407d2866bbd094f189fa86ed6f47a17d890feeb42453044eb570d5532d8",
+      "fileId": "1neUJBQkLe0cq8oa4aC2rbPy4UZi-miLn",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.126
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.134,
+          "endSeconds": 3.9764999999999997
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.002,
+          "endSeconds": 7.221500000000001
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.229,
+          "endSeconds": 10.913
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
       "wordId": "vocab-article",
       "cacheKey": "97c090c32c9aad42296edca32fcdd627bac9171f13fefd059c5c44d732a556ac",
       "fileId": "1j2VqQFRptBjQrUJRkpp05yuthV2A7PFE",
@@ -20213,6 +21224,34 @@
         }
       ],
       "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-laboratory",
+      "cacheKey": "3840510d181018751d3e6d3c65a7d55e1e30a20dca0db31c21144be1d1d951d6",
+      "fileId": "1IJ9TCg9TA0rrJ3a5NZMX80Qz9fTOJVFm",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.0045
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.053,
+          "endSeconds": 4.5915
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.5915,
+          "endSeconds": 7.9125
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.960999999999999,
+          "endSeconds": 11.564
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
     },
     {
       "wordId": "vocab-theory",
@@ -20633,6 +21672,34 @@
         }
       ],
       "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-contrast",
+      "cacheKey": "90798594e13c8548babd9e1c2eab8d71914f9798b01b38b883b24bf3de490617",
+      "fileId": "1IIxoDM7ZXQTEVw1xf5HYaR70-C67NVf0",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.1960000000000002
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.2040000000000002,
+          "endSeconds": 4.8415
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.849,
+          "endSeconds": 8.3765
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.3765,
+          "endSeconds": 12.214
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
     },
     {
       "wordId": "vocab-beside",

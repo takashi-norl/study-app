@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "courseId": "english-grammar-foundations-v1",
-  "vocabularySourceDigest": "4dcc880d3f8ab1a54fa2245a069a2315f88327ae72bd22206d992700861c152d",
-  "sourceDigest": "b106f81c6c9a43e16e5391e766144fb2ae6fe1fe69676f8c80918939be5d3c66",
+  "vocabularySourceDigest": "e6116dc8f53cac9a1034c6bdfe7ac3c85ba682bb729e825451dce2664fd28f7e",
+  "sourceDigest": "2212775ba3df758fd783cff60b94aeab7536a4ff475401c7bc52cbb8b3a6330b",
   "offsetUnit": "utf16-code-unit",
   "matchingPolicy": "Exact known words, phrases and authored inflections; longest phrase wins; ambiguous forms retain all candidates. Lexical links do not assert identical senses. Unknown terms remain plain text.",
   "counts": {
     "lessons": 36,
     "sentences": 288,
-    "spans": 1571
+    "spans": 1792
   },
   "lessons": [
     {
@@ -25,6 +25,7 @@
         "vocab-a",
         "vocab-about",
         "vocab-another",
+        "vocab-be",
         "vocab-biology",
         "vocab-but",
         "vocab-clear",
@@ -569,6 +570,21 @@
               "ambiguous": false
             },
             {
+              "start": 4,
+              "end": 6,
+              "text": "is",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "thirdPersonSingular"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 7,
               "end": 15,
               "text": "studying",
@@ -712,6 +728,21 @@
               "ambiguous": false
             },
             {
+              "start": 24,
+              "end": 26,
+              "text": "is",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "thirdPersonSingular"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 27,
               "end": 32,
               "text": "clear",
@@ -813,6 +844,7 @@
         "vocab-a",
         "vocab-and",
         "vocab-arrive",
+        "vocab-be",
         "vocab-bus",
         "vocab-close",
         "vocab-discuss",
@@ -841,6 +873,21 @@
           "kind": "example",
           "textSha256": "a11a38ceb38c877e5d490290f8c466292266540c03c7ea99594fa6466e6daf55",
           "spans": [
+            {
+              "start": 2,
+              "end": 5,
+              "text": "was",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "past"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
             {
               "start": 6,
               "end": 13,
@@ -1114,6 +1161,21 @@
               "ambiguous": false
             },
             {
+              "start": 23,
+              "end": 27,
+              "text": "were",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "past"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 28,
               "end": 38,
               "text": "discussing",
@@ -1333,6 +1395,21 @@
               "ambiguous": false
             },
             {
+              "start": 20,
+              "end": 23,
+              "text": "was",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "past"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 24,
               "end": 31,
               "text": "opening",
@@ -1544,6 +1621,21 @@
           "textSha256": "332f316537887e0d262f2d40b5c3cdf35598f70a2d896494de3f3d0165c42152",
           "spans": [
             {
+              "start": 2,
+              "end": 5,
+              "text": "was",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "past"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 6,
               "end": 13,
               "text": "writing",
@@ -1611,9 +1703,12 @@
       ],
       "relatedWordIds": [
         "vocab-a",
+        "vocab-card",
         "vocab-city",
         "vocab-debate",
+        "vocab-do",
         "vocab-enter",
+        "vocab-have",
         "vocab-know",
         "vocab-library",
         "vocab-lose",
@@ -1639,6 +1734,22 @@
           "kind": "example",
           "textSha256": "ea1a44021f70fc3ca1e43d2cddc8d5ca06d7b1f74f7b9c9d9ee6fae30d9b8273",
           "spans": [
+            {
+              "start": 2,
+              "end": 6,
+              "text": "have",
+              "targets": [
+                {
+                  "nodeId": "vocab-have",
+                  "forms": [
+                    "base",
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
             {
               "start": 7,
               "end": 14,
@@ -1776,6 +1887,22 @@
           "textSha256": "7908837ba225b89ca64c803442b695728b1b13ef1f140f8a6cf52d6adea2541c",
           "spans": [
             {
+              "start": 2,
+              "end": 6,
+              "text": "have",
+              "targets": [
+                {
+                  "nodeId": "vocab-have",
+                  "forms": [
+                    "base",
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 7,
               "end": 12,
               "text": "known",
@@ -1858,6 +1985,22 @@
           "textSha256": "c602840895511e5aa91d7970f607e1e38defff3a9dd9f68c359923445d4dbd9a",
           "spans": [
             {
+              "start": 2,
+              "end": 6,
+              "text": "have",
+              "targets": [
+                {
+                  "nodeId": "vocab-have",
+                  "forms": [
+                    "base",
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 7,
               "end": 11,
               "text": "lost",
@@ -1895,6 +2038,21 @@
               "targets": [
                 {
                   "nodeId": "vocab-student",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 23,
+              "end": 27,
+              "text": "card",
+              "targets": [
+                {
+                  "nodeId": "vocab-card",
                   "forms": [
                     "lemma"
                   ],
@@ -2024,6 +2182,22 @@
           "textSha256": "72d4cdc43513185ac9009be4d90035f55b42f42313ee362e2d346c3ea4bb062d",
           "spans": [
             {
+              "start": 2,
+              "end": 6,
+              "text": "have",
+              "targets": [
+                {
+                  "nodeId": "vocab-have",
+                  "forms": [
+                    "base",
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 13,
               "end": 17,
               "text": "near",
@@ -2076,6 +2250,22 @@
           "textSha256": "9e0f282c63f77c5107fed71807d2ce7427f639d65fe1643b79cdcb4df9dadf50",
           "spans": [
             {
+              "start": 0,
+              "end": 4,
+              "text": "Have",
+              "targets": [
+                {
+                  "nodeId": "vocab-have",
+                  "forms": [
+                    "base",
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 5,
               "end": 8,
               "text": "you",
@@ -2127,6 +2317,21 @@
           "kind": "contrast",
           "textSha256": "5a24a939a24f650ad830127c395c29103ad90fbeec550969c825f7ffe469acf7",
           "spans": [
+            {
+              "start": 0,
+              "end": 3,
+              "text": "Did",
+              "targets": [
+                {
+                  "nodeId": "vocab-do",
+                  "forms": [
+                    "past"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
             {
               "start": 4,
               "end": 7,
@@ -2188,8 +2393,12 @@
       "relatedWordIds": [
         "basic-read",
         "vocab-article",
+        "vocab-be",
         "vocab-breakfast",
+        "vocab-class",
+        "vocab-complete",
         "vocab-essay",
+        "vocab-have",
         "vocab-here",
         "vocab-month",
         "vocab-muddy",
@@ -2215,6 +2424,38 @@
           "textSha256": "0d880ebef0b8d97db58a7c9819f7bfee487229e3902ca28a5a85e2737091f226",
           "spans": [
             {
+              "start": 2,
+              "end": 6,
+              "text": "have",
+              "targets": [
+                {
+                  "nodeId": "vocab-have",
+                  "forms": [
+                    "base",
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 7,
+              "end": 16,
+              "text": "completed",
+              "targets": [
+                {
+                  "nodeId": "vocab-complete",
+                  "forms": [
+                    "past",
+                    "pastParticiple"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 23,
               "end": 31,
               "text": "practice",
@@ -2236,6 +2477,37 @@
           "kind": "example",
           "textSha256": "a91eed2a1edc9d3d0546bf6ca76bd8dd9c112926c6e184a1a241499158bb76dc",
           "spans": [
+            {
+              "start": 2,
+              "end": 6,
+              "text": "have",
+              "targets": [
+                {
+                  "nodeId": "vocab-have",
+                  "forms": [
+                    "base",
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 7,
+              "end": 11,
+              "text": "been",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "pastParticiple"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
             {
               "start": 26,
               "end": 31,
@@ -2319,6 +2591,22 @@
               "ambiguous": false
             },
             {
+              "start": 22,
+              "end": 26,
+              "text": "Have",
+              "targets": [
+                {
+                  "nodeId": "vocab-have",
+                  "forms": [
+                    "base",
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 27,
               "end": 30,
               "text": "you",
@@ -2327,6 +2615,21 @@
                   "nodeId": "vocab-you",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 31,
+              "end": 35,
+              "text": "been",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "pastParticiple"
                   ],
                   "kind": "word"
                 }
@@ -2349,6 +2652,37 @@
                   "nodeId": "vocab-we",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 3,
+              "end": 7,
+              "text": "have",
+              "targets": [
+                {
+                  "nodeId": "vocab-have",
+                  "forms": [
+                    "base",
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 8,
+              "end": 12,
+              "text": "been",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "pastParticiple"
                   ],
                   "kind": "word"
                 }
@@ -2431,6 +2765,21 @@
               "ambiguous": false
             },
             {
+              "start": 39,
+              "end": 44,
+              "text": "class",
+              "targets": [
+                {
+                  "nodeId": "vocab-class",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 45,
               "end": 49,
               "text": "this",
@@ -2467,6 +2816,22 @@
           "kind": "contrast",
           "textSha256": "057636addc3b72393d25035705b851691f2d4582ab96fcdd40b960ed53a2f496",
           "spans": [
+            {
+              "start": 2,
+              "end": 6,
+              "text": "have",
+              "targets": [
+                {
+                  "nodeId": "vocab-have",
+                  "forms": [
+                    "base",
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
             {
               "start": 7,
               "end": 11,
@@ -2547,6 +2912,37 @@
           "kind": "contrast",
           "textSha256": "cebf3067b571308db299a0550e7bea38800526c98448dfe69d9c1a355c6439eb",
           "spans": [
+            {
+              "start": 2,
+              "end": 6,
+              "text": "have",
+              "targets": [
+                {
+                  "nodeId": "vocab-have",
+                  "forms": [
+                    "base",
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 7,
+              "end": 11,
+              "text": "been",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "pastParticiple"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
             {
               "start": 12,
               "end": 19,
@@ -2630,6 +3026,21 @@
               "ambiguous": false
             },
             {
+              "start": 4,
+              "end": 7,
+              "text": "has",
+              "targets": [
+                {
+                  "nodeId": "vocab-have",
+                  "forms": [
+                    "thirdPersonSingular"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 14,
               "end": 18,
               "text": "here",
@@ -2660,6 +3071,36 @@
                   "nodeId": "vocab-she",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 4,
+              "end": 7,
+              "text": "has",
+              "targets": [
+                {
+                  "nodeId": "vocab-have",
+                  "forms": [
+                    "thirdPersonSingular"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 8,
+              "end": 12,
+              "text": "been",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "pastParticiple"
                   ],
                   "kind": "word"
                 }
@@ -2700,6 +3141,7 @@
         "vocab-after",
         "vocab-all",
         "vocab-bag",
+        "vocab-be",
         "vocab-bring",
         "vocab-carry",
         "vocab-dinner",
@@ -2709,6 +3151,7 @@
         "vocab-help",
         "vocab-it",
         "vocab-look",
+        "vocab-loose",
         "vocab-meet",
         "vocab-meeting",
         "vocab-museum",
@@ -2719,6 +3162,7 @@
         "vocab-that",
         "vocab-the",
         "vocab-these",
+        "vocab-tomorrow",
         "vocab-tutor",
         "vocab-visit",
         "vocab-we",
@@ -3002,6 +3446,21 @@
                 }
               ],
               "ambiguous": false
+            },
+            {
+              "start": 33,
+              "end": 41,
+              "text": "tomorrow",
+              "targets": [
+                {
+                  "nodeId": "vocab-tomorrow",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
             }
           ]
         },
@@ -3042,6 +3501,21 @@
               "ambiguous": false
             },
             {
+              "start": 13,
+              "end": 18,
+              "text": "loose",
+              "targets": [
+                {
+                  "nodeId": "vocab-loose",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 19,
               "end": 24,
               "text": "shelf",
@@ -3065,6 +3539,21 @@
                   "nodeId": "vocab-it",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 29,
+              "end": 31,
+              "text": "is",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "thirdPersonSingular"
                   ],
                   "kind": "word"
                 }
@@ -3305,6 +3794,21 @@
                 }
               ],
               "ambiguous": false
+            },
+            {
+              "start": 27,
+              "end": 35,
+              "text": "tomorrow",
+              "targets": [
+                {
+                  "nodeId": "vocab-tomorrow",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
             }
           ]
         },
@@ -3409,12 +3913,15 @@
         "vocab-alarm",
         "vocab-another",
         "vocab-arrive",
+        "vocab-be",
         "vocab-begin",
         "vocab-can",
+        "vocab-card",
         "vocab-check",
         "vocab-door",
         "vocab-early",
         "vocab-finish",
+        "vocab-guard",
         "vocab-hand",
         "vocab-hold",
         "vocab-if",
@@ -3427,6 +3934,7 @@
         "vocab-outside",
         "vocab-practice",
         "vocab-rain",
+        "vocab-raise",
         "vocab-school",
         "vocab-sheet",
         "vocab-stop",
@@ -3528,6 +4036,21 @@
               "targets": [
                 {
                   "nodeId": "vocab-library",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 28,
+              "end": 32,
+              "text": "card",
+              "targets": [
+                {
+                  "nodeId": "vocab-card",
                   "forms": [
                     "lemma"
                   ],
@@ -3978,9 +4501,17 @@
                     "lemma"
                   ],
                   "kind": "word"
+                },
+                {
+                  "nodeId": "vocab-raise",
+                  "forms": [
+                    "base",
+                    "lemma"
+                  ],
+                  "kind": "word"
                 }
               ],
-              "ambiguous": false
+              "ambiguous": true
             },
             {
               "start": 33,
@@ -4058,6 +4589,21 @@
                   "nodeId": "vocab-door",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 12,
+              "end": 14,
+              "text": "is",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "thirdPersonSingular"
                   ],
                   "kind": "word"
                 }
@@ -4163,6 +4709,21 @@
               "ambiguous": false
             },
             {
+              "start": 12,
+              "end": 14,
+              "text": "is",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "thirdPersonSingular"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 15,
               "end": 19,
               "text": "open",
@@ -4201,6 +4762,22 @@
                 {
                   "nodeId": "vocab-the",
                   "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 33,
+              "end": 38,
+              "text": "guard",
+              "targets": [
+                {
+                  "nodeId": "vocab-guard",
+                  "forms": [
+                    "base",
                     "lemma"
                   ],
                   "kind": "word"
@@ -4454,15 +5031,19 @@
         "vocab-abroad",
         "vocab-another",
         "vocab-ask",
+        "vocab-be",
         "vocab-catch",
         "vocab-example",
         "vocab-file",
         "vocab-grow",
+        "vocab-have",
         "vocab-help",
         "vocab-if",
         "vocab-it",
         "vocab-learn",
         "vocab-leave",
+        "vocab-left",
+        "vocab-lot",
         "vocab-more",
         "vocab-not",
         "vocab-now",
@@ -4474,6 +5055,7 @@
         "vocab-study",
         "vocab-the",
         "vocab-time",
+        "vocab-tomorrow",
         "vocab-train",
         "vocab-we",
         "vocab-will",
@@ -4526,6 +5108,22 @@
                   "nodeId": "vocab-school",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 14,
+              "end": 17,
+              "text": "had",
+              "targets": [
+                {
+                  "nodeId": "vocab-have",
+                  "forms": [
+                    "past",
+                    "pastParticiple"
                   ],
                   "kind": "word"
                 }
@@ -4624,6 +5222,21 @@
                   "nodeId": "vocab-if",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 5,
+              "end": 9,
+              "text": "were",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "past"
                   ],
                   "kind": "word"
                 }
@@ -4744,6 +5357,22 @@
               "ambiguous": false
             },
             {
+              "start": 6,
+              "end": 9,
+              "text": "had",
+              "targets": [
+                {
+                  "nodeId": "vocab-have",
+                  "forms": [
+                    "past",
+                    "pastParticiple"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 10,
               "end": 14,
               "text": "left",
@@ -4755,9 +5384,16 @@
                     "pastParticiple"
                   ],
                   "kind": "word"
+                },
+                {
+                  "nodeId": "vocab-left",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
                 }
               ],
-              "ambiguous": false
+              "ambiguous": true
             },
             {
               "start": 24,
@@ -4782,6 +5418,22 @@
                 {
                   "nodeId": "vocab-would",
                   "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 33,
+              "end": 37,
+              "text": "have",
+              "targets": [
+                {
+                  "nodeId": "vocab-have",
+                  "forms": [
+                    "base",
                     "lemma"
                   ],
                   "kind": "word"
@@ -4851,6 +5503,22 @@
                   "nodeId": "vocab-if",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 5,
+              "end": 8,
+              "text": "had",
+              "targets": [
+                {
+                  "nodeId": "vocab-have",
+                  "forms": [
+                    "past",
+                    "pastParticiple"
                   ],
                   "kind": "word"
                 }
@@ -4934,6 +5602,22 @@
               "ambiguous": false
             },
             {
+              "start": 37,
+              "end": 39,
+              "text": "be",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "base",
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 50,
               "end": 52,
               "text": "it",
@@ -4986,12 +5670,43 @@
               "ambiguous": false
             },
             {
+              "start": 5,
+              "end": 9,
+              "text": "have",
+              "targets": [
+                {
+                  "nodeId": "vocab-have",
+                  "forms": [
+                    "base",
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 10,
               "end": 14,
               "text": "time",
               "targets": [
                 {
                   "nodeId": "vocab-time",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 15,
+              "end": 23,
+              "text": "tomorrow",
+              "targets": [
+                {
+                  "nodeId": "vocab-tomorrow",
                   "forms": [
                     "lemma"
                   ],
@@ -5047,6 +5762,22 @@
                   "nodeId": "vocab-if",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 5,
+              "end": 8,
+              "text": "had",
+              "targets": [
+                {
+                  "nodeId": "vocab-have",
+                  "forms": [
+                    "past",
+                    "pastParticiple"
                   ],
                   "kind": "word"
                 }
@@ -5242,6 +5973,21 @@
                 }
               ],
               "ambiguous": false
+            },
+            {
+              "start": 41,
+              "end": 44,
+              "text": "lot",
+              "targets": [
+                {
+                  "nodeId": "vocab-lot",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
             }
           ]
         },
@@ -5274,6 +6020,22 @@
                   "nodeId": "vocab-she",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 7,
+              "end": 10,
+              "text": "had",
+              "targets": [
+                {
+                  "nodeId": "vocab-have",
+                  "forms": [
+                    "past",
+                    "pastParticiple"
                   ],
                   "kind": "word"
                 }
@@ -5342,6 +6104,22 @@
               "ambiguous": false
             },
             {
+              "start": 37,
+              "end": 41,
+              "text": "have",
+              "targets": [
+                {
+                  "nodeId": "vocab-have",
+                  "forms": [
+                    "base",
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 42,
               "end": 49,
               "text": "learned",
@@ -5371,6 +6149,21 @@
                 }
               ],
               "ambiguous": false
+            },
+            {
+              "start": 52,
+              "end": 55,
+              "text": "lot",
+              "targets": [
+                {
+                  "nodeId": "vocab-lot",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
             }
           ]
         }
@@ -5387,10 +6180,13 @@
       ],
       "relatedWordIds": [
         "vocab-a",
+        "vocab-be",
         "vocab-bridge",
+        "vocab-by",
         "vocab-check",
         "vocab-cool",
         "vocab-engineer",
+        "vocab-have",
         "vocab-local",
         "vocab-measure",
         "vocab-now",
@@ -5506,6 +6302,36 @@
               "ambiguous": false
             },
             {
+              "start": 11,
+              "end": 14,
+              "text": "was",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "past"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 24,
+              "end": 26,
+              "text": "by",
+              "targets": [
+                {
+                  "nodeId": "vocab-by",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 27,
               "end": 28,
               "text": "a",
@@ -5566,6 +6392,21 @@
                   "nodeId": "vocab-the",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 16,
+              "end": 21,
+              "text": "being",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "presentParticiple"
                   ],
                   "kind": "word"
                 }
@@ -5634,6 +6475,36 @@
                   "nodeId": "vocab-report",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 17,
+              "end": 20,
+              "text": "has",
+              "targets": [
+                {
+                  "nodeId": "vocab-have",
+                  "forms": [
+                    "thirdPersonSingular"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 21,
+              "end": 25,
+              "text": "been",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "pastParticiple"
                   ],
                   "kind": "word"
                 }
@@ -5762,6 +6633,21 @@
               "ambiguous": false
             },
             {
+              "start": 16,
+              "end": 19,
+              "text": "was",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "past"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 20,
               "end": 28,
               "text": "measured",
@@ -5771,6 +6657,21 @@
                   "forms": [
                     "past",
                     "pastParticiple"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 29,
+              "end": 31,
+              "text": "by",
+              "targets": [
+                {
+                  "nodeId": "vocab-by",
+                  "forms": [
+                    "lemma"
                   ],
                   "kind": "word"
                 }
@@ -5808,6 +6709,36 @@
                   "nodeId": "vocab-the",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 13,
+              "end": 15,
+              "text": "is",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "thirdPersonSingular"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 16,
+              "end": 21,
+              "text": "being",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "presentParticiple"
                   ],
                   "kind": "word"
                 }
@@ -5853,6 +6784,36 @@
               "ambiguous": false
             },
             {
+              "start": 13,
+              "end": 16,
+              "text": "has",
+              "targets": [
+                {
+                  "nodeId": "vocab-have",
+                  "forms": [
+                    "thirdPersonSingular"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 17,
+              "end": 21,
+              "text": "been",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "pastParticiple"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 22,
               "end": 32,
               "text": "translated",
@@ -5885,11 +6846,15 @@
         "basic-read",
         "vocab-a",
         "vocab-article",
+        "vocab-be",
         "vocab-can",
         "vocab-design",
         "vocab-enter",
         "vocab-explain",
+        "vocab-extra",
+        "vocab-first",
         "vocab-guide",
+        "vocab-have",
         "vocab-help",
         "vocab-new",
         "vocab-our",
@@ -5911,6 +6876,7 @@
         "vocab-want",
         "vocab-we",
         "vocab-who",
+        "vocab-whose",
         "vocab-win",
         "vocab-workshop",
         "vocab-yesterday"
@@ -5946,6 +6912,21 @@
                   "nodeId": "vocab-want",
                   "forms": [
                     "base",
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 18,
+              "end": 23,
+              "text": "extra",
+              "targets": [
+                {
+                  "nodeId": "vocab-extra",
+                  "forms": [
                     "lemma"
                   ],
                   "kind": "word"
@@ -6388,6 +7369,21 @@
               "ambiguous": false
             },
             {
+              "start": 25,
+              "end": 30,
+              "text": "whose",
+              "targets": [
+                {
+                  "nodeId": "vocab-whose",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 31,
               "end": 37,
               "text": "design",
@@ -6471,6 +7467,22 @@
               "ambiguous": false
             },
             {
+              "start": 17,
+              "end": 20,
+              "text": "had",
+              "targets": [
+                {
+                  "nodeId": "vocab-have",
+                  "forms": [
+                    "past",
+                    "pastParticiple"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 29,
               "end": 36,
               "text": "entered",
@@ -6480,6 +7492,21 @@
                   "forms": [
                     "past",
                     "pastParticiple"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 37,
+              "end": 42,
+              "text": "first",
+              "targets": [
+                {
+                  "nodeId": "vocab-first",
+                  "forms": [
+                    "lemma"
                   ],
                   "kind": "word"
                 }
@@ -6524,6 +7551,22 @@
               "ambiguous": false
             },
             {
+              "start": 18,
+              "end": 21,
+              "text": "had",
+              "targets": [
+                {
+                  "nodeId": "vocab-have",
+                  "forms": [
+                    "past",
+                    "pastParticiple"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 31,
               "end": 38,
               "text": "entered",
@@ -6533,6 +7576,21 @@
                   "forms": [
                     "past",
                     "pastParticiple"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 39,
+              "end": 44,
+              "text": "first",
+              "targets": [
+                {
+                  "nodeId": "vocab-first",
+                  "forms": [
+                    "lemma"
                   ],
                   "kind": "word"
                 }
@@ -6623,6 +7681,21 @@
               "ambiguous": false
             },
             {
+              "start": 24,
+              "end": 27,
+              "text": "was",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "past"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 28,
               "end": 35,
               "text": "patient",
@@ -6706,6 +7779,21 @@
               "ambiguous": false
             },
             {
+              "start": 21,
+              "end": 24,
+              "text": "was",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "past"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 25,
               "end": 32,
               "text": "patient",
@@ -6738,11 +7826,13 @@
         "contain",
         "vocab-a",
         "vocab-advice",
+        "vocab-be",
         "vocab-borrow",
         "vocab-can",
         "vocab-desk",
         "vocab-explain",
         "vocab-finish",
+        "vocab-first",
         "vocab-give",
         "vocab-guide",
         "vocab-hour",
@@ -6980,6 +8070,21 @@
               "targets": [
                 {
                   "nodeId": "vocab-the",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 30,
+              "end": 35,
+              "text": "first",
+              "targets": [
+                {
+                  "nodeId": "vocab-first",
                   "forms": [
                     "lemma"
                   ],
@@ -7321,6 +8426,22 @@
               "ambiguous": false
             },
             {
+              "start": 11,
+              "end": 13,
+              "text": "be",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "base",
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 14,
               "end": 20,
               "text": "useful",
@@ -7426,6 +8547,21 @@
               "ambiguous": false
             },
             {
+              "start": 23,
+              "end": 26,
+              "text": "was",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "past"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 27,
               "end": 33,
               "text": "useful",
@@ -7458,11 +8594,16 @@
         "vocab-a",
         "vocab-after",
         "vocab-all",
+        "vocab-aloud",
+        "vocab-be",
         "vocab-crowded",
+        "vocab-do",
         "vocab-door",
         "vocab-example",
+        "vocab-have",
         "vocab-journey",
         "vocab-laboratory",
+        "vocab-match",
         "vocab-might",
         "vocab-must",
         "vocab-not",
@@ -7470,6 +8611,7 @@
         "vocab-question",
         "vocab-read",
         "vocab-route",
+        "vocab-shall",
         "vocab-she",
         "vocab-should",
         "vocab-support",
@@ -7489,6 +8631,21 @@
           "kind": "example",
           "textSha256": "9837aaab500e51b7bf6648eee575259517a30363bd0915acd8667685002d6062",
           "spans": [
+            {
+              "start": 0,
+              "end": 5,
+              "text": "Shall",
+              "targets": [
+                {
+                  "nodeId": "vocab-shall",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
             {
               "start": 8,
               "end": 12,
@@ -7539,6 +8696,21 @@
               "targets": [
                 {
                   "nodeId": "vocab-question",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 26,
+              "end": 31,
+              "text": "aloud",
+              "targets": [
+                {
+                  "nodeId": "vocab-aloud",
                   "forms": [
                     "lemma"
                   ],
@@ -7796,6 +8968,22 @@
               "ambiguous": false
             },
             {
+              "start": 16,
+              "end": 18,
+              "text": "be",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "base",
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 19,
               "end": 26,
               "text": "crowded",
@@ -7832,6 +9020,21 @@
               "targets": [
                 {
                   "nodeId": "vocab-the",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 37,
+              "end": 42,
+              "text": "match",
+              "targets": [
+                {
+                  "nodeId": "vocab-match",
                   "forms": [
                     "lemma"
                   ],
@@ -7961,6 +9164,22 @@
               "ambiguous": false
             },
             {
+              "start": 4,
+              "end": 6,
+              "text": "do",
+              "targets": [
+                {
+                  "nodeId": "vocab-do",
+                  "forms": [
+                    "base",
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 7,
               "end": 10,
               "text": "not",
@@ -7968,6 +9187,22 @@
                 {
                   "nodeId": "vocab-not",
                   "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 11,
+              "end": 15,
+              "text": "have",
+              "targets": [
+                {
+                  "nodeId": "vocab-have",
+                  "forms": [
+                    "base",
                     "lemma"
                   ],
                   "kind": "word"
@@ -8051,6 +9286,22 @@
                 {
                   "nodeId": "vocab-must",
                   "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 9,
+              "end": 11,
+              "text": "be",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "base",
                     "lemma"
                   ],
                   "kind": "word"
@@ -8156,6 +9407,22 @@
               "ambiguous": false
             },
             {
+              "start": 10,
+              "end": 12,
+              "text": "be",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "base",
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 13,
               "end": 18,
               "text": "tired",
@@ -8231,8 +9498,11 @@
       "relatedWordIds": [
         "basic-take",
         "vocab-ask",
+        "vocab-aunt",
+        "vocab-be",
         "vocab-can",
         "vocab-clear",
+        "vocab-discussion",
         "vocab-essay",
         "vocab-he",
         "vocab-her",
@@ -8243,6 +9513,7 @@
         "vocab-near",
         "vocab-need",
         "vocab-our",
+        "vocab-place",
         "vocab-prepare",
         "vocab-say",
         "vocab-she",
@@ -8309,6 +9580,21 @@
                   "nodeId": "vocab-she",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 19,
+              "end": 22,
+              "text": "was",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "past"
                   ],
                   "kind": "word"
                 }
@@ -8777,6 +10063,21 @@
               "ambiguous": false
             },
             {
+              "start": 19,
+              "end": 29,
+              "text": "discussion",
+              "targets": [
+                {
+                  "nodeId": "vocab-discussion",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 30,
               "end": 35,
               "text": "would",
@@ -8814,6 +10115,21 @@
                 }
               ],
               "ambiguous": true
+            },
+            {
+              "start": 41,
+              "end": 46,
+              "text": "place",
+              "targets": [
+                {
+                  "nodeId": "vocab-place",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
             }
           ]
         },
@@ -9112,6 +10428,21 @@
               "ambiguous": false
             },
             {
+              "start": 13,
+              "end": 16,
+              "text": "was",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "past"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 17,
               "end": 24,
               "text": "staying",
@@ -9133,6 +10464,21 @@
               "targets": [
                 {
                   "nodeId": "vocab-her",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 34,
+              "end": 38,
+              "text": "aunt",
+              "targets": [
+                {
+                  "nodeId": "vocab-aunt",
                   "forms": [
                     "lemma"
                   ],
@@ -9195,6 +10541,21 @@
               "ambiguous": false
             },
             {
+              "start": 13,
+              "end": 15,
+              "text": "is",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "thirdPersonSingular"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 16,
               "end": 23,
               "text": "staying",
@@ -9223,6 +10584,21 @@
                 }
               ],
               "ambiguous": false
+            },
+            {
+              "start": 33,
+              "end": 37,
+              "text": "aunt",
+              "targets": [
+                {
+                  "nodeId": "vocab-aunt",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
             }
           ]
         }
@@ -9239,6 +10615,7 @@
       "relatedWordIds": [
         "basic-read",
         "vocab-arrive",
+        "vocab-be",
         "vocab-essay",
         "vocab-evening",
         "vocab-exchange",
@@ -9374,6 +10751,21 @@
                   "nodeId": "vocab-presentation",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 23,
+              "end": 25,
+              "text": "is",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "thirdPersonSingular"
                   ],
                   "kind": "word"
                 }
@@ -9816,14 +11208,17 @@
         "vocab-a",
         "vocab-after",
         "vocab-ask",
+        "vocab-be",
         "vocab-blue",
         "vocab-box",
         "vocab-climate",
         "vocab-conference",
         "vocab-drawer",
+        "vocab-east",
         "vocab-exam",
         "vocab-gate",
         "vocab-label",
+        "vocab-lock",
         "vocab-me",
         "vocab-meet",
         "vocab-museum",
@@ -9831,6 +11226,7 @@
         "vocab-notebook",
         "vocab-several",
         "vocab-spare",
+        "vocab-sticker",
         "vocab-the",
         "vocab-there"
       ],
@@ -9879,6 +11275,21 @@
               "targets": [
                 {
                   "nodeId": "vocab-the",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 15,
+              "end": 19,
+              "text": "east",
+              "targets": [
+                {
+                  "nodeId": "vocab-east",
                   "forms": [
                     "lemma"
                   ],
@@ -10000,6 +11411,22 @@
               "ambiguous": false
             },
             {
+              "start": 31,
+              "end": 37,
+              "text": "locked",
+              "targets": [
+                {
+                  "nodeId": "vocab-lock",
+                  "forms": [
+                    "past",
+                    "pastParticiple"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 38,
               "end": 44,
               "text": "drawer",
@@ -10045,6 +11472,36 @@
                   "nodeId": "vocab-blue",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 7,
+              "end": 14,
+              "text": "sticker",
+              "targets": [
+                {
+                  "nodeId": "vocab-sticker",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 15,
+              "end": 17,
+              "text": "is",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "thirdPersonSingular"
                   ],
                   "kind": "word"
                 }
@@ -10187,6 +11644,21 @@
           "textSha256": "142e0648c56b92d937eef3701383f4b70928ed908b274d30646b048793ff9a4b",
           "spans": [
             {
+              "start": 5,
+              "end": 7,
+              "text": "is",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "thirdPersonSingular"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 11,
               "end": 14,
               "text": "the",
@@ -10223,6 +11695,21 @@
           "kind": "contrast",
           "textSha256": "57ce3c1f311682c6e821a4810fad148d1acb1c9363403de82900576808ef0f81",
           "spans": [
+            {
+              "start": 5,
+              "end": 7,
+              "text": "is",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "thirdPersonSingular"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
             {
               "start": 11,
               "end": 14,
@@ -10269,6 +11756,21 @@
                   "nodeId": "vocab-there",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 6,
+              "end": 8,
+              "text": "is",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "thirdPersonSingular"
                   ],
                   "kind": "word"
                 }
@@ -10366,6 +11868,21 @@
               "ambiguous": false
             },
             {
+              "start": 6,
+              "end": 8,
+              "text": "is",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "thirdPersonSingular"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 9,
               "end": 10,
               "text": "a",
@@ -10451,8 +11968,10 @@
         "basic-make",
         "basic-write",
         "vocab-a",
+        "vocab-be",
         "vocab-brother",
         "vocab-brush",
+        "vocab-class",
         "vocab-collect",
         "vocab-eyesight",
         "vocab-go",
@@ -10692,6 +12211,21 @@
               "ambiguous": false
             },
             {
+              "start": 4,
+              "end": 9,
+              "text": "class",
+              "targets": [
+                {
+                  "nodeId": "vocab-class",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 10,
               "end": 17,
               "text": "visited",
@@ -10814,6 +12348,21 @@
                   "nodeId": "vocab-brush",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 18,
+              "end": 20,
+              "text": "is",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "thirdPersonSingular"
                   ],
                   "kind": "word"
                 }
@@ -11251,12 +12800,18 @@
         "compare",
         "vocab-a",
         "vocab-art",
+        "vocab-be",
         "vocab-build",
+        "vocab-by",
+        "vocab-chalk",
         "vocab-check",
+        "vocab-classmate",
         "vocab-club",
         "vocab-diagram",
         "vocab-draw",
         "vocab-lamp",
+        "vocab-model",
+        "vocab-piece",
         "vocab-poster",
         "vocab-problem",
         "vocab-ruler",
@@ -11313,6 +12868,21 @@
               "targets": [
                 {
                   "nodeId": "vocab-the",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 24,
+              "end": 26,
+              "text": "by",
+              "targets": [
+                {
+                  "nodeId": "vocab-by",
                   "forms": [
                     "lemma"
                   ],
@@ -11447,6 +13017,36 @@
                 }
               ],
               "ambiguous": false
+            },
+            {
+              "start": 36,
+              "end": 41,
+              "text": "piece",
+              "targets": [
+                {
+                  "nodeId": "vocab-piece",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 45,
+              "end": 50,
+              "text": "chalk",
+              "targets": [
+                {
+                  "nodeId": "vocab-chalk",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
             }
           ]
         },
@@ -11477,6 +13077,36 @@
               "targets": [
                 {
                   "nodeId": "vocab-poster",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 11,
+              "end": 14,
+              "text": "was",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "past"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 24,
+              "end": 26,
+              "text": "by",
+              "targets": [
+                {
+                  "nodeId": "vocab-by",
                   "forms": [
                     "lemma"
                   ],
@@ -11582,6 +13212,21 @@
                 }
               ],
               "ambiguous": false
+            },
+            {
+              "start": 29,
+              "end": 38,
+              "text": "classmate",
+              "targets": [
+                {
+                  "nodeId": "vocab-classmate",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
             }
           ]
         },
@@ -11606,6 +13251,36 @@
               "ambiguous": false
             },
             {
+              "start": 4,
+              "end": 9,
+              "text": "model",
+              "targets": [
+                {
+                  "nodeId": "vocab-model",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 10,
+              "end": 13,
+              "text": "was",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "past"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 14,
               "end": 19,
               "text": "built",
@@ -11615,6 +13290,21 @@
                   "forms": [
                     "past",
                     "pastParticiple"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 20,
+              "end": 22,
+              "text": "by",
+              "targets": [
+                {
+                  "nodeId": "vocab-by",
+                  "forms": [
+                    "lemma"
                   ],
                   "kind": "word"
                 }
@@ -11637,6 +13327,36 @@
                   "nodeId": "vocab-the",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 4,
+              "end": 9,
+              "text": "model",
+              "targets": [
+                {
+                  "nodeId": "vocab-model",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 10,
+              "end": 13,
+              "text": "was",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "past"
                   ],
                   "kind": "word"
                 }
@@ -11704,6 +13424,21 @@
               "targets": [
                 {
                   "nodeId": "vocab-problem",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 21,
+              "end": 23,
+              "text": "by",
+              "targets": [
+                {
+                  "nodeId": "vocab-by",
                   "forms": [
                     "lemma"
                   ],
@@ -11858,7 +13593,9 @@
         "vocab-a",
         "vocab-borrow",
         "vocab-during",
+        "vocab-equipment",
         "vocab-go",
+        "vocab-have",
         "vocab-he",
         "vocab-journal",
         "vocab-keep",
@@ -11885,6 +13622,22 @@
           "kind": "example",
           "textSha256": "4103fd1d8b695132bfe4565f1c266938cbd17cf7e048fe135f7433239a85a028",
           "spans": [
+            {
+              "start": 2,
+              "end": 6,
+              "text": "have",
+              "targets": [
+                {
+                  "nodeId": "vocab-have",
+                  "forms": [
+                    "base",
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
             {
               "start": 7,
               "end": 11,
@@ -12201,6 +13954,21 @@
                 }
               ],
               "ambiguous": false
+            },
+            {
+              "start": 19,
+              "end": 28,
+              "text": "equipment",
+              "targets": [
+                {
+                  "nodeId": "vocab-equipment",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
             }
           ]
         },
@@ -12218,6 +13986,21 @@
                   "nodeId": "vocab-she",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 4,
+              "end": 7,
+              "text": "has",
+              "targets": [
+                {
+                  "nodeId": "vocab-have",
+                  "forms": [
+                    "thirdPersonSingular"
                   ],
                   "kind": "word"
                 }
@@ -12271,6 +14054,21 @@
                   "nodeId": "vocab-she",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 4,
+              "end": 7,
+              "text": "has",
+              "targets": [
+                {
+                  "nodeId": "vocab-have",
+                  "forms": [
+                    "thirdPersonSingular"
                   ],
                   "kind": "word"
                 }
@@ -12523,11 +14321,17 @@
         "basic-until",
         "vocab-article",
         "vocab-begin",
+        "vocab-by",
+        "vocab-continue",
+        "vocab-discussion",
+        "vocab-do",
         "vocab-essay",
         "vocab-everyone",
         "vocab-experiment",
         "vocab-finish",
+        "vocab-have",
         "vocab-it",
+        "vocab-may",
         "vocab-must",
         "vocab-not",
         "vocab-open",
@@ -12541,6 +14345,7 @@
         "vocab-the",
         "vocab-time",
         "vocab-tonight",
+        "vocab-turn",
         "vocab-until",
         "vocab-upload",
         "vocab-will",
@@ -12607,6 +14412,21 @@
               "targets": [
                 {
                   "nodeId": "vocab-essay",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 25,
+              "end": 27,
+              "text": "by",
+              "targets": [
+                {
+                  "nodeId": "vocab-by",
                   "forms": [
                     "lemma"
                   ],
@@ -12768,6 +14588,22 @@
           "textSha256": "0da8dafee923733466d862e63214acbd9143715cff25ecdb36322ccb89fe33dd",
           "spans": [
             {
+              "start": 0,
+              "end": 2,
+              "text": "Do",
+              "targets": [
+                {
+                  "nodeId": "vocab-do",
+                  "forms": [
+                    "base",
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 3,
               "end": 6,
               "text": "not",
@@ -12775,6 +14611,22 @@
                 {
                   "nodeId": "vocab-not",
                   "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 7,
+              "end": 11,
+              "text": "turn",
+              "targets": [
+                {
+                  "nodeId": "vocab-turn",
+                  "forms": [
+                    "base",
                     "lemma"
                   ],
                   "kind": "word"
@@ -12872,6 +14724,21 @@
           "textSha256": "1f9a7278df0096eb114fb7afda3620997cef87d668ec4d267ae2119dc9f48938",
           "spans": [
             {
+              "start": 0,
+              "end": 2,
+              "text": "By",
+              "targets": [
+                {
+                  "nodeId": "vocab-by",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 3,
               "end": 6,
               "text": "the",
@@ -12917,6 +14784,21 @@
               "ambiguous": false
             },
             {
+              "start": 16,
+              "end": 26,
+              "text": "discussion",
+              "targets": [
+                {
+                  "nodeId": "vocab-discussion",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 27,
               "end": 32,
               "text": "began",
@@ -12948,6 +14830,22 @@
                   "nodeId": "vocab-everyone",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 43,
+              "end": 46,
+              "text": "had",
+              "targets": [
+                {
+                  "nodeId": "vocab-have",
+                  "forms": [
+                    "past",
+                    "pastParticiple"
                   ],
                   "kind": "word"
                 }
@@ -13064,6 +14962,21 @@
                 }
               ],
               "ambiguous": false
+            },
+            {
+              "start": 22,
+              "end": 24,
+              "text": "by",
+              "targets": [
+                {
+                  "nodeId": "vocab-by",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
             }
           ]
         },
@@ -13072,6 +14985,22 @@
           "kind": "contrast",
           "textSha256": "54bdd6dd0e6589e397d145d98c2d8693107ae0a0fec81faab8851928c58b3e51",
           "spans": [
+            {
+              "start": 0,
+              "end": 8,
+              "text": "Continue",
+              "targets": [
+                {
+                  "nodeId": "vocab-continue",
+                  "forms": [
+                    "base",
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
             {
               "start": 9,
               "end": 12,
@@ -13147,12 +15076,42 @@
               "ambiguous": false
             },
             {
+              "start": 4,
+              "end": 7,
+              "text": "may",
+              "targets": [
+                {
+                  "nodeId": "vocab-may",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 15,
               "end": 17,
               "text": "it",
               "targets": [
                 {
                   "nodeId": "vocab-it",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 18,
+              "end": 20,
+              "text": "by",
+              "targets": [
+                {
+                  "nodeId": "vocab-by",
                   "forms": [
                     "lemma"
                   ],
@@ -13275,6 +15234,7 @@
         "vocab-beside",
         "vocab-bird",
         "vocab-build",
+        "vocab-courtyard",
         "vocab-cycle",
         "vocab-fence",
         "vocab-fly",
@@ -13282,6 +15242,7 @@
         "vocab-hill",
         "vocab-opposite",
         "vocab-over",
+        "vocab-path",
         "vocab-pond",
         "vocab-region",
         "vocab-run",
@@ -13356,6 +15317,21 @@
               "targets": [
                 {
                   "nodeId": "vocab-the",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 21,
+              "end": 30,
+              "text": "courtyard",
+              "targets": [
+                {
+                  "nodeId": "vocab-courtyard",
                   "forms": [
                     "lemma"
                   ],
@@ -13457,9 +15433,16 @@
                     "lemma"
                   ],
                   "kind": "word"
+                },
+                {
+                  "nodeId": "vocab-path",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
                 }
               ],
-              "ambiguous": false
+              "ambiguous": true
             },
             {
               "start": 15,
@@ -13839,9 +15822,16 @@
                     "lemma"
                   ],
                   "kind": "word"
+                },
+                {
+                  "nodeId": "vocab-path",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
                 }
               ],
-              "ambiguous": false
+              "ambiguous": true
             },
             {
               "start": 9,
@@ -13966,9 +15956,16 @@
                     "lemma"
                   ],
                   "kind": "word"
+                },
+                {
+                  "nodeId": "vocab-path",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
                 }
               ],
-              "ambiguous": false
+              "ambiguous": true
             },
             {
               "start": 9,
@@ -14275,7 +16272,10 @@
         "vocab-agreement",
         "vocab-among",
         "vocab-and",
+        "vocab-be",
         "vocab-between",
+        "vocab-divide",
+        "vocab-equipment",
         "vocab-find",
         "vocab-gym",
         "vocab-library",
@@ -14284,6 +16284,7 @@
         "vocab-narrow",
         "vocab-old",
         "vocab-our",
+        "vocab-path",
         "vocab-pile",
         "vocab-run",
         "vocab-school",
@@ -14341,9 +16342,16 @@
                     "lemma"
                   ],
                   "kind": "word"
+                },
+                {
+                  "nodeId": "vocab-path",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
                 }
               ],
-              "ambiguous": false
+              "ambiguous": true
             },
             {
               "start": 14,
@@ -14532,6 +16540,21 @@
                 }
               ],
               "ambiguous": false
+            },
+            {
+              "start": 54,
+              "end": 63,
+              "text": "equipment",
+              "targets": [
+                {
+                  "nodeId": "vocab-equipment",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
             }
           ]
         },
@@ -14564,6 +16587,21 @@
                   "nodeId": "vocab-school",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 11,
+              "end": 14,
+              "text": "was",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "past"
                   ],
                   "kind": "word"
                 }
@@ -14818,6 +16856,21 @@
               "ambiguous": false
             },
             {
+              "start": 6,
+              "end": 8,
+              "text": "is",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "thirdPersonSingular"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 20,
               "end": 25,
               "text": "among",
@@ -14878,6 +16931,37 @@
                   "nodeId": "vocab-money",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 10,
+              "end": 13,
+              "text": "was",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "past"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 14,
+              "end": 21,
+              "text": "divided",
+              "targets": [
+                {
+                  "nodeId": "vocab-divide",
+                  "forms": [
+                    "past",
+                    "pastParticiple"
                   ],
                   "kind": "word"
                 }
@@ -14952,6 +17036,37 @@
               "ambiguous": false
             },
             {
+              "start": 10,
+              "end": 13,
+              "text": "was",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "past"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 14,
+              "end": 21,
+              "text": "divided",
+              "targets": [
+                {
+                  "nodeId": "vocab-divide",
+                  "forms": [
+                    "past",
+                    "pastParticiple"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 22,
               "end": 27,
               "text": "among",
@@ -14997,15 +17112,21 @@
       "relatedWordIds": [
         "vocab-a",
         "vocab-above",
+        "vocab-average",
+        "vocab-be",
         "vocab-below",
         "vocab-blue",
+        "vocab-class",
         "vocab-classroom",
+        "vocab-cloth",
         "vocab-display",
         "vocab-door",
         "vocab-dust",
         "vocab-fall",
         "vocab-finish",
+        "vocab-hang",
         "vocab-keep",
+        "vocab-model",
         "vocab-off",
         "vocab-over",
         "vocab-practice",
@@ -15065,6 +17186,21 @@
                   "nodeId": "vocab-window",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 15,
+              "end": 17,
+              "text": "is",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "thirdPersonSingular"
                   ],
                   "kind": "word"
                 }
@@ -15187,6 +17323,21 @@
               "ambiguous": false
             },
             {
+              "start": 9,
+              "end": 14,
+              "text": "cloth",
+              "targets": [
+                {
+                  "nodeId": "vocab-cloth",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 15,
               "end": 19,
               "text": "over",
@@ -15208,6 +17359,21 @@
               "targets": [
                 {
                   "nodeId": "vocab-the",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 24,
+              "end": 29,
+              "text": "model",
+              "targets": [
+                {
+                  "nodeId": "vocab-model",
                   "forms": [
                     "lemma"
                   ],
@@ -15397,6 +17563,21 @@
               "ambiguous": false
             },
             {
+              "start": 4,
+              "end": 9,
+              "text": "class",
+              "targets": [
+                {
+                  "nodeId": "vocab-class",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 10,
               "end": 18,
               "text": "finished",
@@ -15495,6 +17676,36 @@
               "ambiguous": false
             },
             {
+              "start": 2,
+              "end": 7,
+              "text": "cloth",
+              "targets": [
+                {
+                  "nodeId": "vocab-cloth",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 8,
+              "end": 13,
+              "text": "hangs",
+              "targets": [
+                {
+                  "nodeId": "vocab-hang",
+                  "forms": [
+                    "thirdPersonSingular"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 14,
               "end": 19,
               "text": "above",
@@ -15554,6 +17765,21 @@
               "targets": [
                 {
                   "nodeId": "vocab-a",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 2,
+              "end": 7,
+              "text": "cloth",
+              "targets": [
+                {
+                  "nodeId": "vocab-cloth",
                   "forms": [
                     "lemma"
                   ],
@@ -15646,6 +17872,21 @@
               "ambiguous": false
             },
             {
+              "start": 10,
+              "end": 13,
+              "text": "was",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "past"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 14,
               "end": 19,
               "text": "below",
@@ -15667,6 +17908,36 @@
               "targets": [
                 {
                   "nodeId": "vocab-the",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 24,
+              "end": 29,
+              "text": "class",
+              "targets": [
+                {
+                  "nodeId": "vocab-class",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 30,
+              "end": 37,
+              "text": "average",
+              "targets": [
+                {
+                  "nodeId": "vocab-average",
                   "forms": [
                     "lemma"
                   ],
@@ -15713,6 +17984,21 @@
               "ambiguous": false
             },
             {
+              "start": 10,
+              "end": 13,
+              "text": "was",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "past"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 14,
               "end": 19,
               "text": "under",
@@ -15748,13 +18034,17 @@
         "vocab-about",
         "vocab-bird",
         "vocab-book",
+        "vocab-by",
+        "vocab-class",
         "vocab-coral",
         "vocab-discuss",
         "vocab-essay",
         "vocab-food",
+        "vocab-life",
         "vocab-ocean",
         "vocab-paper",
         "vocab-read",
+        "vocab-reliability",
         "vocab-research",
         "vocab-several",
         "vocab-source",
@@ -15836,6 +18126,21 @@
               "ambiguous": false
             },
             {
+              "start": 36,
+              "end": 38,
+              "text": "by",
+              "targets": [
+                {
+                  "nodeId": "vocab-by",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 39,
               "end": 43,
               "text": "food",
@@ -15879,6 +18184,21 @@
               "targets": [
                 {
                   "nodeId": "vocab-the",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 4,
+              "end": 9,
+              "text": "class",
+              "targets": [
+                {
+                  "nodeId": "vocab-class",
                   "forms": [
                     "lemma"
                   ],
@@ -16019,6 +18339,21 @@
               "targets": [
                 {
                   "nodeId": "vocab-the",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 23,
+              "end": 34,
+              "text": "reliability",
+              "targets": [
+                {
+                  "nodeId": "vocab-reliability",
                   "forms": [
                     "lemma"
                   ],
@@ -16242,6 +18577,21 @@
               "targets": [
                 {
                   "nodeId": "vocab-ocean",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 27,
+              "end": 31,
+              "text": "life",
+              "targets": [
+                {
+                  "nodeId": "vocab-life",
                   "forms": [
                     "lemma"
                   ],
@@ -16486,12 +18836,16 @@
         "vocab-agree",
         "vocab-apologize",
         "vocab-data",
+        "vocab-depend",
+        "vocab-equipment",
         "vocab-experiment",
+        "vocab-group",
         "vocab-interview",
         "vocab-length",
         "vocab-lose",
         "vocab-my",
         "vocab-new",
+        "vocab-personal",
         "vocab-plan",
         "vocab-recycle",
         "vocab-recycling",
@@ -16570,6 +18924,21 @@
               "ambiguous": false
             },
             {
+              "start": 29,
+              "end": 36,
+              "text": "depends",
+              "targets": [
+                {
+                  "nodeId": "vocab-depend",
+                  "forms": [
+                    "thirdPersonSingular"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 40,
               "end": 43,
               "text": "the",
@@ -16591,6 +18960,21 @@
               "targets": [
                 {
                   "nodeId": "available",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 54,
+              "end": 63,
+              "text": "equipment",
+              "targets": [
+                {
+                  "nodeId": "vocab-equipment",
                   "forms": [
                     "lemma"
                   ],
@@ -16629,6 +19013,21 @@
               "targets": [
                 {
                   "nodeId": "vocab-my",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 19,
+              "end": 24,
+              "text": "group",
+              "targets": [
+                {
+                  "nodeId": "vocab-group",
                   "forms": [
                     "lemma"
                   ],
@@ -16816,6 +19215,21 @@
               "targets": [
                 {
                   "nodeId": "vocab-their",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 40,
+              "end": 48,
+              "text": "personal",
+              "targets": [
+                {
+                  "nodeId": "vocab-personal",
                   "forms": [
                     "lemma"
                   ],
@@ -17072,9 +19486,12 @@
         "vocab-arrive",
         "vocab-before",
         "vocab-bus",
+        "vocab-by",
+        "vocab-class",
         "vocab-essay",
         "vocab-finish",
         "vocab-go",
+        "vocab-group",
         "vocab-home",
         "vocab-learn",
         "vocab-meet",
@@ -17107,6 +19524,21 @@
               "targets": [
                 {
                   "nodeId": "vocab-the",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 4,
+              "end": 9,
+              "text": "class",
+              "targets": [
+                {
+                  "nodeId": "vocab-class",
                   "forms": [
                     "lemma"
                   ],
@@ -17153,6 +19585,21 @@
               "targets": [
                 {
                   "nodeId": "vocab-museum",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 34,
+              "end": 36,
+              "text": "by",
+              "targets": [
+                {
+                  "nodeId": "vocab-by",
                   "forms": [
                     "lemma"
                   ],
@@ -17349,6 +19796,21 @@
               "targets": [
                 {
                   "nodeId": "vocab-other",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 43,
+              "end": 48,
+              "text": "group",
+              "targets": [
+                {
+                  "nodeId": "vocab-group",
                   "forms": [
                     "lemma"
                   ],
@@ -17591,6 +20053,21 @@
               "ambiguous": false
             },
             {
+              "start": 14,
+              "end": 16,
+              "text": "by",
+              "targets": [
+                {
+                  "nodeId": "vocab-by",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 17,
               "end": 20,
               "text": "bus",
@@ -17798,11 +20275,17 @@
         "vocab-a",
         "vocab-air",
         "vocab-as",
+        "vocab-be",
         "vocab-begin",
+        "vocab-climb",
+        "vocab-discussion",
+        "vocab-do",
         "vocab-exchange",
         "vocab-explain",
         "vocab-friend",
+        "vocab-from",
         "vocab-get",
+        "vocab-joke",
         "vocab-message",
         "vocab-morning",
         "vocab-my",
@@ -17867,6 +20350,21 @@
                   "nodeId": "vocab-reply",
                   "forms": [
                     "base",
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 14,
+              "end": 18,
+              "text": "from",
+              "targets": [
+                {
+                  "nodeId": "vocab-from",
+                  "forms": [
                     "lemma"
                   ],
                   "kind": "word"
@@ -18034,6 +20532,21 @@
               "ambiguous": false
             },
             {
+              "start": 30,
+              "end": 40,
+              "text": "discussion",
+              "targets": [
+                {
+                  "nodeId": "vocab-discussion",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 41,
               "end": 46,
               "text": "began",
@@ -18063,6 +20576,21 @@
           "kind": "example",
           "textSha256": "71171cf62c91b15d40894e8e9ae7652ed9abb0aa730b47714549c750439f5e2b",
           "spans": [
+            {
+              "start": 2,
+              "end": 5,
+              "text": "did",
+              "targets": [
+                {
+                  "nodeId": "vocab-do",
+                  "forms": [
+                    "past"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
             {
               "start": 6,
               "end": 9,
@@ -18101,6 +20629,21 @@
               "targets": [
                 {
                   "nodeId": "vocab-the",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 18,
+              "end": 22,
+              "text": "joke",
+              "targets": [
+                {
+                  "nodeId": "vocab-joke",
                   "forms": [
                     "lemma"
                   ],
@@ -18273,6 +20816,22 @@
                 }
               ],
               "ambiguous": false
+            },
+            {
+              "start": 26,
+              "end": 31,
+              "text": "climb",
+              "targets": [
+                {
+                  "nodeId": "vocab-climb",
+                  "forms": [
+                    "base",
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
             }
           ]
         },
@@ -18290,6 +20849,21 @@
                   "nodeId": "vocab-she",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 4,
+              "end": 6,
+              "text": "is",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "thirdPersonSingular"
                   ],
                   "kind": "word"
                 }
@@ -18327,6 +20901,21 @@
                   "nodeId": "vocab-she",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 4,
+              "end": 6,
+              "text": "is",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "thirdPersonSingular"
                   ],
                   "kind": "word"
                 }
@@ -18490,6 +21079,7 @@
         "vocab-brother",
         "vocab-chart",
         "vocab-check",
+        "vocab-do",
         "vocab-essay",
         "vocab-festival",
         "vocab-finish",
@@ -18499,6 +21089,7 @@
         "vocab-myself",
         "vocab-near",
         "vocab-need",
+        "vocab-repair",
         "vocab-report",
         "vocab-school",
         "vocab-shop",
@@ -18555,6 +21146,22 @@
                   "nodeId": "vocab-bicycle",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 17,
+              "end": 25,
+              "text": "repaired",
+              "targets": [
+                {
+                  "nodeId": "vocab-repair",
+                  "forms": [
+                    "past",
+                    "pastParticiple"
                   ],
                   "kind": "word"
                 }
@@ -18964,6 +21571,21 @@
               "ambiguous": false
             },
             {
+              "start": 23,
+              "end": 27,
+              "text": "done",
+              "targets": [
+                {
+                  "nodeId": "vocab-do",
+                  "forms": [
+                    "pastParticiple"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 31,
               "end": 34,
               "text": "the",
@@ -19015,6 +21637,22 @@
           "kind": "contrast",
           "textSha256": "b3b065e130d5190e43ec0ff8a8dc7d3fdb2080e4d9ff790d343b2433bed78de8",
           "spans": [
+            {
+              "start": 2,
+              "end": 10,
+              "text": "repaired",
+              "targets": [
+                {
+                  "nodeId": "vocab-repair",
+                  "forms": [
+                    "past",
+                    "pastParticiple"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
             {
               "start": 11,
               "end": 13,
@@ -19092,6 +21730,22 @@
                   "nodeId": "vocab-bicycle",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 17,
+              "end": 25,
+              "text": "repaired",
+              "targets": [
+                {
+                  "nodeId": "vocab-repair",
+                  "forms": [
+                    "past",
+                    "pastParticiple"
                   ],
                   "kind": "word"
                 }
@@ -19315,6 +21969,8 @@
         "vocab-across",
         "vocab-agree",
         "vocab-but",
+        "vocab-class",
+        "vocab-clearly",
         "vocab-concern",
         "vocab-could",
         "vocab-diagram",
@@ -19331,9 +21987,11 @@
         "vocab-message",
         "vocab-more",
         "vocab-my",
+        "vocab-point",
         "vocab-repeat",
         "vocab-she",
         "vocab-simple",
+        "vocab-solution",
         "vocab-story",
         "vocab-the",
         "vocab-they",
@@ -19495,6 +22153,21 @@
               "targets": [
                 {
                   "nodeId": "vocab-the",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 59,
+              "end": 64,
+              "text": "class",
+              "targets": [
+                {
+                  "nodeId": "vocab-class",
                   "forms": [
                     "lemma"
                   ],
@@ -19714,6 +22387,21 @@
               "ambiguous": false
             },
             {
+              "start": 17,
+              "end": 22,
+              "text": "point",
+              "targets": [
+                {
+                  "nodeId": "vocab-point",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 23,
               "end": 26,
               "text": "you",
@@ -19796,6 +22484,21 @@
               "targets": [
                 {
                   "nodeId": "vocab-your",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 72,
+              "end": 80,
+              "text": "solution",
+              "targets": [
+                {
+                  "nodeId": "vocab-solution",
                   "forms": [
                     "lemma"
                   ],
@@ -19925,6 +22628,21 @@
               "targets": [
                 {
                   "nodeId": "vocab-more",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 47,
+              "end": 54,
+              "text": "clearly",
+              "targets": [
+                {
+                  "nodeId": "vocab-clearly",
                   "forms": [
                     "lemma"
                   ],
@@ -20136,6 +22854,21 @@
                 }
               ],
               "ambiguous": false
+            },
+            {
+              "start": 19,
+              "end": 24,
+              "text": "point",
+              "targets": [
+                {
+                  "nodeId": "vocab-point",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
             }
           ]
         },
@@ -20189,6 +22922,21 @@
                 }
               ],
               "ambiguous": false
+            },
+            {
+              "start": 20,
+              "end": 25,
+              "text": "point",
+              "targets": [
+                {
+                  "nodeId": "vocab-point",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
             }
           ]
         }
@@ -20207,16 +22955,19 @@
         "arrange",
         "basic-take",
         "vocab-another",
+        "vocab-be",
         "vocab-bus",
         "vocab-check",
         "vocab-display",
         "vocab-essay",
+        "vocab-group",
         "vocab-hour",
         "vocab-it",
         "vocab-leave",
         "vocab-library",
         "vocab-me",
         "vocab-mistake",
+        "vocab-next",
         "vocab-not",
         "vocab-our",
         "vocab-please",
@@ -20448,6 +23199,21 @@
               "ambiguous": false
             },
             {
+              "start": 12,
+              "end": 17,
+              "text": "group",
+              "targets": [
+                {
+                  "nodeId": "vocab-group",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 36,
               "end": 43,
               "text": "prepare",
@@ -20668,6 +23434,21 @@
               "ambiguous": false
             },
             {
+              "start": 20,
+              "end": 24,
+              "text": "next",
+              "targets": [
+                {
+                  "nodeId": "vocab-next",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 25,
               "end": 28,
               "text": "bus",
@@ -20676,6 +23457,21 @@
                   "nodeId": "vocab-bus",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 29,
+              "end": 31,
+              "text": "is",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "thirdPersonSingular"
                   ],
                   "kind": "word"
                 }
@@ -21022,11 +23818,13 @@
         "vocab-a",
         "vocab-after",
         "vocab-attend",
+        "vocab-be",
         "vocab-before",
         "vocab-classroom",
         "vocab-concert",
         "vocab-day",
         "vocab-enter",
+        "vocab-first",
         "vocab-her",
         "vocab-interview",
         "vocab-its",
@@ -21036,6 +23834,7 @@
         "vocab-muddy",
         "vocab-my",
         "vocab-off",
+        "vocab-online",
         "vocab-our",
         "vocab-plane",
         "vocab-please",
@@ -21473,6 +24272,21 @@
               "ambiguous": false
             },
             {
+              "start": 40,
+              "end": 45,
+              "text": "first",
+              "targets": [
+                {
+                  "nodeId": "vocab-first",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 46,
               "end": 55,
               "text": "interview",
@@ -21481,6 +24295,21 @@
                   "nodeId": "vocab-interview",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 56,
+              "end": 59,
+              "text": "was",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "past"
                   ],
                   "kind": "word"
                 }
@@ -21497,6 +24326,21 @@
                   "forms": [
                     "past",
                     "pastParticiple"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 67,
+              "end": 73,
+              "text": "online",
+              "targets": [
+                {
+                  "nodeId": "vocab-online",
+                  "forms": [
+                    "lemma"
                   ],
                   "kind": "word"
                 }
@@ -22003,6 +24847,7 @@
         "vocab-barrier",
         "vocab-break",
         "vocab-but",
+        "vocab-discussion",
         "vocab-equation",
         "vocab-experiment",
         "vocab-help",
@@ -22506,6 +25351,21 @@
                 }
               ],
               "ambiguous": false
+            },
+            {
+              "start": 66,
+              "end": 76,
+              "text": "discussion",
+              "targets": [
+                {
+                  "nodeId": "vocab-discussion",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
             }
           ]
         },
@@ -22836,21 +25696,26 @@
         "vocab-before",
         "vocab-both",
         "vocab-but",
+        "vocab-class",
         "vocab-cost",
         "vocab-could",
         "vocab-evening",
         "vocab-every",
         "vocab-fail",
+        "vocab-first",
         "vocab-he",
         "vocab-home",
         "vocab-morning",
         "vocab-our",
         "vocab-out",
+        "vocab-permission",
         "vocab-plan",
         "vocab-schedule",
+        "vocab-solution",
         "vocab-study",
         "vocab-that",
         "vocab-the",
+        "vocab-total",
         "vocab-trip",
         "vocab-we"
       ],
@@ -22937,6 +25802,21 @@
               "ambiguous": false
             },
             {
+              "start": 30,
+              "end": 35,
+              "text": "class",
+              "targets": [
+                {
+                  "nodeId": "vocab-class",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 36,
               "end": 40,
               "text": "trip",
@@ -22975,6 +25855,21 @@
                   "nodeId": "vocab-ask",
                   "forms": [
                     "presentParticiple"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 59,
+              "end": 69,
+              "text": "permission",
+              "targets": [
+                {
+                  "nodeId": "vocab-permission",
+                  "forms": [
+                    "lemma"
                   ],
                   "kind": "word"
                 }
@@ -23123,6 +26018,21 @@
               "targets": [
                 {
                   "nodeId": "vocab-our",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 4,
+              "end": 9,
+              "text": "first",
+              "targets": [
+                {
+                  "nodeId": "vocab-first",
                   "forms": [
                     "lemma"
                   ],
@@ -23370,6 +26280,21 @@
                 }
               ],
               "ambiguous": false
+            },
+            {
+              "start": 16,
+              "end": 24,
+              "text": "solution",
+              "targets": [
+                {
+                  "nodeId": "vocab-solution",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
             }
           ]
         },
@@ -23385,6 +26310,21 @@
               "targets": [
                 {
                   "nodeId": "vocab-the",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 4,
+              "end": 12,
+              "text": "solution",
+              "targets": [
+                {
+                  "nodeId": "vocab-solution",
                   "forms": [
                     "lemma"
                   ],
@@ -23528,6 +26468,21 @@
               "ambiguous": false
             },
             {
+              "start": 17,
+              "end": 22,
+              "text": "total",
+              "targets": [
+                {
+                  "nodeId": "vocab-total",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 23,
               "end": 28,
               "text": "every",
@@ -23578,11 +26533,13 @@
         "vocab-although",
         "vocab-answer",
         "vocab-attempt",
+        "vocab-be",
         "vocab-become",
         "vocab-change",
         "vocab-correct",
         "vocab-experiment",
         "vocab-fairly",
+        "vocab-first",
         "vocab-forecast",
         "vocab-it",
         "vocab-our",
@@ -23594,6 +26551,7 @@
         "vocab-source",
         "vocab-that",
         "vocab-the",
+        "vocab-turn",
         "vocab-us",
         "vocab-use",
         "vocab-worry"
@@ -23636,6 +26594,22 @@
               "ambiguous": false
             },
             {
+              "start": 31,
+              "end": 37,
+              "text": "turned",
+              "targets": [
+                {
+                  "nodeId": "vocab-turn",
+                  "forms": [
+                    "past",
+                    "pastParticiple"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 38,
               "end": 41,
               "text": "out",
@@ -23643,6 +26617,22 @@
                 {
                   "nodeId": "vocab-out",
                   "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 45,
+              "end": 47,
+              "text": "be",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "base",
                     "lemma"
                   ],
                   "kind": "word"
@@ -23696,6 +26686,21 @@
                   "nodeId": "vocab-it",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 3,
+              "end": 8,
+              "text": "turns",
+              "targets": [
+                {
+                  "nodeId": "vocab-turn",
+                  "forms": [
+                    "thirdPersonSingular"
                   ],
                   "kind": "word"
                 }
@@ -23831,6 +26836,21 @@
               "ambiguous": false
             },
             {
+              "start": 4,
+              "end": 9,
+              "text": "first",
+              "targets": [
+                {
+                  "nodeId": "vocab-first",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 10,
               "end": 17,
               "text": "attempt",
@@ -23870,6 +26890,22 @@
                   "nodeId": "vocab-experiment",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 36,
+              "end": 42,
+              "text": "turned",
+              "targets": [
+                {
+                  "nodeId": "vocab-turn",
+                  "forms": [
+                    "past",
+                    "pastParticiple"
                   ],
                   "kind": "word"
                 }
@@ -23997,6 +27033,22 @@
               "ambiguous": false
             },
             {
+              "start": 45,
+              "end": 51,
+              "text": "turned",
+              "targets": [
+                {
+                  "nodeId": "vocab-turn",
+                  "forms": [
+                    "past",
+                    "pastParticiple"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 52,
               "end": 55,
               "text": "out",
@@ -24049,6 +27101,22 @@
               "ambiguous": false
             },
             {
+              "start": 11,
+              "end": 17,
+              "text": "turned",
+              "targets": [
+                {
+                  "nodeId": "vocab-turn",
+                  "forms": [
+                    "past",
+                    "pastParticiple"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 18,
               "end": 21,
               "text": "out",
@@ -24056,6 +27124,22 @@
                 {
                   "nodeId": "vocab-out",
                   "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 25,
+              "end": 27,
+              "text": "be",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "base",
                     "lemma"
                   ],
                   "kind": "word"
@@ -24229,6 +27313,22 @@
               "ambiguous": false
             },
             {
+              "start": 12,
+              "end": 18,
+              "text": "turned",
+              "targets": [
+                {
+                  "nodeId": "vocab-turn",
+                  "forms": [
+                    "past",
+                    "pastParticiple"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 19,
               "end": 22,
               "text": "out",
@@ -24314,11 +27414,13 @@
         "basic-while",
         "basic-write",
         "vocab-apply",
+        "vocab-be",
         "vocab-because",
         "vocab-cancel",
         "vocab-concert",
         "vocab-event",
         "vocab-form",
+        "vocab-have",
         "vocab-it",
         "vocab-keep",
         "vocab-long",
@@ -24511,6 +27613,22 @@
               "ambiguous": false
             },
             {
+              "start": 54,
+              "end": 57,
+              "text": "had",
+              "targets": [
+                {
+                  "nodeId": "vocab-have",
+                  "forms": [
+                    "past",
+                    "pastParticiple"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 58,
               "end": 64,
               "text": "passed",
@@ -24663,6 +27781,22 @@
                 {
                   "nodeId": "vocab-it",
                   "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 67,
+              "end": 69,
+              "text": "be",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "base",
                     "lemma"
                   ],
                   "kind": "word"
@@ -24891,6 +28025,21 @@
                 }
               ],
               "ambiguous": true
+            },
+            {
+              "start": 29,
+              "end": 32,
+              "text": "was",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "past"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
             },
             {
               "start": 33,
@@ -25281,18 +28430,24 @@
         "vocab-about",
         "vocab-agree",
         "vocab-article",
+        "vocab-aunt",
+        "vocab-be",
         "vocab-because",
         "vocab-before",
         "vocab-bring",
+        "vocab-by",
         "vocab-choose",
         "vocab-coast",
         "vocab-coastal",
         "vocab-concern",
         "vocab-could",
         "vocab-discuss",
+        "vocab-do",
         "vocab-grow",
+        "vocab-have",
         "vocab-he",
         "vocab-him",
+        "vocab-his",
         "vocab-it",
         "vocab-later",
         "vocab-lunch",
@@ -25307,6 +28462,7 @@
         "vocab-small",
         "vocab-solve",
         "vocab-the",
+        "vocab-topic",
         "vocab-town",
         "vocab-up",
         "vocab-we",
@@ -25433,6 +28589,21 @@
               "targets": [
                 {
                   "nodeId": "vocab-a",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 48,
+              "end": 53,
+              "text": "topic",
+              "targets": [
+                {
+                  "nodeId": "vocab-topic",
                   "forms": [
                     "lemma"
                   ],
@@ -25637,6 +28808,21 @@
               "ambiguous": false
             },
             {
+              "start": 3,
+              "end": 6,
+              "text": "was",
+              "targets": [
+                {
+                  "nodeId": "vocab-be",
+                  "forms": [
+                    "past"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 7,
               "end": 14,
               "text": "brought",
@@ -25659,6 +28845,51 @@
               "targets": [
                 {
                   "nodeId": "vocab-up",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 18,
+              "end": 20,
+              "text": "by",
+              "targets": [
+                {
+                  "nodeId": "vocab-by",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 21,
+              "end": 24,
+              "text": "his",
+              "targets": [
+                {
+                  "nodeId": "vocab-his",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 25,
+              "end": 29,
+              "text": "aunt",
+              "targets": [
+                {
+                  "nodeId": "vocab-aunt",
                   "forms": [
                     "lemma"
                   ],
@@ -25734,6 +28965,21 @@
           "kind": "example",
           "textSha256": "95892c016c3c987866222d8cc71f495ea551fec9032a9236c05d1e3a4fad44d9",
           "spans": [
+            {
+              "start": 2,
+              "end": 5,
+              "text": "did",
+              "targets": [
+                {
+                  "nodeId": "vocab-do",
+                  "forms": [
+                    "past"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
             {
               "start": 6,
               "end": 9,
@@ -25848,6 +29094,22 @@
               "ambiguous": false
             },
             {
+              "start": 42,
+              "end": 45,
+              "text": "had",
+              "targets": [
+                {
+                  "nodeId": "vocab-have",
+                  "forms": [
+                    "past",
+                    "pastParticiple"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 46,
               "end": 52,
               "text": "agreed",
@@ -25916,6 +29178,36 @@
           "kind": "contrast",
           "textSha256": "70db42d72e430a6a7486a34a760aef1e5997196adba40e1b2580b91c8cffcd1f",
           "spans": [
+            {
+              "start": 0,
+              "end": 3,
+              "text": "His",
+              "targets": [
+                {
+                  "nodeId": "vocab-his",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 4,
+              "end": 8,
+              "text": "aunt",
+              "targets": [
+                {
+                  "nodeId": "vocab-aunt",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
             {
               "start": 9,
               "end": 16,
@@ -26234,7 +29526,12 @@
         "vocab-come",
         "vocab-during",
         "vocab-enough",
+        "vocab-equipment",
         "vocab-essay",
+        "vocab-exhibition",
+        "vocab-from",
+        "vocab-group",
+        "vocab-have",
         "vocab-it",
         "vocab-its",
         "vocab-meet",
@@ -26247,8 +29544,10 @@
         "vocab-plan",
         "vocab-problem",
         "vocab-proposal",
+        "vocab-repair",
         "vocab-reuse",
         "vocab-school",
+        "vocab-solution",
         "vocab-the",
         "vocab-they",
         "vocab-this",
@@ -26271,6 +29570,21 @@
               "targets": [
                 {
                   "nodeId": "vocab-our",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 4,
+              "end": 9,
+              "text": "group",
+              "targets": [
+                {
+                  "nodeId": "vocab-group",
                   "forms": [
                     "lemma"
                   ],
@@ -26379,12 +29693,42 @@
               "ambiguous": false
             },
             {
+              "start": 48,
+              "end": 52,
+              "text": "from",
+              "targets": [
+                {
+                  "nodeId": "vocab-from",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 53,
               "end": 56,
               "text": "the",
               "targets": [
                 {
                   "nodeId": "vocab-the",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 57,
+              "end": 67,
+              "text": "exhibition",
+              "targets": [
+                {
+                  "nodeId": "vocab-exhibition",
                   "forms": [
                     "lemma"
                   ],
@@ -26554,6 +29898,22 @@
               "ambiguous": false
             },
             {
+              "start": 9,
+              "end": 12,
+              "text": "had",
+              "targets": [
+                {
+                  "nodeId": "vocab-have",
+                  "forms": [
+                    "past",
+                    "pastParticiple"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 16,
               "end": 20,
               "text": "come",
@@ -26625,12 +29985,43 @@
               "ambiguous": false
             },
             {
+              "start": 45,
+              "end": 51,
+              "text": "repair",
+              "targets": [
+                {
+                  "nodeId": "vocab-repair",
+                  "forms": [
+                    "base",
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 52,
               "end": 55,
               "text": "its",
               "targets": [
                 {
                   "nodeId": "vocab-its",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 56,
+              "end": 65,
+              "text": "equipment",
+              "targets": [
+                {
+                  "nodeId": "vocab-equipment",
                   "forms": [
                     "lemma"
                   ],
@@ -26768,6 +30159,22 @@
                   "nodeId": "vocab-school",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 53,
+              "end": 56,
+              "text": "had",
+              "targets": [
+                {
+                  "nodeId": "vocab-have",
+                  "forms": [
+                    "past",
+                    "pastParticiple"
                   ],
                   "kind": "word"
                 }
@@ -27211,6 +30618,21 @@
               "ambiguous": false
             },
             {
+              "start": 18,
+              "end": 26,
+              "text": "solution",
+              "targets": [
+                {
+                  "nodeId": "vocab-solution",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 27,
               "end": 33,
               "text": "during",
@@ -27282,6 +30704,7 @@
         "vocab-a",
         "vocab-before",
         "vocab-damage",
+        "vocab-do",
         "vocab-finish",
         "vocab-garden",
         "vocab-list",
@@ -27290,6 +30713,7 @@
         "vocab-not",
         "vocab-plan",
         "vocab-possible",
+        "vocab-progress",
         "vocab-project",
         "vocab-research",
         "vocab-room",
@@ -27313,6 +30737,21 @@
           "kind": "example",
           "textSha256": "b192af61b7cbf87392fd62266198581bed33455cbaa9173b58938b997f68fc7f",
           "spans": [
+            {
+              "start": 2,
+              "end": 5,
+              "text": "did",
+              "targets": [
+                {
+                  "nodeId": "vocab-do",
+                  "forms": [
+                    "past"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
             {
               "start": 6,
               "end": 9,
@@ -27474,6 +30913,21 @@
               "ambiguous": true
             },
             {
+              "start": 8,
+              "end": 16,
+              "text": "progress",
+              "targets": [
+                {
+                  "nodeId": "vocab-progress",
+                  "forms": [
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 17,
               "end": 28,
               "text": "even though",
@@ -27497,6 +30951,21 @@
                   "nodeId": "vocab-we",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 32,
+              "end": 35,
+              "text": "did",
+              "targets": [
+                {
+                  "nodeId": "vocab-do",
+                  "forms": [
+                    "past"
                   ],
                   "kind": "word"
                 }
@@ -27595,6 +31064,21 @@
                   "nodeId": "vocab-storm",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 10,
+              "end": 13,
+              "text": "did",
+              "targets": [
+                {
+                  "nodeId": "vocab-do",
+                  "forms": [
+                    "past"
                   ],
                   "kind": "word"
                 }
@@ -27708,6 +31192,22 @@
               "ambiguous": false
             },
             {
+              "start": 3,
+              "end": 5,
+              "text": "do",
+              "targets": [
+                {
+                  "nodeId": "vocab-do",
+                  "forms": [
+                    "base",
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
               "start": 6,
               "end": 9,
               "text": "not",
@@ -27812,6 +31312,22 @@
                 }
               ],
               "ambiguous": false
+            },
+            {
+              "start": 46,
+              "end": 48,
+              "text": "do",
+              "targets": [
+                {
+                  "nodeId": "vocab-do",
+                  "forms": [
+                    "base",
+                    "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
             }
           ]
         },
@@ -27829,6 +31345,21 @@
                   "nodeId": "vocab-we",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 3,
+              "end": 6,
+              "text": "did",
+              "targets": [
+                {
+                  "nodeId": "vocab-do",
+                  "forms": [
+                    "past"
                   ],
                   "kind": "word"
                 }
@@ -27997,6 +31528,21 @@
                   "nodeId": "vocab-she",
                   "forms": [
                     "lemma"
+                  ],
+                  "kind": "word"
+                }
+              ],
+              "ambiguous": false
+            },
+            {
+              "start": 4,
+              "end": 7,
+              "text": "did",
+              "targets": [
+                {
+                  "nodeId": "vocab-do",
+                  "forms": [
+                    "past"
                   ],
                   "kind": "word"
                 }

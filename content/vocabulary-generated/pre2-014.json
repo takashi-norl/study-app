@@ -752,6 +752,200 @@
       }
     },
     {
+      "id": "vocab-toothpaste",
+      "word": "toothpaste",
+      "level": "準2級",
+      "ipa": "ˈtuːθpeɪst",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "a soft paste that you put on a brush to clean your teeth",
+      "meaning": "歯磨き粉",
+      "usageTip": "ふつうは不可算名詞。数えるときは a tube of toothpaste のように言う。three toothpastes は「3種類」の意味で使うことがある。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "朝の支度",
+          "text": "I squeezed a little toothpaste onto my brush this morning.",
+          "translation": "今朝、歯ブラシに歯磨き粉を少し出した。"
+        },
+        {
+          "id": "example-2",
+          "context": "買い物",
+          "text": "We need to buy another tube of toothpaste tomorrow.",
+          "translation": "明日、歯磨き粉をもう1本買う必要がある。"
+        },
+        {
+          "id": "example-3",
+          "context": "旅行",
+          "text": "She packed toothpaste and a small towel in her bag.",
+          "translation": "彼女はバッグに歯磨き粉と小さなタオルを入れた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "toothpaste",
+          "choices": [
+            {
+              "text": "歯ブラシ",
+              "meaning": "toothbrush"
+            },
+            {
+              "text": "石けん",
+              "meaning": "soap"
+            },
+            {
+              "text": "デンタルフロス",
+              "meaning": "dental floss"
+            },
+            {
+              "text": "歯磨き粉",
+              "meaning": "toothpaste"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "toothpasteは歯を磨く時に使うペースト状のもの。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "歯磨き粉",
+          "choices": [
+            {
+              "text": "shampoo",
+              "meaning": "シャンプー"
+            },
+            {
+              "text": "toothpaste",
+              "meaning": "歯磨き粉"
+            },
+            {
+              "text": "towel",
+              "meaning": "タオル"
+            },
+            {
+              "text": "mirror",
+              "meaning": "鏡"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "歯磨き粉はtoothpaste。他は洗面所にある別の物。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "洗面所の場面: I ran out of ___, so I need to buy a new tube.",
+          "choices": [
+            {
+              "text": "homework",
+              "meaning": "宿題"
+            },
+            {
+              "text": "traffic",
+              "meaning": "交通"
+            },
+            {
+              "text": "toothpaste",
+              "meaning": "歯磨き粉"
+            },
+            {
+              "text": "weather",
+              "meaning": "天気"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "new tubeと続くので、チューブ入りの歯磨き粉が合う。",
+          "alternatives": [
+            {
+              "answer": "sunscreen",
+              "explanation": "日焼け止めもチューブ入りが多く、文脈次第で自然。"
+            },
+            {
+              "answer": "hand cream",
+              "explanation": "ハンドクリームもtubeで買うことがある。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "toothpasteを使った文で、文法的に正しいものを選びなさい。",
+          "choices": [
+            {
+              "text": "There are much toothpaste in the bag.",
+              "meaning": "muchとareの組み合わせを誤った文"
+            },
+            {
+              "text": "Please give me a toothpaste of.",
+              "meaning": "語順が不自然な文"
+            },
+            {
+              "text": "I used two toothpaste tubes of last month.",
+              "meaning": "ofの位置を誤った文"
+            },
+            {
+              "text": "I used a tube of toothpaste last month.",
+              "meaning": "先月、歯磨き粉を1本使った。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "toothpasteは不可算として扱い、数えるときはa tube ofを付ける。他の文は数量表現や語順に誤りがある。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "洗面所の場面: I ran out of ___, so I need to buy a new tube.",
+        "answers": [
+          "toothpaste"
+        ],
+        "explanation": "new tubeと続くので、チューブ入りの歯磨き粉が合う。",
+        "alternatives": [
+          {
+            "answer": "sunscreen",
+            "explanation": "日焼け止めもチューブ入りが多く、文脈次第で自然。"
+          },
+          {
+            "answer": "hand cream",
+            "explanation": "ハンドクリームもtubeで買うことがある。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "toothpasteを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I squeezed a little toothpaste onto my brush this morning.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-toothpaste-usage",
+          "type": "usage",
+          "prompt": "toothpasteを使った文で、文法的に正しいものを選びなさい。",
+          "choices": [
+            "There are much toothpaste in the bag.",
+            "Please give me a toothpaste of.",
+            "I used two toothpaste tubes of last month.",
+            "I used a tube of toothpaste last month."
+          ],
+          "correctIndex": 3,
+          "explanation": "toothpasteは不可算として扱い、数えるときはa tube ofを付ける。他の文は数量表現や語順に誤りがある。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "daily-life",
+          "health"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-airplane",
       "word": "airplane",
       "level": "準2級",
@@ -4415,6 +4609,200 @@
       }
     },
     {
+      "id": "vocab-notepad",
+      "word": "notepad",
+      "level": "準2級",
+      "ipa": "/ˈnoʊtpæd/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "a set of paper sheets joined together at the top or side for writing short notes",
+      "meaning": "メモ帳",
+      "usageTip": "紙をとじたメモ帳を指す。write something on a notepad の形でよく使う。パソコンの Notepad アプリ名にもなる。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "電話中",
+          "text": "I wrote his phone number on a notepad by the door.",
+          "translation": "ドアのそばのメモ帳に彼の電話番号を書いた。"
+        },
+        {
+          "id": "example-2",
+          "context": "会議",
+          "text": "She kept a notepad on the table during the meeting.",
+          "translation": "彼女は会議中、テーブルにメモ帳を置いていた。"
+        },
+        {
+          "id": "example-3",
+          "context": "買い物",
+          "text": "Add milk to the list on the kitchen notepad.",
+          "translation": "キッチンのメモ帳のリストに牛乳を加えて。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "notepad",
+          "choices": [
+            {
+              "text": "メモ帳",
+              "meaning": "短い記録を書く紙の束"
+            },
+            {
+              "text": "財布",
+              "meaning": "お金を入れる物"
+            },
+            {
+              "text": "消しゴム",
+              "meaning": "字を消す道具"
+            },
+            {
+              "text": "定規",
+              "meaning": "線を引く道具"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "notepad は短いメモを書くための紙の束を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "メモ帳",
+          "choices": [
+            {
+              "text": "envelope",
+              "meaning": "封筒"
+            },
+            {
+              "text": "calendar",
+              "meaning": "カレンダー"
+            },
+            {
+              "text": "suitcase",
+              "meaning": "スーツケース"
+            },
+            {
+              "text": "notepad",
+              "meaning": "メモ帳"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "メモを書く紙の束は notepad。他は別の物。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "電話番号を急いで書き留める場面: Hand me the ___ so I can write this down.",
+          "choices": [
+            {
+              "text": "curtain",
+              "meaning": "カーテン"
+            },
+            {
+              "text": "notepad",
+              "meaning": "メモ帳"
+            },
+            {
+              "text": "carpet",
+              "meaning": "じゅうたん"
+            },
+            {
+              "text": "spoon",
+              "meaning": "スプーン"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "書き留めるために必要な物として notepad が自然。",
+          "alternatives": [
+            {
+              "answer": "notebook",
+              "explanation": "ノート全般で、とじた冊子を指すことが多い。"
+            },
+            {
+              "answer": "pen and paper",
+              "explanation": "書く道具を一式で言う自然な表現。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "notepad の使い方が正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "I wrote the address in a notepad by pen to the.",
+              "meaning": "語順が崩れた誤り文"
+            },
+            {
+              "text": "She did a notepad for the meeting notes.",
+              "meaning": "do の使い方が誤り"
+            },
+            {
+              "text": "He wrote the address on a notepad.",
+              "meaning": "彼は住所をメモ帳に書いた。"
+            },
+            {
+              "text": "They wrote a notepad about the address.",
+              "meaning": "動詞と目的語の関係が誤り"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "notepad は書き込む対象の紙なので、write ... on a notepad が自然。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "電話番号を急いで書き留める場面: Hand me the ___ so I can write this down.",
+        "answers": [
+          "notepad"
+        ],
+        "explanation": "書き留めるために必要な物として notepad が自然。",
+        "alternatives": [
+          {
+            "answer": "notebook",
+            "explanation": "ノート全般で、とじた冊子を指すことが多い。"
+          },
+          {
+            "answer": "pen and paper",
+            "explanation": "書く道具を一式で言う自然な表現。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "notepadを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I wrote his phone number on a notepad by the door.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-notepad-usage",
+          "type": "usage",
+          "prompt": "notepad の使い方が正しい文を選んでください。",
+          "choices": [
+            "I wrote the address in a notepad by pen to the.",
+            "She did a notepad for the meeting notes.",
+            "He wrote the address on a notepad.",
+            "They wrote a notepad about the address."
+          ],
+          "correctIndex": 2,
+          "explanation": "notepad は書き込む対象の紙なので、write ... on a notepad が自然。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "education",
+          "work"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-chimney",
       "word": "chimney",
       "level": "準2級",
@@ -5958,6 +6346,200 @@
         "domains": [
           "sports",
           "travel"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-enzyme",
+      "word": "enzyme",
+      "level": "準2級",
+      "ipa": "/ˈɛnzaɪm/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a protein made by living things that speeds up a chemical reaction",
+      "meaning": "酵素",
+      "usageTip": "生物の体内で化学反応を助ける物質。digestive enzyme(消化酵素)のように使う。可算名詞。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "生物の授業",
+          "text": "An enzyme in saliva begins to break down starch in food.",
+          "translation": "唾液中の酵素は、食べ物のでんぷんを分解し始める。"
+        },
+        {
+          "id": "example-2",
+          "context": "研究",
+          "text": "The team studied how temperature changes the speed of this enzyme.",
+          "translation": "研究チームは、温度がこの酵素の働く速さをどう変えるか調べた。"
+        },
+        {
+          "id": "example-3",
+          "context": "健康",
+          "text": "Some people lack the enzyme needed to digest milk sugar.",
+          "translation": "乳糖を消化するのに必要な酵素を持たない人もいる。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "enzyme",
+          "choices": [
+            {
+              "text": "電池",
+              "meaning": "電気をためる物"
+            },
+            {
+              "text": "酵素",
+              "meaning": "化学反応を助けるたんぱく質"
+            },
+            {
+              "text": "骨",
+              "meaning": "体を支える硬い部分"
+            },
+            {
+              "text": "地図",
+              "meaning": "場所を示す図"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "enzyme は生体内で化学反応を速める酵素を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "酵素",
+          "choices": [
+            {
+              "text": "vaccine",
+              "meaning": "ワクチン"
+            },
+            {
+              "text": "muscle",
+              "meaning": "筋肉"
+            },
+            {
+              "text": "fever",
+              "meaning": "熱"
+            },
+            {
+              "text": "enzyme",
+              "meaning": "酵素"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "酵素は enzyme。vaccine は病気予防のワクチン。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "生物の授業の場面：だ液に含まれ、でんぷんを分解する物質について。Saliva contains a protein called amylase, which is one kind of ___.",
+          "choices": [
+            {
+              "text": "umbrella",
+              "meaning": "傘"
+            },
+            {
+              "text": "ticket",
+              "meaning": "切符"
+            },
+            {
+              "text": "enzyme",
+              "meaning": "酵素"
+            },
+            {
+              "text": "mirror",
+              "meaning": "鏡"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "アミラーゼは化学反応を助けるたんぱく質で、enzyme の一種。",
+          "alternatives": [
+            {
+              "answer": "protein",
+              "explanation": "アミラーゼはたんぱく質でもあるが、働きを示す語としては enzyme が的確。"
+            },
+            {
+              "answer": "catalyst",
+              "explanation": "反応を速める物質一般を指し、より広い化学用語。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "enzyme を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "The enzyme helps to digest the protein in the stomach.",
+              "meaning": "酵素は胃でたんぱく質を消化するのを助ける。"
+            },
+            {
+              "text": "The enzyme is very much dissolving in the body.",
+              "meaning": "酵素は体内でとても溶けている。(不自然)"
+            },
+            {
+              "text": "He took an enzyme of exercise every morning.",
+              "meaning": "彼は毎朝運動の酵素を取った。(不自然)"
+            },
+            {
+              "text": "She enzymed the food before dinner.",
+              "meaning": "彼女は夕食前に食べ物を酵素した。(誤り)"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "enzyme は名詞で、体内で消化などの反応を助ける物質として使う。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "生物の授業の場面：だ液に含まれ、でんぷんを分解する物質について。Saliva contains a protein called amylase, which is one kind of ___.",
+        "answers": [
+          "enzyme"
+        ],
+        "explanation": "アミラーゼは化学反応を助けるたんぱく質で、enzyme の一種。",
+        "alternatives": [
+          {
+            "answer": "protein",
+            "explanation": "アミラーゼはたんぱく質でもあるが、働きを示す語としては enzyme が的確。"
+          },
+          {
+            "answer": "catalyst",
+            "explanation": "反応を速める物質一般を指し、より広い化学用語。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "enzymeを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "An enzyme in saliva begins to break down starch in food.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-enzyme-usage",
+          "type": "usage",
+          "prompt": "enzyme を正しく使った文を選びなさい。",
+          "choices": [
+            "The enzyme helps to digest the protein in the stomach.",
+            "The enzyme is very much dissolving in the body.",
+            "He took an enzyme of exercise every morning.",
+            "She enzymed the food before dinner."
+          ],
+          "correctIndex": 0,
+          "explanation": "enzyme は名詞で、体内で消化などの反応を助ける物質として使う。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "C1",
+        "domains": [
+          "science",
+          "medical"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -9974,6 +10556,200 @@
       }
     },
     {
+      "id": "vocab-motive",
+      "word": "motive",
+      "level": "準2級",
+      "ipa": "/ˈməʊtɪv/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "the reason why someone does something",
+      "meaning": "動機、理由",
+      "usageTip": "motive for ~ の形でよく使う。犯罪や疑いの文脈で多いが、一般的な理由にも使える。「やる気」は motivation が自然。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "事件の捜査",
+          "text": "The police could not find any clear motive for the robbery.",
+          "translation": "警察はその強盗の明確な動機を見つけられなかった。"
+        },
+        {
+          "id": "example-2",
+          "context": "議論",
+          "text": "I wonder what his real motive was for helping us.",
+          "translation": "彼が私たちを助けた本当の動機は何だったのだろう。"
+        },
+        {
+          "id": "example-3",
+          "context": "ニュース解説",
+          "text": "A desire for money is often the motive behind such crimes.",
+          "translation": "お金への欲求は、そうした犯罪の背後にある動機であることが多い。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "motive",
+          "choices": [
+            {
+              "text": "結果",
+              "meaning": "起きた成果"
+            },
+            {
+              "text": "速度",
+              "meaning": "進む速さ"
+            },
+            {
+              "text": "動機",
+              "meaning": "行動の理由"
+            },
+            {
+              "text": "機械",
+              "meaning": "動く装置"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "motive は人がある行動をする理由、動機。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "動機",
+          "choices": [
+            {
+              "text": "motive",
+              "meaning": "動機"
+            },
+            {
+              "text": "motion",
+              "meaning": "動き"
+            },
+            {
+              "text": "motor",
+              "meaning": "モーター"
+            },
+            {
+              "text": "mood",
+              "meaning": "気分"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "行動の理由を表すのは motive。他は形が似ているが意味が違う。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "捜査の場面：刑事は犯人がなぜ事件を起こしたのかを知りたがった。The detective wanted to know the ___ for the crime.",
+          "choices": [
+            {
+              "text": "weather",
+              "meaning": "天気"
+            },
+            {
+              "text": "balance",
+              "meaning": "均衡"
+            },
+            {
+              "text": "motive",
+              "meaning": "動機"
+            },
+            {
+              "text": "journey",
+              "meaning": "旅"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "犯罪をした理由を知りたいので motive が自然。",
+          "alternatives": [
+            {
+              "answer": "reason",
+              "explanation": "より一般的な「理由」を表す。"
+            },
+            {
+              "answer": "cause",
+              "explanation": "出来事の原因を指し、人の意図より客観的。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "motive を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "She had a motive of the theft.",
+              "meaning": "前置詞が誤り"
+            },
+            {
+              "text": "She had a motive to steal in the bag.",
+              "meaning": "in の使い方が誤り"
+            },
+            {
+              "text": "She had a motive stealing the bag.",
+              "meaning": "前置詞が抜けた誤り"
+            },
+            {
+              "text": "She had a strong motive for the theft.",
+              "meaning": "彼女には盗みの強い動機があった。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "motive for + 名詞で「～の動機」を表す。他は前置詞や語の並びが不自然。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "捜査の場面：刑事は犯人がなぜ事件を起こしたのかを知りたがった。The detective wanted to know the ___ for the crime.",
+        "answers": [
+          "motive"
+        ],
+        "explanation": "犯罪をした理由を知りたいので motive が自然。",
+        "alternatives": [
+          {
+            "answer": "reason",
+            "explanation": "より一般的な「理由」を表す。"
+          },
+          {
+            "answer": "cause",
+            "explanation": "出来事の原因を指し、人の意図より客観的。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "motiveを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The police could not find any clear motive for the robbery.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-motive-usage",
+          "type": "usage",
+          "prompt": "motive を正しく使った文を選びなさい。",
+          "choices": [
+            "She had a motive of the theft.",
+            "She had a motive to steal in the bag.",
+            "She had a motive stealing the bag.",
+            "She had a strong motive for the theft."
+          ],
+          "correctIndex": 3,
+          "explanation": "motive for + 名詞で「～の動機」を表す。他は前置詞や語の並びが不自然。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "logic-reasoning",
+          "law"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-context",
       "word": "context",
       "level": "準2級",
@@ -12677,6 +13453,200 @@
       }
     },
     {
+      "id": "vocab-announcement",
+      "word": "announcement",
+      "level": "準2級",
+      "ipa": "/əˈnaʊnsmənt/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "a public statement that gives information about something",
+      "meaning": "発表、アナウンス",
+      "usageTip": "make an announcement は「発表する」。駅や学校の放送にも使える。announcement about / of ~ の形も便利。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "駅",
+          "text": "The station announcement said the train would be ten minutes late.",
+          "translation": "駅のアナウンスは、電車が10分遅れると伝えていた。"
+        },
+        {
+          "id": "example-2",
+          "context": "学校",
+          "text": "The teacher made an announcement about tomorrow's field trip.",
+          "translation": "先生は明日の遠足について発表した。"
+        },
+        {
+          "id": "example-3",
+          "context": "職場",
+          "text": "The company's announcement surprised many of the employees.",
+          "translation": "会社の発表に多くの従業員が驚いた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "announcement",
+          "choices": [
+            {
+              "text": "取り消し",
+              "meaning": "cancellation"
+            },
+            {
+              "text": "競争",
+              "meaning": "competition"
+            },
+            {
+              "text": "約束",
+              "meaning": "promise"
+            },
+            {
+              "text": "発表、アナウンス",
+              "meaning": "公に知らせること"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "announcement は情報を公に知らせる発表や放送を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "発表、アナウンス",
+          "choices": [
+            {
+              "text": "argument",
+              "meaning": "議論"
+            },
+            {
+              "text": "announcement",
+              "meaning": "発表"
+            },
+            {
+              "text": "agreement",
+              "meaning": "合意"
+            },
+            {
+              "text": "arrangement",
+              "meaning": "手配"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "公に知らせる発表は announcement。agreement は合意。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "空港の場面：搭乗口が変更されたことを乗客に放送で知らせた。The airline made an ___ that the gate had changed.",
+          "choices": [
+            {
+              "text": "umbrella",
+              "meaning": "傘"
+            },
+            {
+              "text": "exercise",
+              "meaning": "運動"
+            },
+            {
+              "text": "announcement",
+              "meaning": "発表、アナウンス"
+            },
+            {
+              "text": "ticket",
+              "meaning": "切符"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "make an announcement で「アナウンスする」。搭乗口変更を知らせる内容に合う。",
+          "alternatives": [
+            {
+              "answer": "update",
+              "explanation": "最新情報を伝える語で、make an update とは言わず言い方が変わる。"
+            },
+            {
+              "answer": "statement",
+              "explanation": "公式な声明で、堅い響きがある。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "announcement を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "The principal did an announcement to the students.",
+              "meaning": "do ではなく make が自然。"
+            },
+            {
+              "text": "The principal announcement the news yesterday.",
+              "meaning": "動詞 announced が必要。"
+            },
+            {
+              "text": "The principal made announcement of the festival yesterday.",
+              "meaning": "冠詞が必要。"
+            },
+            {
+              "text": "The principal made an announcement about the festival.",
+              "meaning": "校長は祭りについて発表した。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "make an announcement about ~ が自然な組み合わせ。他は動詞や冠詞が誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "空港の場面：搭乗口が変更されたことを乗客に放送で知らせた。The airline made an ___ that the gate had changed.",
+        "answers": [
+          "announcement"
+        ],
+        "explanation": "make an announcement で「アナウンスする」。搭乗口変更を知らせる内容に合う。",
+        "alternatives": [
+          {
+            "answer": "update",
+            "explanation": "最新情報を伝える語で、make an update とは言わず言い方が変わる。"
+          },
+          {
+            "answer": "statement",
+            "explanation": "公式な声明で、堅い響きがある。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "announcementを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The station announcement said the train would be ten minutes late.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-announcement-usage",
+          "type": "usage",
+          "prompt": "announcement を正しく使った文を選びなさい。",
+          "choices": [
+            "The principal did an announcement to the students.",
+            "The principal announcement the news yesterday.",
+            "The principal made announcement of the festival yesterday.",
+            "The principal made an announcement about the festival."
+          ],
+          "correctIndex": 3,
+          "explanation": "make an announcement about ~ が自然な組み合わせ。他は動詞や冠詞が誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "communication",
+          "media"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-cafe",
       "word": "cafe",
       "level": "準2級",
@@ -14582,6 +15552,401 @@
       }
     },
     {
+      "id": "vocab-warrant",
+      "word": "warrant",
+      "level": "準2級",
+      "ipa": "/ˈwɒrənt/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "an official paper signed by a judge that lets police search, arrest, or take legal action",
+      "meaning": "令状、正当な根拠",
+      "usageTip": "法律では「令状」の意味。a search warrant, an arrest warrant, get a warrant が頻出。「正当な根拠」の意味もあるが、ここでは令状を中心に学ぶ。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "警察",
+          "text": "The police needed a warrant before they could search the apartment.",
+          "translation": "警察はそのアパートを捜索する前に令状が必要だった。"
+        },
+        {
+          "id": "example-2",
+          "context": "裁判",
+          "text": "A judge issued an arrest warrant after reviewing the evidence.",
+          "translation": "裁判官は証拠を検討した後、逮捕令状を出した。"
+        },
+        {
+          "id": "example-3",
+          "context": "ニュース",
+          "text": "Officers arrived at the office with a warrant to collect the documents.",
+          "translation": "警官たちは書類を押収する令状を持って事務所に到着した。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "warrant",
+          "choices": [
+            {
+              "text": "領収書",
+              "meaning": "支払いを証明する書類"
+            },
+            {
+              "text": "令状",
+              "meaning": "裁判官が出す法的な許可書"
+            },
+            {
+              "text": "招待状",
+              "meaning": "行事に招く手紙"
+            },
+            {
+              "text": "履歴書",
+              "meaning": "経歴を書いた書類"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "warrant は警察の捜索や逮捕を認める令状を指す。他は別の書類。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "令状",
+          "choices": [
+            {
+              "text": "witness",
+              "meaning": "目撃者"
+            },
+            {
+              "text": "verdict",
+              "meaning": "評決"
+            },
+            {
+              "text": "lawyer",
+              "meaning": "弁護士"
+            },
+            {
+              "text": "warrant",
+              "meaning": "令状"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "令状は warrant。witness は人、verdict は評決、lawyer は職業。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "警察が家を捜索する場面：裁判所の許可がなければ、警察は家に入れなかった。The police could not enter the house without a search ___.",
+          "choices": [
+            {
+              "text": "ticket",
+              "meaning": "切符"
+            },
+            {
+              "text": "receipt",
+              "meaning": "領収書"
+            },
+            {
+              "text": "warrant",
+              "meaning": "令状"
+            },
+            {
+              "text": "license",
+              "meaning": "免許"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "search warrant で「捜索令状」。他は意味が合わない。",
+          "alternatives": [
+            {
+              "answer": "order",
+              "explanation": "court order なら裁判所の命令で、令状とは少し違う。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "warrant の使い方が正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "The police got a warrant for searching of the house.",
+              "meaning": "前置詞の使い方が誤り"
+            },
+            {
+              "text": "The police made a warrant to enter the house.",
+              "meaning": "make は不自然"
+            },
+            {
+              "text": "The police had a warrant search the house.",
+              "meaning": "to が抜けた誤り"
+            },
+            {
+              "text": "The police got a warrant to search the house.",
+              "meaning": "警察は家を捜索する令状を得た。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "get a warrant to + 動詞で「～する令状を得る」。他は動詞や語の並びが不自然。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "警察が家を捜索する場面：裁判所の許可がなければ、警察は家に入れなかった。The police could not enter the house without a search ___.",
+        "answers": [
+          "warrant"
+        ],
+        "explanation": "search warrant で「捜索令状」。他は意味が合わない。",
+        "alternatives": [
+          {
+            "answer": "order",
+            "explanation": "court order なら裁判所の命令で、令状とは少し違う。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "warrantを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The police needed a warrant before they could search the apartment.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-warrant-usage",
+          "type": "usage",
+          "prompt": "warrant の使い方が正しい文を選んでください。",
+          "choices": [
+            "The police got a warrant for searching of the house.",
+            "The police made a warrant to enter the house.",
+            "The police had a warrant search the house.",
+            "The police got a warrant to search the house."
+          ],
+          "correctIndex": 3,
+          "explanation": "get a warrant to + 動詞で「～する令状を得る」。他は動詞や語の並びが不自然。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "C1",
+        "domains": [
+          "law"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-testify",
+      "word": "testify",
+      "level": "準2級",
+      "ipa": "ˈtɛstɪˌfaɪ",
+      "ipaLabel": "米音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "testify"
+        ],
+        "past": [
+          "testified"
+        ],
+        "pastParticiple": [
+          "testified"
+        ],
+        "presentParticiple": [
+          "testifying"
+        ],
+        "thirdPersonSingular": [
+          "testifies"
+        ]
+      },
+      "definition": "To say formally what you know or saw, especially in a court of law.",
+      "meaning": "証言する、証明する",
+      "usageTip": "testify in court、testify against 人、testify that ... の形でよく使う。「〜に不利な証言をする」は testify against、「〜に有利な証言をする」は testify for。後ろに法廷を直接置かず in court と言う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "裁判",
+          "text": "She agreed to testify in court about what she saw.",
+          "translation": "彼女は目撃したことについて法廷で証言することに同意した。"
+        },
+        {
+          "id": "example-2",
+          "context": "事件",
+          "text": "Two neighbors testified that they heard shouting that night.",
+          "translation": "隣人二人は、その夜叫び声を聞いたと証言した。"
+        },
+        {
+          "id": "example-3",
+          "context": "職場の不正",
+          "text": "He was afraid to testify against his former boss.",
+          "translation": "彼は元上司に不利な証言をするのを恐れていた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "testify",
+          "choices": [
+            {
+              "text": "逃げる",
+              "meaning": "その場から立ち去る"
+            },
+            {
+              "text": "証言する",
+              "meaning": "法廷などで事実を述べる"
+            },
+            {
+              "text": "拒否する",
+              "meaning": "受け入れない"
+            },
+            {
+              "text": "投票する",
+              "meaning": "票を入れる"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "testify は法廷などで見聞きしたことを正式に述べること。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "証言する",
+          "choices": [
+            {
+              "text": "forgive",
+              "meaning": "許す"
+            },
+            {
+              "text": "arrest",
+              "meaning": "逮捕する"
+            },
+            {
+              "text": "sentence",
+              "meaning": "刑を宣告する"
+            },
+            {
+              "text": "testify",
+              "meaning": "証言する"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "証人として事実を述べるのは testify。他は許す、逮捕する、刑を言い渡すという別の行為。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "証人が法廷で話す場面：The witness was called to ___ at the trial.",
+          "choices": [
+            {
+              "text": "deliver",
+              "meaning": "届ける"
+            },
+            {
+              "text": "testify",
+              "meaning": "証言する"
+            },
+            {
+              "text": "repair",
+              "meaning": "修理する"
+            },
+            {
+              "text": "invent",
+              "meaning": "発明する"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "裁判に呼ばれた証人が行うのは証言すること。to の後ろは動詞の原形になる。",
+          "alternatives": [
+            {
+              "answer": "give evidence",
+              "explanation": "主に英国で使われる自然な言い方で、証言するという意味になる。"
+            },
+            {
+              "answer": "speak",
+              "explanation": "話すことは表せるが、正式な証言というニュアンスは弱い。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "testify の使い方が正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "He testified the court about the accident.",
+              "meaning": "彼は事故について裁判所に証言した。"
+            },
+            {
+              "text": "He testified to be in court about the accident.",
+              "meaning": "彼は事故について法廷にいるために証言した。"
+            },
+            {
+              "text": "He testified in court about the accident.",
+              "meaning": "彼は事故について法廷で証言した。"
+            },
+            {
+              "text": "He testified on the accident court.",
+              "meaning": "彼は事故の法廷で証言した。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "testify は法廷を直接目的語にせず、in court のように前置詞で場所を示す。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "証人が法廷で話す場面：The witness was called to ___ at the trial.",
+        "answers": [
+          "testify"
+        ],
+        "explanation": "裁判に呼ばれた証人が行うのは証言すること。to の後ろは動詞の原形になる。",
+        "alternatives": [
+          {
+            "answer": "give evidence",
+            "explanation": "主に英国で使われる自然な言い方で、証言するという意味になる。"
+          },
+          {
+            "answer": "speak",
+            "explanation": "話すことは表せるが、正式な証言というニュアンスは弱い。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "testifyを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "She agreed to testify in court about what she saw.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-testify-usage",
+          "type": "usage",
+          "prompt": "testify の使い方が正しい文を選んでください。",
+          "choices": [
+            "He testified the court about the accident.",
+            "He testified to be in court about the accident.",
+            "He testified in court about the accident.",
+            "He testified on the accident court."
+          ],
+          "correctIndex": 2,
+          "explanation": "testify は法廷を直接目的語にせず、in court のように前置詞で場所を示す。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "C1",
+        "domains": [
+          "law"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-freeway",
       "word": "freeway",
       "level": "準2級",
@@ -15720,6 +17085,182 @@
         "domains": [
           "arts-culture",
           "media"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-yourselves",
+      "word": "yourselves",
+      "level": "準2級",
+      "ipa": "jɔːˈsɛlvz",
+      "ipaLabel": "英音",
+      "partOfSpeech": "代名詞",
+      "definition": "A reflexive pronoun used when the subject is you, meaning more than one person, and the same people receive the action.",
+      "meaning": "あなたたち自身",
+      "usageTip": "複数の相手に話すときの再帰代名詞。enjoy yourselves、help yourselves (to ...)、by yourselves の形でよく使う。相手が一人なら yourself を使う。強調の You yourselves ... も可能で、動詞は are など複数形に合わせる。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "パーティー",
+          "text": "Please help yourselves to the snacks on the table.",
+          "translation": "テーブルのお菓子をご自由にどうぞ。"
+        },
+        {
+          "id": "example-2",
+          "context": "授業",
+          "text": "Try to solve the puzzle by yourselves before asking me.",
+          "translation": "私に聞く前に、自分たちでパズルを解いてみなさい。"
+        },
+        {
+          "id": "example-3",
+          "context": "旅行",
+          "text": "I hope you two enjoy yourselves in Kyoto.",
+          "translation": "お二人が京都を楽しんでくれるといいな。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "yourselves",
+          "choices": [
+            {
+              "text": "私たち自身",
+              "meaning": "話し手を含む自身"
+            },
+            {
+              "text": "あなたたち自身",
+              "meaning": "複数の相手自身"
+            },
+            {
+              "text": "彼ら自身",
+              "meaning": "第三者の自身"
+            },
+            {
+              "text": "それ自身",
+              "meaning": "物や動物自身"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "yourselves は複数の聞き手自身を表す。一人の場合は yourself を使う。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "あなたたち自身",
+          "choices": [
+            {
+              "text": "themselves",
+              "meaning": "彼ら自身"
+            },
+            {
+              "text": "ourselves",
+              "meaning": "私たち自身"
+            },
+            {
+              "text": "himself",
+              "meaning": "彼自身"
+            },
+            {
+              "text": "yourselves",
+              "meaning": "あなたたち自身"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "複数の相手自身を指すので yourselves を使う。他は指す人が異なる。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "二人の友人に注意する場面：Be careful, you two, or you might hurt ___.",
+          "choices": [
+            {
+              "text": "themselves",
+              "meaning": "彼ら自身"
+            },
+            {
+              "text": "myself",
+              "meaning": "私自身"
+            },
+            {
+              "text": "yourselves",
+              "meaning": "あなたたち自身"
+            },
+            {
+              "text": "itself",
+              "meaning": "それ自身"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "you two に話しかけており、動作を受けるのも同じ複数の相手なので yourselves が合う。",
+          "alternatives": []
+        },
+        {
+          "mode": "usage",
+          "prompt": "yourselves を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "You yourselves is very kind.",
+              "meaning": "あなたたち自身はとても親切だ。"
+            },
+            {
+              "text": "I talked to yourselves yesterday.",
+              "meaning": "私は昨日あなたたち自身に話した。"
+            },
+            {
+              "text": "Kids, you can make yourselves at home.",
+              "meaning": "みんな、くつろいでいいよ。"
+            },
+            {
+              "text": "You enjoyed yourself at the party, both.",
+              "meaning": "二人ともパーティーを楽しんだ。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "Kids と複数の相手に呼びかけ、make yourselves at home で自然な表現になる。他は動詞の一致、主語なしの再帰代名詞、単数形の誤用がある。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "二人の友人に注意する場面：Be careful, you two, or you might hurt ___.",
+        "answers": [
+          "yourselves"
+        ],
+        "explanation": "you two に話しかけており、動作を受けるのも同じ複数の相手なので yourselves が合う。",
+        "alternatives": []
+      },
+      "production": {
+        "prompt": "yourselvesを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Please help yourselves to the snacks on the table.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-yourselves-usage",
+          "type": "usage",
+          "prompt": "yourselves を正しく使った文を選びなさい。",
+          "choices": [
+            "You yourselves is very kind.",
+            "I talked to yourselves yesterday.",
+            "Kids, you can make yourselves at home.",
+            "You enjoyed yourself at the party, both."
+          ],
+          "correctIndex": 2,
+          "explanation": "Kids と複数の相手に呼びかけ、make yourselves at home で自然な表現になる。他は動詞の一致、主語なしの再帰代名詞、単数形の誤用がある。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "relationships",
+          "daily-life"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -17655,5 +19196,286 @@
       }
     }
   ],
-  "audio": []
+  "audio": [
+    {
+      "wordId": "vocab-tempo",
+      "cacheKey": "a617b681c7d0afa221bce28ad45c1f1fb67a37e5ae6fe1addace8a2b821fe762",
+      "fileId": "1969mrj3D5aSylKBQdorBfwcCNjxlFZci",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9635
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.971,
+          "endSeconds": 4.5920000000000005
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.617,
+          "endSeconds": 8.005
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.030000000000001,
+          "endSeconds": 11.006
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-integrity",
+      "cacheKey": "a7a9af45913ade6043e0ef5d75302201586002d1fdc87d2d454c8693da7a7261",
+      "fileId": "1k3zQFP6USISTwoq74cuKfmqCPUlrApw4",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.981
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.981,
+          "endSeconds": 4.255
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.489,
+          "endSeconds": 7.761
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.925999999999999,
+          "endSeconds": 11.703
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-slang",
+      "cacheKey": "0869aaf1afb3e6cb52bdebf110b2de23a6a0f17ab5f49c59626fabba131698c5",
+      "fileId": "1rLosayo3FSjW3K-ry0WFpyWZe3etU20Z",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9924999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.041,
+          "endSeconds": 4.335999999999999
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.501,
+          "endSeconds": 8.0745
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.123000000000001,
+          "endSeconds": 11.006
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-ginger",
+      "cacheKey": "ec7372a430cec1314f1124e3d2b4f4ef26d345833ebd73c8d83b804dfebd3faf",
+      "fileId": "1Yg7qPbKAC9bvXnGXY5emIzq_tr0bOhIO",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.6965
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.6965,
+          "endSeconds": 2.9200000000000004
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.084,
+          "endSeconds": 5.997
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.161,
+          "endSeconds": 8.963
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-grove",
+      "cacheKey": "5182a7ac50381c44c7eb3c1607c309c3e83217bf853a14fc7e4182b52ce04b7d",
+      "fileId": "1Dl3ObBoJ5gJ9tZ9YitCqMyQ8ADb1ji8U",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9810000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.145,
+          "endSeconds": 4.139
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.187,
+          "endSeconds": 6.995
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.043,
+          "endSeconds": 10.031
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-reading",
+      "cacheKey": "15db68fc6cc26251dfeddfe732225686d64ac9392782035f46fd8c292465c4d0",
+      "fileId": "115aMDeQjaEERNYrFNtDJJK7OMaSOXq6L",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.72
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.728,
+          "endSeconds": 3.9530000000000003
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.118,
+          "endSeconds": 7.0295000000000005
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.078,
+          "endSeconds": 10.217
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-contractor",
+      "cacheKey": "4e49b5f0fcddbb417daa09598761d9ce8644d0974b8b6707187ac48e44396f0c",
+      "fileId": "13ed8EaRxPA3olGXup2nXbhZ6bnkQI7ZS",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.178
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.2850000000000001,
+          "endSeconds": 4.348
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.396,
+          "endSeconds": 7.5755
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.601,
+          "endSeconds": 10.96
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-treadmill",
+      "cacheKey": "2ff1a7a7866f7606a0b7ea8f647e0bcffdd08df0334de261fe28383c2f014217",
+      "fileId": "1FyI58CVbqnSHXBx-c-r_1Q1WfqKfh8ML",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.842
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.867,
+          "endSeconds": 3.8840000000000003
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.048,
+          "endSeconds": 7.436
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.601,
+          "endSeconds": 11.285
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-storage",
+      "cacheKey": "87fb7d60fa3bc55fc749fecca819317bfdfa0cdd804b1314424533230abc3195",
+      "fileId": "1OOIVqXkkv6oRHeV90WZJwQjcfIVfzx1S",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.981
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.981,
+          "endSeconds": 3.9764999999999997
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.002,
+          "endSeconds": 7.2565
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.264,
+          "endSeconds": 10.542
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-cello",
+      "cacheKey": "c77811733d3148e5ee85d0142ec198d2649342c7c8e4cdc043428786bf9264bc",
+      "fileId": "1iVciR0gyyDeFbltkEo3WhuAaISrw4y2g",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8300000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9369999999999999,
+          "endSeconds": 3.698
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.862,
+          "endSeconds": 7.39
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.554,
+          "endSeconds": 11.146
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    }
+  ]
 }

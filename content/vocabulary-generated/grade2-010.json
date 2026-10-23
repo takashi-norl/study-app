@@ -1,0 +1,4093 @@
+{
+  "schemaVersion": 2,
+  "entries": [
+    {
+      "id": "vocab-alpine",
+      "word": "alpine",
+      "level": "2級",
+      "ipa": "ˈælpaɪn",
+      "ipaLabel": "米音",
+      "partOfSpeech": "形容詞",
+      "definition": "relating to high mountains, especially the Alps, or to plants and activities found there",
+      "meaning": "高山の、アルプスの",
+      "usageTip": "alpine village、alpine plants、alpine skiing のように名詞の前で使う。小文字なら高山一般、Alps に限る場合は文脈で判断する。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "旅行",
+          "text": "We stayed in a small alpine village with a view of the snowy peaks.",
+          "translation": "私たちは雪をかぶった峰が見える小さな高山の村に泊まった。"
+        },
+        {
+          "id": "example-2",
+          "context": "自然",
+          "text": "Alpine flowers bloom briefly after the snow melts in summer.",
+          "translation": "高山植物は夏に雪が解けた後、短い間だけ咲く。"
+        },
+        {
+          "id": "example-3",
+          "context": "スポーツ",
+          "text": "He trains every winter for alpine skiing competitions.",
+          "translation": "彼は毎冬、アルペンスキーの大会に向けて練習している。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "alpine",
+          "choices": [
+            {
+              "text": "熱帯の",
+              "meaning": "暑い地域の"
+            },
+            {
+              "text": "海辺の",
+              "meaning": "海岸に関する"
+            },
+            {
+              "text": "高山の",
+              "meaning": "高い山に関する"
+            },
+            {
+              "text": "都会の",
+              "meaning": "都市に関する"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "alpine は高山やアルプスに関係することを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "高山の、アルプスの",
+          "choices": [
+            {
+              "text": "alpine",
+              "meaning": "高山の"
+            },
+            {
+              "text": "marine",
+              "meaning": "海の"
+            },
+            {
+              "text": "urban",
+              "meaning": "都市の"
+            },
+            {
+              "text": "rural",
+              "meaning": "田舎の"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "高い山の地域に関する形容詞は alpine。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "山岳地帯の旅行。 We hiked through a quiet ___ meadow full of wildflowers.",
+          "choices": [
+            {
+              "text": "digital",
+              "meaning": "デジタルの"
+            },
+            {
+              "text": "legal",
+              "meaning": "法律の"
+            },
+            {
+              "text": "alpine",
+              "meaning": "高山の"
+            },
+            {
+              "text": "musical",
+              "meaning": "音楽の"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "山の草原と野の花に合う形容詞は alpine。",
+          "alternatives": [
+            {
+              "answer": "mountain",
+              "explanation": "より一般的で、アルプスに限らない山の意味。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "alpine を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "Alpine villages often get heavy snow in winter.",
+              "meaning": "高山の村は冬に大雪が降ることが多い。"
+            },
+            {
+              "text": "The villages are very alpine of snow.",
+              "meaning": "前置詞の使い方が不自然な文。"
+            },
+            {
+              "text": "The village alpines in winter.",
+              "meaning": "動詞として誤用した文。"
+            },
+            {
+              "text": "They live in the alpine of the village.",
+              "meaning": "名詞として誤用した文。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "alpine は villages などを修飾する形容詞。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "山岳地帯の旅行。 We hiked through a quiet ___ meadow full of wildflowers.",
+        "answers": [
+          "alpine"
+        ],
+        "explanation": "山の草原と野の花に合う形容詞は alpine。",
+        "alternatives": [
+          {
+            "answer": "mountain",
+            "explanation": "より一般的で、アルプスに限らない山の意味。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "alpineを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "We stayed in a small alpine village with a view of the snowy peaks.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-alpine-usage",
+          "type": "usage",
+          "prompt": "alpine を正しく使った文を選びなさい。",
+          "choices": [
+            "Alpine villages often get heavy snow in winter.",
+            "The villages are very alpine of snow.",
+            "The village alpines in winter.",
+            "They live in the alpine of the village."
+          ],
+          "correctIndex": 0,
+          "explanation": "alpine は villages などを修飾する形容詞。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "environment",
+          "travel"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-altimeter",
+      "word": "altimeter",
+      "level": "2級",
+      "ipa": "ˈæltɪmiːtə",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "an instrument that shows how high above the ground or sea level something is",
+      "meaning": "高度計",
+      "usageTip": "航空機や登山用の腕時計などで使う。read an altimeter や check the altimeter の形でよく使う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "飛行機",
+          "text": "The pilot checked the altimeter before beginning the descent.",
+          "translation": "パイロットは降下を始める前に高度計を確認した。"
+        },
+        {
+          "id": "example-2",
+          "context": "登山",
+          "text": "My hiking watch has a built-in altimeter, so I know our height.",
+          "translation": "私のハイキング用腕時計には高度計が内蔵されているので、今の標高が分かる。"
+        },
+        {
+          "id": "example-3",
+          "context": "機器の故障",
+          "text": "The altimeter stopped working, so the crew used another instrument.",
+          "translation": "高度計が動かなくなったので、乗務員は別の計器を使った。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "altimeter",
+          "choices": [
+            {
+              "text": "高度計",
+              "meaning": "高さを測る計器"
+            },
+            {
+              "text": "速度計",
+              "meaning": "速さを示す計器"
+            },
+            {
+              "text": "温度計",
+              "meaning": "温度を測る計器"
+            },
+            {
+              "text": "方位磁針",
+              "meaning": "方角を示す道具"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "altimeter は高さ(高度)を示す計器。速度や温度、方角を測る物ではない。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "高度計",
+          "choices": [
+            {
+              "text": "barometer",
+              "meaning": "気圧計"
+            },
+            {
+              "text": "compass",
+              "meaning": "方位磁針"
+            },
+            {
+              "text": "altimeter",
+              "meaning": "高度計"
+            },
+            {
+              "text": "odometer",
+              "meaning": "走行距離計"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "高度計は altimeter。他は気圧、方角、走行距離を測る物。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "飛行機の操縦席で。The pilot looked at the ___ to see how high the plane was flying.",
+          "choices": [
+            {
+              "text": "altimeter",
+              "meaning": "高度計"
+            },
+            {
+              "text": "thermometer",
+              "meaning": "温度計"
+            },
+            {
+              "text": "microscope",
+              "meaning": "顕微鏡"
+            },
+            {
+              "text": "calendar",
+              "meaning": "カレンダー"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "飛行の高さを見る道具なので altimeter が適切。",
+          "alternatives": [
+            {
+              "answer": "altitude gauge",
+              "explanation": "高度を示す計器という意味で通じるが、一般的には altimeter を使う。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "altimeter を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "The altimeter showed we were above three thousand meters.",
+              "meaning": "高度計は3000メートル以上を示していた。"
+            },
+            {
+              "text": "The altimeter told me the soup was too hot.",
+              "meaning": "高度計はスープが熱すぎると教えてくれた。"
+            },
+            {
+              "text": "I used an altimeter to measure my weight.",
+              "meaning": "体重を測るのに高度計を使った。"
+            },
+            {
+              "text": "She altimeter the mountain before lunch.",
+              "meaning": "彼女は昼食前に山を高度計した。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "altimeter は高さを示す名詞。温度や体重は測らず、動詞としても使わない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "飛行機の操縦席で。The pilot looked at the ___ to see how high the plane was flying.",
+        "answers": [
+          "altimeter"
+        ],
+        "explanation": "飛行の高さを見る道具なので altimeter が適切。",
+        "alternatives": [
+          {
+            "answer": "altitude gauge",
+            "explanation": "高度を示す計器という意味で通じるが、一般的には altimeter を使う。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "altimeterを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The pilot checked the altimeter before beginning the descent.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-altimeter-usage",
+          "type": "usage",
+          "prompt": "altimeter を正しく使った文を選びなさい。",
+          "choices": [
+            "The altimeter showed we were above three thousand meters.",
+            "The altimeter told me the soup was too hot.",
+            "I used an altimeter to measure my weight.",
+            "She altimeter the mountain before lunch."
+          ],
+          "correctIndex": 0,
+          "explanation": "altimeter は高さを示す名詞。温度や体重は測らず、動詞としても使わない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "technology",
+          "transport"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-altruism",
+      "word": "altruism",
+      "level": "2級",
+      "ipa": "ˈæltruˌɪzəm",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "concern for the well-being of others without expecting something in return",
+      "meaning": "利他主義、利他性",
+      "usageTip": "自分の利益より他人の幸福を優先する態度を表す。act out of altruism や an act of altruism がよく使われる。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "寄付",
+          "text": "His donation was an act of pure altruism, not a search for praise.",
+          "translation": "彼の寄付は称賛を求めたものではなく、純粋な利他の行為だった。"
+        },
+        {
+          "id": "example-2",
+          "context": "研究",
+          "text": "Researchers study why altruism appears in many animal groups.",
+          "translation": "研究者たちは、なぜ利他性が多くの動物の集団に見られるのかを研究している。"
+        },
+        {
+          "id": "example-3",
+          "context": "ボランティア",
+          "text": "Many volunteers say altruism is only part of their motivation.",
+          "translation": "多くのボランティアは、利他心は動機の一部にすぎないと言う。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "altruism",
+          "choices": [
+            {
+              "text": "利己主義",
+              "meaning": "自分の利益を優先する考え"
+            },
+            {
+              "text": "利他主義",
+              "meaning": "他人の幸福を重んじる考え"
+            },
+            {
+              "text": "完全主義",
+              "meaning": "完璧を求める考え"
+            },
+            {
+              "text": "楽観主義",
+              "meaning": "物事を明るく見る考え"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "altruism は見返りを求めず他人の幸福を考えること。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "利他主義、利他性",
+          "choices": [
+            {
+              "text": "altruism",
+              "meaning": "利他主義"
+            },
+            {
+              "text": "egoism",
+              "meaning": "利己主義"
+            },
+            {
+              "text": "optimism",
+              "meaning": "楽観主義"
+            },
+            {
+              "text": "realism",
+              "meaning": "現実主義"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "他人のために行動する性質は altruism。egoism は反対の考え方。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "見返りなしに人を助けた場面。She helped the stranger out of ___, not because she wanted a reward.",
+          "choices": [
+            {
+              "text": "jealousy",
+              "meaning": "嫉妬"
+            },
+            {
+              "text": "greed",
+              "meaning": "欲深さ"
+            },
+            {
+              "text": "altruism",
+              "meaning": "利他心"
+            },
+            {
+              "text": "boredom",
+              "meaning": "退屈"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "報酬を求めず助けたので、利他心が合う。",
+          "alternatives": [
+            {
+              "answer": "kindness",
+              "explanation": "親切心から、という自然な言い方。altruism より日常的。"
+            },
+            {
+              "answer": "generosity",
+              "explanation": "惜しまず与える気持ちを強調する。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "altruism を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "He altruism gave money to the school.",
+              "meaning": "彼は利他主義に学校へお金を与えた。"
+            },
+            {
+              "text": "Her altruism was clear when she gave up her seat for him.",
+              "meaning": "彼女が席を譲ったとき、利他心は明らかだった。"
+            },
+            {
+              "text": "The altruism of the bridge was very long.",
+              "meaning": "橋の利他主義はとても長かった。"
+            },
+            {
+              "text": "They are altruism people who help others.",
+              "meaning": "彼らは人を助ける利他主義の人々だ。"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "altruism は名詞で、人の性質や行動の説明に使う。形容詞(altruistic)の位置では使えない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "見返りなしに人を助けた場面。She helped the stranger out of ___, not because she wanted a reward.",
+        "answers": [
+          "altruism"
+        ],
+        "explanation": "報酬を求めず助けたので、利他心が合う。",
+        "alternatives": [
+          {
+            "answer": "kindness",
+            "explanation": "親切心から、という自然な言い方。altruism より日常的。"
+          },
+          {
+            "answer": "generosity",
+            "explanation": "惜しまず与える気持ちを強調する。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "altruismを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "His donation was an act of pure altruism, not a search for praise.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-altruism-usage",
+          "type": "usage",
+          "prompt": "altruism を正しく使った文を選びなさい。",
+          "choices": [
+            "He altruism gave money to the school.",
+            "Her altruism was clear when she gave up her seat for him.",
+            "The altruism of the bridge was very long.",
+            "They are altruism people who help others."
+          ],
+          "correctIndex": 1,
+          "explanation": "altruism は名詞で、人の性質や行動の説明に使う。形容詞(altruistic)の位置では使えない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "society",
+          "relationships",
+          "logic-reasoning"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-alumnae",
+      "word": "alumnae",
+      "level": "2級",
+      "ipa": "əˈlʌmniː",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "women who have graduated from a particular school, college, or university; plural of alumna",
+      "meaning": "女性卒業生たち",
+      "usageTip": "alumna の複数形で、女性の卒業生に限る。男女混合の場合は通常 alumni を使う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "女子大",
+          "text": "The college invited alumnae to speak with current students.",
+          "translation": "その大学は女性卒業生を招き、在学生と話をしてもらった。"
+        },
+        {
+          "id": "example-2",
+          "context": "交流会",
+          "text": "Several alumnae returned for the annual dinner on campus.",
+          "translation": "数人の女性卒業生が、毎年恒例の夕食会のためにキャンパスへ戻ってきた。"
+        },
+        {
+          "id": "example-3",
+          "context": "寄付",
+          "text": "Alumnae from the class of 1995 raised money for a library.",
+          "translation": "1995年卒の女性卒業生たちは、図書館のために資金を集めた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "alumnae",
+          "choices": [
+            {
+              "text": "女性卒業生たち",
+              "meaning": "女子校などを卒業した女性たち"
+            },
+            {
+              "text": "男性教師たち",
+              "meaning": "男性の先生たち"
+            },
+            {
+              "text": "在学生たち",
+              "meaning": "現在通っている学生たち"
+            },
+            {
+              "text": "新入生たち",
+              "meaning": "入学したばかりの学生たち"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "alumnae は alumna の複数形で、女性の卒業生たちを指す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "女性卒業生たち",
+          "choices": [
+            {
+              "text": "alumni",
+              "meaning": "男性または男女の卒業生たち"
+            },
+            {
+              "text": "alumnae",
+              "meaning": "女性卒業生たち"
+            },
+            {
+              "text": "alumnus",
+              "meaning": "男性卒業生"
+            },
+            {
+              "text": "academics",
+              "meaning": "学者たち"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "女性のみの卒業生の複数形は alumnae。alumni は主に男性または男女混合。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "女子大の同窓会の場面。The women's college welcomed its ___ back for a reunion weekend.",
+          "choices": [
+            {
+              "text": "alumnae",
+              "meaning": "女性卒業生たち"
+            },
+            {
+              "text": "strangers",
+              "meaning": "見知らぬ人たち"
+            },
+            {
+              "text": "patients",
+              "meaning": "患者たち"
+            },
+            {
+              "text": "competitors",
+              "meaning": "競争相手たち"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "同窓会に戻るのは卒業生で、女子大なので alumnae が自然。",
+          "alternatives": [
+            {
+              "answer": "graduates",
+              "explanation": "性別を問わない一般的な言い方。"
+            },
+            {
+              "answer": "former students",
+              "explanation": "卒業生以外の元在学生も含みうる。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "alumnae を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "Our alumnae are meeting in the hall tonight.",
+              "meaning": "私たちの女性卒業生は今夜ホールで集まる。"
+            },
+            {
+              "text": "She is an alumnae of that school.",
+              "meaning": "彼女はその学校の女性卒業生だ。"
+            },
+            {
+              "text": "The alumnae is very proud today.",
+              "meaning": "その女性卒業生たちは今日とても誇らしい。"
+            },
+            {
+              "text": "I met one alumnae at the party.",
+              "meaning": "パーティーで女性卒業生に一人会った。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "alumnae は複数形なので複数扱い。単数の a や one とは使えず、単数は alumna。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "女子大の同窓会の場面。The women's college welcomed its ___ back for a reunion weekend.",
+        "answers": [
+          "alumnae"
+        ],
+        "explanation": "同窓会に戻るのは卒業生で、女子大なので alumnae が自然。",
+        "alternatives": [
+          {
+            "answer": "graduates",
+            "explanation": "性別を問わない一般的な言い方。"
+          },
+          {
+            "answer": "former students",
+            "explanation": "卒業生以外の元在学生も含みうる。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "alumnaeを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The college invited alumnae to speak with current students.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-alumnae-usage",
+          "type": "usage",
+          "prompt": "alumnae を正しく使った文を選びなさい。",
+          "choices": [
+            "Our alumnae are meeting in the hall tonight.",
+            "She is an alumnae of that school.",
+            "The alumnae is very proud today.",
+            "I met one alumnae at the party."
+          ],
+          "correctIndex": 0,
+          "explanation": "alumnae は複数形なので複数扱い。単数の a や one とは使えず、単数は alumna。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "education",
+          "society"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-amortize",
+      "word": "amortize",
+      "level": "2級",
+      "ipa": "əˈmɔːtaɪz",
+      "ipaLabel": "英音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "amortize",
+          "amortise"
+        ],
+        "past": [
+          "amortized",
+          "amortised"
+        ],
+        "pastParticiple": [
+          "amortized",
+          "amortised"
+        ],
+        "presentParticiple": [
+          "amortizing",
+          "amortising"
+        ],
+        "thirdPersonSingular": [
+          "amortizes",
+          "amortises"
+        ]
+      },
+      "definition": "to pay off a debt gradually with regular payments, or spread a cost over time",
+      "meaning": "（ローンを）返済する、償却する",
+      "usageTip": "ローンを定期的に返済する、または資産の費用を期間にわたり配分する意味で使う。amortize a loan / cost が基本形。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "住宅ローン",
+          "text": "They plan to amortize the mortgage over twenty-five years.",
+          "translation": "彼らは25年かけて住宅ローンを返済する計画だ。"
+        },
+        {
+          "id": "example-2",
+          "context": "会計",
+          "text": "The company will amortize the software cost over five years.",
+          "translation": "その会社はソフトウェアの費用を5年かけて償却する。"
+        },
+        {
+          "id": "example-3",
+          "context": "事業計画",
+          "text": "We need to amortize the equipment loan before expanding the shop.",
+          "translation": "店を拡大する前に、設備ローンを返済しなければならない。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "amortize",
+          "choices": [
+            {
+              "text": "ローンを返済する、費用を償却する",
+              "meaning": "少しずつ返す、費用を配分する"
+            },
+            {
+              "text": "株を急いで買う",
+              "meaning": "株式を素早く購入する"
+            },
+            {
+              "text": "契約を破棄する",
+              "meaning": "契約を取り消す"
+            },
+            {
+              "text": "利益を隠す",
+              "meaning": "もうけを見せないようにする"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "amortize は負債を定期的に返すこと、または費用を期間に配分すること。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "ローンを少しずつ返済する、費用を償却する",
+          "choices": [
+            {
+              "text": "borrow",
+              "meaning": "借りる"
+            },
+            {
+              "text": "invest",
+              "meaning": "投資する"
+            },
+            {
+              "text": "auction",
+              "meaning": "競売にかける"
+            },
+            {
+              "text": "amortize",
+              "meaning": "返済・償却する"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "少しずつ返済・償却する意味は amortize。borrow は借りる側の動作。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "会計の説明。The firm will ___ the cost of the new machine over ten years in its accounts.",
+          "choices": [
+            {
+              "text": "hide",
+              "meaning": "隠す"
+            },
+            {
+              "text": "amortize",
+              "meaning": "償却する"
+            },
+            {
+              "text": "repair",
+              "meaning": "修理する"
+            },
+            {
+              "text": "inherit",
+              "meaning": "相続する"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "費用を10年にわたって配分するので amortize が合う。",
+          "alternatives": [
+            {
+              "answer": "depreciate",
+              "explanation": "機械など有形資産の価値減少を会計上配分する時に使う。"
+            },
+            {
+              "answer": "write off gradually",
+              "explanation": "少しずつ費用処理するという説明的な言い方。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "amortize を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "She amortized to the bank every month.",
+              "meaning": "彼女は毎月銀行へ償却した。"
+            },
+            {
+              "text": "The loan amortizes me slowly.",
+              "meaning": "そのローンは私をゆっくり償却する。"
+            },
+            {
+              "text": "They amortized for the house loan.",
+              "meaning": "彼らは住宅ローンのために償却した。"
+            },
+            {
+              "text": "They amortized the loan over fifteen years.",
+              "meaning": "彼らは15年かけてローンを返済した。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "amortize は他動詞で、loan や cost を目的語にとる。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "会計の説明。The firm will ___ the cost of the new machine over ten years in its accounts.",
+        "answers": [
+          "amortize"
+        ],
+        "explanation": "費用を10年にわたって配分するので amortize が合う。",
+        "alternatives": [
+          {
+            "answer": "depreciate",
+            "explanation": "機械など有形資産の価値減少を会計上配分する時に使う。"
+          },
+          {
+            "answer": "write off gradually",
+            "explanation": "少しずつ費用処理するという説明的な言い方。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "amortizeを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "They plan to amortize the mortgage over twenty-five years.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-amortize-usage",
+          "type": "usage",
+          "prompt": "amortize を正しく使った文を選びなさい。",
+          "choices": [
+            "She amortized to the bank every month.",
+            "The loan amortizes me slowly.",
+            "They amortized for the house loan.",
+            "They amortized the loan over fifteen years."
+          ],
+          "correctIndex": 3,
+          "explanation": "amortize は他動詞で、loan や cost を目的語にとる。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "finance",
+          "business"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-amperage",
+      "word": "amperage",
+      "level": "2級",
+      "ipa": "ˈæmpərɪdʒ",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "The strength of an electric current, measured in amperes.",
+      "meaning": "電流値、アンペア数",
+      "usageTip": "電気機器やブレーカーの仕様で使う専門的な語。the amperage of a fuse のように of で対象を示す。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "家電",
+          "text": "Check the amperage on the label before you plug in the heater.",
+          "translation": "ヒーターを差し込む前に、ラベルのアンペア数を確認してください。"
+        },
+        {
+          "id": "example-2",
+          "context": "工事",
+          "text": "The electrician said the old wires could not handle such high amperage.",
+          "translation": "電気技師は、古い配線ではそんなに高い電流に耐えられないと言った。"
+        },
+        {
+          "id": "example-3",
+          "context": "授業",
+          "text": "Our teacher showed how amperage changes when we add another battery.",
+          "translation": "先生は電池をもう一つ足すと電流値がどう変わるかを見せてくれた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "amperage",
+          "choices": [
+            {
+              "text": "電流値、アンペア数",
+              "meaning": "電流の強さ"
+            },
+            {
+              "text": "電圧の高さ",
+              "meaning": "ボルト数"
+            },
+            {
+              "text": "電気料金",
+              "meaning": "電気代"
+            },
+            {
+              "text": "電線の長さ",
+              "meaning": "配線の長さ"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "amperage は電流の大きさをアンペアで表したものを指す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "電流値、アンペア数",
+          "choices": [
+            {
+              "text": "ample",
+              "meaning": "十分な"
+            },
+            {
+              "text": "ampersand",
+              "meaning": "&記号"
+            },
+            {
+              "text": "amperage",
+              "meaning": "電流値"
+            },
+            {
+              "text": "ampulla",
+              "meaning": "小瓶"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "電流の強さを表す語は amperage。他は意味が異なる。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "ブレーカーが落ちる理由の説明: The breaker trips when the ___ is too high for the circuit.",
+          "choices": [
+            {
+              "text": "amperage",
+              "meaning": "電流値"
+            },
+            {
+              "text": "ampersand",
+              "meaning": "&記号"
+            },
+            {
+              "text": "amphitheater",
+              "meaning": "円形劇場"
+            },
+            {
+              "text": "ampulla",
+              "meaning": "小瓶"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "回路に対して高すぎて遮断が起きるのは電流値である。",
+          "alternatives": [
+            {
+              "answer": "current",
+              "explanation": "より一般的な語で、電流そのものを指す。"
+            },
+            {
+              "answer": "load",
+              "explanation": "回路にかかる負荷を指し、やや広い意味になる。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "amperage を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "The amperage of this charger is printed on the back.",
+              "meaning": "この充電器のアンペア数は背面に印刷されている。"
+            },
+            {
+              "text": "I read the amperage at the end of the email.",
+              "meaning": "メールの末尾でアンペア数を読んだ。"
+            },
+            {
+              "text": "The amperage of the room was very quiet.",
+              "meaning": "部屋のアンペア数はとても静かだった。"
+            },
+            {
+              "text": "She wrote an amperage between the two names.",
+              "meaning": "彼女は二つの名前の間にアンペア数を書いた。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "充電器の仕様として電流値が表示されるという使い方が自然。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "ブレーカーが落ちる理由の説明: The breaker trips when the ___ is too high for the circuit.",
+        "answers": [
+          "amperage"
+        ],
+        "explanation": "回路に対して高すぎて遮断が起きるのは電流値である。",
+        "alternatives": [
+          {
+            "answer": "current",
+            "explanation": "より一般的な語で、電流そのものを指す。"
+          },
+          {
+            "answer": "load",
+            "explanation": "回路にかかる負荷を指し、やや広い意味になる。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "amperageを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Check the amperage on the label before you plug in the heater.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-amperage-usage",
+          "type": "usage",
+          "prompt": "amperage を正しく使った文を選んでください。",
+          "choices": [
+            "The amperage of this charger is printed on the back.",
+            "I read the amperage at the end of the email.",
+            "The amperage of the room was very quiet.",
+            "She wrote an amperage between the two names."
+          ],
+          "correctIndex": 0,
+          "explanation": "充電器の仕様として電流値が表示されるという使い方が自然。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "technology",
+          "science"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-ampersand",
+      "word": "ampersand",
+      "level": "2級",
+      "ipa": "ˈæmpəsænd",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "The symbol & that is used to mean and.",
+      "meaning": "アンパサンド（&記号）",
+      "usageTip": "記号 & を指す名詞。会社名やロゴで使われ、文章中では普通 and を使う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "会社名",
+          "text": "The company name has an ampersand between the two founders' surnames.",
+          "translation": "その社名には二人の創業者の姓の間にアンパサンドが入っている。"
+        },
+        {
+          "id": "example-2",
+          "context": "タイピング",
+          "text": "Press shift and seven to type an ampersand on this keyboard.",
+          "translation": "このキーボードでは、シフトと7を押すとアンパサンドが打てる。"
+        },
+        {
+          "id": "example-3",
+          "context": "デザイン",
+          "text": "The designer chose a curly ampersand for the cafe's sign.",
+          "translation": "デザイナーはカフェの看板に、渦を巻くようなアンパサンドを選んだ。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "ampersand",
+          "choices": [
+            {
+              "text": "感嘆符",
+              "meaning": "!の記号"
+            },
+            {
+              "text": "アンパサンド",
+              "meaning": "&の記号"
+            },
+            {
+              "text": "引用符",
+              "meaning": "引用を示す記号"
+            },
+            {
+              "text": "括弧",
+              "meaning": "( )の記号"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "ampersand は and を表す & の記号である。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "アンパサンド（&記号）",
+          "choices": [
+            {
+              "text": "ampersand",
+              "meaning": "&記号"
+            },
+            {
+              "text": "amperage",
+              "meaning": "電流値"
+            },
+            {
+              "text": "ample",
+              "meaning": "十分な"
+            },
+            {
+              "text": "ampulla",
+              "meaning": "小瓶"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "& を指す英語は ampersand。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "社名の記号について: Smith ___ Sons uses a symbol instead of the word and. 空所には記号の名前が入る。",
+          "choices": [
+            {
+              "text": "ample",
+              "meaning": "十分な"
+            },
+            {
+              "text": "amperage",
+              "meaning": "電流値"
+            },
+            {
+              "text": "ampersand",
+              "meaning": "&記号"
+            },
+            {
+              "text": "amphitheater",
+              "meaning": "円形劇場"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "記号の名前を入れる文脈なので ampersand が合う。",
+          "alternatives": [
+            {
+              "answer": "the & sign",
+              "explanation": "記号をそのまま言う口語的な言い方。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "ampersand を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "Please add an ampersand after the first name on the card.",
+              "meaning": "カードの名の後にアンパサンドを加えてください。"
+            },
+            {
+              "text": "We took an ampersand to the airport.",
+              "meaning": "私たちはアンパサンドで空港へ行った。"
+            },
+            {
+              "text": "He drank an ampersand with breakfast.",
+              "meaning": "彼は朝食にアンパサンドを飲んだ。"
+            },
+            {
+              "text": "The ampersand was very hungry today.",
+              "meaning": "アンパサンドは今日とても空腹だった。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "名前の間や後に置く記号として使うのが自然。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "社名の記号について: Smith ___ Sons uses a symbol instead of the word and. 空所には記号の名前が入る。",
+        "answers": [
+          "ampersand"
+        ],
+        "explanation": "記号の名前を入れる文脈なので ampersand が合う。",
+        "alternatives": [
+          {
+            "answer": "the & sign",
+            "explanation": "記号をそのまま言う口語的な言い方。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "ampersandを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The company name has an ampersand between the two founders' surnames.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-ampersand-usage",
+          "type": "usage",
+          "prompt": "ampersand を正しく使った文を選んでください。",
+          "choices": [
+            "Please add an ampersand after the first name on the card.",
+            "We took an ampersand to the airport.",
+            "He drank an ampersand with breakfast.",
+            "The ampersand was very hungry today."
+          ],
+          "correctIndex": 0,
+          "explanation": "名前の間や後に置く記号として使うのが自然。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "communication"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-amphitheater",
+      "word": "amphitheater",
+      "level": "2級",
+      "ipa": "ˈæmfɪˌθiːətɚ",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "A round or oval open building with rising rows of seats around a central stage or arena.",
+      "meaning": "円形劇場、野外劇場",
+      "usageTip": "古代ローマの遺跡や野外コンサート会場で使う。英国式綴りは amphitheatre。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "旅行",
+          "text": "We sat on the stone steps of the ancient amphitheater at sunset.",
+          "translation": "私たちは夕暮れに古代円形劇場の石段に座った。"
+        },
+        {
+          "id": "example-2",
+          "context": "音楽",
+          "text": "The band will play at the hillside amphitheater this summer.",
+          "translation": "そのバンドは今夏、丘の斜面にある野外劇場で演奏する。"
+        },
+        {
+          "id": "example-3",
+          "context": "学校",
+          "text": "Students gathered in the amphitheater to watch the school play.",
+          "translation": "生徒たちは学校劇を見るために円形劇場に集まった。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "amphitheater",
+          "choices": [
+            {
+              "text": "小さな図書館",
+              "meaning": "本を借りる場所"
+            },
+            {
+              "text": "地下鉄の駅",
+              "meaning": "電車の駅"
+            },
+            {
+              "text": "円形劇場",
+              "meaning": "座席が囲む野外劇場"
+            },
+            {
+              "text": "電気店",
+              "meaning": "電化製品の店"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "amphitheater は座席が舞台を囲む円形の劇場。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "円形劇場、野外劇場",
+          "choices": [
+            {
+              "text": "ampersand",
+              "meaning": "&記号"
+            },
+            {
+              "text": "amphitheater",
+              "meaning": "円形劇場"
+            },
+            {
+              "text": "amperage",
+              "meaning": "電流値"
+            },
+            {
+              "text": "ample",
+              "meaning": "十分な"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "劇場を表す語は amphitheater。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "ローマ遺跡の観光: Tourists climbed the stone seats of the Roman ___ to see the arena.",
+          "choices": [
+            {
+              "text": "ampersand",
+              "meaning": "&記号"
+            },
+            {
+              "text": "amperage",
+              "meaning": "電流値"
+            },
+            {
+              "text": "ampulla",
+              "meaning": "小瓶"
+            },
+            {
+              "text": "amphitheater",
+              "meaning": "円形劇場"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "石の座席と闘技場があるので円形劇場が合う。",
+          "alternatives": [
+            {
+              "answer": "theater",
+              "explanation": "一般的な劇場で、円形という特徴は表さない。"
+            },
+            {
+              "answer": "arena",
+              "explanation": "競技場全般を指し、座席構造より中央の場を強調する。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "amphitheater を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "The concert was held at the amphitheater near the lake.",
+              "meaning": "コンサートは湖近くの野外劇場で開かれた。"
+            },
+            {
+              "text": "I put the amphitheater in my coat pocket.",
+              "meaning": "私は円形劇場をコートのポケットに入れた。"
+            },
+            {
+              "text": "The amphitheater was typed with my keyboard.",
+              "meaning": "円形劇場は私のキーボードで打たれた。"
+            },
+            {
+              "text": "She poured the amphitheater into a glass.",
+              "meaning": "彼女は円形劇場をグラスに注いだ。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "場所として「で開かれた」と使うのが自然。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "ローマ遺跡の観光: Tourists climbed the stone seats of the Roman ___ to see the arena.",
+        "answers": [
+          "amphitheater"
+        ],
+        "explanation": "石の座席と闘技場があるので円形劇場が合う。",
+        "alternatives": [
+          {
+            "answer": "theater",
+            "explanation": "一般的な劇場で、円形という特徴は表さない。"
+          },
+          {
+            "answer": "arena",
+            "explanation": "競技場全般を指し、座席構造より中央の場を強調する。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "amphitheaterを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "We sat on the stone steps of the ancient amphitheater at sunset.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-amphitheater-usage",
+          "type": "usage",
+          "prompt": "amphitheater を正しく使った文を選んでください。",
+          "choices": [
+            "The concert was held at the amphitheater near the lake.",
+            "I put the amphitheater in my coat pocket.",
+            "The amphitheater was typed with my keyboard.",
+            "She poured the amphitheater into a glass."
+          ],
+          "correctIndex": 0,
+          "explanation": "場所として「で開かれた」と使うのが自然。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "arts-culture",
+          "travel"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-ample",
+      "word": "ample",
+      "level": "2級",
+      "ipa": "ˈæmpəl",
+      "ipaLabel": "英音",
+      "partOfSpeech": "形容詞",
+      "definition": "More than enough in amount or size.",
+      "meaning": "十分な、広々とした",
+      "usageTip": "ample time や ample space のように名詞の前で使う。enough より少し改まった響きがある。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "旅行準備",
+          "text": "We left ample time to reach the station before the train.",
+          "translation": "私たちは電車の前に駅へ着けるよう十分な時間を取った。"
+        },
+        {
+          "id": "example-2",
+          "context": "住まい",
+          "text": "The apartment has ample storage for books and winter clothes.",
+          "translation": "そのアパートには本や冬服のための十分な収納がある。"
+        },
+        {
+          "id": "example-3",
+          "context": "仕事",
+          "text": "The report gives ample evidence that the plan is working.",
+          "translation": "その報告書は、計画がうまくいっている十分な証拠を示している。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "ample",
+          "choices": [
+            {
+              "text": "十分な、広々とした",
+              "meaning": "必要以上にある"
+            },
+            {
+              "text": "とても小さい",
+              "meaning": "サイズが小さい"
+            },
+            {
+              "text": "危険な",
+              "meaning": "害がある"
+            },
+            {
+              "text": "古い",
+              "meaning": "昔からある"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "ample は量や広さが十分以上であること。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "十分な、広々とした",
+          "choices": [
+            {
+              "text": "amperage",
+              "meaning": "電流値"
+            },
+            {
+              "text": "ampulla",
+              "meaning": "小瓶"
+            },
+            {
+              "text": "ampersand",
+              "meaning": "&記号"
+            },
+            {
+              "text": "ample",
+              "meaning": "十分な"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "形容詞で十分なを表すのは ample。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "駐車場の説明: The hotel offers ___ parking, so you do not need to worry about finding a space.",
+          "choices": [
+            {
+              "text": "ample",
+              "meaning": "十分な"
+            },
+            {
+              "text": "amperage",
+              "meaning": "電流値"
+            },
+            {
+              "text": "ampersand",
+              "meaning": "&記号"
+            },
+            {
+              "text": "ampulla",
+              "meaning": "小瓶"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "駐車場を修飾し、心配不要という意味に合うのは ample。",
+          "alternatives": [
+            {
+              "answer": "plenty of",
+              "explanation": "口語的で、たっぷりあるという意味。"
+            },
+            {
+              "answer": "enough",
+              "explanation": "必要を満たす量を示す、より基本的な語。"
+            },
+            {
+              "answer": "generous",
+              "explanation": "提供される量が気前よく多い印象を加える。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "ample を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "We have ample time to finish the project.",
+              "meaning": "私たちにはその計画を終える十分な時間がある。"
+            },
+            {
+              "text": "We have ample times to finish the project.",
+              "meaning": "私たちには終える複数の十分な時間がある。"
+            },
+            {
+              "text": "We are ample to finish the project.",
+              "meaning": "私たちは終えるのに十分である。"
+            },
+            {
+              "text": "We have ample of time to finish the project.",
+              "meaning": "私たちには十分な時間がある。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "ample は time の前に直接置く。ample of は誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "駐車場の説明: The hotel offers ___ parking, so you do not need to worry about finding a space.",
+        "answers": [
+          "ample"
+        ],
+        "explanation": "駐車場を修飾し、心配不要という意味に合うのは ample。",
+        "alternatives": [
+          {
+            "answer": "plenty of",
+            "explanation": "口語的で、たっぷりあるという意味。"
+          },
+          {
+            "answer": "enough",
+            "explanation": "必要を満たす量を示す、より基本的な語。"
+          },
+          {
+            "answer": "generous",
+            "explanation": "提供される量が気前よく多い印象を加える。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "ampleを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "We left ample time to reach the station before the train.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-ample-usage",
+          "type": "usage",
+          "prompt": "ample を正しく使った文を選んでください。",
+          "choices": [
+            "We have ample time to finish the project.",
+            "We have ample times to finish the project.",
+            "We are ample to finish the project.",
+            "We have ample of time to finish the project."
+          ],
+          "correctIndex": 0,
+          "explanation": "ample は time の前に直接置く。ample of は誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "daily-life",
+          "business"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-ampulla",
+      "word": "ampulla",
+      "level": "2級",
+      "ipa": "æmˈpʊlə",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "A small sealed glass container for liquid medicine, or a small rounded jar or widened part in the body.",
+      "meaning": "小瓶、アンプル",
+      "usageTip": "医療では薬液の密封ガラス容器を指す。解剖学では管の膨らんだ部分も指す。複数形は ampullae または ampullas。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "医療",
+          "text": "The nurse snapped open the ampulla and drew up the medicine.",
+          "translation": "看護師はアンプルを折って開け、薬液を吸い上げた。"
+        },
+        {
+          "id": "example-2",
+          "context": "研究室",
+          "text": "Each ampulla must be stored in a cool, dark cabinet.",
+          "translation": "各アンプルは涼しく暗い戸棚に保管しなければならない。"
+        },
+        {
+          "id": "example-3",
+          "context": "歴史",
+          "text": "The museum displayed an ancient ampulla once used for perfume oil.",
+          "translation": "博物館には、かつて香油に使われた古代の小瓶が展示されていた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "ampulla",
+          "choices": [
+            {
+              "text": "大きな橋",
+              "meaning": "川に架かる構造物"
+            },
+            {
+              "text": "電気の単位",
+              "meaning": "電流の単位"
+            },
+            {
+              "text": "記号の名前",
+              "meaning": "&などの記号"
+            },
+            {
+              "text": "小瓶、アンプル",
+              "meaning": "薬液などを入れる小容器"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "ampulla は薬液などを入れる小さな容器を指す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "小瓶、アンプル",
+          "choices": [
+            {
+              "text": "ampulla",
+              "meaning": "小瓶"
+            },
+            {
+              "text": "ample",
+              "meaning": "十分な"
+            },
+            {
+              "text": "amperage",
+              "meaning": "電流値"
+            },
+            {
+              "text": "amphitheater",
+              "meaning": "円形劇場"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "小さな薬液容器を表す語は ampulla。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "病院での場面: The doctor opened a sealed glass ___ containing the injection medicine.",
+          "choices": [
+            {
+              "text": "ampersand",
+              "meaning": "&記号"
+            },
+            {
+              "text": "amphitheater",
+              "meaning": "円形劇場"
+            },
+            {
+              "text": "ampulla",
+              "meaning": "小瓶"
+            },
+            {
+              "text": "amperage",
+              "meaning": "電流値"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "密封されたガラスの薬液容器なので ampulla が合う。",
+          "alternatives": [
+            {
+              "answer": "vial",
+              "explanation": "薬用の小瓶全般で、より一般的に使われる。"
+            },
+            {
+              "answer": "ampoule",
+              "explanation": "ampulla に近い綴りで、密封薬液容器を指す。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "ampulla を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "The pharmacist checked the label on each ampulla.",
+              "meaning": "薬剤師は各アンプルのラベルを確認した。"
+            },
+            {
+              "text": "The pharmacist ampulla the label yesterday.",
+              "meaning": "薬剤師は昨日ラベルをアンプルした。"
+            },
+            {
+              "text": "The ampulla was very ample for the room.",
+              "meaning": "そのアンプルは部屋にとても広々としていた。"
+            },
+            {
+              "text": "He sat in the ampulla to watch the play.",
+              "meaning": "彼は劇を見るためアンプルに座った。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "ampulla は名詞で、薬の容器としてラベルを確認する文が自然。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "病院での場面: The doctor opened a sealed glass ___ containing the injection medicine.",
+        "answers": [
+          "ampulla"
+        ],
+        "explanation": "密封されたガラスの薬液容器なので ampulla が合う。",
+        "alternatives": [
+          {
+            "answer": "vial",
+            "explanation": "薬用の小瓶全般で、より一般的に使われる。"
+          },
+          {
+            "answer": "ampoule",
+            "explanation": "ampulla に近い綴りで、密封薬液容器を指す。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "ampullaを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The nurse snapped open the ampulla and drew up the medicine.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-ampulla-usage",
+          "type": "usage",
+          "prompt": "ampulla を正しく使った文を選んでください。",
+          "choices": [
+            "The pharmacist checked the label on each ampulla.",
+            "The pharmacist ampulla the label yesterday.",
+            "The ampulla was very ample for the room.",
+            "He sat in the ampulla to watch the play."
+          ],
+          "correctIndex": 0,
+          "explanation": "ampulla は名詞で、薬の容器としてラベルを確認する文が自然。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "C1",
+        "domains": [
+          "medical",
+          "science"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-anachronism",
+      "word": "anachronism",
+      "level": "2級",
+      "ipa": "/əˈnækrənɪzəm/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "something placed in the wrong historical period, or an old-fashioned thing that no longer fits the present",
+      "meaning": "時代錯誤",
+      "usageTip": "歴史作品の誤りにも、時代遅れの習慣や制度にも使える。a bit of an anachronism という形もよく使う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "映画",
+          "text": "A smartphone in the medieval scene was a glaring anachronism.",
+          "translation": "中世の場面にスマートフォンが出てくるのは明らかな時代錯誤だった。"
+        },
+        {
+          "id": "example-2",
+          "context": "社会",
+          "text": "Some people see the formal dress code as an anachronism in modern offices.",
+          "translation": "その堅苦しい服装規定は現代のオフィスでは時代遅れだと見る人もいる。"
+        },
+        {
+          "id": "example-3",
+          "context": "文学",
+          "text": "The editor removed an anachronism from the novel set in ancient Rome.",
+          "translation": "編集者は古代ローマが舞台の小説から時代錯誤の箇所を削除した。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "anachronism",
+          "choices": [
+            {
+              "text": "時代錯誤",
+              "meaning": "時代に合わないもの"
+            },
+            {
+              "text": "綴り替え",
+              "meaning": "文字を並べ替える遊び"
+            },
+            {
+              "text": "鎮痛",
+              "meaning": "痛みを抑えること"
+            },
+            {
+              "text": "匿名性",
+              "meaning": "名前が分からない状態"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "anachronism は時代に合わないものを指す語である。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "時代錯誤",
+          "choices": [
+            {
+              "text": "anagram",
+              "meaning": "アナグラム"
+            },
+            {
+              "text": "archaeology",
+              "meaning": "考古学"
+            },
+            {
+              "text": "anonymity",
+              "meaning": "匿名性"
+            },
+            {
+              "text": "anachronism",
+              "meaning": "時代錯誤"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "時代に合わないものは anachronism で表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "歴史劇の場面。\"The ancient king wearing a wristwatch was an obvious ___ in the play.\"",
+          "choices": [
+            {
+              "text": "anonymity",
+              "meaning": "匿名性"
+            },
+            {
+              "text": "analgesia",
+              "meaning": "鎮痛"
+            },
+            {
+              "text": "anachronism",
+              "meaning": "時代錯誤"
+            },
+            {
+              "text": "anagram",
+              "meaning": "アナグラム"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "古代の王が腕時計をしているのは時代に合わない要素なので anachronism が合う。",
+          "alternatives": [
+            {
+              "answer": "mistake",
+              "explanation": "より一般的な「誤り」で、時代のずれは示さない。"
+            },
+            {
+              "answer": "inconsistency",
+              "explanation": "矛盾を表すが、時代のずれ特有の意味は弱い。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "anachronism を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "The old rule is an anachronism in today's workplace.",
+              "meaning": "その古い規則は今の職場では時代遅れだ。"
+            },
+            {
+              "text": "She solved the anachronism to open the lock.",
+              "meaning": "彼女は鍵を開けるために時代錯誤を解いた。"
+            },
+            {
+              "text": "He took an anachronism for his headache.",
+              "meaning": "彼は頭痛のために時代錯誤を飲んだ。"
+            },
+            {
+              "text": "The anachronism of the sender was hidden online.",
+              "meaning": "送信者の時代錯誤はネット上で隠されていた。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "anachronism は時代に合わない制度や物事を表す名詞として使う。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "歴史劇の場面。\"The ancient king wearing a wristwatch was an obvious ___ in the play.\"",
+        "answers": [
+          "anachronism"
+        ],
+        "explanation": "古代の王が腕時計をしているのは時代に合わない要素なので anachronism が合う。",
+        "alternatives": [
+          {
+            "answer": "mistake",
+            "explanation": "より一般的な「誤り」で、時代のずれは示さない。"
+          },
+          {
+            "answer": "inconsistency",
+            "explanation": "矛盾を表すが、時代のずれ特有の意味は弱い。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "anachronismを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "A smartphone in the medieval scene was a glaring anachronism.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-anachronism-usage",
+          "type": "usage",
+          "prompt": "anachronism を正しく使った文を選んでください。",
+          "choices": [
+            "The old rule is an anachronism in today's workplace.",
+            "She solved the anachronism to open the lock.",
+            "He took an anachronism for his headache.",
+            "The anachronism of the sender was hidden online."
+          ],
+          "correctIndex": 0,
+          "explanation": "anachronism は時代に合わない制度や物事を表す名詞として使う。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "arts-culture",
+          "logic-reasoning"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-analgesia",
+      "word": "analgesia",
+      "level": "2級",
+      "ipa": "/ˌænælˈdʒiːziə/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "the absence or reduction of pain without loss of consciousness",
+      "meaning": "鎮痛、疼痛感覚消失",
+      "usageTip": "医学的な文脈で使う硬い語。薬そのものは analgesic と言い、analgesia は痛みが抑えられた状態を指す。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "病院",
+          "text": "The doctor chose epidural analgesia to ease the pain during labor.",
+          "translation": "医師は出産中の痛みを和らげるため硬膜外鎮痛を選んだ。"
+        },
+        {
+          "id": "example-2",
+          "context": "医学",
+          "text": "The drug provides effective analgesia for several hours after surgery.",
+          "translation": "その薬は手術後数時間、効果的な鎮痛をもたらす。"
+        },
+        {
+          "id": "example-3",
+          "context": "研究",
+          "text": "Researchers compared two methods of analgesia in elderly patients.",
+          "translation": "研究者たちは高齢患者における二つの鎮痛法を比較した。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "analgesia",
+          "choices": [
+            {
+              "text": "時代錯誤",
+              "meaning": "時代に合わないもの"
+            },
+            {
+              "text": "鎮痛",
+              "meaning": "痛みを抑えること"
+            },
+            {
+              "text": "アナグラム",
+              "meaning": "文字を並べ替えた語"
+            },
+            {
+              "text": "考古学",
+              "meaning": "古代の遺跡を研究する学問"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "analgesia は痛みが抑えられた状態を表す医学用語である。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "鎮痛、疼痛感覚消失",
+          "choices": [
+            {
+              "text": "anonymity",
+              "meaning": "匿名性"
+            },
+            {
+              "text": "anagram",
+              "meaning": "アナグラム"
+            },
+            {
+              "text": "anachronism",
+              "meaning": "時代錯誤"
+            },
+            {
+              "text": "analgesia",
+              "meaning": "鎮痛"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "痛みを抑える状態を表す語は analgesia である。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "手術後の説明場面。\"The nurse said the new medicine would give good ___ after the operation.\"",
+          "choices": [
+            {
+              "text": "analgesia",
+              "meaning": "鎮痛"
+            },
+            {
+              "text": "anagram",
+              "meaning": "アナグラム"
+            },
+            {
+              "text": "anachronism",
+              "meaning": "時代錯誤"
+            },
+            {
+              "text": "archaeology",
+              "meaning": "考古学"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "手術後の薬が与えるものとして、痛みを抑える analgesia が合う。",
+          "alternatives": [
+            {
+              "answer": "pain relief",
+              "explanation": "日常的で分かりやすい言い方で、analgesia より柔らかい。"
+            },
+            {
+              "answer": "relief",
+              "explanation": "痛みに限らない一般的な「安らぎ」を表す。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "analgesia を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "The analgesia of the message protected his name.",
+              "meaning": "メッセージの鎮痛が彼の名前を守った。"
+            },
+            {
+              "text": "She studied analgesia at the excavation site.",
+              "meaning": "彼女は発掘現場で鎮痛を研究した。"
+            },
+            {
+              "text": "The patient received analgesia during the minor procedure.",
+              "meaning": "患者は軽い処置の間、鎮痛を受けた。"
+            },
+            {
+              "text": "The word was an analgesia of another word.",
+              "meaning": "その語は別の語の鎮痛だった。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "処置中に痛みを抑える措置を受ける文脈で analgesia が自然である。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "手術後の説明場面。\"The nurse said the new medicine would give good ___ after the operation.\"",
+        "answers": [
+          "analgesia"
+        ],
+        "explanation": "手術後の薬が与えるものとして、痛みを抑える analgesia が合う。",
+        "alternatives": [
+          {
+            "answer": "pain relief",
+            "explanation": "日常的で分かりやすい言い方で、analgesia より柔らかい。"
+          },
+          {
+            "answer": "relief",
+            "explanation": "痛みに限らない一般的な「安らぎ」を表す。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "analgesiaを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The doctor chose epidural analgesia to ease the pain during labor.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-analgesia-usage",
+          "type": "usage",
+          "prompt": "analgesia を正しく使った文を選んでください。",
+          "choices": [
+            "The analgesia of the message protected his name.",
+            "She studied analgesia at the excavation site.",
+            "The patient received analgesia during the minor procedure.",
+            "The word was an analgesia of another word."
+          ],
+          "correctIndex": 2,
+          "explanation": "処置中に痛みを抑える措置を受ける文脈で analgesia が自然である。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "C1",
+        "domains": [
+          "medical",
+          "health"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-anonymity",
+      "word": "anonymity",
+      "level": "2級",
+      "ipa": "/ˌænəˈnɪməti/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "the state of not having your name or identity known to others",
+      "meaning": "匿名性、身元不明",
+      "usageTip": "preserve / protect / guarantee anonymity や in anonymity などの形で使う。「匿名で」は on condition of anonymity とも言う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "調査",
+          "text": "The survey guarantees anonymity, so people can answer honestly.",
+          "translation": "その調査は匿名性を保証しているので、人々は正直に答えられる。"
+        },
+        {
+          "id": "example-2",
+          "context": "ネット",
+          "text": "Online anonymity can make some users more careless with their words.",
+          "translation": "ネット上の匿名性により、言葉に無責任になる利用者もいる。"
+        },
+        {
+          "id": "example-3",
+          "context": "報道",
+          "text": "The witness spoke on condition of anonymity because she feared trouble.",
+          "translation": "その目撃者は面倒を恐れ、匿名を条件に話した。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "anonymity",
+          "choices": [
+            {
+              "text": "鎮痛",
+              "meaning": "痛みを抑えること"
+            },
+            {
+              "text": "アナグラム",
+              "meaning": "文字を並べ替えた語"
+            },
+            {
+              "text": "匿名性",
+              "meaning": "身元が知られない状態"
+            },
+            {
+              "text": "時代錯誤",
+              "meaning": "時代に合わないもの"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "anonymity は名前や身元が知られない状態を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "匿名性、身元不明",
+          "choices": [
+            {
+              "text": "anonymity",
+              "meaning": "匿名性"
+            },
+            {
+              "text": "analgesia",
+              "meaning": "鎮痛"
+            },
+            {
+              "text": "archaeology",
+              "meaning": "考古学"
+            },
+            {
+              "text": "anagram",
+              "meaning": "アナグラム"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "身元が分からない状態を表す語は anonymity である。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "アンケートの注意書き。\"Your answers are private, and we will protect your ___ completely.\"",
+          "choices": [
+            {
+              "text": "anachronism",
+              "meaning": "時代錯誤"
+            },
+            {
+              "text": "anagram",
+              "meaning": "アナグラム"
+            },
+            {
+              "text": "analgesia",
+              "meaning": "鎮痛"
+            },
+            {
+              "text": "anonymity",
+              "meaning": "匿名性"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "回答者の身元を守るという意味なので anonymity が合う。",
+          "alternatives": [
+            {
+              "answer": "privacy",
+              "explanation": "私生活や情報を守る意味で、身元を伏せる点は anonymity ほど明確でない。"
+            },
+            {
+              "answer": "identity",
+              "explanation": "protect your identity は身元を守る意味で自然だが、状態の匿名性ではない。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "anonymity を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "He asked for anonymity before talking to the reporter.",
+              "meaning": "彼は記者に話す前に匿名を求めた。"
+            },
+            {
+              "text": "The anonymity relieved his back pain quickly.",
+              "meaning": "匿名性が彼の腰痛をすぐに和らげた。"
+            },
+            {
+              "text": "She solved the anonymity with six letters.",
+              "meaning": "彼女は六文字の匿名性を解いた。"
+            },
+            {
+              "text": "The museum found anonymity under the old road.",
+              "meaning": "博物館は古い道の下で匿名性を発見した。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "記者に話す際に身元を伏せるよう求める場面で anonymity が自然である。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "アンケートの注意書き。\"Your answers are private, and we will protect your ___ completely.\"",
+        "answers": [
+          "anonymity"
+        ],
+        "explanation": "回答者の身元を守るという意味なので anonymity が合う。",
+        "alternatives": [
+          {
+            "answer": "privacy",
+            "explanation": "私生活や情報を守る意味で、身元を伏せる点は anonymity ほど明確でない。"
+          },
+          {
+            "answer": "identity",
+            "explanation": "protect your identity は身元を守る意味で自然だが、状態の匿名性ではない。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "anonymityを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The survey guarantees anonymity, so people can answer honestly.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-anonymity-usage",
+          "type": "usage",
+          "prompt": "anonymity を正しく使った文を選んでください。",
+          "choices": [
+            "He asked for anonymity before talking to the reporter.",
+            "The anonymity relieved his back pain quickly.",
+            "She solved the anonymity with six letters.",
+            "The museum found anonymity under the old road."
+          ],
+          "correctIndex": 0,
+          "explanation": "記者に話す際に身元を伏せるよう求める場面で anonymity が自然である。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "communication",
+          "law"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-archaeology",
+      "word": "archaeology",
+      "level": "2級",
+      "ipa": "/ˌɑːkiˈɒlədʒi/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "the study of the past through objects, buildings and other remains found in the ground",
+      "meaning": "考古学",
+      "usageTip": "不可算名詞。学問名なので a archaeology とは言わない。人は archaeologist。米式の綴り archeology もある。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "大学",
+          "text": "She decided to study archaeology because she loves ancient pottery.",
+          "translation": "彼女は古代の陶器が大好きなので、考古学を学ぶことにした。"
+        },
+        {
+          "id": "example-2",
+          "context": "博物館",
+          "text": "The museum's archaeology section shows tools from a Bronze Age village.",
+          "translation": "その博物館の考古学コーナーには青銅器時代の村の道具が展示されている。"
+        },
+        {
+          "id": "example-3",
+          "context": "発掘",
+          "text": "Modern archaeology often uses drones to map large sites.",
+          "translation": "現代の考古学では、広い遺跡の地図作りにドローンがよく使われる。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "archaeology",
+          "choices": [
+            {
+              "text": "匿名性",
+              "meaning": "身元が知られない状態"
+            },
+            {
+              "text": "アナグラム",
+              "meaning": "文字を並べ替えた語"
+            },
+            {
+              "text": "鎮痛",
+              "meaning": "痛みを抑えること"
+            },
+            {
+              "text": "考古学",
+              "meaning": "遺物から過去を調べる学問"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "archaeology は遺物や遺跡から過去を研究する学問である。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "考古学",
+          "choices": [
+            {
+              "text": "anachronism",
+              "meaning": "時代錯誤"
+            },
+            {
+              "text": "archaeology",
+              "meaning": "考古学"
+            },
+            {
+              "text": "anonymity",
+              "meaning": "匿名性"
+            },
+            {
+              "text": "analgesia",
+              "meaning": "鎮痛"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "遺跡や出土品から過去を調べる学問は archaeology である。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "大学の専攻の話。\"He joined a dig in Greece because he wanted a career in ___.\"",
+          "choices": [
+            {
+              "text": "anagram",
+              "meaning": "アナグラム"
+            },
+            {
+              "text": "anonymity",
+              "meaning": "匿名性"
+            },
+            {
+              "text": "archaeology",
+              "meaning": "考古学"
+            },
+            {
+              "text": "analgesia",
+              "meaning": "鎮痛"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "発掘に参加し、その分野での職を望むので archaeology が合う。",
+          "alternatives": [
+            {
+              "answer": "history",
+              "explanation": "過去を扱う広い分野で、発掘中心の意味は弱い。"
+            },
+            {
+              "answer": "anthropology",
+              "explanation": "人類を研究する分野で、発掘とは必ずしも結びつかない。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "archaeology を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I bought an archaeology for the hospital.",
+              "meaning": "私は病院のために考古学を一つ買った。"
+            },
+            {
+              "text": "Archaeology helps us learn how ancient people lived.",
+              "meaning": "考古学は古代の人々の暮らしを知る助けになる。"
+            },
+            {
+              "text": "She wrote an archaeology of the secret code.",
+              "meaning": "彼女は秘密の暗号の考古学を書いた。"
+            },
+            {
+              "text": "The archaeology was hidden by the writer's name.",
+              "meaning": "考古学は作家の名前で隠されていた。"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "archaeology は学問名として、古代の暮らしを知る手段を主語にできる。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "大学の専攻の話。\"He joined a dig in Greece because he wanted a career in ___.\"",
+        "answers": [
+          "archaeology"
+        ],
+        "explanation": "発掘に参加し、その分野での職を望むので archaeology が合う。",
+        "alternatives": [
+          {
+            "answer": "history",
+            "explanation": "過去を扱う広い分野で、発掘中心の意味は弱い。"
+          },
+          {
+            "answer": "anthropology",
+            "explanation": "人類を研究する分野で、発掘とは必ずしも結びつかない。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "archaeologyを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "She decided to study archaeology because she loves ancient pottery.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-archaeology-usage",
+          "type": "usage",
+          "prompt": "archaeology を正しく使った文を選んでください。",
+          "choices": [
+            "I bought an archaeology for the hospital.",
+            "Archaeology helps us learn how ancient people lived.",
+            "She wrote an archaeology of the secret code.",
+            "The archaeology was hidden by the writer's name."
+          ],
+          "correctIndex": 1,
+          "explanation": "archaeology は学問名として、古代の暮らしを知る手段を主語にできる。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "science",
+          "arts-culture"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-austerity",
+      "word": "austerity",
+      "level": "2級",
+      "ipa": "ɔˈstɛrəti",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "a policy of cutting public spending, or a plain and strict way of living with few comforts",
+      "meaning": "緊縮、厳格さ",
+      "usageTip": "経済では政府の緊縮政策を指し、austerity measures の形でよく使う。生活の質素さや表情の厳しさを表すこともある。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "政治・経済",
+          "text": "The government introduced austerity measures to reduce its growing debt.",
+          "translation": "政府は増え続ける債務を減らすため、緊縮策を導入した。"
+        },
+        {
+          "id": "example-2",
+          "context": "生活",
+          "text": "During the war, the family lived with great austerity.",
+          "translation": "戦時中、その家族はとても質素に暮らしていた。"
+        },
+        {
+          "id": "example-3",
+          "context": "ニュース",
+          "text": "Many people protested against austerity after their local services were cut.",
+          "translation": "地域サービスが削減され、多くの人が緊縮策に抗議した。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "austerity",
+          "choices": [
+            {
+              "text": "緊縮、厳格さ",
+              "meaning": "austerity の意味"
+            },
+            {
+              "text": "大きな成長",
+              "meaning": "great growth"
+            },
+            {
+              "text": "丁寧な謝罪",
+              "meaning": "polite apology"
+            },
+            {
+              "text": "急な旅行",
+              "meaning": "sudden trip"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "austerity は支出を絞る政策や質素で厳しい状態を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "緊縮、厳格さ",
+          "choices": [
+            {
+              "text": "curiosity",
+              "meaning": "好奇心"
+            },
+            {
+              "text": "austerity",
+              "meaning": "緊縮、厳格さ"
+            },
+            {
+              "text": "majority",
+              "meaning": "大多数"
+            },
+            {
+              "text": "hospitality",
+              "meaning": "もてなし"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "支出削減や質素さを表す名詞は austerity。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "政府が支出を大幅に減らした場面: The country adopted ___ measures to control its budget deficit.",
+          "choices": [
+            {
+              "text": "austerity",
+              "meaning": "緊縮"
+            },
+            {
+              "text": "holiday",
+              "meaning": "休日"
+            },
+            {
+              "text": "fashion",
+              "meaning": "流行"
+            },
+            {
+              "text": "harvest",
+              "meaning": "収穫"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "予算赤字を抑える措置なので austerity measures が自然。",
+          "alternatives": [
+            {
+              "answer": "spending-cut",
+              "explanation": "spending-cut measures も通じるが、austerity の方が政策全体を示す。"
+            },
+            {
+              "answer": "budget",
+              "explanation": "budget measures は予算関連措置という広い意味になる。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "austerity を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "The city accepted austerity of buying a new stadium.",
+              "meaning": "市は新スタジアムを買う緊縮を受け入れた。"
+            },
+            {
+              "text": "Austerity measures forced the council to cut library hours.",
+              "meaning": "緊縮策のため議会は図書館の開館時間を減らした。"
+            },
+            {
+              "text": "She austerity the budget carefully every month.",
+              "meaning": "彼女は毎月予算をaustereした。"
+            },
+            {
+              "text": "The team won by a very austerity score.",
+              "meaning": "チームは非常にausterityな得点で勝った。"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "austerity は名詞で、austerity measures の形が自然。他は品詞や意味が合わない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "政府が支出を大幅に減らした場面: The country adopted ___ measures to control its budget deficit.",
+        "answers": [
+          "austerity"
+        ],
+        "explanation": "予算赤字を抑える措置なので austerity measures が自然。",
+        "alternatives": [
+          {
+            "answer": "spending-cut",
+            "explanation": "spending-cut measures も通じるが、austerity の方が政策全体を示す。"
+          },
+          {
+            "answer": "budget",
+            "explanation": "budget measures は予算関連措置という広い意味になる。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "austerityを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The government introduced austerity measures to reduce its growing debt.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-austerity-usage",
+          "type": "usage",
+          "prompt": "austerity を正しく使った文を選んでください。",
+          "choices": [
+            "The city accepted austerity of buying a new stadium.",
+            "Austerity measures forced the council to cut library hours.",
+            "She austerity the budget carefully every month.",
+            "The team won by a very austerity score."
+          ],
+          "correctIndex": 1,
+          "explanation": "austerity は名詞で、austerity measures の形が自然。他は品詞や意味が合わない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "economics",
+          "finance"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-bailout",
+      "word": "bailout",
+      "level": "2級",
+      "ipa": "ˈbeɪlaʊt",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "financial help given to a failing company, bank or country to prevent collapse",
+      "meaning": "救済、救出",
+      "usageTip": "主に企業・銀行・国への財政的な緊急支援を指す。a bailout of a bank や government bailout の形でよく使う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "金融ニュース",
+          "text": "The bank asked for a government bailout after heavy losses.",
+          "translation": "その銀行は大きな損失の後、政府の救済を求めた。"
+        },
+        {
+          "id": "example-2",
+          "context": "ビジネス",
+          "text": "The airline survived only because it received a bailout.",
+          "translation": "その航空会社は救済を受けたからこそ生き残った。"
+        },
+        {
+          "id": "example-3",
+          "context": "議論",
+          "text": "Voters disagreed about whether taxpayers should fund the bailout.",
+          "translation": "納税者が救済の費用を負担すべきか、有権者の意見は分かれた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "bailout",
+          "choices": [
+            {
+              "text": "財政的救済",
+              "meaning": "financial rescue"
+            },
+            {
+              "text": "新製品発表",
+              "meaning": "product launch"
+            },
+            {
+              "text": "退職祝い",
+              "meaning": "retirement party"
+            },
+            {
+              "text": "短い休憩",
+              "meaning": "short break"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "bailout は破綻しそうな組織への資金支援を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "救済、救出",
+          "choices": [
+            {
+              "text": "outlook",
+              "meaning": "見通し"
+            },
+            {
+              "text": "layout",
+              "meaning": "配置"
+            },
+            {
+              "text": "bailout",
+              "meaning": "救済"
+            },
+            {
+              "text": "takeout",
+              "meaning": "持ち帰り"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "経営危機などの救済支援は bailout。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "倒産寸前の自動車会社の場面: The company would have collapsed without a government ___.",
+          "choices": [
+            {
+              "text": "bailout",
+              "meaning": "救済"
+            },
+            {
+              "text": "souvenir",
+              "meaning": "土産"
+            },
+            {
+              "text": "rehearsal",
+              "meaning": "リハーサル"
+            },
+            {
+              "text": "neighbor",
+              "meaning": "隣人"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "倒産を防ぐ政府の資金支援なので bailout が合う。",
+          "alternatives": [
+            {
+              "answer": "rescue package",
+              "explanation": "rescue package は救済策一式を表し、ほぼ同じ意味で使える。"
+            },
+            {
+              "answer": "financial support",
+              "explanation": "financial support はより一般的で穏やかな表現。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "bailout を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "The bank bailout the customers yesterday.",
+              "meaning": "銀行は昨日顧客をbailoutした。"
+            },
+            {
+              "text": "The factory had a bailout of lunch.",
+              "meaning": "工場には昼食のbailoutがあった。"
+            },
+            {
+              "text": "A bailout was needed to keep the bank open.",
+              "meaning": "銀行を存続させるには救済が必要だった。"
+            },
+            {
+              "text": "He bailout very quickly from the room.",
+              "meaning": "彼は部屋からとても速くbailoutした。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "bailout は名詞で、a bailout was needed のように使う。他は動詞扱いなど誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "倒産寸前の自動車会社の場面: The company would have collapsed without a government ___.",
+        "answers": [
+          "bailout"
+        ],
+        "explanation": "倒産を防ぐ政府の資金支援なので bailout が合う。",
+        "alternatives": [
+          {
+            "answer": "rescue package",
+            "explanation": "rescue package は救済策一式を表し、ほぼ同じ意味で使える。"
+          },
+          {
+            "answer": "financial support",
+            "explanation": "financial support はより一般的で穏やかな表現。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "bailoutを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The bank asked for a government bailout after heavy losses.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-bailout-usage",
+          "type": "usage",
+          "prompt": "bailout を正しく使った文を選んでください。",
+          "choices": [
+            "The bank bailout the customers yesterday.",
+            "The factory had a bailout of lunch.",
+            "A bailout was needed to keep the bank open.",
+            "He bailout very quickly from the room."
+          ],
+          "correctIndex": 2,
+          "explanation": "bailout は名詞で、a bailout was needed のように使う。他は動詞扱いなど誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "finance",
+          "business"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-baldly",
+      "word": "baldly",
+      "level": "2級",
+      "ipa": "ˈbɔldli",
+      "ipaLabel": "米音",
+      "partOfSpeech": "副詞",
+      "definition": "in a direct way that states something plainly, often without softening it",
+      "meaning": "率直に、ぶっきらぼうに",
+      "usageTip": "state, say, put it などと使い、飾らず遠慮のない言い方を表す。時に冷たく聞こえる。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "会議",
+          "text": "He baldly stated that the project had failed.",
+          "translation": "彼はそのプロジェクトは失敗したとぶっきらぼうに述べた。"
+        },
+        {
+          "id": "example-2",
+          "context": "報告",
+          "text": "The report baldly describes the problems without offering any excuses.",
+          "translation": "その報告書は言い訳をせず、問題を率直に述べている。"
+        },
+        {
+          "id": "example-3",
+          "context": "友人関係",
+          "text": "She baldly told me that she did not like the plan.",
+          "translation": "彼女はその計画が好きではないと私にはっきり言った。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "baldly",
+          "choices": [
+            {
+              "text": "率直に、ぶっきらぼうに",
+              "meaning": "plainly and bluntly"
+            },
+            {
+              "text": "静かに眠って",
+              "meaning": "sleeping quietly"
+            },
+            {
+              "text": "とても高価に",
+              "meaning": "very expensively"
+            },
+            {
+              "text": "遅れて到着して",
+              "meaning": "arriving late"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "baldly は飾らず直接的に言う様子を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "率直に、ぶっきらぼうに",
+          "choices": [
+            {
+              "text": "gently",
+              "meaning": "優しく"
+            },
+            {
+              "text": "rarely",
+              "meaning": "めったに〜ない"
+            },
+            {
+              "text": "eagerly",
+              "meaning": "熱心に"
+            },
+            {
+              "text": "baldly",
+              "meaning": "率直に"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "遠慮なく直接言う副詞は baldly。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "上司が遠回しにせず悪い結果を伝えた場面: The manager ___ said that sales had dropped.",
+          "choices": [
+            {
+              "text": "baldly",
+              "meaning": "ぶっきらぼうに"
+            },
+            {
+              "text": "warmly",
+              "meaning": "温かく"
+            },
+            {
+              "text": "slowly",
+              "meaning": "ゆっくり"
+            },
+            {
+              "text": "happily",
+              "meaning": "嬉しそうに"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "悪い知らせを遠慮なく伝える文脈なので baldly が合う。",
+          "alternatives": [
+            {
+              "answer": "bluntly",
+              "explanation": "bluntly は無遠慮で強い印象を与える。"
+            },
+            {
+              "answer": "plainly",
+              "explanation": "plainly は飾らず分かりやすい点を強調する。"
+            },
+            {
+              "answer": "frankly",
+              "explanation": "frankly は正直さを強調し、必ずしも冷たくない。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "baldly を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "She baldly stated her opinion in the meeting.",
+              "meaning": "彼女は会議で意見をはっきり述べた。"
+            },
+            {
+              "text": "She is a baldly person at work.",
+              "meaning": "彼女は職場でbaldlyな人だ。"
+            },
+            {
+              "text": "The cake tasted baldly sweet.",
+              "meaning": "そのケーキはbaldlyに甘かった。"
+            },
+            {
+              "text": "They baldly arrived to the station.",
+              "meaning": "彼らは駅にbaldlyに着いた。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "baldly は述べる・言う動作を修飾する副詞。他は形容詞扱いなど不自然。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "上司が遠回しにせず悪い結果を伝えた場面: The manager ___ said that sales had dropped.",
+        "answers": [
+          "baldly"
+        ],
+        "explanation": "悪い知らせを遠慮なく伝える文脈なので baldly が合う。",
+        "alternatives": [
+          {
+            "answer": "bluntly",
+            "explanation": "bluntly は無遠慮で強い印象を与える。"
+          },
+          {
+            "answer": "plainly",
+            "explanation": "plainly は飾らず分かりやすい点を強調する。"
+          },
+          {
+            "answer": "frankly",
+            "explanation": "frankly は正直さを強調し、必ずしも冷たくない。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "baldlyを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "He baldly stated that the project had failed.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-baldly-usage",
+          "type": "usage",
+          "prompt": "baldly を正しく使った文を選んでください。",
+          "choices": [
+            "She baldly stated her opinion in the meeting.",
+            "She is a baldly person at work.",
+            "The cake tasted baldly sweet.",
+            "They baldly arrived to the station."
+          ],
+          "correctIndex": 0,
+          "explanation": "baldly は述べる・言う動作を修飾する副詞。他は形容詞扱いなど不自然。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "communication"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-ballast",
+      "word": "ballast",
+      "level": "2級",
+      "ipa": "ˈbæləst",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "heavy material placed in a ship, balloon or vehicle to keep it stable",
+      "meaning": "バラスト、安定化物質",
+      "usageTip": "船の底に積む重りや、線路に敷く砕石を指す。比喩では安定を与えるものにも使う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "船",
+          "text": "The empty ship carried water as ballast to stay stable.",
+          "translation": "空の船は安定を保つため、バラストとして水を積んでいた。"
+        },
+        {
+          "id": "example-2",
+          "context": "鉄道",
+          "text": "Workers added fresh ballast under the railway tracks.",
+          "translation": "作業員は線路の下に新しいバラストを敷いた。"
+        },
+        {
+          "id": "example-3",
+          "context": "比喩",
+          "text": "Her calm advice gave the team ballast during a difficult year.",
+          "translation": "彼女の落ち着いた助言は、困難な一年にチームの安定をもたらした。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "ballast",
+          "choices": [
+            {
+              "text": "安定のための重り",
+              "meaning": "weight for stability"
+            },
+            {
+              "text": "切符売り場",
+              "meaning": "ticket office"
+            },
+            {
+              "text": "天気予報",
+              "meaning": "weather forecast"
+            },
+            {
+              "text": "荷物の保険",
+              "meaning": "luggage insurance"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "ballast は船などを安定させる重い物。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "バラスト、安定化物質",
+          "choices": [
+            {
+              "text": "ballast",
+              "meaning": "バラスト"
+            },
+            {
+              "text": "balcony",
+              "meaning": "バルコニー"
+            },
+            {
+              "text": "ballot",
+              "meaning": "投票"
+            },
+            {
+              "text": "ballad",
+              "meaning": "バラード"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "船を安定させる重りは ballast。他は綴りが似た別語。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "空の貨物船が揺れないようにする場面: The ship took on water as ___ before leaving port.",
+          "choices": [
+            {
+              "text": "ballast",
+              "meaning": "バラスト"
+            },
+            {
+              "text": "dessert",
+              "meaning": "デザート"
+            },
+            {
+              "text": "luggage",
+              "meaning": "荷物"
+            },
+            {
+              "text": "fashion",
+              "meaning": "流行"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "船が安定するために積む水なので ballast が合う。",
+          "alternatives": [
+            {
+              "answer": "counterweight",
+              "explanation": "counterweight は釣り合いを取る重りで、機械などにも使う。"
+            },
+            {
+              "answer": "stabilizer",
+              "explanation": "stabilizer は安定させる装置や物を表し、重りとは限らない。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "ballast を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "The ship used ballast to stay steady in the waves.",
+              "meaning": "船は波の中で安定するためバラストを使った。"
+            },
+            {
+              "text": "The ship ballasted me a ticket.",
+              "meaning": "船は私に切符をballastした。"
+            },
+            {
+              "text": "We ate ballast at the harbor café.",
+              "meaning": "港のカフェでballastを食べた。"
+            },
+            {
+              "text": "The ballast was very ballast today.",
+              "meaning": "バラストは今日とてもballastだった。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "ballast は船の安定のために使う重りを表す名詞。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "空の貨物船が揺れないようにする場面: The ship took on water as ___ before leaving port.",
+        "answers": [
+          "ballast"
+        ],
+        "explanation": "船が安定するために積む水なので ballast が合う。",
+        "alternatives": [
+          {
+            "answer": "counterweight",
+            "explanation": "counterweight は釣り合いを取る重りで、機械などにも使う。"
+          },
+          {
+            "answer": "stabilizer",
+            "explanation": "stabilizer は安定させる装置や物を表し、重りとは限らない。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "ballastを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The empty ship carried water as ballast to stay stable.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-ballast-usage",
+          "type": "usage",
+          "prompt": "ballast を正しく使った文を選んでください。",
+          "choices": [
+            "The ship used ballast to stay steady in the waves.",
+            "The ship ballasted me a ticket.",
+            "We ate ballast at the harbor café.",
+            "The ballast was very ballast today."
+          ],
+          "correctIndex": 0,
+          "explanation": "ballast は船の安定のために使う重りを表す名詞。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "transport",
+          "science"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-basalt",
+      "word": "basalt",
+      "level": "2級",
+      "ipa": "ˈbæsɔːlt",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a dark, hard volcanic rock formed when lava cools quickly",
+      "meaning": "玄武岩",
+      "usageTip": "地質学や火山の話題で使う不可算名詞。種類を言う場合は a basalt も可能だが、通常は basalt の形で使う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "地質の授業",
+          "text": "The students collected a piece of basalt from the old lava field.",
+          "translation": "生徒たちは古い溶岩原から玄武岩のかけらを集めた。"
+        },
+        {
+          "id": "example-2",
+          "context": "火山の説明",
+          "text": "Much of the ocean floor is made of basalt.",
+          "translation": "海底の大部分は玄武岩でできている。"
+        },
+        {
+          "id": "example-3",
+          "context": "建築",
+          "text": "The path was built with blocks of gray basalt.",
+          "translation": "その小道は灰色の玄武岩のブロックで作られていた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "basalt",
+          "choices": [
+            {
+              "text": "玄武岩",
+              "meaning": "溶岩が急に冷えてできる黒っぽい岩"
+            },
+            {
+              "text": "石灰",
+              "meaning": "白い粉状の物質"
+            },
+            {
+              "text": "砂漠",
+              "meaning": "雨の少ない乾燥地帯"
+            },
+            {
+              "text": "氷河",
+              "meaning": "ゆっくり動く巨大な氷"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "basalt は火山活動でできる黒っぽく硬い岩、玄武岩を指す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "玄武岩",
+          "choices": [
+            {
+              "text": "glacier",
+              "meaning": "氷河"
+            },
+            {
+              "text": "canyon",
+              "meaning": "峡谷"
+            },
+            {
+              "text": "basalt",
+              "meaning": "玄武岩"
+            },
+            {
+              "text": "sediment",
+              "meaning": "堆積物"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "玄武岩は英語で basalt。他は別の地形や物質を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "火山島の岩についての説明です。The island's dark cliffs are made of volcanic ___.",
+          "choices": [
+            {
+              "text": "basalt",
+              "meaning": "玄武岩"
+            },
+            {
+              "text": "butter",
+              "meaning": "バター"
+            },
+            {
+              "text": "cotton",
+              "meaning": "綿"
+            },
+            {
+              "text": "paper",
+              "meaning": "紙"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "火山性の黒い崖を作る素材として自然なのは玄武岩。",
+          "alternatives": [
+            {
+              "answer": "rock",
+              "explanation": "より一般的な語で、岩の種類までは示さない。"
+            },
+            {
+              "answer": "stone",
+              "explanation": "石全般を指し、火山岩という特定性は弱い。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "basalt を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "Basalt forms when lava cools.",
+              "meaning": "玄武岩は溶岩が冷えるとできる。"
+            },
+            {
+              "text": "She drank a glass of basalt.",
+              "meaning": "彼女は玄武岩を一杯飲んだ。"
+            },
+            {
+              "text": "The basalt sang a song loudly.",
+              "meaning": "玄武岩が大声で歌った。"
+            },
+            {
+              "text": "He basalted the report yesterday.",
+              "meaning": "彼は昨日報告書を玄武岩した。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "basalt は岩を表す名詞で、溶岩が冷えてできるという説明が自然。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "火山島の岩についての説明です。The island's dark cliffs are made of volcanic ___.",
+        "answers": [
+          "basalt"
+        ],
+        "explanation": "火山性の黒い崖を作る素材として自然なのは玄武岩。",
+        "alternatives": [
+          {
+            "answer": "rock",
+            "explanation": "より一般的な語で、岩の種類までは示さない。"
+          },
+          {
+            "answer": "stone",
+            "explanation": "石全般を指し、火山岩という特定性は弱い。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "basaltを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The students collected a piece of basalt from the old lava field.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-basalt-usage",
+          "type": "usage",
+          "prompt": "basalt を正しく使った文を選んでください。",
+          "choices": [
+            "Basalt forms when lava cools.",
+            "She drank a glass of basalt.",
+            "The basalt sang a song loudly.",
+            "He basalted the report yesterday."
+          ],
+          "correctIndex": 0,
+          "explanation": "basalt は岩を表す名詞で、溶岩が冷えてできるという説明が自然。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "science",
+          "environment"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-bellwether",
+      "word": "bellwether",
+      "level": "2級",
+      "ipa": "ˈbɛlˌwɛðɚ",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "something or someone that shows what trends are likely to come",
+      "meaning": "指標、先導役",
+      "usageTip": "a bellwether for ~ や a bellwether of ~ の形で、全体の動向を示す存在を表す。経済・政治記事でよく使う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "経済",
+          "text": "Retail sales are often a bellwether for the wider economy.",
+          "translation": "小売売上高は、経済全体の指標になることが多い。"
+        },
+        {
+          "id": "example-2",
+          "context": "政治",
+          "text": "This district has long been a bellwether in national elections.",
+          "translation": "この選挙区は長年、全国選挙の動向を占う指標だった。"
+        },
+        {
+          "id": "example-3",
+          "context": "ビジネス",
+          "text": "The company is seen as a bellwether of the tech industry.",
+          "translation": "その会社はテック業界の先行指標と見られている。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "bellwether",
+          "choices": [
+            {
+              "text": "動向を示す指標",
+              "meaning": "今後の流れを示すもの"
+            },
+            {
+              "text": "天気予報士",
+              "meaning": "天気を伝える人"
+            },
+            {
+              "text": "鐘つき職人",
+              "meaning": "鐘を鳴らす人"
+            },
+            {
+              "text": "競争相手",
+              "meaning": "張り合う相手"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "bellwether は先に流れを示す指標や先導役を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "指標、先導役",
+          "choices": [
+            {
+              "text": "bellwether",
+              "meaning": "指標、先導役"
+            },
+            {
+              "text": "bystander",
+              "meaning": "傍観者"
+            },
+            {
+              "text": "landlord",
+              "meaning": "家主"
+            },
+            {
+              "text": "newcomer",
+              "meaning": "新参者"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "動向を示す先導役は bellwether。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "景気の見通しを話す場面です。Housing starts are a ___ for the economy.",
+          "choices": [
+            {
+              "text": "souvenir",
+              "meaning": "お土産"
+            },
+            {
+              "text": "bellwether",
+              "meaning": "指標"
+            },
+            {
+              "text": "neighbor",
+              "meaning": "隣人"
+            },
+            {
+              "text": "ceiling",
+              "meaning": "天井"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "住宅着工件数は経済の動向を示す指標という文脈。",
+          "alternatives": [
+            {
+              "answer": "barometer",
+              "explanation": "状況を測る目安という意味で近い自然な語。"
+            },
+            {
+              "answer": "indicator",
+              "explanation": "より一般的で中立的な指標を表す。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "bellwether を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "The early vote was a bellwether of the final result.",
+              "meaning": "初期の投票は最終結果の指標だった。"
+            },
+            {
+              "text": "The early vote bellwethered of the final result.",
+              "meaning": "初期の投票は最終結果をbellwetherした。"
+            },
+            {
+              "text": "She is very bellwether about the final result.",
+              "meaning": "彼女は最終結果にとてもbellwetherだ。"
+            },
+            {
+              "text": "The early vote was bellwether to a final result of.",
+              "meaning": "初期の投票は最終結果のbellwetherだった。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "bellwether は名詞で、a bellwether of ~ の形で使う。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "景気の見通しを話す場面です。Housing starts are a ___ for the economy.",
+        "answers": [
+          "bellwether"
+        ],
+        "explanation": "住宅着工件数は経済の動向を示す指標という文脈。",
+        "alternatives": [
+          {
+            "answer": "barometer",
+            "explanation": "状況を測る目安という意味で近い自然な語。"
+          },
+          {
+            "answer": "indicator",
+            "explanation": "より一般的で中立的な指標を表す。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "bellwetherを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Retail sales are often a bellwether for the wider economy.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-bellwether-usage",
+          "type": "usage",
+          "prompt": "bellwether を正しく使った文を選んでください。",
+          "choices": [
+            "The early vote was a bellwether of the final result.",
+            "The early vote bellwethered of the final result.",
+            "She is very bellwether about the final result.",
+            "The early vote was bellwether to a final result of."
+          ],
+          "correctIndex": 0,
+          "explanation": "bellwether は名詞で、a bellwether of ~ の形で使う。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "business",
+          "society"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-bioethics",
+      "word": "bioethics",
+      "level": "2級",
+      "ipa": "ˌbaɪoʊˈɛθɪks",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "the study of moral questions raised by medicine and biological research",
+      "meaning": "生命倫理学",
+      "usageTip": "複数形の形だが、学問分野としては単数扱いが普通。例: Bioethics is ... 医療・研究の倫理問題を話す時に使う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "大学の授業",
+          "text": "She is taking a course in bioethics this semester.",
+          "translation": "彼女は今学期、生命倫理学の講義を取っている。"
+        },
+        {
+          "id": "example-2",
+          "context": "医療",
+          "text": "Bioethics helps doctors think carefully about difficult treatment choices.",
+          "translation": "生命倫理学は、医師が難しい治療選択を慎重に考える助けになる。"
+        },
+        {
+          "id": "example-3",
+          "context": "研究",
+          "text": "The committee discussed the bioethics of gene editing.",
+          "translation": "委員会は遺伝子編集に関する生命倫理を議論した。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "bioethics",
+          "choices": [
+            {
+              "text": "生命倫理学",
+              "meaning": "医療や生物学の倫理問題を扱う分野"
+            },
+            {
+              "text": "生物工学",
+              "meaning": "生物を応用する技術"
+            },
+            {
+              "text": "栄養学",
+              "meaning": "食事と栄養の学問"
+            },
+            {
+              "text": "心理学",
+              "meaning": "心と行動の学問"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "bioethics は生命や医療に関わる倫理を扱う学問。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "生命倫理学",
+          "choices": [
+            {
+              "text": "geometry",
+              "meaning": "幾何学"
+            },
+            {
+              "text": "botany",
+              "meaning": "植物学"
+            },
+            {
+              "text": "astronomy",
+              "meaning": "天文学"
+            },
+            {
+              "text": "bioethics",
+              "meaning": "生命倫理学"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "生命倫理学は bioethics。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "臓器移植の公平性を議論する場面です。The hospital asked an expert in ___ to review the case.",
+          "choices": [
+            {
+              "text": "carpentry",
+              "meaning": "大工仕事"
+            },
+            {
+              "text": "bioethics",
+              "meaning": "生命倫理学"
+            },
+            {
+              "text": "fashion",
+              "meaning": "ファッション"
+            },
+            {
+              "text": "tourism",
+              "meaning": "観光"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "医療の倫理問題を審査するなら生命倫理の専門家が適切。",
+          "alternatives": [
+            {
+              "answer": "medical ethics",
+              "explanation": "医療現場の倫理に焦点を当てた自然な表現。"
+            },
+            {
+              "answer": "ethics",
+              "explanation": "より広い倫理全般を指す。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "bioethics を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "Bioethics are a bicycle for students.",
+              "meaning": "生命倫理学は学生のための自転車だ。"
+            },
+            {
+              "text": "He bioethics the patient every morning.",
+              "meaning": "彼は毎朝患者を生命倫理する。"
+            },
+            {
+              "text": "Bioethics asks whether a treatment is fair and respectful.",
+              "meaning": "生命倫理学は治療が公正で敬意あるものかを問う。"
+            },
+            {
+              "text": "The bioethics is very bioethical to cry.",
+              "meaning": "その生命倫理学は泣くのにとても生命倫理的だ。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "bioethics は学問分野で、単数扱いの主語として治療の公正さを問う文が自然。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "臓器移植の公平性を議論する場面です。The hospital asked an expert in ___ to review the case.",
+        "answers": [
+          "bioethics"
+        ],
+        "explanation": "医療の倫理問題を審査するなら生命倫理の専門家が適切。",
+        "alternatives": [
+          {
+            "answer": "medical ethics",
+            "explanation": "医療現場の倫理に焦点を当てた自然な表現。"
+          },
+          {
+            "answer": "ethics",
+            "explanation": "より広い倫理全般を指す。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "bioethicsを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "She is taking a course in bioethics this semester.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-bioethics-usage",
+          "type": "usage",
+          "prompt": "bioethics を正しく使った文を選んでください。",
+          "choices": [
+            "Bioethics are a bicycle for students.",
+            "He bioethics the patient every morning.",
+            "Bioethics asks whether a treatment is fair and respectful.",
+            "The bioethics is very bioethical to cry."
+          ],
+          "correctIndex": 2,
+          "explanation": "bioethics は学問分野で、単数扱いの主語として治療の公正さを問う文が自然。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "science",
+          "medical"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    }
+  ],
+  "audio": []
+}

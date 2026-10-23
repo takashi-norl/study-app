@@ -8,6 +8,15 @@ export interface AppRelease {
 
 // Newest first. This is the source for Settings, public history and update notices.
 export const APP_RELEASES: readonly AppRelease[] = [{
+  version: '0.15.2',
+  date: '2026-10-24',
+  title: '単語教材を4,552語に',
+  announcement: '2級の教材も増え、収録単語は4,552語になりました。追加教材の2,104語では、発音と3つの例文を聞けます。',
+  changes: [
+    { title: '級・セットから選べる教材を拡充', description: 'AIによる点検を終えた単語・例文・4形式の選択問題を追加しました。既存の2級・準1級100語も引き続き使えます。' },
+    { title: '発音と例文の音声を追加', description: '追加教材の3級1,975語・準2級129語に音声を反映しました。文字の教材と音声は、準備できたものから順次追加しています。再生や選択問題の採点にAIは使いません。' },
+  ],
+}, {
   version: '0.15.1',
   date: '2026-10-23',
   title: '単語教材を、意味・例文・音声でさらに広く',

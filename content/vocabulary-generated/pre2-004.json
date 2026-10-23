@@ -958,6 +958,192 @@
       }
     },
     {
+      "id": "vocab-allergic",
+      "word": "allergic",
+      "level": "準2級",
+      "ipa": "əˈlɜːdʒɪk",
+      "ipaLabel": "英音",
+      "partOfSpeech": "形容詞",
+      "definition": "having a bad physical reaction, such as sneezing or a rash, to a food, animal, plant or substance",
+      "meaning": "アレルギーのある",
+      "usageTip": "「〜アレルギーがある」は be allergic to ~ と言う。前置詞は to を使い、with や for は使わない。「花粉症です」なら I'm allergic to pollen. と言える。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "食事",
+          "text": "My brother is allergic to peanuts, so he always checks the food labels.",
+          "translation": "弟はピーナッツアレルギーなので、いつも食品表示を確認します。"
+        },
+        {
+          "id": "example-2",
+          "context": "ペット",
+          "text": "I wanted a cat, but my roommate is allergic to fur.",
+          "translation": "猫を飼いたかったが、ルームメイトは毛のアレルギーがある。"
+        },
+        {
+          "id": "example-3",
+          "context": "春",
+          "text": "She is allergic to pollen, so she sneezes all day every spring.",
+          "translation": "彼女は花粉アレルギーなので、毎年春は一日中くしゃみをします。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "allergic",
+          "choices": [
+            {
+              "text": "疲れ果てた",
+              "meaning": "とても疲れている"
+            },
+            {
+              "text": "アレルギーのある",
+              "meaning": "特定の物質に体が過敏に反応する"
+            },
+            {
+              "text": "健康的な",
+              "meaning": "体に良い、健康である"
+            },
+            {
+              "text": "伝染性の",
+              "meaning": "人にうつりやすい"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "allergic は特定の食べ物や物質に体が悪く反応することを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "アレルギーのある",
+          "choices": [
+            {
+              "text": "hungry",
+              "meaning": "空腹の"
+            },
+            {
+              "text": "nervous",
+              "meaning": "緊張した"
+            },
+            {
+              "text": "patient",
+              "meaning": "我慢強い"
+            },
+            {
+              "text": "allergic",
+              "meaning": "アレルギーのある"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "「アレルギーのある」は allergic。他は体質ではなく状態や性格を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 子どもが卵を食べると発疹が出る。 Her son is ___ to eggs, so she cooks without them.",
+          "choices": [
+            {
+              "text": "familiar",
+              "meaning": "よく知っている"
+            },
+            {
+              "text": "polite",
+              "meaning": "礼儀正しい"
+            },
+            {
+              "text": "allergic",
+              "meaning": "アレルギーのある"
+            },
+            {
+              "text": "similar",
+              "meaning": "似ている"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "卵で発疹が出て避ける理由になり、to と結びつくのは allergic。",
+          "alternatives": [
+            {
+              "answer": "sensitive",
+              "explanation": "sensitive to eggs も通じるが、体が敏感という意味で、アレルギーほど明確ではない。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "allergic の使い方が正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "I am allergic for shellfish.",
+              "meaning": "前置詞が誤り(正: to)。"
+            },
+            {
+              "text": "I am allergic to shellfish.",
+              "meaning": "私は貝類アレルギーです。"
+            },
+            {
+              "text": "I am allergic with shellfish.",
+              "meaning": "前置詞が誤り(正: to)。"
+            },
+            {
+              "text": "I am allergic shellfish.",
+              "meaning": "前置詞 to が抜けている。"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "allergic は to を伴って、原因となる物を示す。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 子どもが卵を食べると発疹が出る。 Her son is ___ to eggs, so she cooks without them.",
+        "answers": [
+          "allergic"
+        ],
+        "explanation": "卵で発疹が出て避ける理由になり、to と結びつくのは allergic。",
+        "alternatives": [
+          {
+            "answer": "sensitive",
+            "explanation": "sensitive to eggs も通じるが、体が敏感という意味で、アレルギーほど明確ではない。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "allergicを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "My brother is allergic to peanuts, so he always checks the food labels.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-allergic-usage",
+          "type": "usage",
+          "prompt": "allergic の使い方が正しい文を選んでください。",
+          "choices": [
+            "I am allergic for shellfish.",
+            "I am allergic to shellfish.",
+            "I am allergic with shellfish.",
+            "I am allergic shellfish."
+          ],
+          "correctIndex": 1,
+          "explanation": "allergic は to を伴って、原因となる物を示す。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "medical",
+          "health"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-recovery",
       "word": "recovery",
       "level": "準2級",
@@ -1137,6 +1323,208 @@
         "cefrEstimate": "B1",
         "domains": [
           "health",
+          "medical"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-prescribe",
+      "word": "prescribe",
+      "level": "準2級",
+      "ipa": "prɪˈskraɪb",
+      "ipaLabel": "英音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "prescribe"
+        ],
+        "past": [
+          "prescribed"
+        ],
+        "pastParticiple": [
+          "prescribed"
+        ],
+        "presentParticiple": [
+          "prescribing"
+        ],
+        "thirdPersonSingular": [
+          "prescribes"
+        ]
+      },
+      "definition": "to officially tell a patient to use a medicine or treatment",
+      "meaning": "(薬などを)処方する",
+      "usageTip": "prescribe + 薬 (+ for 症状) の形が基本。医師などが主語になる。prescribe me to take ~ のように to 不定詞は続けない。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "診察",
+          "text": "The doctor prescribed antibiotics for my sore throat.",
+          "translation": "医者は私の喉の痛みに抗生物質を処方しました。"
+        },
+        {
+          "id": "example-2",
+          "context": "薬局",
+          "text": "She was prescribed a mild painkiller after the dental treatment.",
+          "translation": "彼女は歯の治療後、弱い鎮痛剤を処方された。"
+        },
+        {
+          "id": "example-3",
+          "context": "相談",
+          "text": "Doctors sometimes prescribe rest instead of medicine.",
+          "translation": "医師は薬ではなく休養を指示することもあります。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "prescribe",
+          "choices": [
+            {
+              "text": "薬を飲み込む",
+              "meaning": "薬を体に入れる"
+            },
+            {
+              "text": "薬を発明する",
+              "meaning": "新しい薬を作る"
+            },
+            {
+              "text": "薬を処方する",
+              "meaning": "医師が薬を出す"
+            },
+            {
+              "text": "薬を買う",
+              "meaning": "購入する"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "prescribe は医師が薬や治療を指示すること。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "(薬などを)処方する",
+          "choices": [
+            {
+              "text": "prescribe",
+              "meaning": "処方する"
+            },
+            {
+              "text": "describe",
+              "meaning": "説明する"
+            },
+            {
+              "text": "subscribe",
+              "meaning": "購読する"
+            },
+            {
+              "text": "promise",
+              "meaning": "約束する"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "「処方する」は prescribe。describe や subscribe は形が似た別語。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 医師が患者に薬を出す。 The doctor will ___ some cream for your skin.",
+          "choices": [
+            {
+              "text": "borrow",
+              "meaning": "借りる"
+            },
+            {
+              "text": "cancel",
+              "meaning": "取り消す"
+            },
+            {
+              "text": "imagine",
+              "meaning": "想像する"
+            },
+            {
+              "text": "prescribe",
+              "meaning": "処方する"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "医師がクリームを出す場面なので prescribe が合う。",
+          "alternatives": [
+            {
+              "answer": "give",
+              "explanation": "give も通じるが、正式な処方の意味は弱い。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "prescribe の使い方が正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "The doctor prescribed me to take medicine.",
+              "meaning": "動詞の型が誤り(to 不定詞は不可)。"
+            },
+            {
+              "text": "The doctor prescribed that I medicine.",
+              "meaning": "文の構造が誤り。"
+            },
+            {
+              "text": "The doctor prescribed some medicine for my cough.",
+              "meaning": "医師は咳のために薬を処方した。"
+            },
+            {
+              "text": "The doctor prescribed to me taking medicine.",
+              "meaning": "動詞の型が誤り。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "prescribe + 薬 + for 症状 が自然。prescribe me to ~ の形は使えない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 医師が患者に薬を出す。 The doctor will ___ some cream for your skin.",
+        "answers": [
+          "prescribe"
+        ],
+        "explanation": "医師がクリームを出す場面なので prescribe が合う。",
+        "alternatives": [
+          {
+            "answer": "give",
+            "explanation": "give も通じるが、正式な処方の意味は弱い。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "prescribeを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The doctor prescribed antibiotics for my sore throat.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-prescribe-usage",
+          "type": "usage",
+          "prompt": "prescribe の使い方が正しい文を選んでください。",
+          "choices": [
+            "The doctor prescribed me to take medicine.",
+            "The doctor prescribed that I medicine.",
+            "The doctor prescribed some medicine for my cough.",
+            "The doctor prescribed to me taking medicine."
+          ],
+          "correctIndex": 2,
+          "explanation": "prescribe + 薬 + for 症状 が自然。prescribe me to ~ の形は使えない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
           "medical"
         ],
         "gradeEstimate": "準2級",
@@ -2293,6 +2681,199 @@
         "domains": [
           "media",
           "technology"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-diversity",
+      "word": "diversity",
+      "level": "準2級",
+      "ipa": "dɪˈvɝːsəti",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "the fact that a group or place includes many different kinds of people, things or ideas",
+      "meaning": "多様性",
+      "usageTip": "基本は不可算名詞で、cultural diversity や biodiversity が頻出。diversity of A(Aの多様性)の形も使う。a diversity of ~ は硬い表現で、通常は diversity of ~ を使う。形容詞は diverse。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "学校",
+          "text": "Our school values cultural diversity and welcomes students from many countries.",
+          "translation": "私たちの学校は文化的多様性を大切にし、多くの国の生徒を歓迎している。"
+        },
+        {
+          "id": "example-2",
+          "context": "自然",
+          "text": "The forest is famous for its great diversity of plants and insects.",
+          "translation": "その森は植物や昆虫の非常に豊かな多様性で有名だ。"
+        },
+        {
+          "id": "example-3",
+          "context": "職場",
+          "text": "The company wants more diversity in its leadership team.",
+          "translation": "その会社は経営陣にもっと多様性を求めている。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "diversity",
+          "choices": [
+            {
+              "text": "安全性",
+              "meaning": "危険が少ないこと"
+            },
+            {
+              "text": "正確さ",
+              "meaning": "間違いが少ないこと"
+            },
+            {
+              "text": "多様性",
+              "meaning": "さまざまな種類があること"
+            },
+            {
+              "text": "速度",
+              "meaning": "動く速さ"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "diversity はさまざまな種類が含まれていることを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "多様性",
+          "choices": [
+            {
+              "text": "density",
+              "meaning": "密度"
+            },
+            {
+              "text": "direction",
+              "meaning": "方向"
+            },
+            {
+              "text": "discovery",
+              "meaning": "発見"
+            },
+            {
+              "text": "diversity",
+              "meaning": "多様性"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "多様性は diversity。density は混み具合で意味が異なる。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: さまざまな国の人が学ぶクラスの紹介。 The class is special because of its cultural ___.",
+          "choices": [
+            {
+              "text": "silence",
+              "meaning": "静けさ"
+            },
+            {
+              "text": "diversity",
+              "meaning": "多様性"
+            },
+            {
+              "text": "distance",
+              "meaning": "距離"
+            },
+            {
+              "text": "weather",
+              "meaning": "天気"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "cultural diversity は一般的な組み合わせで、文脈にも合う。",
+          "alternatives": [
+            {
+              "answer": "variety",
+              "explanation": "種類の多さを表す一般的な語で、少し口語的。"
+            },
+            {
+              "answer": "mix",
+              "explanation": "混ざり合いを表すくだけた語。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "diversity を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "There are many diversities in this city.",
+              "meaning": "複数形の使い方が不自然。"
+            },
+            {
+              "text": "The city has diversity for many cultures.",
+              "meaning": "前置詞が不自然(正: of)。"
+            },
+            {
+              "text": "The club is very diversity.",
+              "meaning": "形容詞として誤用(正: diverse)。"
+            },
+            {
+              "text": "The club values diversity in its members.",
+              "meaning": "そのクラブは会員の多様性を大切にしている。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "diversity は不可算の名詞として使う。形容詞には diverse を使い、複数形にもしない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: さまざまな国の人が学ぶクラスの紹介。 The class is special because of its cultural ___.",
+        "answers": [
+          "diversity"
+        ],
+        "explanation": "cultural diversity は一般的な組み合わせで、文脈にも合う。",
+        "alternatives": [
+          {
+            "answer": "variety",
+            "explanation": "種類の多さを表す一般的な語で、少し口語的。"
+          },
+          {
+            "answer": "mix",
+            "explanation": "混ざり合いを表すくだけた語。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "diversityを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Our school values cultural diversity and welcomes students from many countries.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-diversity-usage",
+          "type": "usage",
+          "prompt": "diversity を正しく使った文を選びなさい。",
+          "choices": [
+            "There are many diversities in this city.",
+            "The city has diversity for many cultures.",
+            "The club is very diversity.",
+            "The club values diversity in its members."
+          ],
+          "correctIndex": 3,
+          "explanation": "diversity は不可算の名詞として使う。形容詞には diverse を使い、複数形にもしない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "society"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -6325,6 +6906,201 @@
       }
     },
     {
+      "id": "vocab-stationery",
+      "word": "stationery",
+      "level": "準2級",
+      "ipa": "ˈsteɪʃəneri",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "items used for writing and office work, such as pens, paper and envelopes",
+      "meaning": "文房具",
+      "usageTip": "不可算名詞なので a stationery や stationeries とは言わない。a piece of stationery や stationery store の形で使う。綴りが似た stationary(静止した)と混同しやすい。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "買い物",
+          "text": "I bought some notebooks and pens at the stationery shop near school.",
+          "translation": "学校の近くの文房具店でノートとペンを買った。"
+        },
+        {
+          "id": "example-2",
+          "context": "職場",
+          "text": "Our office orders new stationery at the beginning of every month.",
+          "translation": "私たちの事務所は毎月初めに新しい文房具を注文する。"
+        },
+        {
+          "id": "example-3",
+          "context": "贈り物",
+          "text": "She gave me beautiful stationery with flowers on the envelopes.",
+          "translation": "彼女は封筒に花が描かれた素敵な文房具をくれた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "stationery",
+          "choices": [
+            {
+              "text": "駅の設備",
+              "meaning": "駅にある設備"
+            },
+            {
+              "text": "家具",
+              "meaning": "机や椅子など"
+            },
+            {
+              "text": "統計",
+              "meaning": "数値データ"
+            },
+            {
+              "text": "文房具",
+              "meaning": "ペンや紙などの事務用品"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "stationery はペンや紙などの文房具を表す名詞。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "文房具",
+          "choices": [
+            {
+              "text": "furniture",
+              "meaning": "家具"
+            },
+            {
+              "text": "stationery",
+              "meaning": "文房具"
+            },
+            {
+              "text": "machinery",
+              "meaning": "機械類"
+            },
+            {
+              "text": "jewelry",
+              "meaning": "宝石類"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "ペンや紙など書くための道具の総称は stationery。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 新学期の買い物。 I need to buy pens, notebooks and other ___ before school starts.",
+          "choices": [
+            {
+              "text": "furniture",
+              "meaning": "家具"
+            },
+            {
+              "text": "luggage",
+              "meaning": "荷物"
+            },
+            {
+              "text": "clothing",
+              "meaning": "衣類"
+            },
+            {
+              "text": "stationery",
+              "meaning": "文房具"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "ペンやノートと並ぶのは文房具なので stationery が合う。",
+          "alternatives": [
+            {
+              "answer": "school supplies",
+              "explanation": "学校で使う用品全般を指し、文房具以外も含みやすい。"
+            },
+            {
+              "answer": "office supplies",
+              "explanation": "職場向けの事務用品という響きがある。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "stationery を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "The stationery is on the top shelf.",
+              "meaning": "文房具は一番上の棚にある。"
+            },
+            {
+              "text": "I bought a stationery at the store.",
+              "meaning": "a を付けた誤り。"
+            },
+            {
+              "text": "The store sells stationeries for students.",
+              "meaning": "複数形にした誤り。"
+            },
+            {
+              "text": "The stationery are on the desk now.",
+              "meaning": "複数扱いの誤り。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "stationery は不可算名詞で単数扱い。a や複数形は付けず、動詞は is を使う。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 新学期の買い物。 I need to buy pens, notebooks and other ___ before school starts.",
+        "answers": [
+          "stationery"
+        ],
+        "explanation": "ペンやノートと並ぶのは文房具なので stationery が合う。",
+        "alternatives": [
+          {
+            "answer": "school supplies",
+            "explanation": "学校で使う用品全般を指し、文房具以外も含みやすい。"
+          },
+          {
+            "answer": "office supplies",
+            "explanation": "職場向けの事務用品という響きがある。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "stationeryを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I bought some notebooks and pens at the stationery shop near school.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-stationery-usage",
+          "type": "usage",
+          "prompt": "stationery を正しく使った文を選んでください。",
+          "choices": [
+            "The stationery is on the top shelf.",
+            "I bought a stationery at the store.",
+            "The store sells stationeries for students.",
+            "The stationery are on the desk now."
+          ],
+          "correctIndex": 0,
+          "explanation": "stationery は不可算名詞で単数扱い。a や複数形は付けず、動詞は is を使う。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "education",
+          "work",
+          "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-vaccinate",
       "word": "vaccinate",
       "level": "準2級",
@@ -9647,6 +10423,200 @@
       }
     },
     {
+      "id": "vocab-altitude",
+      "word": "altitude",
+      "level": "準2級",
+      "ipa": "ˈæltɪtuːd",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "the height of something above sea level or above the ground",
+      "meaning": "高度・標高",
+      "usageTip": "at a high altitude / at an altitude of ~ の形で使う。海抜や飛行機の高さに使い、人の身長には height を使う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "登山",
+          "text": "Some climbers feel dizzy at high altitude because the air is thin.",
+          "translation": "空気が薄いので、高地でめまいを感じる登山者もいる。"
+        },
+        {
+          "id": "example-2",
+          "context": "飛行機",
+          "text": "The plane reached an altitude of ten thousand meters.",
+          "translation": "飛行機は高度1万メートルに達した。"
+        },
+        {
+          "id": "example-3",
+          "context": "農業",
+          "text": "Tea grown at higher altitudes often has a lighter flavor.",
+          "translation": "標高の高い所で育つ茶は風味が軽いことが多い。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "altitude",
+          "choices": [
+            {
+              "text": "速度",
+              "meaning": "進む速さ"
+            },
+            {
+              "text": "気温",
+              "meaning": "暑さ寒さの度合い"
+            },
+            {
+              "text": "距離",
+              "meaning": "二点間の長さ"
+            },
+            {
+              "text": "高度",
+              "meaning": "海面などからの高さ"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "altitude は海抜や地上からの高さ、つまり高度・標高を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "高度・標高",
+          "choices": [
+            {
+              "text": "attitude",
+              "meaning": "態度"
+            },
+            {
+              "text": "altitude",
+              "meaning": "高度"
+            },
+            {
+              "text": "latitude",
+              "meaning": "緯度"
+            },
+            {
+              "text": "amplitude",
+              "meaning": "振幅"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "高度は altitude。attitude や latitude は綴りが似ているが意味が違う。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 登山の会話。 The air is thin at this ___, so walk slowly and drink water.",
+          "choices": [
+            {
+              "text": "salary",
+              "meaning": "給料"
+            },
+            {
+              "text": "opinion",
+              "meaning": "意見"
+            },
+            {
+              "text": "altitude",
+              "meaning": "高度"
+            },
+            {
+              "text": "budget",
+              "meaning": "予算"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "空気が薄いと言っているので、高い標高の話だと分かる。",
+          "alternatives": [
+            {
+              "answer": "height",
+              "explanation": "一般的な高さを表し、海抜の意味では altitude の方が適切。"
+            },
+            {
+              "answer": "elevation",
+              "explanation": "地形の標高を表す、やや専門的な語。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "altitude を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "The altitude of my brother is 180 centimeters.",
+              "meaning": "身長に使った誤り(正: height)。"
+            },
+            {
+              "text": "The plane flew at an altitude of ten thousand meters.",
+              "meaning": "飛行機は高度1万メートルで飛んだ。"
+            },
+            {
+              "text": "The village is in a altitude of the sea.",
+              "meaning": "冠詞・前置詞の誤り。"
+            },
+            {
+              "text": "The plane flew in altitude of ten thousand meters.",
+              "meaning": "冠詞・前置詞の誤り。"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "高度を示すときは at an altitude of ~ と言う。人の身長には height を使う。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 登山の会話。 The air is thin at this ___, so walk slowly and drink water.",
+        "answers": [
+          "altitude"
+        ],
+        "explanation": "空気が薄いと言っているので、高い標高の話だと分かる。",
+        "alternatives": [
+          {
+            "answer": "height",
+            "explanation": "一般的な高さを表し、海抜の意味では altitude の方が適切。"
+          },
+          {
+            "answer": "elevation",
+            "explanation": "地形の標高を表す、やや専門的な語。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "altitudeを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Some climbers feel dizzy at high altitude because the air is thin.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-altitude-usage",
+          "type": "usage",
+          "prompt": "altitude を正しく使った文を選んでください。",
+          "choices": [
+            "The altitude of my brother is 180 centimeters.",
+            "The plane flew at an altitude of ten thousand meters.",
+            "The village is in a altitude of the sea.",
+            "The plane flew in altitude of ten thousand meters."
+          ],
+          "correctIndex": 1,
+          "explanation": "高度を示すときは at an altitude of ~ と言う。人の身長には height を使う。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "science",
+          "travel"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-bulletin",
       "word": "bulletin",
       "level": "準2級",
@@ -10229,6 +11199,200 @@
       }
     },
     {
+      "id": "vocab-furnace",
+      "word": "furnace",
+      "level": "準2級",
+      "ipa": "/ˈfɜːnɪs/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "A large enclosed device that makes very strong heat, used to melt metal or heat a building.",
+      "meaning": "炉・溶鉱炉・暖房炉",
+      "usageTip": "工場では metal を溶かす炉、家庭では暖房用の炉を指す。比喩で「とても暑い場所」の意味にもなる。blast furnace は「高炉」。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "工業",
+          "text": "The workers fed more coal into the furnace to keep the metal hot.",
+          "translation": "作業員たちは金属を熱いままにするため、炉にさらに石炭をくべた。"
+        },
+        {
+          "id": "example-2",
+          "context": "家庭",
+          "text": "Our old furnace broke down during the coldest week of the winter.",
+          "translation": "うちの古い暖房炉は、冬で最も寒い週に故障した。"
+        },
+        {
+          "id": "example-3",
+          "context": "天気",
+          "text": "The classroom felt like a furnace after the heating was turned up too high.",
+          "translation": "暖房を強くしすぎて、教室は灼熱の炉のように感じられた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "furnace",
+          "choices": [
+            {
+              "text": "炉",
+              "meaning": "強い熱を作る装置"
+            },
+            {
+              "text": "売店",
+              "meaning": "小さな店"
+            },
+            {
+              "text": "孤児",
+              "meaning": "親を亡くした子"
+            },
+            {
+              "text": "馬車",
+              "meaning": "馬が引く乗り物"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "furnace は金属を溶かしたり建物を暖めたりする炉。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "金属を溶かすための、とても熱い炉",
+          "choices": [
+            {
+              "text": "kiosk",
+              "meaning": "売店"
+            },
+            {
+              "text": "lemonade",
+              "meaning": "レモネード"
+            },
+            {
+              "text": "carriage",
+              "meaning": "馬車"
+            },
+            {
+              "text": "furnace",
+              "meaning": "炉"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "金属を溶かす強い熱を作る装置は furnace。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 工場で鉄を溶かす作業を説明している。 The steel is melted in a huge ___ before it is shaped.",
+          "choices": [
+            {
+              "text": "orphan",
+              "meaning": "孤児"
+            },
+            {
+              "text": "kiosk",
+              "meaning": "売店"
+            },
+            {
+              "text": "furnace",
+              "meaning": "炉"
+            },
+            {
+              "text": "lemonade",
+              "meaning": "レモネード"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "鋼を溶かす場所なので、強い熱を作る furnace が合う。",
+          "alternatives": [
+            {
+              "answer": "oven",
+              "explanation": "食べ物を焼く装置。工業用の溶解には通常使わない。"
+            },
+            {
+              "answer": "kiln",
+              "explanation": "陶器やれんがを焼く窯。金属を溶かす炉とは用途が違う。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "furnace を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "The furnace in the factory melts steel.",
+              "meaning": "工場の炉は鋼を溶かす。"
+            },
+            {
+              "text": "The furnace in the factory is melt steel.",
+              "meaning": "工場の炉は鋼を溶かすだ。(動詞の形が誤り)"
+            },
+            {
+              "text": "The factory has a furnace for melt steel.",
+              "meaning": "工場には鋼を溶かす炉がある。(for の後の形が誤り)"
+            },
+            {
+              "text": "The factory furnaces steel at the fire.",
+              "meaning": "工場は火で鋼を炉する。(名詞を動詞に誤用)"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "furnace は名詞で主語になり、三単現の melts が正しく続く。for の後は melting が必要。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 工場で鉄を溶かす作業を説明している。 The steel is melted in a huge ___ before it is shaped.",
+        "answers": [
+          "furnace"
+        ],
+        "explanation": "鋼を溶かす場所なので、強い熱を作る furnace が合う。",
+        "alternatives": [
+          {
+            "answer": "oven",
+            "explanation": "食べ物を焼く装置。工業用の溶解には通常使わない。"
+          },
+          {
+            "answer": "kiln",
+            "explanation": "陶器やれんがを焼く窯。金属を溶かす炉とは用途が違う。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "furnaceを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The workers fed more coal into the furnace to keep the metal hot.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-furnace-usage",
+          "type": "usage",
+          "prompt": "furnace を正しく使った文を選んでください。",
+          "choices": [
+            "The furnace in the factory melts steel.",
+            "The furnace in the factory is melt steel.",
+            "The factory has a furnace for melt steel.",
+            "The factory furnaces steel at the fire."
+          ],
+          "correctIndex": 0,
+          "explanation": "furnace は名詞で主語になり、三単現の melts が正しく続く。for の後は melting が必要。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "science",
+          "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-illegal",
       "word": "illegal",
       "level": "準2級",
@@ -10611,6 +11775,394 @@
         "domains": [
           "society",
           "economics"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-lemonade",
+      "word": "lemonade",
+      "level": "準2級",
+      "ipa": "/ˌlɛməˈneɪd/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "A sweet drink made from lemon juice, water and sugar; in British English it can also be a fizzy lemon drink.",
+      "meaning": "レモネード",
+      "usageTip": "基本は不可算名詞で a glass of lemonade と言う。注文では a lemonade, two lemonades とも言える。数える時は two glasses of lemonade のように容器を複数にする。動詞は drink を使う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "夏",
+          "text": "We drank cold lemonade under the tree after the long walk.",
+          "translation": "長い散歩の後、私たちは木陰で冷たいレモネードを飲んだ。"
+        },
+        {
+          "id": "example-2",
+          "context": "カフェ",
+          "text": "Could I have a lemonade and a slice of cake, please?",
+          "translation": "レモネードとケーキを1切れお願いします。"
+        },
+        {
+          "id": "example-3",
+          "context": "家庭",
+          "text": "My sister makes fresh lemonade with honey every summer.",
+          "translation": "姉は毎年夏に、はちみつ入りの手作りレモネードを作る。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "lemonade",
+          "choices": [
+            {
+              "text": "コーヒー",
+              "meaning": "豆から作る飲み物"
+            },
+            {
+              "text": "牛乳",
+              "meaning": "乳製品の飲み物"
+            },
+            {
+              "text": "味噌汁",
+              "meaning": "日本のスープ"
+            },
+            {
+              "text": "レモネード",
+              "meaning": "レモン風味の甘い飲み物"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "lemonade はレモン果汁で作る甘い飲み物。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "レモンの果汁で作る甘い飲み物",
+          "choices": [
+            {
+              "text": "lesson",
+              "meaning": "授業"
+            },
+            {
+              "text": "lemonade",
+              "meaning": "レモネード"
+            },
+            {
+              "text": "leather",
+              "meaning": "革"
+            },
+            {
+              "text": "ladder",
+              "meaning": "はしご"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "レモン果汁で作る甘い飲み物は lemonade。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 暑い日に子どもが冷たい飲み物を頼む。 It was hot, so the children asked for a glass of cold ___.",
+          "choices": [
+            {
+              "text": "soup",
+              "meaning": "スープ"
+            },
+            {
+              "text": "lemonade",
+              "meaning": "レモネード"
+            },
+            {
+              "text": "bread",
+              "meaning": "パン"
+            },
+            {
+              "text": "rice",
+              "meaning": "米"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "a glass of cold に続く飲み物で、暑い日に合うのは lemonade。",
+          "alternatives": [
+            {
+              "answer": "juice",
+              "explanation": "果物の種類を問わず広く使えるジュース。"
+            },
+            {
+              "answer": "iced tea",
+              "explanation": "レモンではなく紅茶の冷たい飲み物。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "lemonade を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "She ate a lemonade with a spoon.",
+              "meaning": "彼女はスプーンでレモネードを食べた。(動詞が不自然)"
+            },
+            {
+              "text": "I would like two lemonade glasses.",
+              "meaning": "レモネードのグラスを2つ。(容器の数え方が不自然)"
+            },
+            {
+              "text": "The lemonade are on the table.",
+              "meaning": "レモネードがテーブルにある。(動詞の一致が誤り)"
+            },
+            {
+              "text": "He poured a glass of lemonade for me.",
+              "meaning": "彼は私にレモネードを1杯注いでくれた。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "a glass of lemonade が自然な形。飲み物なので eat は合わず、主語が単数扱いの The lemonade に are は合わない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 暑い日に子どもが冷たい飲み物を頼む。 It was hot, so the children asked for a glass of cold ___.",
+        "answers": [
+          "lemonade"
+        ],
+        "explanation": "a glass of cold に続く飲み物で、暑い日に合うのは lemonade。",
+        "alternatives": [
+          {
+            "answer": "juice",
+            "explanation": "果物の種類を問わず広く使えるジュース。"
+          },
+          {
+            "answer": "iced tea",
+            "explanation": "レモンではなく紅茶の冷たい飲み物。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "lemonadeを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "We drank cold lemonade under the tree after the long walk.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-lemonade-usage",
+          "type": "usage",
+          "prompt": "lemonade を正しく使った文を選びなさい。",
+          "choices": [
+            "She ate a lemonade with a spoon.",
+            "I would like two lemonade glasses.",
+            "The lemonade are on the table.",
+            "He poured a glass of lemonade for me."
+          ],
+          "correctIndex": 3,
+          "explanation": "a glass of lemonade が自然な形。飲み物なので eat は合わず、主語が単数扱いの The lemonade に are は合わない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "food",
+          "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-orphan",
+      "word": "orphan",
+      "level": "準2級",
+      "ipa": "/ˈɔːrfən/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "A child whose parents have both died.",
+      "meaning": "孤児",
+      "usageTip": "両親を亡くした子どもを指す名詞。扱いが繊細な語なので文脈に配慮する。形容詞的に an orphan child とも言える。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "物語",
+          "text": "The novel tells the story of an orphan who grows up in a small town.",
+          "translation": "その小説は、小さな町で育つ孤児の物語だ。"
+        },
+        {
+          "id": "example-2",
+          "context": "支援",
+          "text": "The charity helps every orphan in the region find a safe home.",
+          "translation": "その慈善団体は、地域のすべての孤児が安全な家を見つけるのを助けている。"
+        },
+        {
+          "id": "example-3",
+          "context": "歴史",
+          "text": "After the war, many children became orphans and needed care.",
+          "translation": "戦争の後、多くの子どもが孤児になり、保護を必要とした。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "orphan",
+          "choices": [
+            {
+              "text": "留学生",
+              "meaning": "海外で学ぶ学生"
+            },
+            {
+              "text": "孤児",
+              "meaning": "両親を亡くした子ども"
+            },
+            {
+              "text": "双子",
+              "meaning": "同時に生まれた2人"
+            },
+            {
+              "text": "親戚",
+              "meaning": "血縁でつながる人"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "orphan は両親を亡くした子どもを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "両親を亡くした子ども",
+          "choices": [
+            {
+              "text": "officer",
+              "meaning": "役人"
+            },
+            {
+              "text": "origin",
+              "meaning": "起源"
+            },
+            {
+              "text": "orchestra",
+              "meaning": "管弦楽団"
+            },
+            {
+              "text": "orphan",
+              "meaning": "孤児"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "両親を亡くした子どもは orphan。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 慈善団体の活動を紹介している。 The charity built a school for every ___ in the village.",
+          "choices": [
+            {
+              "text": "engineer",
+              "meaning": "技術者"
+            },
+            {
+              "text": "tourist",
+              "meaning": "観光客"
+            },
+            {
+              "text": "orphan",
+              "meaning": "孤児"
+            },
+            {
+              "text": "mayor",
+              "meaning": "市長"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "慈善団体が支援する対象として、孤児が文脈に合う。",
+          "alternatives": [
+            {
+              "answer": "child in need",
+              "explanation": "支援が必要な子。孤児に限らず、より広く穏やかな言い方。"
+            },
+            {
+              "answer": "homeless child",
+              "explanation": "家のない子。孤児とは限らず、住む場所がない状況を指す。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "名詞 orphan を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "The orphan lived with his aunt after the accident.",
+              "meaning": "その孤児は事故の後、おばと暮らした。"
+            },
+            {
+              "text": "The orphan lived with his aunt since the accident.",
+              "meaning": "その孤児は事故以来おばと暮らした。(時制が誤り)"
+            },
+            {
+              "text": "He has an orphan mother and father.",
+              "meaning": "彼には孤児の母と父がいる。(意味が誤り)"
+            },
+            {
+              "text": "The orphan are living with his aunt now.",
+              "meaning": "その孤児は今おばと暮らしている。(動詞の一致が誤り)"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "orphan は子ども自身を指す可算名詞で、単数なら過去形の lived が自然に続く。since には現在完了が必要で、単数主語に are は使えない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 慈善団体の活動を紹介している。 The charity built a school for every ___ in the village.",
+        "answers": [
+          "orphan"
+        ],
+        "explanation": "慈善団体が支援する対象として、孤児が文脈に合う。",
+        "alternatives": [
+          {
+            "answer": "child in need",
+            "explanation": "支援が必要な子。孤児に限らず、より広く穏やかな言い方。"
+          },
+          {
+            "answer": "homeless child",
+            "explanation": "家のない子。孤児とは限らず、住む場所がない状況を指す。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "orphanを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The novel tells the story of an orphan who grows up in a small town.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-orphan-usage",
+          "type": "usage",
+          "prompt": "名詞 orphan を正しく使った文を選びなさい。",
+          "choices": [
+            "The orphan lived with his aunt after the accident.",
+            "The orphan lived with his aunt since the accident.",
+            "He has an orphan mother and father.",
+            "The orphan are living with his aunt now."
+          ],
+          "correctIndex": 0,
+          "explanation": "orphan は子ども自身を指す可算名詞で、単数なら過去形の lived が自然に続く。since には現在完了が必要で、単数主語に are は使えない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "society",
+          "relationships"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -12317,6 +13869,192 @@
         "domains": [
           "education",
           "science"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-biography",
+      "word": "biography",
+      "level": "準2級",
+      "ipa": "baɪˈɑːɡrəfi",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "A book or article that tells the story of a real person's life, usually written by someone else.",
+      "meaning": "伝記",
+      "usageTip": "数えられる名詞。a biography of + 人物 の形でよく使う。自分で書く自伝は autobiography と言う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "図書館",
+          "text": "I borrowed a biography of Marie Curie from the school library.",
+          "translation": "私は学校の図書館からマリー・キュリーの伝記を借りた。"
+        },
+        {
+          "id": "example-2",
+          "context": "授業",
+          "text": "Each student had to write a short biography of a famous inventor.",
+          "translation": "生徒は皆、有名な発明家の短い伝記を書かなければならなかった。"
+        },
+        {
+          "id": "example-3",
+          "context": "読書",
+          "text": "The biography describes the painter's childhood and his early struggles.",
+          "translation": "その伝記は、画家の子ども時代と初期の苦労を描いている。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "biography",
+          "choices": [
+            {
+              "text": "天気予報",
+              "meaning": "天気の予測"
+            },
+            {
+              "text": "辞書",
+              "meaning": "言葉を調べる本"
+            },
+            {
+              "text": "地図",
+              "meaning": "場所を示す図"
+            },
+            {
+              "text": "伝記",
+              "meaning": "人の生涯を書いた本"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "biography は実在の人物の生涯を記した書物や文章を指す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "伝記",
+          "choices": [
+            {
+              "text": "biography",
+              "meaning": "伝記"
+            },
+            {
+              "text": "dictionary",
+              "meaning": "辞書"
+            },
+            {
+              "text": "calendar",
+              "meaning": "カレンダー"
+            },
+            {
+              "text": "magazine",
+              "meaning": "雑誌"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "人の人生を書いた本は biography である。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "図書館の場面：リンカーンの人生を知るために本を読んだ。 I read a ___ of Abraham Lincoln to learn about his life.",
+          "choices": [
+            {
+              "text": "recipe",
+              "meaning": "レシピ"
+            },
+            {
+              "text": "receipt",
+              "meaning": "領収書"
+            },
+            {
+              "text": "biography",
+              "meaning": "伝記"
+            },
+            {
+              "text": "schedule",
+              "meaning": "予定表"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "人物の生涯を知るために読むのは伝記である。",
+          "alternatives": [
+            {
+              "answer": "life story",
+              "explanation": "くだけた言い方で、本に限らず使える。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "biography を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I am biography of this singer.",
+              "meaning": "私はこの歌手の伝記だ。"
+            },
+            {
+              "text": "This is a biography of a famous scientist.",
+              "meaning": "これは有名な科学者の伝記だ。"
+            },
+            {
+              "text": "He biography the president last year.",
+              "meaning": "彼は昨年大統領を伝記した。"
+            },
+            {
+              "text": "She read a biography on the singer's life yesterday, she was moved by biography.",
+              "meaning": "彼女は昨日その歌手の伝記を読み、伝記に感動した。"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "biography は名詞で、a biography of + 人物 の形が基本。他は名詞を動詞や補語のように誤用している、または不自然な文構造である。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "図書館の場面：リンカーンの人生を知るために本を読んだ。 I read a ___ of Abraham Lincoln to learn about his life.",
+        "answers": [
+          "biography"
+        ],
+        "explanation": "人物の生涯を知るために読むのは伝記である。",
+        "alternatives": [
+          {
+            "answer": "life story",
+            "explanation": "くだけた言い方で、本に限らず使える。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "biographyを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I borrowed a biography of Marie Curie from the school library.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-biography-usage",
+          "type": "usage",
+          "prompt": "biography を正しく使った文を選んでください。",
+          "choices": [
+            "I am biography of this singer.",
+            "This is a biography of a famous scientist.",
+            "He biography the president last year.",
+            "She read a biography on the singer's life yesterday, she was moved by biography."
+          ],
+          "correctIndex": 1,
+          "explanation": "biography は名詞で、a biography of + 人物 の形が基本。他は名詞を動詞や補語のように誤用している、または不自然な文構造である。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "arts-culture",
+          "education"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -15072,6 +16810,749 @@
       }
     },
     {
+      "id": "vocab-parachute",
+      "word": "parachute",
+      "level": "準2級",
+      "ipa": "ˈperəˌʃuːt",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "A large cloth canopy that lets a person or object fall slowly from a great height.",
+      "meaning": "パラシュート・落下傘",
+      "usageTip": "open a parachute や jump with a parachute の形で使う。動詞でも使うが、ここでは名詞の意味を扱う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "スカイダイビング",
+          "text": "She checked her parachute twice before jumping from the plane.",
+          "translation": "彼女は飛行機から飛ぶ前にパラシュートを二度確認した。"
+        },
+        {
+          "id": "example-2",
+          "context": "救援物資",
+          "text": "The supplies landed safely because a small parachute slowed their fall.",
+          "translation": "小さなパラシュートが落下を遅くしたので、物資は無事に着地した。"
+        },
+        {
+          "id": "example-3",
+          "context": "授業の実験",
+          "text": "Our class made a paper parachute and dropped it from the balcony.",
+          "translation": "私たちのクラスは紙のパラシュートを作り、バルコニーから落とした。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "parachute",
+          "choices": [
+            {
+              "text": "はしご",
+              "meaning": "高い所へ登るための道具"
+            },
+            {
+              "text": "パラシュート",
+              "meaning": "高所から安全に降りるための布の道具"
+            },
+            {
+              "text": "望遠鏡",
+              "meaning": "遠くを見る道具"
+            },
+            {
+              "text": "救命胴衣",
+              "meaning": "水上で体を浮かせる衣類"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "parachute は空気抵抗で落下速度を下げる布の道具。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "パラシュート・落下傘",
+          "choices": [
+            {
+              "text": "helmet",
+              "meaning": "ヘルメット"
+            },
+            {
+              "text": "ticket",
+              "meaning": "切符"
+            },
+            {
+              "text": "ladder",
+              "meaning": "はしご"
+            },
+            {
+              "text": "parachute",
+              "meaning": "パラシュート"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "パラシュートは英語で parachute という。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "スカイダイビングの場面：The instructor showed us how to open the ___ in the air.",
+          "choices": [
+            {
+              "text": "suitcase",
+              "meaning": "スーツケース"
+            },
+            {
+              "text": "parachute",
+              "meaning": "パラシュート"
+            },
+            {
+              "text": "keyboard",
+              "meaning": "キーボード"
+            },
+            {
+              "text": "blanket",
+              "meaning": "毛布"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "空中で開くものなので parachute が自然。",
+          "alternatives": [
+            {
+              "answer": "canopy",
+              "explanation": "開いた傘状の布部分を指し、やや専門的。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "parachute を名詞として正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "He opened the parachute for the plane landed.",
+              "meaning": "彼は飛行機が着陸したのでパラシュートを開いた。"
+            },
+            {
+              "text": "He opened the parachute and landed in a field.",
+              "meaning": "彼はパラシュートを開き、野原に着地した。"
+            },
+            {
+              "text": "He jumped from the plane by a parachute.",
+              "meaning": "彼はパラシュートで飛行機から飛び降りた。"
+            },
+            {
+              "text": "He parachute very careful from the sky.",
+              "meaning": "彼は空からとても慎重にパラシュートした。"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "open a parachute と land in a field が自然。for の後に節は続かず、by a parachute は with a parachute などが自然で、最後は品詞と語順が誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "スカイダイビングの場面：The instructor showed us how to open the ___ in the air.",
+        "answers": [
+          "parachute"
+        ],
+        "explanation": "空中で開くものなので parachute が自然。",
+        "alternatives": [
+          {
+            "answer": "canopy",
+            "explanation": "開いた傘状の布部分を指し、やや専門的。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "parachuteを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "She checked her parachute twice before jumping from the plane.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-parachute-usage",
+          "type": "usage",
+          "prompt": "parachute を名詞として正しく使った文を選びなさい。",
+          "choices": [
+            "He opened the parachute for the plane landed.",
+            "He opened the parachute and landed in a field.",
+            "He jumped from the plane by a parachute.",
+            "He parachute very careful from the sky."
+          ],
+          "correctIndex": 1,
+          "explanation": "open a parachute と land in a field が自然。for の後に節は続かず、by a parachute は with a parachute などが自然で、最後は品詞と語順が誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "sports",
+          "science"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-rate",
+      "word": "rate",
+      "level": "準2級",
+      "ipa": "reɪt",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "A measure of how much or how fast something happens, or a fixed price charged for a service.",
+      "meaning": "率、料金、速度",
+      "usageTip": "割合や速度は at a rate of ... の形で表す。interest rate、exchange rate、hourly rate などもよく使う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "銀行",
+          "text": "The bank raised its interest rate for new home loans.",
+          "translation": "その銀行は新規の住宅ローンの金利を引き上げた。"
+        },
+        {
+          "id": "example-2",
+          "context": "ホテル",
+          "text": "The hotel offers a lower rate if you book early.",
+          "translation": "そのホテルは早めに予約すれば安い料金を提供している。"
+        },
+        {
+          "id": "example-3",
+          "context": "人口変化",
+          "text": "The town is growing at a rate of two percent a year.",
+          "translation": "その町は年に2パーセントの割合で成長している。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "rate",
+          "choices": [
+            {
+              "text": "色",
+              "meaning": "物の見た目の性質"
+            },
+            {
+              "text": "壁",
+              "meaning": "部屋を囲む構造物"
+            },
+            {
+              "text": "率・料金・速度",
+              "meaning": "割合、価格、進む速さ"
+            },
+            {
+              "text": "祭り",
+              "meaning": "地域の行事"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "rate は割合、料金、速度を表す名詞。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "率、料金、速度",
+          "choices": [
+            {
+              "text": "rate",
+              "meaning": "率・料金・速度"
+            },
+            {
+              "text": "risk",
+              "meaning": "危険"
+            },
+            {
+              "text": "role",
+              "meaning": "役割"
+            },
+            {
+              "text": "route",
+              "meaning": "経路"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "割合や料金、速度を表す語は rate。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "銀行の説明：家を買う前に金利が下がるのを待つ人が多い。 Many people wait until the interest ___ goes down before buying a house.",
+          "choices": [
+            {
+              "text": "door",
+              "meaning": "ドア"
+            },
+            {
+              "text": "habit",
+              "meaning": "習慣"
+            },
+            {
+              "text": "rate",
+              "meaning": "率"
+            },
+            {
+              "text": "letter",
+              "meaning": "手紙"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "interest rate で金利を表す。",
+          "alternatives": [
+            {
+              "answer": "rates",
+              "explanation": "複数形にして一般的な金利水準を言う場合も自然。ただし goes は are going になる。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "rate を名詞として正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "The price rises with a rate of ten percent.",
+              "meaning": "価格は10パーセントの割合で上がる。"
+            },
+            {
+              "text": "The price rises in rate of ten percent.",
+              "meaning": "価格は10パーセントの割合で上がる。"
+            },
+            {
+              "text": "The price rises at a rate of ten percent.",
+              "meaning": "価格は10パーセントの割合で上がる。"
+            },
+            {
+              "text": "The price rises on rate of ten percent.",
+              "meaning": "価格は10パーセントの割合で上がる。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "割合や速度は at a rate of の形で表す。with、in、on では標準的な言い方にならない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "銀行の説明：家を買う前に金利が下がるのを待つ人が多い。 Many people wait until the interest ___ goes down before buying a house.",
+        "answers": [
+          "rate"
+        ],
+        "explanation": "interest rate で金利を表す。",
+        "alternatives": [
+          {
+            "answer": "rates",
+            "explanation": "複数形にして一般的な金利水準を言う場合も自然。ただし goes は are going になる。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "rateを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The bank raised its interest rate for new home loans.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-rate-usage",
+          "type": "usage",
+          "prompt": "rate を名詞として正しく使った文を選びなさい。",
+          "choices": [
+            "The price rises with a rate of ten percent.",
+            "The price rises in rate of ten percent.",
+            "The price rises at a rate of ten percent.",
+            "The price rises on rate of ten percent."
+          ],
+          "correctIndex": 2,
+          "explanation": "割合や速度は at a rate of の形で表す。with、in、on では標準的な言い方にならない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "economics",
+          "finance"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-wrong",
+      "word": "wrong",
+      "level": "準2級",
+      "ipa": "rɔːŋ",
+      "ipaLabel": "米音",
+      "partOfSpeech": "形容詞",
+      "definition": "Not correct, not suitable, or not morally right.",
+      "meaning": "間違った、誤った",
+      "usageTip": "be wrong about ~ で「~について間違っている」。the wrong answer、the wrong bus のように名詞の前でも使う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "テスト",
+          "text": "I chose the wrong answer because I read the question too fast.",
+          "translation": "私は問題を速く読みすぎて、間違った答えを選んだ。"
+        },
+        {
+          "id": "example-2",
+          "context": "駅",
+          "text": "We took the wrong train and arrived an hour late.",
+          "translation": "私たちは間違った電車に乗り、1時間遅れて着いた。"
+        },
+        {
+          "id": "example-3",
+          "context": "議論",
+          "text": "You are wrong about the date; the meeting is on Friday.",
+          "translation": "日付について君は間違っている。会議は金曜日だ。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "wrong",
+          "choices": [
+            {
+              "text": "静かな",
+              "meaning": "音が少ない"
+            },
+            {
+              "text": "新しい",
+              "meaning": "最近できた"
+            },
+            {
+              "text": "間違った",
+              "meaning": "正しくない"
+            },
+            {
+              "text": "強い",
+              "meaning": "力がある"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "wrong は正しくない、適切でないという意味。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "間違った、誤った",
+          "choices": [
+            {
+              "text": "early",
+              "meaning": "早い"
+            },
+            {
+              "text": "wrong",
+              "meaning": "間違った"
+            },
+            {
+              "text": "empty",
+              "meaning": "空の"
+            },
+            {
+              "text": "narrow",
+              "meaning": "狭い"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "間違った状態を表す形容詞は wrong。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "電車の場面：すみません、乗る電車を間違えて遅れています。 Sorry, I got on the ___ train and now I am late.",
+          "choices": [
+            {
+              "text": "sweet",
+              "meaning": "甘い"
+            },
+            {
+              "text": "heavy",
+              "meaning": "重い"
+            },
+            {
+              "text": "proud",
+              "meaning": "誇らしい"
+            },
+            {
+              "text": "wrong",
+              "meaning": "間違った"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "乗る電車を誤ったので wrong train が自然。",
+          "alternatives": [
+            {
+              "answer": "incorrect",
+              "explanation": "より硬く、答えや情報の誤りに向く。電車には wrong が自然。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "wrong を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "I was wrong for the answer.",
+              "meaning": "私はその答えについて間違っていた。"
+            },
+            {
+              "text": "I was wrong about the answer.",
+              "meaning": "私はその答えについて間違っていた。"
+            },
+            {
+              "text": "I was wrong to the answer.",
+              "meaning": "私はその答えについて間違っていた。"
+            },
+            {
+              "text": "I was wrong in the answer yesterday of the test.",
+              "meaning": "私は昨日テストの答えを間違えた。"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "be wrong about ~ が自然な型。for や to は合わず、最後の文は語順が不自然。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "電車の場面：すみません、乗る電車を間違えて遅れています。 Sorry, I got on the ___ train and now I am late.",
+        "answers": [
+          "wrong"
+        ],
+        "explanation": "乗る電車を誤ったので wrong train が自然。",
+        "alternatives": [
+          {
+            "answer": "incorrect",
+            "explanation": "より硬く、答えや情報の誤りに向く。電車には wrong が自然。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "wrongを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I chose the wrong answer because I read the question too fast.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-wrong-usage",
+          "type": "usage",
+          "prompt": "wrong を正しく使った文を選びなさい。",
+          "choices": [
+            "I was wrong for the answer.",
+            "I was wrong about the answer.",
+            "I was wrong to the answer.",
+            "I was wrong in the answer yesterday of the test."
+          ],
+          "correctIndex": 1,
+          "explanation": "be wrong about ~ が自然な型。for や to は合わず、最後の文は語順が不自然。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-progress",
+      "word": "progress",
+      "level": "準2級",
+      "ipa": "ˈprəʊɡrɛs",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "movement toward a goal, or improvement in skill or work over time",
+      "meaning": "進歩、前進",
+      "usageTip": "名詞の progress は不可算名詞。a progress や progresses とは言わず、make progress（進歩する）の形が基本。動詞は発音が /prəˈɡrɛs/ と変わる。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "学習",
+          "text": "She has made steady progress in her English this year.",
+          "translation": "彼女は今年、英語で着実な進歩を遂げている。"
+        },
+        {
+          "id": "example-2",
+          "context": "プロジェクト",
+          "text": "The team reported good progress on the new app yesterday.",
+          "translation": "チームは昨日、新しいアプリについて順調な進捗を報告した。"
+        },
+        {
+          "id": "example-3",
+          "context": "研究",
+          "text": "Scientists are making slow progress toward a cheaper battery.",
+          "translation": "科学者たちはより安い電池の実現に向けてゆっくり前進している。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "progress",
+          "choices": [
+            {
+              "text": "偶然",
+              "meaning": "思いがけず起こること"
+            },
+            {
+              "text": "進歩、前進",
+              "meaning": "目標に向かって良くなること"
+            },
+            {
+              "text": "約束",
+              "meaning": "人と交わす取り決め"
+            },
+            {
+              "text": "事故",
+              "meaning": "望まない出来事"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "progress は目標に向かう前進や進歩を表す名詞。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "進歩、前進",
+          "choices": [
+            {
+              "text": "problem",
+              "meaning": "問題"
+            },
+            {
+              "text": "process",
+              "meaning": "過程"
+            },
+            {
+              "text": "promise",
+              "meaning": "約束"
+            },
+            {
+              "text": "progress",
+              "meaning": "進歩"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "良い方向への前進は progress。process は手順や過程で意味が異なる。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "勉強の場面：If you practice every day, you will make good ___ in speaking.",
+          "choices": [
+            {
+              "text": "weather",
+              "meaning": "天気"
+            },
+            {
+              "text": "progress",
+              "meaning": "進歩"
+            },
+            {
+              "text": "luggage",
+              "meaning": "荷物"
+            },
+            {
+              "text": "dinner",
+              "meaning": "夕食"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "make progress で「進歩する」を表し、文脈に合う。",
+          "alternatives": [
+            {
+              "answer": "improvement",
+              "explanation": "向上や改善を表す。make improvements の形も自然だが、good improvement in speaking は少し不自然。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "名詞 progress を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "He made a progress in math.",
+              "meaning": "誤り：progress は不可算で a は付けない。"
+            },
+            {
+              "text": "He made progresses in math.",
+              "meaning": "誤り：複数形は通常使わない。"
+            },
+            {
+              "text": "He made progress in math.",
+              "meaning": "彼は数学で進歩した。"
+            },
+            {
+              "text": "He made progress at math of.",
+              "meaning": "誤り：語順と前置詞が不自然。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "progress は不可算名詞なので、a も -es も付けず make progress の形にする。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "勉強の場面：If you practice every day, you will make good ___ in speaking.",
+        "answers": [
+          "progress"
+        ],
+        "explanation": "make progress で「進歩する」を表し、文脈に合う。",
+        "alternatives": [
+          {
+            "answer": "improvement",
+            "explanation": "向上や改善を表す。make improvements の形も自然だが、good improvement in speaking は少し不自然。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "progressを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "She has made steady progress in her English this year.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-progress-usage",
+          "type": "usage",
+          "prompt": "名詞 progress を正しく使った文を選びなさい。",
+          "choices": [
+            "He made a progress in math.",
+            "He made progresses in math.",
+            "He made progress in math.",
+            "He made progress at math of."
+          ],
+          "correctIndex": 2,
+          "explanation": "progress は不可算名詞なので、a も -es も付けず make progress の形にする。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "work",
+          "science"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-decision",
       "word": "decision",
       "level": "準2級",
@@ -16038,7 +18519,530 @@
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
       }
+    },
+    {
+      "id": "vocab-stem",
+      "word": "stem",
+      "level": "準2級",
+      "ipa": "stɛm",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "the thin main part of a plant that supports its leaves, flowers or fruit",
+      "meaning": "（植物の）茎",
+      "usageTip": "植物の細い茎を指す。太い木の幹は trunk と区別する。stem from は「〜に由来する」という別の動詞表現。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "園芸",
+          "text": "Cut the stem at an angle before putting the flower in water.",
+          "translation": "花を水に入れる前に、茎を斜めに切ってください。"
+        },
+        {
+          "id": "example-2",
+          "context": "理科",
+          "text": "The student measured how fast the plant stem grew toward the window.",
+          "translation": "生徒は植物の茎が窓の方へどれだけ速く伸びるかを測った。"
+        },
+        {
+          "id": "example-3",
+          "context": "料理",
+          "text": "Remove the tough stem from each mushroom before cooking.",
+          "translation": "調理前に、それぞれのキノコから硬い軸を取り除いてください。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "stem",
+          "choices": [
+            {
+              "text": "根を囲む土",
+              "meaning": "根のまわりにある土"
+            },
+            {
+              "text": "花びら",
+              "meaning": "花の薄い部分"
+            },
+            {
+              "text": "種の殻",
+              "meaning": "種を包む外側"
+            },
+            {
+              "text": "植物の茎",
+              "meaning": "葉や花を支える細い部分"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "stem は植物の茎を表す基本的な名詞。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "植物の茎",
+          "choices": [
+            {
+              "text": "stem",
+              "meaning": "茎"
+            },
+            {
+              "text": "step",
+              "meaning": "段階、歩み"
+            },
+            {
+              "text": "stone",
+              "meaning": "石"
+            },
+            {
+              "text": "storm",
+              "meaning": "嵐"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "植物の茎を表す語は stem。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "花を花瓶に生ける場面: The rose has a long green ___ with a few small thorns.",
+          "choices": [
+            {
+              "text": "cloud",
+              "meaning": "雲"
+            },
+            {
+              "text": "coin",
+              "meaning": "硬貨"
+            },
+            {
+              "text": "wheel",
+              "meaning": "車輪"
+            },
+            {
+              "text": "stem",
+              "meaning": "茎"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "バラの緑色で棘がある部分なので stem が合う。",
+          "alternatives": [
+            {
+              "answer": "stalk",
+              "explanation": "stalk も茎を表すが、より長く太い茎を想像させる。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "植物の部分としての stem を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "The flower stand on a thin stem.",
+              "meaning": "誤り：三人称単数の主語に stand は合わない。"
+            },
+            {
+              "text": "The flower stands on a thin stem.",
+              "meaning": "その花は細い茎の上に立っている。"
+            },
+            {
+              "text": "The flower is stemming a thin leaf.",
+              "meaning": "誤り：stem を動詞として不自然に使っている。"
+            },
+            {
+              "text": "The flower stem on a thin stand.",
+              "meaning": "誤り：名詞と動詞の役割が逆になっている。"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "stem は名詞として a thin stem のように使い、単数の主語には stands が必要。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "花を花瓶に生ける場面: The rose has a long green ___ with a few small thorns.",
+        "answers": [
+          "stem"
+        ],
+        "explanation": "バラの緑色で棘がある部分なので stem が合う。",
+        "alternatives": [
+          {
+            "answer": "stalk",
+            "explanation": "stalk も茎を表すが、より長く太い茎を想像させる。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "stemを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Cut the stem at an angle before putting the flower in water.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-stem-usage",
+          "type": "usage",
+          "prompt": "植物の部分としての stem を正しく使った文を選んでください。",
+          "choices": [
+            "The flower stand on a thin stem.",
+            "The flower stands on a thin stem.",
+            "The flower is stemming a thin leaf.",
+            "The flower stem on a thin stand."
+          ],
+          "correctIndex": 1,
+          "explanation": "stem は名詞として a thin stem のように使い、単数の主語には stands が必要。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "environment",
+          "science"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
     }
   ],
-  "audio": []
+  "audio": [
+    {
+      "wordId": "vocab-cashless",
+      "cacheKey": "805789f0db161749ab72b9738a46758ffb56e4814cb67f9bfdb9ba871703642e",
+      "fileId": "1pOVsfL8LG_YEQVKkbhAsHyAw0tZHo2xf",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.016
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.1800000000000002,
+          "endSeconds": 5.672
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.906,
+          "endSeconds": 10.895999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 11.13,
+          "endSeconds": 15.557
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-vaccinate",
+      "cacheKey": "e83da3ce03689178f4d71d5a60748392c768d12d639e0912d1781c1a1ba83707",
+      "fileId": "1GWfCa05f2D7rAx7JFeJ3AW0pSQL9Px76",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9690000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.134,
+          "endSeconds": 5.544
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.708,
+          "endSeconds": 9.201
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 9.435,
+          "endSeconds": 13.282
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-glossary",
+      "cacheKey": "1ff6e81dc80372f2aed2fd84a692552ea1d46c4162cd483e5ab9d5a03ec713ec",
+      "fileId": "1SJDjSA1lfSaDYw83yKDYeqAqRvTjZQAl",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.074
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.238,
+          "endSeconds": 4.4875
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.536,
+          "endSeconds": 8.9225
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.971,
+          "endSeconds": 14.164
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-auditorium",
+      "cacheKey": "4184af600d86a7fffe20ad2fbbed7dda8c372f4453dbf566d9337f0751771b5d",
+      "fileId": "1DAIM5v52-DakDadT9VU5iwbOegSovVYv",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.1199999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.552,
+          "endSeconds": 5.7875
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.813,
+          "endSeconds": 9.270999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 9.435,
+          "endSeconds": 13.189
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-vegetation",
+      "cacheKey": "f5370f4dd8b443ea8acf03d84de3ea681fb7a4c70813e002ac1b55090f055ef5",
+      "fileId": "1z4t3lNe2hH9BP9v1sDlBOMDiBB5ldToD",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.2134999999999998
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.262,
+          "endSeconds": 5.0504999999999995
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.058,
+          "endSeconds": 9.526
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 9.574000000000002,
+          "endSeconds": 13.653
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-wilderness",
+      "cacheKey": "1ea773e693fc075cd40b4ebc1c1ee6367ac048a20cac2208038f43d7e0dc25a7",
+      "fileId": "1TfFBRricGib4q8QgZQdFPq0nZ-vv5gxY",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9929999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.157,
+          "endSeconds": 5.811
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.975,
+          "endSeconds": 9.619
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 9.725000000000001,
+          "endSeconds": 13.514
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-yearly",
+      "cacheKey": "feaeed69da206266c13e31ea18f31917c97061130cdc220f019dfb8a0bf98989",
+      "fileId": "1d2waQ-HCHofJOWl_y0n4-_NkkI_9atUT",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.801
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.809,
+          "endSeconds": 3.9125
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.92,
+          "endSeconds": 7.0765
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.125,
+          "endSeconds": 10.635
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-geometry",
+      "cacheKey": "ae81ecce1345e132f4d5223caee04925ea17e20a714124c935a0bb2deeb5c852",
+      "fileId": "1TfKGx7s-bd1r5C1Y2eZGmIL3aw-2F24j",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9344999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9344999999999999,
+          "endSeconds": 4.383
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.617,
+          "endSeconds": 8.469999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.634,
+          "endSeconds": 12.957
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-stereotype",
+      "cacheKey": "0a796496243b378d4a3200309a393eecba20205d155a16a5079a7ec9d5392da7",
+      "fileId": "1bLx4DPywdIX52gamF2Vex9nRH5u4xxRf",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.068
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.068,
+          "endSeconds": 5.021
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.186,
+          "endSeconds": 10.001999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 10.166,
+          "endSeconds": 14.489
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-pollinate",
+      "cacheKey": "e16094f8bcc819e744751f812c4b62d6dd98ffd1b19c167d152e09a8e9bcfe10",
+      "fileId": "1PkN0blLGTB0vkRZb8w8IhwlIr7TPkiKE",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.1204999999999998
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.169,
+          "endSeconds": 5.265
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.372,
+          "endSeconds": 10.117999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 10.166,
+          "endSeconds": 14.118
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-hygienic",
+      "cacheKey": "73c703ffd275af866efe7c965cc538a81698dfa1df69c282d7d8f48caf0a9c55",
+      "fileId": "1hvmv0RdPe82e3KNyn48gd2AXi_wAvkp6",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.062
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.2269999999999999,
+          "endSeconds": 5.694999999999999
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.859,
+          "endSeconds": 9.874
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 10.039000000000001,
+          "endSeconds": 13.793
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-antibiotic",
+      "cacheKey": "a2bc455dfb27e0fdaad2584e057bc0fa47609bb5f15f67606073e28a8a6c0e3e",
+      "fileId": "1svga3GOlVlgA08wylxN-SWexLL_sF3Iu",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.3295
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.3295,
+          "endSeconds": 4.8934999999999995
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.942,
+          "endSeconds": 8.702
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.727,
+          "endSeconds": 13.096
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    }
+  ]
 }

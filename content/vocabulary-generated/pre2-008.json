@@ -1314,6 +1314,392 @@
       }
     },
     {
+      "id": "vocab-skillet",
+      "word": "skillet",
+      "level": "準2級",
+      "ipa": "/ˈskɪlɪt/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "A heavy, flat cooking pan with a long handle, used for frying food on a stove.",
+      "meaning": "フライパン",
+      "usageTip": "主に米国で使われ、特に厚手の鋳鉄製を指すことが多い。英国では frying pan が一般的。調理は in a skillet、コンロの上は on the stove と言う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "朝食作り",
+          "text": "He cooked the eggs and bacon in a hot skillet.",
+          "translation": "彼は熱したフライパンで卵とベーコンを焼いた。"
+        },
+        {
+          "id": "example-2",
+          "context": "キャンプ",
+          "text": "We brought a cast iron skillet on our camping trip.",
+          "translation": "私たちはキャンプに鋳鉄製のフライパンを持って行った。"
+        },
+        {
+          "id": "example-3",
+          "context": "レシピ",
+          "text": "Heat the oil in a large skillet over medium heat.",
+          "translation": "大きなフライパンに油を入れ、中火で熱してください。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "skillet",
+          "choices": [
+            {
+              "text": "通行料",
+              "meaning": "道路を使うための料金"
+            },
+            {
+              "text": "ミキサー",
+              "meaning": "材料を混ぜる家電"
+            },
+            {
+              "text": "フライパン",
+              "meaning": "炒めたり焼いたりする平らな鍋"
+            },
+            {
+              "text": "お玉",
+              "meaning": "スープをすくう道具"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "skillet は柄の付いた平らな調理器具、フライパンを意味する。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "フライパン",
+          "choices": [
+            {
+              "text": "skillet",
+              "meaning": "フライパン"
+            },
+            {
+              "text": "ladle",
+              "meaning": "お玉"
+            },
+            {
+              "text": "toll",
+              "meaning": "通行料"
+            },
+            {
+              "text": "blender",
+              "meaning": "ミキサー"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "卵や肉を焼く平たい鍋が skillet。他の語は別の物を指す。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "卵を焼く場面：Heat a little butter in the ___ before adding the eggs.",
+          "choices": [
+            {
+              "text": "toll",
+              "meaning": "通行料"
+            },
+            {
+              "text": "ladle",
+              "meaning": "お玉"
+            },
+            {
+              "text": "blender",
+              "meaning": "ミキサー"
+            },
+            {
+              "text": "skillet",
+              "meaning": "フライパン"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "バターを熱して卵を入れる調理器具として適切なのは skillet。",
+          "alternatives": [
+            {
+              "answer": "frying pan",
+              "explanation": "最も一般的な言い方で、英国英語では特に自然。"
+            },
+            {
+              "answer": "pan",
+              "explanation": "広く使える語だが、形や用途はやや曖昧になる。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "skillet の使い方として正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "She fried the potatoes on a skillet of the stove.",
+              "meaning": "彼女はコンロのフライパンの上でじゃがいもを焼いた。（前置詞の誤り）"
+            },
+            {
+              "text": "She fried the potatoes at a skillet in the stove.",
+              "meaning": "彼女はコンロの中のフライパンのところで焼いた。（前置詞の誤り）"
+            },
+            {
+              "text": "She fried the potatoes in a skillet on the stove.",
+              "meaning": "彼女はコンロの上のフライパンでじゃがいもを焼いた。"
+            },
+            {
+              "text": "She fried the potatoes with a skillet inside the stove.",
+              "meaning": "彼女はコンロの中でフライパンを使って焼いた。（場所の誤り）"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "フライパンの中で焼くので in a skillet、コンロの上なので on the stove が自然。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "卵を焼く場面：Heat a little butter in the ___ before adding the eggs.",
+        "answers": [
+          "skillet"
+        ],
+        "explanation": "バターを熱して卵を入れる調理器具として適切なのは skillet。",
+        "alternatives": [
+          {
+            "answer": "frying pan",
+            "explanation": "最も一般的な言い方で、英国英語では特に自然。"
+          },
+          {
+            "answer": "pan",
+            "explanation": "広く使える語だが、形や用途はやや曖昧になる。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "skilletを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "He cooked the eggs and bacon in a hot skillet.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-skillet-usage",
+          "type": "usage",
+          "prompt": "skillet の使い方として正しい文を選んでください。",
+          "choices": [
+            "She fried the potatoes on a skillet of the stove.",
+            "She fried the potatoes at a skillet in the stove.",
+            "She fried the potatoes in a skillet on the stove.",
+            "She fried the potatoes with a skillet inside the stove."
+          ],
+          "correctIndex": 2,
+          "explanation": "フライパンの中で焼くので in a skillet、コンロの上なので on the stove が自然。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "food"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-spatula",
+      "word": "spatula",
+      "level": "準2級",
+      "ipa": "/ˈspætʃələ/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "A flat tool used for turning, lifting or spreading food.",
+      "meaning": "へら、フライ返し",
+      "usageTip": "食材を返す・持ち上げる・塗る道具。ゴム製のへらも spatula と呼ぶ。道具は with a spatula で表す。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "パンケーキ作り",
+          "text": "Use a spatula to flip the pancake when bubbles appear.",
+          "translation": "泡が出てきたら、フライ返しでパンケーキをひっくり返して。"
+        },
+        {
+          "id": "example-2",
+          "context": "お菓子作り",
+          "text": "She scraped the batter out of the bowl with a spatula.",
+          "translation": "彼女はへらでボウルから生地をかき出した。"
+        },
+        {
+          "id": "example-3",
+          "context": "料理教室",
+          "text": "A metal spatula can scratch a nonstick pan easily.",
+          "translation": "金属のフライ返しはこびりつかない加工の鍋に傷をつけやすい。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "spatula",
+          "choices": [
+            {
+              "text": "へら、フライ返し",
+              "meaning": "返す・すくう・塗る平たい道具"
+            },
+            {
+              "text": "通行料",
+              "meaning": "道路などの使用料"
+            },
+            {
+              "text": "ミキサー",
+              "meaning": "電動で混ぜる機械"
+            },
+            {
+              "text": "お玉",
+              "meaning": "液体をすくう道具"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "spatula は平たい調理用のへら、フライ返しを指す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "へら、フライ返し",
+          "choices": [
+            {
+              "text": "skillet",
+              "meaning": "フライパン"
+            },
+            {
+              "text": "spatula",
+              "meaning": "へら"
+            },
+            {
+              "text": "ladle",
+              "meaning": "お玉"
+            },
+            {
+              "text": "toll",
+              "meaning": "通行料"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "食材を返す平たい道具は spatula。skillet は鍋の側である。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "ハンバーグを返す場面：Turn the burger over with a ___ so it does not break.",
+          "choices": [
+            {
+              "text": "blender",
+              "meaning": "ミキサー"
+            },
+            {
+              "text": "ladle",
+              "meaning": "お玉"
+            },
+            {
+              "text": "spatula",
+              "meaning": "フライ返し"
+            },
+            {
+              "text": "toll",
+              "meaning": "通行料"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "ハンバーグを崩さず返すには平たい道具の spatula が合う。",
+          "alternatives": [
+            {
+              "answer": "turner",
+              "explanation": "特に米国でフライ返しを指す語で、やや専門的。"
+            },
+            {
+              "answer": "fish slice",
+              "explanation": "主に英国で使う、穴の開いたフライ返し。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "spatula の使い方として正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "He spread the frosting on the cake by a spatula.",
+              "meaning": "彼はへらによってケーキにフロスティングを塗った。（前置詞の誤り）"
+            },
+            {
+              "text": "He spread the frosting on the cake with a spatula.",
+              "meaning": "彼はへらでケーキにフロスティングを塗った。"
+            },
+            {
+              "text": "He spread the frosting on the cake for a spatula.",
+              "meaning": "彼はへらのためにフロスティングを塗った。（前置詞の誤り）"
+            },
+            {
+              "text": "He spread the frosting on the cake using of a spatula.",
+              "meaning": "彼はへらの使用でフロスティングを塗った。（using of の誤り）"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "道具を表す前置詞は with。with a spatula で「へらを使って」となる。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "ハンバーグを返す場面：Turn the burger over with a ___ so it does not break.",
+        "answers": [
+          "spatula"
+        ],
+        "explanation": "ハンバーグを崩さず返すには平たい道具の spatula が合う。",
+        "alternatives": [
+          {
+            "answer": "turner",
+            "explanation": "特に米国でフライ返しを指す語で、やや専門的。"
+          },
+          {
+            "answer": "fish slice",
+            "explanation": "主に英国で使う、穴の開いたフライ返し。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "spatulaを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Use a spatula to flip the pancake when bubbles appear.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-spatula-usage",
+          "type": "usage",
+          "prompt": "spatula の使い方として正しい文を選んでください。",
+          "choices": [
+            "He spread the frosting on the cake by a spatula.",
+            "He spread the frosting on the cake with a spatula.",
+            "He spread the frosting on the cake for a spatula.",
+            "He spread the frosting on the cake using of a spatula."
+          ],
+          "correctIndex": 1,
+          "explanation": "道具を表す前置詞は with。with a spatula で「へらを使って」となる。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "food"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-blender",
       "word": "blender",
       "level": "準2級",
@@ -1501,6 +1887,199 @@
         "cefrEstimate": "B1",
         "domains": [
           "food"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-toll",
+      "word": "toll",
+      "level": "準2級",
+      "ipa": "/toʊl/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "Money paid to use a road, bridge or tunnel.",
+      "meaning": "通行料",
+      "usageTip": "道路・橋・トンネルの料金。a toll road、pay a toll、toll booth などでよく使う。ここでは名詞の「通行料」の意味。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "ドライブ",
+          "text": "We paid a toll before crossing the long bridge.",
+          "translation": "私たちは長い橋を渡る前に通行料を払った。"
+        },
+        {
+          "id": "example-2",
+          "context": "旅行計画",
+          "text": "This highway has a toll, so allow extra money.",
+          "translation": "この高速道路は有料なので、余分にお金を見込んでおいて。"
+        },
+        {
+          "id": "example-3",
+          "context": "通勤",
+          "text": "He takes a toll road to work to save time.",
+          "translation": "彼は時間を節約するため、通勤に有料道路を使っている。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "toll（道路に関する意味）",
+          "choices": [
+            {
+              "text": "ミキサー",
+              "meaning": "台所の家電"
+            },
+            {
+              "text": "通行料",
+              "meaning": "道路や橋の使用料"
+            },
+            {
+              "text": "フライパン",
+              "meaning": "調理器具"
+            },
+            {
+              "text": "へら",
+              "meaning": "調理用の道具"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "この意味の toll は、道路や橋を使うために払うお金である。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "通行料",
+          "choices": [
+            {
+              "text": "ladle",
+              "meaning": "お玉"
+            },
+            {
+              "text": "skillet",
+              "meaning": "フライパン"
+            },
+            {
+              "text": "blender",
+              "meaning": "ミキサー"
+            },
+            {
+              "text": "toll",
+              "meaning": "通行料"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "橋や高速道路で払う料金は toll。他は調理器具である。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "高速道路の場面：You must pay a ___ to use this bridge.",
+          "choices": [
+            {
+              "text": "toll",
+              "meaning": "通行料"
+            },
+            {
+              "text": "ladle",
+              "meaning": "お玉"
+            },
+            {
+              "text": "blender",
+              "meaning": "ミキサー"
+            },
+            {
+              "text": "skillet",
+              "meaning": "フライパン"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "橋の利用で払うものなので toll が合う。",
+          "alternatives": [
+            {
+              "answer": "fee",
+              "explanation": "一般的な料金を表し、通行に限定されない。"
+            },
+            {
+              "answer": "charge",
+              "explanation": "請求される料金を広く表し、通行料に限定されない。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "toll（通行料の意味）の使い方として正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "We made a toll at the tunnel entrance.",
+              "meaning": "私たちはトンネルの入口で通行料を作った。（動詞の誤り）"
+            },
+            {
+              "text": "We gave a toll at the tunnel entrance.",
+              "meaning": "私たちは入口で通行料を与えた。（動詞の誤り）"
+            },
+            {
+              "text": "We paid a toll at the tunnel entrance.",
+              "meaning": "私たちはトンネルの入口で通行料を払った。"
+            },
+            {
+              "text": "We took a toll at the tunnel entrance.",
+              "meaning": "私たちは入口で通行料を取った。（動詞の誤り）"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "通行料は pay a toll と言う。make、give、take では「払う」の意味にならない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "高速道路の場面：You must pay a ___ to use this bridge.",
+        "answers": [
+          "toll"
+        ],
+        "explanation": "橋の利用で払うものなので toll が合う。",
+        "alternatives": [
+          {
+            "answer": "fee",
+            "explanation": "一般的な料金を表し、通行に限定されない。"
+          },
+          {
+            "answer": "charge",
+            "explanation": "請求される料金を広く表し、通行料に限定されない。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "tollを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "We paid a toll before crossing the long bridge.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-toll-usage",
+          "type": "usage",
+          "prompt": "toll（通行料の意味）の使い方として正しい文を選んでください。",
+          "choices": [
+            "We made a toll at the tunnel entrance.",
+            "We gave a toll at the tunnel entrance.",
+            "We paid a toll at the tunnel entrance.",
+            "We took a toll at the tunnel entrance."
+          ],
+          "correctIndex": 2,
+          "explanation": "通行料は pay a toll と言う。make、give、take では「払う」の意味にならない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "C1",
+        "domains": [
+          "transport"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -2091,6 +2670,199 @@
         "cefrEstimate": "C1",
         "domains": [
           "medical",
+          "health"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-cramp",
+      "word": "cramp",
+      "level": "準2級",
+      "ipa": "/kræmp/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "A sudden painful tightening of a muscle.",
+      "meaning": "けいれん、筋肉の引きつり",
+      "usageTip": "get a cramp in my leg のように部位を in で示す。生理痛などを指して cramps と複数形でも使う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "水泳",
+          "text": "I got a cramp in my leg while swimming.",
+          "translation": "泳いでいる間に脚がつった。"
+        },
+        {
+          "id": "example-2",
+          "context": "ランニング",
+          "text": "A sudden cramp forced him to stop running.",
+          "translation": "突然のけいれんで、彼は走るのをやめざるを得なかった。"
+        },
+        {
+          "id": "example-3",
+          "context": "睡眠",
+          "text": "She woke at night with a painful cramp in her foot.",
+          "translation": "彼女は夜、足の痛いけいれんで目を覚ました。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "cramp",
+          "choices": [
+            {
+              "text": "筋肉のけいれん",
+              "meaning": "筋肉が突然引きつること"
+            },
+            {
+              "text": "骨折",
+              "meaning": "骨が折れること"
+            },
+            {
+              "text": "日焼け",
+              "meaning": "日光による肌の炎症"
+            },
+            {
+              "text": "風邪",
+              "meaning": "ウイルスによる軽い病気"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "cramp は筋肉が突然痛んで固くなることを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "けいれん、筋肉の引きつり",
+          "choices": [
+            {
+              "text": "bruise",
+              "meaning": "あざ"
+            },
+            {
+              "text": "fever",
+              "meaning": "熱"
+            },
+            {
+              "text": "cough",
+              "meaning": "咳"
+            },
+            {
+              "text": "cramp",
+              "meaning": "けいれん"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "筋肉の引きつりを表す語は cramp である。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "水泳中の場面。急に脚の筋肉が痛んで動かなくなったので、泳ぐのをやめた。 I stopped swimming because I had a ___ in my leg.",
+          "choices": [
+            {
+              "text": "cramp",
+              "meaning": "けいれん"
+            },
+            {
+              "text": "recipe",
+              "meaning": "レシピ"
+            },
+            {
+              "text": "balance",
+              "meaning": "均衡"
+            },
+            {
+              "text": "signal",
+              "meaning": "合図"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "脚が痛んで泳げなくなる状況には cramp が自然に合う。",
+          "alternatives": [
+            {
+              "answer": "pain",
+              "explanation": "一般的な痛みを表す。けいれんの意味までは限定しない。"
+            },
+            {
+              "answer": "spasm",
+              "explanation": "やや医学的で、筋肉の不随意な収縮を表す。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "cramp の使い方として正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "I got a cramp on my calf during the run.",
+              "meaning": "走っている間にふくらはぎがつった。（前置詞の誤り）"
+            },
+            {
+              "text": "I got a cramp in my calf during the run.",
+              "meaning": "走っている間にふくらはぎがつった。"
+            },
+            {
+              "text": "I got cramp at my calf during the run.",
+              "meaning": "走っている間にふくらはぎでけいれんを得た。（前置詞の誤り）"
+            },
+            {
+              "text": "I got a cramp of my calf during the run.",
+              "meaning": "走っている間にふくらはぎのけいれんを得た。（前置詞の誤り）"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "体の部位のけいれんは a cramp in + 部位 で表す。on、at、of は不自然である。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "水泳中の場面。急に脚の筋肉が痛んで動かなくなったので、泳ぐのをやめた。 I stopped swimming because I had a ___ in my leg.",
+        "answers": [
+          "cramp"
+        ],
+        "explanation": "脚が痛んで泳げなくなる状況には cramp が自然に合う。",
+        "alternatives": [
+          {
+            "answer": "pain",
+            "explanation": "一般的な痛みを表す。けいれんの意味までは限定しない。"
+          },
+          {
+            "answer": "spasm",
+            "explanation": "やや医学的で、筋肉の不随意な収縮を表す。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "crampを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I got a cramp in my leg while swimming.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-cramp-usage",
+          "type": "usage",
+          "prompt": "cramp の使い方として正しい文を選んでください。",
+          "choices": [
+            "I got a cramp on my calf during the run.",
+            "I got a cramp in my calf during the run.",
+            "I got cramp at my calf during the run.",
+            "I got a cramp of my calf during the run."
+          ],
+          "correctIndex": 1,
+          "explanation": "体の部位のけいれんは a cramp in + 部位 で表す。on、at、of は不自然である。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
           "health"
         ],
         "gradeEstimate": "準2級",
@@ -4200,6 +4972,961 @@
         "domains": [
           "business",
           "transport"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-internship",
+      "word": "internship",
+      "level": "準2級",
+      "ipa": "ˈɪntɝːnʃɪp",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "A short period of work or training in a company, done to gain experience.",
+      "meaning": "インターンシップ、実習",
+      "usageTip": "do an internship / get an internship at ~ の形でよく使う。人は intern、期間や経験は internship と区別する。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "大学",
+          "text": "She did a summer internship at a small design company.",
+          "translation": "彼女は小さなデザイン会社で夏のインターンシップをした。"
+        },
+        {
+          "id": "example-2",
+          "context": "就職",
+          "text": "His internship gave him a clear idea of daily office work.",
+          "translation": "インターンシップのおかげで、彼は日々の事務作業をはっきり理解できた。"
+        },
+        {
+          "id": "example-3",
+          "context": "応募",
+          "text": "I'm applying for an internship at a local hospital next spring.",
+          "translation": "私は来春、地元の病院でのインターンシップに応募するつもりだ。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "internship",
+          "choices": [
+            {
+              "text": "長期休暇",
+              "meaning": "長い休み"
+            },
+            {
+              "text": "退職金",
+              "meaning": "辞める時の給付"
+            },
+            {
+              "text": "会議室",
+              "meaning": "会議をする部屋"
+            },
+            {
+              "text": "インターンシップ、実習",
+              "meaning": "経験を積む就業体験"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "internship は経験を積むための短期の就業体験を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "インターンシップ、実習",
+          "choices": [
+            {
+              "text": "internship",
+              "meaning": "インターンシップ"
+            },
+            {
+              "text": "friendship",
+              "meaning": "友情"
+            },
+            {
+              "text": "leadership",
+              "meaning": "指導力"
+            },
+            {
+              "text": "ownership",
+              "meaning": "所有権"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "就業体験は internship。他は -ship で終わるが意味が異なる。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "就職活動の場面：大学生が夏に会社で職場体験をした。She did a summer ___ at a small design company to gain experience.",
+          "choices": [
+            {
+              "text": "salary",
+              "meaning": "給料"
+            },
+            {
+              "text": "internship",
+              "meaning": "インターンシップ"
+            },
+            {
+              "text": "invoice",
+              "meaning": "請求書"
+            },
+            {
+              "text": "vacation",
+              "meaning": "休暇"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "経験を積むための職場体験なので internship が合う。",
+          "alternatives": [
+            {
+              "answer": "placement",
+              "explanation": "実習先への配置を表し、英国でよく使う。"
+            },
+            {
+              "answer": "work experience",
+              "explanation": "学生の短い職場体験を指す表現。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "internship を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "He made an internship at a bank last summer.",
+              "meaning": "動詞の選択が不自然。"
+            },
+            {
+              "text": "He did an internship at a bank last summer.",
+              "meaning": "彼は昨夏、銀行でインターンをした。"
+            },
+            {
+              "text": "He worked internship at a bank last summer.",
+              "meaning": "冠詞や形が不自然。"
+            },
+            {
+              "text": "He was an internship at a bank last summer.",
+              "meaning": "人と制度を混同している。"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "do an internship が自然な組み合わせ。人を表すなら intern を使う。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "就職活動の場面：大学生が夏に会社で職場体験をした。She did a summer ___ at a small design company to gain experience.",
+        "answers": [
+          "internship"
+        ],
+        "explanation": "経験を積むための職場体験なので internship が合う。",
+        "alternatives": [
+          {
+            "answer": "placement",
+            "explanation": "実習先への配置を表し、英国でよく使う。"
+          },
+          {
+            "answer": "work experience",
+            "explanation": "学生の短い職場体験を指す表現。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "internshipを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "She did a summer internship at a small design company.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-internship-usage",
+          "type": "usage",
+          "prompt": "internship を正しく使った文を選びなさい。",
+          "choices": [
+            "He made an internship at a bank last summer.",
+            "He did an internship at a bank last summer.",
+            "He worked internship at a bank last summer.",
+            "He was an internship at a bank last summer."
+          ],
+          "correctIndex": 1,
+          "explanation": "do an internship が自然な組み合わせ。人を表すなら intern を使う。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "work",
+          "education"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-payroll",
+      "word": "payroll",
+      "level": "準2級",
+      "ipa": "ˈpeɪrəʊl",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "A list of employees a company pays, or the total money paid to them.",
+      "meaning": "給与支払い、給与台帳",
+      "usageTip": "on the payroll(雇われている)、payroll department(給与課)の形でよく使う。会社の従業員への支払い全体を指す。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "会社",
+          "text": "The company has over two hundred people on its payroll.",
+          "translation": "その会社は二百人以上を従業員として雇っている。"
+        },
+        {
+          "id": "example-2",
+          "context": "経理",
+          "text": "The payroll department sends everyone a pay slip each month.",
+          "translation": "給与課は毎月全員に給与明細を送る。"
+        },
+        {
+          "id": "example-3",
+          "context": "経営",
+          "text": "Rising payroll costs forced the café to reduce opening hours.",
+          "translation": "人件費の上昇で、そのカフェは営業時間を短縮せざるを得なかった。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "payroll",
+          "choices": [
+            {
+              "text": "給与支払い、給与台帳",
+              "meaning": "従業員への給与に関するもの"
+            },
+            {
+              "text": "道路工事",
+              "meaning": "道を直す作業"
+            },
+            {
+              "text": "旅行計画",
+              "meaning": "旅の予定"
+            },
+            {
+              "text": "品質検査",
+              "meaning": "品質を調べること"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "payroll は従業員への給与支払いやその台帳を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "給与支払い、給与台帳",
+          "choices": [
+            {
+              "text": "portrait",
+              "meaning": "肖像画"
+            },
+            {
+              "text": "payroll",
+              "meaning": "給与支払い"
+            },
+            {
+              "text": "pastry",
+              "meaning": "焼き菓子"
+            },
+            {
+              "text": "parade",
+              "meaning": "行進"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "給与台帳や支払いは payroll。他は無関係の語。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "会社の場面：その会社は二百人以上を雇っている。The company has over two hundred people on its ___.",
+          "choices": [
+            {
+              "text": "picnic",
+              "meaning": "ピクニック"
+            },
+            {
+              "text": "mirror",
+              "meaning": "鏡"
+            },
+            {
+              "text": "weather",
+              "meaning": "天気"
+            },
+            {
+              "text": "payroll",
+              "meaning": "給与台帳"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "on the payroll で「雇われている」を表す。",
+          "alternatives": [
+            {
+              "answer": "staff",
+              "explanation": "on its staff の形で、職員として所属する意味になる。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "payroll を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "She has been in the payroll since March.",
+              "meaning": "前置詞の誤り。"
+            },
+            {
+              "text": "She has been at the payroll since March.",
+              "meaning": "前置詞の誤り。"
+            },
+            {
+              "text": "She has been on the payroll since March.",
+              "meaning": "彼女は3月から雇われている。"
+            },
+            {
+              "text": "She has been by the payroll since March.",
+              "meaning": "前置詞の誤り。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "「雇われている」は on the payroll と言う。他の前置詞は定型に合わない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "会社の場面：その会社は二百人以上を雇っている。The company has over two hundred people on its ___.",
+        "answers": [
+          "payroll"
+        ],
+        "explanation": "on the payroll で「雇われている」を表す。",
+        "alternatives": [
+          {
+            "answer": "staff",
+            "explanation": "on its staff の形で、職員として所属する意味になる。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "payrollを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The company has over two hundred people on its payroll.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-payroll-usage",
+          "type": "usage",
+          "prompt": "payroll を正しく使った文を選びなさい。",
+          "choices": [
+            "She has been in the payroll since March.",
+            "She has been at the payroll since March.",
+            "She has been on the payroll since March.",
+            "She has been by the payroll since March."
+          ],
+          "correctIndex": 2,
+          "explanation": "「雇われている」は on the payroll と言う。他の前置詞は定型に合わない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "C1",
+        "domains": [
+          "work",
+          "business",
+          "finance"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-freelancer",
+      "word": "freelancer",
+      "level": "準2級",
+      "ipa": "ˈfriːlɑːnsɝ",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "A person who works for different clients instead of one employer.",
+      "meaning": "フリーランス、個人契約者",
+      "usageTip": "a freelancer は人を指す。働き方は freelance(形容詞・動詞)で、work as a freelancer / work freelance と言う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "仕事",
+          "text": "As a freelancer, she chooses her own projects and working hours.",
+          "translation": "フリーランスの彼女は、自分で案件や勤務時間を選んでいる。"
+        },
+        {
+          "id": "example-2",
+          "context": "契約",
+          "text": "The magazine hired a freelancer to write a short travel article.",
+          "translation": "その雑誌は短い旅行記事を書くためにフリーランスを雇った。"
+        },
+        {
+          "id": "example-3",
+          "context": "収入",
+          "text": "Many freelancers keep records of their income for tax purposes.",
+          "translation": "多くのフリーランスは税金のために収入を記録している。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "freelancer",
+          "choices": [
+            {
+              "text": "常勤の管理職",
+              "meaning": "会社の正社員の管理者"
+            },
+            {
+              "text": "店の客",
+              "meaning": "買い物に来る人"
+            },
+            {
+              "text": "フリーランス、個人契約者",
+              "meaning": "複数の依頼主から仕事を受ける人"
+            },
+            {
+              "text": "退職者",
+              "meaning": "仕事を辞めた人"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "freelancer は特定の会社に属さず、依頼ごとに働く人を指す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "フリーランス、個人契約者",
+          "choices": [
+            {
+              "text": "freelancer",
+              "meaning": "フリーランス"
+            },
+            {
+              "text": "volunteer",
+              "meaning": "ボランティア"
+            },
+            {
+              "text": "applicant",
+              "meaning": "応募者"
+            },
+            {
+              "text": "supervisor",
+              "meaning": "監督者"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "依頼主ごとに働く人は freelancer。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "仕事の場面：雑誌社が記事の依頼のため、社外の書き手と契約した。The magazine hired a ___ to write a short travel article.",
+          "choices": [
+            {
+              "text": "tourist",
+              "meaning": "観光客"
+            },
+            {
+              "text": "neighbor",
+              "meaning": "隣人"
+            },
+            {
+              "text": "patient",
+              "meaning": "患者"
+            },
+            {
+              "text": "freelancer",
+              "meaning": "フリーランス"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "記事のために社外から契約する書き手なので freelancer が合う。",
+          "alternatives": [
+            {
+              "answer": "contractor",
+              "explanation": "契約で仕事を請け負う人全般を指す。"
+            },
+            {
+              "answer": "writer",
+              "explanation": "働き方でなく職業を表す。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "freelancer を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "My sister is a freelancer, so she works for several clients.",
+              "meaning": "姉はフリーランスで、複数の依頼主のために働く。"
+            },
+            {
+              "text": "My sister is freelancer, so she works for several clients.",
+              "meaning": "冠詞が抜けている。"
+            },
+            {
+              "text": "My sister is a freelancers, so she works for several clients.",
+              "meaning": "単数に複数形を使っている。"
+            },
+            {
+              "text": "My sister freelancer for several clients.",
+              "meaning": "動詞がなく文として不完全。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "単数の人を表すので a freelancer が正しい。冠詞や動詞の欠落は誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "仕事の場面：雑誌社が記事の依頼のため、社外の書き手と契約した。The magazine hired a ___ to write a short travel article.",
+        "answers": [
+          "freelancer"
+        ],
+        "explanation": "記事のために社外から契約する書き手なので freelancer が合う。",
+        "alternatives": [
+          {
+            "answer": "contractor",
+            "explanation": "契約で仕事を請け負う人全般を指す。"
+          },
+          {
+            "answer": "writer",
+            "explanation": "働き方でなく職業を表す。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "freelancerを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "As a freelancer, she chooses her own projects and working hours.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-freelancer-usage",
+          "type": "usage",
+          "prompt": "freelancer を正しく使った文を選びなさい。",
+          "choices": [
+            "My sister is a freelancer, so she works for several clients.",
+            "My sister is freelancer, so she works for several clients.",
+            "My sister is a freelancers, so she works for several clients.",
+            "My sister freelancer for several clients."
+          ],
+          "correctIndex": 0,
+          "explanation": "単数の人を表すので a freelancer が正しい。冠詞や動詞の欠落は誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "work",
+          "business"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-migrant",
+      "word": "migrant",
+      "level": "準2級",
+      "ipa": "ˈmaɪɡrənt",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "A person who moves to another place or country to live or work.",
+      "meaning": "移民、移住者",
+      "usageTip": "migrant worker(出稼ぎ労働者)のように使う。国内外を移動する人を広く指し、永住に限らない。形容詞としても使える。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "社会",
+          "text": "Many migrants move to cities in search of better jobs.",
+          "translation": "多くの移住者がより良い仕事を求めて都市へ移る。"
+        },
+        {
+          "id": "example-2",
+          "context": "農業",
+          "text": "Migrant workers help harvest crops during the busy season.",
+          "translation": "出稼ぎ労働者が繁忙期の収穫を手伝う。"
+        },
+        {
+          "id": "example-3",
+          "context": "地域",
+          "text": "The town offers language classes to new migrants.",
+          "translation": "その町は新しい移住者に語学教室を提供している。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "migrant",
+          "choices": [
+            {
+              "text": "移民、移住者",
+              "meaning": "他の地域へ移り住む人"
+            },
+            {
+              "text": "審判",
+              "meaning": "試合を裁く人"
+            },
+            {
+              "text": "発明家",
+              "meaning": "新しい物を作る人"
+            },
+            {
+              "text": "宿泊客",
+              "meaning": "ホテルに泊まる人"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "migrant は住む場所や働く場所を移す人を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "移民、移住者",
+          "choices": [
+            {
+              "text": "magnet",
+              "meaning": "磁石"
+            },
+            {
+              "text": "mineral",
+              "meaning": "鉱物"
+            },
+            {
+              "text": "manner",
+              "meaning": "作法"
+            },
+            {
+              "text": "migrant",
+              "meaning": "移住者"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "移住する人は migrant。他は綴りが似ていても別の語。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "農業の場面：繁忙期に各地から来た労働者が収穫を手伝う。___ workers help harvest crops during the busy season.",
+          "choices": [
+            {
+              "text": "Retired",
+              "meaning": "退職した"
+            },
+            {
+              "text": "Migrant",
+              "meaning": "出稼ぎの"
+            },
+            {
+              "text": "Wooden",
+              "meaning": "木製の"
+            },
+            {
+              "text": "Silent",
+              "meaning": "静かな"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "各地から移動して働く人なので migrant workers が合う。",
+          "alternatives": [
+            {
+              "answer": "Seasonal",
+              "explanation": "季節ごとの仕事を強調し、移動は含まない。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "migrant を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "Many migrant moved to the city last year.",
+              "meaning": "複数なのに複数形になっていない。"
+            },
+            {
+              "text": "Many migrants moves to the city last year.",
+              "meaning": "動詞の形が不適切。"
+            },
+            {
+              "text": "Many migrants moved to the city last year.",
+              "meaning": "昨年、多くの移住者が都市へ移った。"
+            },
+            {
+              "text": "Many migrants moving to the city last year.",
+              "meaning": "述語動詞の形が不完全。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "複数形 migrants に過去形 moved を合わせる。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "農業の場面：繁忙期に各地から来た労働者が収穫を手伝う。___ workers help harvest crops during the busy season.",
+        "answers": [
+          "Migrant"
+        ],
+        "explanation": "各地から移動して働く人なので migrant workers が合う。",
+        "alternatives": [
+          {
+            "answer": "Seasonal",
+            "explanation": "季節ごとの仕事を強調し、移動は含まない。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "migrantを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Many migrants move to cities in search of better jobs.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-migrant-usage",
+          "type": "usage",
+          "prompt": "migrant を正しく使った文を選びなさい。",
+          "choices": [
+            "Many migrant moved to the city last year.",
+            "Many migrants moves to the city last year.",
+            "Many migrants moved to the city last year.",
+            "Many migrants moving to the city last year."
+          ],
+          "correctIndex": 2,
+          "explanation": "複数形 migrants に過去形 moved を合わせる。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "society",
+          "work"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-municipality",
+      "word": "municipality",
+      "level": "準2級",
+      "ipa": "/mjuːˌnɪsɪˈpælɪti/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "A city, town, or district with its own local government.",
+      "meaning": "自治体",
+      "usageTip": "市町村など地方自治の単位を指す。複数形は municipalities。国や都道府県レベルではなく、住民に近い行政単位に使う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "ごみ収集",
+          "text": "Each municipality sets its own rules for collecting household waste.",
+          "translation": "各自治体は家庭ごみの収集について独自のルールを定めている。"
+        },
+        {
+          "id": "example-2",
+          "context": "防災",
+          "text": "The municipality opened three shelters before the typhoon arrived.",
+          "translation": "台風が来る前に、その自治体は三つの避難所を開設した。"
+        },
+        {
+          "id": "example-3",
+          "context": "予算",
+          "text": "Small municipalities often struggle to fund public transport.",
+          "translation": "小さな自治体は公共交通の資金を確保するのに苦労することが多い。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "municipality",
+          "choices": [
+            {
+              "text": "自治体",
+              "meaning": "市町村など地方自治の単位"
+            },
+            {
+              "text": "多国籍企業",
+              "meaning": "複数の国で事業をする会社"
+            },
+            {
+              "text": "博物館",
+              "meaning": "展示品を保存し公開する施設"
+            },
+            {
+              "text": "国際条約",
+              "meaning": "国同士の正式な取り決め"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "municipality は独自の地方政府を持つ市や町などの自治体を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "自治体",
+          "choices": [
+            {
+              "text": "monument",
+              "meaning": "記念碑"
+            },
+            {
+              "text": "municipality",
+              "meaning": "自治体"
+            },
+            {
+              "text": "merchant",
+              "meaning": "商人"
+            },
+            {
+              "text": "majority",
+              "meaning": "多数派"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "「自治体」に当たる英語は municipality。他は意味が異なる。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "住民のためのごみ収集ルールを決める地方の行政単位の話: Each ___ decides how often garbage is collected.",
+          "choices": [
+            {
+              "text": "municipality",
+              "meaning": "自治体"
+            },
+            {
+              "text": "vegetable",
+              "meaning": "野菜"
+            },
+            {
+              "text": "ceremony",
+              "meaning": "儀式"
+            },
+            {
+              "text": "pronunciation",
+              "meaning": "発音"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "ごみ収集の頻度を決めるのは地方の行政単位なので municipality が合う。",
+          "alternatives": [
+            {
+              "answer": "local government",
+              "explanation": "地方政府という意味で近いが、文頭の Each の後には単数の組織単位が自然。"
+            },
+            {
+              "answer": "city",
+              "explanation": "市に限定され、町や村を含む広い意味ではなくなる。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "municipality を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "The municipality is building a new library for residents.",
+              "meaning": "その自治体は住民のために新しい図書館を建設している。"
+            },
+            {
+              "text": "The municipality are building a new library for residents.",
+              "meaning": "単数名詞に複数動詞を使った誤り。"
+            },
+            {
+              "text": "I municipality in a small town near Osaka.",
+              "meaning": "名詞を動詞のように使った誤り。"
+            },
+            {
+              "text": "She is a municipality of the city council.",
+              "meaning": "人を表す語として誤用している。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "municipality は単数の名詞で、組織として is と共に使う。人や動詞としては使えない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "住民のためのごみ収集ルールを決める地方の行政単位の話: Each ___ decides how often garbage is collected.",
+        "answers": [
+          "municipality"
+        ],
+        "explanation": "ごみ収集の頻度を決めるのは地方の行政単位なので municipality が合う。",
+        "alternatives": [
+          {
+            "answer": "local government",
+            "explanation": "地方政府という意味で近いが、文頭の Each の後には単数の組織単位が自然。"
+          },
+          {
+            "answer": "city",
+            "explanation": "市に限定され、町や村を含む広い意味ではなくなる。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "municipalityを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Each municipality sets its own rules for collecting household waste.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-municipality-usage",
+          "type": "usage",
+          "prompt": "municipality を正しく使った文を選びなさい。",
+          "choices": [
+            "The municipality is building a new library for residents.",
+            "The municipality are building a new library for residents.",
+            "I municipality in a small town near Osaka.",
+            "She is a municipality of the city council."
+          ],
+          "correctIndex": 0,
+          "explanation": "municipality は単数の名詞で、組織として is と共に使う。人や動詞としては使えない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "C1",
+        "domains": [
+          "politics",
+          "society"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -9489,6 +11216,200 @@
       }
     },
     {
+      "id": "vocab-expenditure",
+      "word": "expenditure",
+      "level": "準2級",
+      "ipa": "/ɪkˈspɛndɪtʃɚ/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "The total amount of money that a person, company or government spends.",
+      "meaning": "支出、出費",
+      "usageTip": "やや硬い語。expenditure on education のように on を使うのが最も一般的。政府・企業の支出に多く、income と対で使う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "政府",
+          "text": "Government expenditure on public transport rose sharply this year.",
+          "translation": "公共交通への政府支出は今年大きく増えた。"
+        },
+        {
+          "id": "example-2",
+          "context": "家計",
+          "text": "We wrote down every expenditure to see where our money went.",
+          "translation": "お金の行き先を知るため、すべての支出を書き出した。"
+        },
+        {
+          "id": "example-3",
+          "context": "ビジネス",
+          "text": "The company plans to cut expenditure on travel and entertainment.",
+          "translation": "その会社は出張と接待にかかる支出を減らす計画だ。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "expenditure",
+          "choices": [
+            {
+              "text": "収入",
+              "meaning": "入ってくるお金"
+            },
+            {
+              "text": "借金",
+              "meaning": "返すべきお金"
+            },
+            {
+              "text": "貯金",
+              "meaning": "蓄えたお金"
+            },
+            {
+              "text": "支出、出費",
+              "meaning": "使ったお金"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "expenditure は使ったお金、つまり支出を指す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "支出、出費",
+          "choices": [
+            {
+              "text": "expenditure",
+              "meaning": "支出"
+            },
+            {
+              "text": "expectation",
+              "meaning": "期待"
+            },
+            {
+              "text": "expedition",
+              "meaning": "遠征"
+            },
+            {
+              "text": "exposure",
+              "meaning": "さらされること"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "支出は expenditure。他は形が似ているが意味が違う。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 市の予算の説明。 The city's ___ on road repairs was higher than expected.",
+          "choices": [
+            {
+              "text": "weather",
+              "meaning": "天気"
+            },
+            {
+              "text": "expenditure",
+              "meaning": "支出"
+            },
+            {
+              "text": "opinion",
+              "meaning": "意見"
+            },
+            {
+              "text": "distance",
+              "meaning": "距離"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "道路修理に使ったお金なので expenditure が合う。",
+          "alternatives": [
+            {
+              "answer": "spending",
+              "explanation": "より日常的で口語にも使いやすい。"
+            },
+            {
+              "answer": "outlay",
+              "explanation": "事前に支払う費用を表し、やや専門的。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "expenditure を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "Our expenditure food increased by ten percent.",
+              "meaning": "食べ物の支出が10%増えた。（前置詞の欠落）"
+            },
+            {
+              "text": "Our expenditures at food increased by ten percent.",
+              "meaning": "食べ物での支出が増えた。（前置詞の誤り）"
+            },
+            {
+              "text": "Our expenditure about food increased by ten percent.",
+              "meaning": "食べ物についての支出が増えた。（前置詞の誤り）"
+            },
+            {
+              "text": "Our expenditure on food increased by ten percent.",
+              "meaning": "食費の支出が10%増えた。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "支出の対象は expenditure on ~ で表す。at や about は不自然で、前置詞なしでは文が成り立たない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 市の予算の説明。 The city's ___ on road repairs was higher than expected.",
+        "answers": [
+          "expenditure"
+        ],
+        "explanation": "道路修理に使ったお金なので expenditure が合う。",
+        "alternatives": [
+          {
+            "answer": "spending",
+            "explanation": "より日常的で口語にも使いやすい。"
+          },
+          {
+            "answer": "outlay",
+            "explanation": "事前に支払う費用を表し、やや専門的。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "expenditureを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Government expenditure on public transport rose sharply this year.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-expenditure-usage",
+          "type": "usage",
+          "prompt": "expenditure を正しく使った文を選びなさい。",
+          "choices": [
+            "Our expenditure food increased by ten percent.",
+            "Our expenditures at food increased by ten percent.",
+            "Our expenditure about food increased by ten percent.",
+            "Our expenditure on food increased by ten percent."
+          ],
+          "correctIndex": 3,
+          "explanation": "支出の対象は expenditure on ~ で表す。at や about は不自然で、前置詞なしでは文が成り立たない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "finance",
+          "economics"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-shipping",
       "word": "shipping",
       "level": "準2級",
@@ -11404,6 +13325,200 @@
         "domains": [
           "environment",
           "science"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-chemist",
+      "word": "chemist",
+      "level": "準2級",
+      "ipa": "ˈkemɪst",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a person trained in chemistry; in British English, also a pharmacist or the shop where medicines are sold",
+      "meaning": "化学者、薬剤師",
+      "usageTip": "化学者の意味では世界共通。英国では chemist や chemist's が薬剤師・薬局も指す。米国の薬局は pharmacy、薬剤師は pharmacist が一般的。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "研究室",
+          "text": "The chemist tested a new plastic that breaks down in soil.",
+          "translation": "その化学者は土の中で分解される新しいプラスチックを試験した。"
+        },
+        {
+          "id": "example-2",
+          "context": "英国の薬局",
+          "text": "I stopped at the chemist to pick up some cough medicine.",
+          "translation": "私は咳止めの薬を買いに薬局に立ち寄った。"
+        },
+        {
+          "id": "example-3",
+          "context": "職業",
+          "text": "My aunt works as a chemist for a company that makes paint.",
+          "translation": "私の叔母は塗料を作る会社で化学者として働いている。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "chemist",
+          "choices": [
+            {
+              "text": "天文学者",
+              "meaning": "星や宇宙を研究する人"
+            },
+            {
+              "text": "建築家",
+              "meaning": "建物を設計する人"
+            },
+            {
+              "text": "化学者",
+              "meaning": "物質の性質や変化を研究する人"
+            },
+            {
+              "text": "記者",
+              "meaning": "記事を書く人"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "chemist は化学を専門とする人を表す。英国では薬剤師の意味でも使われる。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "化学者、(英国では)薬剤師",
+          "choices": [
+            {
+              "text": "mechanic",
+              "meaning": "整備士"
+            },
+            {
+              "text": "cashier",
+              "meaning": "レジ係"
+            },
+            {
+              "text": "farmer",
+              "meaning": "農家"
+            },
+            {
+              "text": "chemist",
+              "meaning": "化学者、薬剤師"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "化学者や英国の薬剤師を表す語は chemist。他は別の職業。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "研究所で物質の反応を調べている場面: The ___ carefully mixed two liquids in the laboratory.",
+          "choices": [
+            {
+              "text": "waiter",
+              "meaning": "給仕"
+            },
+            {
+              "text": "chemist",
+              "meaning": "化学者"
+            },
+            {
+              "text": "driver",
+              "meaning": "運転手"
+            },
+            {
+              "text": "singer",
+              "meaning": "歌手"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "実験室で液体を混ぜる人物なので、化学者の chemist が自然。",
+          "alternatives": [
+            {
+              "answer": "scientist",
+              "explanation": "分野を限定しない、より広い言い方。"
+            },
+            {
+              "answer": "researcher",
+              "explanation": "研究する人という点を強調する言い方。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "chemist を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "She chemist the water yesterday.",
+              "meaning": "彼女は昨日水を調べた。(動詞扱いの誤り)"
+            },
+            {
+              "text": "I am very chemist about food.",
+              "meaning": "私は食べ物にとても詳しい。(形容詞扱いの誤り)"
+            },
+            {
+              "text": "My sister is chemist at a research company.",
+              "meaning": "姉は研究企業の化学者だ。(冠詞が抜けた誤り)"
+            },
+            {
+              "text": "He is a chemist at a research company.",
+              "meaning": "彼は研究企業の化学者だ。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "chemist は可算名詞なので、職業を言うときは a chemist のように冠詞を付ける。他は品詞の誤りや冠詞の欠落がある。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "研究所で物質の反応を調べている場面: The ___ carefully mixed two liquids in the laboratory.",
+        "answers": [
+          "chemist"
+        ],
+        "explanation": "実験室で液体を混ぜる人物なので、化学者の chemist が自然。",
+        "alternatives": [
+          {
+            "answer": "scientist",
+            "explanation": "分野を限定しない、より広い言い方。"
+          },
+          {
+            "answer": "researcher",
+            "explanation": "研究する人という点を強調する言い方。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "chemistを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The chemist tested a new plastic that breaks down in soil.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-chemist-usage",
+          "type": "usage",
+          "prompt": "chemist を正しく使った文を選びなさい。",
+          "choices": [
+            "She chemist the water yesterday.",
+            "I am very chemist about food.",
+            "My sister is chemist at a research company.",
+            "He is a chemist at a research company."
+          ],
+          "correctIndex": 3,
+          "explanation": "chemist は可算名詞なので、職業を言うときは a chemist のように冠詞を付ける。他は品詞の誤りや冠詞の欠落がある。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "science",
+          "medical"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -15232,6 +17347,200 @@
       }
     },
     {
+      "id": "vocab-installment",
+      "word": "installment",
+      "level": "準2級",
+      "ipa": "ɪnˈstɔːlmənt",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "one of several payments made over time, or one part of a series that is released in parts",
+      "meaning": "分割払いの一回分、分割",
+      "usageTip": "pay in installments(分割で払う)、monthly installment(毎月の支払い)の形が多い。連載や連続作品の「一回分」の意味もある。英国の綴りは instalment で、l が1つ。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "買い物",
+          "text": "We paid for the new sofa in six monthly installments.",
+          "translation": "私たちは新しいソファを六回の月賦で支払った。"
+        },
+        {
+          "id": "example-2",
+          "context": "ローン",
+          "text": "The final installment of the loan is due at the end of March.",
+          "translation": "そのローンの最後の支払いは三月末が期限だ。"
+        },
+        {
+          "id": "example-3",
+          "context": "連載作品",
+          "text": "The latest installment of the series will be released next summer.",
+          "translation": "そのシリーズの最新作は来年の夏に公開される予定だ。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "installment",
+          "choices": [
+            {
+              "text": "主権",
+              "meaning": "国家の最高権力"
+            },
+            {
+              "text": "外交",
+              "meaning": "国家間の関係の調整"
+            },
+            {
+              "text": "休暇",
+              "meaning": "仕事を休む期間"
+            },
+            {
+              "text": "分割払いの一回分",
+              "meaning": "分けて払うお金の一回分"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "installment は分割払いの一回分、または連続するものの一回分を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "分割払いの一回分",
+          "choices": [
+            {
+              "text": "allowance",
+              "meaning": "手当、小遣い"
+            },
+            {
+              "text": "installment",
+              "meaning": "分割払いの一回分"
+            },
+            {
+              "text": "diplomacy",
+              "meaning": "外交"
+            },
+            {
+              "text": "sovereignty",
+              "meaning": "主権"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "分割払いの一回分は installment。allowance は定期的に与えられるお金で意味が異なる。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "車のローンを毎月返している場面: I still have to pay three more monthly ___ on my car loan.",
+          "choices": [
+            {
+              "text": "installments",
+              "meaning": "分割払いの各回分"
+            },
+            {
+              "text": "sovereignties",
+              "meaning": "主権"
+            },
+            {
+              "text": "diplomacies",
+              "meaning": "外交"
+            },
+            {
+              "text": "allowances",
+              "meaning": "手当"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "ローンをあと三回払うので、分割払いの各回を表す installments が合う。",
+          "alternatives": [
+            {
+              "answer": "payments",
+              "explanation": "支払い全般を表す一般的な語で、分割かどうかは示さない。"
+            },
+            {
+              "answer": "instalments",
+              "explanation": "英国式の綴りで、意味は同じ。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "installment を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I paid the first installment on Friday.",
+              "meaning": "私は金曜日に最初の分割金を払った。"
+            },
+            {
+              "text": "We installment the laptop for a year.",
+              "meaning": "私たちはノートパソコンを一年間分割した。(動詞扱いの誤り)"
+            },
+            {
+              "text": "I paid the bill with three installment.",
+              "meaning": "私は請求書を三回の分割で払った。(複数形の誤り)"
+            },
+            {
+              "text": "She bought the sofa for installments.",
+              "meaning": "彼女はソファを分割で買った。(前置詞の誤り)"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "installment は名詞で、the first installment のように一回分の支払いを表す。他は動詞扱い、複数形の欠落、前置詞の誤りがある(正しくは in installments)。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "車のローンを毎月返している場面: I still have to pay three more monthly ___ on my car loan.",
+        "answers": [
+          "installments"
+        ],
+        "explanation": "ローンをあと三回払うので、分割払いの各回を表す installments が合う。",
+        "alternatives": [
+          {
+            "answer": "payments",
+            "explanation": "支払い全般を表す一般的な語で、分割かどうかは示さない。"
+          },
+          {
+            "answer": "instalments",
+            "explanation": "英国式の綴りで、意味は同じ。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "installmentを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "We paid for the new sofa in six monthly installments.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-installment-usage",
+          "type": "usage",
+          "prompt": "installment を正しく使った文を選んでください。",
+          "choices": [
+            "I paid the first installment on Friday.",
+            "We installment the laptop for a year.",
+            "I paid the bill with three installment.",
+            "She bought the sofa for installments."
+          ],
+          "correctIndex": 0,
+          "explanation": "installment は名詞で、the first installment のように一回分の支払いを表す。他は動詞扱い、複数形の欠落、前置詞の誤りがある(正しくは in installments)。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "finance",
+          "business"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-rubber",
       "word": "rubber",
       "level": "準2級",
@@ -15626,6 +17935,588 @@
       }
     },
     {
+      "id": "vocab-chopstick",
+      "word": "chopstick",
+      "level": "準2級",
+      "ipa": "ˈtʃɒpstɪk",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "one of a pair of thin sticks used to pick up food",
+      "meaning": "箸(はし)",
+      "usageTip": "通常は2本で使うので chopsticks と複数形が多い。一膳は a pair of chopsticks と数える。単数形は1本だけを指すときに使う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "食事中",
+          "text": "He dropped one chopstick under the table and asked for a new one.",
+          "translation": "彼は箸を1本テーブルの下に落とし、新しいものを頼んだ。"
+        },
+        {
+          "id": "example-2",
+          "context": "料理",
+          "text": "She stirred the eggs quickly with a single chopstick.",
+          "translation": "彼女は1本の箸で卵を素早くかき混ぜた。"
+        },
+        {
+          "id": "example-3",
+          "context": "買い物",
+          "text": "I bought a wooden chopstick rest as a gift for my teacher.",
+          "translation": "私は先生への贈り物に木製の箸置きを買った。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "chopstick",
+          "choices": [
+            {
+              "text": "箸(1本)",
+              "meaning": "食べ物をつまむ細い棒の片方"
+            },
+            {
+              "text": "スプーン",
+              "meaning": "すくう食器"
+            },
+            {
+              "text": "ナイフ",
+              "meaning": "切る道具"
+            },
+            {
+              "text": "皿",
+              "meaning": "料理をのせる器"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "chopstick は箸の1本を指す。ふつうは2本で chopsticks と複数形にする。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "箸(はし)の1本",
+          "choices": [
+            {
+              "text": "fork",
+              "meaning": "フォーク"
+            },
+            {
+              "text": "bowl",
+              "meaning": "どんぶり"
+            },
+            {
+              "text": "napkin",
+              "meaning": "ナプキン"
+            },
+            {
+              "text": "chopstick",
+              "meaning": "箸の1本"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "箸を表す語は chopstick。ふつうは対で使うため chopsticks と複数形になる。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "レストランで食事を頼む場面: Could I have a pair of ___, please?",
+          "choices": [
+            {
+              "text": "pillows",
+              "meaning": "枕"
+            },
+            {
+              "text": "tickets",
+              "meaning": "切符"
+            },
+            {
+              "text": "chopsticks",
+              "meaning": "箸"
+            },
+            {
+              "text": "curtains",
+              "meaning": "カーテン"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "a pair of に続き、食事の場面に合うのは chopsticks。",
+          "alternatives": [
+            {
+              "answer": "forks",
+              "explanation": "西洋料理の場面ならこちらも自然に使える。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "chopstick(s) を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "She ate the rice with a chopsticks.",
+              "meaning": "彼女は箸でご飯を食べた。(a と複数形の誤り)"
+            },
+            {
+              "text": "She ate the rice with chopstick pair.",
+              "meaning": "彼女は箸でご飯を食べた。(語順の誤り)"
+            },
+            {
+              "text": "She ate the rice with a pair of chopsticks.",
+              "meaning": "彼女は箸でご飯を食べた。"
+            },
+            {
+              "text": "She ate the rice by a pair of chopsticks.",
+              "meaning": "彼女は箸でご飯を食べた。(前置詞の誤り)"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "道具は with で表し、a pair of chopsticks と数える。a chopsticks や by は不自然。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "レストランで食事を頼む場面: Could I have a pair of ___, please?",
+        "answers": [
+          "chopsticks"
+        ],
+        "explanation": "a pair of に続き、食事の場面に合うのは chopsticks。",
+        "alternatives": [
+          {
+            "answer": "forks",
+            "explanation": "西洋料理の場面ならこちらも自然に使える。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "chopstickを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "He dropped one chopstick under the table and asked for a new one.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-chopstick-usage",
+          "type": "usage",
+          "prompt": "chopstick(s) を正しく使った文を選びなさい。",
+          "choices": [
+            "She ate the rice with a chopsticks.",
+            "She ate the rice with chopstick pair.",
+            "She ate the rice with a pair of chopsticks.",
+            "She ate the rice by a pair of chopsticks."
+          ],
+          "correctIndex": 2,
+          "explanation": "道具は with で表し、a pair of chopsticks と数える。a chopsticks や by は不自然。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "food"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-lid",
+      "word": "lid",
+      "level": "準2級",
+      "ipa": "lɪd",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "a cover that closes the top of a pot, box, or jar",
+      "meaning": "ふた",
+      "usageTip": "鍋・瓶・箱などの上のふたに使う。put the lid on(ふたをする)、take the lid off(ふたを取る)がよく使う形。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "料理",
+          "text": "Put the lid on the pot and let it boil.",
+          "translation": "鍋にふたをして沸騰させて。"
+        },
+        {
+          "id": "example-2",
+          "context": "台所",
+          "text": "I can't open this jar because the lid is too tight.",
+          "translation": "ふたがきつすぎて、この瓶を開けられない。"
+        },
+        {
+          "id": "example-3",
+          "context": "自宅",
+          "text": "She lifted the lid of the box and smiled.",
+          "translation": "彼女は箱のふたを持ち上げて微笑んだ。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "lid",
+          "choices": [
+            {
+              "text": "取っ手",
+              "meaning": "持つ部分"
+            },
+            {
+              "text": "底",
+              "meaning": "下の部分"
+            },
+            {
+              "text": "ひも",
+              "meaning": "結ぶもの"
+            },
+            {
+              "text": "ふた",
+              "meaning": "上を覆うもの"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "lid は鍋や瓶の上を覆うふたのこと。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "ふた",
+          "choices": [
+            {
+              "text": "lip",
+              "meaning": "唇"
+            },
+            {
+              "text": "lid",
+              "meaning": "ふた"
+            },
+            {
+              "text": "lead",
+              "meaning": "導く"
+            },
+            {
+              "text": "list",
+              "meaning": "一覧"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "ふたは lid。lip などは綴りが似た別の語。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "スープを温かく保つ場面: Please keep the ___ on the pot so the soup stays hot.",
+          "choices": [
+            {
+              "text": "mirror",
+              "meaning": "鏡"
+            },
+            {
+              "text": "ladder",
+              "meaning": "はしご"
+            },
+            {
+              "text": "lid",
+              "meaning": "ふた"
+            },
+            {
+              "text": "bell",
+              "meaning": "鈴"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "鍋にのせて熱を保つものなので、ふたの lid が合う。",
+          "alternatives": [
+            {
+              "answer": "cover",
+              "explanation": "lid より広く、覆うもの全般を指す。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "瓶にふたを閉めた、という意味で lid を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "He put the lid on the jar.",
+              "meaning": "彼は瓶にふたをした。"
+            },
+            {
+              "text": "He put the lid at the jar.",
+              "meaning": "彼は瓶にふたをした。(前置詞の誤り)"
+            },
+            {
+              "text": "He wore the lid on the jar.",
+              "meaning": "彼は瓶にふたをした。(動詞の誤り)"
+            },
+            {
+              "text": "He closed the lid to the jar.",
+              "meaning": "彼は瓶にふたをした。(前置詞の誤り)"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "ふたをするときは put the lid on の形を使う。at や to では位置関係が正しく表せず、wear は衣類にしか使わない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "スープを温かく保つ場面: Please keep the ___ on the pot so the soup stays hot.",
+        "answers": [
+          "lid"
+        ],
+        "explanation": "鍋にのせて熱を保つものなので、ふたの lid が合う。",
+        "alternatives": [
+          {
+            "answer": "cover",
+            "explanation": "lid より広く、覆うもの全般を指す。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "lidを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Put the lid on the pot and let it boil.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-lid-usage",
+          "type": "usage",
+          "prompt": "瓶にふたを閉めた、という意味で lid を正しく使った文を選びなさい。",
+          "choices": [
+            "He put the lid on the jar.",
+            "He put the lid at the jar.",
+            "He wore the lid on the jar.",
+            "He closed the lid to the jar."
+          ],
+          "correctIndex": 0,
+          "explanation": "ふたをするときは put the lid on の形を使う。at や to では位置関係が正しく表せず、wear は衣類にしか使わない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-knit",
+      "word": "knit",
+      "level": "準2級",
+      "ipa": "nɪt",
+      "ipaLabel": "英音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "knit"
+        ],
+        "past": [
+          "knitted",
+          "knit"
+        ],
+        "pastParticiple": [
+          "knitted",
+          "knit"
+        ],
+        "presentParticiple": [
+          "knitting"
+        ],
+        "thirdPersonSingular": [
+          "knits"
+        ]
+      },
+      "definition": "to make clothing or cloth by joining loops of yarn with needles",
+      "meaning": "編む",
+      "usageTip": "毛糸を編むことに使う。knit a scarf for her のように「物+for 人」の形が多い。活用は knit–knitted–knitted が一般的で、knit–knit–knit もある。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "趣味",
+          "text": "My grandmother knits a new scarf every winter.",
+          "translation": "祖母は毎年冬に新しいマフラーを編む。"
+        },
+        {
+          "id": "example-2",
+          "context": "贈り物",
+          "text": "I am knitting a hat for my baby cousin.",
+          "translation": "私は赤ちゃんのいとこのために帽子を編んでいる。"
+        },
+        {
+          "id": "example-3",
+          "context": "サークル",
+          "text": "They meet on Fridays to knit and talk.",
+          "translation": "彼らは金曜日に集まって編み物をしながら話す。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "knit",
+          "choices": [
+            {
+              "text": "縫う",
+              "meaning": "針と糸で布をつなぐ"
+            },
+            {
+              "text": "編む",
+              "meaning": "毛糸を編んで作る"
+            },
+            {
+              "text": "切る",
+              "meaning": "刃物で分ける"
+            },
+            {
+              "text": "洗う",
+              "meaning": "水できれいにする"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "knit は毛糸などを編んで物を作ること。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "編む",
+          "choices": [
+            {
+              "text": "knock",
+              "meaning": "たたく"
+            },
+            {
+              "text": "kick",
+              "meaning": "蹴る"
+            },
+            {
+              "text": "knot",
+              "meaning": "結ぶ"
+            },
+            {
+              "text": "knit",
+              "meaning": "編む"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "毛糸を編むは knit。knot は結び目で別の語。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "冬の贈り物を考える場面: She wants to ___ a warm sweater for her father.",
+          "choices": [
+            {
+              "text": "borrow",
+              "meaning": "借りる"
+            },
+            {
+              "text": "cancel",
+              "meaning": "取り消す"
+            },
+            {
+              "text": "knit",
+              "meaning": "編む"
+            },
+            {
+              "text": "wake",
+              "meaning": "起こす"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "暖かいセーターを父のために作るので、編む knit が合う。",
+          "alternatives": [
+            {
+              "answer": "make",
+              "explanation": "作り方を限定しない一般的な言い方。"
+            },
+            {
+              "answer": "sew",
+              "explanation": "縫って作る場合の表現。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "knit を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "She knitted at a blanket for her sister.",
+              "meaning": "彼女は姉にブランケットを編んだ。(不要な前置詞の誤り)"
+            },
+            {
+              "text": "She knitting a blanket for her sister yesterday.",
+              "meaning": "彼女は昨日姉にブランケットを編んだ。(時制の誤り)"
+            },
+            {
+              "text": "She knitted a blanket for her sister.",
+              "meaning": "彼女は姉にブランケットを編んだ。"
+            },
+            {
+              "text": "She knitted a blanket to her sister.",
+              "meaning": "彼女は姉にブランケットを編んだ。(前置詞の誤り)"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "過去の文なので knitted を使い、目的語の後に for 人を置く。at や to は不適切で、knitting だけでは過去を表せない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "冬の贈り物を考える場面: She wants to ___ a warm sweater for her father.",
+        "answers": [
+          "knit"
+        ],
+        "explanation": "暖かいセーターを父のために作るので、編む knit が合う。",
+        "alternatives": [
+          {
+            "answer": "make",
+            "explanation": "作り方を限定しない一般的な言い方。"
+          },
+          {
+            "answer": "sew",
+            "explanation": "縫って作る場合の表現。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "knitを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "My grandmother knits a new scarf every winter.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-knit-usage",
+          "type": "usage",
+          "prompt": "knit を正しく使った文を選びなさい。",
+          "choices": [
+            "She knitted at a blanket for her sister.",
+            "She knitting a blanket for her sister yesterday.",
+            "She knitted a blanket for her sister.",
+            "She knitted a blanket to her sister."
+          ],
+          "correctIndex": 2,
+          "explanation": "過去の文なので knitted を使い、目的語の後に for 人を置く。at や to は不適切で、knitting だけでは過去を表せない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "arts-culture"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-sew",
       "word": "sew",
       "level": "準2級",
@@ -15835,7 +18726,838 @@
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
       }
+    },
+    {
+      "id": "vocab-brew",
+      "word": "brew",
+      "level": "準2級",
+      "ipa": "bruː",
+      "ipaLabel": "英音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "brew"
+        ],
+        "past": [
+          "brewed"
+        ],
+        "pastParticiple": [
+          "brewed"
+        ],
+        "presentParticiple": [
+          "brewing"
+        ],
+        "thirdPersonSingular": [
+          "brews"
+        ]
+      },
+      "definition": "to make a hot drink such as tea or coffee by soaking it in hot water",
+      "meaning": "(茶・コーヒーを)入れる",
+      "usageTip": "brew tea / coffee のように他動詞で使う。お茶が自然に抽出されている場合は The tea is brewing. のように自動詞でも使える。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "朝食",
+          "text": "I brew a pot of strong coffee every morning before work.",
+          "translation": "私は毎朝仕事の前に濃いコーヒーをポットで入れる。"
+        },
+        {
+          "id": "example-2",
+          "context": "お茶",
+          "text": "Let the tea brew for three minutes before you pour it.",
+          "translation": "注ぐ前に、お茶を3分間抽出させてください。"
+        },
+        {
+          "id": "example-3",
+          "context": "来客",
+          "text": "She brewed some green tea for the guests after dinner.",
+          "translation": "彼女は夕食後、客のために緑茶を入れた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "brew",
+          "choices": [
+            {
+              "text": "焼く",
+              "meaning": "オーブンなどで加熱する"
+            },
+            {
+              "text": "冷やす",
+              "meaning": "温度を下げる"
+            },
+            {
+              "text": "(茶・コーヒーを)入れる",
+              "meaning": "お湯で抽出して作る"
+            },
+            {
+              "text": "皮をむく",
+              "meaning": "外側を取り除く"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "brew は茶やコーヒーをお湯で抽出して入れること。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "(茶・コーヒーを)入れる",
+          "choices": [
+            {
+              "text": "brew",
+              "meaning": "(茶・コーヒーを)入れる"
+            },
+            {
+              "text": "bake",
+              "meaning": "焼く"
+            },
+            {
+              "text": "peel",
+              "meaning": "皮をむく"
+            },
+            {
+              "text": "chop",
+              "meaning": "刻む"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "お湯で茶やコーヒーを入れる動作を表す動詞は brew。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "来客の場面: Please wait while I ___ a fresh pot of tea for our guests.",
+          "choices": [
+            {
+              "text": "grate",
+              "meaning": "すりおろす"
+            },
+            {
+              "text": "sew",
+              "meaning": "縫う"
+            },
+            {
+              "text": "fold",
+              "meaning": "たたむ"
+            },
+            {
+              "text": "brew",
+              "meaning": "(茶を)入れる"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "客のために紅茶をポットで入れるので brew が合う。",
+          "alternatives": [
+            {
+              "answer": "make",
+              "explanation": "make は日常的で最も一般的な言い方。"
+            },
+            {
+              "answer": "prepare",
+              "explanation": "prepare はやや改まった言い方。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "brew の使い方として正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "He brewed a cup of coffee to his sister.",
+              "meaning": "彼は妹にコーヒーを入れた。(前置詞の誤り)"
+            },
+            {
+              "text": "He brewed for coffee his sister.",
+              "meaning": "彼は妹にコーヒーを入れた。(語順の誤り)"
+            },
+            {
+              "text": "He brewed a cup of coffee for his sister.",
+              "meaning": "彼は妹のためにコーヒーを入れた。"
+            },
+            {
+              "text": "He brewed the coffee on his sister.",
+              "meaning": "彼は妹の上でコーヒーを入れた。(前置詞の誤り)"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "brew + 飲み物 + for 人 で「人のために入れる」を表す。他は前置詞や語順が不適切。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "来客の場面: Please wait while I ___ a fresh pot of tea for our guests.",
+        "answers": [
+          "brew"
+        ],
+        "explanation": "客のために紅茶をポットで入れるので brew が合う。",
+        "alternatives": [
+          {
+            "answer": "make",
+            "explanation": "make は日常的で最も一般的な言い方。"
+          },
+          {
+            "answer": "prepare",
+            "explanation": "prepare はやや改まった言い方。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "brewを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I brew a pot of strong coffee every morning before work.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-brew-usage",
+          "type": "usage",
+          "prompt": "brew の使い方として正しい文を選んでください。",
+          "choices": [
+            "He brewed a cup of coffee to his sister.",
+            "He brewed for coffee his sister.",
+            "He brewed a cup of coffee for his sister.",
+            "He brewed the coffee on his sister."
+          ],
+          "correctIndex": 2,
+          "explanation": "brew + 飲み物 + for 人 で「人のために入れる」を表す。他は前置詞や語順が不適切。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "food"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-grate",
+      "word": "grate",
+      "level": "準2級",
+      "ipa": "ɡreɪt",
+      "ipaLabel": "米音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "grate"
+        ],
+        "past": [
+          "grated"
+        ],
+        "pastParticiple": [
+          "grated"
+        ],
+        "presentParticiple": [
+          "grating"
+        ],
+        "thirdPersonSingular": [
+          "grates"
+        ]
+      },
+      "definition": "to rub food against a rough metal tool to make small pieces",
+      "meaning": "すりおろす",
+      "usageTip": "チーズ、にんじん、しょうがなど硬めの食材に使う。grate cheese のように他動詞。great と同じ発音。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "料理",
+          "text": "Please grate some cheese and sprinkle it over the pasta.",
+          "translation": "チーズをすりおろして、パスタの上にかけてください。"
+        },
+        {
+          "id": "example-2",
+          "context": "レシピ",
+          "text": "First, grate two carrots and mix them with the cabbage.",
+          "translation": "まず、にんじんを2本すりおろして、キャベツと混ぜます。"
+        },
+        {
+          "id": "example-3",
+          "context": "家庭",
+          "text": "My father grates fresh ginger for the soup every time.",
+          "translation": "父はいつもスープ用に新鮮なしょうがをすりおろす。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "grate",
+          "choices": [
+            {
+              "text": "炒める",
+              "meaning": "油で加熱する"
+            },
+            {
+              "text": "混ぜる",
+              "meaning": "かき混ぜる"
+            },
+            {
+              "text": "注ぐ",
+              "meaning": "液体を入れる"
+            },
+            {
+              "text": "すりおろす",
+              "meaning": "おろし金で細かくする"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "grate は食材をおろし金ですりおろすこと。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "すりおろす",
+          "choices": [
+            {
+              "text": "grill",
+              "meaning": "網焼きにする"
+            },
+            {
+              "text": "grate",
+              "meaning": "すりおろす"
+            },
+            {
+              "text": "grab",
+              "meaning": "つかむ"
+            },
+            {
+              "text": "grow",
+              "meaning": "育てる"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "おろし金で削る動作は grate。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "料理の場面: I need to ___ a little cheese for the top of the pizza.",
+          "choices": [
+            {
+              "text": "wear",
+              "meaning": "着る"
+            },
+            {
+              "text": "sew",
+              "meaning": "縫う"
+            },
+            {
+              "text": "grate",
+              "meaning": "すりおろす"
+            },
+            {
+              "text": "park",
+              "meaning": "駐車する"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "ピザにかけるチーズを細かくするので grate が合う。",
+          "alternatives": [
+            {
+              "answer": "shred",
+              "explanation": "shred も自然で、チーズを細かい糸状にする言い方。grate とほぼ同じ場面で使える。"
+            },
+            {
+              "answer": "slice",
+              "explanation": "slice は薄切りにすること。細かい粒状や糸状にはならない。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "grate の使い方として正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "I grated to the cheese a bowl.",
+              "meaning": "語順が不自然"
+            },
+            {
+              "text": "I grated at the cheese in a bowl.",
+              "meaning": "前置詞が不自然"
+            },
+            {
+              "text": "I grated the cheese on a bowl of.",
+              "meaning": "語句の並びが不自然"
+            },
+            {
+              "text": "I grated the cheese into a bowl.",
+              "meaning": "私はチーズをボウルにすりおろした。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "grate は食材を直接目的語にとる他動詞で、into で落ちる先を示せる。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "料理の場面: I need to ___ a little cheese for the top of the pizza.",
+        "answers": [
+          "grate"
+        ],
+        "explanation": "ピザにかけるチーズを細かくするので grate が合う。",
+        "alternatives": [
+          {
+            "answer": "shred",
+            "explanation": "shred も自然で、チーズを細かい糸状にする言い方。grate とほぼ同じ場面で使える。"
+          },
+          {
+            "answer": "slice",
+            "explanation": "slice は薄切りにすること。細かい粒状や糸状にはならない。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "grateを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Please grate some cheese and sprinkle it over the pasta.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-grate-usage",
+          "type": "usage",
+          "prompt": "grate の使い方として正しい文を選んでください。",
+          "choices": [
+            "I grated to the cheese a bowl.",
+            "I grated at the cheese in a bowl.",
+            "I grated the cheese on a bowl of.",
+            "I grated the cheese into a bowl."
+          ],
+          "correctIndex": 3,
+          "explanation": "grate は食材を直接目的語にとる他動詞で、into で落ちる先を示せる。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "food"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-escalator",
+      "word": "escalator",
+      "level": "準2級",
+      "ipa": "ˈɛskəleɪtə",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a moving staircase that carries people up or down between floors",
+      "meaning": "エスカレーター",
+      "usageTip": "on the escalator や take the escalator のように使う。乗り降りは get on / get off the escalator。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "買い物",
+          "text": "We took the escalator to the third floor to find shoes.",
+          "translation": "靴を探しに、エスカレーターで3階へ行った。"
+        },
+        {
+          "id": "example-2",
+          "context": "注意",
+          "text": "The escalator stopped, so everyone had to use the stairs.",
+          "translation": "エスカレーターが止まったので、みんな階段を使わなければならなかった。"
+        },
+        {
+          "id": "example-3",
+          "context": "駅",
+          "text": "Hold the handrail when you get on the escalator with a heavy bag.",
+          "translation": "重い荷物を持ってエスカレーターに乗るときは、手すりをつかんでください。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "escalator",
+          "choices": [
+            {
+              "text": "エレベーター",
+              "meaning": "箱型の昇降機"
+            },
+            {
+              "text": "非常口",
+              "meaning": "緊急用の出口"
+            },
+            {
+              "text": "エスカレーター",
+              "meaning": "動く階段"
+            },
+            {
+              "text": "改札",
+              "meaning": "駅の入場ゲート"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "escalator は動く階段のこと。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "エスカレーター",
+          "choices": [
+            {
+              "text": "escalator",
+              "meaning": "エスカレーター"
+            },
+            {
+              "text": "entrance",
+              "meaning": "入口"
+            },
+            {
+              "text": "elevator",
+              "meaning": "エレベーター"
+            },
+            {
+              "text": "exit",
+              "meaning": "出口"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "動く階段は escalator。elevator は箱型の昇降機。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "デパートの場面: The moving stairs were crowded, so we walked up the stairs instead. The ___ was full of shoppers.",
+          "choices": [
+            {
+              "text": "pillow",
+              "meaning": "枕"
+            },
+            {
+              "text": "escalator",
+              "meaning": "エスカレーター"
+            },
+            {
+              "text": "umbrella",
+              "meaning": "傘"
+            },
+            {
+              "text": "ticket",
+              "meaning": "切符"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "動く階段が混んでいたという流れなので escalator が合う。",
+          "alternatives": [
+            {
+              "answer": "staircase",
+              "explanation": "staircase は動かない普通の階段なので、動く階段を指す場面とは少し違う。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "escalator の使い方として正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "We went up to the second floor by the escalator walking.",
+              "meaning": "不自然な言い方"
+            },
+            {
+              "text": "We rode the escalator at the second floor stairs.",
+              "meaning": "不自然な前置詞"
+            },
+            {
+              "text": "We went up the escalator in the second floor.",
+              "meaning": "前置詞が不自然"
+            },
+            {
+              "text": "We went up to the second floor on the escalator.",
+              "meaning": "エスカレーターで2階へ上がった。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "エスカレーターに乗って移動するときは on the escalator が自然。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "デパートの場面: The moving stairs were crowded, so we walked up the stairs instead. The ___ was full of shoppers.",
+        "answers": [
+          "escalator"
+        ],
+        "explanation": "動く階段が混んでいたという流れなので escalator が合う。",
+        "alternatives": [
+          {
+            "answer": "staircase",
+            "explanation": "staircase は動かない普通の階段なので、動く階段を指す場面とは少し違う。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "escalatorを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "We took the escalator to the third floor to find shoes.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-escalator-usage",
+          "type": "usage",
+          "prompt": "escalator の使い方として正しい文を選んでください。",
+          "choices": [
+            "We went up to the second floor by the escalator walking.",
+            "We rode the escalator at the second floor stairs.",
+            "We went up the escalator in the second floor.",
+            "We went up to the second floor on the escalator."
+          ],
+          "correctIndex": 3,
+          "explanation": "エスカレーターに乗って移動するときは on the escalator が自然。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "transport",
+          "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
     }
   ],
-  "audio": []
+  "audio": [
+    {
+      "wordId": "vocab-router",
+      "cacheKey": "f13dcd2c875e7dd42e47ee6796580e1ed5a8d9d1876b9036a8d2fd8bf08946d6",
+      "fileId": "1a7DfRjuVPEcPOWNct-1m2yzSqqfx7ckz",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.784
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.89,
+          "endSeconds": 4.2204999999999995
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.269,
+          "endSeconds": 7.146
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.194,
+          "endSeconds": 10.728
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-sophisticated",
+      "cacheKey": "6662e46d8228edbf0f6a6621c4adf085f3f8160d084c3a5db398c4ebda83ce31",
+      "fileId": "1wpDiXzVA2yVAN5uQR0b4wCfXZVns7269",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.074
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.1219999999999999,
+          "endSeconds": 5.625
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.673,
+          "endSeconds": 8.8525
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.901000000000002,
+          "endSeconds": 13.05
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-approximate",
+      "cacheKey": "624373ebd74762e872821b650aafeca45ff45fce691df4b166012bf4829d7f3e",
+      "fileId": "1Cxlskk1DuIEYYBaEJgH0ONC59elF8qoG",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.865
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.865,
+          "endSeconds": 4.023
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.187,
+          "endSeconds": 7.854
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.088000000000001,
+          "endSeconds": 10.867
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-sensation",
+      "cacheKey": "8d0450c9bca5698be606ca392c6f753af782e1b2538aad2bdec47989955abe13",
+      "fileId": "1LOBBA3pr5YOk0UqrE3xQwigI7r7LBN_J",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.3059999999999998
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.471,
+          "endSeconds": 4.348
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.454,
+          "endSeconds": 7.8774999999999995
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.925999999999999,
+          "endSeconds": 11.424
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-mechanical",
+      "cacheKey": "4babb0f7098484b869403cb1e266f30c375017ea429cd7d865ac3e1d0bad479b",
+      "fileId": "1YmoREVX4WalChi4ZTAZ4lBug46KGokU7",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.917
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9249999999999999,
+          "endSeconds": 3.5645
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.572,
+          "endSeconds": 6.6
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.707,
+          "endSeconds": 10.635
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-stakeholder",
+      "cacheKey": "afeb2032d81f00804e163f526c0a6c468eab5ee1f90d3a1c68f7011cfff3f3d6",
+      "fileId": "1tzWca7iCiOexoGKzbzIXKSAY8D3uSJvq",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.0390000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0390000000000001,
+          "endSeconds": 4.0634999999999994
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.071,
+          "endSeconds": 7.7035
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.7035,
+          "endSeconds": 10.96
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-rubber",
+      "cacheKey": "8e64ab172cc9b306452f12757e39ae5001dce3fa4c8df5c6c587399456214c02",
+      "fileId": "1GPBmY88iZIChKsl5om0mUycZCILC7f8v",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.726
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.064,
+          "endSeconds": 4.278
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.512,
+          "endSeconds": 7.088
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.252,
+          "endSeconds": 10.403
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-tricky",
+      "cacheKey": "922f0921e6cf714ccd36ce6ab76b741e460ab953b46cd170d33159f96cfd7ee3",
+      "fileId": "1dprBkv29oR74FykAPS5GFrK03niCe0Ic",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7605
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.7605,
+          "endSeconds": 3.814
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.839,
+          "endSeconds": 6.4205000000000005
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.428,
+          "endSeconds": 9.985
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    }
+  ]
 }

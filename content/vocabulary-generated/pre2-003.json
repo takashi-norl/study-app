@@ -1571,6 +1571,192 @@
       }
     },
     {
+      "id": "vocab-deforestation",
+      "word": "deforestation",
+      "level": "準2級",
+      "ipa": "diːˌfɔːrɪˈsteɪʃən",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "the cutting down or clearing of large areas of forest",
+      "meaning": "森林破壊",
+      "usageTip": "農地開発や伐採による森林の減少を表す不可算名詞。deforestation of the Amazon のように of で対象を示す。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "環境",
+          "text": "Deforestation destroys the homes of many animals and plants.",
+          "translation": "森林破壊は多くの動植物の生息地を奪う。"
+        },
+        {
+          "id": "example-2",
+          "context": "地理",
+          "text": "Farming expansion is a major cause of deforestation in tropical regions.",
+          "translation": "農地の拡大は熱帯地域の森林破壊の主な原因である。"
+        },
+        {
+          "id": "example-3",
+          "context": "授業",
+          "text": "Our class discussed how to slow deforestation and protect the climate.",
+          "translation": "私たちは授業で、森林破壊を遅らせ気候を守る方法を話し合った。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "deforestation",
+          "choices": [
+            {
+              "text": "植林",
+              "meaning": "木を植えること"
+            },
+            {
+              "text": "森林浴",
+              "meaning": "森で過ごし心身を整えること"
+            },
+            {
+              "text": "森林破壊",
+              "meaning": "森林が大規模に失われること"
+            },
+            {
+              "text": "砂漠化",
+              "meaning": "土地が砂漠になること"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "deforestation は森林を伐採して減らすこと。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "森林破壊",
+          "choices": [
+            {
+              "text": "pollution",
+              "meaning": "汚染"
+            },
+            {
+              "text": "irrigation",
+              "meaning": "灌漑"
+            },
+            {
+              "text": "migration",
+              "meaning": "移動"
+            },
+            {
+              "text": "deforestation",
+              "meaning": "森林破壊"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "森林を大規模に失うことは deforestation。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "環境問題の授業：Cutting down vast areas of trees for farmland leads to serious ___.",
+          "choices": [
+            {
+              "text": "deforestation",
+              "meaning": "森林破壊"
+            },
+            {
+              "text": "celebration",
+              "meaning": "祝賀"
+            },
+            {
+              "text": "translation",
+              "meaning": "翻訳"
+            },
+            {
+              "text": "decoration",
+              "meaning": "装飾"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "大量の木を切ることの結果として deforestation が合う。",
+          "alternatives": [
+            {
+              "answer": "forest loss",
+              "explanation": "より平易な言い方で、森林が失われることを表す。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "deforestation を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "Deforestation are increasing quickly.",
+              "meaning": "森林破壊は急速に進んでいる。(動詞の一致の誤り)"
+            },
+            {
+              "text": "The deforestations is a problem.",
+              "meaning": "森林破壊は問題だ。(複数形の誤り)"
+            },
+            {
+              "text": "Deforestation of the area worries local people.",
+              "meaning": "その地域の森林破壊は地元の人々を心配させる。"
+            },
+            {
+              "text": "They deforestation the hills last year.",
+              "meaning": "彼らは昨年丘を森林破壊した。(品詞の誤り)"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "不可算名詞として単数扱いし、of で対象を示せる。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "環境問題の授業：Cutting down vast areas of trees for farmland leads to serious ___.",
+        "answers": [
+          "deforestation"
+        ],
+        "explanation": "大量の木を切ることの結果として deforestation が合う。",
+        "alternatives": [
+          {
+            "answer": "forest loss",
+            "explanation": "より平易な言い方で、森林が失われることを表す。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "deforestationを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Deforestation destroys the homes of many animals and plants.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-deforestation-usage",
+          "type": "usage",
+          "prompt": "deforestation を正しく使った文を選びなさい。",
+          "choices": [
+            "Deforestation are increasing quickly.",
+            "The deforestations is a problem.",
+            "Deforestation of the area worries local people.",
+            "They deforestation the hills last year."
+          ],
+          "correctIndex": 2,
+          "explanation": "不可算名詞として単数扱いし、of で対象を示せる。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "environment",
+          "science"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-dehydrate",
       "word": "dehydrate",
       "level": "準2級",
@@ -3381,6 +3567,208 @@
         "domains": [
           "environment",
           "science"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-exhibition",
+      "word": "exhibition",
+      "level": "準2級",
+      "ipa": "ˌɛksɪˈbɪʃən",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "a public show where art, products, or other items are displayed",
+      "meaning": "展示会、展覧会",
+      "usageTip": "an exhibition of ~ や an exhibition on ~ の形が多い。美術館では「展覧会」、見本市では「展示会」。「開く」は hold、「見に行く」は visit や go to が自然。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "美術館",
+          "text": "We visited an exhibition of modern photography at the city museum.",
+          "translation": "私たちは市立美術館で現代写真の展覧会を見に行った。"
+        },
+        {
+          "id": "example-2",
+          "context": "学校行事",
+          "text": "Students will hold an exhibition of their science projects next week.",
+          "translation": "生徒たちは来週、科学の研究作品の展示会を開く予定だ。"
+        },
+        {
+          "id": "example-3",
+          "context": "産業",
+          "text": "The company introduced its new robot at a trade exhibition.",
+          "translation": "その会社は見本市で新しいロボットを発表した。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "exhibition",
+          "choices": [
+            {
+              "text": "試験",
+              "meaning": "examination"
+            },
+            {
+              "text": "展示会、展覧会",
+              "meaning": "public display"
+            },
+            {
+              "text": "遠征",
+              "meaning": "expedition"
+            },
+            {
+              "text": "出口",
+              "meaning": "exit"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "exhibition は作品や製品を公開して見せる催しを指す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "展示会、展覧会",
+          "choices": [
+            {
+              "text": "expression",
+              "meaning": "表現"
+            },
+            {
+              "text": "explanation",
+              "meaning": "説明"
+            },
+            {
+              "text": "expansion",
+              "meaning": "拡大"
+            },
+            {
+              "text": "exhibition",
+              "meaning": "展示会、展覧会"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "作品などを展示する催しは exhibition。他は意味が異なる。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "美術館で絵を見る場面: The museum is planning a big ___ of paintings by local artists.",
+          "choices": [
+            {
+              "text": "recipe",
+              "meaning": "レシピ"
+            },
+            {
+              "text": "deadline",
+              "meaning": "締め切り"
+            },
+            {
+              "text": "exhibition",
+              "meaning": "展覧会"
+            },
+            {
+              "text": "suggestion",
+              "meaning": "提案"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "地元画家の絵を美術館で見せる催しなので exhibition が合う。",
+          "alternatives": [
+            {
+              "answer": "show",
+              "explanation": "より口語的な言い方で、展覧会にも使える。"
+            },
+            {
+              "answer": "display",
+              "explanation": "展示や陳列そのものを指し、催し全体より小さい感じがある。"
+            },
+            {
+              "answer": "exhibit",
+              "explanation": "米国では展覧会や個々の展示品にも使われる。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "exhibition の使い方として正しい文はどれ?",
+          "choices": [
+            {
+              "text": "The school exhibitioned student art last month.",
+              "meaning": "学校は先月生徒の作品を展示した。(品詞の誤り)"
+            },
+            {
+              "text": "The school held an exhibition of student art last month.",
+              "meaning": "学校は先月、生徒の作品展を開いた。"
+            },
+            {
+              "text": "The school opened a exhibition of student art last month.",
+              "meaning": "学校は先月作品展を開いた。(冠詞の誤り)"
+            },
+            {
+              "text": "The school did an exhibition of student art last month.",
+              "meaning": "学校は先月作品展をした。(動詞の選択が不自然)"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "展示会を開くは hold an exhibition が自然。exhibition は動詞ではなく、a exhibition は母音の前で an にすべき。do は通常この意味では使わない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "美術館で絵を見る場面: The museum is planning a big ___ of paintings by local artists.",
+        "answers": [
+          "exhibition"
+        ],
+        "explanation": "地元画家の絵を美術館で見せる催しなので exhibition が合う。",
+        "alternatives": [
+          {
+            "answer": "show",
+            "explanation": "より口語的な言い方で、展覧会にも使える。"
+          },
+          {
+            "answer": "display",
+            "explanation": "展示や陳列そのものを指し、催し全体より小さい感じがある。"
+          },
+          {
+            "answer": "exhibit",
+            "explanation": "米国では展覧会や個々の展示品にも使われる。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "exhibitionを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "We visited an exhibition of modern photography at the city museum.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-exhibition-usage",
+          "type": "usage",
+          "prompt": "exhibition の使い方として正しい文はどれ?",
+          "choices": [
+            "The school exhibitioned student art last month.",
+            "The school held an exhibition of student art last month.",
+            "The school opened a exhibition of student art last month.",
+            "The school did an exhibition of student art last month."
+          ],
+          "correctIndex": 1,
+          "explanation": "展示会を開くは hold an exhibition が自然。exhibition は動詞ではなく、a exhibition は母音の前で an にすべき。do は通常この意味では使わない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "arts-culture",
+          "education"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -7094,6 +7482,200 @@
       }
     },
     {
+      "id": "vocab-vocation",
+      "word": "vocation",
+      "level": "準2級",
+      "ipa": "voʊˈkeɪʃən",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "a job or way of life that someone feels strongly suited to",
+      "meaning": "職業、天職",
+      "usageTip": "単なる job より、使命感や適性を含む。find one's vocation や a sense of vocation の形でよく使う。「休暇」は vacation で別の語。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "進路",
+          "text": "After volunteering at a clinic, she found her true vocation in nursing.",
+          "translation": "診療所でのボランティアの後、彼女は看護に本当の天職を見つけた。"
+        },
+        {
+          "id": "example-2",
+          "context": "教育",
+          "text": "For many teachers, the work is more a vocation than a job.",
+          "translation": "多くの教師にとって、その仕事は単なる職というより天職だ。"
+        },
+        {
+          "id": "example-3",
+          "context": "会話",
+          "text": "He never felt a vocation for office work, so he became a carpenter.",
+          "translation": "彼は事務仕事に天職を感じず、大工になった。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "vocation",
+          "choices": [
+            {
+              "text": "休暇",
+              "meaning": "仕事を休む期間"
+            },
+            {
+              "text": "利回り",
+              "meaning": "投資の収益率"
+            },
+            {
+              "text": "耐性",
+              "meaning": "耐える力"
+            },
+            {
+              "text": "天職、職業",
+              "meaning": "適性や使命を感じる仕事"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "vocation は使命感を伴う職業、天職。休暇は vacation。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "職業、天職",
+          "choices": [
+            {
+              "text": "vocation",
+              "meaning": "職業、天職"
+            },
+            {
+              "text": "veteran",
+              "meaning": "ベテラン"
+            },
+            {
+              "text": "tolerance",
+              "meaning": "寛容"
+            },
+            {
+              "text": "yield",
+              "meaning": "収穫量"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "適した仕事・天職を表す名詞は vocation。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "進路相談で。Helping children learn felt like her true ___, not just a way to earn money.",
+          "choices": [
+            {
+              "text": "yield",
+              "meaning": "収穫量"
+            },
+            {
+              "text": "tolerance",
+              "meaning": "寛容"
+            },
+            {
+              "text": "vocation",
+              "meaning": "天職"
+            },
+            {
+              "text": "veteran",
+              "meaning": "ベテラン"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "お金のためだけでなく使命感のある仕事なので vocation が合う。",
+          "alternatives": [
+            {
+              "answer": "calling",
+              "explanation": "内なる使命感をより強く表す語。"
+            },
+            {
+              "answer": "career",
+              "explanation": "職歴や長期的な仕事全般を指し、使命感は弱い。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "vocation の使い方として正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "She found her vocation in social work.",
+              "meaning": "彼女は福祉の仕事に天職を見つけた。"
+            },
+            {
+              "text": "He is vocation as a doctor.",
+              "meaning": "彼は医者として天職だ。(品詞の誤り)"
+            },
+            {
+              "text": "She has a vocation at social work.",
+              "meaning": "彼女は福祉の仕事に天職がある。(前置詞の誤り)"
+            },
+            {
+              "text": "He felt a vocation of being a doctor.",
+              "meaning": "彼は医者になる天職を感じた。(前置詞の誤り)"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "vocation は名詞で find の目的語になり、場所や分野は in で示す。他は品詞や前置詞の誤りがある。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "進路相談で。Helping children learn felt like her true ___, not just a way to earn money.",
+        "answers": [
+          "vocation"
+        ],
+        "explanation": "お金のためだけでなく使命感のある仕事なので vocation が合う。",
+        "alternatives": [
+          {
+            "answer": "calling",
+            "explanation": "内なる使命感をより強く表す語。"
+          },
+          {
+            "answer": "career",
+            "explanation": "職歴や長期的な仕事全般を指し、使命感は弱い。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "vocationを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "After volunteering at a clinic, she found her true vocation in nursing.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-vocation-usage",
+          "type": "usage",
+          "prompt": "vocation の使い方として正しい文を選んでください。",
+          "choices": [
+            "She found her vocation in social work.",
+            "He is vocation as a doctor.",
+            "She has a vocation at social work.",
+            "He felt a vocation of being a doctor."
+          ],
+          "correctIndex": 0,
+          "explanation": "vocation は名詞で find の目的語になり、場所や分野は in で示す。他は品詞や前置詞の誤りがある。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "work",
+          "education"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-yield",
       "word": "yield",
       "level": "準2級",
@@ -9666,6 +10248,200 @@
       }
     },
     {
+      "id": "vocab-immunity",
+      "word": "immunity",
+      "level": "準2級",
+      "ipa": "ɪˈmjunəti",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "the body's ability to resist a particular disease or infection",
+      "meaning": "免疫、免疫力",
+      "usageTip": "immunity to + 病気・ウイルス の形が基本。「免疫がある」は have immunity to ~。immunity from は主に法的な免責などに使うと覚えておくと安全。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "医療",
+          "text": "The vaccine gives children immunity to several serious diseases.",
+          "translation": "そのワクチンは子どもに複数の重い病気への免疫を与える。"
+        },
+        {
+          "id": "example-2",
+          "context": "健康",
+          "text": "Getting enough sleep may help support your immunity during winter.",
+          "translation": "十分な睡眠は、冬の間に免疫力を保つのに役立つかもしれない。"
+        },
+        {
+          "id": "example-3",
+          "context": "日常の会話",
+          "text": "Some people develop immunity after they recover from an infection.",
+          "translation": "感染から回復した後に免疫を獲得する人もいる。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "immunity",
+          "choices": [
+            {
+              "text": "予算",
+              "meaning": "お金の使い道の計画"
+            },
+            {
+              "text": "免疫",
+              "meaning": "病気に抵抗する体の力"
+            },
+            {
+              "text": "速度",
+              "meaning": "動く速さ"
+            },
+            {
+              "text": "約束",
+              "meaning": "人との取り決め"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "immunity は病気や感染に抵抗する体の力、つまり免疫を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "免疫、免疫力",
+          "choices": [
+            {
+              "text": "hydrate",
+              "meaning": "水分を補給する"
+            },
+            {
+              "text": "automate",
+              "meaning": "自動化する"
+            },
+            {
+              "text": "genome",
+              "meaning": "ゲノム"
+            },
+            {
+              "text": "immunity",
+              "meaning": "免疫"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "病気に抵抗する体の力を表す名詞は immunity。他は別の意味の語。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面：はしかにかかった後、同じ病気に再びかかりにくくなった。 After the illness, she had ___ to measles.",
+          "choices": [
+            {
+              "text": "luggage",
+              "meaning": "荷物"
+            },
+            {
+              "text": "fashion",
+              "meaning": "流行"
+            },
+            {
+              "text": "immunity",
+              "meaning": "免疫"
+            },
+            {
+              "text": "salary",
+              "meaning": "給料"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "病気にかかりにくくなる体の力なので immunity が合う。immunity to ~ で「~への免疫」。",
+          "alternatives": [
+            {
+              "answer": "resistance",
+              "explanation": "抵抗力という意味で近いが、免疫という専門的な響きは弱い。"
+            },
+            {
+              "answer": "protection",
+              "explanation": "守られている状態全般を表し、体の仕組みという含みは弱い。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "病気への免疫という意味で immunity を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "The vaccine gave him immunity to the virus.",
+              "meaning": "そのワクチンは彼にウイルスへの免疫を与えた。"
+            },
+            {
+              "text": "The vaccine gave him immunity of the virus.",
+              "meaning": "そのワクチンは彼にウイルスの免疫を与えた。"
+            },
+            {
+              "text": "The vaccine gave him immunity at the virus.",
+              "meaning": "そのワクチンは彼にウイルスでの免疫を与えた。"
+            },
+            {
+              "text": "The vaccine gave him immunity for the virus.",
+              "meaning": "そのワクチンは彼にウイルスのための免疫を与えた。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "病気への免疫は immunity to ~ で表す。of、at、for は学習者がよく間違える前置詞で、この意味では使わない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面：はしかにかかった後、同じ病気に再びかかりにくくなった。 After the illness, she had ___ to measles.",
+        "answers": [
+          "immunity"
+        ],
+        "explanation": "病気にかかりにくくなる体の力なので immunity が合う。immunity to ~ で「~への免疫」。",
+        "alternatives": [
+          {
+            "answer": "resistance",
+            "explanation": "抵抗力という意味で近いが、免疫という専門的な響きは弱い。"
+          },
+          {
+            "answer": "protection",
+            "explanation": "守られている状態全般を表し、体の仕組みという含みは弱い。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "immunityを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The vaccine gives children immunity to several serious diseases.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-immunity-usage",
+          "type": "usage",
+          "prompt": "病気への免疫という意味で immunity を正しく使った文を選びなさい。",
+          "choices": [
+            "The vaccine gave him immunity to the virus.",
+            "The vaccine gave him immunity of the virus.",
+            "The vaccine gave him immunity at the virus.",
+            "The vaccine gave him immunity for the virus."
+          ],
+          "correctIndex": 0,
+          "explanation": "病気への免疫は immunity to ~ で表す。of、at、for は学習者がよく間違える前置詞で、この意味では使わない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "medical",
+          "health"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-therapy",
       "word": "therapy",
       "level": "準2級",
@@ -10630,6 +11406,200 @@
         "domains": [
           "education",
           "work"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-dialogue",
+      "word": "dialogue",
+      "level": "準2級",
+      "ipa": "ˈdaɪəˌlɔɡ",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "a conversation between people, or a open exchange of views to understand each other or solve a problem",
+      "meaning": "対話、会話",
+      "usageTip": "物語や映画のせりふにも、意見交換としての話し合いにも使う。dialogue between A and B や dialogue with ~ の形が多い。「~について対話する」は dialogue on/about ~ も使える。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "コミュニケーション",
+          "text": "Open dialogue between teachers and parents can prevent many misunderstandings.",
+          "translation": "教師と保護者の率直な対話は、多くの誤解を防げる。"
+        },
+        {
+          "id": "example-2",
+          "context": "芸術・文化",
+          "text": "The film has very little dialogue, but the music tells the story.",
+          "translation": "その映画はせりふがほとんどないが、音楽が物語を語る。"
+        },
+        {
+          "id": "example-3",
+          "context": "学校",
+          "text": "Students practiced a short dialogue in English class today.",
+          "translation": "生徒たちは今日、英語の授業で短い会話を練習した。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "dialogue",
+          "choices": [
+            {
+              "text": "独演",
+              "meaning": "一人で演じること"
+            },
+            {
+              "text": "広告",
+              "meaning": "商品を宣伝するもの"
+            },
+            {
+              "text": "地図",
+              "meaning": "場所を示す図"
+            },
+            {
+              "text": "対話",
+              "meaning": "互いに話し合うこと"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "dialogue は人同士の会話や話し合いを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "対話、会話",
+          "choices": [
+            {
+              "text": "dialogue",
+              "meaning": "対話"
+            },
+            {
+              "text": "deposit",
+              "meaning": "預金"
+            },
+            {
+              "text": "distance",
+              "meaning": "距離"
+            },
+            {
+              "text": "disaster",
+              "meaning": "災害"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "人同士の話し合いを表す語は dialogue。他は意味が異なる。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面：二つの国が対立を話し合いで解決しようとしている。 Leaders hope that ___ between the two countries will reduce tension.",
+          "choices": [
+            {
+              "text": "weather",
+              "meaning": "天気"
+            },
+            {
+              "text": "luggage",
+              "meaning": "荷物"
+            },
+            {
+              "text": "dialogue",
+              "meaning": "対話"
+            },
+            {
+              "text": "harvest",
+              "meaning": "収穫"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "緊張を和らげるための話し合いなので dialogue が合う。",
+          "alternatives": [
+            {
+              "answer": "communication",
+              "explanation": "意思疎通全般を指し、話し合いの響きはやや弱い。"
+            },
+            {
+              "answer": "discussion",
+              "explanation": "意見を交わす点は同じだが、相互理解の含みは dialogue より弱い。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "「近所の人同士の話し合い」という意味で dialogue を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "We need a dialogue to the neighbors about noise.",
+              "meaning": "私たちは近所の人への対話が必要だ。"
+            },
+            {
+              "text": "We need a dialogue between the neighbors about noise.",
+              "meaning": "私たちは騒音について近所の人同士の対話が必要だ。"
+            },
+            {
+              "text": "We need a dialogue among the neighbors with noise.",
+              "meaning": "私たちは騒音を伴う近所の人たちの対話が必要だ。"
+            },
+            {
+              "text": "We need dialogue of the neighbors to noise.",
+              "meaning": "私たちは騒音への近所の人の対話が必要だ。"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "対話する当事者同士は between A and B などで表し、話題は about で示す。他は前置詞の使い方が不自然で、意図した意味が正しく伝わらない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面：二つの国が対立を話し合いで解決しようとしている。 Leaders hope that ___ between the two countries will reduce tension.",
+        "answers": [
+          "dialogue"
+        ],
+        "explanation": "緊張を和らげるための話し合いなので dialogue が合う。",
+        "alternatives": [
+          {
+            "answer": "communication",
+            "explanation": "意思疎通全般を指し、話し合いの響きはやや弱い。"
+          },
+          {
+            "answer": "discussion",
+            "explanation": "意見を交わす点は同じだが、相互理解の含みは dialogue より弱い。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "dialogueを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Open dialogue between teachers and parents can prevent many misunderstandings.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-dialogue-usage",
+          "type": "usage",
+          "prompt": "「近所の人同士の話し合い」という意味で dialogue を正しく使った文を選びなさい。",
+          "choices": [
+            "We need a dialogue to the neighbors about noise.",
+            "We need a dialogue between the neighbors about noise.",
+            "We need a dialogue among the neighbors with noise.",
+            "We need dialogue of the neighbors to noise."
+          ],
+          "correctIndex": 1,
+          "explanation": "対話する当事者同士は between A and B などで表し、話題は about で示す。他は前置詞の使い方が不自然で、意図した意味が正しく伝わらない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "communication",
+          "education"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -12005,6 +12975,200 @@
         "domains": [
           "business",
           "economics"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-shipment",
+      "word": "shipment",
+      "level": "準2級",
+      "ipa": "ˈʃɪpmənt",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "a load of goods sent to a place, or the act of sending them",
+      "meaning": "出荷、積み荷",
+      "usageTip": "数えられる名詞で、a shipment of ~ の形でよく使う。船だけでなくトラックや飛行機での輸送にも使える。到着は arrive at/in を使う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "物流",
+          "text": "The shipment of fresh fruit arrived at the port this morning.",
+          "translation": "新鮮な果物の積み荷が今朝、港に到着した。"
+        },
+        {
+          "id": "example-2",
+          "context": "遅延連絡",
+          "text": "Our next shipment will be delayed because of heavy snow.",
+          "translation": "大雪のため、次回の出荷は遅れる予定です。"
+        },
+        {
+          "id": "example-3",
+          "context": "検品",
+          "text": "She checked every box in the shipment before signing the form.",
+          "translation": "彼女は書類に署名する前に、積み荷の箱をすべて確認した。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "shipment",
+          "choices": [
+            {
+              "text": "旅行の計画",
+              "meaning": "旅の予定"
+            },
+            {
+              "text": "出荷、積み荷",
+              "meaning": "送られる商品や荷物"
+            },
+            {
+              "text": "船の修理",
+              "meaning": "船を直すこと"
+            },
+            {
+              "text": "港の職員",
+              "meaning": "港で働く人"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "shipment は送られる荷物や出荷そのものを指す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "出荷、積み荷",
+          "choices": [
+            {
+              "text": "payment",
+              "meaning": "支払い"
+            },
+            {
+              "text": "treatment",
+              "meaning": "治療"
+            },
+            {
+              "text": "statement",
+              "meaning": "声明"
+            },
+            {
+              "text": "shipment",
+              "meaning": "出荷"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "荷物を送ることやその荷物は shipment。他は語尾が似ているが意味が違う。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面：倉庫から店への配送。 The ___ of laptops left the warehouse on Monday and reached the store on Wednesday.",
+          "choices": [
+            {
+              "text": "weather",
+              "meaning": "天気"
+            },
+            {
+              "text": "shipment",
+              "meaning": "出荷、積み荷"
+            },
+            {
+              "text": "lesson",
+              "meaning": "授業"
+            },
+            {
+              "text": "opinion",
+              "meaning": "意見"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "倉庫を出て店に届くものなので shipment が合う。",
+          "alternatives": [
+            {
+              "answer": "delivery",
+              "explanation": "届けることや届いた荷物に焦点がある。"
+            },
+            {
+              "answer": "batch",
+              "explanation": "まとまった一回分という点を強調する。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "shipment を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "The shipment arrived to the office yesterday.",
+              "meaning": "積み荷は昨日事務所に到着した。"
+            },
+            {
+              "text": "We shipment the boxes to Osaka.",
+              "meaning": "私たちは箱を大阪へ送る。"
+            },
+            {
+              "text": "I am shipment for a long trip.",
+              "meaning": "私は長旅のために出荷している。"
+            },
+            {
+              "text": "The shipment of books will arrive on Friday.",
+              "meaning": "本の積み荷は金曜日に到着する予定だ。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "shipment は名詞で、a shipment of ~ の形が自然。arrive to は誤りで at を使い、動詞としては ship を使う。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面：倉庫から店への配送。 The ___ of laptops left the warehouse on Monday and reached the store on Wednesday.",
+        "answers": [
+          "shipment"
+        ],
+        "explanation": "倉庫を出て店に届くものなので shipment が合う。",
+        "alternatives": [
+          {
+            "answer": "delivery",
+            "explanation": "届けることや届いた荷物に焦点がある。"
+          },
+          {
+            "answer": "batch",
+            "explanation": "まとまった一回分という点を強調する。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "shipmentを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The shipment of fresh fruit arrived at the port this morning.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-shipment-usage",
+          "type": "usage",
+          "prompt": "shipment を正しく使った文を選びなさい。",
+          "choices": [
+            "The shipment arrived to the office yesterday.",
+            "We shipment the boxes to Osaka.",
+            "I am shipment for a long trip.",
+            "The shipment of books will arrive on Friday."
+          ],
+          "correctIndex": 3,
+          "explanation": "shipment は名詞で、a shipment of ~ の形が自然。arrive to は誤りで at を使い、動詞としては ship を使う。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "business",
+          "transport"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -18024,5 +19188,510 @@
       }
     }
   ],
-  "audio": []
+  "audio": [
+    {
+      "wordId": "vocab-foliage",
+      "cacheKey": "193e708b441ed9d1424f1f9c3279a7b35e62ec94a3d7683b176e4d85f6afc718",
+      "fileId": "1KAViBZvBdB1DgNWsCxDzm5AhEtyhAqfJ",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9695
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0179999999999998,
+          "endSeconds": 4.8934999999999995
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.919,
+          "endSeconds": 8.04
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.088000000000001,
+          "endSeconds": 12.028
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-grievance",
+      "cacheKey": "4ad65bfa573e1989cb3064b3b58c6b134cff3675d75c44804505893b7139bf0a",
+      "fileId": "15netV0Gosqn5uZ_QK4993kPQW_pMk7IL",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9690000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.2040000000000002,
+          "endSeconds": 4.9399999999999995
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.104,
+          "endSeconds": 8.469999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.704,
+          "endSeconds": 12.028
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-illuminate",
+      "cacheKey": "7fb70cb7cba064aa3c655ec4479b313666f7b74d72b003d46d62542cebd79344",
+      "fileId": "1eEVx9GQsl92B0oIsvv_BMYW5XJ0xxo1m",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.1145
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.1219999999999999,
+          "endSeconds": 4.2085
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.257,
+          "endSeconds": 7.4185
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.426,
+          "endSeconds": 10.82
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-pollutant",
+      "cacheKey": "5b133cace823cd5d8a5fa874e904da821d1b0368907631f1a4a64e114e9fc06e",
+      "fileId": "1rIkChd75EteEe03ay0HsZLaw4WQ3LCiy",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.004
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.169,
+          "endSeconds": 5.172
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.406,
+          "endSeconds": 9.433
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 9.772,
+          "endSeconds": 13.746
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-biodiversity",
+      "cacheKey": "d45d6cb19cf0ad9dc20ea35d8f78bed03a559df96f246dcfa670f55b027ad0a9",
+      "fileId": "1qdYjh1riEt1ozsRCxhtoXFxvAPCymtC9",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.2365
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.2850000000000001,
+          "endSeconds": 5.776
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.824,
+          "endSeconds": 9.9905
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 10.039000000000001,
+          "endSeconds": 13.978
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-conservation",
+      "cacheKey": "c7a23869b701daadd1d0596ec3feae744b70a667020e2670c7f5febd24996d97",
+      "fileId": "1oFsVdJbD0VXSX91onQ0jqUoFIQh6Q-jw",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.167
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.4009999999999998,
+          "endSeconds": 5.090999999999999
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.255,
+          "endSeconds": 8.922
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 9.087000000000002,
+          "endSeconds": 13.189
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-cybersecurity",
+      "cacheKey": "3c021b08f3f62c5d8dea00362e9989626d9f6909b79edc11ba9659eeeb3fd5b3",
+      "fileId": "1xMmo0uVmweHjoTuZuXeFWaF_A8ygll4I",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.5035
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.529,
+          "endSeconds": 5.567
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.615,
+          "endSeconds": 10.757
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 10.863000000000001,
+          "endSeconds": 15.79
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-encrypt",
+      "cacheKey": "63a104bf4158a832299bad3037d31f11bb30a87f91e55fce85224de63f62845c",
+      "fileId": "1MRbPdWQz1eJEzYMsK9SIbOHam55-CZu-",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7605
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.7605,
+          "endSeconds": 3.918
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.083,
+          "endSeconds": 7.877
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.042000000000002,
+          "endSeconds": 11.006
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-aquatic",
+      "cacheKey": "410cba5fc5273c2c14fc37304d908f5d74364026f1a740bcde32fc7b9bd71a2f",
+      "fileId": "1E5CqL5wBxP3SC0YvCMefHBdejkaLXiUP",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9575
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0059999999999998,
+          "endSeconds": 4.441000000000001
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.466,
+          "endSeconds": 7.923500000000001
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.972,
+          "endSeconds": 12.399
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-thoughtful",
+      "cacheKey": "e740eabb53eecfe4086d0a6df4e2b9b352ffe639a0cec08d25cd0b6b84caccb8",
+      "fileId": "1lC34qPPaOOMKZXegE2tNbppZYuxDvuzL",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.923
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.157,
+          "endSeconds": 4.069
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.234,
+          "endSeconds": 7.819
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.053,
+          "endSeconds": 12.121
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-relation",
+      "cacheKey": "3803cf2504ad9c6f250366d12ec82f9115bffbd7a1024a25d304fead6084a76b",
+      "fileId": "1An9cuRnmqYpwDID_AgLW_WH23bq9ekNe",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.1785
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.2269999999999999,
+          "endSeconds": 4.5685
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.617,
+          "endSeconds": 7.958500000000001
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.007000000000001,
+          "endSeconds": 11.564
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-compromise",
+      "cacheKey": "bd57d12add4b83789351279dff2a2df32e5ce40d911f34d56cb60c5cd0ed8a1e",
+      "fileId": "1S97pN9ENQH91rAJfn_NI9eUp3Y5npobr",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9229999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9229999999999999,
+          "endSeconds": 4.3709999999999996
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.536,
+          "endSeconds": 7.819
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.053,
+          "endSeconds": 10.96
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-remarkable",
+      "cacheKey": "572ff0a6ce4745712df09c1d14eec1ccaa9d1cd1f2469facea1c2423192938d8",
+      "fileId": "1iD-BKOWvgyKDtVt1etO3tcNd-KrWi_8i",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.0045
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.053,
+          "endSeconds": 4.4175
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.443,
+          "endSeconds": 7.3725000000000005
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.38,
+          "endSeconds": 10.82
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-accountability",
+      "cacheKey": "0e427ecc38a36d6f47255c19e950c4f4d76b7f7452d87e7a1de4de51dd1ba42e",
+      "fileId": "1M0h9W9-BFoR1jm7CpJ8-ILDw3EKbewkJ",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.1785
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.1785,
+          "endSeconds": 6.2059999999999995
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 6.4399999999999995,
+          "endSeconds": 10.674999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 10.840000000000002,
+          "endSeconds": 15.279
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-cafeteria",
+      "cacheKey": "2b457bbf853446f6512711772f1176d27d84a3c9a63cd1f6425f639294f65fc7",
+      "fileId": "1B6WjoQHt-Vs-gznXYigyYbhiZom6SLLF",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.254
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.262,
+          "endSeconds": 5.3695
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.418,
+          "endSeconds": 8.9225
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.971,
+          "endSeconds": 12.725
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-customs",
+      "cacheKey": "7d7000f63d3ddfc8d7a647fd8851552e67abd3bb8bd8adf70b73f4e6f08b61b5",
+      "fileId": "1xi2GyJRnOFkIM-1UkjKkj_2BEBEHChxM",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.958
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.1219999999999999,
+          "endSeconds": 4.011
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.35,
+          "endSeconds": 7.39
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.4959999999999996,
+          "endSeconds": 11.424
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-boarding",
+      "cacheKey": "c840a10076ee05db7ac7fd22b48e27bff7f1e48ae297c3cc622ed0b085bbfa5e",
+      "fileId": "1FIachseHuhnHG3kTl-TaRuhoZ4cUV26y",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8535
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.902,
+          "endSeconds": 3.7560000000000002
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.7560000000000002,
+          "endSeconds": 5.828
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.828,
+          "endSeconds": 8.916
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-terminal",
+      "cacheKey": "cb07ffe4fa39e64798cfcf75aa750c9ce7bb6b9dbacac83d71ff0d2dfe40a61b",
+      "fileId": "1_gyht3RpXFir3RyOQ1D_wfwL7BU22p5L",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7895000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.797,
+          "endSeconds": 4.499
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.733,
+          "endSeconds": 7.622
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.786,
+          "endSeconds": 11.192
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    }
+  ]
 }

@@ -1333,6 +1333,208 @@
       }
     },
     {
+      "id": "vocab-less",
+      "word": "less",
+      "level": "3級",
+      "ipa": "les",
+      "ipaLabel": "英音",
+      "partOfSpeech": "副詞",
+      "definition": "To a smaller degree or extent than something else.",
+      "meaning": "より少なく",
+      "usageTip": "副詞の less は動詞の後ろや、形容詞・副詞の前で「程度が小さい」ことを表します。less expensive や talk less のように使い、比べる相手は than で示します。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "健康",
+          "text": "I exercise more and snack less than I used to.",
+          "translation": "私は以前より運動を増やし、間食を減らしている。"
+        },
+        {
+          "id": "example-2",
+          "context": "経済",
+          "text": "People tend to spend less when prices rise quickly.",
+          "translation": "物価が急に上がると、人々はお金を使わなくなる傾向がある。"
+        },
+        {
+          "id": "example-3",
+          "context": "日常生活",
+          "text": "This road is less crowded in the early morning.",
+          "translation": "この道は早朝にはあまり混んでいない。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "less",
+          "choices": [
+            {
+              "text": "もっと速く",
+              "meaning": "速度が上がること"
+            },
+            {
+              "text": "ちょうど同じくらい",
+              "meaning": "差がないこと"
+            },
+            {
+              "text": "ほとんど毎日",
+              "meaning": "頻度が高いこと"
+            },
+            {
+              "text": "より少なく",
+              "meaning": "程度が小さいこと"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "副詞の less は、ある基準より程度が小さいことを表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "より少なく(程度が小さく)",
+          "choices": [
+            {
+              "text": "more",
+              "meaning": "より多く"
+            },
+            {
+              "text": "less",
+              "meaning": "より少なく"
+            },
+            {
+              "text": "very",
+              "meaning": "とても"
+            },
+            {
+              "text": "also",
+              "meaning": "～もまた"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "less は more の反対で、程度が小さいことを表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "値段が上がったので外食の回数を減らしている場面: Because prices went up, we eat out much ___ often than before.",
+          "choices": [
+            {
+              "text": "less",
+              "meaning": "より少なく"
+            },
+            {
+              "text": "most",
+              "meaning": "最も"
+            },
+            {
+              "text": "enough",
+              "meaning": "十分に"
+            },
+            {
+              "text": "too",
+              "meaning": "～すぎる"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "often の頻度を下げ、than before と比べる文なので less が合います。most や enough は than before と自然につながりません。",
+          "alternatives": [
+            {
+              "answer": "far less",
+              "explanation": "差が大きいことを強調します。"
+            },
+            {
+              "answer": "a lot less",
+              "explanation": "会話的で、大きく減ったことを表します。"
+            },
+            {
+              "answer": "a little less",
+              "explanation": "少しだけ減ったことを表します。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "副詞の less を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "The new phone is less expensive that the old one.",
+              "meaning": "新しい電話は古いものほど高くない。"
+            },
+            {
+              "text": "The new phone is less expensive than the old one.",
+              "meaning": "新しい電話は古いものほど高くない。"
+            },
+            {
+              "text": "The new phone is less expensively than the old one.",
+              "meaning": "新しい電話は古いものほど高くない。"
+            },
+            {
+              "text": "The new phone is less expensive to the old one.",
+              "meaning": "新しい電話は古いものほど高くない。"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "less + 形容詞 + than の形が正しい比較です。他は that や to を使う、または be 動詞の後に副詞を使う誤りです。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "値段が上がったので外食の回数を減らしている場面: Because prices went up, we eat out much ___ often than before.",
+        "answers": [
+          "less"
+        ],
+        "explanation": "often の頻度を下げ、than before と比べる文なので less が合います。most や enough は than before と自然につながりません。",
+        "alternatives": [
+          {
+            "answer": "far less",
+            "explanation": "差が大きいことを強調します。"
+          },
+          {
+            "answer": "a lot less",
+            "explanation": "会話的で、大きく減ったことを表します。"
+          },
+          {
+            "answer": "a little less",
+            "explanation": "少しだけ減ったことを表します。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "lessを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I exercise more and snack less than I used to.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-less-usage",
+          "type": "usage",
+          "prompt": "副詞の less を正しく使った文を選んでください。",
+          "choices": [
+            "The new phone is less expensive that the old one.",
+            "The new phone is less expensive than the old one.",
+            "The new phone is less expensively than the old one.",
+            "The new phone is less expensive to the old one."
+          ],
+          "correctIndex": 1,
+          "explanation": "less + 形容詞 + than の形が正しい比較です。他は that や to を使う、または be 動詞の後に副詞を使う誤りです。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "economics",
+          "daily-life"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-own",
       "word": "own",
       "level": "3級",
@@ -19164,6 +19366,34 @@
   ],
   "audio": [
     {
+      "wordId": "vocab-onto",
+      "cacheKey": "5ada2d619c51bab25b871f07c0ba611374ef309b9154b4810579ea24414d0e40",
+      "fileId": "1a5_5WEv0v04Dpb0kIhSLmDof29iSCDA2",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.865
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.029,
+          "endSeconds": 3.7910000000000004
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.8970000000000002,
+          "endSeconds": 6.832999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.939,
+          "endSeconds": 9.752
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
       "wordId": "vocab-beyond",
       "cacheKey": "54360a29eef00bd262fded431d7d095e7a09823b1bbc9ba59907d91dd1af58e2",
       "fileId": "10m_Kzk5KwQptSkNrnquwxt4lwuiFknhR",
@@ -19187,6 +19417,62 @@
           "id": "example-3",
           "startSeconds": 7.694,
           "endSeconds": 11.053
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-along",
+      "cacheKey": "8a250bd77549ddb768b08083db8cf76e84a47e0a74b7c0f924b7b366ce34cf9d",
+      "fileId": "1pQvSkVcuSmWiRPBqLKNVCfzZQ3Kin4q8",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.028
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.134,
+          "endSeconds": 3.976
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.083,
+          "endSeconds": 6.936999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.962,
+          "endSeconds": 9.474
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-either",
+      "cacheKey": "0fc98945b86005e5227601bea9b61679b3ea4e979d7e278e689af62a5a44e426",
+      "fileId": "1fCW7qS7vygyQBXpvWCgebhP5lFD_Q-WP",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.679
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.704,
+          "endSeconds": 3.9650000000000003
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.524,
+          "endSeconds": 6.8555
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.904,
+          "endSeconds": 9.381
         }
       ],
       "voiceLabel": "George（男性）"
@@ -19271,6 +19557,34 @@
           "id": "example-3",
           "startSeconds": 7.125,
           "endSeconds": 9.474
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-own",
+      "cacheKey": "b52092254425555f37d90c0b5adb64dca3f3df4785f2b69d5befc049991643f9",
+      "fileId": "1Q3C7ak4KEsYsnqSznaidR0CpcbnuwHWQ",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.6095
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.658,
+          "endSeconds": 3.6864999999999997
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.735,
+          "endSeconds": 7.082
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.09,
+          "endSeconds": 9.938
         }
       ],
       "voiceLabel": "Sarah（女性）"
@@ -19752,6 +20066,34 @@
       "voiceLabel": "George（男性）"
     },
     {
+      "wordId": "vocab-bowl",
+      "cacheKey": "46978169727c4b4b5702a02978ba3c19cdc5d0e7617981d7c6148808c19e255b",
+      "fileId": "1QP9qHi3ScJfXxQdTvhhqgDj6UXCua2A8",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8069999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9129999999999999,
+          "endSeconds": 3.535
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.56,
+          "endSeconds": 6.0665
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.115,
+          "endSeconds": 8.406
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
       "wordId": "vocab-fork",
       "cacheKey": "d0d1017c7bafd72ae5430f21df118c7a094671342a9e3c16e1efc28a60e8808a",
       "fileId": "1iiNqIjt7HMTHFIjTejEp25MAMsL4SKoL",
@@ -20114,6 +20456,34 @@
         }
       ],
       "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-pillow",
+      "cacheKey": "ea5915b699103aa9693f89c0b1850e80c0afd6fd96c287c897f5316efbc51493",
+      "fileId": "1gfnn96MU7-zQNcBad9JqiSczf94FilO5",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7895000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.797,
+          "endSeconds": 3.4080000000000004
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.514,
+          "endSeconds": 7.146
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.194,
+          "endSeconds": 10.356
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
     },
     {
       "wordId": "vocab-mattress",
@@ -21040,6 +21410,34 @@
       "voiceLabel": "George（男性）"
     },
     {
+      "wordId": "vocab-popular",
+      "cacheKey": "f4acb8afe2dbd64967b605729c2984ab1112a2a7530adedd75ff48770e5a0b55",
+      "fileId": "1Ver_kLMPzS3nsubw-5KdvgIr02aoLm1q",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9984999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0059999999999998,
+          "endSeconds": 4.418
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.524,
+          "endSeconds": 7.68
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.728,
+          "endSeconds": 10.913
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
       "wordId": "vocab-prepare",
       "cacheKey": "18849f5245d8d392bcd7fafb904cf8e0a118cfd366fe33504a9df8946b1aa956",
       "fileId": "1O2LkY_hJAS9vK5VKmI8qplMR_xf2HqAN",
@@ -21124,6 +21522,62 @@
       "voiceLabel": "George（男性）"
     },
     {
+      "wordId": "vocab-promise",
+      "cacheKey": "a9d267d3396b076ca0fad9bf974b2fcd502c015c19cbd74eef55cee154a2274e",
+      "fileId": "1KmGKhtJwNSwN8paNp_3nVuVKvZNMwOta",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.859
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.859,
+          "endSeconds": 3.721
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.827,
+          "endSeconds": 6.327500000000001
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.327500000000001,
+          "endSeconds": 9.288
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-quality",
+      "cacheKey": "e162c4d1dfae901745bbc21c338250678113de78470b693e5cc05051f9399bca",
+      "fileId": "15-TR6oCOXeDBx-A_0Fohl-usaL-Yn6xm",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.853
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.878,
+          "endSeconds": 4.313
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.478,
+          "endSeconds": 7.785
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.949000000000001,
+          "endSeconds": 10.774
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
       "wordId": "vocab-region",
       "cacheKey": "ad487edf7dfd8244653aca7e0c78315918a1436877801ca8b4f233d11ac490c0",
       "fileId": "12YJGlMsqi9o4zQoft8f4KmSWisFA1Z9b",
@@ -21175,6 +21629,62 @@
           "id": "example-3",
           "startSeconds": 6.521,
           "endSeconds": 9.659
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-remove",
+      "cacheKey": "9802c451c51cce773c2f8e298247734294a5661895971df75ca519723be08a76",
+      "fileId": "1KGDs08dWwBGlsytXfBNBJwv_kXtZZkR7",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.952
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9600000000000001,
+          "endSeconds": 3.7035
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.711,
+          "endSeconds": 7.0065
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.055,
+          "endSeconds": 10.031
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-report",
+      "cacheKey": "4dd7d7f1055024ea2fdd15c7315ec7417ee1a6336985fd6b5f9c9006300c2e60",
+      "fileId": "1DXRyLkkdc2mstKXRXle2PttPbZ5RbIoY",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8474999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.855,
+          "endSeconds": 3.6750000000000003
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.909,
+          "endSeconds": 6.792
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.8,
+          "endSeconds": 10.356
         }
       ],
       "voiceLabel": "George（男性）"

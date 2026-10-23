@@ -2227,6 +2227,982 @@
       }
     },
     {
+      "id": "vocab-shiny",
+      "word": "shiny",
+      "level": "準2級",
+      "ipa": "ˈʃaɪni",
+      "ipaLabel": "英音",
+      "partOfSpeech": "形容詞",
+      "definition": "bright and reflecting light, usually because a surface is clean, smooth or polished.",
+      "meaning": "光っている・つやのある",
+      "usageTip": "金属、靴、髪、車など表面が光を反射するものに使う。光を発するものには bright や glowing を使うことが多い。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "買い物",
+          "text": "She bought a shiny red bag at the market.",
+          "translation": "彼女は市場でつやのある赤いバッグを買った。"
+        },
+        {
+          "id": "example-2",
+          "context": "掃除",
+          "text": "After cleaning, the kitchen sink looked shiny again.",
+          "translation": "掃除の後、キッチンのシンクはまたピカピカに見えた。"
+        },
+        {
+          "id": "example-3",
+          "context": "子ども",
+          "text": "The little boy was proud of his shiny new shoes.",
+          "translation": "その男の子は新しいピカピカの靴を誇らしく思っていた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "shiny",
+          "choices": [
+            {
+              "text": "光っている・つやのある",
+              "meaning": "表面が光を反射する"
+            },
+            {
+              "text": "ざらざらした",
+              "meaning": "表面が粗い"
+            },
+            {
+              "text": "恥ずかしがりの",
+              "meaning": "人見知りの"
+            },
+            {
+              "text": "浅い",
+              "meaning": "深くない"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "shiny は表面が光を反射して光って見ることを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "光っている・つやのある",
+          "choices": [
+            {
+              "text": "rough",
+              "meaning": "粗い"
+            },
+            {
+              "text": "dusty",
+              "meaning": "ほこりっぽい"
+            },
+            {
+              "text": "heavy",
+              "meaning": "重い"
+            },
+            {
+              "text": "shiny",
+              "meaning": "光っている"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "光を反射するつやのある様子は shiny。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "磨いた車を見て感想を言う場面: Wow, your car looks so ___ after the wash!",
+          "choices": [
+            {
+              "text": "noisy",
+              "meaning": "うるさい"
+            },
+            {
+              "text": "shiny",
+              "meaning": "ピカピカの"
+            },
+            {
+              "text": "empty",
+              "meaning": "空の"
+            },
+            {
+              "text": "sleepy",
+              "meaning": "眠い"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "洗車後の車の表面が光る様子なので shiny が自然。",
+          "alternatives": [
+            {
+              "answer": "clean",
+              "explanation": "汚れがない状態を表すが、光沢までは含まない。"
+            },
+            {
+              "answer": "bright",
+              "explanation": "明るい色や光の印象を表し、反射の意味は弱い。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "shiny を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "The shiny coin was lying on the table.",
+              "meaning": "光る硬貨がテーブルの上にあった。"
+            },
+            {
+              "text": "The coin shinyed on the table.",
+              "meaning": "shiny を動詞として使っている。"
+            },
+            {
+              "text": "The coin was very shine on the table.",
+              "meaning": "形容詞の形が違う。"
+            },
+            {
+              "text": "The coin made a shiny of light.",
+              "meaning": "shiny を名詞として使っている。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "shiny は形容詞なので名詞を修飾できる。他は品詞や語形が誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "磨いた車を見て感想を言う場面: Wow, your car looks so ___ after the wash!",
+        "answers": [
+          "shiny"
+        ],
+        "explanation": "洗車後の車の表面が光る様子なので shiny が自然。",
+        "alternatives": [
+          {
+            "answer": "clean",
+            "explanation": "汚れがない状態を表すが、光沢までは含まない。"
+          },
+          {
+            "answer": "bright",
+            "explanation": "明るい色や光の印象を表し、反射の意味は弱い。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "shinyを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "She bought a shiny red bag at the market.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-shiny-usage",
+          "type": "usage",
+          "prompt": "shiny を正しく使った文を選びなさい。",
+          "choices": [
+            "The shiny coin was lying on the table.",
+            "The coin shinyed on the table.",
+            "The coin was very shine on the table.",
+            "The coin made a shiny of light."
+          ],
+          "correctIndex": 0,
+          "explanation": "shiny は形容詞なので名詞を修飾できる。他は品詞や語形が誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-smooth",
+      "word": "smooth",
+      "level": "準2級",
+      "ipa": "smuːð",
+      "ipaLabel": "米音",
+      "partOfSpeech": "形容詞",
+      "definition": "having an even surface, or happening easily without problems or sudden changes.",
+      "meaning": "なめらかな・順調な",
+      "usageTip": "表面がなめらかな場合と、物事が順調に進む場合の両方に使う。a smooth trip は問題の少ない旅を表す。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "肌ざわり",
+          "text": "The baby's skin felt soft and smooth.",
+          "translation": "赤ちゃんの肌は柔らかくなめらかな感触だった。"
+        },
+        {
+          "id": "example-2",
+          "context": "旅行",
+          "text": "We had a smooth flight and arrived ten minutes early.",
+          "translation": "私たちは順調なフライトで、10分早く到着した。"
+        },
+        {
+          "id": "example-3",
+          "context": "料理",
+          "text": "Stir the sauce until it becomes smooth and creamy.",
+          "translation": "ソースがなめらかでクリーミーになるまで混ぜてください。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "smooth",
+          "choices": [
+            {
+              "text": "なめらかな・順調な",
+              "meaning": "でこぼこがない、問題なく進む"
+            },
+            {
+              "text": "危険な",
+              "meaning": "安全でない"
+            },
+            {
+              "text": "小さな",
+              "meaning": "大きくない"
+            },
+            {
+              "text": "古い",
+              "meaning": "新しくない"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "smooth は表面がなめらかなことや、物事が順調なことを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "なめらかな・順調な",
+          "choices": [
+            {
+              "text": "sharp",
+              "meaning": "鋭い"
+            },
+            {
+              "text": "smooth",
+              "meaning": "なめらかな"
+            },
+            {
+              "text": "narrow",
+              "meaning": "狭い"
+            },
+            {
+              "text": "loud",
+              "meaning": "大きな音の"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "でこぼこがなく順調な様子は smooth。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "新しい道路について話す場面: The new road is very ___, so the bus ride is comfortable.",
+          "choices": [
+            {
+              "text": "smooth",
+              "meaning": "なめらかな"
+            },
+            {
+              "text": "bitter",
+              "meaning": "苦い"
+            },
+            {
+              "text": "silent",
+              "meaning": "静かな"
+            },
+            {
+              "text": "absent",
+              "meaning": "欠席の"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "道路の表面が平らで乗り心地が良いという意味なので smooth が合う。",
+          "alternatives": [
+            {
+              "answer": "flat",
+              "explanation": "平らであることを表すが、乗り心地の良さまでは含まない。"
+            },
+            {
+              "answer": "even",
+              "explanation": "表面が均一で凹凸がない様子を表す。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "smooth を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "The meeting was smooth, and nobody argued.",
+              "meaning": "会議は順調で、誰も議論しなかった。"
+            },
+            {
+              "text": "The meeting smoothed us yesterday.",
+              "meaning": "動詞の使い方が不自然。"
+            },
+            {
+              "text": "The meeting was very smoothly.",
+              "meaning": "形容詞が必要な所に副詞を使っている。"
+            },
+            {
+              "text": "The meeting had a smooth of problems.",
+              "meaning": "名詞として使っている。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "was の後には形容詞 smooth が自然。他は品詞の使い方が誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "新しい道路について話す場面: The new road is very ___, so the bus ride is comfortable.",
+        "answers": [
+          "smooth"
+        ],
+        "explanation": "道路の表面が平らで乗り心地が良いという意味なので smooth が合う。",
+        "alternatives": [
+          {
+            "answer": "flat",
+            "explanation": "平らであることを表すが、乗り心地の良さまでは含まない。"
+          },
+          {
+            "answer": "even",
+            "explanation": "表面が均一で凹凸がない様子を表す。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "smoothを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The baby's skin felt soft and smooth.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-smooth-usage",
+          "type": "usage",
+          "prompt": "smooth を正しく使った文を選びなさい。",
+          "choices": [
+            "The meeting was smooth, and nobody argued.",
+            "The meeting smoothed us yesterday.",
+            "The meeting was very smoothly.",
+            "The meeting had a smooth of problems."
+          ],
+          "correctIndex": 0,
+          "explanation": "was の後には形容詞 smooth が自然。他は品詞の使い方が誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "daily-life",
+          "travel"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-thin",
+      "word": "thin",
+      "level": "準2級",
+      "ipa": "θɪn",
+      "ipaLabel": "英音",
+      "partOfSpeech": "形容詞",
+      "definition": "having a small distance between two sides, or having little body fat.",
+      "meaning": "薄い・細い",
+      "usageTip": "紙や本などには「薄い」、棒や脚などには「細い」の意味で使う。人に使うと痩せている印象が強いので注意する。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "文房具",
+          "text": "This notebook has thin pages, so it is easy to carry.",
+          "translation": "このノートはページが薄いので持ち運びやすい。"
+        },
+        {
+          "id": "example-2",
+          "context": "料理",
+          "text": "Cut the cucumber into thin slices for the salad.",
+          "translation": "サラダ用にきゅうりを薄切りにしてください。"
+        },
+        {
+          "id": "example-3",
+          "context": "冬の服",
+          "text": "A thin jacket was not enough for the cold morning.",
+          "translation": "薄いジャケットでは寒い朝には足りなかった。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "thin",
+          "choices": [
+            {
+              "text": "薄い・細い",
+              "meaning": "厚みや太さが小さい"
+            },
+            {
+              "text": "重い",
+              "meaning": "重量が大きい"
+            },
+            {
+              "text": "深い",
+              "meaning": "底まで距離がある"
+            },
+            {
+              "text": "甘い",
+              "meaning": "砂糖の味がする"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "thin は厚みや太さが小さいことを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "薄い・細い",
+          "choices": [
+            {
+              "text": "wide",
+              "meaning": "幅が広い"
+            },
+            {
+              "text": "thick",
+              "meaning": "厚い"
+            },
+            {
+              "text": "heavy",
+              "meaning": "重い"
+            },
+            {
+              "text": "thin",
+              "meaning": "薄い・細い"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "厚みや太さが小さいことは thin。thick は反対の意味。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "夏の寝具を選ぶ場面: I use a ___ blanket in summer because it is hot at night.",
+          "choices": [
+            {
+              "text": "thin",
+              "meaning": "薄い"
+            },
+            {
+              "text": "angry",
+              "meaning": "怒った"
+            },
+            {
+              "text": "quiet",
+              "meaning": "静かな"
+            },
+            {
+              "text": "foreign",
+              "meaning": "外国の"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "夏の夜は暑いので、薄い毛布が自然。",
+          "alternatives": [
+            {
+              "answer": "light",
+              "explanation": "軽くて暖かすぎない毛布を表す。"
+            },
+            {
+              "answer": "cool",
+              "explanation": "涼しい感触を表すが、厚みは示さない。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "thin を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "The wall is thin, so I can hear my neighbor.",
+              "meaning": "壁が薄いので隣人の声が聞こえる。"
+            },
+            {
+              "text": "The wall is thinly, so I can hear my neighbor.",
+              "meaning": "副詞を形容詞の位置に使っている。"
+            },
+            {
+              "text": "The wall thins very, so I can hear my neighbor.",
+              "meaning": "動詞の使い方が不自然。"
+            },
+            {
+              "text": "The wall has a thin of paper.",
+              "meaning": "名詞として使っている。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "be動詞の後に形容詞 thin を置くのが自然。他は品詞が合わない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "夏の寝具を選ぶ場面: I use a ___ blanket in summer because it is hot at night.",
+        "answers": [
+          "thin"
+        ],
+        "explanation": "夏の夜は暑いので、薄い毛布が自然。",
+        "alternatives": [
+          {
+            "answer": "light",
+            "explanation": "軽くて暖かすぎない毛布を表す。"
+          },
+          {
+            "answer": "cool",
+            "explanation": "涼しい感触を表すが、厚みは示さない。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "thinを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "This notebook has thin pages, so it is easy to carry.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-thin-usage",
+          "type": "usage",
+          "prompt": "thin を正しく使った文を選びなさい。",
+          "choices": [
+            "The wall is thin, so I can hear my neighbor.",
+            "The wall is thinly, so I can hear my neighbor.",
+            "The wall thins very, so I can hear my neighbor.",
+            "The wall has a thin of paper."
+          ],
+          "correctIndex": 0,
+          "explanation": "be動詞の後に形容詞 thin を置くのが自然。他は品詞が合わない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A1",
+        "domains": [
+          "daily-life",
+          "food"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-thick",
+      "word": "thick",
+      "level": "準2級",
+      "ipa": "θɪk",
+      "ipaLabel": "米音",
+      "partOfSpeech": "形容詞",
+      "definition": "having a large distance between two sides, or having a dense, heavy consistency.",
+      "meaning": "厚い・濃い",
+      "usageTip": "本や壁には「厚い」、スープや霧には「濃い」の意味で使う。太さを言う場合は棒や枝にも使える。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "冬の服",
+          "text": "He wore a thick coat because the wind was cold.",
+          "translation": "風が冷たかったので、彼は厚いコートを着ていた。"
+        },
+        {
+          "id": "example-2",
+          "context": "天気",
+          "text": "Thick fog covered the road early this morning.",
+          "translation": "今朝早く、濃い霧が道路を覆っていた。"
+        },
+        {
+          "id": "example-3",
+          "context": "料理",
+          "text": "I like thick soup with lots of vegetables.",
+          "translation": "私は野菜がたっぷり入った濃いスープが好きだ。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "thick",
+          "choices": [
+            {
+              "text": "短い",
+              "meaning": "長さが小さい"
+            },
+            {
+              "text": "厚い・濃い",
+              "meaning": "厚みがある、密度が高い"
+            },
+            {
+              "text": "安い",
+              "meaning": "値段が低い"
+            },
+            {
+              "text": "遅い",
+              "meaning": "速くない"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "thick は厚みがあることや、霧やスープが濃いことを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "厚い・濃い",
+          "choices": [
+            {
+              "text": "thick",
+              "meaning": "厚い・濃い"
+            },
+            {
+              "text": "thin",
+              "meaning": "薄い"
+            },
+            {
+              "text": "flat",
+              "meaning": "平らな"
+            },
+            {
+              "text": "dry",
+              "meaning": "乾いた"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "厚みがある、または濃い状態は thick。thin は反対。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "冬に暖かい服を選ぶ場面: It is freezing outside, so please wear a ___ sweater.",
+          "choices": [
+            {
+              "text": "thin",
+              "meaning": "薄い"
+            },
+            {
+              "text": "thick",
+              "meaning": "厚い"
+            },
+            {
+              "text": "empty",
+              "meaning": "空の"
+            },
+            {
+              "text": "fair",
+              "meaning": "公平な"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "外が凍えるほど寒いので、厚いセーターが自然。thin では寒さに合わない。",
+          "alternatives": [
+            {
+              "answer": "warm",
+              "explanation": "暖かさを直接表す。厚みは示さない。"
+            },
+            {
+              "answer": "heavy",
+              "explanation": "重みのあるセーターを表し、厚手の意味に近い。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "thick を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "The book is too thick to finish in one night.",
+              "meaning": "その本は厚すぎて一晩では読み終えられない。"
+            },
+            {
+              "text": "The book is too thickly to finish in one night.",
+              "meaning": "副詞を形容詞の位置に使っている。"
+            },
+            {
+              "text": "The book thicks too much to finish.",
+              "meaning": "動詞として使っている。"
+            },
+            {
+              "text": "The book has a thick of pages.",
+              "meaning": "名詞として使っている。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "be動詞の後に形容詞 thick を置いて本の厚さを表す。他は品詞が誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "冬に暖かい服を選ぶ場面: It is freezing outside, so please wear a ___ sweater.",
+        "answers": [
+          "thick"
+        ],
+        "explanation": "外が凍えるほど寒いので、厚いセーターが自然。thin では寒さに合わない。",
+        "alternatives": [
+          {
+            "answer": "warm",
+            "explanation": "暖かさを直接表す。厚みは示さない。"
+          },
+          {
+            "answer": "heavy",
+            "explanation": "重みのあるセーターを表し、厚手の意味に近い。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "thickを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "He wore a thick coat because the wind was cold.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-thick-usage",
+          "type": "usage",
+          "prompt": "thick を正しく使った文を選びなさい。",
+          "choices": [
+            "The book is too thick to finish in one night.",
+            "The book is too thickly to finish in one night.",
+            "The book thicks too much to finish.",
+            "The book has a thick of pages."
+          ],
+          "correctIndex": 0,
+          "explanation": "be動詞の後に形容詞 thick を置いて本の厚さを表す。他は品詞が誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "daily-life",
+          "food"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-cloth",
+      "word": "cloth",
+      "level": "準2級",
+      "ipa": "/klɒθ/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "material made by weaving or knitting fibers, used for making clothes or covering things; also a piece of it for cleaning",
+      "meaning": "布・布地",
+      "usageTip": "素材としての「布」は不可算名詞。掃除用などの一枚の布は a cloth と数えられる。複数形 cloths /klɒθs/ は種類や枚数を言うときに使う。「服」の clothes /kləʊðz/ と混同しない。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "掃除",
+          "text": "She wiped the table with a damp cloth after dinner.",
+          "translation": "彼女は夕食後、湿った布でテーブルを拭いた。"
+        },
+        {
+          "id": "example-2",
+          "context": "手芸",
+          "text": "This soft cloth is perfect for making small bags and cushion covers.",
+          "translation": "この柔らかい布は、小さなバッグやクッションカバーを作るのにぴったりだ。"
+        },
+        {
+          "id": "example-3",
+          "context": "買い物",
+          "text": "The shop sells cloth from many countries, sold by the meter.",
+          "translation": "その店は多くの国の布地を、メートル単位で売っている。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "cloth",
+          "choices": [
+            {
+              "text": "布・布地",
+              "meaning": "織ったり編んだりして作った素材"
+            },
+            {
+              "text": "紙くず",
+              "meaning": "不要になった紙"
+            },
+            {
+              "text": "金属板",
+              "meaning": "薄く平らな金属"
+            },
+            {
+              "text": "ひも",
+              "meaning": "物を縛る細長いもの"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "cloth は織物や編み物でできた素材、つまり布や布地を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "布・布地",
+          "choices": [
+            {
+              "text": "glass",
+              "meaning": "ガラス"
+            },
+            {
+              "text": "rope",
+              "meaning": "ロープ"
+            },
+            {
+              "text": "stone",
+              "meaning": "石"
+            },
+            {
+              "text": "cloth",
+              "meaning": "布・布地"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "布や布地を意味する英単語は cloth。他は別の素材や物を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: こぼした牛乳を拭くものを探している。 English: Please bring me a clean ___ to wipe up the milk.",
+          "choices": [
+            {
+              "text": "cloth",
+              "meaning": "布"
+            },
+            {
+              "text": "coin",
+              "meaning": "硬貨"
+            },
+            {
+              "text": "cliff",
+              "meaning": "崖"
+            },
+            {
+              "text": "cloud",
+              "meaning": "雲"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "牛乳を拭くには清潔な布が必要なので cloth が自然。他の語では文意が通らない。",
+          "alternatives": [
+            {
+              "answer": "towel",
+              "explanation": "タオルのこと。厚手で体や手を拭く道具というニュアンスが強い。"
+            },
+            {
+              "answer": "rag",
+              "explanation": "古布や使い古しの布切れ。掃除用に使い捨てるイメージ。"
+            },
+            {
+              "answer": "sponge",
+              "explanation": "スポンジ。水分を吸うが、布ではなく多孔質の素材。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "cloth を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I bought two cloths to put on my body today.",
+              "meaning": "今日、体に着るために布を2つ買った。"
+            },
+            {
+              "text": "She was wearing beautiful cloth at the party.",
+              "meaning": "彼女はパーティーで美しい布を着ていた。"
+            },
+            {
+              "text": "He put on a cloth and went out.",
+              "meaning": "彼は布を着て出かけた。"
+            },
+            {
+              "text": "The tailor cut the cloth carefully before sewing the jacket.",
+              "meaning": "仕立て屋は上着を縫う前に布を慎重に裁った。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "素材としての布は cloth。着る「服」は clothes と言うので、他の文は「服」の意味では誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: こぼした牛乳を拭くものを探している。 English: Please bring me a clean ___ to wipe up the milk.",
+        "answers": [
+          "cloth"
+        ],
+        "explanation": "牛乳を拭くには清潔な布が必要なので cloth が自然。他の語では文意が通らない。",
+        "alternatives": [
+          {
+            "answer": "towel",
+            "explanation": "タオルのこと。厚手で体や手を拭く道具というニュアンスが強い。"
+          },
+          {
+            "answer": "rag",
+            "explanation": "古布や使い古しの布切れ。掃除用に使い捨てるイメージ。"
+          },
+          {
+            "answer": "sponge",
+            "explanation": "スポンジ。水分を吸うが、布ではなく多孔質の素材。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "clothを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "She wiped the table with a damp cloth after dinner.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-cloth-usage",
+          "type": "usage",
+          "prompt": "cloth を正しく使った文を選んでください。",
+          "choices": [
+            "I bought two cloths to put on my body today.",
+            "She was wearing beautiful cloth at the party.",
+            "He put on a cloth and went out.",
+            "The tailor cut the cloth carefully before sewing the jacket."
+          ],
+          "correctIndex": 3,
+          "explanation": "素材としての布は cloth。着る「服」は clothes と言うので、他の文は「服」の意味では誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-lens",
       "word": "lens",
       "level": "準2級",
@@ -3555,6 +4531,199 @@
         "cefrEstimate": "A2",
         "domains": [
           "environment"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-rusty",
+      "word": "rusty",
+      "level": "準2級",
+      "ipa": "ˈrʌsti",
+      "ipaLabel": "英音",
+      "partOfSpeech": "形容詞",
+      "definition": "covered with rust, or less skilled than before because of lack of practice",
+      "meaning": "さびた・さびついた",
+      "usageTip": "金属がさびた状態のほか、練習不足で腕が落ちた意味でも使う。例: My French is rusty. be 動詞の後に置く。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "自転車",
+          "text": "His old bicycle was so rusty that the chain would not move.",
+          "translation": "彼の古い自転車はひどくさびていて、チェーンが動かなかった。"
+        },
+        {
+          "id": "example-2",
+          "context": "門",
+          "text": "The rusty gate made a loud noise when we opened it.",
+          "translation": "さびた門は、開けると大きな音を立てた。"
+        },
+        {
+          "id": "example-3",
+          "context": "語学",
+          "text": "I studied Spanish at school, but it is rusty now.",
+          "translation": "学校でスペイン語を学んだが、今は腕が落ちている。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "rusty",
+          "choices": [
+            {
+              "text": "さびた・さびついた",
+              "meaning": "金属がさびている"
+            },
+            {
+              "text": "泥だらけの",
+              "meaning": "泥で汚れた"
+            },
+            {
+              "text": "砂の多い",
+              "meaning": "砂がたくさんある"
+            },
+            {
+              "text": "従順な",
+              "meaning": "素直に従う"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "rusty は rust（さび）から来た語で、さびた状態を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "さびた・さびついた",
+          "choices": [
+            {
+              "text": "muddy",
+              "meaning": "泥だらけの"
+            },
+            {
+              "text": "sandy",
+              "meaning": "砂の多い"
+            },
+            {
+              "text": "obedient",
+              "meaning": "従順な"
+            },
+            {
+              "text": "rusty",
+              "meaning": "さびた"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "金属のさびに関する形容詞は rusty である。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "長く使っていない自転車の鎖の場面：The chain was too ___ to turn smoothly.",
+          "choices": [
+            {
+              "text": "obedient",
+              "meaning": "従順な"
+            },
+            {
+              "text": "sandy",
+              "meaning": "砂の多い"
+            },
+            {
+              "text": "rusty",
+              "meaning": "さびた"
+            },
+            {
+              "text": "cuddly",
+              "meaning": "抱きしめたくなる"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "金属のチェーンが滑らかに回らない理由として、さびているが合う。",
+          "alternatives": [
+            {
+              "answer": "stiff",
+              "explanation": "動きが固い状態を表すが、さびが原因とは限らない。"
+            },
+            {
+              "answer": "dirty",
+              "explanation": "汚れていることを表し、動きにくい原因としては弱い。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "rusty の使い方として正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "My piano skills are rust because I stopped practicing.",
+              "meaning": "ピアノの腕はさびだ。（品詞の誤り）"
+            },
+            {
+              "text": "My piano skills are rusty because I stopped practicing.",
+              "meaning": "練習をやめたのでピアノの腕が落ちている。"
+            },
+            {
+              "text": "My piano skills are rusting of because I stopped practicing.",
+              "meaning": "ピアノの腕はさびついてのため。（形の誤り）"
+            },
+            {
+              "text": "My piano skills rusty because I stopped practicing.",
+              "meaning": "ピアノの腕さびた。（be 動詞の欠落）"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "be 動詞の後に形容詞 rusty を置く。ここでは腕が落ちた意味である。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "長く使っていない自転車の鎖の場面：The chain was too ___ to turn smoothly.",
+        "answers": [
+          "rusty"
+        ],
+        "explanation": "金属のチェーンが滑らかに回らない理由として、さびているが合う。",
+        "alternatives": [
+          {
+            "answer": "stiff",
+            "explanation": "動きが固い状態を表すが、さびが原因とは限らない。"
+          },
+          {
+            "answer": "dirty",
+            "explanation": "汚れていることを表し、動きにくい原因としては弱い。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "rustyを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "His old bicycle was so rusty that the chain would not move.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-rusty-usage",
+          "type": "usage",
+          "prompt": "rusty の使い方として正しい文を選んでください。",
+          "choices": [
+            "My piano skills are rust because I stopped practicing.",
+            "My piano skills are rusty because I stopped practicing.",
+            "My piano skills are rusting of because I stopped practicing.",
+            "My piano skills rusty because I stopped practicing."
+          ],
+          "correctIndex": 1,
+          "explanation": "be 動詞の後に形容詞 rusty を置く。ここでは腕が落ちた意味である。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "daily-life"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -8607,6 +9776,200 @@
       }
     },
     {
+      "id": "vocab-lease",
+      "word": "lease",
+      "level": "準2級",
+      "ipa": "liːs",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a legal agreement to rent property or equipment for a set period",
+      "meaning": "賃貸借契約、リース",
+      "usageTip": "名詞では sign a lease や a two-year lease のように使う。on lease は「賃借中」。動詞 lease（leases/leased/leasing）は貸す側にも借りる側にも使える。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "住まい",
+          "text": "We signed a two-year lease for the apartment near the station.",
+          "translation": "私たちは駅近くのアパートについて二年間の賃貸契約を結んだ。"
+        },
+        {
+          "id": "example-2",
+          "context": "ビジネス",
+          "text": "The company's lease on the office ends in December.",
+          "translation": "その会社の事務所の賃貸契約は十二月に終わる。"
+        },
+        {
+          "id": "example-3",
+          "context": "車の購入",
+          "text": "He chose a car lease because the monthly payment was lower.",
+          "translation": "月々の支払いが安いので、彼は車のリースを選んだ。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "lease",
+          "choices": [
+            {
+              "text": "領収書",
+              "meaning": "支払いの証明書"
+            },
+            {
+              "text": "広告",
+              "meaning": "宣伝"
+            },
+            {
+              "text": "賃貸借契約",
+              "meaning": "貸借のための契約"
+            },
+            {
+              "text": "保証人",
+              "meaning": "責任を負う人"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "lease は一定期間、物件や設備を借りる契約を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "賃貸借契約、リース",
+          "choices": [
+            {
+              "text": "lesson",
+              "meaning": "授業"
+            },
+            {
+              "text": "lease",
+              "meaning": "賃貸借契約"
+            },
+            {
+              "text": "level",
+              "meaning": "水準"
+            },
+            {
+              "text": "lawn",
+              "meaning": "芝生"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "賃貸借契約は lease。lesson と綴りが似るが意味は違う。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "不動産の場面：住む期間と家賃が書かれた契約書に署名した。Before moving in, she signed a one-year ___.",
+          "choices": [
+            {
+              "text": "holiday",
+              "meaning": "休日"
+            },
+            {
+              "text": "recipe",
+              "meaning": "レシピ"
+            },
+            {
+              "text": "journey",
+              "meaning": "旅"
+            },
+            {
+              "text": "lease",
+              "meaning": "賃貸借契約"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "sign a one-year lease で一年間の賃貸契約に署名するという自然な意味になる。",
+          "alternatives": [
+            {
+              "answer": "rental agreement",
+              "explanation": "賃貸契約を表し、lease より日常的な説明になる。"
+            },
+            {
+              "answer": "contract",
+              "explanation": "契約全般を指し、賃貸に限らない。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "名詞 lease を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I leased a lease with my apartment yesterday.",
+              "meaning": "誤り：語の重複で不自然"
+            },
+            {
+              "text": "My lease sign for two years.",
+              "meaning": "誤り：動詞の使い方が不自然"
+            },
+            {
+              "text": "I am very lease about the studio.",
+              "meaning": "誤り：形容詞として使っている"
+            },
+            {
+              "text": "My lease for the studio runs for two years.",
+              "meaning": "スタジオの賃貸契約は二年間続く。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "lease は契約を表す名詞で、主語として自然に使える。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "不動産の場面：住む期間と家賃が書かれた契約書に署名した。Before moving in, she signed a one-year ___.",
+        "answers": [
+          "lease"
+        ],
+        "explanation": "sign a one-year lease で一年間の賃貸契約に署名するという自然な意味になる。",
+        "alternatives": [
+          {
+            "answer": "rental agreement",
+            "explanation": "賃貸契約を表し、lease より日常的な説明になる。"
+          },
+          {
+            "answer": "contract",
+            "explanation": "契約全般を指し、賃貸に限らない。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "leaseを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "We signed a two-year lease for the apartment near the station.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-lease-usage",
+          "type": "usage",
+          "prompt": "名詞 lease を正しく使った文を選んでください。",
+          "choices": [
+            "I leased a lease with my apartment yesterday.",
+            "My lease sign for two years.",
+            "I am very lease about the studio.",
+            "My lease for the studio runs for two years."
+          ],
+          "correctIndex": 3,
+          "explanation": "lease は契約を表す名詞で、主語として自然に使える。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "finance",
+          "business"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-slope",
       "word": "slope",
       "level": "準2級",
@@ -9189,6 +10552,402 @@
       "metadata": {
         "schemaVersion": 2,
         "cefrEstimate": "A2",
+        "domains": [
+          "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-chip",
+      "word": "chip",
+      "level": "準2級",
+      "ipa": "tʃɪp",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a small broken piece of something hard, or a thin crisp slice of fried food",
+      "meaning": "欠け・小片、薄切りのスナック（チップス）",
+      "usageTip": "「欠けた小片」と「ポテトチップス」の二つの意味がある。米国では potato chips、英国では chips は太いフライドポテト、薄いスナックは crisps と言う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "食器",
+          "text": "There is a small chip on the edge of this cup.",
+          "translation": "このカップの縁に小さな欠けがある。"
+        },
+        {
+          "id": "example-2",
+          "context": "スナック",
+          "text": "He opened a bag of chips and shared them with us.",
+          "translation": "彼はチップスの袋を開けて私たちに分けてくれた。"
+        },
+        {
+          "id": "example-3",
+          "context": "工事",
+          "text": "A chip of paint fell from the old wall onto the floor.",
+          "translation": "古い壁からペンキの小さなかけらが床に落ちた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "chip",
+          "choices": [
+            {
+              "text": "大きな箱",
+              "meaning": "大型の容器"
+            },
+            {
+              "text": "欠け・小片",
+              "meaning": "欠けた小さなかけら"
+            },
+            {
+              "text": "長いひも",
+              "meaning": "細長い紐"
+            },
+            {
+              "text": "重い鍋",
+              "meaning": "調理用の重い器具"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "chip は欠けた小片や薄切りのスナックを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "欠け・小片、薄切りのスナック",
+          "choices": [
+            {
+              "text": "chain",
+              "meaning": "鎖"
+            },
+            {
+              "text": "chart",
+              "meaning": "図表"
+            },
+            {
+              "text": "chip",
+              "meaning": "欠け・小片"
+            },
+            {
+              "text": "cheek",
+              "meaning": "頬"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "小さな欠けや薄切りスナックにあたる語は chip。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "映画を見ながらつまむ塩味のスナックの場面。We ate a bag of potato ___ during the movie.",
+          "choices": [
+            {
+              "text": "chairs",
+              "meaning": "椅子"
+            },
+            {
+              "text": "coins",
+              "meaning": "硬貨"
+            },
+            {
+              "text": "cards",
+              "meaning": "カード"
+            },
+            {
+              "text": "chips",
+              "meaning": "チップス"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "potato chips で「ポテトチップス」。食べる物として自然なのは chips。",
+          "alternatives": [
+            {
+              "answer": "crisps",
+              "explanation": "英国英語では potato crisps とも言う。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "chip を「欠け」の意味で正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "The plate has a chip of water.",
+              "meaning": "皿に水の欠けがある。（不自然）"
+            },
+            {
+              "text": "The plate has a chip near the edge.",
+              "meaning": "皿の縁の近くに欠けがある。"
+            },
+            {
+              "text": "The plate has chip on edge.",
+              "meaning": "皿の縁にチップがある。（冠詞と前置詞が不足）"
+            },
+            {
+              "text": "The plate has a chip with the edge.",
+              "meaning": "皿は縁とともに欠けがある。（前置詞の誤り）"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "a chip near the edge は欠けた部分を自然に表す。他は語の組み合わせや冠詞、前置詞が誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "映画を見ながらつまむ塩味のスナックの場面。We ate a bag of potato ___ during the movie.",
+        "answers": [
+          "chips"
+        ],
+        "explanation": "potato chips で「ポテトチップス」。食べる物として自然なのは chips。",
+        "alternatives": [
+          {
+            "answer": "crisps",
+            "explanation": "英国英語では potato crisps とも言う。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "chipを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "There is a small chip on the edge of this cup.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-chip-usage",
+          "type": "usage",
+          "prompt": "chip を「欠け」の意味で正しく使った文を選んでください。",
+          "choices": [
+            "The plate has a chip of water.",
+            "The plate has a chip near the edge.",
+            "The plate has chip on edge.",
+            "The plate has a chip with the edge."
+          ],
+          "correctIndex": 1,
+          "explanation": "a chip near the edge は欠けた部分を自然に表す。他は語の組み合わせや冠詞、前置詞が誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "food",
+          "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-sort",
+      "word": "sort",
+      "level": "準2級",
+      "ipa": "sɔːrt",
+      "ipaLabel": "米音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "sort"
+        ],
+        "past": [
+          "sorted"
+        ],
+        "pastParticiple": [
+          "sorted"
+        ],
+        "presentParticiple": [
+          "sorting"
+        ],
+        "thirdPersonSingular": [
+          "sorts"
+        ]
+      },
+      "definition": "to arrange things into groups or order by type or quality",
+      "meaning": "種類ごとに分類する",
+      "usageTip": "sort A into B で「AをBに分ける」。基準は by ~ で表す。sort out は問題を解決する、整理する意味でも使う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "ごみ分別",
+          "text": "Please sort the trash into paper, plastic, and glass.",
+          "translation": "ごみを紙、プラスチック、ガラスに分けてください。"
+        },
+        {
+          "id": "example-2",
+          "context": "仕事",
+          "text": "She sorted the emails by date and answered the urgent ones.",
+          "translation": "彼女はメールを日付順に並べ、急ぎのものに返信した。"
+        },
+        {
+          "id": "example-3",
+          "context": "洗濯",
+          "text": "I always sort the laundry before I wash it.",
+          "translation": "洗濯する前にいつも洗濯物を仕分ける。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "sort",
+          "choices": [
+            {
+              "text": "大声で呼ぶ",
+              "meaning": "叫んで呼ぶ"
+            },
+            {
+              "text": "急いで逃げる",
+              "meaning": "素早く逃げる"
+            },
+            {
+              "text": "静かに眠る",
+              "meaning": "穏やかに寝る"
+            },
+            {
+              "text": "種類ごとに分類する",
+              "meaning": "グループに分ける"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "sort は物を種類や順序でグループ分けすること。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "種類ごとに分類する",
+          "choices": [
+            {
+              "text": "spend",
+              "meaning": "使う"
+            },
+            {
+              "text": "sort",
+              "meaning": "分類する"
+            },
+            {
+              "text": "shout",
+              "meaning": "叫ぶ"
+            },
+            {
+              "text": "share",
+              "meaning": "共有する"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "種類別に分ける動詞は sort。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "届いた写真を旅行ごとにフォルダへ分ける場面。I need to ___ these photos into folders.",
+          "choices": [
+            {
+              "text": "wear",
+              "meaning": "着る"
+            },
+            {
+              "text": "cross",
+              "meaning": "渡る"
+            },
+            {
+              "text": "sort",
+              "meaning": "分類する"
+            },
+            {
+              "text": "hide",
+              "meaning": "隠す"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "into folders と合うのは分類を表す sort。",
+          "alternatives": [
+            {
+              "answer": "organize",
+              "explanation": "整理するという意味で、分類以外の整頓も含む。"
+            },
+            {
+              "answer": "separate",
+              "explanation": "分けることを強調する。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "sort の使い方として正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "We sorted the books on size and color.",
+              "meaning": "大きさと色で分けた。（前置詞の誤り）"
+            },
+            {
+              "text": "We sorted to the books by subject.",
+              "meaning": "本を分野別に分けた。（to が不要）"
+            },
+            {
+              "text": "We sorted the books of three boxes.",
+              "meaning": "3つの箱の本を分けた。（前置詞の誤り）"
+            },
+            {
+              "text": "We sorted the books into three boxes.",
+              "meaning": "本を3つの箱に分けた。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "sort A into B で「AをBに分ける」。他は前置詞や目的語の形が不自然。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "届いた写真を旅行ごとにフォルダへ分ける場面。I need to ___ these photos into folders.",
+        "answers": [
+          "sort"
+        ],
+        "explanation": "into folders と合うのは分類を表す sort。",
+        "alternatives": [
+          {
+            "answer": "organize",
+            "explanation": "整理するという意味で、分類以外の整頓も含む。"
+          },
+          {
+            "answer": "separate",
+            "explanation": "分けることを強調する。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "sortを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Please sort the trash into paper, plastic, and glass.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-sort-usage",
+          "type": "usage",
+          "prompt": "sort の使い方として正しい文を選んでください。",
+          "choices": [
+            "We sorted the books on size and color.",
+            "We sorted to the books by subject.",
+            "We sorted the books of three boxes.",
+            "We sorted the books into three boxes."
+          ],
+          "correctIndex": 3,
+          "explanation": "sort A into B で「AをBに分ける」。他は前置詞や目的語の形が不自然。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
         "domains": [
           "daily-life"
         ],
@@ -11578,6 +13337,200 @@
       }
     },
     {
+      "id": "vocab-trustee",
+      "word": "trustee",
+      "level": "準2級",
+      "ipa": "/trʌˈstiː/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a person or board member who legally manages money, property or an organization for the benefit of others",
+      "meaning": "受託者・理事",
+      "usageTip": "他人の財産を預かって管理する人、または学校・団体の理事を指す。a trustee of the fund や a trustee on the board の形で使う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "法律",
+          "text": "The trustee must manage the money for the children's benefit.",
+          "translation": "受託者は子どもたちのためにそのお金を管理しなければならない。"
+        },
+        {
+          "id": "example-2",
+          "context": "大学",
+          "text": "She became a trustee of the university last spring.",
+          "translation": "彼女は昨春、その大学の理事になった。"
+        },
+        {
+          "id": "example-3",
+          "context": "慈善団体",
+          "text": "The trustees voted to open a new community library.",
+          "translation": "理事たちは新しい地域図書館を開くことに賛成票を投じた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "trustee",
+          "choices": [
+            {
+              "text": "視力",
+              "meaning": "eyesight"
+            },
+            {
+              "text": "タイル",
+              "meaning": "tile"
+            },
+            {
+              "text": "受託者・理事",
+              "meaning": "trustee"
+            },
+            {
+              "text": "抜粋映像",
+              "meaning": "a short video clip"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "trustee は財産や団体の管理を託された人を指す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "受託者・理事",
+          "choices": [
+            {
+              "text": "trustee",
+              "meaning": "受託者・理事"
+            },
+            {
+              "text": "ledge",
+              "meaning": "壁などの出っ張り"
+            },
+            {
+              "text": "clip",
+              "meaning": "留め具・短い映像"
+            },
+            {
+              "text": "tile",
+              "meaning": "タイル"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "他人のために財産や団体を管理する人は trustee。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "基金の管理の場面：The ___ is legally responsible for managing the family fund.",
+          "choices": [
+            {
+              "text": "ledge",
+              "meaning": "出っ張り"
+            },
+            {
+              "text": "tile",
+              "meaning": "タイル"
+            },
+            {
+              "text": "trustee",
+              "meaning": "受託者"
+            },
+            {
+              "text": "clip",
+              "meaning": "留め具"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "基金を法的に管理する立場を表すので trustee が合う。",
+          "alternatives": [
+            {
+              "answer": "manager",
+              "explanation": "一般的な管理者で、法的な受託関係の意味は弱い。"
+            },
+            {
+              "answer": "administrator",
+              "explanation": "管理や運営を行う人で、やや広い言い方。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "trustee を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "He trusteed the school board.",
+              "meaning": "名詞を動詞として使う誤り"
+            },
+            {
+              "text": "He is a trustee in the school board yesterday.",
+              "meaning": "時を表す語と文の形が合わない誤り"
+            },
+            {
+              "text": "He is a trustee on the school board.",
+              "meaning": "彼は学校の理事会の理事だ。"
+            },
+            {
+              "text": "He is trustee for eyesight of the school.",
+              "meaning": "意味が通らない誤り"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "a trustee on the board で理事会の一員を表せる。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "基金の管理の場面：The ___ is legally responsible for managing the family fund.",
+        "answers": [
+          "trustee"
+        ],
+        "explanation": "基金を法的に管理する立場を表すので trustee が合う。",
+        "alternatives": [
+          {
+            "answer": "manager",
+            "explanation": "一般的な管理者で、法的な受託関係の意味は弱い。"
+          },
+          {
+            "answer": "administrator",
+            "explanation": "管理や運営を行う人で、やや広い言い方。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "trusteeを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The trustee must manage the money for the children's benefit.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-trustee-usage",
+          "type": "usage",
+          "prompt": "trustee を正しく使った文を選びなさい。",
+          "choices": [
+            "He trusteed the school board.",
+            "He is a trustee in the school board yesterday.",
+            "He is a trustee on the school board.",
+            "He is trustee for eyesight of the school."
+          ],
+          "correctIndex": 2,
+          "explanation": "a trustee on the board で理事会の一員を表せる。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "C1",
+        "domains": [
+          "law",
+          "society"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-eyesight",
       "word": "eyesight",
       "level": "準2級",
@@ -12322,6 +14275,208 @@
         "cefrEstimate": "B1",
         "domains": [
           "environment"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-bulge",
+      "word": "bulge",
+      "level": "準2級",
+      "ipa": "/bʌldʒ/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "bulge"
+        ],
+        "past": [
+          "bulged"
+        ],
+        "pastParticiple": [
+          "bulged"
+        ],
+        "presentParticiple": [
+          "bulging"
+        ],
+        "thirdPersonSingular": [
+          "bulges"
+        ]
+      },
+      "definition": "to swell outward in a rounded shape, often because something inside is full or pushing",
+      "meaning": "膨らむ・出っ張る",
+      "usageTip": "自動詞。bulge with ～ で「～で膨らむ」。ポケットやかばんなど、中身で外側が丸く出る場面で使う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "旅行の荷造り",
+          "text": "My suitcase began to bulge after I packed the souvenirs.",
+          "translation": "お土産を詰めたらスーツケースが膨らみ始めた。"
+        },
+        {
+          "id": "example-2",
+          "context": "買い物帰り",
+          "text": "His pockets bulged with candy from the festival.",
+          "translation": "彼のポケットは祭りで手に入れたお菓子で膨らんでいた。"
+        },
+        {
+          "id": "example-3",
+          "context": "古い壁の点検",
+          "text": "The wall started to bulge because water had soaked into it.",
+          "translation": "水がしみ込んで、壁が膨らみ始めた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "bulge",
+          "choices": [
+            {
+              "text": "外側に丸く膨らむ",
+              "meaning": "中身で外へ出っ張る"
+            },
+            {
+              "text": "急に縮む",
+              "meaning": "小さくなる"
+            },
+            {
+              "text": "静かに消える",
+              "meaning": "見えなくなる"
+            },
+            {
+              "text": "強く押し込む",
+              "meaning": "力で中へ入れる"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "bulge は中身などで外側が丸く出ることを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "膨らむ・出っ張る",
+          "choices": [
+            {
+              "text": "shrink",
+              "meaning": "縮む"
+            },
+            {
+              "text": "bend",
+              "meaning": "曲がる"
+            },
+            {
+              "text": "melt",
+              "meaning": "溶ける"
+            },
+            {
+              "text": "bulge",
+              "meaning": "膨らむ"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "「膨らむ・出っ張る」は bulge。shrink は逆の意味。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "子どもがどんぐりをたくさん詰めたポケットが丸く出ている。His coat pockets began to ___ with acorns.",
+          "choices": [
+            {
+              "text": "whisper",
+              "meaning": "ささやく"
+            },
+            {
+              "text": "vanish",
+              "meaning": "消える"
+            },
+            {
+              "text": "bulge",
+              "meaning": "膨らむ"
+            },
+            {
+              "text": "borrow",
+              "meaning": "借りる"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "どんぐりで外側が膨らむ場面なので bulge が合う。",
+          "alternatives": [
+            {
+              "answer": "swell",
+              "explanation": "膨れ上がる意味で近いが、bulge は一部が出っ張る感じが強い。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "bulge を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "The bag bulged of books.",
+              "meaning": "前置詞の誤り"
+            },
+            {
+              "text": "The bag bulged the books.",
+              "meaning": "自動詞なのに目的語を取る誤り"
+            },
+            {
+              "text": "The bag bulged at books.",
+              "meaning": "前置詞の誤り"
+            },
+            {
+              "text": "The bag bulged with books.",
+              "meaning": "かばんは本で膨らんでいた。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "中身を示すときは bulge with ～ を使う。bulge は目的語を取らない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "子どもがどんぐりをたくさん詰めたポケットが丸く出ている。His coat pockets began to ___ with acorns.",
+        "answers": [
+          "bulge"
+        ],
+        "explanation": "どんぐりで外側が膨らむ場面なので bulge が合う。",
+        "alternatives": [
+          {
+            "answer": "swell",
+            "explanation": "膨れ上がる意味で近いが、bulge は一部が出っ張る感じが強い。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "bulgeを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "My suitcase began to bulge after I packed the souvenirs.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-bulge-usage",
+          "type": "usage",
+          "prompt": "bulge を正しく使った文を選びなさい。",
+          "choices": [
+            "The bag bulged of books.",
+            "The bag bulged the books.",
+            "The bag bulged at books.",
+            "The bag bulged with books."
+          ],
+          "correctIndex": 3,
+          "explanation": "中身を示すときは bulge with ～ を使う。bulge は目的語を取らない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "daily-life"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -13700,6 +15855,200 @@
       }
     },
     {
+      "id": "vocab-solid",
+      "word": "solid",
+      "level": "準2級",
+      "ipa": "/ˈsɑːlɪd/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "形容詞",
+      "definition": "hard and firm, not liquid or gas; also strong, reliable, or well supported",
+      "meaning": "固体の、堅固な、確かな",
+      "usageTip": "物質の状態(固体)、丈夫さ、信頼できる根拠や成績など幅広く使う。solid evidence や solid foundation が便利。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "物質の状態",
+          "text": "Water becomes solid when the temperature drops below zero.",
+          "translation": "気温が零度を下回ると、水は固体になる。"
+        },
+        {
+          "id": "example-2",
+          "context": "建物の土台",
+          "text": "The old bridge stands on a solid stone foundation.",
+          "translation": "その古い橋は頑丈な石の土台の上に立っている。"
+        },
+        {
+          "id": "example-3",
+          "context": "信頼できる根拠",
+          "text": "She gave solid reasons for changing the plan.",
+          "translation": "彼女は計画を変更する確かな理由を示した。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "solid",
+          "choices": [
+            {
+              "text": "透明な",
+              "meaning": "transparent"
+            },
+            {
+              "text": "固体の、堅固な、確かな",
+              "meaning": "solid"
+            },
+            {
+              "text": "退屈な",
+              "meaning": "boring"
+            },
+            {
+              "text": "柔らかい",
+              "meaning": "soft"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "solid は固体の状態や、堅固で信頼できることを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "固体の、堅固な、確かな",
+          "choices": [
+            {
+              "text": "silent",
+              "meaning": "静かな"
+            },
+            {
+              "text": "simple",
+              "meaning": "簡単な"
+            },
+            {
+              "text": "secret",
+              "meaning": "秘密の"
+            },
+            {
+              "text": "solid",
+              "meaning": "固体の、堅固な"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "固体や堅固さを表す形容詞は solid。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "裁判で信頼できる根拠が必要な場面：The lawyer needs ___ evidence before going to court.",
+          "choices": [
+            {
+              "text": "sleepy",
+              "meaning": "眠い"
+            },
+            {
+              "text": "solid",
+              "meaning": "確かな"
+            },
+            {
+              "text": "liquid",
+              "meaning": "液体の"
+            },
+            {
+              "text": "cheerful",
+              "meaning": "陽気な"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "solid evidence は「確かな証拠」を意味する自然な表現。",
+          "alternatives": [
+            {
+              "answer": "strong",
+              "explanation": "説得力が強い証拠を表す。"
+            },
+            {
+              "answer": "firm",
+              "explanation": "揺るがない証拠という印象になる。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "solid の使い方として正しい文を選びなさい。",
+          "choices": [
+            {
+              "text": "She has a solid of knowledge about music.",
+              "meaning": "名詞として使う誤り"
+            },
+            {
+              "text": "He solid the door with a heavy box.",
+              "meaning": "動詞として使う誤り"
+            },
+            {
+              "text": "The team has a solid plan for the project.",
+              "meaning": "チームにはそのプロジェクトの確かな計画がある。"
+            },
+            {
+              "text": "Her explanation was very solidly.",
+              "meaning": "形容詞の位置に副詞を使う誤り"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "solid plan は「しっかりした計画」を表す形容詞の用法。他は品詞の誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "裁判で信頼できる根拠が必要な場面：The lawyer needs ___ evidence before going to court.",
+        "answers": [
+          "solid"
+        ],
+        "explanation": "solid evidence は「確かな証拠」を意味する自然な表現。",
+        "alternatives": [
+          {
+            "answer": "strong",
+            "explanation": "説得力が強い証拠を表す。"
+          },
+          {
+            "answer": "firm",
+            "explanation": "揺るがない証拠という印象になる。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "solidを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Water becomes solid when the temperature drops below zero.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-solid-usage",
+          "type": "usage",
+          "prompt": "solid の使い方として正しい文を選びなさい。",
+          "choices": [
+            "She has a solid of knowledge about music.",
+            "He solid the door with a heavy box.",
+            "The team has a solid plan for the project.",
+            "Her explanation was very solidly."
+          ],
+          "correctIndex": 2,
+          "explanation": "solid plan は「しっかりした計画」を表す形容詞の用法。他は品詞の誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "science",
+          "logic-reasoning"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-delight",
       "word": "delight",
       "level": "準2級",
@@ -14924,6 +17273,199 @@
         "cefrEstimate": "B1",
         "domains": [
           "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-pan",
+      "word": "pan",
+      "level": "準2級",
+      "ipa": "/pæn/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a flat metal container with a handle, used for cooking on a stove",
+      "meaning": "フライパン、なべ",
+      "usageTip": "柄のある調理用の浅いなべ。frying pan と言うことが多い。深いなべは pot が普通。in a pan で「なべで」。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "朝食作り",
+          "text": "He heated a pan and cooked two eggs for breakfast.",
+          "translation": "彼はフライパンを温めて、朝食に卵を二つ焼いた。"
+        },
+        {
+          "id": "example-2",
+          "context": "片付け",
+          "text": "Please wash the pan before you put it away.",
+          "translation": "しまう前にそのフライパンを洗ってください。"
+        },
+        {
+          "id": "example-3",
+          "context": "料理",
+          "text": "Add a little oil to the pan and stir the onions.",
+          "translation": "フライパンに油を少し入れ、玉ねぎを炒めてください。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "pan",
+          "choices": [
+            {
+              "text": "かさ",
+              "meaning": "雨具"
+            },
+            {
+              "text": "フライパン",
+              "meaning": "調理器具"
+            },
+            {
+              "text": "財布",
+              "meaning": "お金を入れる物"
+            },
+            {
+              "text": "階段",
+              "meaning": "上り下りする所"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "pan は調理に使う柄のついたなべ。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "フライパン、なべ",
+          "choices": [
+            {
+              "text": "pen",
+              "meaning": "ペン"
+            },
+            {
+              "text": "pad",
+              "meaning": "メモ帳"
+            },
+            {
+              "text": "pin",
+              "meaning": "ピン"
+            },
+            {
+              "text": "pan",
+              "meaning": "フライパン"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "調理用のなべは pan。他は綴りが似た別の語。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "料理の場面：Heat the ___ and add some butter.",
+          "choices": [
+            {
+              "text": "pillow",
+              "meaning": "枕"
+            },
+            {
+              "text": "ticket",
+              "meaning": "切符"
+            },
+            {
+              "text": "pan",
+              "meaning": "フライパン"
+            },
+            {
+              "text": "mirror",
+              "meaning": "鏡"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "加熱してバターを入れる物は調理器具の pan。",
+          "alternatives": [
+            {
+              "answer": "pot",
+              "explanation": "pot も加熱できるが、深いなべの印象。"
+            },
+            {
+              "answer": "skillet",
+              "explanation": "skillet は主に米国で使うフライパン。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "pan の使い方が正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "He fried some fish in a pan.",
+              "meaning": "彼はフライパンで魚を焼いた。"
+            },
+            {
+              "text": "He fried some fish at a pan.",
+              "meaning": "前置詞の誤り"
+            },
+            {
+              "text": "He fried some fish with a pan paper.",
+              "meaning": "語の組み合わせの誤り"
+            },
+            {
+              "text": "He fried some fish on the pan inside.",
+              "meaning": "前置詞と語順の誤り"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "in a pan は調理する場所・容器を表す自然な言い方。at は合わない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "料理の場面：Heat the ___ and add some butter.",
+        "answers": [
+          "pan"
+        ],
+        "explanation": "加熱してバターを入れる物は調理器具の pan。",
+        "alternatives": [
+          {
+            "answer": "pot",
+            "explanation": "pot も加熱できるが、深いなべの印象。"
+          },
+          {
+            "answer": "skillet",
+            "explanation": "skillet は主に米国で使うフライパン。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "panを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "He heated a pan and cooked two eggs for breakfast.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-pan-usage",
+          "type": "usage",
+          "prompt": "pan の使い方が正しい文を選んでください。",
+          "choices": [
+            "He fried some fish in a pan.",
+            "He fried some fish at a pan.",
+            "He fried some fish with a pan paper.",
+            "He fried some fish on the pan inside."
+          ],
+          "correctIndex": 0,
+          "explanation": "in a pan は調理する場所・容器を表す自然な言い方。at は合わない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "food"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -16618,6 +19160,217 @@
       }
     },
     {
+      "id": "vocab-scroll",
+      "word": "scroll",
+      "level": "準2級",
+      "ipa": "/skrəʊl/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "scroll"
+        ],
+        "past": [
+          "scrolled"
+        ],
+        "pastParticiple": [
+          "scrolled"
+        ],
+        "presentParticiple": [
+          "scrolling"
+        ],
+        "thirdPersonSingular": [
+          "scrolls"
+        ]
+      },
+      "definition": "to move text or images up, down or sideways on a screen so you can see more",
+      "meaning": "画面をスクロールする",
+      "usageTip": "scroll down/up で上下に動かす意味になる。長い一覧を順に見る時は scroll through ~ が自然。scroll at ~ とは言わない。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "スマホ",
+          "text": "I scrolled down to read the rest of the review.",
+          "translation": "私はレビューの続きを読むために下へスクロールした。"
+        },
+        {
+          "id": "example-2",
+          "context": "休憩中",
+          "text": "She scrolled through photos while waiting for the train.",
+          "translation": "彼女は電車を待つ間、写真をスクロールして見ていた。"
+        },
+        {
+          "id": "example-3",
+          "context": "ウェブ操作",
+          "text": "You need to scroll up to find the menu.",
+          "translation": "メニューを見つけるには上へスクロールする必要がある。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "scroll",
+          "choices": [
+            {
+              "text": "画面を閉じる",
+              "meaning": "close a screen"
+            },
+            {
+              "text": "文字を削除する",
+              "meaning": "delete text"
+            },
+            {
+              "text": "画面を動かして続きを見る",
+              "meaning": "scroll a screen to see more"
+            },
+            {
+              "text": "写真を印刷する",
+              "meaning": "print a photo"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "scroll は画面の表示内容を上下左右に動かして、見えていない部分を見る動作を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "画面をスクロールする",
+          "choices": [
+            {
+              "text": "scroll",
+              "meaning": "スクロールする"
+            },
+            {
+              "text": "fold",
+              "meaning": "折りたたむ"
+            },
+            {
+              "text": "wipe",
+              "meaning": "拭く"
+            },
+            {
+              "text": "zip",
+              "meaning": "ファスナーを閉める"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "画面表示を動かして続きを見る動詞は scroll。他は別の動作を表す動詞。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "長いページを読む場面：The page is long, so ___ down to see the price.",
+          "choices": [
+            {
+              "text": "zip",
+              "meaning": "ファスナーを閉める"
+            },
+            {
+              "text": "fold",
+              "meaning": "折る"
+            },
+            {
+              "text": "scroll",
+              "meaning": "スクロールする"
+            },
+            {
+              "text": "wipe",
+              "meaning": "拭く"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "ページが長く、下へ画面を動かして価格を見るので scroll が合う。",
+          "alternatives": [
+            {
+              "answer": "swipe",
+              "explanation": "スマホで指を滑らせる動作を強調する言い方。"
+            },
+            {
+              "answer": "move",
+              "explanation": "意味は通じるが、画面操作としてはやや一般的。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "scroll を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I scrolled at the list on my phone.",
+              "meaning": "私は携帯でリストをスクロールした。（前置詞の誤り）"
+            },
+            {
+              "text": "I scrolled the list on my phone through.",
+              "meaning": "私は携帯でリストをスクロールして見た。（語順の誤り）"
+            },
+            {
+              "text": "I scrolled through the list on my phone.",
+              "meaning": "私は携帯でリストをスクロールして見た。"
+            },
+            {
+              "text": "I scrolled the list for my phone in.",
+              "meaning": "私は携帯のためにリストをスクロールした。（語順の誤り）"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "一覧を順に見る場合は scroll through を使う。scroll at は不自然で、through を文末に置く形も誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "長いページを読む場面：The page is long, so ___ down to see the price.",
+        "answers": [
+          "scroll"
+        ],
+        "explanation": "ページが長く、下へ画面を動かして価格を見るので scroll が合う。",
+        "alternatives": [
+          {
+            "answer": "swipe",
+            "explanation": "スマホで指を滑らせる動作を強調する言い方。"
+          },
+          {
+            "answer": "move",
+            "explanation": "意味は通じるが、画面操作としてはやや一般的。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "scrollを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I scrolled down to read the rest of the review.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-scroll-usage",
+          "type": "usage",
+          "prompt": "scroll を正しく使った文を選んでください。",
+          "choices": [
+            "I scrolled at the list on my phone.",
+            "I scrolled the list on my phone through.",
+            "I scrolled through the list on my phone.",
+            "I scrolled the list for my phone in."
+          ],
+          "correctIndex": 2,
+          "explanation": "一覧を順に見る場合は scroll through を使う。scroll at は不自然で、through を文末に置く形も誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "technology",
+          "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-cuff",
       "word": "cuff",
       "level": "準2級",
@@ -16801,7 +19554,425 @@
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
       }
+    },
+    {
+      "id": "vocab-zipper",
+      "word": "zipper",
+      "level": "準2級",
+      "ipa": "ˈzɪpə",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "A fastener with two rows of small teeth that lock together when you pull a slider along them.",
+      "meaning": "ファスナー、ジッパー",
+      "usageTip": "米国で一般的な語で、英国では zip もよく使う。名詞として the zipper is stuck、pull the zipper up / down のように使う。「ファスナーを閉める」は zip up が自然。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "バッグ",
+          "text": "The zipper on my bag is stuck again, so I can't open it.",
+          "translation": "私のバッグのファスナーがまた引っかかって、開けられない。"
+        },
+        {
+          "id": "example-2",
+          "context": "上着",
+          "text": "He pulled the zipper up to the top because it was so cold.",
+          "translation": "とても寒かったので、彼はファスナーを一番上まで上げた。"
+        },
+        {
+          "id": "example-3",
+          "context": "買い物",
+          "text": "I need to buy a new zipper to repair this old jacket.",
+          "translation": "この古いジャケットを直すために、新しいファスナーを買う必要がある。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "zipper",
+          "choices": [
+            {
+              "text": "敷物",
+              "meaning": "mat の意味。床に敷く物。"
+            },
+            {
+              "text": "ファスナー",
+              "meaning": "正解。服やバッグの留め具。"
+            },
+            {
+              "text": "袖口",
+              "meaning": "cuff の意味。袖の端の部分。"
+            },
+            {
+              "text": "リンク",
+              "meaning": "link の意味。つながり。"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "zipper は服やバッグを開閉する留め具で、ファスナーやジッパーのこと。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "ファスナー、ジッパー",
+          "choices": [
+            {
+              "text": "link",
+              "meaning": "リンク"
+            },
+            {
+              "text": "cuff",
+              "meaning": "袖口"
+            },
+            {
+              "text": "mat",
+              "meaning": "マット"
+            },
+            {
+              "text": "zipper",
+              "meaning": "ファスナー"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "服やバッグを開け閉めする留め具は zipper。他は別のものを指す。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "バッグが閉まらない場面：I can't close my backpack because the ___ is broken.",
+          "choices": [
+            {
+              "text": "zipper",
+              "meaning": "ファスナー"
+            },
+            {
+              "text": "mat",
+              "meaning": "マット"
+            },
+            {
+              "text": "cuff",
+              "meaning": "袖口"
+            },
+            {
+              "text": "link",
+              "meaning": "リンク"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "バッグを閉じる部品が壊れたという文脈なので zipper が合う。",
+          "alternatives": [
+            {
+              "answer": "zip",
+              "explanation": "主に英国英語で使う同じ意味の語。"
+            },
+            {
+              "answer": "fastener",
+              "explanation": "留め具全般を指す、やや広い言い方。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "zipper を名詞として正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I pulled the zipper up to close my jacket.",
+              "meaning": "上着を閉めるためにファスナーを上げた。"
+            },
+            {
+              "text": "I closed my jacket by pulling the zipper on a button.",
+              "meaning": "ボタンの上でファスナーを引いて閉めた（不自然）。"
+            },
+            {
+              "text": "The zipper of my bag is opening with a key.",
+              "meaning": "鍵でファスナーが開く（不自然）。"
+            },
+            {
+              "text": "I put a zipper in the bag to eat lunch.",
+              "meaning": "昼食を食べるためバッグにファスナーを入れた（意図不明）。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "zipper は pull the zipper up のように、引いて動かす部品として使う。他は動作や状況が合わない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "バッグが閉まらない場面：I can't close my backpack because the ___ is broken.",
+        "answers": [
+          "zipper"
+        ],
+        "explanation": "バッグを閉じる部品が壊れたという文脈なので zipper が合う。",
+        "alternatives": [
+          {
+            "answer": "zip",
+            "explanation": "主に英国英語で使う同じ意味の語。"
+          },
+          {
+            "answer": "fastener",
+            "explanation": "留め具全般を指す、やや広い言い方。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "zipperを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The zipper on my bag is stuck again, so I can't open it.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-zipper-usage",
+          "type": "usage",
+          "prompt": "zipper を名詞として正しく使った文を選んでください。",
+          "choices": [
+            "I pulled the zipper up to close my jacket.",
+            "I closed my jacket by pulling the zipper on a button.",
+            "The zipper of my bag is opening with a key.",
+            "I put a zipper in the bag to eat lunch."
+          ],
+          "correctIndex": 0,
+          "explanation": "zipper は pull the zipper up のように、引いて動かす部品として使う。他は動作や状況が合わない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
     }
   ],
-  "audio": []
+  "audio": [
+    {
+      "wordId": "vocab-sandy",
+      "cacheKey": "8c263b3090c2ab573b0b4802f970d7a3b183a12d23f324594371e7b3170e3691",
+      "fileId": "1xDFZthG4l0c3oFzBG84A41fa_YxT2VB6",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.6910000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.6910000000000001,
+          "endSeconds": 3.233
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.3979999999999997,
+          "endSeconds": 6.891
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.125,
+          "endSeconds": 9.706
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-muddy",
+      "cacheKey": "4590ae2f400ef1bf81529d0bb49c2f74ec6eae806eac1eec40fcba3890c00d38",
+      "fileId": "1W5HpeKwVXvH701yvv1mXxjeDOgQrceKv",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.981
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.029,
+          "endSeconds": 3.976
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.211,
+          "endSeconds": 7.053
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.287,
+          "endSeconds": 10.449
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-cuddle",
+      "cacheKey": "4804ec6e0840045a9d9f940c69392af7087f56606d17ef8b640e9eece8c5e939",
+      "fileId": "1_vMl3DfEmH5Np9ahFwgK4bK7zpU1koZr",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9465
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.995,
+          "endSeconds": 3.779
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.804,
+          "endSeconds": 6.455
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.463,
+          "endSeconds": 8.824
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-obedient",
+      "cacheKey": "75d42be97ffcb6c3a4e64bc642bd778f110e3133befdbc41f8562dad2141edb5",
+      "fileId": "1XpLwTTwCT4m7sTSEDyVup2kbCuHivZEY",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.028
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.1920000000000002,
+          "endSeconds": 4.242999999999999
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.35,
+          "endSeconds": 8.481
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.913,
+          "endSeconds": 11.424
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-clip",
+      "cacheKey": "12b93c41515e5e4ee0eecb32f0a9bc18556145c7c6c642e5f302228653222538",
+      "fileId": "1J7MAN9iMasTINw8OC8nNsNu7k1yLlvpq",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7025
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.751,
+          "endSeconds": 3.7675
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.7929999999999997,
+          "endSeconds": 7.111
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.159,
+          "endSeconds": 9.52
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-eyesight",
+      "cacheKey": "d8d929811db1437d3a1a597fec78f71d325791ace4888566f499b26d8029f4d1",
+      "fileId": "1XfVrUOmU6xfRrdzECqwSyV6v_92HXErN",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8765
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9249999999999999,
+          "endSeconds": 4.441
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.547,
+          "endSeconds": 7.053
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.101,
+          "endSeconds": 9.938
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-ledge",
+      "cacheKey": "ccb0f0a093204e3a8ce68aeee50c320e75d2ecf50e18a5068aa4abca472f2d33",
+      "fileId": "1bbIDGl01rIctCPtf9BGgosl35wu1X2b1",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.6615
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.669,
+          "endSeconds": 3.547
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.653,
+          "endSeconds": 7.007
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.171,
+          "endSeconds": 9.706
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-tile",
+      "cacheKey": "e7e60bc9400d2e9b9a6215c5a05e8f0a057b3de8e9ae0a20885ef96edd493635",
+      "fileId": "1j8CAahgOyGLnuhrc0GB23kJxKEaulicO",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8765
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9249999999999999,
+          "endSeconds": 4.162
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.162,
+          "endSeconds": 6.8614999999999995
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.869,
+          "endSeconds": 9.567
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    }
+  ]
 }

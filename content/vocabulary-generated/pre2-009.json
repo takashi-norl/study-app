@@ -6761,6 +6761,216 @@
       }
     },
     {
+      "id": "vocab-rinse",
+      "word": "rinse",
+      "level": "準2級",
+      "ipa": "rɪns",
+      "ipaLabel": "英音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "rinse"
+        ],
+        "past": [
+          "rinsed"
+        ],
+        "pastParticiple": [
+          "rinsed"
+        ],
+        "presentParticiple": [
+          "rinsing"
+        ],
+        "thirdPersonSingular": [
+          "rinses"
+        ]
+      },
+      "definition": "to wash something lightly with clean water to remove soap or dirt",
+      "meaning": "すすぐ、ゆすぐ",
+      "usageTip": "rinse A out / off の形もよく使う。洗剤や汚れを水で流す軽い洗浄で、しっかり洗う wash とは違う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "歯磨き",
+          "text": "Rinse your mouth with water after brushing your teeth.",
+          "translation": "歯を磨いたあとは水で口をすすいでください。"
+        },
+        {
+          "id": "example-2",
+          "context": "台所",
+          "text": "I rinse the vegetables before I cut them.",
+          "translation": "野菜は切る前にすすぐ。"
+        },
+        {
+          "id": "example-3",
+          "context": "洗髪",
+          "text": "She rinsed the shampoo out of her hair.",
+          "translation": "彼女は髪からシャンプーを洗い流した。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "rinse",
+          "choices": [
+            {
+              "text": "折りたたむ",
+              "meaning": "曲げて重ねる"
+            },
+            {
+              "text": "燃やす",
+              "meaning": "火をつける"
+            },
+            {
+              "text": "すすぐ",
+              "meaning": "水で洗い流す"
+            },
+            {
+              "text": "切る",
+              "meaning": "刃物で分ける"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "rinse は水で軽く洗い流すこと。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "すすぐ、ゆすぐ",
+          "choices": [
+            {
+              "text": "rinse",
+              "meaning": "すすぐ"
+            },
+            {
+              "text": "tow",
+              "meaning": "牽引する"
+            },
+            {
+              "text": "fold",
+              "meaning": "折りたたむ"
+            },
+            {
+              "text": "steer",
+              "meaning": "操縦する"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "水で洗い流す動作を表す動詞は rinse。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "洗剤を使ったあとの食器の場面: After washing the plates with soap, please ___ them with clean water.",
+          "choices": [
+            {
+              "text": "borrow",
+              "meaning": "借りる"
+            },
+            {
+              "text": "rinse",
+              "meaning": "すすぐ"
+            },
+            {
+              "text": "predict",
+              "meaning": "予測する"
+            },
+            {
+              "text": "invite",
+              "meaning": "招待する"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "石けんで洗ったあと、きれいな水で流す動作なので rinse。",
+          "alternatives": [
+            {
+              "answer": "wash off",
+              "explanation": "泡や汚れを洗い落とす意味で近いが、軽く水で流す含みは rinse より弱い。"
+            },
+            {
+              "answer": "clean",
+              "explanation": "clean は掃除や洗浄全般を指し、より広い。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "rinse の使い方として正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "She rinsed to her hands the soap.",
+              "meaning": "語順と前置詞が誤り。"
+            },
+            {
+              "text": "She rinsed her hands of the soap on.",
+              "meaning": "語句の並びが不自然。"
+            },
+            {
+              "text": "She rinsed the soap at her hands for.",
+              "meaning": "前置詞の使い方が誤り。"
+            },
+            {
+              "text": "She rinsed the soap from her hands.",
+              "meaning": "彼女は手から石けんを洗い流した。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "rinse 物 from 場所 で「〜から物を洗い流す」を表せる。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "洗剤を使ったあとの食器の場面: After washing the plates with soap, please ___ them with clean water.",
+        "answers": [
+          "rinse"
+        ],
+        "explanation": "石けんで洗ったあと、きれいな水で流す動作なので rinse。",
+        "alternatives": [
+          {
+            "answer": "wash off",
+            "explanation": "泡や汚れを洗い落とす意味で近いが、軽く水で流す含みは rinse より弱い。"
+          },
+          {
+            "answer": "clean",
+            "explanation": "clean は掃除や洗浄全般を指し、より広い。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "rinseを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Rinse your mouth with water after brushing your teeth.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-rinse-usage",
+          "type": "usage",
+          "prompt": "rinse の使い方として正しい文を選んでください。",
+          "choices": [
+            "She rinsed to her hands the soap.",
+            "She rinsed her hands of the soap on.",
+            "She rinsed the soap at her hands for.",
+            "She rinsed the soap from her hands."
+          ],
+          "correctIndex": 3,
+          "explanation": "rinse 物 from 場所 で「〜から物を洗い流す」を表せる。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-detergent",
       "word": "detergent",
       "level": "準2級",
@@ -7327,6 +7537,400 @@
           ],
           "correctIndex": 3,
           "explanation": "乾燥機から衣類を取り出す使い方が自然。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-hanger",
+      "word": "hanger",
+      "level": "準2級",
+      "ipa": "ˈhæŋə",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a shaped frame or hook used for hanging clothes",
+      "meaning": "ハンガー",
+      "usageTip": "clothes hanger や coat hanger と言う。服は on a hanger に掛ける。hang の語尾に -er が付いた綴りに注意。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "クローゼット",
+          "text": "Please put your jacket on a hanger so it doesn't wrinkle.",
+          "translation": "しわにならないよう、上着はハンガーに掛けてください。"
+        },
+        {
+          "id": "example-2",
+          "context": "買い物",
+          "text": "The shop gave me a plastic hanger with the dress.",
+          "translation": "店はそのドレスにプラスチックのハンガーを付けてくれた。"
+        },
+        {
+          "id": "example-3",
+          "context": "ホテル",
+          "text": "There were only two hangers in the hotel wardrobe.",
+          "translation": "ホテルのクローゼットにはハンガーが二つしかなかった。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "hanger",
+          "choices": [
+            {
+              "text": "洗濯機",
+              "meaning": "服を洗う機械"
+            },
+            {
+              "text": "洗剤",
+              "meaning": "洗う薬剤"
+            },
+            {
+              "text": "ハンガー",
+              "meaning": "服を掛ける道具"
+            },
+            {
+              "text": "傘",
+              "meaning": "雨を防ぐ道具"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "hanger は服を掛けるハンガー。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "ハンガー",
+          "choices": [
+            {
+              "text": "bleach",
+              "meaning": "漂白剤"
+            },
+            {
+              "text": "dryer",
+              "meaning": "乾燥機"
+            },
+            {
+              "text": "stroller",
+              "meaning": "ベビーカー"
+            },
+            {
+              "text": "hanger",
+              "meaning": "ハンガー"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "ハンガーは英語で hanger。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "クローゼットの場面: Please hang your shirt on a ___ before you go to bed.",
+          "choices": [
+            {
+              "text": "hanger",
+              "meaning": "ハンガー"
+            },
+            {
+              "text": "detergent",
+              "meaning": "洗剤"
+            },
+            {
+              "text": "dryer",
+              "meaning": "乾燥機"
+            },
+            {
+              "text": "stroller",
+              "meaning": "ベビーカー"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "シャツを掛ける道具なので hanger が自然。",
+          "alternatives": [
+            {
+              "answer": "hook",
+              "explanation": "hook も自然で、壁やドアに付いた掛け具にシャツを掛ける場合に使える。"
+            },
+            {
+              "answer": "peg",
+              "explanation": "peg は壁の掛け釘や洗濯ばさみを指す語で、シャツを掛ける釘として使える。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "hanger を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I put my wet coat in a hanger.",
+              "meaning": "濡れたコートをハンガーの中に入れた。(不自然)"
+            },
+            {
+              "text": "I hung my wet coat on a hanger near the window.",
+              "meaning": "濡れたコートを窓の近くのハンガーに掛けた。"
+            },
+            {
+              "text": "I hung my wet coat to a hanger.",
+              "meaning": "濡れたコートをハンガーへ掛けた。(前置詞の誤り)"
+            },
+            {
+              "text": "I hung my wet coat at a hanger.",
+              "meaning": "濡れたコートをハンガーで掛けた。(前置詞の誤り)"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "服をハンガーに掛けるときは on a hanger を使う。in, to, at は不自然。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "クローゼットの場面: Please hang your shirt on a ___ before you go to bed.",
+        "answers": [
+          "hanger"
+        ],
+        "explanation": "シャツを掛ける道具なので hanger が自然。",
+        "alternatives": [
+          {
+            "answer": "hook",
+            "explanation": "hook も自然で、壁やドアに付いた掛け具にシャツを掛ける場合に使える。"
+          },
+          {
+            "answer": "peg",
+            "explanation": "peg は壁の掛け釘や洗濯ばさみを指す語で、シャツを掛ける釘として使える。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "hangerを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Please put your jacket on a hanger so it doesn't wrinkle.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-hanger-usage",
+          "type": "usage",
+          "prompt": "hanger を正しく使った文を選んでください。",
+          "choices": [
+            "I put my wet coat in a hanger.",
+            "I hung my wet coat on a hanger near the window.",
+            "I hung my wet coat to a hanger.",
+            "I hung my wet coat at a hanger."
+          ],
+          "correctIndex": 1,
+          "explanation": "服をハンガーに掛けるときは on a hanger を使う。in, to, at は不自然。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-stroller",
+      "word": "stroller",
+      "level": "準2級",
+      "ipa": "ˈstroʊlɚ",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "a light folding seat on wheels that you push to carry a baby or small child",
+      "meaning": "ベビーカー",
+      "usageTip": "主に米国英語で、英国では pushchair や buggy が一般的。数えられる名詞で、push a stroller（押す）、fold a stroller（たたむ）、in a stroller（ベビーカーに乗って）のように使う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "駅",
+          "text": "She folded the stroller before getting on the crowded train.",
+          "translation": "彼女は混んだ電車に乗る前にベビーカーをたたんだ。"
+        },
+        {
+          "id": "example-2",
+          "context": "公園",
+          "text": "He pushed the stroller slowly along the park path.",
+          "translation": "彼は公園の小道をゆっくりベビーカーを押して進んだ。"
+        },
+        {
+          "id": "example-3",
+          "context": "買い物",
+          "text": "We need a lighter stroller because we travel a lot.",
+          "translation": "よく旅行するので、もっと軽いベビーカーが必要だ。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "stroller",
+          "choices": [
+            {
+              "text": "車いす",
+              "meaning": "歩けない人の移動具"
+            },
+            {
+              "text": "買い物かご",
+              "meaning": "商品を入れる籠"
+            },
+            {
+              "text": "乾燥機",
+              "meaning": "熱風で乾かす機械"
+            },
+            {
+              "text": "ベビーカー",
+              "meaning": "赤ちゃんを乗せて押す車"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "stroller は赤ちゃんや幼児を乗せて押すベビーカーのこと。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "ベビーカー",
+          "choices": [
+            {
+              "text": "stroller",
+              "meaning": "ベビーカー"
+            },
+            {
+              "text": "hanger",
+              "meaning": "ハンガー"
+            },
+            {
+              "text": "bleach",
+              "meaning": "漂白剤"
+            },
+            {
+              "text": "detergent",
+              "meaning": "洗剤"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "米国英語でベビーカーは stroller。他は洗濯や衣類に関する語。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "公園の場面：The baby fell asleep in the ___ while we walked by the river.",
+          "choices": [
+            {
+              "text": "dryer",
+              "meaning": "乾燥機"
+            },
+            {
+              "text": "hanger",
+              "meaning": "ハンガー"
+            },
+            {
+              "text": "stroller",
+              "meaning": "ベビーカー"
+            },
+            {
+              "text": "detergent",
+              "meaning": "洗剤"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "散歩中に赤ちゃんが眠る場所として自然なのはベビーカー。",
+          "alternatives": [
+            {
+              "answer": "pushchair",
+              "explanation": "英国でよく使う、ベビーカーを指す語。"
+            },
+            {
+              "answer": "buggy",
+              "explanation": "英国で軽量のベビーカーを指す口語。"
+            },
+            {
+              "answer": "pram",
+              "explanation": "主に英国で、新生児を寝かせるタイプを指す。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "stroller を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "She pushed the stroller across the street.",
+              "meaning": "彼女はベビーカーを押して通りを渡った。"
+            },
+            {
+              "text": "She rode the stroller across the street.",
+              "meaning": "彼女はベビーカーに乗って通りを渡った。（大人が乗る意味になり不自然）"
+            },
+            {
+              "text": "She did the stroller across the street.",
+              "meaning": "彼女は通りを渡ってベビーカーをした。（動詞の選択が不適切）"
+            },
+            {
+              "text": "She made the stroller across the street.",
+              "meaning": "彼女は通りを渡ってベビーカーを作った。（動詞の選択が不適切）"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "ベビーカーは大人が push して動かす物。ride は乗る人が自分で動かす乗り物に使い、do や make は動作として合わない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "公園の場面：The baby fell asleep in the ___ while we walked by the river.",
+        "answers": [
+          "stroller"
+        ],
+        "explanation": "散歩中に赤ちゃんが眠る場所として自然なのはベビーカー。",
+        "alternatives": [
+          {
+            "answer": "pushchair",
+            "explanation": "英国でよく使う、ベビーカーを指す語。"
+          },
+          {
+            "answer": "buggy",
+            "explanation": "英国で軽量のベビーカーを指す口語。"
+          },
+          {
+            "answer": "pram",
+            "explanation": "主に英国で、新生児を寝かせるタイプを指す。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "strollerを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "She folded the stroller before getting on the crowded train.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-stroller-usage",
+          "type": "usage",
+          "prompt": "stroller を正しく使った文を選びなさい。",
+          "choices": [
+            "She pushed the stroller across the street.",
+            "She rode the stroller across the street.",
+            "She did the stroller across the street.",
+            "She made the stroller across the street."
+          ],
+          "correctIndex": 0,
+          "explanation": "ベビーカーは大人が push して動かす物。ride は乗る人が自分で動かす乗り物に使い、do や make は動作として合わない。"
         }
       ],
       "metadata": {
@@ -8503,6 +9107,209 @@
       }
     },
     {
+      "id": "vocab-yawn",
+      "word": "yawn",
+      "level": "準2級",
+      "ipa": "jɔːn",
+      "ipaLabel": "英音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "yawn"
+        ],
+        "past": [
+          "yawned"
+        ],
+        "pastParticiple": [
+          "yawned"
+        ],
+        "presentParticiple": [
+          "yawning"
+        ],
+        "thirdPersonSingular": [
+          "yawns"
+        ]
+      },
+      "definition": "to open your mouth wide and breathe in deeply, usually because you are tired or bored",
+      "meaning": "あくびをする",
+      "usageTip": "自動詞で、yawn at me のように前置詞を伴うこともできる。目的語は直接取らない。眠気や退屈で出る動作で、名詞の「あくび」としても使う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "授業",
+          "text": "Several students began to yawn during the long afternoon lecture.",
+          "translation": "長い午後の講義中に、数人の生徒があくびをし始めた。"
+        },
+        {
+          "id": "example-2",
+          "context": "朝",
+          "text": "I yawned all the way to the station this morning.",
+          "translation": "今朝は駅までずっとあくびをしていた。"
+        },
+        {
+          "id": "example-3",
+          "context": "家族",
+          "text": "My father yawned and said he was going to bed early.",
+          "translation": "父はあくびをして、早めに寝ると言った。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "yawn",
+          "choices": [
+            {
+              "text": "くしゃみをする",
+              "meaning": "鼻から急に息を出す"
+            },
+            {
+              "text": "あくびをする",
+              "meaning": "口を大きく開けて息を吸う"
+            },
+            {
+              "text": "ため息をつく",
+              "meaning": "長く息を吐く"
+            },
+            {
+              "text": "せきをする",
+              "meaning": "のどから空気を出す"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "yawn は眠気や退屈で口を大きく開けて息を吸う動作。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "あくびをする",
+          "choices": [
+            {
+              "text": "cough",
+              "meaning": "せきをする"
+            },
+            {
+              "text": "sneeze",
+              "meaning": "くしゃみをする"
+            },
+            {
+              "text": "whisper",
+              "meaning": "ささやく"
+            },
+            {
+              "text": "yawn",
+              "meaning": "あくびをする"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "あくびは yawn。他は別の口や息に関する動作。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "退屈な会議で眠そうな場面：The meeting was so dull that I could not stop ___.",
+          "choices": [
+            {
+              "text": "sneezing",
+              "meaning": "くしゃみをすること"
+            },
+            {
+              "text": "shouting",
+              "meaning": "叫ぶこと"
+            },
+            {
+              "text": "yawning",
+              "meaning": "あくびをすること"
+            },
+            {
+              "text": "cooking",
+              "meaning": "料理すること"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "退屈で止まらなくなる動作としてあくびが自然。",
+          "alternatives": [
+            {
+              "answer": "dozing off",
+              "explanation": "うとうと眠りに落ちることで、あくびより一歩進んだ状態。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "yawn を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "He yawned the lecture for ten minutes.",
+              "meaning": "彼は10分間その講義をあくびした。（目的語を取る誤り）"
+            },
+            {
+              "text": "She yawned loudly because she was tired.",
+              "meaning": "疲れていたので彼女は大きなあくびをした。"
+            },
+            {
+              "text": "They yawned to the teacher happily.",
+              "meaning": "彼らは先生へ楽しくあくびした。（前置詞の誤り）"
+            },
+            {
+              "text": "I am yawn after lunch every day.",
+              "meaning": "私は毎日昼食後あくびだ。（動詞の形の誤り）"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "yawn は自動詞なので目的語を直接取らず、She yawned の形が自然。他は目的語、前置詞、動詞形の使い方が誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "退屈な会議で眠そうな場面：The meeting was so dull that I could not stop ___.",
+        "answers": [
+          "yawning"
+        ],
+        "explanation": "退屈で止まらなくなる動作としてあくびが自然。",
+        "alternatives": [
+          {
+            "answer": "dozing off",
+            "explanation": "うとうと眠りに落ちることで、あくびより一歩進んだ状態。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "yawnを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Several students began to yawn during the long afternoon lecture.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-yawn-usage",
+          "type": "usage",
+          "prompt": "yawn を正しく使った文を選びなさい。",
+          "choices": [
+            "He yawned the lecture for ten minutes.",
+            "She yawned loudly because she was tired.",
+            "They yawned to the teacher happily.",
+            "I am yawn after lunch every day."
+          ],
+          "correctIndex": 1,
+          "explanation": "yawn は自動詞なので目的語を直接取らず、She yawned の形が自然。他は目的語、前置詞、動詞形の使い方が誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "health",
+          "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-snooze",
       "word": "snooze",
       "level": "準2級",
@@ -8714,6 +9521,191 @@
       }
     },
     {
+      "id": "vocab-comb",
+      "word": "comb",
+      "level": "準2級",
+      "ipa": "kəʊm",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a flat tool with a row of teeth that you pull through your hair to make it neat",
+      "meaning": "くし",
+      "usageTip": "語末の b は発音しない。数えられる名詞で、a comb、a fine comb のように使う。with a comb（くしで）の形もよく使う。動詞で「髪をとかす」の意味もある。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "身支度",
+          "text": "She keeps a small comb in her bag for windy days.",
+          "translation": "彼女は風の強い日のために、バッグに小さなくしを入れている。"
+        },
+        {
+          "id": "example-2",
+          "context": "洗面所",
+          "text": "Please pass me the comb from the bathroom shelf.",
+          "translation": "洗面所の棚からくしを取ってください。"
+        },
+        {
+          "id": "example-3",
+          "context": "理髪店",
+          "text": "The barber used a fine comb to tidy his hair.",
+          "translation": "理容師は目の細かいくしで彼の髪を整えた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "comb",
+          "choices": [
+            {
+              "text": "くし",
+              "meaning": "髪をとかす道具"
+            },
+            {
+              "text": "はさみ",
+              "meaning": "切る道具"
+            },
+            {
+              "text": "かがみ",
+              "meaning": "姿を映す物"
+            },
+            {
+              "text": "タオル",
+              "meaning": "体や髪をふく布"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "comb は髪をとかす道具。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "くし",
+          "choices": [
+            {
+              "text": "razor",
+              "meaning": "かみそり"
+            },
+            {
+              "text": "soap",
+              "meaning": "石けん"
+            },
+            {
+              "text": "towel",
+              "meaning": "タオル"
+            },
+            {
+              "text": "comb",
+              "meaning": "くし"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "歯が並んだ平らな髪の道具は comb。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "髪がぼさぼさの朝の場面：I need a ___ to fix my messy hair.",
+          "choices": [
+            {
+              "text": "spoon",
+              "meaning": "スプーン"
+            },
+            {
+              "text": "ladder",
+              "meaning": "はしご"
+            },
+            {
+              "text": "comb",
+              "meaning": "くし"
+            },
+            {
+              "text": "pillow",
+              "meaning": "まくら"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "乱れた髪を整える道具として comb が合う。",
+          "alternatives": [
+            {
+              "answer": "brush",
+              "explanation": "ブラシでも髪を整えられる。形は違うが自然な言い方。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "comb を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "He used a comb to tidy his hair before the interview.",
+              "meaning": "彼は面接前にくしで髪を整えた。"
+            },
+            {
+              "text": "He tidied his hair by comb before the interview.",
+              "meaning": "彼は面接前にくしによって髪を整えた。（by の誤用）"
+            },
+            {
+              "text": "He used comb to tidy his hair before the interview.",
+              "meaning": "彼は面接前にくしで髪を整えた。（冠詞が抜けている）"
+            },
+            {
+              "text": "He used a combs to tidy his hair before the interview.",
+              "meaning": "彼は面接前に数本のくしで髪を整えた。（a と複数形の誤り）"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "comb は数えられる名詞なので a comb とし、道具は use a comb や with a comb で表す。他は by の誤用、冠詞の欠落、a と複数形の併用が誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "髪がぼさぼさの朝の場面：I need a ___ to fix my messy hair.",
+        "answers": [
+          "comb"
+        ],
+        "explanation": "乱れた髪を整える道具として comb が合う。",
+        "alternatives": [
+          {
+            "answer": "brush",
+            "explanation": "ブラシでも髪を整えられる。形は違うが自然な言い方。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "combを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "She keeps a small comb in her bag for windy days.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-comb-usage",
+          "type": "usage",
+          "prompt": "comb を正しく使った文を選びなさい。",
+          "choices": [
+            "He used a comb to tidy his hair before the interview.",
+            "He tidied his hair by comb before the interview.",
+            "He used comb to tidy his hair before the interview.",
+            "He used a combs to tidy his hair before the interview."
+          ],
+          "correctIndex": 0,
+          "explanation": "comb は数えられる名詞なので a comb とし、道具は use a comb や with a comb で表す。他は by の誤用、冠詞の欠落、a と複数形の併用が誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-couch",
       "word": "couch",
       "level": "準2級",
@@ -8901,6 +9893,192 @@
         "cefrEstimate": "A2",
         "domains": [
           "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-freezer",
+      "word": "freezer",
+      "level": "準2級",
+      "ipa": "ˈfriːzə",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a very cold box or part of a fridge where food is kept frozen",
+      "meaning": "冷凍庫",
+      "usageTip": "保存場所は in the freezer の形でよく使う。冷蔵庫は fridge、冷凍庫は freezer と区別する。冷凍庫の上に物を置くなら on top of the freezer と言う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "家庭",
+          "text": "I put the ice cream back in the freezer after dinner.",
+          "translation": "夕食後、私はアイスクリームを冷凍庫に戻した。"
+        },
+        {
+          "id": "example-2",
+          "context": "料理",
+          "text": "You can keep this soup in the freezer for two months.",
+          "translation": "このスープは冷凍庫で二か月保存できる。"
+        },
+        {
+          "id": "example-3",
+          "context": "買い物",
+          "text": "We bought a small freezer for the garage to store extra meat.",
+          "translation": "余分な肉を保存するため、ガレージ用の小さな冷凍庫を買った。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "freezer",
+          "choices": [
+            {
+              "text": "食器棚",
+              "meaning": "皿などをしまう家具"
+            },
+            {
+              "text": "冷凍庫",
+              "meaning": "食品を凍らせて保存する場所"
+            },
+            {
+              "text": "換気扇",
+              "meaning": "空気を外に出す装置"
+            },
+            {
+              "text": "電子レンジ",
+              "meaning": "食品を温める機器"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "freezer は食品を凍らせて保存する冷凍庫のこと。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "冷凍庫",
+          "choices": [
+            {
+              "text": "oven",
+              "meaning": "オーブン"
+            },
+            {
+              "text": "sink",
+              "meaning": "流し台"
+            },
+            {
+              "text": "kettle",
+              "meaning": "やかん"
+            },
+            {
+              "text": "freezer",
+              "meaning": "冷凍庫"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "冷凍庫は freezer。oven は加熱、sink は洗い物、kettle は湯を沸かす道具。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "アイスが溶けないようにしまう場面：Please keep the ice cream in the ___ so it stays hard.",
+          "choices": [
+            {
+              "text": "freezer",
+              "meaning": "冷凍庫"
+            },
+            {
+              "text": "drawer",
+              "meaning": "引き出し"
+            },
+            {
+              "text": "basket",
+              "meaning": "かご"
+            },
+            {
+              "text": "cupboard",
+              "meaning": "食器棚"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "硬いままにするには凍らせて保存する freezer が適切。",
+          "alternatives": [
+            {
+              "answer": "fridge",
+              "explanation": "冷蔵庫は冷たいが凍らないので、硬いままにするには合いにくい。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "冷凍庫に入れて保存することを表す、正しい文を選びなさい。",
+          "choices": [
+            {
+              "text": "I keep some bread at the freezer for later.",
+              "meaning": "後のためにパンを冷凍庫に（at の誤用）入れておく。"
+            },
+            {
+              "text": "I keep some bread to the freezer for later.",
+              "meaning": "後のためにパンを冷凍庫へ（to の誤用）入れておく。"
+            },
+            {
+              "text": "I keep some bread for the freezer for later.",
+              "meaning": "後のためにパンを冷凍庫用に（for の誤用）入れておく。"
+            },
+            {
+              "text": "I keep some bread in the freezer for later.",
+              "meaning": "後のためにパンを冷凍庫に入れておく。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "冷凍庫の中に保存するので in the freezer が自然。at、to、for では保存場所の意味が正しく伝わらない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "アイスが溶けないようにしまう場面：Please keep the ice cream in the ___ so it stays hard.",
+        "answers": [
+          "freezer"
+        ],
+        "explanation": "硬いままにするには凍らせて保存する freezer が適切。",
+        "alternatives": [
+          {
+            "answer": "fridge",
+            "explanation": "冷蔵庫は冷たいが凍らないので、硬いままにするには合いにくい。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "freezerを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I put the ice cream back in the freezer after dinner.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-freezer-usage",
+          "type": "usage",
+          "prompt": "冷凍庫に入れて保存することを表す、正しい文を選びなさい。",
+          "choices": [
+            "I keep some bread at the freezer for later.",
+            "I keep some bread to the freezer for later.",
+            "I keep some bread for the freezer for later.",
+            "I keep some bread in the freezer for later."
+          ],
+          "correctIndex": 3,
+          "explanation": "冷凍庫の中に保存するので in the freezer が自然。at、to、for では保存場所の意味が正しく伝わらない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "daily-life",
+          "food"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -11208,6 +12386,394 @@
       }
     },
     {
+      "id": "vocab-jet",
+      "word": "jet",
+      "level": "準2級",
+      "ipa": "dʒɛt",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "a fast aircraft powered by engines that push out hot gas",
+      "meaning": "ジェット機",
+      "usageTip": "数えられる名詞で、a jet や private jet のように使う。乗り物として移動手段を言うときは by jet も可能だが、by plane が一般的。jet lag（時差ぼけ）などの複合語もよく使う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "空港",
+          "text": "A private jet landed on the runway just after sunrise.",
+          "translation": "日の出の直後にプライベートジェットが滑走路に着陸した。"
+        },
+        {
+          "id": "example-2",
+          "context": "旅行",
+          "text": "I felt tired from jet lag after the long flight to Paris.",
+          "translation": "パリへの長時間のフライトの後、時差ぼけで疲れていた。"
+        },
+        {
+          "id": "example-3",
+          "context": "航空ショー",
+          "text": "The crowd looked up as a jet crossed the sky.",
+          "translation": "ジェット機が空を横切ると、観客は見上げた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "jet",
+          "choices": [
+            {
+              "text": "自転車",
+              "meaning": "二輪の乗り物"
+            },
+            {
+              "text": "ジェット機",
+              "meaning": "高速の航空機"
+            },
+            {
+              "text": "港",
+              "meaning": "船が停まる場所"
+            },
+            {
+              "text": "切符",
+              "meaning": "乗車券"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "jet は高速で飛ぶジェット機を指す。他は自転車、港、切符で意味が異なる。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "ジェット機",
+          "choices": [
+            {
+              "text": "harbor",
+              "meaning": "港"
+            },
+            {
+              "text": "ticket",
+              "meaning": "切符"
+            },
+            {
+              "text": "jet",
+              "meaning": "ジェット機"
+            },
+            {
+              "text": "bicycle",
+              "meaning": "自転車"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "ジェット機は jet。他は港、切符、自転車で意味が異なる。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "空港の場面：We watched a passenger ___ take off into the clouds.",
+          "choices": [
+            {
+              "text": "ticket",
+              "meaning": "切符"
+            },
+            {
+              "text": "trolley",
+              "meaning": "カート"
+            },
+            {
+              "text": "harbor",
+              "meaning": "港"
+            },
+            {
+              "text": "jet",
+              "meaning": "ジェット機"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "雲の中へ離陸するのは乗客を乗せた航空機なので jet が合う。他は離陸できない。",
+          "alternatives": [
+            {
+              "answer": "plane",
+              "explanation": "最も一般的な「飛行機」で、jet より広く使える。"
+            },
+            {
+              "answer": "aircraft",
+              "explanation": "やや硬い語で、航空機全般を指す。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "jet を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "I traveled to Osaka by a jet last week.",
+              "meaning": "先週ジェット機で大阪へ行った。（by a jet は誤り）"
+            },
+            {
+              "text": "A jet is very fast, so I felt a jet lag.",
+              "meaning": "ジェット機は速いので時差ぼけを感じた。（a jet lag は誤り）"
+            },
+            {
+              "text": "The jet was so noisy that we covered our ears.",
+              "meaning": "そのジェット機は騒音がひどく、私たちは耳をふさいだ。"
+            },
+            {
+              "text": "Two jet landed on the runway at noon.",
+              "meaning": "正午に2機のジェット機が着陸した。（複数形 jets が必要）"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "jet は数えられる名詞で The jet was ... と自然に使える。by の後は冠詞なしで by jet、jet lag は a をつけず、複数なら jets とする。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "空港の場面：We watched a passenger ___ take off into the clouds.",
+        "answers": [
+          "jet"
+        ],
+        "explanation": "雲の中へ離陸するのは乗客を乗せた航空機なので jet が合う。他は離陸できない。",
+        "alternatives": [
+          {
+            "answer": "plane",
+            "explanation": "最も一般的な「飛行機」で、jet より広く使える。"
+          },
+          {
+            "answer": "aircraft",
+            "explanation": "やや硬い語で、航空機全般を指す。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "jetを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "A private jet landed on the runway just after sunrise.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-jet-usage",
+          "type": "usage",
+          "prompt": "jet を正しく使った文を選びなさい。",
+          "choices": [
+            "I traveled to Osaka by a jet last week.",
+            "A jet is very fast, so I felt a jet lag.",
+            "The jet was so noisy that we covered our ears.",
+            "Two jet landed on the runway at noon."
+          ],
+          "correctIndex": 2,
+          "explanation": "jet は数えられる名詞で The jet was ... と自然に使える。by の後は冠詞なしで by jet、jet lag は a をつけず、複数なら jets とする。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "transport",
+          "travel"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-trolley",
+      "word": "trolley",
+      "level": "準2級",
+      "ipa": "ˈtrɒli",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a small cart with wheels that you push by hand to carry shopping or luggage",
+      "meaning": "手押し車、ショッピングカート",
+      "usageTip": "主にイギリス英語で、店や空港で押す手押しカートを指す。米語では cart が普通。病院や機内の配膳用ワゴンも trolley と言うが、ここでは買い物・荷物用のカートの意味。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "スーパー",
+          "text": "She pushed the trolley slowly down the aisle, looking at each shelf.",
+          "translation": "彼女は一つ一つの棚を見ながら、通路をゆっくりカートを押して進んだ。"
+        },
+        {
+          "id": "example-2",
+          "context": "空港",
+          "text": "I put our heavy suitcases on a trolley at the airport.",
+          "translation": "空港で私たちの重いスーツケースをカートに載せた。"
+        },
+        {
+          "id": "example-3",
+          "context": "駅",
+          "text": "He found a free trolley near the entrance and loaded the boxes.",
+          "translation": "彼は入口の近くで空いているカートを見つけ、箱を積んだ。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "trolley",
+          "choices": [
+            {
+              "text": "傘",
+              "meaning": "雨を避けるための道具"
+            },
+            {
+              "text": "手押しカート",
+              "meaning": "押して荷物を運ぶ車"
+            },
+            {
+              "text": "財布",
+              "meaning": "お金を入れる物"
+            },
+            {
+              "text": "階段",
+              "meaning": "上り下りするための段"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "trolley は買い物や荷物を載せて手で押す車を指す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "手押し車、ショッピングカート",
+          "choices": [
+            {
+              "text": "ticket",
+              "meaning": "切符"
+            },
+            {
+              "text": "blanket",
+              "meaning": "毛布"
+            },
+            {
+              "text": "trolley",
+              "meaning": "手押しカート"
+            },
+            {
+              "text": "ladder",
+              "meaning": "はしご"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "店や空港で押して使うカートは trolley と言う。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "英国のスーパーで、重い買い物をする場面：We need a ___ because we are buying so many heavy bottles.",
+          "choices": [
+            {
+              "text": "pillow",
+              "meaning": "枕"
+            },
+            {
+              "text": "trolley",
+              "meaning": "手押しカート"
+            },
+            {
+              "text": "ticket",
+              "meaning": "切符"
+            },
+            {
+              "text": "candle",
+              "meaning": "ろうそく"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "たくさんの重い瓶を運ぶ道具が必要なので、カートの trolley が合う。",
+          "alternatives": [
+            {
+              "answer": "cart",
+              "explanation": "米語で一般的な言い方で、同じ意味で使える。"
+            },
+            {
+              "answer": "basket",
+              "explanation": "手で提げるかごで、重い買い物には向かない。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "買い物用カートの意味で、trolley を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "He trolleyed the shopping to the car by hand.",
+              "meaning": "彼は買い物を手でカートして車へ運んだ。（名詞を動詞のように使っている）"
+            },
+            {
+              "text": "He put the shopping on trolley to the car.",
+              "meaning": "彼は買い物をカートに載せて車へ向かった。（冠詞がない）"
+            },
+            {
+              "text": "He put the shopping in the trolley and walked to the car.",
+              "meaning": "彼は買い物をカートに入れて車まで歩いた。"
+            },
+            {
+              "text": "He put the shopping at the trolley's car.",
+              "meaning": "彼は買い物をカートの車に置いた。（意味が不自然）"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "trolley は数えられる名詞なので、the trolley のように冠詞を付けて使う。他は動詞化や冠詞の欠落などの誤りがある。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "英国のスーパーで、重い買い物をする場面：We need a ___ because we are buying so many heavy bottles.",
+        "answers": [
+          "trolley"
+        ],
+        "explanation": "たくさんの重い瓶を運ぶ道具が必要なので、カートの trolley が合う。",
+        "alternatives": [
+          {
+            "answer": "cart",
+            "explanation": "米語で一般的な言い方で、同じ意味で使える。"
+          },
+          {
+            "answer": "basket",
+            "explanation": "手で提げるかごで、重い買い物には向かない。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "trolleyを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "She pushed the trolley slowly down the aisle, looking at each shelf.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-trolley-usage",
+          "type": "usage",
+          "prompt": "買い物用カートの意味で、trolley を正しく使った文を選んでください。",
+          "choices": [
+            "He trolleyed the shopping to the car by hand.",
+            "He put the shopping on trolley to the car.",
+            "He put the shopping in the trolley and walked to the car.",
+            "He put the shopping at the trolley's car."
+          ],
+          "correctIndex": 2,
+          "explanation": "trolley は数えられる名詞なので、the trolley のように冠詞を付けて使う。他は動詞化や冠詞の欠落などの誤りがある。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "transport",
+          "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-motorway",
       "word": "motorway",
       "level": "準2級",
@@ -12362,6 +13928,957 @@
         "cefrEstimate": "B2",
         "domains": [
           "transport"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-vest",
+      "word": "vest",
+      "level": "準2級",
+      "ipa": "vɛst",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "a piece of clothing without sleeves, worn over a shirt for warmth, style or safety",
+      "meaning": "ベスト、袖なしの衣類",
+      "usageTip": "米語では袖なしの上着（ベスト）を指す。英国では下着のシャツを指すこともあるが、ここでは上着の意味。safety vest のように用途を前に付けることも多い。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "服装",
+          "text": "He wore a gray vest over his white shirt to the meeting.",
+          "translation": "彼は会議に、白いシャツの上に灰色のベストを着て行った。"
+        },
+        {
+          "id": "example-2",
+          "context": "安全",
+          "text": "Workers must wear a bright vest when they are near the road.",
+          "translation": "作業員は道路の近くでは明るい色のベストを着なければならない。"
+        },
+        {
+          "id": "example-3",
+          "context": "寒い日",
+          "text": "I put on a warm vest before taking the dog for a walk.",
+          "translation": "犬の散歩の前に、暖かいベストを着た。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "vest",
+          "choices": [
+            {
+              "text": "長靴",
+              "meaning": "足にはく履物"
+            },
+            {
+              "text": "屋上",
+              "meaning": "建物の一番上の場所"
+            },
+            {
+              "text": "ベスト",
+              "meaning": "袖のない衣類"
+            },
+            {
+              "text": "腰かけ",
+              "meaning": "背もたれのない椅子"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "vest は袖のない上着、つまりベストを指す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "ベスト、袖なしの衣類",
+          "choices": [
+            {
+              "text": "vest",
+              "meaning": "ベスト"
+            },
+            {
+              "text": "boot",
+              "meaning": "ブーツ"
+            },
+            {
+              "text": "stool",
+              "meaning": "腰かけ"
+            },
+            {
+              "text": "ladder",
+              "meaning": "はしご"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "袖のない衣類は vest である。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "道路工事の現場で、安全のために着る場面：The workers all wore a bright safety ___.",
+          "choices": [
+            {
+              "text": "blanket",
+              "meaning": "毛布"
+            },
+            {
+              "text": "vest",
+              "meaning": "ベスト"
+            },
+            {
+              "text": "pillow",
+              "meaning": "枕"
+            },
+            {
+              "text": "umbrella",
+              "meaning": "傘"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "安全のために着る明るい衣類なので、safety vest が合う。",
+          "alternatives": [
+            {
+              "answer": "jacket",
+              "explanation": "safety jacket も使われるが、袖のある上着を指す。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "vest を使って、シャツの上にベストを着たと伝える文として正しいものを選んでください。",
+          "choices": [
+            {
+              "text": "She put a vest at her shirt.",
+              "meaning": "彼女はシャツにベストを置いた。（前置詞が不適切）"
+            },
+            {
+              "text": "She wore a vest under to her shirt.",
+              "meaning": "彼女はシャツの下へベストを着た。（前置詞が重なっている）"
+            },
+            {
+              "text": "She wore a vest of her shirt.",
+              "meaning": "彼女はシャツのベストを着た。（前置詞が不適切）"
+            },
+            {
+              "text": "She wore a vest over her shirt.",
+              "meaning": "彼女はシャツの上にベストを着た。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "シャツの上に重ねて着るときは over her shirt を使う。他は前置詞の使い方が不自然で、意図が伝わりにくい。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "道路工事の現場で、安全のために着る場面：The workers all wore a bright safety ___.",
+        "answers": [
+          "vest"
+        ],
+        "explanation": "安全のために着る明るい衣類なので、safety vest が合う。",
+        "alternatives": [
+          {
+            "answer": "jacket",
+            "explanation": "safety jacket も使われるが、袖のある上着を指す。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "vestを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "He wore a gray vest over his white shirt to the meeting.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-vest-usage",
+          "type": "usage",
+          "prompt": "vest を使って、シャツの上にベストを着たと伝える文として正しいものを選んでください。",
+          "choices": [
+            "She put a vest at her shirt.",
+            "She wore a vest under to her shirt.",
+            "She wore a vest of her shirt.",
+            "She wore a vest over her shirt."
+          ],
+          "correctIndex": 3,
+          "explanation": "シャツの上に重ねて着るときは over her shirt を使う。他は前置詞の使い方が不自然で、意図が伝わりにくい。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-boot",
+      "word": "boot",
+      "level": "準2級",
+      "ipa": "buːt",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a strong shoe that covers the foot and ankle, and sometimes part of the leg",
+      "meaning": "ブーツ、長靴",
+      "usageTip": "左右で一組なので、通常は boots や a pair of boots と言う。英国では車のトランクも boot と言うが、ここでは履物の意味。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "雨の日",
+          "text": "Put on your rubber boots because the path is very muddy.",
+          "translation": "道がとてもぬかるんでいるので、長靴を履きなさい。"
+        },
+        {
+          "id": "example-2",
+          "context": "登山",
+          "text": "He bought a new pair of boots before the long hike.",
+          "translation": "彼は長いハイキングの前に、新しいブーツを一足買った。"
+        },
+        {
+          "id": "example-3",
+          "context": "冬",
+          "text": "She left her wet boots by the door to dry.",
+          "translation": "彼女は濡れたブーツを乾かすためにドアのそばに置いた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "boot",
+          "choices": [
+            {
+              "text": "ブーツ、長靴",
+              "meaning": "足首以上を覆う履物"
+            },
+            {
+              "text": "ベスト",
+              "meaning": "袖のない衣類"
+            },
+            {
+              "text": "屋根",
+              "meaning": "建物の上部"
+            },
+            {
+              "text": "自転車",
+              "meaning": "二輪の乗り物"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "boot は足首以上を覆う丈夫な靴を指す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "ブーツ、長靴",
+          "choices": [
+            {
+              "text": "vest",
+              "meaning": "ベスト"
+            },
+            {
+              "text": "stool",
+              "meaning": "腰かけ"
+            },
+            {
+              "text": "rooftop",
+              "meaning": "屋上"
+            },
+            {
+              "text": "boot",
+              "meaning": "ブーツ"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "足首を覆う履物は boot である。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "雨上がりの泥道を歩く場面：I wore my rubber ___ because the road was muddy.",
+          "choices": [
+            {
+              "text": "vests",
+              "meaning": "ベスト"
+            },
+            {
+              "text": "stools",
+              "meaning": "腰かけ"
+            },
+            {
+              "text": "boots",
+              "meaning": "ブーツ"
+            },
+            {
+              "text": "blankets",
+              "meaning": "毛布"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "泥道では足を守るために rubber boots を履く。",
+          "alternatives": [
+            {
+              "answer": "wellies",
+              "explanation": "英国の口語で、ゴム長靴を指す親しみのある言い方。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "履物の意味で、boot を使った正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "I wore a boot to the hike.",
+              "meaning": "私はハイキングにブーツを片方だけ履いた。（前置詞と数が不自然）"
+            },
+            {
+              "text": "I wore boots of the hike.",
+              "meaning": "私はハイキングのブーツを履いた。（前置詞が不自然）"
+            },
+            {
+              "text": "I wore a pair of boots for the hike.",
+              "meaning": "私はハイキングのためにブーツを履いた。"
+            },
+            {
+              "text": "I wore boots in for the hike.",
+              "meaning": "私はハイキング用にブーツを履いた。（前置詞が重なっている）"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "左右一組は a pair of boots と言い、目的を表すには for を使う。他は数や前置詞の使い方が不自然。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "雨上がりの泥道を歩く場面：I wore my rubber ___ because the road was muddy.",
+        "answers": [
+          "boots"
+        ],
+        "explanation": "泥道では足を守るために rubber boots を履く。",
+        "alternatives": [
+          {
+            "answer": "wellies",
+            "explanation": "英国の口語で、ゴム長靴を指す親しみのある言い方。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "bootを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Put on your rubber boots because the path is very muddy.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-boot-usage",
+          "type": "usage",
+          "prompt": "履物の意味で、boot を使った正しい文を選んでください。",
+          "choices": [
+            "I wore a boot to the hike.",
+            "I wore boots of the hike.",
+            "I wore a pair of boots for the hike.",
+            "I wore boots in for the hike."
+          ],
+          "correctIndex": 2,
+          "explanation": "左右一組は a pair of boots と言い、目的を表すには for を使う。他は数や前置詞の使い方が不自然。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-stool",
+      "word": "stool",
+      "level": "準2級",
+      "ipa": "/stuːl/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "a seat with legs but no back or arms, often used at a counter or for reaching high places",
+      "meaning": "背もたれのない腰かけ",
+      "usageTip": "座る場面では sit on a stool のように on を使う。背もたれのある chair とは区別する。カウンター用の高いものは bar stool、台所では踏み台代わりにも使う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "カフェ",
+          "text": "He sat on a high stool at the counter and ordered coffee.",
+          "translation": "彼はカウンターの高い腰かけに座り、コーヒーを注文した。"
+        },
+        {
+          "id": "example-2",
+          "context": "台所",
+          "text": "She stood on a small stool to reach the top shelf.",
+          "translation": "彼女は上の棚に届くよう、小さな腰かけの上に立った。"
+        },
+        {
+          "id": "example-3",
+          "context": "音楽",
+          "text": "The guitarist played quietly on a wooden stool near the window.",
+          "translation": "ギタリストは窓の近くの木の丸椅子で静かに演奏した。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "stool",
+          "choices": [
+            {
+              "text": "長靴",
+              "meaning": "足にはく履物"
+            },
+            {
+              "text": "背もたれのない腰かけ",
+              "meaning": "座るための道具"
+            },
+            {
+              "text": "袖なしの衣類",
+              "meaning": "服の一種"
+            },
+            {
+              "text": "屋上",
+              "meaning": "建物の最上部"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "stool は背もたれのない腰かけを指す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "背もたれのない腰かけ",
+          "choices": [
+            {
+              "text": "boot",
+              "meaning": "ブーツ"
+            },
+            {
+              "text": "vest",
+              "meaning": "ベスト"
+            },
+            {
+              "text": "rooftop",
+              "meaning": "屋上"
+            },
+            {
+              "text": "stool",
+              "meaning": "腰かけ"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "背もたれのない座る道具は stool である。他は衣類や建物の部分を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "バーのカウンターで座る場面：He sat on a tall ___ at the bar and watched the game.",
+          "choices": [
+            {
+              "text": "vest",
+              "meaning": "ベスト"
+            },
+            {
+              "text": "stool",
+              "meaning": "腰かけ"
+            },
+            {
+              "text": "blanket",
+              "meaning": "毛布"
+            },
+            {
+              "text": "boot",
+              "meaning": "ブーツ"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "sat on a tall の後には座る物が入り、バーの高い腰かけは stool が自然である。",
+          "alternatives": [
+            {
+              "answer": "chair",
+              "explanation": "一般的な椅子。背もたれがあるものも含み、tall chair でも通じる。"
+            },
+            {
+              "answer": "barstool",
+              "explanation": "バー用の腰かけを一語で表す言い方。stool とほぼ同じ意味。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "stool を使って、腰かけに座ったと伝える文として正しいものを選んでください。",
+          "choices": [
+            {
+              "text": "She sat in a stool.",
+              "meaning": "彼女は腰かけの中に座った。（前置詞が不適切）"
+            },
+            {
+              "text": "She sat to a stool.",
+              "meaning": "彼女は腰かけへ座った。（前置詞が不適切）"
+            },
+            {
+              "text": "She sat on a stool.",
+              "meaning": "彼女は腰かけに座った。"
+            },
+            {
+              "text": "She sat at on stool.",
+              "meaning": "彼女は腰かけに座った。（前置詞と冠詞が不適切）"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "背もたれのない腰かけには、座面に乗る感覚で on a stool を使う。他は前置詞や冠詞が不自然である。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "バーのカウンターで座る場面：He sat on a tall ___ at the bar and watched the game.",
+        "answers": [
+          "stool"
+        ],
+        "explanation": "sat on a tall の後には座る物が入り、バーの高い腰かけは stool が自然である。",
+        "alternatives": [
+          {
+            "answer": "chair",
+            "explanation": "一般的な椅子。背もたれがあるものも含み、tall chair でも通じる。"
+          },
+          {
+            "answer": "barstool",
+            "explanation": "バー用の腰かけを一語で表す言い方。stool とほぼ同じ意味。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "stoolを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "He sat on a high stool at the counter and ordered coffee.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-stool-usage",
+          "type": "usage",
+          "prompt": "stool を使って、腰かけに座ったと伝える文として正しいものを選んでください。",
+          "choices": [
+            "She sat in a stool.",
+            "She sat to a stool.",
+            "She sat on a stool.",
+            "She sat at on stool."
+          ],
+          "correctIndex": 2,
+          "explanation": "背もたれのない腰かけには、座面に乗る感覚で on a stool を使う。他は前置詞や冠詞が不自然である。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-rooftop",
+      "word": "rooftop",
+      "level": "準2級",
+      "ipa": "ˈruːftɒp",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "the flat or sloping outer top of a building, often a place where people can stand or sit",
+      "meaning": "屋根の上、屋上",
+      "usageTip": "on the rooftop や from a rooftop の形でよく使う。屋根の外側の上面や、人が出られる屋上の場所を指す。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "街",
+          "text": "We watched the fireworks from a rooftop near the river.",
+          "translation": "私たちは川の近くの屋上から花火を見た。"
+        },
+        {
+          "id": "example-2",
+          "context": "レストラン",
+          "text": "The rooftop restaurant has a wonderful view of the whole city.",
+          "translation": "屋上のレストランからは、街全体の素晴らしい景色が見える。"
+        },
+        {
+          "id": "example-3",
+          "context": "環境",
+          "text": "They installed solar panels on the rooftop of the school.",
+          "translation": "彼らは学校の屋根の上にソーラーパネルを設置した。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "rooftop",
+          "choices": [
+            {
+              "text": "屋根の上、屋上",
+              "meaning": "建物の一番上の面"
+            },
+            {
+              "text": "地下室",
+              "meaning": "建物の下の部屋"
+            },
+            {
+              "text": "玄関",
+              "meaning": "建物の入口"
+            },
+            {
+              "text": "階段",
+              "meaning": "上り下りするための段"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "rooftop は建物の屋根の上や屋上を指す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "屋根の上、屋上",
+          "choices": [
+            {
+              "text": "boot",
+              "meaning": "ブーツ"
+            },
+            {
+              "text": "vest",
+              "meaning": "ベスト"
+            },
+            {
+              "text": "stool",
+              "meaning": "腰かけ"
+            },
+            {
+              "text": "rooftop",
+              "meaning": "屋上"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "建物の最上部の屋根や屋上は rooftop である。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "ビルの上から夜景を見る場面：We had dinner on the ___ and enjoyed the night view.",
+          "choices": [
+            {
+              "text": "rooftop",
+              "meaning": "屋上"
+            },
+            {
+              "text": "boot",
+              "meaning": "ブーツ"
+            },
+            {
+              "text": "vest",
+              "meaning": "ベスト"
+            },
+            {
+              "text": "blanket",
+              "meaning": "毛布"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "on the の後で、夜景を見ながら食事をする場所として合うのは rooftop である。",
+          "alternatives": [
+            {
+              "answer": "terrace",
+              "explanation": "屋外の広い場所を表し、屋上とは限らない。"
+            },
+            {
+              "answer": "balcony",
+              "explanation": "建物の壁から張り出した小さな場所で、屋上より狭い。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "rooftop を使って、猫が屋根の上にいると伝える文として正しいものを選んでください。",
+          "choices": [
+            {
+              "text": "The cat is in the rooftop.",
+              "meaning": "猫は屋上の中にいる。（前置詞が不適切）"
+            },
+            {
+              "text": "The cat is on the rooftop.",
+              "meaning": "猫は屋根の上にいる。"
+            },
+            {
+              "text": "The cat is to the rooftop.",
+              "meaning": "猫は屋根へいる。（前置詞が不適切）"
+            },
+            {
+              "text": "The cat is at rooftop the.",
+              "meaning": "猫は屋根にいる。（語順が不適切）"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "屋根の表面に接して上にいるので on the rooftop を使う。他は前置詞や語順が不自然。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "ビルの上から夜景を見る場面：We had dinner on the ___ and enjoyed the night view.",
+        "answers": [
+          "rooftop"
+        ],
+        "explanation": "on the の後で、夜景を見ながら食事をする場所として合うのは rooftop である。",
+        "alternatives": [
+          {
+            "answer": "terrace",
+            "explanation": "屋外の広い場所を表し、屋上とは限らない。"
+          },
+          {
+            "answer": "balcony",
+            "explanation": "建物の壁から張り出した小さな場所で、屋上より狭い。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "rooftopを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "We watched the fireworks from a rooftop near the river.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-rooftop-usage",
+          "type": "usage",
+          "prompt": "rooftop を使って、猫が屋根の上にいると伝える文として正しいものを選んでください。",
+          "choices": [
+            "The cat is in the rooftop.",
+            "The cat is on the rooftop.",
+            "The cat is to the rooftop.",
+            "The cat is at rooftop the."
+          ],
+          "correctIndex": 1,
+          "explanation": "屋根の表面に接して上にいるので on the rooftop を使う。他は前置詞や語順が不自然。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "society",
+          "environment"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-skyscraper",
+      "word": "skyscraper",
+      "level": "準2級",
+      "ipa": "/ˈskaɪˌskreɪpɚ/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "a very tall building with many floors, usually in a city",
+      "meaning": "超高層ビル",
+      "usageTip": "可算名詞。階を言うときは on the thirtieth floor of a skyscraper の形。on a skyscraper は建物の外側や屋上の上にいる印象になる。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "都市の景色",
+          "text": "From the top of the skyscraper, we could see the whole harbor.",
+          "translation": "その超高層ビルの屋上から、港全体が見渡せた。"
+        },
+        {
+          "id": "example-2",
+          "context": "仕事",
+          "text": "My company rents three floors in a glass skyscraper downtown.",
+          "translation": "私の会社は中心街のガラス張りの超高層ビルの3フロアを借りている。"
+        },
+        {
+          "id": "example-3",
+          "context": "都市開発",
+          "text": "Many new skyscrapers have appeared near the station over the last decade.",
+          "translation": "この10年で駅の近くに多くの新しい超高層ビルが現れた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "skyscraper",
+          "choices": [
+            {
+              "text": "超高層ビル",
+              "meaning": "とても高い建物"
+            },
+            {
+              "text": "古い木造の家",
+              "meaning": "an old wooden house"
+            },
+            {
+              "text": "地下の駐車場",
+              "meaning": "an underground parking lot"
+            },
+            {
+              "text": "小さな商店",
+              "meaning": "a small shop"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "skyscraper は都市にある非常に高い多層ビルのことです。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "超高層ビル",
+          "choices": [
+            {
+              "text": "bay",
+              "meaning": "湾"
+            },
+            {
+              "text": "oak",
+              "meaning": "オーク"
+            },
+            {
+              "text": "countryside",
+              "meaning": "田舎"
+            },
+            {
+              "text": "skyscraper",
+              "meaning": "超高層ビル"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "超高層ビルは skyscraper です。他は自然や地形に関する語です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "大都市の景色を説明する場面：The city's tallest ___ has more than eighty floors and an observation deck.",
+          "choices": [
+            {
+              "text": "pine",
+              "meaning": "松"
+            },
+            {
+              "text": "bay",
+              "meaning": "湾"
+            },
+            {
+              "text": "skyscraper",
+              "meaning": "超高層ビル"
+            },
+            {
+              "text": "countryside",
+              "meaning": "田舎"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "80階以上と展望台があるので、建物を表す skyscraper が合います。",
+          "alternatives": [
+            {
+              "answer": "tower",
+              "explanation": "塔や高い建造物を指し、展望台付きなら自然ですが、多層の事務所ビルという感じは弱まります。"
+            },
+            {
+              "answer": "building",
+              "explanation": "一般的な建物を指し、自然ですが、超高層という意味は弱くなります。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "skyscraper を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "She works on a skyscraper in the city center.",
+              "meaning": "彼女は中心街の超高層ビルで働いている。"
+            },
+            {
+              "text": "He works on the thirtieth floor of a skyscraper.",
+              "meaning": "彼は超高層ビルの30階で働いている。"
+            },
+            {
+              "text": "We met at the skyscraper's of the station.",
+              "meaning": "私たちは駅の超高層ビルので会った。"
+            },
+            {
+              "text": "They built a skyscraper at the three floors.",
+              "meaning": "彼らは3階で超高層ビルを建てた。"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "「on the thirtieth floor of a skyscraper」は階を示す定型の形です。on a skyscraper は建物の外側や屋上の上にいる印象になり、建物内で働く意味には不自然です。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "大都市の景色を説明する場面：The city's tallest ___ has more than eighty floors and an observation deck.",
+        "answers": [
+          "skyscraper"
+        ],
+        "explanation": "80階以上と展望台があるので、建物を表す skyscraper が合います。",
+        "alternatives": [
+          {
+            "answer": "tower",
+            "explanation": "塔や高い建造物を指し、展望台付きなら自然ですが、多層の事務所ビルという感じは弱まります。"
+          },
+          {
+            "answer": "building",
+            "explanation": "一般的な建物を指し、自然ですが、超高層という意味は弱くなります。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "skyscraperを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "From the top of the skyscraper, we could see the whole harbor.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-skyscraper-usage",
+          "type": "usage",
+          "prompt": "skyscraper を正しく使った文を選んでください。",
+          "choices": [
+            "She works on a skyscraper in the city center.",
+            "He works on the thirtieth floor of a skyscraper.",
+            "We met at the skyscraper's of the station.",
+            "They built a skyscraper at the three floors."
+          ],
+          "correctIndex": 1,
+          "explanation": "「on the thirtieth floor of a skyscraper」は階を示す定型の形です。on a skyscraper は建物の外側や屋上の上にいる印象になり、建物内で働く意味には不自然です。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "society",
+          "work"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -13725,6 +16242,394 @@
       }
     },
     {
+      "id": "vocab-frog",
+      "word": "frog",
+      "level": "準2級",
+      "ipa": "/frɔːɡ/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "a small jumping animal with smooth skin and long back legs that lives near water",
+      "meaning": "カエル",
+      "usageTip": "可算名詞で、複数形は frogs。水辺にいて跳ねる両生類を指す。数を言うときは three frogs のように複数形にする。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "池のそば",
+          "text": "A green frog jumped into the pond when we came closer.",
+          "translation": "私たちが近づくと、緑色のカエルが池に飛び込んだ。"
+        },
+        {
+          "id": "example-2",
+          "context": "雨の夜",
+          "text": "After the rain, we could hear frogs singing in the rice field.",
+          "translation": "雨のあと、田んぼでカエルが鳴くのが聞こえた。"
+        },
+        {
+          "id": "example-3",
+          "context": "理科の授業",
+          "text": "Our class watched a tiny frog grow from a tadpole.",
+          "translation": "私たちのクラスはオタマジャクシから小さなカエルへ成長する様子を観察した。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "frog",
+          "choices": [
+            {
+              "text": "ヘビ",
+              "meaning": "足のない爬虫類"
+            },
+            {
+              "text": "カエル",
+              "meaning": "水辺で跳ねる両生類"
+            },
+            {
+              "text": "ウサギ",
+              "meaning": "長い耳の哺乳類"
+            },
+            {
+              "text": "カメ",
+              "meaning": "甲羅を持つ動物"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "frog は水辺に住むカエルです。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "カエル",
+          "choices": [
+            {
+              "text": "owl",
+              "meaning": "フクロウ"
+            },
+            {
+              "text": "sheep",
+              "meaning": "ヒツジ"
+            },
+            {
+              "text": "fern",
+              "meaning": "シダ"
+            },
+            {
+              "text": "frog",
+              "meaning": "カエル"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "カエルは frog です。他は鳥、家畜、植物です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "池のそばでの出来事。A small green ___ jumped from the grass into the pond.",
+          "choices": [
+            {
+              "text": "frog",
+              "meaning": "カエル"
+            },
+            {
+              "text": "sparrow",
+              "meaning": "スズメ"
+            },
+            {
+              "text": "sheep",
+              "meaning": "ヒツジ"
+            },
+            {
+              "text": "fern",
+              "meaning": "シダ"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "草から池へ跳び込む小さな緑の動物は frog です。",
+          "alternatives": [
+            {
+              "answer": "toad",
+              "explanation": "ヒキガエルで、皮膚がざらつき陸にいることが多い動物です。"
+            },
+            {
+              "answer": "tree frog",
+              "explanation": "アマガエルのように木に登る種類を示します。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "frog を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "Three frog sat on the rock.",
+              "meaning": "3匹のカエルが岩にいた。"
+            },
+            {
+              "text": "The frog jumped onto a lily pad.",
+              "meaning": "カエルはスイレンの葉に跳び乗った。"
+            },
+            {
+              "text": "I saw a frogs near the pond.",
+              "meaning": "池のそばでカエルを見た。"
+            },
+            {
+              "text": "Many frog lives in this pond.",
+              "meaning": "この池にはたくさんのカエルが住んでいる。"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "frog は可算名詞です。単数なら a frog、複数なら frogs を使います。他の文は数の形が誤りです。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "池のそばでの出来事。A small green ___ jumped from the grass into the pond.",
+        "answers": [
+          "frog"
+        ],
+        "explanation": "草から池へ跳び込む小さな緑の動物は frog です。",
+        "alternatives": [
+          {
+            "answer": "toad",
+            "explanation": "ヒキガエルで、皮膚がざらつき陸にいることが多い動物です。"
+          },
+          {
+            "answer": "tree frog",
+            "explanation": "アマガエルのように木に登る種類を示します。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "frogを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "A green frog jumped into the pond when we came closer.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-frog-usage",
+          "type": "usage",
+          "prompt": "frog を正しく使った文を選んでください。",
+          "choices": [
+            "Three frog sat on the rock.",
+            "The frog jumped onto a lily pad.",
+            "I saw a frogs near the pond.",
+            "Many frog lives in this pond."
+          ],
+          "correctIndex": 1,
+          "explanation": "frog は可算名詞です。単数なら a frog、複数なら frogs を使います。他の文は数の形が誤りです。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "environment",
+          "education"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-sheep",
+      "word": "sheep",
+      "level": "準2級",
+      "ipa": "/ʃiːp/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a farm animal with thick wool that is kept for wool or meat",
+      "meaning": "ヒツジ",
+      "usageTip": "単数も複数も sheep で同形。a sheep / two sheep のように使い、sheeps とは言わない。子ヒツジは lamb。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "牧場",
+          "text": "The farmer keeps about two hundred sheep on the hill.",
+          "translation": "その農家は丘で約200頭のヒツジを飼っている。"
+        },
+        {
+          "id": "example-2",
+          "context": "旅行",
+          "text": "We stopped the car because a sheep was standing on the road.",
+          "translation": "道路にヒツジが1頭立っていたので、私たちは車を止めた。"
+        },
+        {
+          "id": "example-3",
+          "context": "冬服",
+          "text": "This warm sweater is made from the wool of local sheep.",
+          "translation": "この暖かいセーターは地元のヒツジの毛で作られている。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "sheep",
+          "choices": [
+            {
+              "text": "ブタ",
+              "meaning": "農場で飼われるピンク色の動物"
+            },
+            {
+              "text": "ウシ",
+              "meaning": "乳を出す大きな家畜"
+            },
+            {
+              "text": "ヤギ",
+              "meaning": "角とひげのある家畜"
+            },
+            {
+              "text": "ヒツジ",
+              "meaning": "羊毛を取るために飼う動物"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "sheep は羊毛を取るヒツジです。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "ヒツジ",
+          "choices": [
+            {
+              "text": "sheep",
+              "meaning": "ヒツジ"
+            },
+            {
+              "text": "frog",
+              "meaning": "カエル"
+            },
+            {
+              "text": "owl",
+              "meaning": "フクロウ"
+            },
+            {
+              "text": "sparrow",
+              "meaning": "スズメ"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "ヒツジは sheep です。他は鳥やカエルです。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "牧場で羊毛を刈る場面。The farmer cut the thick wool from the ___ before summer.",
+          "choices": [
+            {
+              "text": "frog",
+              "meaning": "カエル"
+            },
+            {
+              "text": "owl",
+              "meaning": "フクロウ"
+            },
+            {
+              "text": "sheep",
+              "meaning": "ヒツジ"
+            },
+            {
+              "text": "fern",
+              "meaning": "シダ"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "厚い wool を刈る対象はヒツジなので sheep が合います。",
+          "alternatives": [
+            {
+              "answer": "lamb",
+              "explanation": "子ヒツジを指すので、成長した羊の毛を刈る場面では少し不自然です。"
+            },
+            {
+              "answer": "flock",
+              "explanation": "ヒツジの群れを指し、群れ全体の毛を刈る意味で使えます。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "sheep の複数形を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "There are many sheeps in the field.",
+              "meaning": "野原にたくさんのヒツジがいる。"
+            },
+            {
+              "text": "Five sheepes are eating grass on the hill.",
+              "meaning": "5頭のヒツジが丘で草を食べている。"
+            },
+            {
+              "text": "Five sheepen are eating grass on the hill.",
+              "meaning": "5頭のヒツジが丘で草を食べている。"
+            },
+            {
+              "text": "Five sheep are eating grass on the hill.",
+              "meaning": "5頭のヒツジが丘で草を食べている。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "sheep は単数と複数が同じ形です。sheeps、sheepes、sheepen は誤りです。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "牧場で羊毛を刈る場面。The farmer cut the thick wool from the ___ before summer.",
+        "answers": [
+          "sheep"
+        ],
+        "explanation": "厚い wool を刈る対象はヒツジなので sheep が合います。",
+        "alternatives": [
+          {
+            "answer": "lamb",
+            "explanation": "子ヒツジを指すので、成長した羊の毛を刈る場面では少し不自然です。"
+          },
+          {
+            "answer": "flock",
+            "explanation": "ヒツジの群れを指し、群れ全体の毛を刈る意味で使えます。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "sheepを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The farmer keeps about two hundred sheep on the hill.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-sheep-usage",
+          "type": "usage",
+          "prompt": "sheep の複数形を正しく使った文を選んでください。",
+          "choices": [
+            "There are many sheeps in the field.",
+            "Five sheepes are eating grass on the hill.",
+            "Five sheepen are eating grass on the hill.",
+            "Five sheep are eating grass on the hill."
+          ],
+          "correctIndex": 3,
+          "explanation": "sheep は単数と複数が同じ形です。sheeps、sheepes、sheepen は誤りです。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "environment",
+          "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-cow",
       "word": "cow",
       "level": "準2級",
@@ -14299,6 +17204,208 @@
       }
     },
     {
+      "id": "vocab-recommend",
+      "word": "recommend",
+      "level": "準2級",
+      "ipa": "/ˌrekəˈmend/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "recommend"
+        ],
+        "past": [
+          "recommended"
+        ],
+        "pastParticiple": [
+          "recommended"
+        ],
+        "presentParticiple": [
+          "recommending"
+        ],
+        "thirdPersonSingular": [
+          "recommends"
+        ]
+      },
+      "definition": "to say that someone or something is good or suitable for a purpose",
+      "meaning": "勧める・推薦する",
+      "usageTip": "recommend + 名詞、recommend doing、recommend that + 主語 + 動詞の形で使う。recommend someone to do も見られるが、recommend that you go や recommend doing の方が安全。recommend to visit は誤り。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "レストラン",
+          "text": "Can you recommend a good restaurant near the station?",
+          "translation": "駅の近くのおいしいレストランを勧めてもらえますか。"
+        },
+        {
+          "id": "example-2",
+          "context": "医療",
+          "text": "The doctor recommended resting for a few days.",
+          "translation": "医者は数日間休むよう勧めた。"
+        },
+        {
+          "id": "example-3",
+          "context": "仕事",
+          "text": "My manager recommended that I take the training course.",
+          "translation": "上司は私にその研修を受けるよう勧めた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "recommend",
+          "choices": [
+            {
+              "text": "禁止する",
+              "meaning": "to forbid"
+            },
+            {
+              "text": "勧める・推薦する",
+              "meaning": "to suggest as good"
+            },
+            {
+              "text": "思い出す",
+              "meaning": "to remember"
+            },
+            {
+              "text": "比べる",
+              "meaning": "to compare"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "recommend は良いものとして人に勧めることです。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "勧める・推薦する",
+          "choices": [
+            {
+              "text": "receive",
+              "meaning": "受け取る"
+            },
+            {
+              "text": "recycle",
+              "meaning": "再利用する"
+            },
+            {
+              "text": "reduce",
+              "meaning": "減らす"
+            },
+            {
+              "text": "recommend",
+              "meaning": "勧める"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "人に良いものを勧めるのは recommend です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "友人に本を聞かれた場面: I highly ___ this novel because the story is very moving.",
+          "choices": [
+            {
+              "text": "avoid",
+              "meaning": "避ける"
+            },
+            {
+              "text": "recommend",
+              "meaning": "勧める"
+            },
+            {
+              "text": "miss",
+              "meaning": "逃す"
+            },
+            {
+              "text": "delay",
+              "meaning": "遅らせる"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "感動的だから強く勧める、という流れに合います。",
+          "alternatives": [
+            {
+              "answer": "suggest",
+              "explanation": "提案するという意味で、recommend よりやや弱い勧め方になります。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "recommend の使い方として正しい文を選びなさい。",
+          "choices": [
+            {
+              "text": "I recommend to visit Kyoto in autumn.",
+              "meaning": "秋に京都を訪れるよう勧める。"
+            },
+            {
+              "text": "I recommend for visiting Kyoto in autumn.",
+              "meaning": "秋に京都を訪れることを勧める。"
+            },
+            {
+              "text": "I recommend visit Kyoto in autumn.",
+              "meaning": "秋に京都を訪れることを勧める。"
+            },
+            {
+              "text": "I recommend visiting Kyoto in autumn.",
+              "meaning": "秋に京都を訪れることを勧める。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "recommend は動名詞を直接とり、recommend visiting の形になります。to 不定詞を直接続けたり、for を挟んだり、動詞の原形だけを置いたりはできません。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "友人に本を聞かれた場面: I highly ___ this novel because the story is very moving.",
+        "answers": [
+          "recommend"
+        ],
+        "explanation": "感動的だから強く勧める、という流れに合います。",
+        "alternatives": [
+          {
+            "answer": "suggest",
+            "explanation": "提案するという意味で、recommend よりやや弱い勧め方になります。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "recommendを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Can you recommend a good restaurant near the station?",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-recommend-usage",
+          "type": "usage",
+          "prompt": "recommend の使い方として正しい文を選びなさい。",
+          "choices": [
+            "I recommend to visit Kyoto in autumn.",
+            "I recommend for visiting Kyoto in autumn.",
+            "I recommend visit Kyoto in autumn.",
+            "I recommend visiting Kyoto in autumn."
+          ],
+          "correctIndex": 3,
+          "explanation": "recommend は動名詞を直接とり、recommend visiting の形になります。to 不定詞を直接続けたり、for を挟んだり、動詞の原形だけを置いたりはできません。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "communication"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-suppose",
       "word": "suppose",
       "level": "準2級",
@@ -14503,6 +17610,968 @@
         "cefrEstimate": "B1",
         "domains": [
           "logic-reasoning"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-instant",
+      "word": "instant",
+      "level": "準2級",
+      "ipa": "/ˈɪnstənt/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "形容詞",
+      "definition": "Happening immediately, or prepared quickly from a ready-made form.",
+      "meaning": "即時の・即席の",
+      "usageTip": "名詞の前で使うことが多い。instant coffee は即席コーヒー、instant reply は即答。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "食事",
+          "text": "I made instant noodles because I got home very late.",
+          "translation": "帰宅がとても遅かったので、インスタント麺を作った。"
+        },
+        {
+          "id": "example-2",
+          "context": "SNS",
+          "text": "The video became an instant hit among students.",
+          "translation": "その動画は学生の間ですぐに大ヒットになった。"
+        },
+        {
+          "id": "example-3",
+          "context": "店",
+          "text": "The shop offers instant refunds if the item is damaged.",
+          "translation": "その店は商品が破損していれば即時返金に応じる。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "instant",
+          "choices": [
+            {
+              "text": "古い",
+              "meaning": "長い時間がたった"
+            },
+            {
+              "text": "危険な",
+              "meaning": "害を与えるおそれがある"
+            },
+            {
+              "text": "即時の・即席の",
+              "meaning": "すぐ起こる、手早く作れる"
+            },
+            {
+              "text": "退屈な",
+              "meaning": "面白くない"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "instant は「すぐの」「即席の」を表す形容詞。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "即時の・即席の",
+          "choices": [
+            {
+              "text": "instant",
+              "meaning": "即時の・即席の"
+            },
+            {
+              "text": "distant",
+              "meaning": "遠い"
+            },
+            {
+              "text": "constant",
+              "meaning": "絶え間ない"
+            },
+            {
+              "text": "absent",
+              "meaning": "欠席の"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "形が似た語があるが、「即時の」は instant。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "お湯を注ぐだけで作れるコーヒーの話: I only had ___ coffee at the hotel.",
+          "choices": [
+            {
+              "text": "weekly",
+              "meaning": "毎週の"
+            },
+            {
+              "text": "instant",
+              "meaning": "即席の"
+            },
+            {
+              "text": "foreign",
+              "meaning": "外国の"
+            },
+            {
+              "text": "empty",
+              "meaning": "空の"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "お湯で溶かすコーヒーは instant coffee と言う。",
+          "alternatives": [
+            {
+              "answer": "quick",
+              "explanation": "素早いという意味だが、即席コーヒーという決まった表現ではない。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "instant を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "The singer felt instant at the stage.",
+              "meaning": "形容詞の使い方が不自然。"
+            },
+            {
+              "text": "He gave an instant to the question.",
+              "meaning": "名詞の意味と混同した誤り。"
+            },
+            {
+              "text": "The app gives instant answers to simple questions.",
+              "meaning": "そのアプリは簡単な質問にすぐ答える。"
+            },
+            {
+              "text": "She instant opened the door.",
+              "meaning": "副詞の位置に形容詞を使った誤り。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "instant は名詞 answers を修飾する形容詞として自然に使える。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "お湯を注ぐだけで作れるコーヒーの話: I only had ___ coffee at the hotel.",
+        "answers": [
+          "instant"
+        ],
+        "explanation": "お湯で溶かすコーヒーは instant coffee と言う。",
+        "alternatives": [
+          {
+            "answer": "quick",
+            "explanation": "素早いという意味だが、即席コーヒーという決まった表現ではない。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "instantを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I made instant noodles because I got home very late.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-instant-usage",
+          "type": "usage",
+          "prompt": "instant を正しく使った文を選びなさい。",
+          "choices": [
+            "The singer felt instant at the stage.",
+            "He gave an instant to the question.",
+            "The app gives instant answers to simple questions.",
+            "She instant opened the door."
+          ],
+          "correctIndex": 2,
+          "explanation": "instant は名詞 answers を修飾する形容詞として自然に使える。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "daily-life",
+          "media"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-occasion",
+      "word": "occasion",
+      "level": "準2級",
+      "ipa": "/əˈkeɪʒən/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "A particular time when something happens, or a special event.",
+      "meaning": "機会・特別な行事",
+      "usageTip": "on this occasion は「今回は」、on special occasions は「特別な折に」。opportunity より出来事の時点に重点がある。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "家族",
+          "text": "We wear formal clothes only on special occasions.",
+          "translation": "私たちは特別な機会にだけ正装をする。"
+        },
+        {
+          "id": "example-2",
+          "context": "過去の出来事",
+          "text": "On one occasion, the train stopped for an hour.",
+          "translation": "ある時、その電車は一時間止まった。"
+        },
+        {
+          "id": "example-3",
+          "context": "贈り物",
+          "text": "This watch was a gift for a very important occasion.",
+          "translation": "この腕時計はとても大切な行事の贈り物だった。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "occasion",
+          "choices": [
+            {
+              "text": "機会・特別な行事",
+              "meaning": "ある時点や催し"
+            },
+            {
+              "text": "地図",
+              "meaning": "場所を示す図"
+            },
+            {
+              "text": "約束を破ること",
+              "meaning": "合意を守らない行為"
+            },
+            {
+              "text": "天気予報",
+              "meaning": "天候の予測"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "occasion は特定の時や特別な行事を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "機会・特別な行事",
+          "choices": [
+            {
+              "text": "decision",
+              "meaning": "決定"
+            },
+            {
+              "text": "direction",
+              "meaning": "方向"
+            },
+            {
+              "text": "occasion",
+              "meaning": "機会・行事"
+            },
+            {
+              "text": "occupation",
+              "meaning": "職業"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "「特別な行事」に当たるのは occasion。occupation は職業。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "結婚式のような特別な場に着る服の話: This dress is perfect for a formal ___.",
+          "choices": [
+            {
+              "text": "occasion",
+              "meaning": "行事・機会"
+            },
+            {
+              "text": "weather",
+              "meaning": "天気"
+            },
+            {
+              "text": "distance",
+              "meaning": "距離"
+            },
+            {
+              "text": "balance",
+              "meaning": "均衡"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "formal occasion は正装が必要な場面を表す自然な表現。",
+          "alternatives": [
+            {
+              "answer": "event",
+              "explanation": "催しを指して自然だが、occasion は場面や機会の性格を強調する。"
+            },
+            {
+              "answer": "ceremony",
+              "explanation": "式典に限定され、範囲が狭くなる。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "occasion を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "I met her in several occasion.",
+              "meaning": "数を表す表現と単数形の誤り。"
+            },
+            {
+              "text": "On that occasion, he forgot his umbrella.",
+              "meaning": "その時、彼は傘を忘れた。"
+            },
+            {
+              "text": "We had an occasion to the museum.",
+              "meaning": "前置詞の使い方が不自然。"
+            },
+            {
+              "text": "She occasion me to join the club.",
+              "meaning": "動詞として誤用している。"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "On that occasion は「その時」という定着した表現。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "結婚式のような特別な場に着る服の話: This dress is perfect for a formal ___.",
+        "answers": [
+          "occasion"
+        ],
+        "explanation": "formal occasion は正装が必要な場面を表す自然な表現。",
+        "alternatives": [
+          {
+            "answer": "event",
+            "explanation": "催しを指して自然だが、occasion は場面や機会の性格を強調する。"
+          },
+          {
+            "answer": "ceremony",
+            "explanation": "式典に限定され、範囲が狭くなる。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "occasionを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "We wear formal clothes only on special occasions.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-occasion-usage",
+          "type": "usage",
+          "prompt": "occasion を正しく使った文を選びなさい。",
+          "choices": [
+            "I met her in several occasion.",
+            "On that occasion, he forgot his umbrella.",
+            "We had an occasion to the museum.",
+            "She occasion me to join the club."
+          ],
+          "correctIndex": 1,
+          "explanation": "On that occasion は「その時」という定着した表現。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "daily-life",
+          "relationships"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-response",
+      "word": "response",
+      "level": "準2級",
+      "ipa": "/rɪˈspɒns/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "An answer or reaction to a question, message, event, or action.",
+      "meaning": "応答・反応",
+      "usageTip": "in response to ~ は「~に応えて」。reply より広く、行動や変化による反応にも使える。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "メール",
+          "text": "I'm still waiting for a response from the hotel.",
+          "translation": "私はまだそのホテルからの返事を待っている。"
+        },
+        {
+          "id": "example-2",
+          "context": "災害対応",
+          "text": "The city's quick response helped many families stay safe.",
+          "translation": "市の迅速な対応が多くの家族の安全を守った。"
+        },
+        {
+          "id": "example-3",
+          "context": "授業",
+          "text": "Her response to the question surprised the whole class.",
+          "translation": "その質問に対する彼女の答えはクラス全員を驚かせた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "response",
+          "choices": [
+            {
+              "text": "予算",
+              "meaning": "使えるお金の計画"
+            },
+            {
+              "text": "責任者",
+              "meaning": "責任を負う人"
+            },
+            {
+              "text": "応答・反応",
+              "meaning": "問いかけや出来事への返答"
+            },
+            {
+              "text": "休憩",
+              "meaning": "短い休み"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "response は返事や反応を表す名詞。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "応答・反応",
+          "choices": [
+            {
+              "text": "response",
+              "meaning": "応答・反応"
+            },
+            {
+              "text": "resource",
+              "meaning": "資源"
+            },
+            {
+              "text": "research",
+              "meaning": "研究"
+            },
+            {
+              "text": "result",
+              "meaning": "結果"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "返事や反応は response。似た綴りの語と区別する。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "メールを送った相手からまだ返事がない場面: I haven't received a ___ to my email yet.",
+          "choices": [
+            {
+              "text": "price",
+              "meaning": "値段"
+            },
+            {
+              "text": "habit",
+              "meaning": "習慣"
+            },
+            {
+              "text": "response",
+              "meaning": "返事"
+            },
+            {
+              "text": "lesson",
+              "meaning": "授業"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "メールに対する返事は response to my email と言う。",
+          "alternatives": [
+            {
+              "answer": "reply",
+              "explanation": "返信という意味でほぼ同じ。やや日常的。"
+            },
+            {
+              "answer": "answer",
+              "explanation": "質問への答えを強調する表現になる。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "response を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "I wrote a response for her invitation.",
+              "meaning": "前置詞の誤り。"
+            },
+            {
+              "text": "He response quickly to my message.",
+              "meaning": "名詞を動詞として使った誤り。"
+            },
+            {
+              "text": "She was response for the project.",
+              "meaning": "形容詞 responsible と混同した誤り。"
+            },
+            {
+              "text": "In response to your question, I checked the schedule.",
+              "meaning": "あなたの質問に応えて、私は予定を確認した。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "in response to ~ が「~に応えて」を表す正しい形。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "メールを送った相手からまだ返事がない場面: I haven't received a ___ to my email yet.",
+        "answers": [
+          "response"
+        ],
+        "explanation": "メールに対する返事は response to my email と言う。",
+        "alternatives": [
+          {
+            "answer": "reply",
+            "explanation": "返信という意味でほぼ同じ。やや日常的。"
+          },
+          {
+            "answer": "answer",
+            "explanation": "質問への答えを強調する表現になる。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "responseを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I'm still waiting for a response from the hotel.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-response-usage",
+          "type": "usage",
+          "prompt": "response を正しく使った文を選びなさい。",
+          "choices": [
+            "I wrote a response for her invitation.",
+            "He response quickly to my message.",
+            "She was response for the project.",
+            "In response to your question, I checked the schedule."
+          ],
+          "correctIndex": 3,
+          "explanation": "in response to ~ が「~に応えて」を表す正しい形。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "communication",
+          "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-sensible",
+      "word": "sensible",
+      "level": "準2級",
+      "ipa": "/ˈsɛnsəbəl/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "形容詞",
+      "definition": "Showing good judgment and likely to be practical and reasonable.",
+      "meaning": "分別のある・賢明な",
+      "usageTip": "「敏感な」ではなく「分別がある」。sensitive と混同しやすい。a sensible choice, sensible shoes のように使う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "進路",
+          "text": "Choosing a cheaper apartment was a sensible decision.",
+          "translation": "より安いアパートを選んだのは賢明な判断だった。"
+        },
+        {
+          "id": "example-2",
+          "context": "旅行",
+          "text": "Wear sensible shoes if you plan to walk all day.",
+          "translation": "一日中歩く予定なら、実用的な靴を履きなさい。"
+        },
+        {
+          "id": "example-3",
+          "context": "助言",
+          "text": "He is a sensible person who listens before acting.",
+          "translation": "彼は行動する前に話を聞く分別のある人だ。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "sensible",
+          "choices": [
+            {
+              "text": "分別のある・賢明な",
+              "meaning": "現実的で良い判断をする"
+            },
+            {
+              "text": "傷つきやすい",
+              "meaning": "感情に敏感な"
+            },
+            {
+              "text": "とても高価な",
+              "meaning": "値段が高い"
+            },
+            {
+              "text": "目に見えない",
+              "meaning": "見ることができない"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "sensible は良識があり現実的なことを表す。sensitive とは異なる。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "分別のある・賢明な",
+          "choices": [
+            {
+              "text": "sensitive",
+              "meaning": "敏感な"
+            },
+            {
+              "text": "sensible",
+              "meaning": "分別のある"
+            },
+            {
+              "text": "sensational",
+              "meaning": "世間を騒がせる"
+            },
+            {
+              "text": "sensory",
+              "meaning": "感覚の"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "「賢明な」は sensible。sensitive は敏感な。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "雨の日に歩き回るため、実用的な靴を勧める場面: It's raining, so wear ___ shoes.",
+          "choices": [
+            {
+              "text": "sensible",
+              "meaning": "実用的で賢明な"
+            },
+            {
+              "text": "silent",
+              "meaning": "静かな"
+            },
+            {
+              "text": "ancient",
+              "meaning": "古代の"
+            },
+            {
+              "text": "generous",
+              "meaning": "気前のよい"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "雨の日に実用的な靴を選ぶ意味なので sensible が合う。",
+          "alternatives": [
+            {
+              "answer": "practical",
+              "explanation": "実用的という点が強く、判断の良さは含まない。"
+            },
+            {
+              "answer": "comfortable",
+              "explanation": "履き心地が良いという意味で、賢明さの含みはない。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "sensible を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "She is very sensible about criticism, so be careful.",
+              "meaning": "sensitive の意味で誤用している。"
+            },
+            {
+              "text": "It was sensible of you to save some money.",
+              "meaning": "お金を貯めたのは賢明だった。"
+            },
+            {
+              "text": "He sensible the danger and ran away.",
+              "meaning": "動詞として誤用している。"
+            },
+            {
+              "text": "The movie was sensible, so I cried.",
+              "meaning": "感動的の意味で誤用している。"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "It was sensible of you to ~ は人の判断を評価する自然な構文。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "雨の日に歩き回るため、実用的な靴を勧める場面: It's raining, so wear ___ shoes.",
+        "answers": [
+          "sensible"
+        ],
+        "explanation": "雨の日に実用的な靴を選ぶ意味なので sensible が合う。",
+        "alternatives": [
+          {
+            "answer": "practical",
+            "explanation": "実用的という点が強く、判断の良さは含まない。"
+          },
+          {
+            "answer": "comfortable",
+            "explanation": "履き心地が良いという意味で、賢明さの含みはない。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "sensibleを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Choosing a cheaper apartment was a sensible decision.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-sensible-usage",
+          "type": "usage",
+          "prompt": "sensible を正しく使った文を選びなさい。",
+          "choices": [
+            "She is very sensible about criticism, so be careful.",
+            "It was sensible of you to save some money.",
+            "He sensible the danger and ran away.",
+            "The movie was sensible, so I cried."
+          ],
+          "correctIndex": 1,
+          "explanation": "It was sensible of you to ~ は人の判断を評価する自然な構文。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "logic-reasoning",
+          "daily-life"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-impression",
+      "word": "impression",
+      "level": "準2級",
+      "ipa": "ɪmˈprɛʃən",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "The feeling or opinion you form about a person or thing after seeing or meeting them.",
+      "meaning": "印象",
+      "usageTip": "make a good impression on ~(~に良い印象を与える)、first impression(第一印象)の形でよく使う。前置詞は on。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "面接",
+          "text": "She made a strong impression on the interviewers with her calm answers.",
+          "translation": "彼女は落ち着いた答えで面接官に強い印象を与えた。"
+        },
+        {
+          "id": "example-2",
+          "context": "旅行",
+          "text": "My first impression of the town was that it was quiet and clean.",
+          "translation": "その町の第一印象は、静かで清潔だということだった。"
+        },
+        {
+          "id": "example-3",
+          "context": "会話",
+          "text": "I got the impression that he didn't want to talk about it.",
+          "translation": "彼はそのことを話したくないという印象を受けた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "impression",
+          "choices": [
+            {
+              "text": "印象",
+              "meaning": "人や物事から受ける感じ"
+            },
+            {
+              "text": "圧力",
+              "meaning": "押す力や精神的な負担"
+            },
+            {
+              "text": "表現",
+              "meaning": "考えや感情を表すこと"
+            },
+            {
+              "text": "印刷",
+              "meaning": "文字や絵を紙に刷ること"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "impression は人や物事から受ける感じ、つまり「印象」を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "印象",
+          "choices": [
+            {
+              "text": "decision",
+              "meaning": "決定"
+            },
+            {
+              "text": "suggestion",
+              "meaning": "提案"
+            },
+            {
+              "text": "impression",
+              "meaning": "印象"
+            },
+            {
+              "text": "permission",
+              "meaning": "許可"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "「印象」は impression。他は決定、提案、許可で意味が異なる。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "初対面で受けた感じについて話している場面: My first ___ of the new teacher was very good.",
+          "choices": [
+            {
+              "text": "impression",
+              "meaning": "印象"
+            },
+            {
+              "text": "homework",
+              "meaning": "宿題"
+            },
+            {
+              "text": "distance",
+              "meaning": "距離"
+            },
+            {
+              "text": "schedule",
+              "meaning": "予定"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "first impression で「第一印象」となり、文意に合う。",
+          "alternatives": [
+            {
+              "answer": "opinion",
+              "explanation": "「意見」の意味で、考えを述べる響きがあり、感じた印象よりやや理性的。"
+            },
+            {
+              "answer": "feeling",
+              "explanation": "「気持ち」で、印象よりも漠然とした感覚を表す。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "impression の使い方が正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "He made a good impression to the manager.",
+              "meaning": "前置詞が誤り。to ではなく on が正しい。"
+            },
+            {
+              "text": "He made a good impression on the manager.",
+              "meaning": "彼は部長に良い印象を与えた。"
+            },
+            {
+              "text": "He did a good impression the manager.",
+              "meaning": "動詞と語順が不自然。"
+            },
+            {
+              "text": "He took a good impression for the manager.",
+              "meaning": "コロケーションが不自然。"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "make a good impression on ~ が自然な型。to や for は不適切。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "初対面で受けた感じについて話している場面: My first ___ of the new teacher was very good.",
+        "answers": [
+          "impression"
+        ],
+        "explanation": "first impression で「第一印象」となり、文意に合う。",
+        "alternatives": [
+          {
+            "answer": "opinion",
+            "explanation": "「意見」の意味で、考えを述べる響きがあり、感じた印象よりやや理性的。"
+          },
+          {
+            "answer": "feeling",
+            "explanation": "「気持ち」で、印象よりも漠然とした感覚を表す。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "impressionを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "She made a strong impression on the interviewers with her calm answers.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-impression-usage",
+          "type": "usage",
+          "prompt": "impression の使い方が正しい文を選んでください。",
+          "choices": [
+            "He made a good impression to the manager.",
+            "He made a good impression on the manager.",
+            "He did a good impression the manager.",
+            "He took a good impression for the manager."
+          ],
+          "correctIndex": 1,
+          "explanation": "make a good impression on ~ が自然な型。to や for は不適切。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "communication",
+          "relationships"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -14919,6 +18988,217 @@
       }
     },
     {
+      "id": "vocab-complete",
+      "word": "complete",
+      "level": "準2級",
+      "ipa": "/kəmˈpliːt/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "complete"
+        ],
+        "past": [
+          "completed"
+        ],
+        "pastParticiple": [
+          "completed"
+        ],
+        "presentParticiple": [
+          "completing"
+        ],
+        "thirdPersonSingular": [
+          "completes"
+        ]
+      },
+      "definition": "to finish making or doing something, or to fill in a form fully",
+      "meaning": "完成させる・記入する",
+      "usageTip": "動詞では complete a form や complete a course のように直接目的語を取る。complete to do や complete with は誤り。形容詞「完全な」もあるが、ここでは動詞の意味。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "学校",
+          "text": "Students must complete the homework before the next class.",
+          "translation": "生徒は次の授業までに宿題を終えなければならない。"
+        },
+        {
+          "id": "example-2",
+          "context": "事務所",
+          "text": "Please complete this form and bring it to the front desk.",
+          "translation": "この用紙に記入して受付に持ってきてください。"
+        },
+        {
+          "id": "example-3",
+          "context": "趣味",
+          "text": "It took Mia three months to complete the puzzle.",
+          "translation": "ミアはそのパズルを完成させるのに三か月かかった。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "complete",
+          "choices": [
+            {
+              "text": "中断する",
+              "meaning": "to interrupt"
+            },
+            {
+              "text": "拒否する",
+              "meaning": "to refuse"
+            },
+            {
+              "text": "完成させる・記入する",
+              "meaning": "to finish or fill in"
+            },
+            {
+              "text": "比べる",
+              "meaning": "to compare"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "動詞 complete は最後まで仕上げる、書類に記入するという意味です。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "完成させる、記入する",
+          "choices": [
+            {
+              "text": "cancel",
+              "meaning": "取り消す"
+            },
+            {
+              "text": "copy",
+              "meaning": "写す"
+            },
+            {
+              "text": "complete",
+              "meaning": "完成させる"
+            },
+            {
+              "text": "cover",
+              "meaning": "覆う"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "仕上げる・記入するは complete です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 申込書を最後まで書くよう頼む。 Please ___ all sections of the application form.",
+          "choices": [
+            {
+              "text": "borrow",
+              "meaning": "借りる"
+            },
+            {
+              "text": "wonder",
+              "meaning": "思案する"
+            },
+            {
+              "text": "forgive",
+              "meaning": "許す"
+            },
+            {
+              "text": "complete",
+              "meaning": "記入する"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "申込書の全項目を記入する意味なので complete が自然です。",
+          "alternatives": [
+            {
+              "answer": "fill out",
+              "explanation": "口語的で、用紙に記入する場合によく使います。"
+            },
+            {
+              "answer": "finish",
+              "explanation": "終えるという意味で、記入の意味は弱めです。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "動詞 complete を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "She completed to write the report.",
+              "meaning": "彼女は報告書を書くのを完成させた。"
+            },
+            {
+              "text": "She completed with the report on Friday.",
+              "meaning": "彼女は金曜日に報告書で完成させた。"
+            },
+            {
+              "text": "She completed the report on Friday.",
+              "meaning": "彼女は金曜日に報告書を仕上げた。"
+            },
+            {
+              "text": "She completed writing to the report.",
+              "meaning": "彼女は報告書へ書くのを仕上げた。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "complete は直接目的語を取ります。to 不定詞や with を続ける形は誤りです。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 申込書を最後まで書くよう頼む。 Please ___ all sections of the application form.",
+        "answers": [
+          "complete"
+        ],
+        "explanation": "申込書の全項目を記入する意味なので complete が自然です。",
+        "alternatives": [
+          {
+            "answer": "fill out",
+            "explanation": "口語的で、用紙に記入する場合によく使います。"
+          },
+          {
+            "answer": "finish",
+            "explanation": "終えるという意味で、記入の意味は弱めです。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "completeを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Students must complete the homework before the next class.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-complete-usage",
+          "type": "usage",
+          "prompt": "動詞 complete を正しく使った文を選んでください。",
+          "choices": [
+            "She completed to write the report.",
+            "She completed with the report on Friday.",
+            "She completed the report on Friday.",
+            "She completed writing to the report."
+          ],
+          "correctIndex": 2,
+          "explanation": "complete は直接目的語を取ります。to 不定詞や with を続ける形は誤りです。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "education",
+          "work"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-determine",
       "word": "determine",
       "level": "準2級",
@@ -15130,5 +19410,146 @@
       }
     }
   ],
-  "audio": []
+  "audio": [
+    {
+      "wordId": "vocab-scissors",
+      "cacheKey": "9e4c085e662aa7805575f9f232c039fc93214a3ed0b4dc3df0752f28f954f887",
+      "fileId": "11ZVVDk_aC_6aNFL9et4PKWHbyDeD0Ib4",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9690000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.134,
+          "endSeconds": 5.3229999999999995
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.4879999999999995,
+          "endSeconds": 9.131499999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 9.180000000000001,
+          "endSeconds": 12.074
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-bulb",
+      "cacheKey": "d9d92ea6603eab873d5623365669887116480818a88aaf526ee6cdcf65a25336",
+      "fileId": "1Z7A7IGcwkc6zMpttvGh3lOa8UX1RAF_p",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.784
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9480000000000001,
+          "endSeconds": 4.127
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.292,
+          "endSeconds": 7.3549999999999995
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.519,
+          "endSeconds": 11.285
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-faucet",
+      "cacheKey": "54b2a610425703c63f8a233112533cee06e69c8933252212630ffcf63850add8",
+      "fileId": "1S_MYrxPZjbWJLBVg-zmZ4QRl0_p72Ny9",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9465
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.995,
+          "endSeconds": 3.605
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.7689999999999997,
+          "endSeconds": 7.518
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.624,
+          "endSeconds": 11.749
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-iron",
+      "cacheKey": "6439ec68e6bb6070bfae0868a591c596ca22afd82c34742b4d0694c01fa5d263",
+      "fileId": "1lwEuYAzdax9CTQw3Xo6LXNVIWv_egljO",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.726
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.89,
+          "endSeconds": 3.918
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.9429999999999996,
+          "endSeconds": 6.5885
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.637,
+          "endSeconds": 10.635
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-sandal",
+      "cacheKey": "57d5ba302cd936cfffbc38cacce65ec06b088eef204f3bf4fca39041e8af13b7",
+      "fileId": "1OLLcsuXwgmJiBA6ADv3w1J6s8ME7x7SL",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.877
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.041,
+          "endSeconds": 4.29
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.396,
+          "endSeconds": 6.949
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.055,
+          "endSeconds": 10.542
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    }
+  ]
 }

@@ -15966,6 +15966,199 @@
       }
     },
     {
+      "id": "vocab-honey",
+      "word": "honey",
+      "level": "3級",
+      "ipa": "/ˈhʌni/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a sweet, thick, golden food that bees make from flower nectar",
+      "meaning": "はちみつ",
+      "usageTip": "食品としては数えない名詞なので、a honey や two honeys ではなく some honey / a spoonful of honey と言う。呼びかけの「ねえ、あなた」にも使うが、親しい間柄向け。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "朝食",
+          "text": "I like to spread a little honey on my toast.",
+          "translation": "私はトーストに少しはちみつを塗るのが好きだ。"
+        },
+        {
+          "id": "example-2",
+          "context": "風邪のとき",
+          "text": "My mother made me hot tea with honey for my sore throat.",
+          "translation": "母は喉の痛みのために、はちみつ入りの熱いお茶を作ってくれた。"
+        },
+        {
+          "id": "example-3",
+          "context": "買い物",
+          "text": "This shop sells local honey produced by small farms near the mountains.",
+          "translation": "この店は山の近くの小さな農園で採れた地元産のはちみつを売っている。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "honey",
+          "choices": [
+            {
+              "text": "料理に味をつける白い粉状の調味料",
+              "meaning": "塩を指す説明"
+            },
+            {
+              "text": "パンやお菓子を作るための粉",
+              "meaning": "小麦粉を指す説明"
+            },
+            {
+              "text": "蜂が作る甘くてとろりとした食べ物",
+              "meaning": "はちみつの説明"
+            },
+            {
+              "text": "酸味が強く、料理に使う液体調味料",
+              "meaning": "酢を指す説明"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "honeyは蜂が花の蜜から作る甘くてとろみのある食品、つまり「はちみつ」である。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "蜂が作る甘くてとろりとした食べ物（はちみつ）",
+          "choices": [
+            {
+              "text": "soap",
+              "meaning": "石けん"
+            },
+            {
+              "text": "paper",
+              "meaning": "紙"
+            },
+            {
+              "text": "uniform",
+              "meaning": "制服"
+            },
+            {
+              "text": "honey",
+              "meaning": "はちみつ"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "「はちみつ」を表す英語はhoneyである。他は食べ物ではない別の物を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "朝食でトーストに塗る、蜂から作られる甘いものを頼む場面：Could you pass the ___ for my toast?",
+          "choices": [
+            {
+              "text": "soap",
+              "meaning": "石けん"
+            },
+            {
+              "text": "honey",
+              "meaning": "はちみつ"
+            },
+            {
+              "text": "uniform",
+              "meaning": "制服"
+            },
+            {
+              "text": "paper",
+              "meaning": "紙"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "トーストにつける甘い食品として自然なのはhoneyである。他は食べ物ではなく文脈に合わない。",
+          "alternatives": [
+            {
+              "answer": "jam",
+              "explanation": "果物のジャムで、トーストに塗るものとして自然。ただし蜂の食品ではない。"
+            },
+            {
+              "answer": "butter",
+              "explanation": "バターで、甘くはないがトーストに塗る定番として自然。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "食品としてのhoneyを文法的に正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I bought two honeys for breakfast.",
+              "meaning": "朝食用にはちみつを二つ買った。"
+            },
+            {
+              "text": "Honey are sweet and sticky.",
+              "meaning": "はちみつは甘くてべたつく。"
+            },
+            {
+              "text": "She added a honey to my tea.",
+              "meaning": "彼女は私の紅茶にはちみつを加えた。"
+            },
+            {
+              "text": "He added some honey to his tea.",
+              "meaning": "彼は紅茶にはちみつを加えた。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "食品のhoneyは数えない名詞なので、some honeyが自然。two honeysやa honeyは誤りで、複数扱いのareも不適切。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "朝食でトーストに塗る、蜂から作られる甘いものを頼む場面：Could you pass the ___ for my toast?",
+        "answers": [
+          "honey"
+        ],
+        "explanation": "トーストにつける甘い食品として自然なのはhoneyである。他は食べ物ではなく文脈に合わない。",
+        "alternatives": [
+          {
+            "answer": "jam",
+            "explanation": "果物のジャムで、トーストに塗るものとして自然。ただし蜂の食品ではない。"
+          },
+          {
+            "answer": "butter",
+            "explanation": "バターで、甘くはないがトーストに塗る定番として自然。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "honeyを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I like to spread a little honey on my toast.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-honey-usage",
+          "type": "usage",
+          "prompt": "食品としてのhoneyを文法的に正しく使った文を選んでください。",
+          "choices": [
+            "I bought two honeys for breakfast.",
+            "Honey are sweet and sticky.",
+            "She added a honey to my tea.",
+            "He added some honey to his tea."
+          ],
+          "correctIndex": 3,
+          "explanation": "食品のhoneyは数えない名詞なので、some honeyが自然。two honeysやa honeyは誤りで、複数扱いのareも不適切。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "food"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-uniform",
       "word": "uniform",
       "level": "3級",
@@ -16347,6 +16540,200 @@
         "cefrEstimate": "B1",
         "domains": [
           "relationships"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-soap",
+      "word": "soap",
+      "level": "3級",
+      "ipa": "/soʊp/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "a substance you use with water to wash your skin, hands or other things",
+      "meaning": "石けん",
+      "usageTip": "物質としては不可算名詞。数えるときは a bar of soap と言う。wash with soap や soap and water の形でよく使う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "手洗い",
+          "text": "Please wash your hands with soap before you eat dinner.",
+          "translation": "夕食を食べる前に、石けんで手を洗ってください。"
+        },
+        {
+          "id": "example-2",
+          "context": "買い物",
+          "text": "I need to buy a bar of soap at the store.",
+          "translation": "店で石けんを一個買う必要があります。"
+        },
+        {
+          "id": "example-3",
+          "context": "旅行",
+          "text": "The hotel bathroom had fresh towels and a small bar of soap.",
+          "translation": "ホテルの浴室には新しいタオルと小さな石けんがありました。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "soap",
+          "choices": [
+            {
+              "text": "石けん",
+              "meaning": "体や物を洗うときに使うもの"
+            },
+            {
+              "text": "砂糖",
+              "meaning": "sugar"
+            },
+            {
+              "text": "歯ブラシ",
+              "meaning": "toothbrush"
+            },
+            {
+              "text": "靴下",
+              "meaning": "socks"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "soap は水と一緒に体や物を洗うための石けんを表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "石けん",
+          "choices": [
+            {
+              "text": "honey",
+              "meaning": "はちみつ"
+            },
+            {
+              "text": "lonely",
+              "meaning": "孤独な"
+            },
+            {
+              "text": "uniform",
+              "meaning": "制服"
+            },
+            {
+              "text": "soap",
+              "meaning": "石けん"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "「石けん」にあたる英語は soap です。他は別の意味の語です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "食事の前に手を洗う場面: Wash your hands with ___ and warm water.",
+          "choices": [
+            {
+              "text": "honey",
+              "meaning": "はちみつ"
+            },
+            {
+              "text": "soap",
+              "meaning": "石けん"
+            },
+            {
+              "text": "paper",
+              "meaning": "紙"
+            },
+            {
+              "text": "salt",
+              "meaning": "塩"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "温かい水と一緒に手を洗うために使うものなので soap が合います。",
+          "alternatives": [
+            {
+              "answer": "liquid soap",
+              "explanation": "液体タイプの石けんを指し、場面にも自然に合います。"
+            },
+            {
+              "answer": "handwash",
+              "explanation": "主に英国などで使われる、液体の手洗い用洗剤を指す言い方です。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "「石けんで手を洗った」という意味で soap を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "She washed her hands by soap.",
+              "meaning": "彼女は石けんで手を洗った。(前置詞の誤り)"
+            },
+            {
+              "text": "She washed her hands with soap.",
+              "meaning": "彼女は石けんで手を洗った。"
+            },
+            {
+              "text": "She washed her hands of soap.",
+              "meaning": "彼女は石けんで手を洗った。(前置詞の誤り)"
+            },
+            {
+              "text": "She washed her hands in soap.",
+              "meaning": "彼女は石けんの中で手を洗った。(前置詞の不適切な使用)"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "道具や手段として石けんを使うので、前置詞は with を使います。他の文は前置詞が不自然です。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "食事の前に手を洗う場面: Wash your hands with ___ and warm water.",
+        "answers": [
+          "soap"
+        ],
+        "explanation": "温かい水と一緒に手を洗うために使うものなので soap が合います。",
+        "alternatives": [
+          {
+            "answer": "liquid soap",
+            "explanation": "液体タイプの石けんを指し、場面にも自然に合います。"
+          },
+          {
+            "answer": "handwash",
+            "explanation": "主に英国などで使われる、液体の手洗い用洗剤を指す言い方です。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "soapを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Please wash your hands with soap before you eat dinner.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-soap-usage",
+          "type": "usage",
+          "prompt": "「石けんで手を洗った」という意味で soap を正しく使った文を選んでください。",
+          "choices": [
+            "She washed her hands by soap.",
+            "She washed her hands with soap.",
+            "She washed her hands of soap.",
+            "She washed her hands in soap."
+          ],
+          "correctIndex": 1,
+          "explanation": "道具や手段として石けんを使うので、前置詞は with を使います。他の文は前置詞が不自然です。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "health",
+          "daily-life"
         ],
         "gradeEstimate": "3級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -19263,6 +19650,34 @@
       "voiceLabel": "Sarah（女性）"
     },
     {
+      "wordId": "vocab-stress",
+      "cacheKey": "b7082acde07d4c3a1eef2ec497141681bf5557f1f4464a3bf9365593982cc3ff",
+      "fileId": "1u_UaZFFBcTWIURJp8EJjlba4aKaRuFCC",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.877
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.3079999999999998,
+          "endSeconds": 4.859
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.023,
+          "endSeconds": 8.528
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.692,
+          "endSeconds": 11.842
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
       "wordId": "vocab-success",
       "cacheKey": "443e3cabe713b1d62b8db3ef3b1c4521ec30bc1dc53eb5d213108279acb85c19",
       "fileId": "1-ilBfiX5AZa4XbcFGcMDVqkBsVluMVI8",
@@ -19286,6 +19701,62 @@
           "id": "example-3",
           "startSeconds": 6.8675,
           "endSeconds": 9.845
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-suggest",
+      "cacheKey": "ffe0f005fa3c5f42fad7f5a491f13197d4682aa380405646a1c5ee88ece08359",
+      "fileId": "1CQBHnNqskn7IhjjETXLnPCwi4KJITt95",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9690000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.2040000000000002,
+          "endSeconds": 4.452
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.617,
+          "endSeconds": 7.901
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.065000000000001,
+          "endSeconds": 11.146
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-support",
+      "cacheKey": "e0e5f12e8e9fe227cf857a9cfbf78cc2f2a82bfa69fe0a128858dcab1ea1b99e",
+      "fileId": "1b6UqYpB65UfTx_L0l3UrVn0X4x1t4QPm",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.016
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.064,
+          "endSeconds": 4.359999999999999
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.466,
+          "endSeconds": 7.599
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.624,
+          "endSeconds": 10.495
         }
       ],
       "voiceLabel": "Sarah（女性）"
@@ -19487,6 +19958,34 @@
       "voiceLabel": "George（男性）"
     },
     {
+      "wordId": "vocab-borrow",
+      "cacheKey": "b3030300b558bf5fa4dad9170ed10daa55b4324f48eba7313c0c690c60ffd47a",
+      "fileId": "1IWfopaEE6ZoNrk73PJYdqv2QwFSRuJej",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.819
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.983,
+          "endSeconds": 2.7110000000000003
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 2.875,
+          "endSeconds": 5.625
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 5.673,
+          "endSeconds": 7.802
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
       "wordId": "vocab-lend",
       "cacheKey": "d000437ebb43e7fdb12f7f5f201eb344832c34c07408997231b41e0dad304915",
       "fileId": "1HtjRb-PXZFO5XR1uVm27x0QTuh4-VAbl",
@@ -19625,6 +20124,34 @@
         }
       ],
       "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-cheerful",
+      "cacheKey": "22b367d7c8da9587eaef349178b7295306cd9e0af10a562007b6f366e5af570b",
+      "fileId": "14wr1UBwT9a66S6mzi0AKmDYLFSYUsAEe",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.0045
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.053,
+          "endSeconds": 4.6615
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.71,
+          "endSeconds": 8.353
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.46,
+          "endSeconds": 12.307
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
     },
     {
       "wordId": "vocab-strict",
@@ -19879,6 +20406,34 @@
       "voiceLabel": "George（男性）"
     },
     {
+      "wordId": "vocab-coupon",
+      "cacheKey": "abefb6b9ec7d572764c9ffae2af6d34f48bc49dec6c2a4019d7e9787a748f74e",
+      "fileId": "18lp3Gt97fBH6VoMTg0nEgVAc60EfQ-js",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8535
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.902,
+          "endSeconds": 3.8775
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.885,
+          "endSeconds": 7.2735
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.322,
+          "endSeconds": 9.659
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
       "wordId": "vocab-receive",
       "cacheKey": "ab0efd66134e4ebc82407487c3b15b7793f228631635773e5ed606cb16e6c8f0",
       "fileId": "1-bUYj4pKVoFhs1nALbNWWwx-oFxOI-cF",
@@ -19989,6 +20544,34 @@
         }
       ],
       "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-mail",
+      "cacheKey": "4edafce50de256933928e96e64ebd1bd27cb99a03328bc3cfef718a5750839bf",
+      "fileId": "1t2Du7ZVVpvQatmZu7sC_TfyjgTFEWbOq",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.65
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.65,
+          "endSeconds": 3.036
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.375,
+          "endSeconds": 6.733499999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.741,
+          "endSeconds": 9.845
+        }
+      ],
+      "voiceLabel": "George（男性）"
     },
     {
       "wordId": "vocab-fare",
@@ -20579,6 +21162,34 @@
       "voiceLabel": "Sarah（女性）"
     },
     {
+      "wordId": "vocab-generous",
+      "cacheKey": "30d4721cee6d093b01513505a5b6064a7e03f3355e88e920efa02a23f18a0fc6",
+      "fileId": "1T28CpshASo7X2W8vpvP3drjHGE54ZQA3",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.853
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.878,
+          "endSeconds": 4.335999999999999
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.501,
+          "endSeconds": 8.76
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.924000000000001,
+          "endSeconds": 12.91
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
       "wordId": "vocab-rude",
       "cacheKey": "61c4dddda7440b9e1536de5f9d47a96c9b67c68136f1e89201186851c25632b4",
       "fileId": "1gqgQPYPmg9z5suGS71mJ2paZ4qhbLLq7",
@@ -21027,6 +21638,34 @@
       "voiceLabel": "George（男性）"
     },
     {
+      "wordId": "vocab-plenty",
+      "cacheKey": "ae6bc3227620cda5a7615ec295d619c1cfc584dff584601fcf4d0daf776887ec",
+      "fileId": "1g9K9jaPHtO1z1gZx_S7wKubbrkmAcqJn",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9115
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9600000000000001,
+          "endSeconds": 4.5915
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.64,
+          "endSeconds": 7.639
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.639,
+          "endSeconds": 10.96
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
       "wordId": "vocab-rescue",
       "cacheKey": "7ab077bab74d41d7ded370204bf17ab7c17455e90615be4251104782447ad50a",
       "fileId": "1hdQobEH69PxyIKW0q_y8-xGwZOMGBnbT",
@@ -21167,6 +21806,34 @@
       "voiceLabel": "George（男性）"
     },
     {
+      "wordId": "vocab-square",
+      "cacheKey": "5f064a283a4e32dac85a131e51e9772b0617c6d8cc2353371eac653eaea7d4a4",
+      "fileId": "1QTxLCaIybjXb9_Fmp289I5i9jSJw1iZr",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.784
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.809,
+          "endSeconds": 3.9299999999999997
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.9299999999999997,
+          "endSeconds": 6.6235
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.6235,
+          "endSeconds": 9.892
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
       "wordId": "vocab-practice",
       "cacheKey": "839f95705a4f95f739921f72f583f1a43c9701c0b50372fbf1346bad85911cb6",
       "fileId": "1DP2GSxOp1ujmZqdoWztk9ny0TCa5nk5-",
@@ -21190,6 +21857,90 @@
           "id": "example-3",
           "startSeconds": 7.1129999999999995,
           "endSeconds": 10.124
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-wonderful",
+      "cacheKey": "ec62f6527b15f37c50ab2546e4a772bb659f26ee404cf28c554a2a9bec8d9aa3",
+      "fileId": "1GNzlxNXktOvQsEsQPLvKfwZMzVmOsiQT",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.865
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.865,
+          "endSeconds": 3.332
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.34,
+          "endSeconds": 6.843999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.843999999999999,
+          "endSeconds": 9.752
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-uniform",
+      "cacheKey": "8023b5da094b72a08848f76f2f163269e5456999e86aea63166fc5221f6e75a7",
+      "fileId": "1MJljAQdiVas1g6Vwxx3_a5iWIn7FiA_g",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9810000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.3199999999999998,
+          "endSeconds": 4.731
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.779,
+          "endSeconds": 8.725000000000001
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.773000000000001,
+          "endSeconds": 12.167
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-lonely",
+      "cacheKey": "37043483291015ce1213af4741e4c47e8e1c801d1d99342688a506b314537646",
+      "fileId": "19RqBm_LZHrWlcvfzc2Bp1hNmjx20_nFV",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.877
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.2149999999999999,
+          "endSeconds": 4.162
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.327,
+          "endSeconds": 7.367
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.531,
+          "endSeconds": 10.96
         }
       ],
       "voiceLabel": "George（男性）"
@@ -21417,6 +22168,34 @@
         }
       ],
       "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-chicken",
+      "cacheKey": "0658409b1b7924a177ab771476c7977d95eac3c6807b4ff963019aa189da6bad",
+      "fileId": "13JTv3gLzfnkWGcVejvAU9R4p9eTZeo3N",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.76
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9249999999999999,
+          "endSeconds": 3.8949999999999996
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.9429999999999996,
+          "endSeconds": 6.542
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.707,
+          "endSeconds": 9.474
+        }
+      ],
+      "voiceLabel": "George（男性）"
     },
     {
       "wordId": "vocab-pizza",

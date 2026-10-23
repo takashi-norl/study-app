@@ -10115,6 +10115,192 @@
       }
     },
     {
+      "id": "vocab-surgery",
+      "word": "surgery",
+      "level": "3級",
+      "ipa": "ˈsɝːdʒəri",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "Medical treatment in which a doctor cuts into the body to repair or remove something.",
+      "meaning": "手術、外科",
+      "usageTip": "「手術を受ける」は have surgery / undergo surgery。医師が行うなら perform surgery。この意味では通常は不可算で、特定の1回を指すときは a surgery とは言わず an operation を使うと自然。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "病院",
+          "text": "My uncle needs surgery on his knee next month.",
+          "translation": "叔父は来月、膝の手術が必要です。"
+        },
+        {
+          "id": "example-2",
+          "context": "回復",
+          "text": "She is resting at home after major surgery.",
+          "translation": "彼女は大きな手術の後、自宅で休んでいます。"
+        },
+        {
+          "id": "example-3",
+          "context": "医師の説明",
+          "text": "The doctor said surgery was safer than waiting any longer.",
+          "translation": "医師は、これ以上待つより手術の方が安全だと言いました。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "surgery",
+          "choices": [
+            {
+              "text": "薬局",
+              "meaning": "薬を売る店"
+            },
+            {
+              "text": "保険",
+              "meaning": "損害に備える制度"
+            },
+            {
+              "text": "手術",
+              "meaning": "体を切って治療すること"
+            },
+            {
+              "text": "検温",
+              "meaning": "体温を測ること"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "surgery は体を切開して行う治療、つまり手術を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "手術、外科",
+          "choices": [
+            {
+              "text": "stock",
+              "meaning": "株式、在庫"
+            },
+            {
+              "text": "nutrition",
+              "meaning": "栄養"
+            },
+            {
+              "text": "ambulance",
+              "meaning": "救急車"
+            },
+            {
+              "text": "surgery",
+              "meaning": "手術"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "手術や外科を表す英語は surgery。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 入院していた父が回復している。\nMy father had heart ___ and is recovering well.",
+          "choices": [
+            {
+              "text": "nutrition",
+              "meaning": "栄養"
+            },
+            {
+              "text": "mortgage",
+              "meaning": "住宅ローン"
+            },
+            {
+              "text": "stock",
+              "meaning": "株式、在庫"
+            },
+            {
+              "text": "surgery",
+              "meaning": "手術"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "heart と回復の内容から、心臓の手術を受けたと分かる。",
+          "alternatives": [
+            {
+              "answer": "operation",
+              "explanation": "heart operation も通じるが、heart surgery の方が一般的な言い方。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "「彼女は来週手術を受ける」という意味で正しい文を選びなさい。",
+          "choices": [
+            {
+              "text": "She will make surgery next week.",
+              "meaning": "彼女は来週手術を作る。(動詞の誤り)"
+            },
+            {
+              "text": "She will have surgery next week.",
+              "meaning": "彼女は来週手術を受ける。"
+            },
+            {
+              "text": "She will take a surgery next week.",
+              "meaning": "彼女は来週手術を取る。(動詞・冠詞の誤り)"
+            },
+            {
+              "text": "She will do a surgery next week.",
+              "meaning": "彼女は来週手術をする。(受ける意味にならない)"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "手術を受けるは have surgery が自然。do surgery は医師が行う意味になり、make や take は合わない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 入院していた父が回復している。\nMy father had heart ___ and is recovering well.",
+        "answers": [
+          "surgery"
+        ],
+        "explanation": "heart と回復の内容から、心臓の手術を受けたと分かる。",
+        "alternatives": [
+          {
+            "answer": "operation",
+            "explanation": "heart operation も通じるが、heart surgery の方が一般的な言い方。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "surgeryを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "My uncle needs surgery on his knee next month.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-surgery-usage",
+          "type": "usage",
+          "prompt": "「彼女は来週手術を受ける」という意味で正しい文を選びなさい。",
+          "choices": [
+            "She will make surgery next week.",
+            "She will have surgery next week.",
+            "She will take a surgery next week.",
+            "She will do a surgery next week."
+          ],
+          "correctIndex": 1,
+          "explanation": "手術を受けるは have surgery が自然。do surgery は医師が行う意味になり、make や take は合わない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "medical",
+          "health"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-mortgage",
       "word": "mortgage",
       "level": "3級",
@@ -19453,6 +19639,34 @@
       "voiceLabel": "George（男性）"
     },
     {
+      "wordId": "vocab-bottom",
+      "cacheKey": "7ee4674a5aa8e6c328d5daec27fb69f26ecf1e4b8f43627e0627d24744935458",
+      "fileId": "1UpXBiKCTtTnGw1NHANafum2dMM9G5Sy_",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8300000000000001
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9369999999999999,
+          "endSeconds": 3.6455
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.653,
+          "endSeconds": 6.148
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.579,
+          "endSeconds": 9.288
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
       "wordId": "vocab-wealthy",
       "cacheKey": "5b5193bc22b729eb2baddb8e1834bb79a806950777513b6218453142c8b2cf51",
       "fileId": "116c2N6SncHXE72Te6N2x10NJqnUr5bf-",
@@ -19929,6 +20143,34 @@
       "voiceLabel": "George（男性）"
     },
     {
+      "wordId": "vocab-download",
+      "cacheKey": "4647540458e515072db716018bc82b757292a97ecf7d514ecaaca70ce12aa6c6",
+      "fileId": "12rR4xBmlTn5a0xa0ymAZ5Tjh1oYvYsGu",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.865
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9129999999999999,
+          "endSeconds": 3.686
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.7929999999999997,
+          "endSeconds": 6.983499999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.0089999999999995,
+          "endSeconds": 10.124
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
       "wordId": "vocab-upload",
       "cacheKey": "d899b22b627d6a0c8876da4f9312efda11d28fac230eb87c9aa1b6d683805a01",
       "fileId": "1sENo1u00ItC1Z8u6AWgwpkNPF4u4Tzws",
@@ -19955,6 +20197,34 @@
         }
       ],
       "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-privacy",
+      "cacheKey": "46dce79757146467d47ae3e3b392f95cc4fa4424514a064e06acd8d6667c3613",
+      "fileId": "15LLH6yWO1FculxpL6271nPU-Yvp2n8Yq",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.19
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.238,
+          "endSeconds": 5.0215
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.07,
+          "endSeconds": 8.3185
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.344000000000001,
+          "endSeconds": 13.793
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
     },
     {
       "wordId": "vocab-security",
@@ -20011,6 +20281,34 @@
         }
       ],
       "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-translate",
+      "cacheKey": "880861215bef226e490d09754d31a641608c6e0afe698c7b9f2cbe8c468e0fff",
+      "fileId": "1GtFZrA8-yt8w6ZRjx7RD9Mxcwipxikal",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7835
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.7835,
+          "endSeconds": 3.733
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.9669999999999996,
+          "endSeconds": 7.274
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.508,
+          "endSeconds": 11.006
+        }
+      ],
+      "voiceLabel": "George（男性）"
     },
     {
       "wordId": "vocab-interpret",
@@ -20207,6 +20505,34 @@
         }
       ],
       "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-grain",
+      "cacheKey": "18350ea256bdbc47bb1ab5efcb6f1d99ceabbb9dbd66062dc0c21577541b8e38",
+      "fileId": "1lMe3cD1MagvEulw6NXTst66EpUJiCUKM",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7255
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.7255,
+          "endSeconds": 4.151
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.3149999999999995,
+          "endSeconds": 7.181
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.345,
+          "endSeconds": 10.635
+        }
+      ],
+      "voiceLabel": "George（男性）"
     },
     {
       "wordId": "vocab-ingredient",
@@ -20461,6 +20787,34 @@
       "voiceLabel": "Sarah（女性）"
     },
     {
+      "wordId": "vocab-ambulance",
+      "cacheKey": "d4d68e3667d7ba54b2912e302e8e6ba0403d765a6cde5542110a883b95a15a09",
+      "fileId": "1FyIIkyMrSdn_paj9Aq1Pm5iB-27ZHtnN",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8185
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.8185,
+          "endSeconds": 3.8720000000000003
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.036,
+          "endSeconds": 7.3955
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.403,
+          "endSeconds": 10.635
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
       "wordId": "vocab-mortgage",
       "cacheKey": "ea2871a32aca52c203492dabd89869ad2a4c1c6008111083cde07de81b9a9209",
       "fileId": "1W8SCxBGVfEPnpgy1LnGbLBgMzjG33_4b",
@@ -20543,6 +20897,34 @@
         }
       ],
       "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-export",
+      "cacheKey": "f3699b934fa2361e1cec61bd35e7a2d3deb5f49bf7560370189d4c97e36b54c6",
+      "fileId": "1AUV9_2TDSnKaONK5pxHLgMr66a4fitA0",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.9924999999999999
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.9924999999999999,
+          "endSeconds": 4.458500000000001
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.466,
+          "endSeconds": 8.272
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.297,
+          "endSeconds": 11.842
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
     },
     {
       "wordId": "vocab-employ",
@@ -20797,6 +21179,34 @@
       "voiceLabel": "George（男性）"
     },
     {
+      "wordId": "vocab-bitter",
+      "cacheKey": "f4b3d0c051bcd1d0c09fac5c0ea4b3f54da8f2b699ca923a32a0926905aeea1a",
+      "fileId": "154CI8LMt2yOfVmD2d7QCn7gxDmsGsJ4h",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.8415
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.89,
+          "endSeconds": 3.57
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 3.5949999999999998,
+          "endSeconds": 6.484
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.5089999999999995,
+          "endSeconds": 9.474
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
       "wordId": "vocab-slice",
       "cacheKey": "91a732c68d6ac826b076fc8ea6b0e7ff770bf5f995561549c480b72974255981",
       "fileId": "1DNrr6v0l5eGE_UyyT9ta-_GUnmSKEHjk",
@@ -20932,6 +21342,62 @@
           "id": "example-3",
           "startSeconds": 8.727,
           "endSeconds": 12.353
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
+      "wordId": "vocab-debris",
+      "cacheKey": "ba5d790dfce330d84e8cd29e3bee3652187e1f6e85af4af9d3efacf86053c46d",
+      "fileId": "1j_ezz5nO0PqIYYdBQ3A9ssQuEW-SdUqP",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.074
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.633,
+          "endSeconds": 5.056
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 5.104,
+          "endSeconds": 8.835
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.843,
+          "endSeconds": 12.725
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-cliff",
+      "cacheKey": "0b2982f9f61c25ca10dea9fe1bf18068d4647c2f7bbb91b2b1513d1606274383",
+      "fileId": "1pMwSTdyqoN_FTEm00gmV4PXiSAmGzTyZ",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.54
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.54,
+          "endSeconds": 3.7910000000000004
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.0249999999999995,
+          "endSeconds": 7.702999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.81,
+          "endSeconds": 11.471
         }
       ],
       "voiceLabel": "George（男性）"
@@ -21161,6 +21627,34 @@
       "voiceLabel": "George（男性）"
     },
     {
+      "wordId": "vocab-paragraph",
+      "cacheKey": "98899bec57524516d57ab292d727d062f104451da2e1d0e5cddf792f8a5982d7",
+      "fileId": "1K6qW2hJNRGM6wySXYfIblhVUSKEPmnzF",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 1.097
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.6560000000000001,
+          "endSeconds": 6.031
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 6.138,
+          "endSeconds": 9.584
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 9.632000000000001,
+          "endSeconds": 13.421
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
       "wordId": "vocab-syllable",
       "cacheKey": "f027ea53bcb207eb045980be57300478f5ec9d45f4eb8c2e5002218cfb7f133c",
       "fileId": "16K-hOOojeWFdBSqYuabHtX8wnA_Ie53I",
@@ -21243,6 +21737,34 @@
         }
       ],
       "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-journal",
+      "cacheKey": "ccfc51bce4ffe63a596e9bbd6edb6ba046731304d61a2ac500de3a0ee4e72d32",
+      "fileId": "1B3w0PKpMcqFs6WD4PkF3D1hxMtKYUK6A",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.6965
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.6965,
+          "endSeconds": 3.849
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.013,
+          "endSeconds": 6.6525
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 6.66,
+          "endSeconds": 10.217
+        }
+      ],
+      "voiceLabel": "George（男性）"
     },
     {
       "wordId": "vocab-sketch",
