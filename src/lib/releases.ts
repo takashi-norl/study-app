@@ -8,6 +8,16 @@ export interface AppRelease {
 
 // Newest first. This is the source for Settings, public history and update notices.
 export const APP_RELEASES: readonly AppRelease[] = [{
+  version: '0.6.1',
+  date: '2026-10-23',
+  title: '英検2級・準1級の問題と音声を試す',
+  announcement: '管理者メニューに英検の見本を追加。読む・聞く・書くを、各級3題ずつ試せます。',
+  changes: [
+    { title: 'まず6題で、内容と声を確認', description: '2級・準1級のReading、Listening、Writingを1題ずつ用意しました。Listeningは男女の音声で聞き取り、答え合わせで台本を確認できます。' },
+    { title: '音声は保存して繰り返し再生', description: '見本の音声は一度準備したものを再利用します。通常・ゆっくりを選べ、再生のたびにAI音声を生成しません。' },
+    { title: '英文を書いて、語数と解答例を確認', description: 'Writingは2級80〜100語、準1級120〜150語の意見論述です。見本での回答は学習者の成績に入りません。' },
+  ],
+}, {
   version: '0.6.0',
   date: '2026-10-23',
   title: 'まず3問で相談してから、必要な分だけ',
