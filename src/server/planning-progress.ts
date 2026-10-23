@@ -2,16 +2,15 @@ import 'server-only';
 import type { PlanningTurn, StudyData } from '@/lib/types';
 import type { StudyEvent } from './google-store';
 import { ApiError } from './config';
+import { latestSourceAnalysis } from './source-analysis';
 
 export type PlanningPhase = NonNullable<PlanningTurn['progress']>['phase'];
 
 function savedSourceAnalyses(sourceIds: string[], events: StudyEvent[]): Map<string, StudyEvent> {
-  const selected = new Set(sourceIds);
   const saved = new Map<string, StudyEvent>();
-  for (const event of events) {
-    if (event.type === 'source.analysis' && selected.has(event.payload.sourceId)
-      && event.id === `source-analysis:${event.payload.sourceId}` && typeof event.payload.text === 'string'
-      && !saved.has(event.payload.sourceId)) saved.set(event.payload.sourceId, event);
+  for (const sourceId of new Set(sourceIds)) {
+    const event = latestSourceAnalysis(events, sourceId);
+    if (event) saved.set(sourceId, event);
   }
   return saved;
 }

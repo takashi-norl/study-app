@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { createDemoData } from '../src/lib/demo-data';
-import { addDemoLibraryPlan, addDemoPlanningTurn, demoPracticeQuestions, demoSessionAllowed, demoSessionQuestions, demoStudyDataForProfile, generateDemoProposal, publishDemoLibrary, requestDemoLibraryPublication } from '../src/lib/demo-access';
+import { addDemoLibraryPlan, addDemoPlanningTurn, arrangeDemoTopic, demoPracticeQuestions, demoSessionAllowed, demoSessionQuestions, demoStudyDataForProfile, generateDemoProposal, publishDemoLibrary, requestDemoLibraryPublication } from '../src/lib/demo-access';
 import type { LearningPlan, StudyData } from '../src/lib/types';
 
 const now = '2024-01-20T12:00:00.000Z';
@@ -110,4 +110,40 @@ test('demo consultation and generation are labelled samples, bounded, and reject
   assert.ok(data.questions.filter(question => question.topicId === topic.id).every(question => /サンプル/.test(question.sourceNote)));
   const updated = addDemoPlanningTurn(data, parent, plan.id, '追加のコメント', now, id);
   assert.throws(() => generateDemoProposal(updated, parent, plan.id, turn.id, turn.proposals![0].id, 10, now, id), /最新/);
+});
+
+test('demo arrangements preserve only the caller’s chosen project and public additions start unclassified', () => {
+  let data = createDemoData(new Date(now));
+  const student = data.profiles.find(profile => profile.role === 'student')!;
+  const parent = data.profiles.find(profile => profile.role === 'parent')!;
+  const topic = data.topics.find(item => item.subject === '古文')!;
+  data = { ...data, plans: data.plans.map(plan => plan.id === topic.planId ? { ...plan, tags: ['2学期中間テスト'] } : plan) };
+  let counter = 0;
+  const id = () => `project-demo-${++counter}`;
+  const own = arrangeDemoTopic(data, student, topic.id, now, id);
+  assert.deepEqual(own.plan.tags, ['2学期中間テスト']);
+  own.plan.tags!.push('別の範囲');
+  assert.deepEqual(data.plans.find(plan => plan.id === topic.planId)?.tags, ['2学期中間テスト']);
+  assert.equal(arrangeDemoTopic(data, parent, topic.id, now, id).plan.tags, undefined);
+
+  const requested = requestDemoLibraryPublication(data, student, topic.id, now);
+  const published = publishDemoLibrary(requested.data, parent, topic.id, now, id);
+  published.topic.description = '公開されている古文の出題範囲';
+  const publicQuestion = published.data.questions.find(item => item.topicId === published.topic.id)!;
+  published.data.questions.push({ ...publicQuestion, id: id(), learningPoint: '参考3問より後の内容理解' });
+  const publicArrangement = arrangeDemoTopic(published.data, parent, published.topic.id, now, id).plan;
+  assert.equal(publicArrangement.tags, undefined);
+  assert.equal(publicArrangement.arrangementExamples?.length, 3);
+  assert.match(publicArrangement.goal, /公開されている古文の出題範囲/);
+  assert.match(publicArrangement.goal, /参考3問より後の内容理解/);
+  assert.match(publicArrangement.goal, /試験範囲全体を網羅した資料ではありません/);
+  assert.ok(publicArrangement.goal.length <= 4000);
+  assert.equal(arrangeDemoTopic(published.data, student, published.topic.id, now, id).plan.tags, undefined);
+  const added = addDemoLibraryPlan(published.data, student, published.topic.id, now, id);
+  assert.equal(added.plan.title, published.topic.title);
+  assert.equal(added.plan.tags, undefined, 'a public addition does not read even the caller’s private origin');
+  const assigned = { ...added.data, plans: added.data.plans.map(plan => plan.id === added.plan.id ? { ...plan, tags: ['自分で選んだプロジェクト'] } : plan) };
+  assert.deepEqual(addDemoLibraryPlan(assigned, student, published.topic.id, now, id).plan.tags, ['自分で選んだプロジェクト']);
+  assert.deepEqual(arrangeDemoTopic(assigned, student, published.topic.id, now, id).plan.tags, ['自分で選んだプロジェクト']);
+  assert.equal(arrangeDemoTopic(assigned, parent, published.topic.id, now, id).plan.tags, undefined);
 });

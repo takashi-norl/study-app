@@ -6,6 +6,7 @@ import type { Topic } from '@/lib/types';
 import { isPracticeReadyQuestion, mayPracticeLibraryTopic, topicOwnerId } from '@/lib/library-policy';
 import type { StudyController } from './controller';
 import { SharedLibrary } from './shared-library';
+import { LearnerDelivery } from './learner-delivery';
 import styles from './question-library.module.css';
 
 export function SetSharingActions({ c, topic }: { c: StudyController; topic: Topic }) {
@@ -40,6 +41,7 @@ export function SetSharingActions({ c, topic }: { c: StudyController; topic: Top
       : <p>{parent ? '問題・解説を登録ユーザーに共有します。原本の写真や相談履歴は共有しません。' : '共有したいときは管理者に公開を依頼できます。自分の練習には依頼不要です。'}</p>}
     {!publicCurrent && (mayPublish || mayRequest) && <button type="button" className={styles.shareButton} disabled={disabled || !parent && requested} onClick={()=>void share()}>{!parent && requested ? <Check size={16}/> : parent ? <Upload size={16}/> : <Send size={16}/>}<span>{parent ? hasPublicVersion ? '公開版を更新する' : '登録ユーザーに公開する' : requested ? '公開を依頼済み' : '公開を依頼する'}</span></button>}
     {attempted && c.error && <p className={styles.error} role="alert">{c.error}</p>}
+    {parent && <LearnerDelivery c={c} topic={topic}/>}
   </div>;
 }
 

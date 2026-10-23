@@ -1,4 +1,5 @@
 import type { PracticeMode, PracticeSession, Profile, Question, Role, StudyData, Subject } from '@/lib/types';
+import type { StudyAuthStatus } from '@/lib/study-auth';
 
 export interface UploadStatus {
   topicId?: string;
@@ -18,6 +19,7 @@ export interface NewLearningPlan {
   targetDate?: string;
   dailyQuestionTarget?: number;
   requestedQuestionCount?: number;
+  tags?: string[];
   testOnly?: boolean;
   sourceIds: string[];
 }
@@ -29,6 +31,8 @@ export interface StudyController {
   profile: Profile;
   demo: boolean;
   ready: boolean;
+  authStatus: StudyAuthStatus;
+  authError: string | null;
   busy: boolean;
   error: string | null;
   notice: string | null;
@@ -38,6 +42,7 @@ export interface StudyController {
   currentQuestion: Question | null;
   feedback: { correct: boolean; correctIndex: number; explanation: string } | null;
   actions: {
+    retryAuth(): Promise<void>;
     refreshStatus(): Promise<void>;
     switchRole(role: Role): void;
     startPractice(mode: PracticeMode, topicId?: string): void | Promise<void>;
@@ -55,6 +60,7 @@ export interface StudyController {
     publishLibrary(topicId: string): Promise<string | void>;
     requestLibraryPublication(topicId: string): Promise<boolean>;
     addLibraryPlan(topicId: string): Promise<string | void>;
+    deliverToLearner(topicId: string, learnerId: string, projectName: string): Promise<string | void>;
     generate(topicId: string, targetCount: number, sourceIds?: string[]): void | Promise<void>;
     resumeGeneration(jobId: string): void | Promise<void>;
     retryGeneration(jobId: string): Promise<void>;
