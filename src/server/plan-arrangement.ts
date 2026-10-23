@@ -35,7 +35,7 @@ export function preparePlanArrangement(data:StudyData,profile:Profile,topicId:st
   const latestJob=topic.libraryPublished ? undefined : data.jobs.filter(job=>job.topicId===topic.id && (job.approvedInstructions || job.instructions)).at(-1);
   const latestInstructions=latestJob?.approvedInstructions ?? latestJob?.instructions;
   const createdAt=now.toISOString();
-  const plan:LearningPlan={id:requestId,ownerId:profile.id,title:`${topic.title.slice(0,130)}のアレンジ`,subject:topic.subject,
+  const plan:LearningPlan={id:requestId,ownerId:profile.id,title:`${topic.title.slice(0,130)}のアレンジ`,subject:topic.subject,questionTemplate:topic.questionTemplate ?? originalPlan?.questionTemplate,
     tags:ownPlanTagsForTopic(data,profile,topic),
     goal:`「${topic.title.slice(0,150)}」を別の問題集としてアレンジする。まず実物3問で内容と形式を確認する。\n${arrangementScopeSummary(topic,originals)}`,arrangementInstructions:latestInstructions,
     difficulty:originalPlan?.difficulty ?? '元の問題を参考に相談して調整',dailyQuestionTarget:10,sourceIds,sampleFirst:true,arrangedFromTopicId:topic.id,

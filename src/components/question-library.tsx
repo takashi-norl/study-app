@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { ArrowRight, BookOpen, Check, Globe2, LockKeyhole, Pencil, RefreshCw, Send, Sparkles, Upload } from 'lucide-react';
 import type { Topic } from '@/lib/types';
 import { isPracticeReadyQuestion, mayPracticeLibraryTopic, topicOwnerId } from '@/lib/library-policy';
@@ -73,6 +74,7 @@ export function QuestionLibrary({ c, initialTab = 'private', onEdit, onCreate, o
       <button type="button" role="tab" aria-selected={tab==='private'} onClick={()=>setTab('private')}><LockKeyhole size={16}/><span>プライベート{requested>0&&<small>公開依頼 {requested}</small>}</span></button>
       <button type="button" role="tab" aria-selected={tab==='public'} onClick={()=>setTab('public')}><Globe2 size={16}/><span>パブリック</span></button>
     </div>
+    {parent && !c.preview && !c.demo && <Link className="text-button" href="/admin/question-set-import">確認済みの問題セットを取り込む<ArrowRight size={15}/></Link>}
     {tab==='public' ? <><p className={styles.intro}>登録ユーザー向けの問題集です。インターネット全体には公開されません。</p><SharedLibrary c={c} onAdded={()=>{}} onOpen={id=>void c.actions.startPractice('daily',id)} onInspect={parent ? onEdit : undefined} onArrange={!c.preview && onOpenPlan ? async id=>{const next=await c.actions.arrangeTopic(id);if(next)onOpenPlan(next);} : undefined}/></> : <>
       <p className={styles.intro}>{parent ? '作った問題はそのまま練習できます。管理者は学習者の内容も確認し、届いた公開依頼をここで扱えます。' : '自分で作った問題はここに保存され、そのまま練習できます。管理者は内容と学習履歴を確認できます。'}</p>
       {!topics.length ? <div className={styles.empty}><BookOpen size={28}/><h2>最初の問題集を作ろう。</h2><p>教材を使っても、AIへの相談だけでも始められます。</p>{!c.preview && <button type="button" className="button primary" onClick={onCreate}>問題を作る<ArrowRight size={16}/></button>}</div> : <div className={styles.grid}>{topics.map(topic=>{

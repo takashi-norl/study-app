@@ -93,7 +93,7 @@ export function publishDemoLibrary(data: StudyData, profile: Profile, topicId: s
   const revision = demoRevision(data,original);
   const previous = data.topics.find(topic => topic.libraryPublished && topic.librarySourceTopicId === original.id && (topic as DemoTopic).demoLibraryRevision === revision);
   if (previous) return { data, topic: previous };
-  const topic: DemoTopic = { id: createId(), title: original.title, subject: original.subject, description: original.description,
+  const topic: DemoTopic = { id: createId(), title: original.title, subject: original.subject, questionTemplate:original.questionTemplate, description: original.description,
     targetCount: originals.length, createdAt: now, libraryPublished: true, librarySourceTopicId: original.id, demoLibraryRevision: revision, libraryRevision: revision };
   const questions: Question[] = originals.map(question => ({ id: createId(), topicId: topic.id, prompt: question.prompt,
     choices: [...question.choices], correctIndex: question.correctIndex, explanation: question.explanation, learningPoint: question.learningPoint,
@@ -117,7 +117,7 @@ export function addDemoLibraryPlan(data: StudyData, profile: Profile, topicId: s
   if (!topic) throw new Error('ライブラリの問題集が見つかりません。');
   const previous = data.plans.find(plan => plan.ownerId === profile.id && plan.libraryTopicId === topic.id && !plan.testOnly);
   if (previous) return { data, plan: previous };
-  const plan: LearningPlan = { id: createId(), ownerId: profile.id, title: topic.title, subject: topic.subject,
+  const plan: LearningPlan = { id: createId(), ownerId: profile.id, title: topic.title, subject: topic.subject, questionTemplate:topic.questionTemplate,
     goal: `${topic.title}を、1回10問ずつ練習する。`, difficulty: '解いてから調整する', dailyQuestionTarget: 10,
     requestedQuestionCount: topic.targetCount, libraryTopicId: topic.id, sourceIds: [], version: 1, createdAt: now, updatedAt: now };
   return { data: { ...data, plans: [...data.plans, plan] }, plan };
@@ -163,11 +163,11 @@ export async function deliverDemoTopic(data: StudyData, profile: Profile, input:
     || !question.explanation.trim() || question.explanation.length > 6000 || question.learningPoint.length > 1000)) throw new Error('問題文・選択肢・正解・解説を確認してから追加してください。');
   if (data.plans.filter(plan => plan.ownerId === learner.id).length >= 100) throw new Error('学習プランは1人100件までです。');
   const title = original.title.slice(0, 150);
-  const plan: LearningPlan = { id: planId, ownerId: learner.id, title, subject: original.subject, tags,
+  const plan: LearningPlan = { id: planId, ownerId: learner.id, title, subject: original.subject, questionTemplate:original.questionTemplate, tags,
     goal: `「${title}」を1回10問ずつ練習し、間違えた内容を復習する。`, difficulty: '標準', dailyQuestionTarget: 10,
     requestedQuestionCount: originals.length, sourceIds: [], version: 1, createdAt: now, updatedAt: now };
   const topic: Topic = { id: `${planId}-topic`, ownerId: learner.id, audienceUserId: learner.id, planId, title,
-    subject: original.subject, description: '管理者から届けられた練習問題です。', targetCount: originals.length, createdAt: now };
+    subject: original.subject, questionTemplate:original.questionTemplate, description: '管理者から届けられた練習問題です。', targetCount: originals.length, createdAt: now };
   const questions: Question[] = originals.map((question, index) => ({ id: `${planId}-question-${index + 1}`, topicId: topic.id,
     ownerId: learner.id, audienceUserId: learner.id, planId, prompt: question.prompt, choices: [...question.choices],
     correctIndex: question.correctIndex, explanation: question.explanation, learningPoint: question.learningPoint,
@@ -194,7 +194,7 @@ export function arrangeDemoTopic(data: StudyData, profile: Profile, topicId: str
   if(!topic || profile.role!=='parent' && (!topic.libraryPublished && topicOwnerId(data,topic)!==profile.id || topic.testOnly)) throw new Error('利用できる問題集からアレンジしてください。');
   const questions=data.questions.filter(question=>question.topicId===topic.id&&question.status!=='archived');
   if(!questions.length) throw new Error('問題が保存されてからアレンジできます。');
-  const plan:LearningPlan={id:createId(),ownerId:profile.id,title:`${topic.title}のアレンジ`.slice(0,150),subject:topic.subject,
+  const plan:LearningPlan={id:createId(),ownerId:profile.id,title:`${topic.title}のアレンジ`.slice(0,150),subject:topic.subject,questionTemplate:topic.questionTemplate,
     tags:ownPlanTagsForTopic(data,profile,topic),
     goal:`「${topic.title.slice(0,150)}」の出題方法や難しさを相談し、まず3問で確かめる。元の問題集は変更しない。\n${arrangementScopeSummary(topic,questions)}`,difficulty:'相談して決める',dailyQuestionTarget:10,sourceIds:[],version:1,createdAt:now,updatedAt:now,sampleFirst:true,arrangedFromTopicId:topic.id,
     arrangementExamples:questions.slice(0,3).map(question=>({prompt:question.prompt,choices:[...question.choices],correctIndex:question.correctIndex,explanation:question.explanation,learningPoint:question.learningPoint,sourceIds:[],sourceNote:'アレンジ元の問題例',needsReview:!!question.needsReview})),...(topic.testOnly?{testOnly:true}:{})};
@@ -228,14 +228,14 @@ export function generateDemoProposal(data: StudyData, profile: Profile, planId: 
   const previousTopic = data.topics.find(topic => topic.id === previous?.topicId);
   if (previousTopic) return { data, topic: previousTopic };
   const originals = Array.from({length:targetCount},(_,index)=>proposal.samples![index%3]);
-  const topic: Topic = { id: createId(), ownerId:profile.id, title: proposal.title, subject: plan.subject, description: '操作確認用のサンプル。AIが作成した問題ではありません。',
+  const topic: Topic = { id: createId(), ownerId:profile.id, title: proposal.title, subject: plan.subject, questionTemplate:plan.questionTemplate, description: '操作確認用のサンプル。AIが作成した問題ではありません。',
     targetCount: originals.length, createdAt: now, planId: plan.id, ...(plan.testOnly ? { testOnly: true } : {}), ...(profile.role === 'student' ? { audienceUserId: profile.id } : {}) };
   const published = true;
   const questions: Question[] = originals.map(original => ({ ...original, id: createId(), ownerId:profile.id, topicId: topic.id, planId: plan.id,
     sourceIds: [], sourceNote: '操作確認用に用意されたサンプルです。教材やコメントからAIが生成した問題ではありません。',
     version: 1, createdAt: now, status: published ? 'published' : 'draft', needsReview: !published, publishedAt: published ? now : undefined,
     ...(plan.testOnly ? { testOnly: true } : {}), ...(profile.role === 'student' ? { audienceUserId: profile.id } : {}) }));
-  const job: GenerationJob = { id: createId(), topicId: topic.id, planId: plan.id, turnId, proposalId, requestedBy: profile.id,
+  const job: GenerationJob = { id: createId(), topicId: topic.id, planId: plan.id, questionTemplate:plan.questionTemplate, turnId, proposalId, requestedBy: profile.id,
     status: 'review', targetCount: questions.length, generatedCount: questions.length, createdAt: now, approvedSamples:proposal.samples,approvedSampleVersion:turn!.version,dailyQuestionTarget:approval.dailyQuestionTarget,plannedDays:approval.plannedDays,
     ...(plan.testOnly ? { testOnly: true } : {}), ...(profile.role === 'student' ? { audienceUserId: profile.id } : {}) };
   return { data: { ...data, plans:data.plans.map(item=>item.id===plan.id?{...item,version:item.version+1,updatedAt:now,requestedQuestionCount:targetCount,...(approval.dailyQuestionTarget?{dailyQuestionTarget:approval.dailyQuestionTarget}:{}),...(approval.plannedDays?{plannedDays:approval.plannedDays}:{})}:item), topics: [...data.topics, topic], questions: [...data.questions, ...questions], jobs: [...data.jobs, job] }, topic };

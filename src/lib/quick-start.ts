@@ -17,6 +17,7 @@ export const DAILY_MINUTES = [5,10,20] as const;
 
 export type QuickStartPreset = 'kobun-material';
 export const KOBUN_QUESTION_STYLES = [
+  {id:'vocabulary',label:'単語問題',description:'教材の単語を、基本の意味と文脈で確かめる。',instructions:'教材の見出し語を対象に、基本の意味と文脈での使い分けを四択で問います。活用は教材に記載がある場合だけ扱います。保存された古文単語の作問ルールを、試作から本作成まで適用してください。'},
   {id:'context',label:'文脈で意味を選ぶ',description:'本文の前後から、語句の意味を考える。',instructions:'対象の語句と必要な前後の本文を示し、この文脈に合う意味を四択で問います。単語の意味を暗記しているだけではなく、本文のどこから判断できるかを解説してください。'},
   {id:'grammar',label:'助動詞・助詞の働き',description:'活用・接続・意味を、本文で見分ける。',instructions:'対象の助動詞・助詞を明示し、活用形・接続・意味・働きのうち1問で問う点を絞ります。形だけでは決められない場合は必要な文脈を示し、正解の根拠となる語や接続を解説してください。'},
   {id:'honorifics',label:'敬語と主語',description:'誰の動作か、誰への敬意かを読み取る。',instructions:'敬語や省略された主語を問う場合は、登場人物と前後の関係が判断できる本文を示します。誰の動作か、誰に対する敬意かを区別し、本文から確定できない人物や関係を補わないでください。'},
@@ -42,7 +43,7 @@ function kobunAuthoringInstructions(input:QuickStartInput):string {
     input.materialMode==='sources'
       ? '選択した教材の読み取れた範囲だけから出題します。原文の表記と必要な前後関係を保ち、判読できない文字や欠けた本文を推測で補わないでください。根拠が不足する場合は作れる範囲と不足を伝え、3問を無理に埋めないでください。'
       : '資料なしのため、一般的な古文学習の知識と自作例文を使います。実在する作品の本文や出典を捏造しないでください。',
-    '各問に答えるための本文と対象箇所を含め、文脈から正解を一つに絞れる四択にします。選択肢に必要な訳を除き、問題文で対象箇所の現代語訳・正解・解説を先に示さないでください。解説では正解の根拠と、誤答のどこが本文に合わないかを簡潔に説明してください。',
+    `${style.id==='vocabulary' ? '基本の意味は見出し語から、文脈問題は必要な前後関係から、正解を一つに絞れる四択にします。' : '各問に答えるための本文と対象箇所を含め、文脈から正解を一つに絞れる四択にします。'}選択肢に必要な訳を除き、問題文で対象箇所の現代語訳・正解・解説を先に示さないでください。解説では正解の根拠を説明し、文脈問題では誤答のどこが本文に合わないかを簡潔に説明してください。`,
     input.materialMode==='sources'
       ? '作問の根拠に、教材名・確認できるページや段落・原文の該当箇所を示します。ページが不明なら作らず、不確かな読み取りや解答は具体的に記して要確認にしてください。'
       : '作問の根拠にAI作成・資料なしと記し、不確かな解答は具体的に記してください。',
@@ -75,12 +76,15 @@ export interface QuickStartInput {
 }
 export type QuickStartPlan = Pick<LearningPlan,'title'|'subject'|'goal'|'difficulty'|'targetDate'|'dailyQuestionTarget'|'sourceIds'> & {
   requestedQuestionCount?:number;
+  questionTemplate?:'kobun-vocabulary';
 };
 
 /** Turn tap selections into a saved plan and the first consultation, without requiring a title or free text. */
 export function buildQuickStart(input:QuickStartInput):{plan:QuickStartPlan;message:string} {
   const subject=input.subject.trim();
-  const focus=input.focus.trim() || 'おまかせ';
+  const vocabulary=subject==='古文' && input.kobunQuestionStyle==='vocabulary';
+  if(vocabulary && input.materialMode!=='sources') throw new Error('単語問題は自分の教材を使います。写真・PDFを選んでください。');
+  const focus=vocabulary ? '古文単語' : input.focus.trim() || 'おまかせ';
   const difficulty=input.difficulty.trim() || 'おまかせ';
   const purpose=input.purpose?.trim() || '日々の練習';
   const schedule=input.schedule?.trim() || '1か月';
@@ -110,7 +114,7 @@ export function buildQuickStart(input:QuickStartInput):{plan:QuickStartPlan;mess
   const authoringInstructions=kobunAuthoringInstructions(input);
   const goal=`進学校の高校1年を目安に、${purposeLabel}に向けて練習する。${sourceDescription}、${subject}の${focus==='おまかせ' ? '理解を確認できる内容' : focus}を${effectiveDifficulty}で練習する。${timing}${volume ? `${volume}を用意し、1回10問を目安に取り組む。` : 'まず3問のサンプルで出し方と難しさを確かめる。作る総数はサンプルを見てから決める。'}${authoringInstructions ? `\n${authoringInstructions}` : ''}${comment ? `\n追加の希望：${comment}` : ''}`;
   const plan:QuickStartPlan={title,subject,goal,difficulty:effectiveDifficulty,targetDate,
-    dailyQuestionTarget:10,sourceIds,...(input.totalQuestions === undefined ? {} : {requestedQuestionCount:input.totalQuestions})};
+    dailyQuestionTarget:10,sourceIds,...(vocabulary ? {questionTemplate:'kobun-vocabulary' as const} : {}),...(input.totalQuestions === undefined ? {} : {requestedQuestionCount:input.totalQuestions})};
   const message=[
     'この選択から、まずおすすめの問題作成案を提案してください。選んだ案で3問のサンプルを作り、出題方法と難しさを相談してから総数を決めます。',
     `学習者：進学校の高校1年を目安にする\n科目：${subject}\n目的：${purposeLabel}\n問題のもと：${input.materialMode==='sources' ? '選択した教材' : 'AIにおまかせ（資料なし）'}\n練習する内容：${focus}\n難しさ：${effectiveDifficulty}\n使える期間：${schedule}${schedule==='あと1時間' ? '' : `\n1日の目安：${minutesPerDay}分`}\n問題数：${volume ?? 'まず3問のサンプル。全体の分量はまだ決めない'}`,

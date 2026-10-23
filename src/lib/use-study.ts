@@ -352,6 +352,7 @@ export function useStudy():StudyController {
   async function createPlan(input:NewLearningPlan):Promise<string|void>{
     let planId:string|undefined;
     await run(async()=>{
+      if(input.questionTemplate && (input.subject!=='古文' || !input.sourceIds.length))throw new Error('単語問題は古文の教材を1件以上選んでください。');
       if(!input.goal.trim())throw new Error('目標や取り組みたい内容を入力してください。');
       const planInput=input.tags===undefined?input:{...input,tags:normalizePlanTags(input.tags)};
       if(demo){

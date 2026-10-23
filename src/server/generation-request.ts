@@ -70,13 +70,13 @@ export async function requestGeneration(profile: Profile, input: GenerationReque
   const now = new Date().toISOString();
   const job: GenerationJob = { id: randomUUID(), topicId: input.topic.id, status: 'queued', targetCount: input.targetCount,
     generatedCount: 0, createdAt: now, sourceIds, requestedBy: profile.id, requestId: input.requestId,
-    planId: input.planId, turnId: input.turnId, proposalId: input.proposalId, instructions: generationInstructions(plan,proposal),approvedSamples:structuredClone(samples),approvedSampleVersion:approved.turn.version,approvedInstructions:proposal.instructions,
+    questionTemplate:plan.questionTemplate, planId: input.planId, turnId: input.turnId, proposalId: input.proposalId, instructions: generationInstructions(plan,proposal),approvedSamples:structuredClone(samples),approvedSampleVersion:approved.turn.version,approvedInstructions:proposal.instructions,
     dailyQuestionTarget:input.dailyQuestionTarget ?? plan.dailyQuestionTarget,plannedDays:input.plannedDays,audienceUserId: input.topic.audienceUserId,testOnly:input.topic.testOnly };
   const updatedPlan={...plan,requestedQuestionCount:input.targetCount,dailyQuestionTarget:job.dailyQuestionTarget!,plannedDays:input.plannedDays,version:plan.version+1,updatedAt:now};
   const slotId = paidWorkSlotId(data);
   // One row claims paid work and creates its set; a losing request leaves no empty set.
   await appendEvent({ id: slotId, type: 'generation.requested', actorId: profile.id,
-    createdAt: now, payload: { topic: input.topic, job, updatedPlan } });
+    createdAt: now, payload: { topic: {...input.topic,questionTemplate:plan.questionTemplate}, job, updatedPlan } });
   const canonical = (await getFullState()).events.find(event => event.id === slotId);
   const winningId = canonical?.type === 'generation.requested' ? canonical.payload.job.id : canonical?.payload.id;
   if (winningId !== job.id) throw new ApiError(409, '別のAI処理を先に受け付けました。画面を更新してください。', 'GENERATION_ACTIVE');
@@ -86,5 +86,5 @@ export async function requestGeneration(profile: Profile, input: GenerationReque
     // Keep the canonical queued/running job so an explicit retry uses the same hook.
     throw new ApiError(503, '作問の開始を確認できませんでした。同じ依頼を再試行するか「再開」を押してください。', 'WORKFLOW_UNAVAILABLE');
   }
-  return { job, topic: input.topic };
+  return { job, topic: {...input.topic,questionTemplate:plan.questionTemplate} };
 }

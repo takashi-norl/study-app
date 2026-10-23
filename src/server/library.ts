@@ -40,7 +40,7 @@ export function prepareLibraryPublication(data:StudyData,profile:Profile,topicId
   if(!original.length || original.length>300) throw new ApiError(409,'保存済みの問題が1〜300問ある問題集を選んでください。','LIBRARY_EMPTY');
   const revision=libraryRevision(source,original);
   const id=stableId(['library',revision]);const createdAt=now.toISOString();
-  const topic:Topic={id,title:source.title,subject:source.subject,description:source.description,createdAt,targetCount:original.length,libraryPublished:true,librarySourceTopicId:topicId,libraryRevision:revision};
+  const topic:Topic={id,title:source.title,subject:source.subject,questionTemplate:source.questionTemplate,description:source.description,createdAt,targetCount:original.length,libraryPublished:true,librarySourceTopicId:topicId,libraryRevision:revision};
   const questions:Question[]=original.map(question=>({id:stableId(['library-question',revision,question.id]),topicId:id,
     prompt:question.prompt,choices:[...question.choices],correctIndex:question.correctIndex,explanation:question.explanation,learningPoint:question.learningPoint,
     sourceIds:[],sourceNote:question.aiGenerated ? 'AIが作成した学習問題です。気になる点は管理者へお知らせください。' : 'ライブラリの学習問題',status:'published',needsReview:question.needsReview,aiGenerated:question.aiGenerated,version:1,createdAt,publishedAt:createdAt}));
@@ -60,7 +60,7 @@ export function prepareLibraryAdoption(data:StudyData,profile:Profile,topicId:st
   if(previous) return {plan:previous};
   if(data.plans.filter(plan=>plan.ownerId===profile.id).length>=100) throw new ApiError(429,'学習プランは1人100件までです。','PLAN_LIMIT');
   const createdAt=now.toISOString();
-  const plan:LearningPlan={id:stableId(['library-adoption',profile.id,topicId]),ownerId:profile.id,title:topic.title,subject:topic.subject,
+  const plan:LearningPlan={id:stableId(['library-adoption',profile.id,topicId]),ownerId:profile.id,title:topic.title,subject:topic.subject,questionTemplate:topic.questionTemplate,
     goal:`「${topic.title}」を1回10問ずつ練習し、間違えた内容を日を空けて復習する。`,difficulty:'学習記録に合わせて調整',dailyQuestionTarget:10,
     sourceIds:[],version:1,createdAt,updatedAt:createdAt,libraryTopicId:topicId};
   return {plan,event:{id:`library-adopt:${hash([profile.id,topicId])}`,type:'library.adopted',actorId:profile.id,createdAt,payload:plan}};
