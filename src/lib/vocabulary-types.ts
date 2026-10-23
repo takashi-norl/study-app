@@ -8,7 +8,10 @@ export type VocabularyEntry = {
   definition: string;
   meaning: string;
   usageTip: string;
+  voice?: 'female' | 'male';
   examples: { id: string; context: string; text: string; translation: string }[];
+  recall: { prompt: string; answers: string[]; explanation: string };
+  production: { prompt: string; modelAnswer: string; checkpoints: string[] };
   questions: {
     id: string;
     type: 'usage' | 'context' | 'paraphrase';

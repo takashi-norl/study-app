@@ -119,7 +119,7 @@ test('one paid vocabulary recording persists four sections; replay and repeated 
     assert.equal(state.paidCalls(), 1);
     const preview = await vocabularyPreview(parent);
     assert.equal(preview.audio.find(item => item.wordId === 'avoid')?.state, 'ready');
-    assert.equal(preview.entries.length, 6);
+    assert.equal(preview.entries.length, 100);
     assert.doesNotMatch(JSON.stringify(preview), /unit-audio-file|requestToken|cacheKey|UNIT_TEST_KEY/);
     assert.equal(state.rows.filter(row => row[1] === 'audio.requested').length, 1);
   });

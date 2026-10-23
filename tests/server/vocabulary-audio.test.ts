@@ -4,7 +4,7 @@ import type { VocabularyEntry } from '../../src/lib/vocabulary-types';
 import { createVocabularyProviderAudio, extractVocabularySegments, vocabularyAudioSpec, VOCABULARY_AUDIO_LIMITS } from '../../src/server/vocabulary-audio';
 
 const exampleTexts = ['We avoid busy roads.', 'Please avoid making noise.', 'This plan helps avoid delays.'];
-const entry = (word = 'avoid'): VocabularyEntry => ({ id: word, word, level: '2級', ipa: '', ipaLabel: '', partOfSpeech: 'verb', definition: '', meaning: '', usageTip: '', examples: exampleTexts.map((text, index) => ({ id: `example-${index + 1}`, text, context: '', translation: '' })), questions: [] });
+const entry = (word = 'avoid'): VocabularyEntry => ({ id: word, word, level: '2級', ipa: '', ipaLabel: '', partOfSpeech: 'verb', definition: '', meaning: '', usageTip: '', examples: exampleTexts.map((text, index) => ({ id: `example-${index + 1}`, text, context: '', translation: '' })), questions: [], recall: { prompt: 'We ____ busy roads.', answers: ['avoid'], explanation: '' }, production: { prompt: '', modelAnswer: '', checkpoints: [] } });
 const spec = vocabularyAudioSpec(entry());
 type Alignment = { characters: string[]; character_start_times_seconds: number[]; character_end_times_seconds: number[] };
 function alignment(text: string, grouped = false): Alignment {
