@@ -8,6 +8,15 @@ export interface AppRelease {
 
 // Newest first. This is the source for Settings, public history and update notices.
 export const APP_RELEASES: readonly AppRelease[] = [{
+  version: '0.13.1',
+  date: '2026-10-23',
+  title: '追加した単語を、発音と例文の音声でも',
+  announcement: '追加の単語教材に、発音と3つの例文の音声を反映しました。収録語数は「学ぶ教材」で確認できます。',
+  changes: [
+    { title: '3級313語の音声を追加', description: '作成済みの音声を保存し、単語と例文をそれぞれ何度でも聞けるようにしました。再生のたびにAIは呼びません。' },
+    { title: '点検済みの単語教材を拡充', description: '独立したAIの点検を終えた単語・例文・選択問題を順次追加しています。音声がまだ反映されていない教材も、文字の学習とテストを使えます。' },
+  ],
+}, {
   version: '0.12.1',
   date: '2026-10-23',
   title: '単語教材を413語に',
