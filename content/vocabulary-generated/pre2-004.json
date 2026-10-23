@@ -10811,6 +10811,200 @@
       }
     },
     {
+      "id": "vocab-carriage",
+      "word": "carriage",
+      "level": "準2級",
+      "ipa": "/ˈkærɪdʒ/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "A horse-drawn passenger vehicle, or in British English a passenger car on a train.",
+      "meaning": "馬車・(英)客車",
+      "usageTip": "「馬車」の意味は米英共通。列車の車両は英国では carriage、米国では car と言う。乗り物の中に乗るなら in a carriage、手段なら by carriage と無冠詞にする。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "観光",
+          "text": "The tourists took a ride around the old town in a horse-drawn carriage.",
+          "translation": "観光客たちは馬車に乗って旧市街を一周した。"
+        },
+        {
+          "id": "example-2",
+          "context": "歴史",
+          "text": "In the novel, the duchess arrives at the palace in a golden carriage.",
+          "translation": "小説の中で、公爵夫人は金色の馬車で宮殿に到着する。"
+        },
+        {
+          "id": "example-3",
+          "context": "鉄道(英国)",
+          "text": "Our seats are in the last carriage, so we should walk quickly.",
+          "translation": "私たちの席は最後尾の車両なので、急いで歩いたほうがいい。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "carriage",
+          "choices": [
+            {
+              "text": "馬車・客車",
+              "meaning": "人を乗せる乗り物"
+            },
+            {
+              "text": "手錠",
+              "meaning": "手首を拘束する道具"
+            },
+            {
+              "text": "門限",
+              "meaning": "帰宅時刻の決まり"
+            },
+            {
+              "text": "炉",
+              "meaning": "強い熱を作る装置"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "carriage は馬が引く乗り物、または英国での列車の客車を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "馬が引く、人を乗せる乗り物",
+          "choices": [
+            {
+              "text": "curfew",
+              "meaning": "門限"
+            },
+            {
+              "text": "bulletin",
+              "meaning": "速報"
+            },
+            {
+              "text": "carriage",
+              "meaning": "馬車"
+            },
+            {
+              "text": "kiosk",
+              "meaning": "売店"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "馬が引く人用の乗り物は carriage。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 英国の列車で席を探している。 Our seats are in the next ___, near the front of the train.",
+          "choices": [
+            {
+              "text": "lemonade",
+              "meaning": "レモネード"
+            },
+            {
+              "text": "orphan",
+              "meaning": "孤児"
+            },
+            {
+              "text": "furnace",
+              "meaning": "炉"
+            },
+            {
+              "text": "carriage",
+              "meaning": "客車"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "列車内の席の位置を言っているので、客車を表す carriage が合う。",
+          "alternatives": [
+            {
+              "answer": "coach",
+              "explanation": "英国で客車を指す別の言い方。長距離バスの意味もある。"
+            },
+            {
+              "answer": "car",
+              "explanation": "米国で列車の車両を指す一般的な言い方。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "carriage を可算名詞として正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "We saw three carriage outside the palace.",
+              "meaning": "誤り：three の後は carriages。"
+            },
+            {
+              "text": "The bride arrived at the church in a carriage.",
+              "meaning": "花嫁は馬車で教会に着いた。"
+            },
+            {
+              "text": "The carriage were pulled by two horses.",
+              "meaning": "誤り：単数の carriage には was。"
+            },
+            {
+              "text": "Those carriages is very old.",
+              "meaning": "誤り：複数の carriages には are。"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "in a carriage は「馬車に乗って」。carriage は可算名詞で、複数形は carriages です。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 英国の列車で席を探している。 Our seats are in the next ___, near the front of the train.",
+        "answers": [
+          "carriage"
+        ],
+        "explanation": "列車内の席の位置を言っているので、客車を表す carriage が合う。",
+        "alternatives": [
+          {
+            "answer": "coach",
+            "explanation": "英国で客車を指す別の言い方。長距離バスの意味もある。"
+          },
+          {
+            "answer": "car",
+            "explanation": "米国で列車の車両を指す一般的な言い方。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "carriageを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The tourists took a ride around the old town in a horse-drawn carriage.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-carriage-usage",
+          "type": "usage",
+          "prompt": "carriage を可算名詞として正しく使った文を選んでください。",
+          "choices": [
+            "We saw three carriage outside the palace.",
+            "The bride arrived at the church in a carriage.",
+            "The carriage were pulled by two horses.",
+            "Those carriages is very old."
+          ],
+          "correctIndex": 1,
+          "explanation": "in a carriage は「馬車に乗って」。carriage は可算名詞で、複数形は carriages です。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "transport",
+          "travel"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-curfew",
       "word": "curfew",
       "level": "準2級",
@@ -11775,6 +11969,200 @@
         "domains": [
           "society",
           "economics"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-kiosk",
+      "word": "kiosk",
+      "level": "準2級",
+      "ipa": "/ˈkiːɑːsk/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "A small stand or booth where people buy snacks or papers, or use a self-service machine.",
+      "meaning": "キオスク・小型の売店・案内端末",
+      "usageTip": "駅や広場の小さな売店のほか、券の発行や案内をする端末にも使う。場所は at the kiosk の形でよく言う。可算名詞なので冠詞が必要。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "駅",
+          "text": "I bought a bottle of water at the kiosk before boarding the train.",
+          "translation": "電車に乗る前に、キオスクで水を1本買った。"
+        },
+        {
+          "id": "example-2",
+          "context": "空港",
+          "text": "You can print your boarding pass at the kiosk near the entrance.",
+          "translation": "入口近くの端末で搭乗券を印刷できます。"
+        },
+        {
+          "id": "example-3",
+          "context": "広場",
+          "text": "The kiosk in the square sells coffee and newspapers every morning.",
+          "translation": "広場の売店では毎朝コーヒーと新聞を売っている。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "kiosk",
+          "choices": [
+            {
+              "text": "大きな倉庫",
+              "meaning": "物を保管する建物"
+            },
+            {
+              "text": "高級レストラン",
+              "meaning": "豪華な食事の店"
+            },
+            {
+              "text": "長い橋",
+              "meaning": "川にかかる橋"
+            },
+            {
+              "text": "小型の売店",
+              "meaning": "駅などの小さな店"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "kiosk は駅や広場などにある小さな売店や端末を指す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "駅や広場にある小さな売店",
+          "choices": [
+            {
+              "text": "furnace",
+              "meaning": "炉"
+            },
+            {
+              "text": "kiosk",
+              "meaning": "売店"
+            },
+            {
+              "text": "orphan",
+              "meaning": "孤児"
+            },
+            {
+              "text": "carriage",
+              "meaning": "馬車"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "駅などの小さな売店は kiosk。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 駅のホームで急いで新聞を買いたい。 I stopped at the ___ on the platform and bought a newspaper.",
+          "choices": [
+            {
+              "text": "kiosk",
+              "meaning": "売店"
+            },
+            {
+              "text": "furnace",
+              "meaning": "炉"
+            },
+            {
+              "text": "orphan",
+              "meaning": "孤児"
+            },
+            {
+              "text": "lemonade",
+              "meaning": "レモネード"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "ホームで新聞を買える場所なので kiosk が合う。",
+          "alternatives": [
+            {
+              "answer": "newsstand",
+              "explanation": "新聞や雑誌を売る売り場。kiosk より用途が限られる。"
+            },
+            {
+              "answer": "shop",
+              "explanation": "より一般的な「店」。小さな売店とは限らない。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "kiosk を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "I bought a snack in kiosk near the gate.",
+              "meaning": "ゲート近くのキオスクで軽食を買った。(冠詞が抜けている)"
+            },
+            {
+              "text": "I bought a snack to the kiosk near the gate.",
+              "meaning": "ゲート近くのキオスクへ軽食を買った。(前置詞が誤り)"
+            },
+            {
+              "text": "I kiosked a snack near the gate.",
+              "meaning": "ゲート近くで軽食をキオスクした。(動詞として誤用)"
+            },
+            {
+              "text": "I bought a snack at the kiosk near the gate.",
+              "meaning": "ゲート近くの売店で軽食を買った。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "kiosk は可算名詞で、場所を表すときは at the kiosk と冠詞を付ける。to は購入場所に使えず、動詞にもならない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 駅のホームで急いで新聞を買いたい。 I stopped at the ___ on the platform and bought a newspaper.",
+        "answers": [
+          "kiosk"
+        ],
+        "explanation": "ホームで新聞を買える場所なので kiosk が合う。",
+        "alternatives": [
+          {
+            "answer": "newsstand",
+            "explanation": "新聞や雑誌を売る売り場。kiosk より用途が限られる。"
+          },
+          {
+            "answer": "shop",
+            "explanation": "より一般的な「店」。小さな売店とは限らない。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "kioskを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I bought a bottle of water at the kiosk before boarding the train.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-kiosk-usage",
+          "type": "usage",
+          "prompt": "kiosk を正しく使った文を選びなさい。",
+          "choices": [
+            "I bought a snack in kiosk near the gate.",
+            "I bought a snack to the kiosk near the gate.",
+            "I kiosked a snack near the gate.",
+            "I bought a snack at the kiosk near the gate."
+          ],
+          "correctIndex": 3,
+          "explanation": "kiosk は可算名詞で、場所を表すときは at the kiosk と冠詞を付ける。to は購入場所に使えず、動詞にもならない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "daily-life",
+          "travel"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -16804,6 +17192,207 @@
         "domains": [
           "medical",
           "health"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-sweater",
+      "word": "sweater",
+      "level": "準2級",
+      "ipa": "ˈswetə",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "A warm knitted piece of clothing for the upper body, usually with long sleeves.",
+      "meaning": "セーター",
+      "usageTip": "wear a sweater や put on a sweater の形で使う。数えられる名詞。イギリス英語では jumper もよく使われる。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "寒い朝",
+          "text": "It was cold this morning, so I put on a thick sweater.",
+          "translation": "今朝は寒かったので、厚手のセーターを着た。"
+        },
+        {
+          "id": "example-2",
+          "context": "買い物",
+          "text": "She bought a blue sweater for her brother's birthday.",
+          "translation": "彼女は兄の誕生日に青いセーターを買った。"
+        },
+        {
+          "id": "example-3",
+          "context": "洗濯",
+          "text": "Please wash this wool sweater by hand so it does not shrink.",
+          "translation": "縮まないように、このウールのセーターは手洗いしてください。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "sweater",
+          "choices": [
+            {
+              "text": "手袋",
+              "meaning": "手にはめるもの"
+            },
+            {
+              "text": "セーター",
+              "meaning": "編んだ暖かい上着"
+            },
+            {
+              "text": "靴下",
+              "meaning": "足に履くもの"
+            },
+            {
+              "text": "帽子",
+              "meaning": "頭にかぶるもの"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "sweater は編んだ暖かい上着、つまりセーターを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "セーター",
+          "choices": [
+            {
+              "text": "sweat",
+              "meaning": "汗"
+            },
+            {
+              "text": "sweeper",
+              "meaning": "掃除する人"
+            },
+            {
+              "text": "swimmer",
+              "meaning": "泳ぐ人"
+            },
+            {
+              "text": "sweater",
+              "meaning": "セーター"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "セーターは sweater。綴りの似た sweat は汗、sweeper は掃除する人。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "冬の朝、外出前の場面：It is freezing outside, so wear a warm wool ___ under your coat.",
+          "choices": [
+            {
+              "text": "ticket",
+              "meaning": "切符"
+            },
+            {
+              "text": "kitchen",
+              "meaning": "台所"
+            },
+            {
+              "text": "sweater",
+              "meaning": "セーター"
+            },
+            {
+              "text": "balloon",
+              "meaning": "風船"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "寒い日にコートの下に着るウール製のものなので sweater が合う。",
+          "alternatives": [
+            {
+              "answer": "cardigan",
+              "explanation": "前が開く編み物の上着。sweater より形が限定される。"
+            },
+            {
+              "answer": "jumper",
+              "explanation": "イギリス英語で sweater とほぼ同じ意味。"
+            },
+            {
+              "answer": "shirt",
+              "explanation": "着る服だが、ウール製の暖かい編み物とは限らない。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "sweater を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "I sweater a cold in the winter.",
+              "meaning": "私は冬に風邪をセーターする。"
+            },
+            {
+              "text": "She is wearing sweater blue today.",
+              "meaning": "彼女は今日青いセーターを着ている。"
+            },
+            {
+              "text": "He is sweatering in the classroom.",
+              "meaning": "彼は教室でセーターしている。"
+            },
+            {
+              "text": "He wore a green sweater to school today.",
+              "meaning": "彼は今日、緑のセーターを着て学校へ行った。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "sweater は数えられる名詞で、a green sweater のように冠詞と形容詞を前に置く。他は動詞化や語順の誤りがある。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "冬の朝、外出前の場面：It is freezing outside, so wear a warm wool ___ under your coat.",
+        "answers": [
+          "sweater"
+        ],
+        "explanation": "寒い日にコートの下に着るウール製のものなので sweater が合う。",
+        "alternatives": [
+          {
+            "answer": "cardigan",
+            "explanation": "前が開く編み物の上着。sweater より形が限定される。"
+          },
+          {
+            "answer": "jumper",
+            "explanation": "イギリス英語で sweater とほぼ同じ意味。"
+          },
+          {
+            "answer": "shirt",
+            "explanation": "着る服だが、ウール製の暖かい編み物とは限らない。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "sweaterを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "It was cold this morning, so I put on a thick sweater.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-sweater-usage",
+          "type": "usage",
+          "prompt": "sweater を正しく使った文を選びなさい。",
+          "choices": [
+            "I sweater a cold in the winter.",
+            "She is wearing sweater blue today.",
+            "He is sweatering in the classroom.",
+            "He wore a green sweater to school today."
+          ],
+          "correctIndex": 3,
+          "explanation": "sweater は数えられる名詞で、a green sweater のように冠詞と形容詞を前に置く。他は動詞化や語順の誤りがある。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "daily-life"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."

@@ -14724,6 +14724,200 @@
       }
     },
     {
+      "id": "vocab-vegetarian",
+      "word": "vegetarian",
+      "level": "準2級",
+      "ipa": "ˌvɛdʒɪˈtɛəriən",
+      "ipaLabel": "英音",
+      "partOfSpeech": "形容詞",
+      "definition": "not including meat or fish, or choosing not to eat them",
+      "meaning": "菜食主義の、肉を食べない",
+      "usageTip": "a vegetarian meal のように形容詞で使う。She is vegetarian. も言えるが、名詞で a vegetarian「菜食主義者」もよく使う。vegan は卵や乳製品も避けるので範囲が厳しい。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "レストラン",
+          "text": "Do you have any vegetarian dishes on the menu tonight?",
+          "translation": "今夜のメニューに菜食の料理はありますか。"
+        },
+        {
+          "id": "example-2",
+          "context": "家庭",
+          "text": "My sister has been vegetarian since she watched a documentary about farms.",
+          "translation": "姉は農場のドキュメンタリーを見てからずっと菜食主義だ。"
+        },
+        {
+          "id": "example-3",
+          "context": "学校行事",
+          "text": "We ordered a vegetarian pizza for the students who don't eat meat.",
+          "translation": "肉を食べない生徒のために菜食のピザを注文した。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "vegetarian",
+          "choices": [
+            {
+              "text": "辛い",
+              "meaning": "味が刺激的な"
+            },
+            {
+              "text": "菜食主義の",
+              "meaning": "肉を食べない"
+            },
+            {
+              "text": "冷凍の",
+              "meaning": "凍らせた"
+            },
+            {
+              "text": "手作りの",
+              "meaning": "自分で作った"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "vegetarian は肉を食べない、または肉を含まないという意味。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "菜食主義の、肉を食べない",
+          "choices": [
+            {
+              "text": "humid",
+              "meaning": "湿気の多い"
+            },
+            {
+              "text": "recyclable",
+              "meaning": "再利用できる"
+            },
+            {
+              "text": "global",
+              "meaning": "世界的な"
+            },
+            {
+              "text": "vegetarian",
+              "meaning": "菜食主義の"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "肉を食べないことを表す形容詞は vegetarian。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面：肉を食べない友人を食事に招く。 I cooked a ___ curry with beans and vegetables for Mia.",
+          "choices": [
+            {
+              "text": "expensive",
+              "meaning": "高価な"
+            },
+            {
+              "text": "vegetarian",
+              "meaning": "菜食の"
+            },
+            {
+              "text": "crowded",
+              "meaning": "混雑した"
+            },
+            {
+              "text": "humid",
+              "meaning": "湿気の多い"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "豆と野菜のカレーで肉を食べない人向けなので vegetarian が合う。",
+          "alternatives": [
+            {
+              "answer": "meat-free",
+              "explanation": "「肉を使っていない」ことをそのまま言う表現。"
+            },
+            {
+              "answer": "vegan",
+              "explanation": "卵や乳製品も使わない場合に使う。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "vegetarian を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "She is vegetarianism, so she never orders steak.",
+              "meaning": "彼女は菜食主義なのでステーキは頼まない。"
+            },
+            {
+              "text": "She vegetarian every day at lunch.",
+              "meaning": "彼女は毎日昼に菜食をする。"
+            },
+            {
+              "text": "She is a vegetarian of steak.",
+              "meaning": "彼女はステーキの菜食主義者だ。"
+            },
+            {
+              "text": "She is vegetarian, so she never orders steak.",
+              "meaning": "彼女は菜食主義なのでステーキは頼まない。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "vegetarian は be 動詞の後で形容詞として使える。vegetarianism は名詞、vegetarian は動詞ではなく、of steak の形も不自然。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面：肉を食べない友人を食事に招く。 I cooked a ___ curry with beans and vegetables for Mia.",
+        "answers": [
+          "vegetarian"
+        ],
+        "explanation": "豆と野菜のカレーで肉を食べない人向けなので vegetarian が合う。",
+        "alternatives": [
+          {
+            "answer": "meat-free",
+            "explanation": "「肉を使っていない」ことをそのまま言う表現。"
+          },
+          {
+            "answer": "vegan",
+            "explanation": "卵や乳製品も使わない場合に使う。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "vegetarianを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Do you have any vegetarian dishes on the menu tonight?",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-vegetarian-usage",
+          "type": "usage",
+          "prompt": "vegetarian を正しく使った文を選びなさい。",
+          "choices": [
+            "She is vegetarianism, so she never orders steak.",
+            "She vegetarian every day at lunch.",
+            "She is a vegetarian of steak.",
+            "She is vegetarian, so she never orders steak."
+          ],
+          "correctIndex": 3,
+          "explanation": "vegetarian は be 動詞の後で形容詞として使える。vegetarianism は名詞、vegetarian は動詞ではなく、of steak の形も不自然。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "food",
+          "health"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-pandemic",
       "word": "pandemic",
       "level": "準2級",
@@ -15105,6 +15299,192 @@
         "cefrEstimate": "B1",
         "domains": [
           "environment"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-humidity",
+      "word": "humidity",
+      "level": "準2級",
+      "ipa": "/hjuːˈmɪdəti/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "the amount of water vapor in the air",
+      "meaning": "湿度",
+      "usageTip": "空気中の水分の量について話すときに使う名詞です。high / low humidity が自然。状態を形容詞で述べるなら It is humid. と言います。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "天気",
+          "text": "The humidity is high today, so the air feels heavy.",
+          "translation": "今日は湿度が高く、空気が重く感じる。"
+        },
+        {
+          "id": "example-2",
+          "context": "家庭",
+          "text": "We use a small device to measure humidity in the room.",
+          "translation": "部屋の湿度を測るために小さな機器を使う。"
+        },
+        {
+          "id": "example-3",
+          "context": "旅行",
+          "text": "The heat was bearable, but the humidity made walking tiring.",
+          "translation": "暑さは耐えられたが、湿度のせいで歩くと疲れた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "humidity",
+          "choices": [
+            {
+              "text": "気温",
+              "meaning": "暑さや寒さの度合い"
+            },
+            {
+              "text": "風速",
+              "meaning": "風の速さ"
+            },
+            {
+              "text": "気圧",
+              "meaning": "空気の圧力"
+            },
+            {
+              "text": "湿度",
+              "meaning": "空気中の水分量"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "humidity は空気中の水分の量、つまり湿度を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "湿度",
+          "choices": [
+            {
+              "text": "pandemic",
+              "meaning": "世界的流行病"
+            },
+            {
+              "text": "humidity",
+              "meaning": "湿度"
+            },
+            {
+              "text": "philosophy",
+              "meaning": "哲学"
+            },
+            {
+              "text": "recyclable",
+              "meaning": "再利用できる"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "空気中の水分量を表す名詞は humidity。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面：夏の天気の話。 It's not only hot; the ___ is also very high.",
+          "choices": [
+            {
+              "text": "vegetarian",
+              "meaning": "菜食主義者"
+            },
+            {
+              "text": "philosophy",
+              "meaning": "哲学"
+            },
+            {
+              "text": "humidity",
+              "meaning": "湿度"
+            },
+            {
+              "text": "pandemic",
+              "meaning": "世界的流行病"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "暑さに加えて高いものとして、夏の天気に合う humidity が自然。",
+          "alternatives": [
+            {
+              "answer": "moisture level",
+              "explanation": "水分の度合いを言う別表現。天気では humidity の方が一般的。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "humidity を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "It is humidity outside today.",
+              "meaning": "今日は外が湿度だ。"
+            },
+            {
+              "text": "The humidity is very high in summer here.",
+              "meaning": "ここでは夏に湿度がとても高い。"
+            },
+            {
+              "text": "The humidity were high yesterday.",
+              "meaning": "誤り：不可算名詞 humidity には単数の was。"
+            },
+            {
+              "text": "Humidity are high in summer here.",
+              "meaning": "ここでは夏に湿度が高い。"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "humidity は不可算名詞で単数扱いし、high で程度を表せる。形容詞が必要な場面では humid を使い、複数扱いの are も誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面：夏の天気の話。 It's not only hot; the ___ is also very high.",
+        "answers": [
+          "humidity"
+        ],
+        "explanation": "暑さに加えて高いものとして、夏の天気に合う humidity が自然。",
+        "alternatives": [
+          {
+            "answer": "moisture level",
+            "explanation": "水分の度合いを言う別表現。天気では humidity の方が一般的。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "humidityを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The humidity is high today, so the air feels heavy.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-humidity-usage",
+          "type": "usage",
+          "prompt": "humidity を正しく使った文を選びなさい。",
+          "choices": [
+            "It is humidity outside today.",
+            "The humidity is very high in summer here.",
+            "The humidity were high yesterday.",
+            "Humidity are high in summer here."
+          ],
+          "correctIndex": 1,
+          "explanation": "humidity は不可算名詞で単数扱いし、high で程度を表せる。形容詞が必要な場面では humid を使い、複数扱いの are も誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "environment",
+          "science"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."

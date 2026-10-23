@@ -16993,6 +16993,217 @@
       }
     },
     {
+      "id": "vocab-watch",
+      "word": "watch",
+      "level": "3級",
+      "ipa": "/wɑːtʃ/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "watch"
+        ],
+        "past": [
+          "watched"
+        ],
+        "pastParticiple": [
+          "watched"
+        ],
+        "presentParticiple": [
+          "watching"
+        ],
+        "thirdPersonSingular": [
+          "watches"
+        ]
+      },
+      "definition": "to look at something carefully for a period of time, especially something moving or changing",
+      "meaning": "見る、見守る",
+      "usageTip": "watch は動きのあるものを注意して見るときに使う。watch TV、watch a movie、watch a game など。静止した絵などは look at が自然。watch に at は付けない。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "家庭",
+          "text": "We watch a movie together every Friday night.",
+          "translation": "私たちは毎週金曜の夜に一緒に映画を見る。"
+        },
+        {
+          "id": "example-2",
+          "context": "公園",
+          "text": "Please watch the children while I buy some drinks.",
+          "translation": "飲み物を買う間、子どもたちを見ていてください。"
+        },
+        {
+          "id": "example-3",
+          "context": "注意",
+          "text": "Watch your step. The floor is wet.",
+          "translation": "足元に気をつけて。床が濡れています。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "watch",
+          "choices": [
+            {
+              "text": "言う",
+              "meaning": "言葉にする"
+            },
+            {
+              "text": "待つ",
+              "meaning": "来るまでとどまる"
+            },
+            {
+              "text": "伝える",
+              "meaning": "人に話す"
+            },
+            {
+              "text": "見守る、注意して見る",
+              "meaning": "動くものをよく見る"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "watch は動くものや状況を注意して見ることです。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "「(テレビや試合を)見る」にあたる英語はどれ?",
+          "choices": [
+            {
+              "text": "watch",
+              "meaning": "見る"
+            },
+            {
+              "text": "say",
+              "meaning": "言う"
+            },
+            {
+              "text": "tell",
+              "meaning": "伝える"
+            },
+            {
+              "text": "wait",
+              "meaning": "待つ"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "テレビや試合を見るときは watch を使います。他は話す、待つ動作です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 夜に父親とサッカーの試合を見る。 \"I like to ___ soccer games with my father.\"",
+          "choices": [
+            {
+              "text": "tell",
+              "meaning": "伝える"
+            },
+            {
+              "text": "watch",
+              "meaning": "見る"
+            },
+            {
+              "text": "say",
+              "meaning": "言う"
+            },
+            {
+              "text": "wait",
+              "meaning": "待つ"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "試合を見るという意味なので watch が自然です。他の語は soccer games を目的語にして意味が通りません。",
+          "alternatives": [
+            {
+              "answer": "see",
+              "explanation": "観戦に行くなど、見る機会を持つニュアンスになります。"
+            },
+            {
+              "answer": "enjoy",
+              "explanation": "enjoy watching の形なら楽しむ気持ちが加わります。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "watch の使い方が正しい文はどれ?",
+          "choices": [
+            {
+              "text": "I watched at the TV last night.",
+              "meaning": "誤り:at は不要"
+            },
+            {
+              "text": "She watches to the game on TV.",
+              "meaning": "誤り:to は不要"
+            },
+            {
+              "text": "He watch a movie yesterday.",
+              "meaning": "誤り：yesterday の過去の出来事には watched が必要。"
+            },
+            {
+              "text": "I watched a funny video after dinner.",
+              "meaning": "夕食後に面白い動画を見た。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "動画や試合を「見る」意味では watch の後に目的語を直接置きます。過去形は watched。watch for「注意して待つ・見張る」は別の表現です。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 夜に父親とサッカーの試合を見る。 \"I like to ___ soccer games with my father.\"",
+        "answers": [
+          "watch"
+        ],
+        "explanation": "試合を見るという意味なので watch が自然です。他の語は soccer games を目的語にして意味が通りません。",
+        "alternatives": [
+          {
+            "answer": "see",
+            "explanation": "観戦に行くなど、見る機会を持つニュアンスになります。"
+          },
+          {
+            "answer": "enjoy",
+            "explanation": "enjoy watching の形なら楽しむ気持ちが加わります。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "watchを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "We watch a movie together every Friday night.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-watch-usage",
+          "type": "usage",
+          "prompt": "watch の使い方が正しい文はどれ?",
+          "choices": [
+            "I watched at the TV last night.",
+            "She watches to the game on TV.",
+            "He watch a movie yesterday.",
+            "I watched a funny video after dinner."
+          ],
+          "correctIndex": 3,
+          "explanation": "動画や試合を「見る」意味では watch の後に目的語を直接置きます。過去形は watched。watch for「注意して待つ・見張る」は別の表現です。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A1",
+        "domains": [
+          "daily-life",
+          "media"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-wait",
       "word": "wait",
       "level": "3級",

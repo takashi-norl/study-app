@@ -11492,6 +11492,207 @@
       }
     },
     {
+      "id": "vocab-upset",
+      "word": "upset",
+      "level": "準2級",
+      "ipa": "ʌpˈsɛt",
+      "ipaLabel": "英音",
+      "partOfSpeech": "形容詞",
+      "definition": "feeling unhappy, worried, or angry because something bad has happened",
+      "meaning": "動揺した、腹を立てた",
+      "usageTip": "be upset about + 出来事、be upset with + 人 の形が多い。ここでは形容詞の意味を扱う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "友人関係",
+          "text": "She was upset about the message her friend sent.",
+          "translation": "彼女は友達が送ったメッセージに動揺していた。"
+        },
+        {
+          "id": "example-2",
+          "context": "家庭",
+          "text": "Dad was upset with me for coming home so late.",
+          "translation": "お父さんは私が遅く帰ったことに腹を立てていた。"
+        },
+        {
+          "id": "example-3",
+          "context": "学校",
+          "text": "The boy looked upset when he lost his notebook.",
+          "translation": "その少年はノートをなくして動揺しているように見えた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "upset",
+          "choices": [
+            {
+              "text": "満腹の",
+              "meaning": "食べ過ぎてお腹がいっぱいの"
+            },
+            {
+              "text": "動揺した",
+              "meaning": "悪い出来事で心が乱れた"
+            },
+            {
+              "text": "丁寧な",
+              "meaning": "礼儀正しい"
+            },
+            {
+              "text": "退屈な",
+              "meaning": "面白くない"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "upset は悲しみや怒りで気持ちが乱れた状態を表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "動揺した、腹を立てた",
+          "choices": [
+            {
+              "text": "narrow",
+              "meaning": "狭い"
+            },
+            {
+              "text": "loyal",
+              "meaning": "忠実な"
+            },
+            {
+              "text": "mature",
+              "meaning": "成熟した"
+            },
+            {
+              "text": "upset",
+              "meaning": "動揺した、腹を立てた"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "「動揺した、腹を立てた」にあたる形容詞は upset です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "みんなに誕生日を忘れられて悲しい場面: He was ___ because everyone forgot his birthday.",
+          "choices": [
+            {
+              "text": "grateful",
+              "meaning": "感謝している"
+            },
+            {
+              "text": "curious",
+              "meaning": "好奇心のある"
+            },
+            {
+              "text": "upset",
+              "meaning": "悲しくて動揺した"
+            },
+            {
+              "text": "ready",
+              "meaning": "準備ができた"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "誕生日を忘れられた悲しさには upset が合います。他の語は理由と気持ちが合いません。",
+          "alternatives": [
+            {
+              "answer": "hurt",
+              "explanation": "hurt は傷ついた気持ちを強調する。"
+            },
+            {
+              "answer": "disappointed",
+              "explanation": "disappointed は期待外れの気持ちを表す。"
+            },
+            {
+              "answer": "sad",
+              "explanation": "sad は悲しさを素直に表す、より単純な語。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "upset を形容詞として正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I was upset about the late train.",
+              "meaning": "電車の遅れに腹を立てた。"
+            },
+            {
+              "text": "She was upset because her friends was late.",
+              "meaning": "誤り：複数の friends には were。"
+            },
+            {
+              "text": "They was upset about the delay.",
+              "meaning": "誤り：They には were。"
+            },
+            {
+              "text": "I am upset because I has lost my keys.",
+              "meaning": "誤り：I には have。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "be upset about ～ で出来事について動揺する気持ちを表せます。他の文は主語と動詞の数・人称が一致していません。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "みんなに誕生日を忘れられて悲しい場面: He was ___ because everyone forgot his birthday.",
+        "answers": [
+          "upset"
+        ],
+        "explanation": "誕生日を忘れられた悲しさには upset が合います。他の語は理由と気持ちが合いません。",
+        "alternatives": [
+          {
+            "answer": "hurt",
+            "explanation": "hurt は傷ついた気持ちを強調する。"
+          },
+          {
+            "answer": "disappointed",
+            "explanation": "disappointed は期待外れの気持ちを表す。"
+          },
+          {
+            "answer": "sad",
+            "explanation": "sad は悲しさを素直に表す、より単純な語。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "upsetを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "She was upset about the message her friend sent.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-upset-usage",
+          "type": "usage",
+          "prompt": "upset を形容詞として正しく使った文を選んでください。",
+          "choices": [
+            "I was upset about the late train.",
+            "She was upset because her friends was late.",
+            "They was upset about the delay.",
+            "I am upset because I has lost my keys."
+          ],
+          "correctIndex": 0,
+          "explanation": "be upset about ～ で出来事について動揺する気持ちを表せます。他の文は主語と動詞の数・人称が一致していません。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "relationships"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-vow",
       "word": "vow",
       "level": "準2級",

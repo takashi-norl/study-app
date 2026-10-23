@@ -15643,6 +15643,200 @@
       }
     },
     {
+      "id": "vocab-quiet",
+      "word": "quiet",
+      "level": "3級",
+      "ipa": "ˈkwaɪət",
+      "ipaLabel": "英音",
+      "partOfSpeech": "形容詞",
+      "definition": "Making little or no noise, or calm and without much activity.",
+      "meaning": "静かな",
+      "usageTip": "場所・人・音量に使える。a quiet room のように名詞の前にも、The room was quiet. のように be動詞の後にも置ける。keep quiet は「黙っている」。副詞形は quietly。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "図書館",
+          "text": "The library is a quiet place to study before exams.",
+          "translation": "図書館は試験前に勉強するのに静かな場所だ。"
+        },
+        {
+          "id": "example-2",
+          "context": "性格",
+          "text": "My brother is quiet at school but talkative at home.",
+          "translation": "弟は学校では静かだが、家ではよく話す。"
+        },
+        {
+          "id": "example-3",
+          "context": "夜",
+          "text": "Please keep quiet because the baby is finally sleeping.",
+          "translation": "赤ちゃんがやっと寝たので静かにしてください。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "quiet",
+          "choices": [
+            {
+              "text": "静かな",
+              "meaning": "ほとんど音がしない"
+            },
+            {
+              "text": "危険な",
+              "meaning": "害を受けるおそれがある"
+            },
+            {
+              "text": "高価な",
+              "meaning": "値段が高い"
+            },
+            {
+              "text": "忙しい",
+              "meaning": "やることが多い"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "quiet は音が少ない、または穏やかな様子を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "静かな",
+          "choices": [
+            {
+              "text": "quite",
+              "meaning": "かなり"
+            },
+            {
+              "text": "quick",
+              "meaning": "速い"
+            },
+            {
+              "text": "quiet",
+              "meaning": "静かな"
+            },
+            {
+              "text": "quiz",
+              "meaning": "小テスト"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "「静かな」は quiet。quite は「かなり」で綴りが似ているので注意。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "夜に家族が寝ている場面：Please be ___ when you come home, because everyone is sleeping.",
+          "choices": [
+            {
+              "text": "crowded",
+              "meaning": "混雑した"
+            },
+            {
+              "text": "famous",
+              "meaning": "有名な"
+            },
+            {
+              "text": "sudden",
+              "meaning": "突然の"
+            },
+            {
+              "text": "quiet",
+              "meaning": "静かな"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "皆が寝ているので、音を立てないよう求める意味の quiet が合う。",
+          "alternatives": [
+            {
+              "answer": "silent",
+              "explanation": "音が全くないことを強調する。"
+            },
+            {
+              "answer": "careful",
+              "explanation": "注意深く行動する意味で、音を立てない含みがある。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "quiet を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "The street was very quietly last night.",
+              "meaning": "通りは昨夜とても静かだった。（形容詞が必要）"
+            },
+            {
+              "text": "She spoke quiet to the sleeping baby.",
+              "meaning": "彼女は眠る赤ちゃんに静かに話した。（副詞が必要）"
+            },
+            {
+              "text": "The room was quiet.",
+              "meaning": "その部屋は静かだった。"
+            },
+            {
+              "text": "It was a quietly night.",
+              "meaning": "それは静かな夜だった。（名詞の前に副詞は不可）"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "quiet は形容詞なので be動詞の後に置ける。be動詞の後や名詞の前に quietly は使えず、動詞を修飾する位置には副詞 quietly が必要。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "夜に家族が寝ている場面：Please be ___ when you come home, because everyone is sleeping.",
+        "answers": [
+          "quiet"
+        ],
+        "explanation": "皆が寝ているので、音を立てないよう求める意味の quiet が合う。",
+        "alternatives": [
+          {
+            "answer": "silent",
+            "explanation": "音が全くないことを強調する。"
+          },
+          {
+            "answer": "careful",
+            "explanation": "注意深く行動する意味で、音を立てない含みがある。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "quietを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The library is a quiet place to study before exams.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-quiet-usage",
+          "type": "usage",
+          "prompt": "quiet を正しく使った文を選んでください。",
+          "choices": [
+            "The street was very quietly last night.",
+            "She spoke quiet to the sleeping baby.",
+            "The room was quiet.",
+            "It was a quietly night."
+          ],
+          "correctIndex": 2,
+          "explanation": "quiet は形容詞なので be動詞の後に置ける。be動詞の後や名詞の前に quietly は使えず、動詞を修飾する位置には副詞 quietly が必要。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "daily-life",
+          "society"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-busy",
       "word": "busy",
       "level": "3級",

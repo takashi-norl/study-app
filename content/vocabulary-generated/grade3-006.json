@@ -10830,6 +10830,199 @@
       }
     },
     {
+      "id": "vocab-app",
+      "word": "app",
+      "level": "3級",
+      "ipa": "/æp/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a small program that you use on a phone or tablet to do a particular thing",
+      "meaning": "アプリ",
+      "usageTip": "application の短縮形。download an app、open an app、update an app のように使う。「スマホのアプリ」は a phone app と言える。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "語学学習",
+          "text": "I downloaded a free app to practice English words every morning.",
+          "translation": "毎朝英単語を練習するために無料のアプリをダウンロードしました。"
+        },
+        {
+          "id": "example-2",
+          "context": "移動",
+          "text": "This app shows when the next bus will arrive at our stop.",
+          "translation": "このアプリは次のバスが私たちの停留所にいつ着くかを表示します。"
+        },
+        {
+          "id": "example-3",
+          "context": "家族の会話",
+          "text": "My father checks a weather app before he goes running.",
+          "translation": "父は走りに行く前に天気アプリを確認します。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "app",
+          "choices": [
+            {
+              "text": "紙の地図",
+              "meaning": "paper map"
+            },
+            {
+              "text": "電池",
+              "meaning": "battery"
+            },
+            {
+              "text": "アプリ",
+              "meaning": "app"
+            },
+            {
+              "text": "画面",
+              "meaning": "screen"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "app は application の短縮形で、スマホなどで使う小さなプログラムを指します。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "アプリ",
+          "choices": [
+            {
+              "text": "battery",
+              "meaning": "電池"
+            },
+            {
+              "text": "robot",
+              "meaning": "ロボット"
+            },
+            {
+              "text": "job",
+              "meaning": "仕事"
+            },
+            {
+              "text": "app",
+              "meaning": "アプリ"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "スマホなどで使うプログラムは app です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "【スマホに入れて料理を学ぶ場面】I installed a cooking ___ on my phone, and it has a short video for each recipe.",
+          "choices": [
+            {
+              "text": "battery",
+              "meaning": "電池"
+            },
+            {
+              "text": "robot",
+              "meaning": "ロボット"
+            },
+            {
+              "text": "app",
+              "meaning": "アプリ"
+            },
+            {
+              "text": "knife",
+              "meaning": "包丁"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "スマホにインストールしてレシピ動画を見るソフトウェアなので app が合います。",
+          "alternatives": [
+            {
+              "answer": "program",
+              "explanation": "より一般的なソフトを指し、スマホ用なら app が普通です。"
+            },
+            {
+              "answer": "tool",
+              "explanation": "道具全般を指す広い語で、アプリを指すこともできますが、やや漠然とします。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "app を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I opened the app for check my train time.",
+              "meaning": "誤り：目的は to check、または for checking。"
+            },
+            {
+              "text": "I downloaded three app yesterday.",
+              "meaning": "誤り：three の後は複数形 apps。"
+            },
+            {
+              "text": "These app helps me study English.",
+              "meaning": "誤り：These apps help のように数を一致させる。"
+            },
+            {
+              "text": "I updated the app because it kept crashing.",
+              "meaning": "何度も落ちるのでアプリを更新した。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "app は可算名詞です。複数なら apps。update the app で「そのアプリを更新する」と言えます。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "【スマホに入れて料理を学ぶ場面】I installed a cooking ___ on my phone, and it has a short video for each recipe.",
+        "answers": [
+          "app"
+        ],
+        "explanation": "スマホにインストールしてレシピ動画を見るソフトウェアなので app が合います。",
+        "alternatives": [
+          {
+            "answer": "program",
+            "explanation": "より一般的なソフトを指し、スマホ用なら app が普通です。"
+          },
+          {
+            "answer": "tool",
+            "explanation": "道具全般を指す広い語で、アプリを指すこともできますが、やや漠然とします。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "appを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I downloaded a free app to practice English words every morning.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-app-usage",
+          "type": "usage",
+          "prompt": "app を正しく使った文を選んでください。",
+          "choices": [
+            "I opened the app for check my train time.",
+            "I downloaded three app yesterday.",
+            "These app helps me study English.",
+            "I updated the app because it kept crashing."
+          ],
+          "correctIndex": 3,
+          "explanation": "app は可算名詞です。複数なら apps。update the app で「そのアプリを更新する」と言えます。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "technology"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-robot",
       "word": "robot",
       "level": "3級",

@@ -15987,6 +15987,192 @@
       }
     },
     {
+      "id": "vocab-landing",
+      "word": "landing",
+      "level": "2級",
+      "ipa": "/ˈlændɪŋ/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "the act of coming down onto the ground or water, or a flat area at the top of or between stairs",
+      "meaning": "着陸、踊り場",
+      "usageTip": "飛行機の着陸は make a landing や a safe landing で表す。階段の踊り場は on the landing のように使う。文脈でどちらの意味か判断する。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "空港",
+          "text": "The pilot made a smooth landing despite the strong wind.",
+          "translation": "パイロットは強風にもかかわらず滑らかに着陸した。"
+        },
+        {
+          "id": "example-2",
+          "context": "家",
+          "text": "She left the laundry basket on the landing at the top of the stairs.",
+          "translation": "彼女は階段の上の踊り場に洗濯かごを置いた。"
+        },
+        {
+          "id": "example-3",
+          "context": "ニュース",
+          "text": "Passengers clapped after the plane's safe landing.",
+          "translation": "飛行機が無事に着陸すると、乗客は拍手した。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "landing",
+          "choices": [
+            {
+              "text": "出発",
+              "meaning": "leaving a place"
+            },
+            {
+              "text": "遅延",
+              "meaning": "being late"
+            },
+            {
+              "text": "着陸、踊り場",
+              "meaning": "coming down to the ground; a stair platform"
+            },
+            {
+              "text": "予約",
+              "meaning": "reserving a seat"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "landing は飛行機の着陸や階段の踊り場を表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "階段の途中や上にある平らな場所(踊り場)",
+          "choices": [
+            {
+              "text": "ladder",
+              "meaning": "はしご"
+            },
+            {
+              "text": "landing",
+              "meaning": "踊り場"
+            },
+            {
+              "text": "railing",
+              "meaning": "手すり"
+            },
+            {
+              "text": "lobby",
+              "meaning": "ロビー"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "階段の途中や上にある平らな場所は landing です。ladder は はしご、railing は手すりです。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 空港。雨は強かったが、飛行機の着地は無事だった。 The rain was heavy, but the plane's ___ was safe.",
+          "choices": [
+            {
+              "text": "recipe",
+              "meaning": "レシピ"
+            },
+            {
+              "text": "painting",
+              "meaning": "絵画"
+            },
+            {
+              "text": "pillow",
+              "meaning": "枕"
+            },
+            {
+              "text": "landing",
+              "meaning": "着陸"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "飛行機について安全だったと言えるのは、地面に降りる動作を表す landing です。",
+          "alternatives": [
+            {
+              "answer": "arrival",
+              "explanation": "到着全般を表し、地面に降りる動作そのものには焦点がありません。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "landing の使い方として正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "The plane landing at the airport yesterday safe.",
+              "meaning": "飛行機は昨日空港で安全に着陸した。(動詞の形と語順の誤り)"
+            },
+            {
+              "text": "The cat was sleeping on the landing upstairs.",
+              "meaning": "猫は上の階の踊り場で寝ていた。"
+            },
+            {
+              "text": "We landing on the moon tomorrow.",
+              "meaning": "私たちは明日月に着陸する。(be動詞がなく文法的に誤り)"
+            },
+            {
+              "text": "The pilot landing was smoothly despite the wind.",
+              "meaning": "パイロットは風にもかかわらず滑らかに着陸した。(名詞と副詞の使い方の誤り)"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "on the landing で階段の踊り場を表せます。他の文は動詞の形、be動詞の欠落、名詞と副詞の使い方に誤りがあります。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 空港。雨は強かったが、飛行機の着地は無事だった。 The rain was heavy, but the plane's ___ was safe.",
+        "answers": [
+          "landing"
+        ],
+        "explanation": "飛行機について安全だったと言えるのは、地面に降りる動作を表す landing です。",
+        "alternatives": [
+          {
+            "answer": "arrival",
+            "explanation": "到着全般を表し、地面に降りる動作そのものには焦点がありません。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "landingを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The pilot made a smooth landing despite the strong wind.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-landing-usage",
+          "type": "usage",
+          "prompt": "landing の使い方として正しい文を選んでください。",
+          "choices": [
+            "The plane landing at the airport yesterday safe.",
+            "The cat was sleeping on the landing upstairs.",
+            "We landing on the moon tomorrow.",
+            "The pilot landing was smoothly despite the wind."
+          ],
+          "correctIndex": 1,
+          "explanation": "on the landing で階段の踊り場を表せます。他の文は動詞の形、be動詞の欠落、名詞と副詞の使い方に誤りがあります。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "travel",
+          "transport"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-overflow",
       "word": "overflow",
       "level": "2級",

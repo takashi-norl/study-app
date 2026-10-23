@@ -3552,6 +3552,199 @@
       }
     },
     {
+      "id": "vocab-bonhomie",
+      "word": "bonhomie",
+      "level": "2級",
+      "ipa": "ˌbɑnəˈmi",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "a friendly, cheerful and easygoing manner toward other people",
+      "meaning": "親しみやすさ、気さくな陽気さ",
+      "usageTip": "人柄や雰囲気が温かく親しみやすいことを表す、やや文語的な語。a spirit of bonhomie の形でもよく使う。不可算名詞として扱う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "パーティー",
+          "text": "The host greeted every guest with warm bonhomie.",
+          "translation": "主催者は温かい親しみやすさで、すべての客を迎えた。"
+        },
+        {
+          "id": "example-2",
+          "context": "職場",
+          "text": "His bonhomie made the new employees feel welcome.",
+          "translation": "彼の気さくな人柄のおかげで、新入社員は歓迎されていると感じた。"
+        },
+        {
+          "id": "example-3",
+          "context": "地域",
+          "text": "A spirit of bonhomie filled the village hall that evening.",
+          "translation": "その夜、村の集会所は和やかな雰囲気に包まれていた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "bonhomie",
+          "choices": [
+            {
+              "text": "冷たい沈黙",
+              "meaning": "cold silence"
+            },
+            {
+              "text": "急な怒り",
+              "meaning": "sudden anger"
+            },
+            {
+              "text": "強い競争心",
+              "meaning": "strong competitiveness"
+            },
+            {
+              "text": "親しみやすい陽気さ",
+              "meaning": "friendly cheerfulness"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "bonhomie は人当たりのよい陽気さを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "親しみやすく陽気な人柄",
+          "choices": [
+            {
+              "text": "anxiety",
+              "meaning": "不安"
+            },
+            {
+              "text": "bonhomie",
+              "meaning": "親しみやすい陽気さ"
+            },
+            {
+              "text": "suspicion",
+              "meaning": "疑い"
+            },
+            {
+              "text": "fatigue",
+              "meaning": "疲労"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "温かく気さくな人柄を表すのは bonhomie。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 彼の気さくな態度で、会場が和んだ。 His natural ___ helped everyone relax at the dinner.",
+          "choices": [
+            {
+              "text": "bonhomie",
+              "meaning": "気さくな陽気さ"
+            },
+            {
+              "text": "hostility",
+              "meaning": "敵意"
+            },
+            {
+              "text": "confusion",
+              "meaning": "混乱"
+            },
+            {
+              "text": "caution",
+              "meaning": "用心"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "皆をくつろがせたので、親しみやすさを表す bonhomie が合う。",
+          "alternatives": [
+            {
+              "answer": "friendliness",
+              "explanation": "より一般的で日常的な表現。"
+            },
+            {
+              "answer": "warmth",
+              "explanation": "温かい人柄を表す。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "名詞 bonhomie を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "She bonhomie with all her coworkers.",
+              "meaning": "誤り: 名詞を動詞として使っている"
+            },
+            {
+              "text": "He is very bonhomie to everyone.",
+              "meaning": "誤り: 名詞を形容詞として使っている"
+            },
+            {
+              "text": "The team's bonhomie made meetings pleasant.",
+              "meaning": "チームの気さくさが会議を楽しくした。"
+            },
+            {
+              "text": "The bonhomie of the team was in angry.",
+              "meaning": "誤り: in angry は文法的に誤り"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "bonhomie は名詞なので所有格のついた主語として使える。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 彼の気さくな態度で、会場が和んだ。 His natural ___ helped everyone relax at the dinner.",
+        "answers": [
+          "bonhomie"
+        ],
+        "explanation": "皆をくつろがせたので、親しみやすさを表す bonhomie が合う。",
+        "alternatives": [
+          {
+            "answer": "friendliness",
+            "explanation": "より一般的で日常的な表現。"
+          },
+          {
+            "answer": "warmth",
+            "explanation": "温かい人柄を表す。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "bonhomieを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The host greeted every guest with warm bonhomie.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-bonhomie-usage",
+          "type": "usage",
+          "prompt": "名詞 bonhomie を正しく使った文を選びなさい。",
+          "choices": [
+            "She bonhomie with all her coworkers.",
+            "He is very bonhomie to everyone.",
+            "The team's bonhomie made meetings pleasant.",
+            "The bonhomie of the team was in angry."
+          ],
+          "correctIndex": 2,
+          "explanation": "bonhomie は名詞なので所有格のついた主語として使える。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "C1",
+        "domains": [
+          "relationships"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-bourgeois",
       "word": "bourgeois",
       "level": "2級",
@@ -5565,6 +5758,192 @@
       }
     },
     {
+      "id": "vocab-ampere",
+      "word": "ampere",
+      "level": "2級",
+      "ipa": "/ˈæmpeə/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "A unit used to measure the strength of an electric current.",
+      "meaning": "アンペア（電流の単位）",
+      "usageTip": "記号はAで、電流の大きさを表す。数字の後に置き、複数形はamperesが基本。日常では「amp」と略されることも多い。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "physics class",
+          "text": "The teacher explained that one ampere equals a flow of one coulomb per second.",
+          "translation": "先生は、1アンペアは毎秒1クーロンの流れに等しいと説明した。"
+        },
+        {
+          "id": "example-2",
+          "context": "home electricity",
+          "text": "This heater draws about ten amperes when it is turned on.",
+          "translation": "このヒーターはスイッチを入れると約10アンペアを消費する。"
+        },
+        {
+          "id": "example-3",
+          "context": "lab work",
+          "text": "The meter showed a current of two amperes through the wire.",
+          "translation": "メーターは、その電線に2アンペアの電流が流れていることを示した。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "ampere",
+          "choices": [
+            {
+              "text": "電流の単位",
+              "meaning": "電流の強さを測る単位"
+            },
+            {
+              "text": "電圧の単位",
+              "meaning": "電気の押す力を測る単位"
+            },
+            {
+              "text": "抵抗の単位",
+              "meaning": "電気の流れにくさの単位"
+            },
+            {
+              "text": "電力の単位",
+              "meaning": "電気エネルギーの仕事率の単位"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "ampereは電流の強さを表す単位で、記号はAである。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "アンペア（電流の単位）",
+          "choices": [
+            {
+              "text": "volt",
+              "meaning": "ボルト（電圧の単位）"
+            },
+            {
+              "text": "watt",
+              "meaning": "ワット（電力の単位）"
+            },
+            {
+              "text": "ohm",
+              "meaning": "オーム（抵抗の単位）"
+            },
+            {
+              "text": "ampere",
+              "meaning": "アンペア（電流の単位）"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "電流の単位はampere。他は電圧、電力、抵抗の単位である。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "電気の実験の場面：The wire carried a current of three ___ during the test.",
+          "choices": [
+            {
+              "text": "amperes",
+              "meaning": "アンペア"
+            },
+            {
+              "text": "meters",
+              "meaning": "メートル"
+            },
+            {
+              "text": "degrees",
+              "meaning": "度"
+            },
+            {
+              "text": "liters",
+              "meaning": "リットル"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "電流の大きさを表すので、電流の単位であるamperesが合う。",
+          "alternatives": [
+            {
+              "answer": "amps",
+              "explanation": "ampereの略称で、会話ではよく使われるくだけた表現。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "ampereを正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "The fuse can handle up to fifteen amperes.",
+              "meaning": "そのヒューズは最大15アンペアまで耐えられる。"
+            },
+            {
+              "text": "The room was twenty amperes wide.",
+              "meaning": "その部屋は幅20アンペアだった。"
+            },
+            {
+              "text": "I drank a glass of ampere this morning.",
+              "meaning": "今朝アンペアをコップ一杯飲んだ。"
+            },
+            {
+              "text": "The road is five amperes long.",
+              "meaning": "その道は5アンペアの長さだ。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "ampereは電流の大きさに使う。長さや幅には使えない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "電気の実験の場面：The wire carried a current of three ___ during the test.",
+        "answers": [
+          "amperes"
+        ],
+        "explanation": "電流の大きさを表すので、電流の単位であるamperesが合う。",
+        "alternatives": [
+          {
+            "answer": "amps",
+            "explanation": "ampereの略称で、会話ではよく使われるくだけた表現。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "ampereを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The teacher explained that one ampere equals a flow of one coulomb per second.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-ampere-usage",
+          "type": "usage",
+          "prompt": "ampereを正しく使った文を選びなさい。",
+          "choices": [
+            "The fuse can handle up to fifteen amperes.",
+            "The room was twenty amperes wide.",
+            "I drank a glass of ampere this morning.",
+            "The road is five amperes long."
+          ],
+          "correctIndex": 0,
+          "explanation": "ampereは電流の大きさに使う。長さや幅には使えない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "science",
+          "technology"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-anchorman",
       "word": "anchorman",
       "level": "2級",
@@ -5955,6 +6334,200 @@
         "domains": [
           "medical",
           "science"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-arbour",
+      "word": "arbour",
+      "level": "2級",
+      "ipa": "/ˈɑrbɚ/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "a sheltered place in a garden, often shaded by climbing plants or surrounding greenery",
+      "meaning": "庭の木やつる植物に囲まれた日陰の休憩所、あずまや",
+      "usageTip": "英国式の綴りで、米国では arbor。庭で木やつる植物などに囲まれた日陰の場所を指します。木立全体を指す grove とは区別します。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "garden",
+          "text": "We had tea in the arbour behind the old house.",
+          "translation": "私たちは古い家の裏にある東屋でお茶を飲んだ。"
+        },
+        {
+          "id": "example-2",
+          "context": "summer",
+          "text": "The grapevines grew over the arbour and gave us cool shade.",
+          "translation": "ブドウのつるが東屋を覆い、涼しい日陰をつくってくれた。"
+        },
+        {
+          "id": "example-3",
+          "context": "wedding",
+          "text": "The couple stood under a flower-covered arbour during the ceremony.",
+          "translation": "二人は花に覆われた東屋の下で式に臨んだ。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "arbour",
+          "choices": [
+            {
+              "text": "地下室",
+              "meaning": "建物の地下の部屋"
+            },
+            {
+              "text": "港",
+              "meaning": "船が停泊する場所"
+            },
+            {
+              "text": "橋",
+              "meaning": "川などを渡る構造物"
+            },
+            {
+              "text": "庭の木やつる植物に囲まれた日陰の休憩所、あずまや",
+              "meaning": "庭で木や植物などに囲まれた日陰の場所"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "arbourは庭などにあるつる植物や木に覆われた日陰の休憩場所。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "庭の木やつる植物に囲まれた日陰の休憩所、あずまや",
+          "choices": [
+            {
+              "text": "arbour",
+              "meaning": "庭の日陰の休憩所、あずまや"
+            },
+            {
+              "text": "harbour",
+              "meaning": "港"
+            },
+            {
+              "text": "armour",
+              "meaning": "鎧"
+            },
+            {
+              "text": "labour",
+              "meaning": "労働"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "庭の日陰の休憩所を表す語はarbour。似た綴りの語と区別する。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "夏の庭の場面：We sat in the cool ___ covered with roses and read for an hour.",
+          "choices": [
+            {
+              "text": "garage",
+              "meaning": "車庫"
+            },
+            {
+              "text": "tunnel",
+              "meaning": "トンネル"
+            },
+            {
+              "text": "arbour",
+              "meaning": "東屋"
+            },
+            {
+              "text": "elevator",
+              "meaning": "エレベーター"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "バラに覆われ涼しく座れる場所なので、東屋のarbourが合う。",
+          "alternatives": [
+            {
+              "answer": "gazebo",
+              "explanation": "屋根のある庭の小さな建物で、arbourより構造がしっかりしたイメージ。"
+            },
+            {
+              "answer": "pergola",
+              "explanation": "つる植物を這わせる柱と梁の構造物で、屋根は開放的。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "arbour を名詞として正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "There were two arbour in the garden.",
+              "meaning": "誤り：two の後は arbours。"
+            },
+            {
+              "text": "The arbour were covered with roses.",
+              "meaning": "誤り：単数の arbour には was。"
+            },
+            {
+              "text": "She sat in the arbour and enjoyed the shade.",
+              "meaning": "彼女はあずまやに座り、日陰を楽しんだ。"
+            },
+            {
+              "text": "Those arbours is made of wood.",
+              "meaning": "誤り：複数の arbours には are。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "arbour は庭の日陰の場所を表す可算名詞です。in the arbour のように使い、複数形は arbours。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "夏の庭の場面：We sat in the cool ___ covered with roses and read for an hour.",
+        "answers": [
+          "arbour"
+        ],
+        "explanation": "バラに覆われ涼しく座れる場所なので、東屋のarbourが合う。",
+        "alternatives": [
+          {
+            "answer": "gazebo",
+            "explanation": "屋根のある庭の小さな建物で、arbourより構造がしっかりしたイメージ。"
+          },
+          {
+            "answer": "pergola",
+            "explanation": "つる植物を這わせる柱と梁の構造物で、屋根は開放的。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "arbourを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "We had tea in the arbour behind the old house.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-arbour-usage",
+          "type": "usage",
+          "prompt": "arbour を名詞として正しく使った文を選びなさい。",
+          "choices": [
+            "There were two arbour in the garden.",
+            "The arbour were covered with roses.",
+            "She sat in the arbour and enjoyed the shade.",
+            "Those arbours is made of wood."
+          ],
+          "correctIndex": 2,
+          "explanation": "arbour は庭の日陰の場所を表す可算名詞です。in the arbour のように使い、複数形は arbours。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "environment",
+          "daily-life"
         ],
         "gradeEstimate": "2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -7932,6 +8505,201 @@
           "relationships",
           "communication",
           "logic-reasoning"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-addendum",
+      "word": "addendum",
+      "level": "2級",
+      "ipa": "/əˈdɛndəm/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "An extra piece of information or text added to a document or book.",
+      "meaning": "付録、追加事項、補足",
+      "usageTip": "契約書や報告書などに後から加える補足部分を指す。複数形はaddendaまたはaddendums。add an addendum to ...の形で使う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "contract",
+          "text": "Both sides signed an addendum to the contract to extend the deadline.",
+          "translation": "両者は期限を延長するため、契約書の追加事項に署名した。"
+        },
+        {
+          "id": "example-2",
+          "context": "report",
+          "text": "She attached an addendum to correct a mistake in the first report.",
+          "translation": "彼女は最初の報告書の誤りを訂正するため、補足を添付した。"
+        },
+        {
+          "id": "example-3",
+          "context": "book",
+          "text": "The new edition includes an addendum with updated information.",
+          "translation": "新版には最新情報をまとめた付録が含まれている。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "addendum",
+          "choices": [
+            {
+              "text": "補足",
+              "meaning": "後から加える追加部分"
+            },
+            {
+              "text": "削除",
+              "meaning": "取り除くこと"
+            },
+            {
+              "text": "署名",
+              "meaning": "名前を書くこと"
+            },
+            {
+              "text": "目次",
+              "meaning": "内容の一覧"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "addendumは文書に後から加える補足や追加事項を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "付録、追加事項、補足",
+          "choices": [
+            {
+              "text": "deadline",
+              "meaning": "締め切り"
+            },
+            {
+              "text": "headline",
+              "meaning": "見出し"
+            },
+            {
+              "text": "guideline",
+              "meaning": "指針"
+            },
+            {
+              "text": "addendum",
+              "meaning": "付録、追加事項"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "文書に付け加える部分を表す語はaddendum。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "契約書の修正の場面：The manager added an ___ to the agreement to include the new price.",
+          "choices": [
+            {
+              "text": "umbrella",
+              "meaning": "傘"
+            },
+            {
+              "text": "addendum",
+              "meaning": "追加事項"
+            },
+            {
+              "text": "orchard",
+              "meaning": "果樹園"
+            },
+            {
+              "text": "suitcase",
+              "meaning": "スーツケース"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "新しい価格を契約に加えるので、追加事項のaddendumが合う。",
+          "alternatives": [
+            {
+              "answer": "amendment",
+              "explanation": "内容の修正・変更に重点があり、法的文書でよく使う。"
+            },
+            {
+              "answer": "appendix",
+              "explanation": "本文の後ろに付ける資料で、補足資料の意味が強い。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "addendumを正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "She addendum the report yesterday.",
+              "meaning": "彼女は昨日その報告書を補足した。"
+            },
+            {
+              "text": "The addendum is very addendum.",
+              "meaning": "その補足はとても補足だ。"
+            },
+            {
+              "text": "I addendum to the meeting late.",
+              "meaning": "私は会議に遅れて補足した。"
+            },
+            {
+              "text": "An addendum to the contract explains the new schedule.",
+              "meaning": "契約書の追加事項が新しい日程を説明している。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "addendumは名詞で、an addendum to ...の形で文書への追加を表す。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "契約書の修正の場面：The manager added an ___ to the agreement to include the new price.",
+        "answers": [
+          "addendum"
+        ],
+        "explanation": "新しい価格を契約に加えるので、追加事項のaddendumが合う。",
+        "alternatives": [
+          {
+            "answer": "amendment",
+            "explanation": "内容の修正・変更に重点があり、法的文書でよく使う。"
+          },
+          {
+            "answer": "appendix",
+            "explanation": "本文の後ろに付ける資料で、補足資料の意味が強い。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "addendumを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Both sides signed an addendum to the contract to extend the deadline.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-addendum-usage",
+          "type": "usage",
+          "prompt": "addendumを正しく使った文を選びなさい。",
+          "choices": [
+            "She addendum the report yesterday.",
+            "The addendum is very addendum.",
+            "I addendum to the meeting late.",
+            "An addendum to the contract explains the new schedule."
+          ],
+          "correctIndex": 3,
+          "explanation": "addendumは名詞で、an addendum to ...の形で文書への追加を表す。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "education",
+          "communication",
+          "work"
         ],
         "gradeEstimate": "2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -11150,6 +11918,201 @@
       }
     },
     {
+      "id": "vocab-analogous",
+      "word": "analogous",
+      "level": "2級",
+      "ipa": "/əˈnæləɡəs/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "形容詞",
+      "definition": "similar to something else in a way that makes comparison useful",
+      "meaning": "類似した、相当する",
+      "usageTip": "be analogous to ~ の形が最も一般的（with も使われる）。完全に同じではないが、仕組みや役割が似ている場合に使う。やや硬い語で、説明や論文によく出る。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "科学",
+          "text": "The heart's role in the body is analogous to that of a pump.",
+          "translation": "体の中での心臓の役割はポンプの役割に似ている。"
+        },
+        {
+          "id": "example-2",
+          "context": "学習",
+          "text": "Learning a language is analogous to building a house, one step at a time.",
+          "translation": "言語学習は、一歩ずつ進める点で家を建てることに似ている。"
+        },
+        {
+          "id": "example-3",
+          "context": "議論",
+          "text": "Her situation is not analogous to yours, so the same advice won't work.",
+          "translation": "彼女の状況はあなたのものとは似ていないので、同じ助言は通用しない。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "analogous",
+          "choices": [
+            {
+              "text": "正反対の",
+              "meaning": "逆の関係にある"
+            },
+            {
+              "text": "類似した、相当する",
+              "meaning": "比較できるほど似ている"
+            },
+            {
+              "text": "不要な",
+              "meaning": "必要ない"
+            },
+            {
+              "text": "突然の",
+              "meaning": "急な"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "analogous は、仕組みや役割が似ていて比較できることを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "類似した、相当する",
+          "choices": [
+            {
+              "text": "ambiguous",
+              "meaning": "あいまいな"
+            },
+            {
+              "text": "anonymous",
+              "meaning": "匿名の"
+            },
+            {
+              "text": "ancient",
+              "meaning": "古代の"
+            },
+            {
+              "text": "analogous",
+              "meaning": "類似した"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "似ていて比較できるという意味の形容詞は analogous。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "科学の授業で、電気を水の流れにたとえて説明する場面。 The flow of electricity in a wire is ___ to water moving through a pipe.",
+          "choices": [
+            {
+              "text": "opposed",
+              "meaning": "反対された"
+            },
+            {
+              "text": "analogous",
+              "meaning": "類似した"
+            },
+            {
+              "text": "indifferent",
+              "meaning": "無関心な"
+            },
+            {
+              "text": "unable",
+              "meaning": "できない"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "電気と水の流れを比較してたとえる文なので、analogous が合う。",
+          "alternatives": [
+            {
+              "answer": "similar",
+              "explanation": "一般的に似ているという意味で、たとえの関係を示す力はやや弱い。"
+            },
+            {
+              "answer": "comparable",
+              "explanation": "比べられる程度に似ているという意味で、近い表現。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "analogous を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "Her job is analogously mine.",
+              "meaning": "誤り：副詞形の誤用"
+            },
+            {
+              "text": "Her job analogous to mine.",
+              "meaning": "誤り：be動詞がない"
+            },
+            {
+              "text": "Her job is analogous mine in several ways.",
+              "meaning": "誤り：前置詞 to が抜けている"
+            },
+            {
+              "text": "Her job is analogous to mine in several ways.",
+              "meaning": "彼女の仕事はいくつかの点で私の仕事に似ている。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "形容詞 analogous は be 動詞と前置詞 to を伴う形が自然。他は副詞形の誤用、be動詞の欠落、前置詞の欠落がある。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "科学の授業で、電気を水の流れにたとえて説明する場面。 The flow of electricity in a wire is ___ to water moving through a pipe.",
+        "answers": [
+          "analogous"
+        ],
+        "explanation": "電気と水の流れを比較してたとえる文なので、analogous が合う。",
+        "alternatives": [
+          {
+            "answer": "similar",
+            "explanation": "一般的に似ているという意味で、たとえの関係を示す力はやや弱い。"
+          },
+          {
+            "answer": "comparable",
+            "explanation": "比べられる程度に似ているという意味で、近い表現。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "analogousを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The heart's role in the body is analogous to that of a pump.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-analogous-usage",
+          "type": "usage",
+          "prompt": "analogous を正しく使った文を選んでください。",
+          "choices": [
+            "Her job is analogously mine.",
+            "Her job analogous to mine.",
+            "Her job is analogous mine in several ways.",
+            "Her job is analogous to mine in several ways."
+          ],
+          "correctIndex": 3,
+          "explanation": "形容詞 analogous は be 動詞と前置詞 to を伴う形が自然。他は副詞形の誤用、be動詞の欠落、前置詞の欠落がある。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "logic-reasoning",
+          "science",
+          "education"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-anarchy",
       "word": "anarchy",
       "level": "2級",
@@ -12133,6 +13096,200 @@
       }
     },
     {
+      "id": "vocab-acclaimed",
+      "word": "acclaimed",
+      "level": "2級",
+      "ipa": "/əˈkleɪmd/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "形容詞",
+      "definition": "praised publicly by many critics or people",
+      "meaning": "高く評価された、賞賛された",
+      "usageTip": "critically acclaimed や internationally acclaimed の形が多い。映画、作家、作品、人物の前に置くか、be動詞の後ろで使う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "映画",
+          "text": "The acclaimed director will present her new film at the festival.",
+          "translation": "その高く評価された監督は、映画祭で新作を披露する予定だ。"
+        },
+        {
+          "id": "example-2",
+          "context": "本",
+          "text": "His critically acclaimed novel has been translated into twenty languages.",
+          "translation": "彼の批評家に絶賛された小説は20言語に翻訳されている。"
+        },
+        {
+          "id": "example-3",
+          "context": "音楽",
+          "text": "The acclaimed orchestra is touring Asia this autumn.",
+          "translation": "その名高いオーケストラは今秋アジアを巡演する。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "acclaimed",
+          "choices": [
+            {
+              "text": "ほとんど知られていない",
+              "meaning": "little known"
+            },
+            {
+              "text": "高く評価された",
+              "meaning": "広く称賛された"
+            },
+            {
+              "text": "古くて壊れた",
+              "meaning": "old and broken"
+            },
+            {
+              "text": "急いで作られた",
+              "meaning": "made in a hurry"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "acclaimed は広く称賛されていることを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "高く評価された、賞賛された",
+          "choices": [
+            {
+              "text": "ordinary",
+              "meaning": "普通の"
+            },
+            {
+              "text": "hidden",
+              "meaning": "隠れた"
+            },
+            {
+              "text": "nervous",
+              "meaning": "緊張した"
+            },
+            {
+              "text": "acclaimed",
+              "meaning": "高く評価された"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "称賛されたという意味を持つのは acclaimed。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "批評家が絶賛した小説家についての説明。 The ___ author won several major prizes.",
+          "choices": [
+            {
+              "text": "careless",
+              "meaning": "不注意な"
+            },
+            {
+              "text": "missing",
+              "meaning": "行方不明の"
+            },
+            {
+              "text": "acclaimed",
+              "meaning": "高く評価された"
+            },
+            {
+              "text": "frozen",
+              "meaning": "凍った"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "数々の賞を取った作家を修飾するのは acclaimed が自然。",
+          "alternatives": [
+            {
+              "answer": "celebrated",
+              "explanation": "広く称賛される点で近く、やや文語的。"
+            },
+            {
+              "answer": "renowned",
+              "explanation": "評価より知名度を強調する。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "acclaimed を正しく使った文はどれ？",
+          "choices": [
+            {
+              "text": "The film was acclaiming by critics.",
+              "meaning": "誤り：受け身は acclaimed にする"
+            },
+            {
+              "text": "She is an acclaim writer.",
+              "meaning": "誤り：名詞を形容詞のように使っている"
+            },
+            {
+              "text": "The chef is acclaim internationally.",
+              "meaning": "誤り：形が違う"
+            },
+            {
+              "text": "The chef is internationally acclaimed.",
+              "meaning": "そのシェフは国際的に高く評価されている。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "acclaimed は形容詞として be 動詞の後で使え、副詞で程度や範囲を加えられる。他は語形が誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "批評家が絶賛した小説家についての説明。 The ___ author won several major prizes.",
+        "answers": [
+          "acclaimed"
+        ],
+        "explanation": "数々の賞を取った作家を修飾するのは acclaimed が自然。",
+        "alternatives": [
+          {
+            "answer": "celebrated",
+            "explanation": "広く称賛される点で近く、やや文語的。"
+          },
+          {
+            "answer": "renowned",
+            "explanation": "評価より知名度を強調する。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "acclaimedを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The acclaimed director will present her new film at the festival.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-acclaimed-usage",
+          "type": "usage",
+          "prompt": "acclaimed を正しく使った文はどれ？",
+          "choices": [
+            "The film was acclaiming by critics.",
+            "She is an acclaim writer.",
+            "The chef is acclaim internationally.",
+            "The chef is internationally acclaimed."
+          ],
+          "correctIndex": 3,
+          "explanation": "acclaimed は形容詞として be 動詞の後で使え、副詞で程度や範囲を加えられる。他は語形が誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "arts-culture",
+          "media"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-acerbic",
       "word": "acerbic",
       "level": "2級",
@@ -12902,6 +14059,217 @@
         "domains": [
           "science",
           "medical"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-adjourn",
+      "word": "adjourn",
+      "level": "2級",
+      "ipa": "əˈdʒɜːn",
+      "ipaLabel": "英音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "adjourn"
+        ],
+        "past": [
+          "adjourned"
+        ],
+        "pastParticiple": [
+          "adjourned"
+        ],
+        "presentParticiple": [
+          "adjourning"
+        ],
+        "thirdPersonSingular": [
+          "adjourns"
+        ]
+      },
+      "definition": "to stop a meeting or court session for a time or until a later date",
+      "meaning": "休会する、閉会する、散会する",
+      "usageTip": "会議や裁判、議会を一時中断・閉会する時に使う。adjourn the meeting、adjourn until Monday の形が多い。「中止する」ではなく、後で再開する場合が多い。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "会議",
+          "text": "The chairman decided to adjourn the meeting until next Monday morning.",
+          "translation": "議長は会議を来週月曜の朝まで休会することにした。"
+        },
+        {
+          "id": "example-2",
+          "context": "裁判",
+          "text": "The judge adjourned the case because an important witness was ill.",
+          "translation": "重要な証人が病気だったので、裁判官は審理を延期した。"
+        },
+        {
+          "id": "example-3",
+          "context": "委員会",
+          "text": "The committee will adjourn for lunch and return at two.",
+          "translation": "委員会は昼食のため休会し、2時に再開する。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "adjourn",
+          "choices": [
+            {
+              "text": "荷物を運ぶ",
+              "meaning": "物を移動させる"
+            },
+            {
+              "text": "会議を休会する",
+              "meaning": "会議を一時止めて後で続ける"
+            },
+            {
+              "text": "問題を解く",
+              "meaning": "答えを出す"
+            },
+            {
+              "text": "約束を守る",
+              "meaning": "約束通りにする"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "adjourn は会議や審理を休会・閉会する意味。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "会議や審理を休会する",
+          "choices": [
+            {
+              "text": "admire",
+              "meaning": "称賛する"
+            },
+            {
+              "text": "adopt",
+              "meaning": "採用する"
+            },
+            {
+              "text": "adjust",
+              "meaning": "調整する"
+            },
+            {
+              "text": "adjourn",
+              "meaning": "休会する"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "会議などを休会する意味の動詞は adjourn。adjust は調整するの意味。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面：長引いた会議を明日に回す。 英文: Since it was already late, the chair chose to ___ the meeting until tomorrow.",
+          "choices": [
+            {
+              "text": "borrow",
+              "meaning": "借りる"
+            },
+            {
+              "text": "decorate",
+              "meaning": "飾る"
+            },
+            {
+              "text": "adjourn",
+              "meaning": "休会する"
+            },
+            {
+              "text": "measure",
+              "meaning": "測る"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "遅いので会議を明日まで中断するという文脈に adjourn が合う。",
+          "alternatives": [
+            {
+              "answer": "postpone",
+              "explanation": "後の日時に延ばす意味で、会議全体の延期に使える。"
+            },
+            {
+              "answer": "suspend",
+              "explanation": "一時的に止める意味で、再開を前提にしやすい。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "adjourn の使い方として正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "The court adjourned until Friday.",
+              "meaning": "法廷は金曜まで休廷した。"
+            },
+            {
+              "text": "The court adjourned a lunch.",
+              "meaning": "誤り：目的語が不自然"
+            },
+            {
+              "text": "The court adjourned at Friday.",
+              "meaning": "誤り：until を使うのが自然"
+            },
+            {
+              "text": "The court was adjourned the weather.",
+              "meaning": "誤り：受け身の形が誤り"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "adjourn until ... で、いつまで休会するかを表せる。他は目的語や前置詞、受け身の形が不自然。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面：長引いた会議を明日に回す。 英文: Since it was already late, the chair chose to ___ the meeting until tomorrow.",
+        "answers": [
+          "adjourn"
+        ],
+        "explanation": "遅いので会議を明日まで中断するという文脈に adjourn が合う。",
+        "alternatives": [
+          {
+            "answer": "postpone",
+            "explanation": "後の日時に延ばす意味で、会議全体の延期に使える。"
+          },
+          {
+            "answer": "suspend",
+            "explanation": "一時的に止める意味で、再開を前提にしやすい。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "adjournを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The chairman decided to adjourn the meeting until next Monday morning.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-adjourn-usage",
+          "type": "usage",
+          "prompt": "adjourn の使い方として正しい文を選んでください。",
+          "choices": [
+            "The court adjourned until Friday.",
+            "The court adjourned a lunch.",
+            "The court adjourned at Friday.",
+            "The court was adjourned the weather."
+          ],
+          "correctIndex": 0,
+          "explanation": "adjourn until ... で、いつまで休会するかを表せる。他は目的語や前置詞、受け身の形が不自然。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "politics",
+          "law"
         ],
         "gradeEstimate": "2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -15440,6 +16808,200 @@
       }
     },
     {
+      "id": "vocab-alcove",
+      "word": "alcove",
+      "level": "2級",
+      "ipa": "ˈælkəʊv",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a small area set back into a wall of a room, often used for a bed, seat or shelves",
+      "meaning": "アルコーブ、壁龕（へきがん）、壁のくぼんだ空間",
+      "usageTip": "部屋の壁を凹ませて作った小空間を指す。「壁龕」「くぼみ」が近い訳。in an alcove や in the alcove の形でよく使う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "住宅",
+          "text": "There is a small desk in the alcove beside the kitchen.",
+          "translation": "キッチンの横のくぼんだ空間に小さな机がある。"
+        },
+        {
+          "id": "example-2",
+          "context": "本屋",
+          "text": "We found a quiet alcove with two chairs and a lamp.",
+          "translation": "私たちは椅子二脚とランプのある静かなくぼみを見つけた。"
+        },
+        {
+          "id": "example-3",
+          "context": "古い建物",
+          "text": "A statue stood in an alcove high above the entrance hall.",
+          "translation": "玄関ホールの高い位置にあるくぼみに像が立っていた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "alcove",
+          "choices": [
+            {
+              "text": "屋根裏の階段",
+              "meaning": "attic stairs"
+            },
+            {
+              "text": "大きな中庭",
+              "meaning": "large courtyard"
+            },
+            {
+              "text": "窓の日よけ",
+              "meaning": "window awning"
+            },
+            {
+              "text": "壁のくぼんだ空間",
+              "meaning": "部屋の壁面に作られた小さな空間"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "alcove は壁に設けた小さなくぼみ状の空間。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "壁のくぼんだ空間",
+          "choices": [
+            {
+              "text": "alcove",
+              "meaning": "アルコーブ"
+            },
+            {
+              "text": "albino",
+              "meaning": "アルビノ"
+            },
+            {
+              "text": "ale",
+              "meaning": "エール"
+            },
+            {
+              "text": "alfresco",
+              "meaning": "屋外の"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "壁のくぼみを表す語は alcove。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "家の説明：窓際の壁のくぼみに小さな本棚がある。 A small bookshelf sits in the ___ by the window.",
+          "choices": [
+            {
+              "text": "aldehyde",
+              "meaning": "アルデヒド"
+            },
+            {
+              "text": "alcove",
+              "meaning": "壁のくぼみ"
+            },
+            {
+              "text": "albino",
+              "meaning": "アルビノ"
+            },
+            {
+              "text": "ale",
+              "meaning": "エール"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "本棚が置かれる場所として、壁のくぼみを表す alcove が合う。",
+          "alternatives": [
+            {
+              "answer": "nook",
+              "explanation": "居心地のよい小さな隅という少し温かい響きがある。"
+            },
+            {
+              "answer": "recess",
+              "explanation": "壁の引っ込んだ部分を表すやや技術的な語。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "alcove を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "We put a sofa at the alcove of the street.",
+              "meaning": "誤り：街路に alcove は不自然"
+            },
+            {
+              "text": "We alcoved the sofa near the window.",
+              "meaning": "誤り：名詞を動詞として使っている"
+            },
+            {
+              "text": "We put a small sofa in the alcove.",
+              "meaning": "小さなソファをくぼみに置いた。"
+            },
+            {
+              "text": "The room was very alcove today.",
+              "meaning": "誤り：名詞を形容詞のように使っている"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "alcove は部屋の壁にある空間を表す名詞で、in the alcove の形が自然。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "家の説明：窓際の壁のくぼみに小さな本棚がある。 A small bookshelf sits in the ___ by the window.",
+        "answers": [
+          "alcove"
+        ],
+        "explanation": "本棚が置かれる場所として、壁のくぼみを表す alcove が合う。",
+        "alternatives": [
+          {
+            "answer": "nook",
+            "explanation": "居心地のよい小さな隅という少し温かい響きがある。"
+          },
+          {
+            "answer": "recess",
+            "explanation": "壁の引っ込んだ部分を表すやや技術的な語。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "alcoveを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "There is a small desk in the alcove beside the kitchen.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-alcove-usage",
+          "type": "usage",
+          "prompt": "alcove を正しく使った文を選びなさい。",
+          "choices": [
+            "We put a sofa at the alcove of the street.",
+            "We alcoved the sofa near the window.",
+            "We put a small sofa in the alcove.",
+            "The room was very alcove today."
+          ],
+          "correctIndex": 2,
+          "explanation": "alcove は部屋の壁にある空間を表す名詞で、in the alcove の形が自然。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "daily-life",
+          "arts-culture"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-aldehyde",
       "word": "aldehyde",
       "level": "2級",
@@ -16747,6 +18309,192 @@
         "cefrEstimate": "B1",
         "domains": [
           "daily-life",
+          "travel"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-alligator",
+      "word": "alligator",
+      "level": "2級",
+      "ipa": "ˈælɪɡeɪtə",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a large reptile with a wide, rounded snout that lives in freshwater rivers and swamps",
+      "meaning": "アリゲーター（アメリカやアジアの淡水域にすむ大型のワニの一種）",
+      "usageTip": "crocodile より鼻先が幅広く丸いのが特徴。主にアメリカ南東部と中国東部に生息する。可算名詞なので an alligator / alligators の形で使う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "動物園",
+          "text": "The alligator lay perfectly still in the shallow water.",
+          "translation": "そのアリゲーターは浅い水の中でじっと動かずにいた。"
+        },
+        {
+          "id": "example-2",
+          "context": "旅行",
+          "text": "Tourists took a boat tour to see alligators in the swamp.",
+          "translation": "観光客は沼でワニを見るためにボートツアーに参加した。"
+        },
+        {
+          "id": "example-3",
+          "context": "自然番組",
+          "text": "A female alligator guards her nest until the eggs hatch.",
+          "translation": "雌のアリゲーターは卵がかえるまで巣を守る。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "alligator",
+          "choices": [
+            {
+              "text": "カメ",
+              "meaning": "turtle"
+            },
+            {
+              "text": "ヘビ",
+              "meaning": "snake"
+            },
+            {
+              "text": "トカゲ",
+              "meaning": "lizard"
+            },
+            {
+              "text": "アリゲーター（ワニの一種）",
+              "meaning": "alligator"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "alligator は、幅広い鼻先を持つ大型の爬虫類であるアリゲーターを指す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "アリゲーター（ワニの一種）",
+          "choices": [
+            {
+              "text": "antelope",
+              "meaning": "レイヨウ"
+            },
+            {
+              "text": "alligator",
+              "meaning": "アリゲーター"
+            },
+            {
+              "text": "albatross",
+              "meaning": "アホウドリ"
+            },
+            {
+              "text": "armadillo",
+              "meaning": "アルマジロ"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "アリゲーターを表す英単語は alligator。他は別の動物。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "沼のツアーの場面: We saw a huge ___ resting on the muddy bank.",
+          "choices": [
+            {
+              "text": "rabbit",
+              "meaning": "ウサギ"
+            },
+            {
+              "text": "sparrow",
+              "meaning": "スズメ"
+            },
+            {
+              "text": "squirrel",
+              "meaning": "リス"
+            },
+            {
+              "text": "alligator",
+              "meaning": "アリゲーター"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "沼の泥の岸で休む巨大な動物として自然なのは alligator。他は沼の岸で休む巨大な動物としては不自然。",
+          "alternatives": [
+            {
+              "answer": "crocodile",
+              "explanation": "近縁の動物で、生息地によってはこちらも自然。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "alligator の使い方として正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "An alligator is flying the sky.",
+              "meaning": "誤り：flying の後に in/through が必要で、ワニは飛ばない"
+            },
+            {
+              "text": "I alligator the river yesterday.",
+              "meaning": "誤り：名詞を動詞として使っている"
+            },
+            {
+              "text": "An alligator swam slowly across the river.",
+              "meaning": "アリゲーターがゆっくり川を泳いで渡った。"
+            },
+            {
+              "text": "Alligator are living in swamp.",
+              "meaning": "誤り：冠詞・複数形の使い方"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "alligator は可算名詞で、an alligator swam across the river のように主語として使える。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "沼のツアーの場面: We saw a huge ___ resting on the muddy bank.",
+        "answers": [
+          "alligator"
+        ],
+        "explanation": "沼の泥の岸で休む巨大な動物として自然なのは alligator。他は沼の岸で休む巨大な動物としては不自然。",
+        "alternatives": [
+          {
+            "answer": "crocodile",
+            "explanation": "近縁の動物で、生息地によってはこちらも自然。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "alligatorを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The alligator lay perfectly still in the shallow water.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-alligator-usage",
+          "type": "usage",
+          "prompt": "alligator の使い方として正しい文を選んでください。",
+          "choices": [
+            "An alligator is flying the sky.",
+            "I alligator the river yesterday.",
+            "An alligator swam slowly across the river.",
+            "Alligator are living in swamp."
+          ],
+          "correctIndex": 2,
+          "explanation": "alligator は可算名詞で、an alligator swam across the river のように主語として使える。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "environment",
           "travel"
         ],
         "gradeEstimate": "2級",

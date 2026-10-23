@@ -18230,6 +18230,207 @@
       }
     },
     {
+      "id": "vocab-lamb",
+      "word": "lamb",
+      "level": "2級",
+      "ipa": "/læm/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a young sheep, or the meat that comes from a young sheep",
+      "meaning": "子羊、ラム肉",
+      "usageTip": "動物としては可算名詞で a lamb、複数は lambs。肉としては不可算名詞で lamb。語末の b は発音しない。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "farm",
+          "text": "A newborn lamb stood up and followed its mother.",
+          "translation": "生まれたばかりの子羊が立ち上がり、母親についていった。"
+        },
+        {
+          "id": "example-2",
+          "context": "restaurant",
+          "text": "I ordered roast lamb with potatoes and green beans.",
+          "translation": "私はジャガイモとインゲンを添えたローストラムを注文した。"
+        },
+        {
+          "id": "example-3",
+          "context": "cooking",
+          "text": "This curry is made with tender lamb and plenty of spices.",
+          "translation": "このカレーは柔らかいラム肉とたっぷりのスパイスで作られている。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "lamb",
+          "choices": [
+            {
+              "text": "子牛",
+              "meaning": "a young cow"
+            },
+            {
+              "text": "子羊、ラム肉",
+              "meaning": "a young sheep or its meat"
+            },
+            {
+              "text": "子豚",
+              "meaning": "a young pig"
+            },
+            {
+              "text": "ひな鳥",
+              "meaning": "a young bird"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "lamb は子羊、またはその肉を表す。子牛は calf、子豚は piglet。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "子羊、ラム肉",
+          "choices": [
+            {
+              "text": "lump",
+              "meaning": "かたまり"
+            },
+            {
+              "text": "lime",
+              "meaning": "ライム"
+            },
+            {
+              "text": "lab",
+              "meaning": "研究室"
+            },
+            {
+              "text": "lamb",
+              "meaning": "子羊、ラム肉"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "子羊やラム肉は lamb。綴りの似た lump、lime、lab とは意味が異なる。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "レストランでの注文の場面。I'd like the grilled ___ with rosemary, please.",
+          "choices": [
+            {
+              "text": "lamb",
+              "meaning": "ラム肉"
+            },
+            {
+              "text": "paper",
+              "meaning": "紙"
+            },
+            {
+              "text": "ticket",
+              "meaning": "切符"
+            },
+            {
+              "text": "glass",
+              "meaning": "ガラス"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "焼いて食べる料理の材料になるのは lamb。他は食べ物ではない。",
+          "alternatives": [
+            {
+              "answer": "chicken",
+              "explanation": "鶏肉の料理になる。ローズマリーとも合う一般的な選択肢。"
+            },
+            {
+              "answer": "salmon",
+              "explanation": "魚料理になり、肉ではなくサーモンを指す。"
+            },
+            {
+              "answer": "beef",
+              "explanation": "牛肉の料理になり、少し味が濃い印象になる。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "動物の子羊を表す lamb を、正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "The lamb are sleeping in the barn.",
+              "meaning": "子羊が小屋で眠っている。(単数名詞に are を使った誤り)"
+            },
+            {
+              "text": "A lamb are playing in the field.",
+              "meaning": "子羊が野原で遊んでいる。(単数主語に are を使った誤り)"
+            },
+            {
+              "text": "We saw a lamb playing in the field.",
+              "meaning": "野原で遊ぶ子羊を見た。"
+            },
+            {
+              "text": "Two lamb is playing in the field.",
+              "meaning": "二頭の子羊が野原で遊んでいる。(複数形と動詞の誤り)"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "動物の lamb は可算名詞なので、一頭なら a lamb と言える。他の文は主語の数と動詞が合っていない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "レストランでの注文の場面。I'd like the grilled ___ with rosemary, please.",
+        "answers": [
+          "lamb"
+        ],
+        "explanation": "焼いて食べる料理の材料になるのは lamb。他は食べ物ではない。",
+        "alternatives": [
+          {
+            "answer": "chicken",
+            "explanation": "鶏肉の料理になる。ローズマリーとも合う一般的な選択肢。"
+          },
+          {
+            "answer": "salmon",
+            "explanation": "魚料理になり、肉ではなくサーモンを指す。"
+          },
+          {
+            "answer": "beef",
+            "explanation": "牛肉の料理になり、少し味が濃い印象になる。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "lambを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "A newborn lamb stood up and followed its mother.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-lamb-usage",
+          "type": "usage",
+          "prompt": "動物の子羊を表す lamb を、正しく使った文を選びなさい。",
+          "choices": [
+            "The lamb are sleeping in the barn.",
+            "A lamb are playing in the field.",
+            "We saw a lamb playing in the field.",
+            "Two lamb is playing in the field."
+          ],
+          "correctIndex": 2,
+          "explanation": "動物の lamb は可算名詞なので、一頭なら a lamb と言える。他の文は主語の数と動詞が合っていない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "food"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-grit",
       "word": "grit",
       "level": "2級",

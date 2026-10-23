@@ -5589,6 +5589,201 @@
       }
     },
     {
+      "id": "vocab-threat",
+      "word": "threat",
+      "level": "準2級",
+      "ipa": "/θret/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "Something or someone that could cause harm, or a warning that harm may happen.",
+      "meaning": "脅威、おそれ",
+      "usageTip": "a threat to ~(~への脅威)、under threat(脅かされて)、a threat of ~(~のおそれ)の形で使う。害を与えうる存在にも、脅し文句にも使える。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "環境",
+          "text": "Plastic waste is a serious threat to marine life.",
+          "translation": "プラスチックごみは海の生き物にとって深刻な脅威だ。"
+        },
+        {
+          "id": "example-2",
+          "context": "天気",
+          "text": "There is a threat of heavy rain this weekend, so bring an umbrella.",
+          "translation": "今週末は大雨のおそれがあるので、傘を持って行ってください。"
+        },
+        {
+          "id": "example-3",
+          "context": "職場",
+          "text": "She ignored the threat and kept working on the plan.",
+          "translation": "彼女はその脅しを無視して計画を進め続けた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "threat",
+          "choices": [
+            {
+              "text": "贈り物",
+              "meaning": "人に贈る品物"
+            },
+            {
+              "text": "脅威、おそれ",
+              "meaning": "害を与えうるもの"
+            },
+            {
+              "text": "手順",
+              "meaning": "作業の進め方"
+            },
+            {
+              "text": "才能",
+              "meaning": "生まれつきの能力"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "threat は害を与えうるもの、または脅しを表す名詞。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "脅威、おそれ",
+          "choices": [
+            {
+              "text": "thread",
+              "meaning": "糸"
+            },
+            {
+              "text": "throat",
+              "meaning": "のど"
+            },
+            {
+              "text": "threat",
+              "meaning": "脅威、おそれ"
+            },
+            {
+              "text": "thirst",
+              "meaning": "のどの渇き"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "「脅威」は threat。thread、throat、thirst は綴りや音が似ているが別の語。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "環境の話題：海面上昇は沿岸の町にとって大きな問題だ。Rising sea levels are a major ___ to coastal towns.",
+          "choices": [
+            {
+              "text": "benefit",
+              "meaning": "利益"
+            },
+            {
+              "text": "holiday",
+              "meaning": "休日"
+            },
+            {
+              "text": "threat",
+              "meaning": "脅威"
+            },
+            {
+              "text": "answer",
+              "meaning": "答え"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "海面上昇は沿岸の町に害を与えうるので threat が合う。to とも結びつく。",
+          "alternatives": [
+            {
+              "answer": "danger",
+              "explanation": "危険そのものを表し、a danger to ~ とも言える。"
+            },
+            {
+              "answer": "risk",
+              "explanation": "害が起こる可能性の面を強調する。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "threat を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "Fake news is a threat with democracy.",
+              "meaning": "前置詞の誤り。with は不適切。"
+            },
+            {
+              "text": "Fake news is a threat by democracy.",
+              "meaning": "前置詞の誤り。by は不適切。"
+            },
+            {
+              "text": "Fake news is a threat at democracy.",
+              "meaning": "前置詞の誤り。at は不適切。"
+            },
+            {
+              "text": "Fake news is a threat to democracy.",
+              "meaning": "偽ニュースは民主主義への脅威だ。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "「~への脅威」は a threat to ~ が基本。with、by、at ではこの意味にならない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "環境の話題：海面上昇は沿岸の町にとって大きな問題だ。Rising sea levels are a major ___ to coastal towns.",
+        "answers": [
+          "threat"
+        ],
+        "explanation": "海面上昇は沿岸の町に害を与えうるので threat が合う。to とも結びつく。",
+        "alternatives": [
+          {
+            "answer": "danger",
+            "explanation": "危険そのものを表し、a danger to ~ とも言える。"
+          },
+          {
+            "answer": "risk",
+            "explanation": "害が起こる可能性の面を強調する。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "threatを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Plastic waste is a serious threat to marine life.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-threat-usage",
+          "type": "usage",
+          "prompt": "threat を正しく使った文を選びなさい。",
+          "choices": [
+            "Fake news is a threat with democracy.",
+            "Fake news is a threat by democracy.",
+            "Fake news is a threat at democracy.",
+            "Fake news is a threat to democracy."
+          ],
+          "correctIndex": 3,
+          "explanation": "「~への脅威」は a threat to ~ が基本。with、by、at ではこの意味にならない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "politics",
+          "society",
+          "environment"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-passion",
       "word": "passion",
       "level": "準2級",
@@ -6911,6 +7106,191 @@
           ],
           "correctIndex": 0,
           "explanation": "wedding は名詞で、go to a wedding と使う。他は動詞や形容詞として誤用している。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "relationships"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-grandparent",
+      "word": "grandparent",
+      "level": "準2級",
+      "ipa": "ˈɡrænˌpeərənt",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "A parent of your mother or father; a grandmother or grandfather.",
+      "meaning": "祖父母(祖父または祖母のどちらか)",
+      "usageTip": "祖父か祖母の一人を性別を問わず指す語。実際の会話では複数形 grandparents や one of my grandparents がよく使われる。性別が分かっていれば grandfather / grandmother が自然。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "家族",
+          "text": "One of my grandparents grew up on a small island.",
+          "translation": "私の祖父母の一人は小さな島で育った。"
+        },
+        {
+          "id": "example-2",
+          "context": "学校",
+          "text": "Each student brought a grandparent to the school open day.",
+          "translation": "生徒はそれぞれ祖父母の一人を学校の公開日に連れてきた。"
+        },
+        {
+          "id": "example-3",
+          "context": "休暇",
+          "text": "Many children stay with their grandparents during the summer holidays.",
+          "translation": "多くの子供は夏休みの間、祖父母の家に泊まる。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "grandparent",
+          "choices": [
+            {
+              "text": "叔父または叔母",
+              "meaning": "親の兄弟姉妹"
+            },
+            {
+              "text": "祖父または祖母",
+              "meaning": "親の親のどちらか"
+            },
+            {
+              "text": "いとこ",
+              "meaning": "叔父叔母の子"
+            },
+            {
+              "text": "孫",
+              "meaning": "子の子"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "grandparent は親の親、つまり祖父または祖母を指す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "祖父または祖母(性別を問わない語)",
+          "choices": [
+            {
+              "text": "nephew",
+              "meaning": "甥"
+            },
+            {
+              "text": "grandparent",
+              "meaning": "祖父または祖母"
+            },
+            {
+              "text": "niece",
+              "meaning": "姪"
+            },
+            {
+              "text": "cousin",
+              "meaning": "いとこ"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "親の親を性別に関係なく表す語は grandparent。他は別の親族を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "「祖父か祖母のどちらか一人」を指す語を選びます。A grandfather or grandmother is a ___.",
+          "choices": [
+            {
+              "text": "cousin",
+              "meaning": "いとこ"
+            },
+            {
+              "text": "grandparent",
+              "meaning": "祖父母の一方"
+            },
+            {
+              "text": "niece",
+              "meaning": "姪"
+            },
+            {
+              "text": "neighbor",
+              "meaning": "隣人"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "grandparent は grandfather または grandmother のどちらか一人を指します。cousin はいとこ、niece は姪、neighbor は隣人です。",
+          "alternatives": [
+            {
+              "answer": "relative",
+              "explanation": "親族全般を指し、より広い言い方。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "grandparent を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "One of my grandparent lives in Osaka.",
+              "meaning": "誤り：one of の後は複数形 grandparents。"
+            },
+            {
+              "text": "Both grandparent came to my party.",
+              "meaning": "Both の後は複数形が必要。"
+            },
+            {
+              "text": "My grandparents is very kind to me.",
+              "meaning": "複数主語に is は不一致。"
+            },
+            {
+              "text": "Each grandparent was invited to the school event.",
+              "meaning": "それぞれの祖父母が学校行事に招かれた。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "Each の後は単数名詞で、動詞 was とも一致する。他は複数形や動詞の形が誤っている。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "「祖父か祖母のどちらか一人」を指す語を選びます。A grandfather or grandmother is a ___.",
+        "answers": [
+          "grandparent"
+        ],
+        "explanation": "grandparent は grandfather または grandmother のどちらか一人を指します。cousin はいとこ、niece は姪、neighbor は隣人です。",
+        "alternatives": [
+          {
+            "answer": "relative",
+            "explanation": "親族全般を指し、より広い言い方。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "grandparentを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "One of my grandparents grew up on a small island.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-grandparent-usage",
+          "type": "usage",
+          "prompt": "grandparent を正しく使った文を選びなさい。",
+          "choices": [
+            "One of my grandparent lives in Osaka.",
+            "Both grandparent came to my party.",
+            "My grandparents is very kind to me.",
+            "Each grandparent was invited to the school event."
+          ],
+          "correctIndex": 3,
+          "explanation": "Each の後は単数名詞で、動詞 was とも一致する。他は複数形や動詞の形が誤っている。"
         }
       ],
       "metadata": {
@@ -10609,6 +10989,182 @@
         "domains": [
           "finance",
           "economics"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-note",
+      "word": "note",
+      "level": "準2級",
+      "ipa": "nəʊt",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a short piece of writing used to remember or tell something",
+      "meaning": "メモ、ノート",
+      "usageTip": "take notes は授業や会議でメモを取ること。leave a note は伝言を残すこと。ここでは名詞の意味を扱う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "授業",
+          "text": "I take notes in every history class.",
+          "translation": "私は歴史の授業ごとにメモを取る。"
+        },
+        {
+          "id": "example-2",
+          "context": "家",
+          "text": "He left a note on the kitchen table.",
+          "translation": "彼は台所のテーブルにメモを残した。"
+        },
+        {
+          "id": "example-3",
+          "context": "会議",
+          "text": "Please read my notes before the meeting starts.",
+          "translation": "会議が始まる前に私のメモを読んでください。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "note",
+          "choices": [
+            {
+              "text": "短い書き付け",
+              "meaning": "a short written record"
+            },
+            {
+              "text": "大きな建物",
+              "meaning": "a large building"
+            },
+            {
+              "text": "速い電車",
+              "meaning": "a fast train"
+            },
+            {
+              "text": "冷たい飲み物",
+              "meaning": "a cold drink"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "note は覚えたり伝えたりする短い書き付け。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "メモ、ノート",
+          "choices": [
+            {
+              "text": "coin",
+              "meaning": "硬貨"
+            },
+            {
+              "text": "road",
+              "meaning": "道路"
+            },
+            {
+              "text": "note",
+              "meaning": "メモ"
+            },
+            {
+              "text": "farm",
+              "meaning": "農場"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "メモは note で表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "授業中に先生の話を書き留める。 I always take ___ in class.",
+          "choices": [
+            {
+              "text": "notes",
+              "meaning": "メモ"
+            },
+            {
+              "text": "rains",
+              "meaning": "雨"
+            },
+            {
+              "text": "roads",
+              "meaning": "道路"
+            },
+            {
+              "text": "cars",
+              "meaning": "車"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "take notes で授業のメモを取る意味になる。",
+          "alternatives": []
+        },
+        {
+          "mode": "usage",
+          "prompt": "note を名詞「メモ」として正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I took notes during the lecture.",
+              "meaning": "講義中にメモを取った。"
+            },
+            {
+              "text": "She left two note on the desk.",
+              "meaning": "誤り：two の後は notes。"
+            },
+            {
+              "text": "The note were on the kitchen table.",
+              "meaning": "誤り：単数の note には was。"
+            },
+            {
+              "text": "These notes is difficult to read.",
+              "meaning": "誤り：複数の notes には are。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "take notes で「メモを取る」。make notes も自然な表現です。ここでは数えられる名詞 note の形と数の一致を確認しています。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "授業中に先生の話を書き留める。 I always take ___ in class.",
+        "answers": [
+          "notes"
+        ],
+        "explanation": "take notes で授業のメモを取る意味になる。",
+        "alternatives": []
+      },
+      "production": {
+        "prompt": "noteを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I take notes in every history class.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-note-usage",
+          "type": "usage",
+          "prompt": "note を名詞「メモ」として正しく使った文を選んでください。",
+          "choices": [
+            "I took notes during the lecture.",
+            "She left two note on the desk.",
+            "The note were on the kitchen table.",
+            "These notes is difficult to read."
+          ],
+          "correctIndex": 0,
+          "explanation": "take notes で「メモを取る」。make notes も自然な表現です。ここでは数えられる名詞 note の形と数の一致を確認しています。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A1",
+        "domains": [
+          "education",
+          "communication"
         ],
         "gradeEstimate": "準2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."

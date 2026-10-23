@@ -7804,6 +7804,358 @@
       }
     },
     {
+      "id": "vocab-some",
+      "word": "some",
+      "level": "3級",
+      "ipa": "sʌm",
+      "ipaLabel": "英音",
+      "partOfSpeech": "代名詞",
+      "definition": "an unspecified number or amount of people or things",
+      "meaning": "いくつか、いくらか、一部",
+      "usageTip": "some を単独で使うと、前に出た物などの「いくつか・いくらか」を表します。some of the ～ は特定の集団の一部。some books のように名詞の前に置く用法もあります。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "お茶を勧める",
+          "text": "There is some tea left. Would you like some?",
+          "translation": "お茶が少し残っています。いくらかいかがですか。"
+        },
+        {
+          "id": "example-2",
+          "context": "クラスの活動",
+          "text": "Most students went home, but some stayed to finish the poster.",
+          "translation": "ほとんどの生徒は帰ったが、何人かはポスターを仕上げるために残った。"
+        },
+        {
+          "id": "example-3",
+          "context": "りんごを分ける",
+          "text": "I bought ten apples and gave some to my neighbor.",
+          "translation": "りんごを10個買い、その一部を隣人にあげた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "some（代名詞）",
+          "choices": [
+            {
+              "text": "いくつか、いくらか、一部",
+              "meaning": "全部とは限らない、特定しない数や量"
+            },
+            {
+              "text": "まったくない",
+              "meaning": "一つもない、少しもない"
+            },
+            {
+              "text": "すべて",
+              "meaning": "全体、全部"
+            },
+            {
+              "text": "それぞれ一つずつ",
+              "meaning": "一つ一つを個別に"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "some は数や量を特定せず「いくつか・いくらか」を表せます。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "いくつか、いくらか、一部",
+          "choices": [
+            {
+              "text": "very",
+              "meaning": "とても"
+            },
+            {
+              "text": "also",
+              "meaning": "また"
+            },
+            {
+              "text": "ever",
+              "meaning": "これまでに"
+            },
+            {
+              "text": "some",
+              "meaning": "いくつか、いくらか、一部"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "数や量をぼかして示す語は some です。他は程度、追加、経験の意味です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "10個のクッキーのうち、半分ほどを食べた場面。 Mum baked ten cookies. I ate ___ of them, but not all.",
+          "choices": [
+            {
+              "text": "some",
+              "meaning": "一部"
+            },
+            {
+              "text": "none",
+              "meaning": "一つもない"
+            },
+            {
+              "text": "all",
+              "meaning": "全部"
+            },
+            {
+              "text": "every",
+              "meaning": "すべての"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "一部を食べたので some of them。none はゼロ、all は全部で場面と違います。every of them という形にはしません。",
+          "alternatives": []
+        },
+        {
+          "mode": "usage",
+          "prompt": "some を代名詞として正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "Some of the student were absent today.",
+              "meaning": "誤り：この意味では students と複数形にする。"
+            },
+            {
+              "text": "Some of the water were left in the bottle.",
+              "meaning": "誤り：不可算の water に合わせて was。"
+            },
+            {
+              "text": "There were cookies on the plate, so I took some.",
+              "meaning": "皿にクッキーがあったので、いくつか取った。"
+            },
+            {
+              "text": "Some of my friends is coming tonight.",
+              "meaning": "誤り：複数の friends に合わせて are。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "took some の some は前に出た cookies を受ける代名詞です。some of の後の名詞の数や、動詞との一致にも注意します。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "10個のクッキーのうち、半分ほどを食べた場面。 Mum baked ten cookies. I ate ___ of them, but not all.",
+        "answers": [
+          "some"
+        ],
+        "explanation": "一部を食べたので some of them。none はゼロ、all は全部で場面と違います。every of them という形にはしません。",
+        "alternatives": []
+      },
+      "production": {
+        "prompt": "someを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "There is some tea left. Would you like some?",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-some-usage",
+          "type": "usage",
+          "prompt": "some を代名詞として正しく使った文を選んでください。",
+          "choices": [
+            "Some of the student were absent today.",
+            "Some of the water were left in the bottle.",
+            "There were cookies on the plate, so I took some.",
+            "Some of my friends is coming tonight."
+          ],
+          "correctIndex": 2,
+          "explanation": "took some の some は前に出た cookies を受ける代名詞です。some of の後の名詞の数や、動詞との一致にも注意します。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A1",
+        "domains": [
+          "daily-life",
+          "food"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-such",
+      "word": "such",
+      "level": "3級",
+      "ipa": "sʌtʃ",
+      "ipaLabel": "米音",
+      "partOfSpeech": "形容詞",
+      "definition": "Used to stress how strong a quality is, or to mean of the kind just mentioned.",
+      "meaning": "そのような、とても〜な",
+      "usageTip": "such a/an + 形容詞 + 名詞 の形が基本。形容詞だけを強めるときは so を使う。such as は「〜のような」。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "天気",
+          "text": "It was such a beautiful day that we walked to school.",
+          "translation": "とても良い天気だったので、私たちは歩いて学校へ行った。"
+        },
+        {
+          "id": "example-2",
+          "context": "会話",
+          "text": "I have never met such a kind person before.",
+          "translation": "これほど親切な人にこれまで会ったことがない。"
+        },
+        {
+          "id": "example-3",
+          "context": "仕事",
+          "text": "We cannot accept such requests without a clear reason.",
+          "translation": "明確な理由なしに、そのような依頼は受けられません。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "such",
+          "choices": [
+            {
+              "text": "ほかの",
+              "meaning": "別の"
+            },
+            {
+              "text": "そのような、とても〜な",
+              "meaning": "前に述べた種類の、強調"
+            },
+            {
+              "text": "また",
+              "meaning": "追加して"
+            },
+            {
+              "text": "いくつか",
+              "meaning": "不明確な数"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "such は「そのような」や、名詞を強める「とても〜な」を表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "そのような、これほどの",
+          "choices": [
+            {
+              "text": "some",
+              "meaning": "いくつかの"
+            },
+            {
+              "text": "very",
+              "meaning": "とても"
+            },
+            {
+              "text": "also",
+              "meaning": "また"
+            },
+            {
+              "text": "such",
+              "meaning": "そのような"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "前に出た種類を指して「そのような」と言うのは such です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 映画の感想。 It was ___ a great movie that I watched it twice.",
+          "choices": [
+            {
+              "text": "very",
+              "meaning": "とても"
+            },
+            {
+              "text": "such",
+              "meaning": "これほどの"
+            },
+            {
+              "text": "ever",
+              "meaning": "これまでに"
+            },
+            {
+              "text": "also",
+              "meaning": "また"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "a great movie という名詞句を強め、that節で結果を述べる such a + 形容詞 + 名詞 の形になります。",
+          "alternatives": []
+        },
+        {
+          "mode": "usage",
+          "prompt": "such を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "She is such kind.",
+              "meaning": "彼女はとても親切だ。"
+            },
+            {
+              "text": "It was such nice weather today.",
+              "meaning": "今日はとても良い天気だった。"
+            },
+            {
+              "text": "He is a such good teacher.",
+              "meaning": "彼はとても良い先生だ。"
+            },
+            {
+              "text": "They are such very helpful.",
+              "meaning": "彼らはとても助けになる。"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "such は名詞句を強め、不可算名詞 weather の前にも置けます。他は形容詞だけに付けたり、語順や重複に誤りがあります。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 映画の感想。 It was ___ a great movie that I watched it twice.",
+        "answers": [
+          "such"
+        ],
+        "explanation": "a great movie という名詞句を強め、that節で結果を述べる such a + 形容詞 + 名詞 の形になります。",
+        "alternatives": []
+      },
+      "production": {
+        "prompt": "suchを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "It was such a beautiful day that we walked to school.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-such-usage",
+          "type": "usage",
+          "prompt": "such を正しく使った文を選んでください。",
+          "choices": [
+            "She is such kind.",
+            "It was such nice weather today.",
+            "He is a such good teacher.",
+            "They are such very helpful."
+          ],
+          "correctIndex": 1,
+          "explanation": "such は名詞句を強め、不可算名詞 weather の前にも置けます。他は形容詞だけに付けたり、語順や重複に誤りがあります。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "daily-life",
+          "communication"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-very",
       "word": "very",
       "level": "3級",
@@ -7984,6 +8336,200 @@
           ],
           "correctIndex": 3,
           "explanation": "very much の形なら動作への感謝の程度を表せます。very が like、agree、enjoy などの動詞を直接修飾する形は不自然です。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A1",
+        "domains": [
+          "daily-life",
+          "communication"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-also",
+      "word": "also",
+      "level": "3級",
+      "ipa": "ˈɔːlsoʊ",
+      "ipaLabel": "米音",
+      "partOfSpeech": "副詞",
+      "definition": "Used to add another fact or idea to what has already been said.",
+      "meaning": "また、〜も",
+      "usageTip": "普通は一般動詞の前、be動詞の後に置く。文末では too を使うことが多い。否定文では either を使う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "学校",
+          "text": "She plays the piano, and she also sings in the choir.",
+          "translation": "彼女はピアノを弾き、合唱団でも歌っている。"
+        },
+        {
+          "id": "example-2",
+          "context": "仕事",
+          "text": "The company is also planning to open a new office.",
+          "translation": "その会社は新しい事務所を開く計画もしている。"
+        },
+        {
+          "id": "example-3",
+          "context": "買い物",
+          "text": "I bought bread, and I also picked up some fruit.",
+          "translation": "パンを買い、果物も少し買った。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "also",
+          "choices": [
+            {
+              "text": "とても",
+              "meaning": "程度が強い"
+            },
+            {
+              "text": "ほかの",
+              "meaning": "別の"
+            },
+            {
+              "text": "また、〜も",
+              "meaning": "さらに追加して"
+            },
+            {
+              "text": "そのような",
+              "meaning": "前述の種類の"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "also は、すでに述べたことに情報を加える副詞です。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "また、〜も",
+          "choices": [
+            {
+              "text": "also",
+              "meaning": "また"
+            },
+            {
+              "text": "such",
+              "meaning": "そのような"
+            },
+            {
+              "text": "very",
+              "meaning": "とても"
+            },
+            {
+              "text": "some",
+              "meaning": "いくつかの"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "追加を表す「また、〜も」は also です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 旅行の予定を足す。 We will visit the museum, and we will ___ see the old castle.",
+          "choices": [
+            {
+              "text": "very",
+              "meaning": "とても"
+            },
+            {
+              "text": "some",
+              "meaning": "いくつかの"
+            },
+            {
+              "text": "such",
+              "meaning": "そのような"
+            },
+            {
+              "text": "also",
+              "meaning": "また"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "博物館に加えて城も見るという追加の意味なので also が合います。",
+          "alternatives": [
+            {
+              "answer": "then",
+              "explanation": "時間の順序を表し、追加より「その後」の意味が強い。"
+            },
+            {
+              "answer": "even",
+              "explanation": "城も見ることに意外性や強調を加える。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "also を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I don't like fish also.",
+              "meaning": "私は魚も好きではない。(否定文で also は不自然)"
+            },
+            {
+              "text": "She likes tea, and I like also.",
+              "meaning": "彼女は紅茶が好きで、私も好きだ。(also の位置が不自然)"
+            },
+            {
+              "text": "I am tired also very.",
+              "meaning": "私もとても疲れている。(語順が不自然)"
+            },
+            {
+              "text": "He is also a teacher.",
+              "meaning": "彼は教師でもある。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "also は be動詞の後に置いて追加を表せます。他は否定文での使用、文末での位置、語順に誤りがあります。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 旅行の予定を足す。 We will visit the museum, and we will ___ see the old castle.",
+        "answers": [
+          "also"
+        ],
+        "explanation": "博物館に加えて城も見るという追加の意味なので also が合います。",
+        "alternatives": [
+          {
+            "answer": "then",
+            "explanation": "時間の順序を表し、追加より「その後」の意味が強い。"
+          },
+          {
+            "answer": "even",
+            "explanation": "城も見ることに意外性や強調を加える。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "alsoを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "She plays the piano, and she also sings in the choir.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-also-usage",
+          "type": "usage",
+          "prompt": "also を正しく使った文を選んでください。",
+          "choices": [
+            "I don't like fish also.",
+            "She likes tea, and I like also.",
+            "I am tired also very.",
+            "He is also a teacher."
+          ],
+          "correctIndex": 3,
+          "explanation": "also は be動詞の後に置いて追加を表せます。他は否定文での使用、文末での位置、語順に誤りがあります。"
         }
       ],
       "metadata": {
@@ -10075,6 +10621,192 @@
       "metadata": {
         "schemaVersion": 2,
         "cefrEstimate": "A1",
+        "domains": [
+          "daily-life",
+          "communication"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-ever",
+      "word": "ever",
+      "level": "3級",
+      "ipa": "ˈɛvɚ",
+      "ipaLabel": "米音",
+      "partOfSpeech": "副詞",
+      "definition": "At any time, especially in questions, negatives, conditions and comparisons.",
+      "meaning": "これまでに、いつか",
+      "usageTip": "Have you ever ...? は経験を尋ねる型。疑問文・否定文・if節・最上級でよく使う。ever には文語的な「常に」の用法もあるが、日常の習慣を述べるなら usually や always が一般的。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "会話",
+          "text": "Have you ever tried cooking with a pressure cooker?",
+          "translation": "圧力鍋で料理をしたことはありますか。"
+        },
+        {
+          "id": "example-2",
+          "context": "感想",
+          "text": "This is the best pizza I have ever eaten.",
+          "translation": "これは私が今まで食べた中で最高のピザです。"
+        },
+        {
+          "id": "example-3",
+          "context": "約束",
+          "text": "If you ever need help, just send me a message.",
+          "translation": "もし助けが必要になることがあれば、メッセージを送ってください。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "ever",
+          "choices": [
+            {
+              "text": "これまでに、いつか",
+              "meaning": "過去や未来のある時に"
+            },
+            {
+              "text": "ほとんど",
+              "meaning": "almost の意味"
+            },
+            {
+              "text": "それゆえ",
+              "meaning": "therefore の意味"
+            },
+            {
+              "text": "一緒に",
+              "meaning": "together の意味"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "ever は経験を尋ねる文などで「これまでに」を表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "これまでに、いつか",
+          "choices": [
+            {
+              "text": "also",
+              "meaning": "〜もまた"
+            },
+            {
+              "text": "such",
+              "meaning": "そのような"
+            },
+            {
+              "text": "very",
+              "meaning": "とても"
+            },
+            {
+              "text": "ever",
+              "meaning": "これまでに"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "「これまでに、いつか」を表す副詞は ever です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 経験を尋ねる。 Have you ___ been to Hokkaido?",
+          "choices": [
+            {
+              "text": "such",
+              "meaning": "そのような"
+            },
+            {
+              "text": "ever",
+              "meaning": "これまでに"
+            },
+            {
+              "text": "some",
+              "meaning": "いくつかの"
+            },
+            {
+              "text": "very",
+              "meaning": "とても"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "Have you ever been to ...? は「行ったことがありますか」と経験を尋ねる定型です。",
+          "alternatives": [
+            {
+              "answer": "already",
+              "explanation": "「もう行きましたか」と完了を尋ねる別の意味になる。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "経験を尋ねる ever を使い、文法も正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "Have you ever went to Osaka?",
+              "meaning": "誤り：have の後は過去分詞 gone または been。"
+            },
+            {
+              "text": "Has she ever meet your brother?",
+              "meaning": "誤り：has の後は過去分詞 met。"
+            },
+            {
+              "text": "Did they ever visited this museum?",
+              "meaning": "誤り：did の後は原形 visit。"
+            },
+            {
+              "text": "Have you ever visited this museum?",
+              "meaning": "この博物館を訪れたことがありますか。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "Have you ever + 過去分詞? で「これまでに〜したことがありますか」と経験を尋ねます。have/has の後は過去分詞、did の後は原形です。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 経験を尋ねる。 Have you ___ been to Hokkaido?",
+        "answers": [
+          "ever"
+        ],
+        "explanation": "Have you ever been to ...? は「行ったことがありますか」と経験を尋ねる定型です。",
+        "alternatives": [
+          {
+            "answer": "already",
+            "explanation": "「もう行きましたか」と完了を尋ねる別の意味になる。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "everを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Have you ever tried cooking with a pressure cooker?",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-ever-usage",
+          "type": "usage",
+          "prompt": "経験を尋ねる ever を使い、文法も正しい文を選んでください。",
+          "choices": [
+            "Have you ever went to Osaka?",
+            "Has she ever meet your brother?",
+            "Did they ever visited this museum?",
+            "Have you ever visited this museum?"
+          ],
+          "correctIndex": 3,
+          "explanation": "Have you ever + 過去分詞? で「これまでに〜したことがありますか」と経験を尋ねます。have/has の後は過去分詞、did の後は原形です。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
         "domains": [
           "daily-life",
           "communication"

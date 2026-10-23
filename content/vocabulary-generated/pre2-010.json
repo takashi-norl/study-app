@@ -11193,6 +11193,208 @@
       }
     },
     {
+      "id": "vocab-manufacturer",
+      "word": "manufacturer",
+      "level": "準2級",
+      "ipa": "/ˌmænjʊˈfæktʃərə/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a company or person that makes products in large quantities, usually in a factory",
+      "meaning": "製造業者、メーカー",
+      "usageTip": "製品を大量に作る会社を指す。car manufacturer のように前に製品名を置くほか、manufacturer of bicycles のように of で続けることもできる。動詞は manufacture で、アクセントの位置も同じ。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "自動車",
+          "text": "The car manufacturer plans to build a new factory next year.",
+          "translation": "その自動車メーカーは来年、新しい工場を建てる予定だ。"
+        },
+        {
+          "id": "example-2",
+          "context": "返品",
+          "text": "If the phone is faulty, please contact the manufacturer directly.",
+          "translation": "その電話機が不良なら、メーカーに直接連絡してください。"
+        },
+        {
+          "id": "example-3",
+          "context": "家電",
+          "text": "This manufacturer is known for making quiet and durable washing machines.",
+          "translation": "このメーカーは静かで丈夫な洗濯機で知られている。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "manufacturer",
+          "choices": [
+            {
+              "text": "図書館員",
+              "meaning": "図書館で働く人"
+            },
+            {
+              "text": "製造業者、メーカー",
+              "meaning": "工場などで製品を作る会社"
+            },
+            {
+              "text": "旅行者",
+              "meaning": "旅をする人"
+            },
+            {
+              "text": "評論家",
+              "meaning": "作品などを論じる人"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "manufacturer は製品を製造する会社や業者を表す。他の選択肢は別の職業や人を表し、製造とは関係がない。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "製造業者、メーカー",
+          "choices": [
+            {
+              "text": "neighbor",
+              "meaning": "隣人"
+            },
+            {
+              "text": "passenger",
+              "meaning": "乗客"
+            },
+            {
+              "text": "author",
+              "meaning": "著者"
+            },
+            {
+              "text": "manufacturer",
+              "meaning": "製造業者"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "製品を作る会社を表す英単語は manufacturer である。他は人を表す語だが、製造とは関係がない。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "返品の場面：この製品が壊れていたら、作った会社である___に連絡してください。 If this product is broken, please contact the ___.",
+          "choices": [
+            {
+              "text": "passenger",
+              "meaning": "乗客"
+            },
+            {
+              "text": "manufacturer",
+              "meaning": "製造業者"
+            },
+            {
+              "text": "audience",
+              "meaning": "観客"
+            },
+            {
+              "text": "neighbor",
+              "meaning": "隣人"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "製品の不具合は、作った会社に連絡するのが自然。他の語は問い合わせ先として意味が合わない。",
+          "alternatives": [
+            {
+              "answer": "maker",
+              "explanation": "やや口語的で、同じく作った会社を指す。"
+            },
+            {
+              "answer": "company",
+              "explanation": "より広い語で、製造以外の会社も含む。"
+            },
+            {
+              "answer": "producer",
+              "explanation": "生産者を指し、食品や農産物などでもよく使う。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "manufacturer を名詞「製造業者」として正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "This manufacturer produces cars and sell them abroad.",
+              "meaning": "誤り：単数主語に合わせて sells が必要。"
+            },
+            {
+              "text": "Two manufacturer attended the trade fair.",
+              "meaning": "誤り：two の後は manufacturers。"
+            },
+            {
+              "text": "The manufacturer has opened a shop, but it have no customers yet.",
+              "meaning": "誤り：it には has。"
+            },
+            {
+              "text": "The manufacturer of these bikes opened a shop.",
+              "meaning": "この自転車のメーカーが店を開いた。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "manufacturer of these bikes で「この自転車の製造業者」。可算名詞なので数と動詞の一致にも注意します。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "返品の場面：この製品が壊れていたら、作った会社である___に連絡してください。 If this product is broken, please contact the ___.",
+        "answers": [
+          "manufacturer"
+        ],
+        "explanation": "製品の不具合は、作った会社に連絡するのが自然。他の語は問い合わせ先として意味が合わない。",
+        "alternatives": [
+          {
+            "answer": "maker",
+            "explanation": "やや口語的で、同じく作った会社を指す。"
+          },
+          {
+            "answer": "company",
+            "explanation": "より広い語で、製造以外の会社も含む。"
+          },
+          {
+            "answer": "producer",
+            "explanation": "生産者を指し、食品や農産物などでもよく使う。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "manufacturerを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The car manufacturer plans to build a new factory next year.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-manufacturer-usage",
+          "type": "usage",
+          "prompt": "manufacturer を名詞「製造業者」として正しく使った文を選びなさい。",
+          "choices": [
+            "This manufacturer produces cars and sell them abroad.",
+            "Two manufacturer attended the trade fair.",
+            "The manufacturer has opened a shop, but it have no customers yet.",
+            "The manufacturer of these bikes opened a shop."
+          ],
+          "correctIndex": 3,
+          "explanation": "manufacturer of these bikes で「この自転車の製造業者」。可算名詞なので数と動詞の一致にも注意します。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "business",
+          "economics"
+        ],
+        "gradeEstimate": "準2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-flexibility",
       "word": "flexibility",
       "level": "準2級",

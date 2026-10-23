@@ -578,6 +578,200 @@
       }
     },
     {
+      "id": "vocab-actually",
+      "word": "actually",
+      "level": "3級",
+      "ipa": "/ˈæktʃuəli/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "副詞",
+      "definition": "Used to say what is really true, especially when it differs from what someone expects or assumes.",
+      "meaning": "実際には、実は",
+      "usageTip": "予想と違う事実や、やんわりした訂正を述べるときに使う。「現在」の意味はないので currently や at the moment と区別する。文頭・動詞の前・形容詞の前に置ける。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "値段の感想",
+          "text": "I thought it was expensive, but it was actually quite cheap.",
+          "translation": "高いと思っていたが、実際にはかなり安かった。"
+        },
+        {
+          "id": "example-2",
+          "context": "会話での訂正",
+          "text": "Actually, I haven't read that book yet, but I want to.",
+          "translation": "実を言うと、その本はまだ読んでいないけれど、読みたいと思っている。"
+        },
+        {
+          "id": "example-3",
+          "context": "人の印象",
+          "text": "She looks serious, but she is actually very funny.",
+          "translation": "彼女は真面目そうに見えるが、実はとても面白い人だ。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "actually",
+          "choices": [
+            {
+              "text": "現在は",
+              "meaning": "now, currently"
+            },
+            {
+              "text": "偶然に",
+              "meaning": "by chance"
+            },
+            {
+              "text": "ほとんど",
+              "meaning": "almost"
+            },
+            {
+              "text": "実際には、実は",
+              "meaning": "in fact, in reality"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "actually は予想と違う本当のことを述べるときに使う。「現在」の意味はない。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "実際には、実は",
+          "choices": [
+            {
+              "text": "usually",
+              "meaning": "普段は"
+            },
+            {
+              "text": "suddenly",
+              "meaning": "突然"
+            },
+            {
+              "text": "actually",
+              "meaning": "実際には、実は"
+            },
+            {
+              "text": "hardly",
+              "meaning": "ほとんど〜ない"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "「実際には、実は」を表す副詞は actually。他の語は頻度、突然さ、程度を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "試験を心配していたが、予想に反して簡単だったと話す場面。\nI was nervous about the test, but it was ___ quite easy.",
+          "choices": [
+            {
+              "text": "hardly",
+              "meaning": "ほとんど〜ない"
+            },
+            {
+              "text": "actually",
+              "meaning": "実際には"
+            },
+            {
+              "text": "yesterday",
+              "meaning": "昨日"
+            },
+            {
+              "text": "never",
+              "meaning": "決して〜ない"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "心配した予想に反して「実際には簡単だった」と述べるので actually が合います。never は決して簡単ではなかったという別の意味で、この場面には合いません。",
+          "alternatives": [
+            {
+              "answer": "in fact",
+              "explanation": "in fact は事実を補強する言い方で、少し改まった印象がある。"
+            },
+            {
+              "answer": "really",
+              "explanation": "really は「本当に」と強調する言い方で、対比の意味は弱い。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "actually を副詞として正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "She is an actually student at this school.",
+              "meaning": "誤り：名詞 student の前で actually を形容詞のように使っている。"
+            },
+            {
+              "text": "I thought he was older, but he is actually only twelve.",
+              "meaning": "もっと年上だと思ったが、実際には彼はまだ12歳だ。"
+            },
+            {
+              "text": "He actually to live in London.",
+              "meaning": "誤り：この文には時制を持つ動詞が必要。"
+            },
+            {
+              "text": "We discussed the actually of the situation.",
+              "meaning": "誤り：名詞が必要な位置に副詞 actually を置いている。"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "actually は「実際には・実は」という副詞です。is actually only twelve のように事実を述べます。人や物を表す名詞や形容詞の代わりには使えません。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "試験を心配していたが、予想に反して簡単だったと話す場面。\nI was nervous about the test, but it was ___ quite easy.",
+        "answers": [
+          "actually"
+        ],
+        "explanation": "心配した予想に反して「実際には簡単だった」と述べるので actually が合います。never は決して簡単ではなかったという別の意味で、この場面には合いません。",
+        "alternatives": [
+          {
+            "answer": "in fact",
+            "explanation": "in fact は事実を補強する言い方で、少し改まった印象がある。"
+          },
+          {
+            "answer": "really",
+            "explanation": "really は「本当に」と強調する言い方で、対比の意味は弱い。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "actuallyを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I thought it was expensive, but it was actually quite cheap.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-actually-usage",
+          "type": "usage",
+          "prompt": "actually を副詞として正しく使った文を選んでください。",
+          "choices": [
+            "She is an actually student at this school.",
+            "I thought he was older, but he is actually only twelve.",
+            "He actually to live in London.",
+            "We discussed the actually of the situation."
+          ],
+          "correctIndex": 1,
+          "explanation": "actually は「実際には・実は」という副詞です。is actually only twelve のように事実を述べます。人や物を表す名詞や形容詞の代わりには使えません。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "日常生活",
+          "抽象概念"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-age",
       "word": "age",
       "level": "3級",
@@ -11088,6 +11282,201 @@
           "education",
           "science",
           "logic-reasoning"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-fair",
+      "word": "fair",
+      "level": "3級",
+      "ipa": "/feə/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "形容詞",
+      "definition": "treating people equally and reasonably, without favoring anyone",
+      "meaning": "公平な、公正な",
+      "usageTip": "この意味では be fair to + 人 の形をよく使う。It is not fair that ~ も便利。fair には「かなり良い」「晴れの」などの別の意味もあるので、文脈で判断する。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "学校",
+          "text": "The teacher tried to be fair to every student in the class.",
+          "translation": "先生はクラスの全生徒に公平であろうとした。"
+        },
+        {
+          "id": "example-2",
+          "context": "スポーツ",
+          "text": "The referee made a fair decision, even though the crowd disagreed.",
+          "translation": "観衆は反対したが、審判は公正な判定を下した。"
+        },
+        {
+          "id": "example-3",
+          "context": "職場",
+          "text": "It isn't fair that new staff get less pay for the same work.",
+          "translation": "同じ仕事なのに新人の給料が低いのは不公平だ。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "fair(公平さを表す意味で)",
+          "choices": [
+            {
+              "text": "高価な",
+              "meaning": "値段が高い"
+            },
+            {
+              "text": "危険な",
+              "meaning": "安全でない"
+            },
+            {
+              "text": "静かな",
+              "meaning": "音が少ない"
+            },
+            {
+              "text": "公平な",
+              "meaning": "誰にも偏らず正しい"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "この意味の fair は、偏りなく公正であることを表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "公平な、公正な",
+          "choices": [
+            {
+              "text": "rude",
+              "meaning": "失礼な"
+            },
+            {
+              "text": "fair",
+              "meaning": "公平な"
+            },
+            {
+              "text": "weak",
+              "meaning": "弱い"
+            },
+            {
+              "text": "empty",
+              "meaning": "空の"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "「公平な」は fair です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "兄弟でお菓子を分ける場面: Please divide the cake equally so that it is ___ for both of you.",
+          "choices": [
+            {
+              "text": "late",
+              "meaning": "遅い"
+            },
+            {
+              "text": "narrow",
+              "meaning": "狭い"
+            },
+            {
+              "text": "fair",
+              "meaning": "公平な"
+            },
+            {
+              "text": "sharp",
+              "meaning": "鋭い"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "equally と合うのは「二人に公平」という意味の fair です。",
+          "alternatives": [
+            {
+              "answer": "just",
+              "explanation": "just は道徳的・法的な正しさを表す、やや硬い語です。"
+            },
+            {
+              "answer": "right",
+              "explanation": "right は「正しい」という判断を表し、公平さへの焦点は弱くなります。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "「部長は全従業員に対して公平だった」という意味で、fair を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "The manager was fair of all workers.",
+              "meaning": "of が誤り"
+            },
+            {
+              "text": "The manager was fair at all workers.",
+              "meaning": "at が誤り"
+            },
+            {
+              "text": "The manager treated all workers fairfully.",
+              "meaning": "誤り：fairfully ではなく副詞 fairly を使う。"
+            },
+            {
+              "text": "The manager was fair to all workers.",
+              "meaning": "部長は全従業員に公平だった。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "was fair to all workers で「全従業員に公平だった」。fair with someone も文脈によって自然な表現ですが、この選択肢にはありません。fairfully は標準的な副詞ではありません。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "兄弟でお菓子を分ける場面: Please divide the cake equally so that it is ___ for both of you.",
+        "answers": [
+          "fair"
+        ],
+        "explanation": "equally と合うのは「二人に公平」という意味の fair です。",
+        "alternatives": [
+          {
+            "answer": "just",
+            "explanation": "just は道徳的・法的な正しさを表す、やや硬い語です。"
+          },
+          {
+            "answer": "right",
+            "explanation": "right は「正しい」という判断を表し、公平さへの焦点は弱くなります。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "fairを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The teacher tried to be fair to every student in the class.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-fair-usage",
+          "type": "usage",
+          "prompt": "「部長は全従業員に対して公平だった」という意味で、fair を正しく使った文を選びなさい。",
+          "choices": [
+            "The manager was fair of all workers.",
+            "The manager was fair at all workers.",
+            "The manager treated all workers fairfully.",
+            "The manager was fair to all workers."
+          ],
+          "correctIndex": 3,
+          "explanation": "was fair to all workers で「全従業員に公平だった」。fair with someone も文脈によって自然な表現ですが、この選択肢にはありません。fairfully は標準的な副詞ではありません。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "society",
+          "education",
+          "work"
         ],
         "gradeEstimate": "3級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."

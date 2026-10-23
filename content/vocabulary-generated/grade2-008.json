@@ -1759,6 +1759,200 @@
       }
     },
     {
+      "id": "vocab-paucity",
+      "word": "paucity",
+      "level": "2級",
+      "ipa": "/ˈpɔːsəti/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "A very small amount of something; a shortage.",
+      "meaning": "不足、少なさ",
+      "usageTip": "a paucity of + 名詞 の形で使う、やや硬い語。日常では lack や shortage が普通。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "研究",
+          "text": "The study suffered from a paucity of reliable data.",
+          "translation": "その研究は信頼できるデータの少なさに悩まされた。"
+        },
+        {
+          "id": "example-2",
+          "context": "地域",
+          "text": "There is a paucity of public transport in the village.",
+          "translation": "その村には公共交通機関が非常に少ない。"
+        },
+        {
+          "id": "example-3",
+          "context": "議論",
+          "text": "Critics noted a paucity of evidence for the claim.",
+          "translation": "批評家はその主張の根拠の乏しさを指摘した。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "paucity",
+          "choices": [
+            {
+              "text": "過剰",
+              "meaning": "too much"
+            },
+            {
+              "text": "不足、少なさ",
+              "meaning": "a lack"
+            },
+            {
+              "text": "騒音",
+              "meaning": "noise"
+            },
+            {
+              "text": "歴史",
+              "meaning": "history"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "paucity は量が非常に少ないこと。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "不足、少なさ",
+          "choices": [
+            {
+              "text": "surplus",
+              "meaning": "余剰"
+            },
+            {
+              "text": "variety",
+              "meaning": "多様性"
+            },
+            {
+              "text": "majority",
+              "meaning": "大多数"
+            },
+            {
+              "text": "paucity",
+              "meaning": "不足"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "不足・少なさは paucity。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "研究で証拠が足りなかった場面です。 The report was weak because of a ___ of evidence.",
+          "choices": [
+            {
+              "text": "paucity",
+              "meaning": "不足"
+            },
+            {
+              "text": "crowd",
+              "meaning": "群衆"
+            },
+            {
+              "text": "mixture",
+              "meaning": "混合"
+            },
+            {
+              "text": "habit",
+              "meaning": "習慣"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "a ___ of evidence で証拠の不足を表すのは paucity。",
+          "alternatives": [
+            {
+              "answer": "lack",
+              "explanation": "一般的な「欠如」。より日常的。"
+            },
+            {
+              "answer": "shortage",
+              "explanation": "物資などの不足。証拠にはやや不自然。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "paucity の使い方として正しい文を選びなさい。",
+          "choices": [
+            {
+              "text": "There is a paucity for jobs here.",
+              "meaning": "ここには仕事のための不足がある。"
+            },
+            {
+              "text": "A paucity jobs exists here.",
+              "meaning": "少なさ仕事がここにある。"
+            },
+            {
+              "text": "There is a paucity of jobs here.",
+              "meaning": "ここには仕事が非常に少ない。"
+            },
+            {
+              "text": "The jobs are paucity here.",
+              "meaning": "仕事はここで少なさだ。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "paucity は a paucity of + 名詞 の形で使う。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "研究で証拠が足りなかった場面です。 The report was weak because of a ___ of evidence.",
+        "answers": [
+          "paucity"
+        ],
+        "explanation": "a ___ of evidence で証拠の不足を表すのは paucity。",
+        "alternatives": [
+          {
+            "answer": "lack",
+            "explanation": "一般的な「欠如」。より日常的。"
+          },
+          {
+            "answer": "shortage",
+            "explanation": "物資などの不足。証拠にはやや不自然。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "paucityを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The study suffered from a paucity of reliable data.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-paucity-usage",
+          "type": "usage",
+          "prompt": "paucity の使い方として正しい文を選びなさい。",
+          "choices": [
+            "There is a paucity for jobs here.",
+            "A paucity jobs exists here.",
+            "There is a paucity of jobs here.",
+            "The jobs are paucity here."
+          ],
+          "correctIndex": 2,
+          "explanation": "paucity は a paucity of + 名詞 の形で使う。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "logic-reasoning",
+          "society"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-aggregate",
       "word": "aggregate",
       "level": "2級",
@@ -5621,6 +5815,192 @@
       }
     },
     {
+      "id": "vocab-bona",
+      "word": "bona",
+      "level": "2級",
+      "ipa": "ˈbəʊnə",
+      "ipaLabel": "英音",
+      "partOfSpeech": "形容詞",
+      "definition": "Genuine or in good faith; found only in the fixed Latin phrases bona fide and bona fides, not used alone.",
+      "meaning": "正真正銘の；善意の(bona fideの一部)",
+      "usageTip": "bona は単独では使わず、bona fide(本物の・善意の)の形で名詞の前に置く。bona fides は「信頼性・資格」を表す別の名詞表現。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "契約",
+          "text": "The company made a bona fide offer for the old warehouse.",
+          "translation": "その会社は古い倉庫に対して真正な申し出をした。"
+        },
+        {
+          "id": "example-2",
+          "context": "会員制施設",
+          "text": "Only bona fide members may enter the private lounge upstairs.",
+          "translation": "本物の会員だけが上階の専用ラウンジに入れる。"
+        },
+        {
+          "id": "example-3",
+          "context": "法律",
+          "text": "She was a bona fide buyer who knew nothing about the dispute.",
+          "translation": "彼女は争いを何も知らない善意の買主だった。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "bona (bona fide の bona)",
+          "choices": [
+            {
+              "text": "偽造の",
+              "meaning": "にせものの"
+            },
+            {
+              "text": "正真正銘の；善意の",
+              "meaning": "本物の、誠実な"
+            },
+            {
+              "text": "退屈な",
+              "meaning": "つまらない"
+            },
+            {
+              "text": "危険な",
+              "meaning": "害のある"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "bona fide の bona は「本物の・善意の」という意味を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "正真正銘の；善意の(___ fide という固定表現の前半)",
+          "choices": [
+            {
+              "text": "banal",
+              "meaning": "陳腐な"
+            },
+            {
+              "text": "bona",
+              "meaning": "正真正銘の"
+            },
+            {
+              "text": "biome",
+              "meaning": "生物群系"
+            },
+            {
+              "text": "belie",
+              "meaning": "偽りを示す"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "bona fide の前半が bona で、本物の・善意のという意味になる。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "契約の場面。The seller asked for proof that he was a ___ fide buyer, not a trickster.",
+          "choices": [
+            {
+              "text": "bona",
+              "meaning": "正真正銘の"
+            },
+            {
+              "text": "banal",
+              "meaning": "陳腐な"
+            },
+            {
+              "text": "azure",
+              "meaning": "紺碧の"
+            },
+            {
+              "text": "brisk",
+              "meaning": "きびきびした"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "fide と組んで bona fide(本物の)という固定表現になる。他の語は fide と結びつかない。",
+          "alternatives": [
+            {
+              "answer": "genuine",
+              "explanation": "fide を除いた平易な言い換えで、本物の買主という意味になる。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "bona を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "The bona was very expensive.",
+              "meaning": "bona を単独の名詞にしている"
+            },
+            {
+              "text": "She bona the contract yesterday.",
+              "meaning": "bona を動詞にしている"
+            },
+            {
+              "text": "It was a bona day for us.",
+              "meaning": "fide なしで形容詞にしている"
+            },
+            {
+              "text": "He is a bona fide expert in tax law.",
+              "meaning": "彼は税法の本物の専門家だ"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "bona は bona fide の形で名詞の前に置いて使う。他は単独で名詞・動詞・形容詞として使っている。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "契約の場面。The seller asked for proof that he was a ___ fide buyer, not a trickster.",
+        "answers": [
+          "bona"
+        ],
+        "explanation": "fide と組んで bona fide(本物の)という固定表現になる。他の語は fide と結びつかない。",
+        "alternatives": [
+          {
+            "answer": "genuine",
+            "explanation": "fide を除いた平易な言い換えで、本物の買主という意味になる。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "bonaを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The company made a bona fide offer for the old warehouse.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-bona-usage",
+          "type": "usage",
+          "prompt": "bona を正しく使った文を選んでください。",
+          "choices": [
+            "The bona was very expensive.",
+            "She bona the contract yesterday.",
+            "It was a bona day for us.",
+            "He is a bona fide expert in tax law."
+          ],
+          "correctIndex": 3,
+          "explanation": "bona は bona fide の形で名詞の前に置いて使う。他は単独で名詞・動詞・形容詞として使っている。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "C1",
+        "domains": [
+          "law",
+          "business"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-cacophony",
       "word": "cacophony",
       "level": "2級",
@@ -7789,6 +8169,192 @@
       }
     },
     {
+      "id": "vocab-biopsy",
+      "word": "biopsy",
+      "level": "2級",
+      "ipa": "baɪˈɒpsi",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "A medical test in which a small piece of tissue is removed and examined.",
+      "meaning": "生検",
+      "usageTip": "have / undergo / perform a biopsy の形でよく使う。皮膚、肝臓、乳房など部位を示すときは a liver biopsy のように前に置く。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "診察",
+          "text": "The doctor recommended a biopsy to check the strange lump.",
+          "translation": "医師は、その奇妙なしこりを調べるために生検を勧めた。"
+        },
+        {
+          "id": "example-2",
+          "context": "検査結果",
+          "text": "The biopsy showed that the growth was not cancerous.",
+          "translation": "生検の結果、その腫瘍はがんではないとわかった。"
+        },
+        {
+          "id": "example-3",
+          "context": "研究",
+          "text": "Researchers studied tissue from a liver biopsy under a microscope.",
+          "translation": "研究者たちは肝生検で得た組織を顕微鏡で調べた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "biopsy",
+          "choices": [
+            {
+              "text": "予防接種",
+              "meaning": "ワクチンを打つこと"
+            },
+            {
+              "text": "生検",
+              "meaning": "組織を採って調べる検査"
+            },
+            {
+              "text": "術後の療養",
+              "meaning": "手術後の回復"
+            },
+            {
+              "text": "血圧測定",
+              "meaning": "血圧を測ること"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "biopsy は組織の一部を採取して調べる検査である。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "生検",
+          "choices": [
+            {
+              "text": "allergy",
+              "meaning": "アレルギー"
+            },
+            {
+              "text": "therapy",
+              "meaning": "治療"
+            },
+            {
+              "text": "surgery",
+              "meaning": "手術"
+            },
+            {
+              "text": "biopsy",
+              "meaning": "生検"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "組織を採取して調べる検査は biopsy である。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "医師が検査の説明をしている場面。The doctor took a small piece of tissue for a ___ to check for disease.",
+          "choices": [
+            {
+              "text": "holiday",
+              "meaning": "休日"
+            },
+            {
+              "text": "biopsy",
+              "meaning": "生検"
+            },
+            {
+              "text": "receipt",
+              "meaning": "領収書"
+            },
+            {
+              "text": "recipe",
+              "meaning": "レシピ"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "小さな組織を採って病気を調べる検査なので biopsy が合う。",
+          "alternatives": [
+            {
+              "answer": "tissue test",
+              "explanation": "意味は通じるが、医療の標準的な用語は biopsy である。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "biopsy を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "She had a biopsy on her skin last week.",
+              "meaning": "先週、皮膚の生検を受けた。"
+            },
+            {
+              "text": "He biopsied to the hospital yesterday.",
+              "meaning": "動詞と前置詞の誤用"
+            },
+            {
+              "text": "The doctor did biopsy for her blood pressure.",
+              "meaning": "血圧には使えない"
+            },
+            {
+              "text": "She made a biopsy at the clinic.",
+              "meaning": "make は不自然な組み合わせ"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "have a biopsy は自然な表現。make は collocation として合わず、血圧の測定には biopsy を使わない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "医師が検査の説明をしている場面。The doctor took a small piece of tissue for a ___ to check for disease.",
+        "answers": [
+          "biopsy"
+        ],
+        "explanation": "小さな組織を採って病気を調べる検査なので biopsy が合う。",
+        "alternatives": [
+          {
+            "answer": "tissue test",
+            "explanation": "意味は通じるが、医療の標準的な用語は biopsy である。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "biopsyを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The doctor recommended a biopsy to check the strange lump.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-biopsy-usage",
+          "type": "usage",
+          "prompt": "biopsy を正しく使った文を選んでください。",
+          "choices": [
+            "She had a biopsy on her skin last week.",
+            "He biopsied to the hospital yesterday.",
+            "The doctor did biopsy for her blood pressure.",
+            "She made a biopsy at the clinic."
+          ],
+          "correctIndex": 0,
+          "explanation": "have a biopsy は自然な表現。make は collocation として合わず、血圧の測定には biopsy を使わない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "medical",
+          "science"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-bolster",
       "word": "bolster",
       "level": "2級",
@@ -8188,6 +8754,192 @@
         "domains": [
           "media",
           "law"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-bowel",
+      "word": "bowel",
+      "level": "2級",
+      "ipa": "ˈbaʊəl",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "The long tube in the body that carries digested food and waste; often used in the plural or in compound phrases.",
+      "meaning": "腸",
+      "usageTip": "bowel movement(排便)、bowel cancer(大腸がん)、bowel habits(排便習慣)など複合表現で使うのが自然。単独では the bowels の形も多い。日常会話では intestine もよく使う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "診察",
+          "text": "The doctor asked whether he had noticed any change in his bowel habits.",
+          "translation": "医師は、排便習慣に何か変化がないか彼に尋ねた。"
+        },
+        {
+          "id": "example-2",
+          "context": "健康",
+          "text": "Eating more fiber can help keep your bowel movements regular and comfortable.",
+          "translation": "食物繊維を多くとると、排便が規則的で快適に保たれやすい。"
+        },
+        {
+          "id": "example-3",
+          "context": "検診",
+          "text": "Regular screening can help doctors detect bowel cancer at an early stage.",
+          "translation": "定期的な検診は、医師が大腸がんを早期に発見する助けになる。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "bowel",
+          "choices": [
+            {
+              "text": "肺",
+              "meaning": "呼吸をするための臓器"
+            },
+            {
+              "text": "腎臓",
+              "meaning": "尿をつくる臓器"
+            },
+            {
+              "text": "骨",
+              "meaning": "体を支える硬い組織"
+            },
+            {
+              "text": "腸",
+              "meaning": "消化管の一部"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "bowel は消化管のうち腸を表す語である。他の選択肢は別の器官や組織を指す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "腸",
+          "choices": [
+            {
+              "text": "muscle",
+              "meaning": "筋肉"
+            },
+            {
+              "text": "bowel",
+              "meaning": "腸"
+            },
+            {
+              "text": "throat",
+              "meaning": "のど"
+            },
+            {
+              "text": "elbow",
+              "meaning": "ひじ"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "消化管の腸を指す語は bowel である。他は体の別の部位を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "医師が腸の症状について聞いている場面。The patient said he had pain and problems with his ___ movements.",
+          "choices": [
+            {
+              "text": "brain",
+              "meaning": "脳の"
+            },
+            {
+              "text": "bone",
+              "meaning": "骨の"
+            },
+            {
+              "text": "bowel",
+              "meaning": "腸の"
+            },
+            {
+              "text": "breath",
+              "meaning": "息の"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "bowel movement は排便を表す決まった表現で、腸の症状という場面に合う。",
+          "alternatives": [
+            {
+              "answer": "intestinal",
+              "explanation": "「腸の」という意味だが、bowel movement という決まり文句では bowel が自然。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "bowel を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "The doctor made bowel movements yesterday.",
+              "meaning": "医師は昨日排便をつくった。(動詞の組み合わせが不自然)"
+            },
+            {
+              "text": "She felt a bowel movement of the wind.",
+              "meaning": "彼女は風の排便を感じた。(意味が不自然)"
+            },
+            {
+              "text": "He had a bowel movement an hour ago.",
+              "meaning": "彼は1時間前に排便した。"
+            },
+            {
+              "text": "He did bowel movement after the lunch yesterday.",
+              "meaning": "彼は昨日昼食後に排便をした。(動詞と冠詞が不自然)"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "have a bowel movement が排便を表す自然な表現。他は動詞の組み合わせ、冠詞の欠落、意味の使い方が不自然である。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "医師が腸の症状について聞いている場面。The patient said he had pain and problems with his ___ movements.",
+        "answers": [
+          "bowel"
+        ],
+        "explanation": "bowel movement は排便を表す決まった表現で、腸の症状という場面に合う。",
+        "alternatives": [
+          {
+            "answer": "intestinal",
+            "explanation": "「腸の」という意味だが、bowel movement という決まり文句では bowel が自然。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "bowelを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The doctor asked whether he had noticed any change in his bowel habits.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-bowel-usage",
+          "type": "usage",
+          "prompt": "bowel を正しく使った文を選んでください。",
+          "choices": [
+            "The doctor made bowel movements yesterday.",
+            "She felt a bowel movement of the wind.",
+            "He had a bowel movement an hour ago.",
+            "He did bowel movement after the lunch yesterday."
+          ],
+          "correctIndex": 2,
+          "explanation": "have a bowel movement が排便を表す自然な表現。他は動詞の組み合わせ、冠詞の欠落、意味の使い方が不自然である。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "medical",
+          "health"
         ],
         "gradeEstimate": "2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -9560,6 +10312,225 @@
       }
     },
     {
+      "id": "vocab-allure",
+      "word": "allure",
+      "level": "2級",
+      "ipa": "əˈlʊr",
+      "ipaLabel": "米音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "allure"
+        ],
+        "past": [
+          "allured"
+        ],
+        "pastParticiple": [
+          "allured"
+        ],
+        "presentParticiple": [
+          "alluring"
+        ],
+        "thirdPersonSingular": [
+          "allures"
+        ]
+      },
+      "definition": "To attract someone strongly by offering something pleasant, exciting or desirable.",
+      "meaning": "魅力で引き付ける",
+      "usageTip": "他動詞で allure + 人 の形。受け身の be allured by ~ もよく使う。やや文語的で、日常では attract や tempt が一般的。名詞の allure(魅力)も重要。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "旅行広告",
+          "text": "Warm beaches and cheap flights allure many visitors every winter.",
+          "translation": "暖かい浜辺と安い航空券が、毎冬多くの旅行者を引き付ける。"
+        },
+        {
+          "id": "example-2",
+          "context": "進路の話",
+          "text": "She was allured by the chance to work abroad.",
+          "translation": "彼女は海外で働ける機会に心を引かれた。"
+        },
+        {
+          "id": "example-3",
+          "context": "店の戦略",
+          "text": "The shop uses soft lighting to allure passing customers inside.",
+          "translation": "その店は柔らかな照明で通りがかりの客を店内に誘う。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "allure",
+          "choices": [
+            {
+              "text": "強く反対する",
+              "meaning": "異議を唱える"
+            },
+            {
+              "text": "静かに避ける",
+              "meaning": "遠ざかる"
+            },
+            {
+              "text": "魅力で引き付ける",
+              "meaning": "人を惹きつける"
+            },
+            {
+              "text": "正確に測る",
+              "meaning": "計測する"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "allure は魅力や楽しさで人を引き寄せることを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "魅力で引き付ける",
+          "choices": [
+            {
+              "text": "alter",
+              "meaning": "変える"
+            },
+            {
+              "text": "avoid",
+              "meaning": "避ける"
+            },
+            {
+              "text": "alarm",
+              "meaning": "警告する"
+            },
+            {
+              "text": "allure",
+              "meaning": "魅力で引き付ける"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "魅力で人を引き付ける意味の動詞は allure である。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "広告の説明。The bright poster was designed to ___ young travelers with photos of quiet islands.",
+          "choices": [
+            {
+              "text": "discourage",
+              "meaning": "やる気を失わせる"
+            },
+            {
+              "text": "allure",
+              "meaning": "魅力で引き付ける"
+            },
+            {
+              "text": "ignore",
+              "meaning": "無視する"
+            },
+            {
+              "text": "punish",
+              "meaning": "罰する"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "ポスターが写真で旅行者を引き付ける文脈なので allure が合う。",
+          "alternatives": [
+            {
+              "answer": "attract",
+              "explanation": "最も一般的で中立的な表現。"
+            },
+            {
+              "answer": "entice",
+              "explanation": "褒美などで誘う意味合いがやや強い。"
+            },
+            {
+              "answer": "tempt",
+              "explanation": "欲望を刺激して誘う感じがある。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "動詞 allure を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "The offer allured to him.",
+              "meaning": "不要な to が付いている"
+            },
+            {
+              "text": "The offer allured at him.",
+              "meaning": "不適切な at が付いている"
+            },
+            {
+              "text": "The offer allured many young workers.",
+              "meaning": "その申し出は多くの若い労働者を引き付けた。"
+            },
+            {
+              "text": "The offer allured for him.",
+              "meaning": "不適切な for が付いている"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "allure は他動詞なので、前置詞なしで人を直接目的語に取る。他は不要な前置詞が付いている。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "広告の説明。The bright poster was designed to ___ young travelers with photos of quiet islands.",
+        "answers": [
+          "allure"
+        ],
+        "explanation": "ポスターが写真で旅行者を引き付ける文脈なので allure が合う。",
+        "alternatives": [
+          {
+            "answer": "attract",
+            "explanation": "最も一般的で中立的な表現。"
+          },
+          {
+            "answer": "entice",
+            "explanation": "褒美などで誘う意味合いがやや強い。"
+          },
+          {
+            "answer": "tempt",
+            "explanation": "欲望を刺激して誘う感じがある。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "allureを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Warm beaches and cheap flights allure many visitors every winter.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-allure-usage",
+          "type": "usage",
+          "prompt": "動詞 allure を正しく使った文を選んでください。",
+          "choices": [
+            "The offer allured to him.",
+            "The offer allured at him.",
+            "The offer allured many young workers.",
+            "The offer allured for him."
+          ],
+          "correctIndex": 2,
+          "explanation": "allure は他動詞なので、前置詞なしで人を直接目的語に取る。他は不要な前置詞が付いている。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "arts-culture",
+          "communication"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-amnesty",
       "word": "amnesty",
       "level": "2級",
@@ -9748,6 +10719,208 @@
         "domains": [
           "law",
           "politics"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-analogue",
+      "word": "analogue",
+      "level": "2級",
+      "ipa": "ˈænəlɔːɡ",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "Something that is similar to another thing and has a comparable role or function.",
+      "meaning": "類似物、相当するもの",
+      "usageTip": "名詞では analog とも綴る(米では analog が一般的)。the analogue of A / an analogue to A の形が多い。「アナログの」という形容詞の用法とは区別する。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "科学の説明",
+          "text": "Scientists study the mouse as a close analogue of human disease.",
+          "translation": "科学者たちはマウスをヒトの病気に近い類似モデルとして研究する。"
+        },
+        {
+          "id": "example-2",
+          "context": "技術の比較",
+          "text": "The tablet is the digital analogue of a paper notebook.",
+          "translation": "そのタブレットは紙のノートに相当するデジタル版だ。"
+        },
+        {
+          "id": "example-3",
+          "context": "歴史の議論",
+          "text": "Historians looked for an earlier analogue to the modern festival.",
+          "translation": "歴史家たちは現代の祭りに相当する昔の例を探した。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "analogue",
+          "choices": [
+            {
+              "text": "正反対の人",
+              "meaning": "逆の立場の人"
+            },
+            {
+              "text": "小さな誤り",
+              "meaning": "軽い間違い"
+            },
+            {
+              "text": "類似物",
+              "meaning": "似た働きを持つもの"
+            },
+            {
+              "text": "長い説明",
+              "meaning": "詳しい解説"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "名詞 analogue は、別のものに似て同様の役割を持つものを指す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "類似物、相当するもの",
+          "choices": [
+            {
+              "text": "analogue",
+              "meaning": "類似物"
+            },
+            {
+              "text": "analysis",
+              "meaning": "分析"
+            },
+            {
+              "text": "anecdote",
+              "meaning": "逸話"
+            },
+            {
+              "text": "antique",
+              "meaning": "骨董品"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "似た働きを持つ相当物は analogue。analysis は分析を意味する。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "技術の比較。A messaging app is the modern ___ of the handwritten letter, as both carry personal news.",
+          "choices": [
+            {
+              "text": "opponent",
+              "meaning": "対戦相手"
+            },
+            {
+              "text": "analogue",
+              "meaning": "相当するもの"
+            },
+            {
+              "text": "shortage",
+              "meaning": "不足"
+            },
+            {
+              "text": "rumor",
+              "meaning": "噂"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "手紙に相当する現代のものという意味なので analogue が合う。of と共に使う。",
+          "alternatives": [
+            {
+              "answer": "equivalent",
+              "explanation": "同等の価値や役割を持つものを表す一般的な語。"
+            },
+            {
+              "answer": "counterpart",
+              "explanation": "別の分野で対応する存在を指す。"
+            },
+            {
+              "answer": "descendant",
+              "explanation": "発展して生まれた後継のものというニュアンス。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "名詞 analogue を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "Email is the digital analogue with a letter.",
+              "meaning": "前置詞が不適切"
+            },
+            {
+              "text": "Email analogues a letter very quickly.",
+              "meaning": "動詞として誤用"
+            },
+            {
+              "text": "Email is the digital analogue of a letter.",
+              "meaning": "メールは手紙に相当するデジタル版だ。"
+            },
+            {
+              "text": "Email is analogue at a letter.",
+              "meaning": "前置詞と品詞が不適切"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "the analogue of A で「Aに相当するもの」を表す。他は前置詞や品詞の使い方が誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "技術の比較。A messaging app is the modern ___ of the handwritten letter, as both carry personal news.",
+        "answers": [
+          "analogue"
+        ],
+        "explanation": "手紙に相当する現代のものという意味なので analogue が合う。of と共に使う。",
+        "alternatives": [
+          {
+            "answer": "equivalent",
+            "explanation": "同等の価値や役割を持つものを表す一般的な語。"
+          },
+          {
+            "answer": "counterpart",
+            "explanation": "別の分野で対応する存在を指す。"
+          },
+          {
+            "answer": "descendant",
+            "explanation": "発展して生まれた後継のものというニュアンス。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "analogueを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Scientists study the mouse as a close analogue of human disease.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-analogue-usage",
+          "type": "usage",
+          "prompt": "名詞 analogue を正しく使った文を選んでください。",
+          "choices": [
+            "Email is the digital analogue with a letter.",
+            "Email analogues a letter very quickly.",
+            "Email is the digital analogue of a letter.",
+            "Email is analogue at a letter."
+          ],
+          "correctIndex": 2,
+          "explanation": "the analogue of A で「Aに相当するもの」を表す。他は前置詞や品詞の使い方が誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "technology",
+          "science"
         ],
         "gradeEstimate": "2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -10370,6 +11543,225 @@
       }
     },
     {
+      "id": "vocab-annul",
+      "word": "annul",
+      "level": "2級",
+      "ipa": "əˈnʌl",
+      "ipaLabel": "米音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "annul"
+        ],
+        "past": [
+          "annulled"
+        ],
+        "pastParticiple": [
+          "annulled"
+        ],
+        "presentParticiple": [
+          "annulling"
+        ],
+        "thirdPersonSingular": [
+          "annuls"
+        ]
+      },
+      "definition": "to officially declare that something, such as a marriage or contract, is no longer valid",
+      "meaning": "無効にする、取り消す",
+      "usageTip": "法的・公式な場面で使う硬い語。annul a marriage/contract/result の形が多い。過去形・過去分詞は annulled、現在分詞は annulling と l を重ねる。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "法律",
+          "text": "The court decided to annul the contract because of false information.",
+          "translation": "裁判所は虚偽の情報があったため契約を無効にすると決めた。"
+        },
+        {
+          "id": "example-2",
+          "context": "選挙",
+          "text": "Officials may annul the result if serious errors are proven.",
+          "translation": "重大な誤りが証明されれば、当局は結果を無効にするかもしれない。"
+        },
+        {
+          "id": "example-3",
+          "context": "家族",
+          "text": "They asked a judge to annul their marriage after learning the truth.",
+          "translation": "真実を知った後、彼らは結婚の無効を裁判官に求めた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "annul",
+          "choices": [
+            {
+              "text": "強化する",
+              "meaning": "strengthen"
+            },
+            {
+              "text": "無効にする",
+              "meaning": "to make officially invalid"
+            },
+            {
+              "text": "署名する",
+              "meaning": "sign"
+            },
+            {
+              "text": "更新する",
+              "meaning": "renew"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "annul は契約や結婚などを公式に無効にすることを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "無効にする、取り消す",
+          "choices": [
+            {
+              "text": "annex",
+              "meaning": "併合する"
+            },
+            {
+              "text": "adopt",
+              "meaning": "採用する"
+            },
+            {
+              "text": "admire",
+              "meaning": "称賛する"
+            },
+            {
+              "text": "annul",
+              "meaning": "無効にする"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "公式に取り消す意味の動詞は annul。annex は綴りが似ているが併合する意味。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "裁判の場面：The judge may ___ the agreement if it was signed under pressure.",
+          "choices": [
+            {
+              "text": "praise",
+              "meaning": "称賛する"
+            },
+            {
+              "text": "copy",
+              "meaning": "複製する"
+            },
+            {
+              "text": "annul",
+              "meaning": "無効にする"
+            },
+            {
+              "text": "repeat",
+              "meaning": "繰り返す"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "圧力下で結ばれた合意を裁判官が無効にするという文脈に合う。",
+          "alternatives": [
+            {
+              "answer": "cancel",
+              "explanation": "より一般的で、法的な無効の強さは弱い。"
+            },
+            {
+              "answer": "void",
+              "explanation": "法律文書で無効にする意味を持つ。"
+            },
+            {
+              "answer": "overturn",
+              "explanation": "判決などをくつがえす場合に自然。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "annul を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "The council annulled to the decision.",
+              "meaning": "前置詞 to が不要"
+            },
+            {
+              "text": "The council annulled about the decision.",
+              "meaning": "前置詞 about が不要"
+            },
+            {
+              "text": "The council annulled the decision.",
+              "meaning": "議会はその決定を無効にした。"
+            },
+            {
+              "text": "The council annulled for the decision.",
+              "meaning": "前置詞 for が不要"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "annul は他動詞で、前置詞なしに目的語を直接取る。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "裁判の場面：The judge may ___ the agreement if it was signed under pressure.",
+        "answers": [
+          "annul"
+        ],
+        "explanation": "圧力下で結ばれた合意を裁判官が無効にするという文脈に合う。",
+        "alternatives": [
+          {
+            "answer": "cancel",
+            "explanation": "より一般的で、法的な無効の強さは弱い。"
+          },
+          {
+            "answer": "void",
+            "explanation": "法律文書で無効にする意味を持つ。"
+          },
+          {
+            "answer": "overturn",
+            "explanation": "判決などをくつがえす場合に自然。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "annulを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The court decided to annul the contract because of false information.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-annul-usage",
+          "type": "usage",
+          "prompt": "annul を正しく使った文を選びなさい。",
+          "choices": [
+            "The council annulled to the decision.",
+            "The council annulled about the decision.",
+            "The council annulled the decision.",
+            "The council annulled for the decision."
+          ],
+          "correctIndex": 2,
+          "explanation": "annul は他動詞で、前置詞なしに目的語を直接取る。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "law",
+          "business"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-anomaly",
       "word": "anomaly",
       "level": "2級",
@@ -10758,6 +12150,199 @@
       }
     },
     {
+      "id": "vocab-anteater",
+      "word": "anteater",
+      "level": "2級",
+      "ipa": "ˈæntˌiːtə",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "an animal with a long nose and sticky tongue that eats ants and termites",
+      "meaning": "アリクイという動物",
+      "usageTip": "可算名詞。a giant anteater のように種類を示す語と使うことが多い。動物園や自然番組の話題で出る。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "動物園",
+          "text": "The anteater pushed its long nose into the dry log.",
+          "translation": "アリクイは長い鼻を乾いた丸太に突っ込んだ。"
+        },
+        {
+          "id": "example-2",
+          "context": "自然番組",
+          "text": "A giant anteater can eat thousands of insects in one day.",
+          "translation": "オオアリクイは一日に何千匹もの昆虫を食べることができる。"
+        },
+        {
+          "id": "example-3",
+          "context": "学校の発表",
+          "text": "Our group made a poster about an anteater and its habitat.",
+          "translation": "私たちのグループはアリクイとその生息地のポスターを作った。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "anteater",
+          "choices": [
+            {
+              "text": "アリの巣",
+              "meaning": "anthill"
+            },
+            {
+              "text": "アリクイという動物",
+              "meaning": "anteater"
+            },
+            {
+              "text": "胃薬",
+              "meaning": "antacid"
+            },
+            {
+              "text": "前にある",
+              "meaning": "anterior"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "anteater は ant を eat する動物、つまりアリクイ。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "長い鼻と舌でアリを食べる動物",
+          "choices": [
+            {
+              "text": "antacid",
+              "meaning": "制酸薬"
+            },
+            {
+              "text": "anthill",
+              "meaning": "アリの巣"
+            },
+            {
+              "text": "antelope",
+              "meaning": "レイヨウ"
+            },
+            {
+              "text": "anteater",
+              "meaning": "アリクイ"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "アリを食べる動物は anteater。antelope は草食の別の動物。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "動物園の場面:The ___ used its sticky tongue to catch ants.",
+          "choices": [
+            {
+              "text": "anteater",
+              "meaning": "アリクイ"
+            },
+            {
+              "text": "antacid",
+              "meaning": "制酸薬"
+            },
+            {
+              "text": "anthill",
+              "meaning": "アリの巣"
+            },
+            {
+              "text": "anterior",
+              "meaning": "前方の"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "ねばつく舌でアリを捕まえる主語は動物の anteater が自然。",
+          "alternatives": [
+            {
+              "answer": "giant anteater",
+              "explanation": "オオアリクイと種類を特定した具体的な言い方。"
+            },
+            {
+              "answer": "animal",
+              "explanation": "より一般的で種類までは示さない。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "anteater を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "She anteater every ant in the garden.",
+              "meaning": "動詞として誤用"
+            },
+            {
+              "text": "We saw an anteater walking slowly near the trees.",
+              "meaning": "木の近くをゆっくり歩くアリクイを見た。"
+            },
+            {
+              "text": "It was an very anteater animal.",
+              "meaning": "冠詞・品詞の誤り"
+            },
+            {
+              "text": "We saw two anteater walking near the trees.",
+              "meaning": "複数形 anteaters が必要"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "anteater は可算名詞で、an anteater のように冠詞を付けて使う。他は動詞扱いや冠詞・複数形の誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "動物園の場面:The ___ used its sticky tongue to catch ants.",
+        "answers": [
+          "anteater"
+        ],
+        "explanation": "ねばつく舌でアリを捕まえる主語は動物の anteater が自然。",
+        "alternatives": [
+          {
+            "answer": "giant anteater",
+            "explanation": "オオアリクイと種類を特定した具体的な言い方。"
+          },
+          {
+            "answer": "animal",
+            "explanation": "より一般的で種類までは示さない。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "anteaterを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The anteater pushed its long nose into the dry log.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-anteater-usage",
+          "type": "usage",
+          "prompt": "anteater を正しく使った文を選びなさい。",
+          "choices": [
+            "She anteater every ant in the garden.",
+            "We saw an anteater walking slowly near the trees.",
+            "It was an very anteater animal.",
+            "We saw two anteater walking near the trees."
+          ],
+          "correctIndex": 1,
+          "explanation": "anteater は可算名詞で、an anteater のように冠詞を付けて使う。他は動詞扱いや冠詞・複数形の誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "environment"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-antelope",
       "word": "antelope",
       "level": "2級",
@@ -10953,6 +12538,200 @@
         "cefrEstimate": "A2",
         "domains": [
           "environment"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-anterior",
+      "word": "anterior",
+      "level": "2級",
+      "ipa": "ænˈtɪəriə",
+      "ipaLabel": "英音",
+      "partOfSpeech": "形容詞",
+      "definition": "located at or near the front of a body or structure",
+      "meaning": "前にある、前方の",
+      "usageTip": "主に医学・解剖学の硬い語で、the anterior part of ... のように名詞を修飾する。反対は posterior。日常では front を使う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "解剖学",
+          "text": "The anterior part of the knee was swollen after the fall.",
+          "translation": "転んだ後、膝の前側が腫れた。"
+        },
+        {
+          "id": "example-2",
+          "context": "医療の説明",
+          "text": "The doctor pointed to the anterior wall of the heart.",
+          "translation": "医師は心臓の前壁を指し示した。"
+        },
+        {
+          "id": "example-3",
+          "context": "学習",
+          "text": "In this diagram, the anterior view shows the front of the body.",
+          "translation": "この図では、前面図が体の前側を示している。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "anterior",
+          "choices": [
+            {
+              "text": "後ろにある",
+              "meaning": "posterior"
+            },
+            {
+              "text": "とても小さい",
+              "meaning": "tiny"
+            },
+            {
+              "text": "前にある、前方の",
+              "meaning": "at the front"
+            },
+            {
+              "text": "アリに関する",
+              "meaning": "語形からの誤解"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "anterior は体や構造の前側にあることを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "体の前側にある、という意味の医学的な形容詞",
+          "choices": [
+            {
+              "text": "anterior",
+              "meaning": "前方の"
+            },
+            {
+              "text": "antelope",
+              "meaning": "レイヨウ"
+            },
+            {
+              "text": "antacid",
+              "meaning": "制酸薬"
+            },
+            {
+              "text": "anthill",
+              "meaning": "アリの巣"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "前側を表す形容詞は anterior。他は名詞。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "解剖図の説明場面:The doctor checked the ___ surface of the leg, not the back.",
+          "choices": [
+            {
+              "text": "antacid",
+              "meaning": "制酸薬"
+            },
+            {
+              "text": "anthill",
+              "meaning": "アリの巣"
+            },
+            {
+              "text": "anterior",
+              "meaning": "前方の"
+            },
+            {
+              "text": "anteater",
+              "meaning": "アリクイ"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "surface を修飾し、背面ではなく前面を表す形容詞が必要なので anterior が合う。",
+          "alternatives": [
+            {
+              "answer": "front",
+              "explanation": "日常的で自然な言い方。より硬くない。"
+            },
+            {
+              "answer": "frontal",
+              "explanation": "前面や前頭部に関して使われ、やや専門的。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "anterior を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "She anterior the door slowly.",
+              "meaning": "動詞として誤用"
+            },
+            {
+              "text": "It was a very anteriorly day.",
+              "meaning": "語形の誤り"
+            },
+            {
+              "text": "The anterior surface of the chest was examined first.",
+              "meaning": "胸の前面が最初に調べられた。"
+            },
+            {
+              "text": "The doctor examined the chest anterior.",
+              "meaning": "形容詞を名詞の後ろに置く誤り"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "anterior は形容詞で、the anterior surface のように名詞の前に置いて使う。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "解剖図の説明場面:The doctor checked the ___ surface of the leg, not the back.",
+        "answers": [
+          "anterior"
+        ],
+        "explanation": "surface を修飾し、背面ではなく前面を表す形容詞が必要なので anterior が合う。",
+        "alternatives": [
+          {
+            "answer": "front",
+            "explanation": "日常的で自然な言い方。より硬くない。"
+          },
+          {
+            "answer": "frontal",
+            "explanation": "前面や前頭部に関して使われ、やや専門的。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "anteriorを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The anterior part of the knee was swollen after the fall.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-anterior-usage",
+          "type": "usage",
+          "prompt": "anterior を正しく使った文を選びなさい。",
+          "choices": [
+            "She anterior the door slowly.",
+            "It was a very anteriorly day.",
+            "The anterior surface of the chest was examined first.",
+            "The doctor examined the chest anterior."
+          ],
+          "correctIndex": 2,
+          "explanation": "anterior は形容詞で、the anterior surface のように名詞の前に置いて使う。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "science",
+          "medical"
         ],
         "gradeEstimate": "2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -11340,6 +13119,217 @@
         "domains": [
           "health",
           "relationships"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-apprehend",
+      "word": "apprehend",
+      "level": "2級",
+      "ipa": "ˌæprɪˈhɛnd",
+      "ipaLabel": "米音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "apprehend"
+        ],
+        "past": [
+          "apprehended"
+        ],
+        "pastParticiple": [
+          "apprehended"
+        ],
+        "presentParticiple": [
+          "apprehending"
+        ],
+        "thirdPersonSingular": [
+          "apprehends"
+        ]
+      },
+      "definition": "to arrest someone for a crime, or to understand something fully",
+      "meaning": "逮捕する、理解する",
+      "usageTip": "警察が容疑者を逮捕する意味でよく使う。やや硬い語で、「理解する」の意味は文章語。他動詞で目的語を直接取る。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "ニュース",
+          "text": "Police managed to apprehend the suspect near the station last night.",
+          "translation": "警察は昨夜、駅の近くで容疑者を逮捕できた。"
+        },
+        {
+          "id": "example-2",
+          "context": "学習",
+          "text": "It took him a while to apprehend the full meaning of the poem.",
+          "translation": "彼がその詩の本当の意味を理解するには時間がかかった。"
+        },
+        {
+          "id": "example-3",
+          "context": "警備",
+          "text": "Guards quickly apprehended the man trying to climb the fence.",
+          "translation": "警備員はフェンスを登ろうとした男をすぐに取り押さえた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "apprehend（警察が容疑者に対して行う意味で）",
+          "choices": [
+            {
+              "text": "釈放する",
+              "meaning": "to release"
+            },
+            {
+              "text": "逮捕する",
+              "meaning": "to arrest"
+            },
+            {
+              "text": "賞賛する",
+              "meaning": "to praise"
+            },
+            {
+              "text": "案内する",
+              "meaning": "to guide"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "警察と容疑者の文脈の apprehend は「逮捕する」。釈放はその反対。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "逮捕する",
+          "choices": [
+            {
+              "text": "approve",
+              "meaning": "承認する"
+            },
+            {
+              "text": "appoint",
+              "meaning": "任命する"
+            },
+            {
+              "text": "apologize",
+              "meaning": "謝る"
+            },
+            {
+              "text": "apprehend",
+              "meaning": "逮捕する"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "逮捕するは apprehend。他は綴りが似ているが意味が違う。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "警察の場面：Officers worked all night to ___ the thief who escaped.",
+          "choices": [
+            {
+              "text": "decorate",
+              "meaning": "飾る"
+            },
+            {
+              "text": "borrow",
+              "meaning": "借りる"
+            },
+            {
+              "text": "apprehend",
+              "meaning": "逮捕する"
+            },
+            {
+              "text": "invite",
+              "meaning": "招待する"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "逃げた泥棒を捕まえる文脈なので apprehend が合う。",
+          "alternatives": [
+            {
+              "answer": "catch",
+              "explanation": "より口語的で一般的。"
+            },
+            {
+              "answer": "arrest",
+              "explanation": "法的な逮捕を直接表す。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "「逮捕する」の意味で apprehend を正しく使った文は？",
+          "choices": [
+            {
+              "text": "The police apprehended to the suspect.",
+              "meaning": "不要な to"
+            },
+            {
+              "text": "The police apprehended at the suspect.",
+              "meaning": "不要な at"
+            },
+            {
+              "text": "The police apprehended about the suspect.",
+              "meaning": "不要な about"
+            },
+            {
+              "text": "The police apprehended the suspect.",
+              "meaning": "警察は容疑者を逮捕した。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "apprehend は他動詞で、前置詞なしに目的語を取る。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "警察の場面：Officers worked all night to ___ the thief who escaped.",
+        "answers": [
+          "apprehend"
+        ],
+        "explanation": "逃げた泥棒を捕まえる文脈なので apprehend が合う。",
+        "alternatives": [
+          {
+            "answer": "catch",
+            "explanation": "より口語的で一般的。"
+          },
+          {
+            "answer": "arrest",
+            "explanation": "法的な逮捕を直接表す。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "apprehendを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Police managed to apprehend the suspect near the station last night.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-apprehend-usage",
+          "type": "usage",
+          "prompt": "「逮捕する」の意味で apprehend を正しく使った文は？",
+          "choices": [
+            "The police apprehended to the suspect.",
+            "The police apprehended at the suspect.",
+            "The police apprehended about the suspect.",
+            "The police apprehended the suspect."
+          ],
+          "correctIndex": 3,
+          "explanation": "apprehend は他動詞で、前置詞なしに目的語を取る。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "law",
+          "logic-reasoning"
         ],
         "gradeEstimate": "2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -12535,6 +14525,1221 @@
       }
     },
     {
+      "id": "vocab-analog",
+      "word": "analog",
+      "level": "2級",
+      "ipa": "ˈænəlɒɡ",
+      "ipaLabel": "英音",
+      "partOfSpeech": "形容詞",
+      "definition": "using continuously changing physical signals or moving parts, rather than digital numbers",
+      "meaning": "アナログの",
+      "usageTip": "analog clock/signal のように名詞を修飾する。英綴りでは analogue も使われる。「類似の」は analogous で表す。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "時計",
+          "text": "My grandfather still prefers an analog watch with moving hands.",
+          "translation": "祖父は今も針が動くアナログ時計を好んでいる。"
+        },
+        {
+          "id": "example-2",
+          "context": "音楽",
+          "text": "Some musicians love the warm sound of analog recording equipment.",
+          "translation": "アナログ録音機器の温かい音を好む音楽家もいる。"
+        },
+        {
+          "id": "example-3",
+          "context": "技術",
+          "text": "The old television could only receive an analog signal.",
+          "translation": "その古いテレビはアナログ信号しか受信できなかった。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "analog",
+          "choices": [
+            {
+              "text": "アナログの",
+              "meaning": "連続的な信号や針などを使う"
+            },
+            {
+              "text": "完全に無料の",
+              "meaning": "お金がかからない"
+            },
+            {
+              "text": "とても危険な",
+              "meaning": "害が大きい"
+            },
+            {
+              "text": "新しく生まれた",
+              "meaning": "誕生したばかり"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "analog は digital に対するアナログ方式を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "アナログの",
+          "choices": [
+            {
+              "text": "analyze",
+              "meaning": "分析する"
+            },
+            {
+              "text": "analyst",
+              "meaning": "分析者"
+            },
+            {
+              "text": "anthem",
+              "meaning": "賛歌"
+            },
+            {
+              "text": "analog",
+              "meaning": "アナログの"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "アナログ方式を表す形容詞は analog。他は綴りが似た別語。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "針で時刻を示す時計の説明: I like this ___ clock because its hands move smoothly around the face.",
+          "choices": [
+            {
+              "text": "digital",
+              "meaning": "デジタルの"
+            },
+            {
+              "text": "analog",
+              "meaning": "アナログの"
+            },
+            {
+              "text": "invisible",
+              "meaning": "見えない"
+            },
+            {
+              "text": "wireless",
+              "meaning": "無線の"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "針が文字盤を動く時計なので analog が合う。digital は数字表示で合わない。",
+          "alternatives": [
+            {
+              "answer": "traditional",
+              "explanation": "古くからある方式を広く指す。"
+            },
+            {
+              "answer": "non-digital",
+              "explanation": "デジタルでないことを直接示す。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "analog を正しく使っている文を選んでください。",
+          "choices": [
+            {
+              "text": "He bought an analog of camera.",
+              "meaning": "of の使い方が不自然"
+            },
+            {
+              "text": "The camera analog quickly.",
+              "meaning": "形容詞を動詞のように使っている"
+            },
+            {
+              "text": "He is analog to take photos.",
+              "meaning": "形容詞の後の不定詞が不自然"
+            },
+            {
+              "text": "He bought an analog camera for black-and-white film.",
+              "meaning": "彼は白黒フィルム用のアナログカメラを買った。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "analog は名詞 camera を修飾する形容詞として使うのが自然。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "針で時刻を示す時計の説明: I like this ___ clock because its hands move smoothly around the face.",
+        "answers": [
+          "analog"
+        ],
+        "explanation": "針が文字盤を動く時計なので analog が合う。digital は数字表示で合わない。",
+        "alternatives": [
+          {
+            "answer": "traditional",
+            "explanation": "古くからある方式を広く指す。"
+          },
+          {
+            "answer": "non-digital",
+            "explanation": "デジタルでないことを直接示す。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "analogを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "My grandfather still prefers an analog watch with moving hands.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-analog-usage",
+          "type": "usage",
+          "prompt": "analog を正しく使っている文を選んでください。",
+          "choices": [
+            "He bought an analog of camera.",
+            "The camera analog quickly.",
+            "He is analog to take photos.",
+            "He bought an analog camera for black-and-white film."
+          ],
+          "correctIndex": 3,
+          "explanation": "analog は名詞 camera を修飾する形容詞として使うのが自然。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "technology",
+          "science"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-annex",
+      "word": "annex",
+      "level": "2級",
+      "ipa": "əˈnɛks",
+      "ipaLabel": "米音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "annex"
+        ],
+        "past": [
+          "annexed"
+        ],
+        "pastParticiple": [
+          "annexed"
+        ],
+        "presentParticiple": [
+          "annexing"
+        ],
+        "thirdPersonSingular": [
+          "annexes"
+        ]
+      },
+      "definition": "to take control of a territory and make it part of a larger country or area",
+      "meaning": "併合する、編入する",
+      "usageTip": "動詞では annex territory のように、領土や地域を自国に併合する意味で使う。他動詞なので前置詞は不要。名詞の「別館」は米音では ˈænɛks と発音されることが多い。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "歴史",
+          "text": "The kingdom decided to annex the small neighboring region.",
+          "translation": "その王国は隣接する小さな地域を併合することを決めた。"
+        },
+        {
+          "id": "example-2",
+          "context": "都市",
+          "text": "The city plans to annex several nearby villages next year.",
+          "translation": "その市は来年、近隣のいくつかの村を編入する計画だ。"
+        },
+        {
+          "id": "example-3",
+          "context": "国際関係",
+          "text": "Many countries criticized the attempt to annex the island.",
+          "translation": "多くの国がその島を併合しようとする試みを批判した。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "annex",
+          "choices": [
+            {
+              "text": "併合する",
+              "meaning": "領土などを自国に取り込む"
+            },
+            {
+              "text": "祝う",
+              "meaning": "喜びを表す"
+            },
+            {
+              "text": "断る",
+              "meaning": "受け入れない"
+            },
+            {
+              "text": "測定する",
+              "meaning": "大きさを調べる"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "動詞 annex は領土などを自国に取り込むことを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "併合する",
+          "choices": [
+            {
+              "text": "announce",
+              "meaning": "発表する"
+            },
+            {
+              "text": "annoy",
+              "meaning": "いらだたせる"
+            },
+            {
+              "text": "answer",
+              "meaning": "答える"
+            },
+            {
+              "text": "annex",
+              "meaning": "併合する"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "領土を併合する意味の動詞は annex。他は綴りが似た別の動詞。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 国が隣の領土を支配下に置く。 The government tried to ___ the territory after the war.",
+          "choices": [
+            {
+              "text": "borrow",
+              "meaning": "借りる"
+            },
+            {
+              "text": "annex",
+              "meaning": "併合する"
+            },
+            {
+              "text": "repair",
+              "meaning": "修理する"
+            },
+            {
+              "text": "forgive",
+              "meaning": "許す"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "戦後に領土を自国に取り込む話なので annex が自然。",
+          "alternatives": [
+            {
+              "answer": "seize",
+              "explanation": "力で奪い取る強い意味。"
+            },
+            {
+              "answer": "absorb",
+              "explanation": "大きな組織や地域に取り込む意味。"
+            },
+            {
+              "answer": "incorporate",
+              "explanation": "正式に一部として組み込む、やや中立的な語。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "動詞 annex を正しく使っている文を選んでください。",
+          "choices": [
+            {
+              "text": "The city annexed to the nearby town.",
+              "meaning": "誤り: 動詞の後に to は不要"
+            },
+            {
+              "text": "The city annexed with the nearby town.",
+              "meaning": "誤り: with は不自然"
+            },
+            {
+              "text": "The city annexed of the nearby town.",
+              "meaning": "誤り: of は不要"
+            },
+            {
+              "text": "The city annexed the nearby town last year.",
+              "meaning": "その市は昨年、近隣の町を編入した。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "annex は他動詞で、併合する対象を直接目的語にする。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 国が隣の領土を支配下に置く。 The government tried to ___ the territory after the war.",
+        "answers": [
+          "annex"
+        ],
+        "explanation": "戦後に領土を自国に取り込む話なので annex が自然。",
+        "alternatives": [
+          {
+            "answer": "seize",
+            "explanation": "力で奪い取る強い意味。"
+          },
+          {
+            "answer": "absorb",
+            "explanation": "大きな組織や地域に取り込む意味。"
+          },
+          {
+            "answer": "incorporate",
+            "explanation": "正式に一部として組み込む、やや中立的な語。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "annexを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The kingdom decided to annex the small neighboring region.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-annex-usage",
+          "type": "usage",
+          "prompt": "動詞 annex を正しく使っている文を選んでください。",
+          "choices": [
+            "The city annexed to the nearby town.",
+            "The city annexed with the nearby town.",
+            "The city annexed of the nearby town.",
+            "The city annexed the nearby town last year."
+          ],
+          "correctIndex": 3,
+          "explanation": "annex は他動詞で、併合する対象を直接目的語にする。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "law",
+          "politics"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-antonym",
+      "word": "antonym",
+      "level": "2級",
+      "ipa": "/ˈæntənɪm/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "A word that has the opposite meaning to another word.",
+      "meaning": "反対語",
+      "usageTip": "an antonym of/for ~ の形で使う。同義語は synonym。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "授業",
+          "text": "The teacher asked us to find an antonym for happy.",
+          "translation": "先生は happy の反対語を探すよう私たちに求めた。"
+        },
+        {
+          "id": "example-2",
+          "context": "学習",
+          "text": "Cold is an antonym of hot in most situations.",
+          "translation": "たいていの場面で cold は hot の反対語だ。"
+        },
+        {
+          "id": "example-3",
+          "context": "勉強",
+          "text": "I learn new words faster when I also note an antonym.",
+          "translation": "反対語も書き留めると新しい単語を速く覚えられる。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "antonym",
+          "choices": [
+            {
+              "text": "同義語",
+              "meaning": "synonym"
+            },
+            {
+              "text": "反対語",
+              "meaning": "opposite word"
+            },
+            {
+              "text": "発音",
+              "meaning": "pronunciation"
+            },
+            {
+              "text": "文法",
+              "meaning": "grammar"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "antonym は反対の意味を持つ語。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "反対語",
+          "choices": [
+            {
+              "text": "antonym",
+              "meaning": "反対語"
+            },
+            {
+              "text": "synonym",
+              "meaning": "同義語"
+            },
+            {
+              "text": "acronym",
+              "meaning": "頭字語"
+            },
+            {
+              "text": "idiom",
+              "meaning": "慣用句"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "反対語は antonym。synonym は同義語。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "単語の勉強中です。 'Early' has an ___, and it is 'late'.",
+          "choices": [
+            {
+              "text": "antonym",
+              "meaning": "反対語"
+            },
+            {
+              "text": "accent",
+              "meaning": "アクセント"
+            },
+            {
+              "text": "article",
+              "meaning": "記事"
+            },
+            {
+              "text": "answer",
+              "meaning": "答え"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "early と late は反対の意味なので antonym が合う。",
+          "alternatives": [
+            {
+              "answer": "opposite",
+              "explanation": "名詞で「反対のもの」。会話ではこちらも自然。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "antonym の使い方として正しい文を選びなさい。",
+          "choices": [
+            {
+              "text": "Big is antonym with small.",
+              "meaning": "big は small と反対語だ。"
+            },
+            {
+              "text": "Big antonyms small.",
+              "meaning": "big は small を反対語する。"
+            },
+            {
+              "text": "Big is an antonym to be small.",
+              "meaning": "big は小さいことへの反対語だ。"
+            },
+            {
+              "text": "Small is an antonym of big.",
+              "meaning": "small は big の反対語だ。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "an antonym of ~ が正しい形。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "単語の勉強中です。 'Early' has an ___, and it is 'late'.",
+        "answers": [
+          "antonym"
+        ],
+        "explanation": "early と late は反対の意味なので antonym が合う。",
+        "alternatives": [
+          {
+            "answer": "opposite",
+            "explanation": "名詞で「反対のもの」。会話ではこちらも自然。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "antonymを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The teacher asked us to find an antonym for happy.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-antonym-usage",
+          "type": "usage",
+          "prompt": "antonym の使い方として正しい文を選びなさい。",
+          "choices": [
+            "Big is antonym with small.",
+            "Big antonyms small.",
+            "Big is an antonym to be small.",
+            "Small is an antonym of big."
+          ],
+          "correctIndex": 3,
+          "explanation": "an antonym of ~ が正しい形。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "education",
+          "communication"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-applaud",
+      "word": "applaud",
+      "level": "2級",
+      "ipa": "/əˈplɔːd/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "applaud"
+        ],
+        "past": [
+          "applauded"
+        ],
+        "pastParticiple": [
+          "applauded"
+        ],
+        "presentParticiple": [
+          "applauding"
+        ],
+        "thirdPersonSingular": [
+          "applauds"
+        ]
+      },
+      "definition": "to clap your hands to show approval, or to praise a person, action or decision",
+      "meaning": "拍手する、称賛する",
+      "usageTip": "applaud は目的語を取る他動詞としても、拍手するという意味の自動詞としても使えます。applaud the speaker、applaud a decision のように目的語を取る形が基本で、applaud to ~ や applaud + 人 + 物 の形にはしません。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "コンサート",
+          "text": "The audience stood up and applauded the pianist for several minutes.",
+          "translation": "観客は立ち上がり、数分間ピアニストに拍手を送った。"
+        },
+        {
+          "id": "example-2",
+          "context": "職場",
+          "text": "Everyone applauded when the manager announced the team's success.",
+          "translation": "部長がチームの成功を発表すると、全員が拍手した。"
+        },
+        {
+          "id": "example-3",
+          "context": "地域社会",
+          "text": "Many residents applauded the city's decision to build a new park.",
+          "translation": "多くの住民が、新しい公園を作るという市の決定を称賛した。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "applaud",
+          "choices": [
+            {
+              "text": "謝罪する",
+              "meaning": "過ちを認めてわびること"
+            },
+            {
+              "text": "拍手する、称賛する",
+              "meaning": "拍手したり、良い行いをほめたりすること"
+            },
+            {
+              "text": "延期する",
+              "meaning": "予定を後ろに延ばすこと"
+            },
+            {
+              "text": "禁止する",
+              "meaning": "してはいけないと決めること"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "applaud は拍手をする、または行動や決定を公に称賛するという意味です。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "拍手する、称賛する",
+          "choices": [
+            {
+              "text": "avoid",
+              "meaning": "避ける"
+            },
+            {
+              "text": "borrow",
+              "meaning": "借りる"
+            },
+            {
+              "text": "measure",
+              "meaning": "測る"
+            },
+            {
+              "text": "applaud",
+              "meaning": "拍手する、称賛する"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "拍手や称賛を表す動詞は applaud です。他の語は別の意味です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "【劇場で、公演の終わりに】The crowd began to ___ as the actors came on stage to bow.",
+          "choices": [
+            {
+              "text": "applaud",
+              "meaning": "拍手する"
+            },
+            {
+              "text": "complain",
+              "meaning": "不満を言う"
+            },
+            {
+              "text": "whisper",
+              "meaning": "ささやく"
+            },
+            {
+              "text": "hesitate",
+              "meaning": "ためらう"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "俳優がお辞儀に出てくる場面では、観客は拍手します。他の語は場面に合いません。",
+          "alternatives": [
+            {
+              "answer": "clap",
+              "explanation": "clap も自然で、手をたたく動作そのものを表します。applaud よりやや口語的です。"
+            },
+            {
+              "answer": "cheer",
+              "explanation": "cheer は声を出して歓声を上げる意味合いが強い表現です。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "applaud の使い方が正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "She applauded to the speech after it finished.",
+              "meaning": "彼女は終わった後にスピーチへ拍手した。(前置詞の誤り)"
+            },
+            {
+              "text": "He applauded me a gift for my birthday.",
+              "meaning": "彼は誕生日に私へ贈り物を拍手した。(動詞の型の誤り)"
+            },
+            {
+              "text": "They applauded the speaker warmly at the end.",
+              "meaning": "彼らは最後に講演者へ温かい拍手を送った。"
+            },
+            {
+              "text": "We applauded that the team to win the game.",
+              "meaning": "私たちはチームが勝つことを拍手した。(文型の誤り)"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "applaud は目的語を直接取れます。to を付けたり、give のように二重目的語で使ったりはできません。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "【劇場で、公演の終わりに】The crowd began to ___ as the actors came on stage to bow.",
+        "answers": [
+          "applaud"
+        ],
+        "explanation": "俳優がお辞儀に出てくる場面では、観客は拍手します。他の語は場面に合いません。",
+        "alternatives": [
+          {
+            "answer": "clap",
+            "explanation": "clap も自然で、手をたたく動作そのものを表します。applaud よりやや口語的です。"
+          },
+          {
+            "answer": "cheer",
+            "explanation": "cheer は声を出して歓声を上げる意味合いが強い表現です。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "applaudを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The audience stood up and applauded the pianist for several minutes.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-applaud-usage",
+          "type": "usage",
+          "prompt": "applaud の使い方が正しい文を選んでください。",
+          "choices": [
+            "She applauded to the speech after it finished.",
+            "He applauded me a gift for my birthday.",
+            "They applauded the speaker warmly at the end.",
+            "We applauded that the team to win the game."
+          ],
+          "correctIndex": 2,
+          "explanation": "applaud は目的語を直接取れます。to を付けたり、give のように二重目的語で使ったりはできません。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "arts-culture",
+          "communication"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-applicable",
+      "word": "applicable",
+      "level": "2級",
+      "ipa": "/ˈæplɪkəbəl/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "形容詞",
+      "definition": "relevant to a person, situation or rule, so that it can be used or applied",
+      "meaning": "適用できる、関連のある",
+      "usageTip": "be applicable to + 人・状況・物 が基本形です。規則、料金、条件、方法などについてよく使われます。for も使われることはありますが、まず to を覚えましょう。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "規則の説明",
+          "text": "This rule is applicable to all students who live in the dormitory.",
+          "translation": "この規則は寮に住むすべての学生に適用されます。"
+        },
+        {
+          "id": "example-2",
+          "context": "買い物",
+          "text": "The discount is not applicable to items that are already on sale.",
+          "translation": "その割引はすでにセール中の商品には適用されません。"
+        },
+        {
+          "id": "example-3",
+          "context": "研究",
+          "text": "The method is applicable to many different kinds of data.",
+          "translation": "その手法はさまざまな種類のデータに適用できる。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "applicable",
+          "choices": [
+            {
+              "text": "危険な",
+              "meaning": "危害を与えるおそれがある"
+            },
+            {
+              "text": "退屈な",
+              "meaning": "興味を持てない"
+            },
+            {
+              "text": "十分な",
+              "meaning": "必要な量がある"
+            },
+            {
+              "text": "適用できる、関連のある",
+              "meaning": "規則や考えなどが当てはまる"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "applicable は規則や考えがある対象に当てはまることを表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "適用できる、関連のある",
+          "choices": [
+            {
+              "text": "flexible",
+              "meaning": "柔軟な"
+            },
+            {
+              "text": "applicable",
+              "meaning": "適用できる"
+            },
+            {
+              "text": "visible",
+              "meaning": "目に見える"
+            },
+            {
+              "text": "fragile",
+              "meaning": "壊れやすい"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "規則などが当てはまることを表す形容詞は applicable です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "【契約書の注意書き】This fee is not ___ to customers who joined before January.",
+          "choices": [
+            {
+              "text": "grateful",
+              "meaning": "感謝している"
+            },
+            {
+              "text": "familiar",
+              "meaning": "よく知っている"
+            },
+            {
+              "text": "afraid",
+              "meaning": "恐れている"
+            },
+            {
+              "text": "applicable",
+              "meaning": "適用できる"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "手数料が特定の顧客に当てはまらないという意味なので applicable が合います。to とも結びつきます。",
+          "alternatives": [
+            {
+              "answer": "relevant",
+              "explanation": "relevant は関連があるという意味で自然ですが、規則や料金が当てはまる場合は applicable の方が正確です。"
+            },
+            {
+              "answer": "applied",
+              "explanation": "is not applied to customers なら自然ですが、適用されないという事実を表し、nuance はやや異なります。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "applicable の使い方が正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "He is applicable of joining the team next week.",
+              "meaning": "彼は来週チームに加われる。(人の能力には使えない)"
+            },
+            {
+              "text": "We applicable the new rule to every class.",
+              "meaning": "私たちは新規則を全クラスに適用する。(品詞の誤り)"
+            },
+            {
+              "text": "The safety rules are applicable to everyone in the lab.",
+              "meaning": "安全規則は研究室の全員に適用される。"
+            },
+            {
+              "text": "The rule is applicable with everyone in the lab.",
+              "meaning": "規則は研究室の全員に適用される。(前置詞の誤り)"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "applicable は形容詞で、be applicable to ~ の形が自然です。動詞としては使えず、with や of では結びつきません。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "【契約書の注意書き】This fee is not ___ to customers who joined before January.",
+        "answers": [
+          "applicable"
+        ],
+        "explanation": "手数料が特定の顧客に当てはまらないという意味なので applicable が合います。to とも結びつきます。",
+        "alternatives": [
+          {
+            "answer": "relevant",
+            "explanation": "relevant は関連があるという意味で自然ですが、規則や料金が当てはまる場合は applicable の方が正確です。"
+          },
+          {
+            "answer": "applied",
+            "explanation": "is not applied to customers なら自然ですが、適用されないという事実を表し、nuance はやや異なります。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "applicableを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "This rule is applicable to all students who live in the dormitory.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-applicable-usage",
+          "type": "usage",
+          "prompt": "applicable の使い方が正しい文を選んでください。",
+          "choices": [
+            "He is applicable of joining the team next week.",
+            "We applicable the new rule to every class.",
+            "The safety rules are applicable to everyone in the lab.",
+            "The rule is applicable with everyone in the lab."
+          ],
+          "correctIndex": 2,
+          "explanation": "applicable は形容詞で、be applicable to ~ の形が自然です。動詞としては使えず、with や of では結びつきません。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "law",
+          "logic-reasoning"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-arraign",
+      "word": "arraign",
+      "level": "2級",
+      "ipa": "/əˈreɪn/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "arraign"
+        ],
+        "past": [
+          "arraigned"
+        ],
+        "pastParticiple": [
+          "arraigned"
+        ],
+        "presentParticiple": [
+          "arraigning"
+        ],
+        "thirdPersonSingular": [
+          "arraigns"
+        ]
+      },
+      "definition": "to bring a person to court to hear the charges against them and ask how they plead",
+      "meaning": "罪状認否のため出廷させる",
+      "usageTip": "主に法律の場面で使い、受け身でよく使われます。be arraigned on charges of ~ や be arraigned for ~ の形が基本です。「起訴する」(indict, prosecute) とは別で、起訴後に法廷で罪状を告げる手続きを指します。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "法廷ニュース",
+          "text": "The suspect will be arraigned on fraud charges tomorrow morning.",
+          "translation": "容疑者は明日の朝、詐欺罪で罪状認否のため出廷する予定だ。"
+        },
+        {
+          "id": "example-2",
+          "context": "法律の解説",
+          "text": "A defendant is usually arraigned soon after being formally charged.",
+          "translation": "被告人は通常、正式に起訴された後すぐに罪状認否の手続きを受ける。"
+        },
+        {
+          "id": "example-3",
+          "context": "報道",
+          "text": "Two men were arraigned on theft charges at the district court.",
+          "translation": "2人の男が地方裁判所で窃盗罪の罪状認否を受けた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "arraign",
+          "choices": [
+            {
+              "text": "記録を保管する",
+              "meaning": "資料を残して管理する"
+            },
+            {
+              "text": "町を再建する",
+              "meaning": "壊れた町を作り直す"
+            },
+            {
+              "text": "罪状認否のため出廷させる",
+              "meaning": "裁判所で容疑を告げ答えを求める"
+            },
+            {
+              "text": "遺産を相続する",
+              "meaning": "亡くなった人の財産を受け継ぐ"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "arraign は被告人を法廷に呼び、容疑を告げて答えを求める手続きを表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "罪状認否のため出廷させる",
+          "choices": [
+            {
+              "text": "arrange",
+              "meaning": "手配する"
+            },
+            {
+              "text": "arrive",
+              "meaning": "到着する"
+            },
+            {
+              "text": "arrest",
+              "meaning": "逮捕する"
+            },
+            {
+              "text": "arraign",
+              "meaning": "罪状認否のため出廷させる"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "形が似た語がありますが、法廷で罪状を告げ答弁を求める意味は arraign です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "【法廷のニュース】The former manager was ___ on charges of fraud and is expected to enter a plea.",
+          "choices": [
+            {
+              "text": "promoted",
+              "meaning": "昇進した"
+            },
+            {
+              "text": "arraigned",
+              "meaning": "罪状認否のため出廷した"
+            },
+            {
+              "text": "invited",
+              "meaning": "招待された"
+            },
+            {
+              "text": "repaired",
+              "meaning": "修理された"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "詐欺罪の容疑で答弁をする予定という文脈なので、法廷で罪状を告げられる arraigned が合います。",
+          "alternatives": [
+            {
+              "answer": "charged",
+              "explanation": "charged も自然で、正式に罪に問われたことを表します。手続きの段階までは示しません。"
+            },
+            {
+              "answer": "indicted",
+              "explanation": "indicted は大陪審などで正式に起訴されたことを表し、法廷での罪状認否とは段階が異なります。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "arraign の使い方が正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "The defendant arraigned in the courtroom with his lawyer.",
+              "meaning": "被告人は弁護士と法廷で罪状認否した。(受け身が必要)"
+            },
+            {
+              "text": "The judge arraigned the defendant to be happy.",
+              "meaning": "裁判官は被告人を幸せにした。(動詞の型の誤り)"
+            },
+            {
+              "text": "They arraigned a meeting for the company staff.",
+              "meaning": "彼らは社員のために会議を開いた。(意味の誤り)"
+            },
+            {
+              "text": "The defendant was arraigned on charges of burglary yesterday.",
+              "meaning": "被告人は昨日、住居侵入罪で罪状認否を受けた。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "arraign は被告人を目的語に取り、受け身で be arraigned on charges of ~ の形になるのが普通です。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "【法廷のニュース】The former manager was ___ on charges of fraud and is expected to enter a plea.",
+        "answers": [
+          "arraigned"
+        ],
+        "explanation": "詐欺罪の容疑で答弁をする予定という文脈なので、法廷で罪状を告げられる arraigned が合います。",
+        "alternatives": [
+          {
+            "answer": "charged",
+            "explanation": "charged も自然で、正式に罪に問われたことを表します。手続きの段階までは示しません。"
+          },
+          {
+            "answer": "indicted",
+            "explanation": "indicted は大陪審などで正式に起訴されたことを表し、法廷での罪状認否とは段階が異なります。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "arraignを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The suspect will be arraigned on fraud charges tomorrow morning.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-arraign-usage",
+          "type": "usage",
+          "prompt": "arraign の使い方が正しい文を選んでください。",
+          "choices": [
+            "The defendant arraigned in the courtroom with his lawyer.",
+            "The judge arraigned the defendant to be happy.",
+            "They arraigned a meeting for the company staff.",
+            "The defendant was arraigned on charges of burglary yesterday."
+          ],
+          "correctIndex": 3,
+          "explanation": "arraign は被告人を目的語に取り、受け身で be arraigned on charges of ~ の形になるのが普通です。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "C1",
+        "domains": [
+          "law",
+          "politics"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-array",
       "word": "array",
       "level": "2級",
@@ -13119,6 +16324,200 @@
         "domains": [
           "work",
           "arts-culture"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-assay",
+      "word": "assay",
+      "level": "2級",
+      "ipa": "əˈseɪ",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a test that measures the amount or quality of a substance, such as a metal or chemical",
+      "meaning": "分析試験、試金",
+      "usageTip": "科学では物質の量や活性を調べる試験を指す。run an assay や perform an assay の形で使う。動詞でも使われるが、ここでは名詞の意味を扱う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "研究室",
+          "text": "The team ran an assay to measure protein levels in the sample.",
+          "translation": "チームはサンプル中のタンパク質量を測るために分析試験を行った。"
+        },
+        {
+          "id": "example-2",
+          "context": "鉱業",
+          "text": "An assay showed that the rock contained very little gold.",
+          "translation": "分析の結果、その岩にはほとんど金が含まれていないと分かった。"
+        },
+        {
+          "id": "example-3",
+          "context": "医療研究",
+          "text": "This assay can detect the virus within a few hours.",
+          "translation": "この検査法は数時間でそのウイルスを検出できる。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "assay",
+          "choices": [
+            {
+              "text": "夕方の散歩",
+              "meaning": "an evening walk"
+            },
+            {
+              "text": "家賃の値上げ",
+              "meaning": "a rent increase"
+            },
+            {
+              "text": "丁寧な謝罪",
+              "meaning": "a polite apology"
+            },
+            {
+              "text": "物質の分析試験",
+              "meaning": "物質の量や質を調べる試験"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "assay は物質の成分や量を調べる試験を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "金属や化学物質の量や質を調べる試験",
+          "choices": [
+            {
+              "text": "anthem",
+              "meaning": "賛歌"
+            },
+            {
+              "text": "assay",
+              "meaning": "分析試験"
+            },
+            {
+              "text": "fabric",
+              "meaning": "布"
+            },
+            {
+              "text": "journey",
+              "meaning": "旅"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "物質の成分を測る試験は assay。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 研究室で水を調べる。 The scientists ran an ___ to see how much of the chemical was in the water.",
+          "choices": [
+            {
+              "text": "assay",
+              "meaning": "分析試験"
+            },
+            {
+              "text": "anthem",
+              "meaning": "賛歌"
+            },
+            {
+              "text": "orchard",
+              "meaning": "果樹園"
+            },
+            {
+              "text": "errand",
+              "meaning": "用事"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "水中の化学物質量を測る試験なので assay が合う。",
+          "alternatives": [
+            {
+              "answer": "analysis",
+              "explanation": "より一般的で、分析全般を指す。"
+            },
+            {
+              "answer": "test",
+              "explanation": "広く使える日常的な語で、専門性は弱い。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "名詞 assay の使い方が正しい文はどれ?",
+          "choices": [
+            {
+              "text": "The lab performed assay to the metal sample.",
+              "meaning": "誤り: 冠詞と前置詞の誤り"
+            },
+            {
+              "text": "The lab made an assay for metal sample's.",
+              "meaning": "誤り: 所有格の誤り"
+            },
+            {
+              "text": "The lab performed an assay on the metal sample.",
+              "meaning": "研究室は金属サンプルの分析を行った。"
+            },
+            {
+              "text": "The lab did an assay at on the metal sample.",
+              "meaning": "誤り: 前置詞が重なっている"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "perform an assay on ~ が自然な形。他は冠詞や前置詞、所有格の誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 研究室で水を調べる。 The scientists ran an ___ to see how much of the chemical was in the water.",
+        "answers": [
+          "assay"
+        ],
+        "explanation": "水中の化学物質量を測る試験なので assay が合う。",
+        "alternatives": [
+          {
+            "answer": "analysis",
+            "explanation": "より一般的で、分析全般を指す。"
+          },
+          {
+            "answer": "test",
+            "explanation": "広く使える日常的な語で、専門性は弱い。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "assayを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The team ran an assay to measure protein levels in the sample.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-assay-usage",
+          "type": "usage",
+          "prompt": "名詞 assay の使い方が正しい文はどれ?",
+          "choices": [
+            "The lab performed assay to the metal sample.",
+            "The lab made an assay for metal sample's.",
+            "The lab performed an assay on the metal sample.",
+            "The lab did an assay at on the metal sample."
+          ],
+          "correctIndex": 2,
+          "explanation": "perform an assay on ~ が自然な形。他は冠詞や前置詞、所有格の誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "science",
+          "work"
         ],
         "gradeEstimate": "2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
@@ -15060,6 +18459,200 @@
         "cefrEstimate": "C1",
         "domains": [
           "arts-culture"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-annexe",
+      "word": "annexe",
+      "level": "2級",
+      "ipa": "ˈænɛks",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "a separate or attached building that adds extra space to a larger main building",
+      "meaning": "別館、付属建物",
+      "usageTip": "annexe は主に英国式の綴りで、米国では annex が一般的。発音は米英とも似ており、第1音節に強勢を置く。本館に付属または近接する建物を指し、動詞の annex(併合する)とは別の語として覚えるとよい。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "ホテル",
+          "text": "Our room was in the hotel annexe behind the main building.",
+          "translation": "私たちの部屋は、本館の裏にあるホテルの別館だった。"
+        },
+        {
+          "id": "example-2",
+          "context": "学校",
+          "text": "The school built a new annexe for science classes.",
+          "translation": "学校は理科の授業用に新しい別館を建てた。"
+        },
+        {
+          "id": "example-3",
+          "context": "職場",
+          "text": "Please bring the documents to the annexe by noon.",
+          "translation": "正午までに書類を別館へ持ってきてください。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "annexe",
+          "choices": [
+            {
+              "text": "手紙",
+              "meaning": "文書によるやり取り"
+            },
+            {
+              "text": "天気",
+              "meaning": "気象の状態"
+            },
+            {
+              "text": "別館",
+              "meaning": "本館に付属する建物"
+            },
+            {
+              "text": "競争",
+              "meaning": "競い合い"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "annexe は主な建物に付属する、または近接する建物を指す名詞である。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "別館、付属建物",
+          "choices": [
+            {
+              "text": "anchor",
+              "meaning": "錨"
+            },
+            {
+              "text": "annexe",
+              "meaning": "別館"
+            },
+            {
+              "text": "angle",
+              "meaning": "角度"
+            },
+            {
+              "text": "answer",
+              "meaning": "答え"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "付属の建物を表す名詞は annexe。他の語は建物とは関係がない。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 本館が満室で、中庭の向かいの別の建物に泊まる。 The main hotel was full, so they stayed in the ___ across the courtyard.",
+          "choices": [
+            {
+              "text": "receipt",
+              "meaning": "領収書"
+            },
+            {
+              "text": "invoice",
+              "meaning": "請求書"
+            },
+            {
+              "text": "annexe",
+              "meaning": "別館"
+            },
+            {
+              "text": "ticket",
+              "meaning": "切符"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "中庭の向かいにあり宿泊できる場所なので、建物を表す annexe が合う。",
+          "alternatives": [
+            {
+              "answer": "extension",
+              "explanation": "本館に増築された部分を指し、離れた建物とは限らない。"
+            },
+            {
+              "answer": "wing",
+              "explanation": "建物の翼部を指し、同じ建物の一部という印象になる。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "名詞 annexe の使い方として正しい文を選びなさい。",
+          "choices": [
+            {
+              "text": "We annexe the meeting at noon.",
+              "meaning": "誤り: 名詞を動詞のように使っている"
+            },
+            {
+              "text": "She is very annexe today.",
+              "meaning": "誤り: 名詞を形容詞のように使っている"
+            },
+            {
+              "text": "The library annexe opens next month.",
+              "meaning": "図書館の別館が来月開く。"
+            },
+            {
+              "text": "He walked annexe quickly home.",
+              "meaning": "誤り: 名詞を副詞のように使っている"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "annexe は名詞なので、library annexe のように建物を表す語として使う。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 本館が満室で、中庭の向かいの別の建物に泊まる。 The main hotel was full, so they stayed in the ___ across the courtyard.",
+        "answers": [
+          "annexe"
+        ],
+        "explanation": "中庭の向かいにあり宿泊できる場所なので、建物を表す annexe が合う。",
+        "alternatives": [
+          {
+            "answer": "extension",
+            "explanation": "本館に増築された部分を指し、離れた建物とは限らない。"
+          },
+          {
+            "answer": "wing",
+            "explanation": "建物の翼部を指し、同じ建物の一部という印象になる。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "annexeを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Our room was in the hotel annexe behind the main building.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-annexe-usage",
+          "type": "usage",
+          "prompt": "名詞 annexe の使い方として正しい文を選びなさい。",
+          "choices": [
+            "We annexe the meeting at noon.",
+            "She is very annexe today.",
+            "The library annexe opens next month.",
+            "He walked annexe quickly home."
+          ],
+          "correctIndex": 2,
+          "explanation": "annexe は名詞なので、library annexe のように建物を表す語として使う。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "business",
+          "society"
         ],
         "gradeEstimate": "2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."

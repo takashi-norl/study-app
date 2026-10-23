@@ -9068,6 +9068,192 @@
       }
     },
     {
+      "id": "vocab-contest",
+      "word": "contest",
+      "level": "3級",
+      "ipa": "ˈkɑːnˌtɛst",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "an event in which people compete to win a prize or title",
+      "meaning": "競技会、コンテスト",
+      "usageTip": "win a contest、enter a contest、speech contest のように使う。名詞は前にアクセント。動詞 contest「異議を唱える」は後ろにアクセント。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "学校",
+          "text": "Our class entered a poster contest about protecting the ocean.",
+          "translation": "私たちのクラスは海を守るポスターコンテストに参加した。"
+        },
+        {
+          "id": "example-2",
+          "context": "料理",
+          "text": "She won first prize in the local baking contest.",
+          "translation": "彼女は地元のお菓子作りコンテストで一位を取った。"
+        },
+        {
+          "id": "example-3",
+          "context": "英語学習",
+          "text": "He practiced for weeks before the English speech contest.",
+          "translation": "彼は英語スピーチコンテストの前に何週間も練習した。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "contest",
+          "choices": [
+            {
+              "text": "契約書",
+              "meaning": "合意の書類"
+            },
+            {
+              "text": "天気",
+              "meaning": "気象"
+            },
+            {
+              "text": "遠足",
+              "meaning": "学校の旅行"
+            },
+            {
+              "text": "競技会、コンテスト",
+              "meaning": "勝敗や順位を競う催し"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "contest は勝敗や順位を競う催し。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "競技会、コンテスト",
+          "choices": [
+            {
+              "text": "content",
+              "meaning": "内容"
+            },
+            {
+              "text": "context",
+              "meaning": "文脈"
+            },
+            {
+              "text": "contest",
+              "meaning": "コンテスト"
+            },
+            {
+              "text": "contact",
+              "meaning": "連絡"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "競い合う催しは contest。似た綴りの語と区別する。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "学校行事の場面: Mika entered the school singing ___ and hoped to win the top prize.",
+          "choices": [
+            {
+              "text": "lesson",
+              "meaning": "授業"
+            },
+            {
+              "text": "contest",
+              "meaning": "コンテスト"
+            },
+            {
+              "text": "uniform",
+              "meaning": "制服"
+            },
+            {
+              "text": "holiday",
+              "meaning": "休日"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "school singing contest となり、top prize を狙う内容に合う。",
+          "alternatives": [
+            {
+              "answer": "competition",
+              "explanation": "ほぼ同じ意味で、やや一般的。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "contest を名詞「コンテスト」として正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "They held a photo contest last month.",
+              "meaning": "先月、写真コンテストを開いた。"
+            },
+            {
+              "text": "She won two contest last year.",
+              "meaning": "誤り：two の後は contests。"
+            },
+            {
+              "text": "The contest were held at our school yesterday.",
+              "meaning": "誤り：単数の contest には was。"
+            },
+            {
+              "text": "These contests is open to all students.",
+              "meaning": "誤り：複数の contests には are。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "hold a contest は「コンテストを開催する」。可算名詞なので数に応じて contest / contests を使い分けます。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "学校行事の場面: Mika entered the school singing ___ and hoped to win the top prize.",
+        "answers": [
+          "contest"
+        ],
+        "explanation": "school singing contest となり、top prize を狙う内容に合う。",
+        "alternatives": [
+          {
+            "answer": "competition",
+            "explanation": "ほぼ同じ意味で、やや一般的。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "contestを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Our class entered a poster contest about protecting the ocean.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-contest-usage",
+          "type": "usage",
+          "prompt": "contest を名詞「コンテスト」として正しく使った文を選んでください。",
+          "choices": [
+            "They held a photo contest last month.",
+            "She won two contest last year.",
+            "The contest were held at our school yesterday.",
+            "These contests is open to all students."
+          ],
+          "correctIndex": 0,
+          "explanation": "hold a contest は「コンテストを開催する」。可算名詞なので数に応じて contest / contests を使い分けます。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "sports",
+          "arts-culture"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-cargo",
       "word": "cargo",
       "level": "3級",

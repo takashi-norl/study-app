@@ -970,6 +970,200 @@
       }
     },
     {
+      "id": "vocab-line",
+      "word": "line",
+      "level": "2級",
+      "ipa": "/laɪn/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "A long thin mark, or a row of things or people placed one after another.",
+      "meaning": "線、列",
+      "usageTip": "「線」と「列」の両方を表す。米国では stand in line(列に並ぶ)が一般的。英国では queue がよく使われ、line は主に「線」や「並び」を指す。ここでは名詞の基本義を扱う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "図工",
+          "text": "Use a ruler to draw a straight line across the page.",
+          "translation": "定規を使って、ページに一本の直線を引いてください。"
+        },
+        {
+          "id": "example-2",
+          "context": "地図",
+          "text": "The red line on the map shows the route we will take.",
+          "translation": "地図上の赤い線は、私たちが通る経路を示している。"
+        },
+        {
+          "id": "example-3",
+          "context": "学校",
+          "text": "The children made a neat line before walking into the hall.",
+          "translation": "子どもたちはきちんと一列に並んでから、ホールへ入っていった。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "line",
+          "choices": [
+            {
+              "text": "鍵",
+              "meaning": "ドアを開ける道具"
+            },
+            {
+              "text": "屋根",
+              "meaning": "建物の上部"
+            },
+            {
+              "text": "線、列",
+              "meaning": "細い印や並んだ人・物"
+            },
+            {
+              "text": "季節",
+              "meaning": "春夏秋冬の区分"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "line は細い線や、人や物が並んだ列を表す基本的な名詞である。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "線、列",
+          "choices": [
+            {
+              "text": "lane",
+              "meaning": "細い道、車線"
+            },
+            {
+              "text": "line",
+              "meaning": "線、列"
+            },
+            {
+              "text": "lamp",
+              "meaning": "明かり"
+            },
+            {
+              "text": "lake",
+              "meaning": "湖"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "線や列は line。他は形が似ているが、道・明かり・湖で意味が異なる。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "紙に定規を当てて作図をしている場面：Use a ruler to draw a straight ___ from one corner to the other.",
+          "choices": [
+            {
+              "text": "line",
+              "meaning": "線"
+            },
+            {
+              "text": "pocket",
+              "meaning": "ポケット"
+            },
+            {
+              "text": "season",
+              "meaning": "季節"
+            },
+            {
+              "text": "story",
+              "meaning": "物語"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "定規で角から角へ引くものは線なので line が合う。他は引くものとして意味が合わない。",
+          "alternatives": [
+            {
+              "answer": "diagonal",
+              "explanation": "角から角への斜めの線を強調する言い方。数学的で少し専門的。"
+            },
+            {
+              "answer": "mark",
+              "explanation": "線に限らず印全般を指し、line より意味が広い。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "「並んで待つ」の意味で line を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "We stood in a line that were very long.",
+              "meaning": "誤り：単数の line を受ける節には was。"
+            },
+            {
+              "text": "We stood in line for the bus in the rain.",
+              "meaning": "私たちは雨の中、バスを待って列に並んだ。"
+            },
+            {
+              "text": "We stood at line for the bus in the rain.",
+              "meaning": "誤り：at line は列に並ぶ意味で使わない。"
+            },
+            {
+              "text": "We stood a line for the bus in the rain.",
+              "meaning": "誤り：前置詞 in が抜けている。"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "stand in line で「列に並ぶ」。米国の一部地域では stand on line も使われます。ここに表示した他の文は、数の一致や構文の形に誤りがあります。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "紙に定規を当てて作図をしている場面：Use a ruler to draw a straight ___ from one corner to the other.",
+        "answers": [
+          "line"
+        ],
+        "explanation": "定規で角から角へ引くものは線なので line が合う。他は引くものとして意味が合わない。",
+        "alternatives": [
+          {
+            "answer": "diagonal",
+            "explanation": "角から角への斜めの線を強調する言い方。数学的で少し専門的。"
+          },
+          {
+            "answer": "mark",
+            "explanation": "線に限らず印全般を指し、line より意味が広い。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "lineを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Use a ruler to draw a straight line across the page.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-line-usage",
+          "type": "usage",
+          "prompt": "「並んで待つ」の意味で line を正しく使った文を選びなさい。",
+          "choices": [
+            "We stood in a line that were very long.",
+            "We stood in line for the bus in the rain.",
+            "We stood at line for the bus in the rain.",
+            "We stood a line for the bus in the rain."
+          ],
+          "correctIndex": 1,
+          "explanation": "stand in line で「列に並ぶ」。米国の一部地域では stand on line も使われます。ここに表示した他の文は、数の一致や構文の形に誤りがあります。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A1",
+        "domains": [
+          "education",
+          "daily-life"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-point",
       "word": "point",
       "level": "2級",
@@ -13316,6 +13510,200 @@
       }
     },
     {
+      "id": "vocab-postcard",
+      "word": "postcard",
+      "level": "2級",
+      "ipa": "/ˈpoʊstkɑːrd/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "A small card for sending a short message by mail, often with a picture on one side.",
+      "meaning": "はがき、絵はがき",
+      "usageTip": "send a postcard to ~ や write a postcard の形でよく使う。旅先から送る絵はがきの意味が一般的。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "旅行",
+          "text": "I bought a postcard of the lighthouse and mailed it to my aunt.",
+          "translation": "私は灯台の絵はがきを買って、おばに郵送した。"
+        },
+        {
+          "id": "example-2",
+          "context": "日常",
+          "text": "She keeps every postcard her friends send from abroad.",
+          "translation": "彼女は友人が海外から送ってくれる絵はがきをすべて取っておく。"
+        },
+        {
+          "id": "example-3",
+          "context": "旅行",
+          "text": "Could you write a short postcard before we leave the hotel?",
+          "translation": "ホテルを出る前に短いはがきを書いてくれる？"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "postcard",
+          "choices": [
+            {
+              "text": "はがき、絵はがき",
+              "meaning": "a small card sent by mail"
+            },
+            {
+              "text": "切手",
+              "meaning": "a stamp"
+            },
+            {
+              "text": "封筒",
+              "meaning": "an envelope"
+            },
+            {
+              "text": "荷物",
+              "meaning": "a parcel"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "postcard は郵送用の小さなカードで、絵はがきを指すことが多い。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "はがき、絵はがき",
+          "choices": [
+            {
+              "text": "suitcase",
+              "meaning": "スーツケース"
+            },
+            {
+              "text": "ticket",
+              "meaning": "切符"
+            },
+            {
+              "text": "postcard",
+              "meaning": "はがき"
+            },
+            {
+              "text": "passport",
+              "meaning": "パスポート"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "はがき・絵はがきは postcard。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "旅先から友人に送るものです。 I sent my friend a ___ from Kyoto with a picture of a temple.",
+          "choices": [
+            {
+              "text": "postcard",
+              "meaning": "絵はがき"
+            },
+            {
+              "text": "umbrella",
+              "meaning": "傘"
+            },
+            {
+              "text": "sandwich",
+              "meaning": "サンドイッチ"
+            },
+            {
+              "text": "battery",
+              "meaning": "電池"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "寺の写真付きで送るものとして自然なのは postcard。",
+          "alternatives": [
+            {
+              "answer": "letter",
+              "explanation": "手紙。絵柄の説明とはやや合わないが、送る点は同じ。"
+            },
+            {
+              "answer": "photo",
+              "explanation": "写真。ただし from Kyoto で送る流れは postcard が自然。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "postcard の使い方として正しい文を選びなさい。",
+          "choices": [
+            {
+              "text": "I drank a postcard from Paris.",
+              "meaning": "パリのはがきを飲んだ。"
+            },
+            {
+              "text": "She wrote a postcard to her grandmother.",
+              "meaning": "彼女は祖母にはがきを書いた。"
+            },
+            {
+              "text": "He postcard me a message yesterday.",
+              "meaning": "彼は昨日私にメッセージをはがきした。"
+            },
+            {
+              "text": "We postcarded at the beach.",
+              "meaning": "私たちは浜辺ではがきした。"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "postcard は名詞なので write a postcard to ~ の形が正しい。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "旅先から友人に送るものです。 I sent my friend a ___ from Kyoto with a picture of a temple.",
+        "answers": [
+          "postcard"
+        ],
+        "explanation": "寺の写真付きで送るものとして自然なのは postcard。",
+        "alternatives": [
+          {
+            "answer": "letter",
+            "explanation": "手紙。絵柄の説明とはやや合わないが、送る点は同じ。"
+          },
+          {
+            "answer": "photo",
+            "explanation": "写真。ただし from Kyoto で送る流れは postcard が自然。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "postcardを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I bought a postcard of the lighthouse and mailed it to my aunt.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-postcard-usage",
+          "type": "usage",
+          "prompt": "postcard の使い方として正しい文を選びなさい。",
+          "choices": [
+            "I drank a postcard from Paris.",
+            "She wrote a postcard to her grandmother.",
+            "He postcard me a message yesterday.",
+            "We postcarded at the beach."
+          ],
+          "correctIndex": 1,
+          "explanation": "postcard は名詞なので write a postcard to ~ の形が正しい。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "travel",
+          "daily-life"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-signpost",
       "word": "signpost",
       "level": "2級",
@@ -14286,6 +14674,192 @@
         "cefrEstimate": "A2",
         "domains": [
           "food"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-homemade",
+      "word": "homemade",
+      "level": "2級",
+      "ipa": "/ˌhoʊmˈmeɪd/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "形容詞",
+      "definition": "Made at home, not bought from a shop or factory.",
+      "meaning": "手作りの、自家製の",
+      "usageTip": "homemade bread, homemade jam のように名詞の前で使う。食べ物以外の手作り品にも使える。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "食事",
+          "text": "My grandmother serves homemade soup whenever we visit her.",
+          "translation": "祖母は訪ねるたびに手作りスープを出してくれる。"
+        },
+        {
+          "id": "example-2",
+          "context": "贈り物",
+          "text": "He gave her a homemade card for her birthday.",
+          "translation": "彼は誕生日に彼女へ手作りのカードを贈った。"
+        },
+        {
+          "id": "example-3",
+          "context": "日常",
+          "text": "Homemade lunches can save a lot of money each month.",
+          "translation": "手作り弁当は毎月かなりの節約になる。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "homemade",
+          "choices": [
+            {
+              "text": "手作りの",
+              "meaning": "made at home"
+            },
+            {
+              "text": "高価な",
+              "meaning": "expensive"
+            },
+            {
+              "text": "古い",
+              "meaning": "old"
+            },
+            {
+              "text": "輸入の",
+              "meaning": "imported"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "homemade は家で作られたという意味。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "手作りの、自家製の",
+          "choices": [
+            {
+              "text": "frozen",
+              "meaning": "冷凍の"
+            },
+            {
+              "text": "foreign",
+              "meaning": "外国の"
+            },
+            {
+              "text": "fragile",
+              "meaning": "壊れやすい"
+            },
+            {
+              "text": "homemade",
+              "meaning": "手作りの"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "手作りの・自家製のは homemade。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "祖母が台所で作ったジャムの話です。 This jam isn't from a store; it's ___ and very sweet.",
+          "choices": [
+            {
+              "text": "homemade",
+              "meaning": "自家製の"
+            },
+            {
+              "text": "expired",
+              "meaning": "期限切れの"
+            },
+            {
+              "text": "missing",
+              "meaning": "なくなった"
+            },
+            {
+              "text": "public",
+              "meaning": "公共の"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "店で買ったものではないので homemade が合う。",
+          "alternatives": [
+            {
+              "answer": "handmade",
+              "explanation": "手で作った。工芸品などに多く、食べ物では homemade が普通。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "homemade の使い方として正しい文を選びなさい。",
+          "choices": [
+            {
+              "text": "The cake was homemade by my mother.",
+              "meaning": "ケーキは母によって手作りだった。"
+            },
+            {
+              "text": "She homemade a pie yesterday.",
+              "meaning": "彼女は昨日パイを手作りした。"
+            },
+            {
+              "text": "I bought homemade at the shop.",
+              "meaning": "店で手作りを買った。"
+            },
+            {
+              "text": "We ate homemade quickly.",
+              "meaning": "私たちは手作りを素早く食べた。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "homemade は形容詞なので be 動詞の後や名詞の前で使う。他は動詞や名詞として誤用。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "祖母が台所で作ったジャムの話です。 This jam isn't from a store; it's ___ and very sweet.",
+        "answers": [
+          "homemade"
+        ],
+        "explanation": "店で買ったものではないので homemade が合う。",
+        "alternatives": [
+          {
+            "answer": "handmade",
+            "explanation": "手で作った。工芸品などに多く、食べ物では homemade が普通。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "homemadeを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "My grandmother serves homemade soup whenever we visit her.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-homemade-usage",
+          "type": "usage",
+          "prompt": "homemade の使い方として正しい文を選びなさい。",
+          "choices": [
+            "The cake was homemade by my mother.",
+            "She homemade a pie yesterday.",
+            "I bought homemade at the shop.",
+            "We ate homemade quickly."
+          ],
+          "correctIndex": 0,
+          "explanation": "homemade は形容詞なので be 動詞の後や名詞の前で使う。他は動詞や名詞として誤用。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "food",
+          "daily-life"
         ],
         "gradeEstimate": "2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."

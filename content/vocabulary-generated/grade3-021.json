@@ -7118,6 +7118,208 @@
       }
     },
     {
+      "id": "vocab-resume",
+      "word": "resume",
+      "level": "3級",
+      "ipa": "ˈrezjʊmeɪ",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a short document that lists your education, work experience and skills when you apply for a job",
+      "meaning": "履歴書",
+      "usageTip": "名詞の resume は特に米国で「応募用の経歴書」を指す。英国では CV がよく使われ、英国で resume と言うと通じるが少し米国的。動詞 resume「再開する」とは別語義で、発音も異なる（動詞は rɪˈzjuːm）。「a resume」「your resume」の形で使い、send / update / attach などと相性がよい。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "就職活動",
+          "text": "I updated my resume before applying for the marketing job.",
+          "translation": "マーケティングの仕事に応募する前に、履歴書を更新した。"
+        },
+        {
+          "id": "example-2",
+          "context": "応募メール",
+          "text": "Please send your resume and a short cover letter by Friday.",
+          "translation": "金曜日までに履歴書と短いカバーレターを送ってください。"
+        },
+        {
+          "id": "example-3",
+          "context": "就職の助言",
+          "text": "Keep your resume clear, honest and limited to one page.",
+          "translation": "履歴書は分かりやすく正直に書き、一枚にまとめなさい。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "resume（名詞）",
+          "choices": [
+            {
+              "text": "領収書",
+              "meaning": "支払いの証明書"
+            },
+            {
+              "text": "地図",
+              "meaning": "場所を示す図"
+            },
+            {
+              "text": "履歴書",
+              "meaning": "経歴や技能をまとめた書類"
+            },
+            {
+              "text": "契約書",
+              "meaning": "取り決めを記した書類"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "名詞の resume は、応募の際に経歴や技能をまとめて提出する書類を指す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "履歴書",
+          "choices": [
+            {
+              "text": "resume",
+              "meaning": "履歴書"
+            },
+            {
+              "text": "receipt",
+              "meaning": "領収書"
+            },
+            {
+              "text": "schedule",
+              "meaning": "予定表"
+            },
+            {
+              "text": "manual",
+              "meaning": "取扱説明書"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "仕事への応募で経歴を示す書類は resume である。他は別の種類の書類である。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "求人に応募する場面：I attached my ___ to the email for the hiring manager.",
+          "choices": [
+            {
+              "text": "receipt",
+              "meaning": "領収書"
+            },
+            {
+              "text": "resume",
+              "meaning": "履歴書"
+            },
+            {
+              "text": "passport",
+              "meaning": "パスポート"
+            },
+            {
+              "text": "menu",
+              "meaning": "メニュー"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "採用担当者へのメールに添付するのは、経歴を示す履歴書が自然である。",
+          "alternatives": [
+            {
+              "answer": "CV",
+              "explanation": "英国などで一般的な、ほぼ同じ意味の表現。"
+            },
+            {
+              "answer": "application form",
+              "explanation": "所定の応募用紙を指し、自分で作る経歴書とは少し異なる。"
+            },
+            {
+              "answer": "cover letter",
+              "explanation": "志望動機などを書く送付状で、経歴書とは役割が違う。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "resume を名詞「履歴書」として正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "I attached my resume to the application email.",
+              "meaning": "応募メールに履歴書を添付した。"
+            },
+            {
+              "text": "She updated two resume before applying.",
+              "meaning": "誤り：two の後は resumes。"
+            },
+            {
+              "text": "My resume include my previous jobs.",
+              "meaning": "誤り：単数主語には includes。"
+            },
+            {
+              "text": "These resumes was sent yesterday.",
+              "meaning": "誤り：複数主語には were。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "attach my resume to the email で「メールに履歴書を添付する」。名詞の resume は数えられ、複数形は resumes です。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "求人に応募する場面：I attached my ___ to the email for the hiring manager.",
+        "answers": [
+          "resume"
+        ],
+        "explanation": "採用担当者へのメールに添付するのは、経歴を示す履歴書が自然である。",
+        "alternatives": [
+          {
+            "answer": "CV",
+            "explanation": "英国などで一般的な、ほぼ同じ意味の表現。"
+          },
+          {
+            "answer": "application form",
+            "explanation": "所定の応募用紙を指し、自分で作る経歴書とは少し異なる。"
+          },
+          {
+            "answer": "cover letter",
+            "explanation": "志望動機などを書く送付状で、経歴書とは役割が違う。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "resumeを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I updated my resume before applying for the marketing job.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-resume-usage",
+          "type": "usage",
+          "prompt": "resume を名詞「履歴書」として正しく使った文を選びなさい。",
+          "choices": [
+            "I attached my resume to the application email.",
+            "She updated two resume before applying.",
+            "My resume include my previous jobs.",
+            "These resumes was sent yesterday."
+          ],
+          "correctIndex": 0,
+          "explanation": "attach my resume to the email で「メールに履歴書を添付する」。名詞の resume は数えられ、複数形は resumes です。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "work",
+          "business"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-pebble",
       "word": "pebble",
       "level": "3級",
@@ -16353,6 +16555,219 @@
         "domains": [
           "science",
           "daily-life"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-quit",
+      "word": "quit",
+      "level": "3級",
+      "ipa": "/kwɪt/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "quit"
+        ],
+        "past": [
+          "quit",
+          "quitted"
+        ],
+        "pastParticiple": [
+          "quit",
+          "quitted"
+        ],
+        "presentParticiple": [
+          "quitting"
+        ],
+        "thirdPersonSingular": [
+          "quits"
+        ]
+      },
+      "definition": "to stop doing something, or to leave a job, school or group",
+      "meaning": "やめる、辞める",
+      "usageTip": "quit + 名詞 / quit + 動名詞で「~をやめる」。quit smoking のように動名詞を使い、to 不定詞は続けない。目的を表す to は別で、quit his job to travel は可能。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "職場",
+          "text": "He quit his job last month and started his own business.",
+          "translation": "彼は先月仕事を辞めて、自分の事業を始めた。"
+        },
+        {
+          "id": "example-2",
+          "context": "健康",
+          "text": "My uncle quit smoking after he turned fifty.",
+          "translation": "おじは50歳になってから禁煙した。"
+        },
+        {
+          "id": "example-3",
+          "context": "部活",
+          "text": "She did not want to quit the team just because it was hard.",
+          "translation": "彼女は大変だからというだけでチームをやめたくなかった。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "quit",
+          "choices": [
+            {
+              "text": "始める",
+              "meaning": "開始する"
+            },
+            {
+              "text": "続ける",
+              "meaning": "継続する"
+            },
+            {
+              "text": "やめる、辞める",
+              "meaning": "活動や仕事を終える"
+            },
+            {
+              "text": "比べる",
+              "meaning": "比較する"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "quit は活動や仕事をやめる意味。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "やめる、辞める",
+          "choices": [
+            {
+              "text": "join",
+              "meaning": "加わる"
+            },
+            {
+              "text": "hire",
+              "meaning": "雇う"
+            },
+            {
+              "text": "visit",
+              "meaning": "訪れる"
+            },
+            {
+              "text": "quit",
+              "meaning": "やめる"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "やめる、辞めるの意味の英単語は quit。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "健康のために、たばこを吸うのをやめると決心した場面。He decided to ___ smoking for his health.",
+          "choices": [
+            {
+              "text": "want",
+              "meaning": "望む"
+            },
+            {
+              "text": "quit",
+              "meaning": "やめる"
+            },
+            {
+              "text": "hope",
+              "meaning": "願う"
+            },
+            {
+              "text": "arrive",
+              "meaning": "到着する"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "quit smoking で「喫煙をやめる」。quit の後には、やめる行動を動名詞で続けられます。",
+          "alternatives": [
+            {
+              "answer": "give up",
+              "explanation": "努力して習慣を手放すニュアンス。"
+            },
+            {
+              "answer": "stop",
+              "explanation": "一般的に行動を止める表現。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "quit を使って「以前していた行動や所属をやめた」と正しく表した文を選んでください。",
+          "choices": [
+            {
+              "text": "He quit his job yesterday and start a new one last Monday.",
+              "meaning": "誤り：過去の出来事なので start ではなく started。"
+            },
+            {
+              "text": "I quit to playing the piano last year.",
+              "meaning": "誤り：「弾くのをやめる」は quit playing。"
+            },
+            {
+              "text": "She quit of the team in May.",
+              "meaning": "誤り：quit the team のように対象を直接続ける。"
+            },
+            {
+              "text": "They quit the club last spring.",
+              "meaning": "彼らは昨春クラブを辞めた。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "quit the club のように対象を直接続けます。行動なら quit playing の形。目的を表す quit his job to travel「旅をするために仕事を辞める」は別の構文です。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "健康のために、たばこを吸うのをやめると決心した場面。He decided to ___ smoking for his health.",
+        "answers": [
+          "quit"
+        ],
+        "explanation": "quit smoking で「喫煙をやめる」。quit の後には、やめる行動を動名詞で続けられます。",
+        "alternatives": [
+          {
+            "answer": "give up",
+            "explanation": "努力して習慣を手放すニュアンス。"
+          },
+          {
+            "answer": "stop",
+            "explanation": "一般的に行動を止める表現。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "quitを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "He quit his job last month and started his own business.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-quit-usage",
+          "type": "usage",
+          "prompt": "quit を使って「以前していた行動や所属をやめた」と正しく表した文を選んでください。",
+          "choices": [
+            "He quit his job yesterday and start a new one last Monday.",
+            "I quit to playing the piano last year.",
+            "She quit of the team in May.",
+            "They quit the club last spring."
+          ],
+          "correctIndex": 3,
+          "explanation": "quit the club のように対象を直接続けます。行動なら quit playing の形。目的を表す quit his job to travel「旅をするために仕事を辞める」は別の構文です。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "work",
+          "education"
         ],
         "gradeEstimate": "3級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."

@@ -8,6 +8,15 @@ export interface AppRelease {
 
 // Newest first. This is the source for Settings, public history and update notices.
 export const APP_RELEASES: readonly AppRelease[] = [{
+  version: '0.16.0',
+  date: '2026-10-24',
+  title: '3級から準1級まで、基本7,500語に',
+  announcement: '準1級の教材も加わり、基本7,500語がそろいました。意味・例文・4種類の問題で練習できます。',
+  changes: [
+    { title: '基本7,500語と、語形・表記の練習', description: '3級・準2級・2級・準1級を目安にしたオリジナル教材です。語形や表記の別カードも含め、7,507枚を収録。単語の意味、英単語、英文の空欄、使い方の4形式で確かめられます。' },
+    { title: '例文から、関連する単語へ', description: '各単語に3つの例文を用意し、語形・分野・関連語のつながりも追加しました。追加分の音声は、保存が済んだものから順に反映します。' },
+  ],
+}, {
   version: '0.15.3',
   date: '2026-10-24',
   title: '収録中の4,552語すべてに音声',

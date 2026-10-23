@@ -599,6 +599,199 @@
       }
     },
     {
+      "id": "vocab-rim",
+      "word": "rim",
+      "level": "2級",
+      "ipa": "/rɪm/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "the outer edge of something round, such as a cup, bowl or wheel",
+      "meaning": "縁、へり、外周",
+      "usageTip": "丸い物の縁に使う。the rim of the glass や around the rim の形でよく使われる。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "tableware",
+          "text": "There was a small crack on the rim of my cup.",
+          "translation": "私のカップの縁に小さなひびがあった。"
+        },
+        {
+          "id": "example-2",
+          "context": "cocktail",
+          "text": "The bartender put salt around the rim of the glass.",
+          "translation": "バーテンダーはグラスの縁に塩をつけた。"
+        },
+        {
+          "id": "example-3",
+          "context": "bicycle",
+          "text": "The bicycle wheel rim bent after he hit the curb.",
+          "translation": "縁石にぶつかった後、自転車のホイールのリムが曲がった。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "rim",
+          "choices": [
+            {
+              "text": "底",
+              "meaning": "bottom"
+            },
+            {
+              "text": "中身",
+              "meaning": "contents"
+            },
+            {
+              "text": "取っ手",
+              "meaning": "handle"
+            },
+            {
+              "text": "縁、へり",
+              "meaning": "outer edge"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "rim はカップや車輪など丸い物の縁を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "縁、へり、外周",
+          "choices": [
+            {
+              "text": "lid",
+              "meaning": "ふた"
+            },
+            {
+              "text": "rim",
+              "meaning": "縁、へり"
+            },
+            {
+              "text": "spoon",
+              "meaning": "スプーン"
+            },
+            {
+              "text": "label",
+              "meaning": "ラベル"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "丸い物の縁は rim。lid はふたで、縁そのものではない。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "グラスの口の部分に塩をつける場面。Run a lemon slice around the ___ of the glass first.",
+          "choices": [
+            {
+              "text": "price",
+              "meaning": "値段"
+            },
+            {
+              "text": "story",
+              "meaning": "物語"
+            },
+            {
+              "text": "rim",
+              "meaning": "縁"
+            },
+            {
+              "text": "habit",
+              "meaning": "習慣"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "グラスの口の周りに当たる部分なので rim が合う。",
+          "alternatives": [
+            {
+              "answer": "edge",
+              "explanation": "より一般的な縁。rim ほど丸い物に限定されない。"
+            },
+            {
+              "answer": "lip",
+              "explanation": "グラスやカップの口の縁を表すこともある。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "縁を表す rim を、正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "The bowl has a chip of its rim.",
+              "meaning": "そのボウルは縁が欠けている。(前置詞の誤り)"
+            },
+            {
+              "text": "The bowl has a rim chip at.",
+              "meaning": "そのボウルは縁が欠けている。(語順の誤り)"
+            },
+            {
+              "text": "The bowl has a chip with its rim.",
+              "meaning": "そのボウルは縁が欠けている。(前置詞の誤り)"
+            },
+            {
+              "text": "The bowl has a chip on its rim.",
+              "meaning": "そのボウルは縁が欠けている。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "縁にある欠けは a chip on its rim と表せる。of や with では関係が不自然で、語順の崩れた文も誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "グラスの口の部分に塩をつける場面。Run a lemon slice around the ___ of the glass first.",
+        "answers": [
+          "rim"
+        ],
+        "explanation": "グラスの口の周りに当たる部分なので rim が合う。",
+        "alternatives": [
+          {
+            "answer": "edge",
+            "explanation": "より一般的な縁。rim ほど丸い物に限定されない。"
+          },
+          {
+            "answer": "lip",
+            "explanation": "グラスやカップの口の縁を表すこともある。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "rimを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "There was a small crack on the rim of my cup.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-rim-usage",
+          "type": "usage",
+          "prompt": "縁を表す rim を、正しく使った文を選びなさい。",
+          "choices": [
+            "The bowl has a chip of its rim.",
+            "The bowl has a rim chip at.",
+            "The bowl has a chip with its rim.",
+            "The bowl has a chip on its rim."
+          ],
+          "correctIndex": 3,
+          "explanation": "縁にある欠けは a chip on its rim と表せる。of や with では関係が不自然で、語順の崩れた文も誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "daily-life"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-alternate",
       "word": "alternate",
       "level": "2級",
@@ -5370,7 +5563,7 @@
       "id": "vocab-wealthier",
       "word": "wealthier",
       "level": "2級",
-      "ipa": "ˈwɛlðiər",
+      "ipa": "ˈwɛlθiər",
       "ipaLabel": "米音",
       "partOfSpeech": "形容詞",
       "definition": "having more money, property or resources than others",
@@ -12633,6 +12826,192 @@
         "domains": [
           "economics",
           "business"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-withdrawal",
+      "word": "withdrawal",
+      "level": "2級",
+      "ipa": "/wɪðˈdrɔː.əl/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "the act of taking money out of an account, or of leaving a place, group or activity",
+      "meaning": "引き出し、撤退",
+      "usageTip": "銀行では make a withdrawal や cash withdrawal の形でよく使う。軍隊の撤退、参加の取りやめ、薬物の離脱症状にも使う。動詞は withdraw で、名詞の withdrawal を動詞として使わない。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "銀行",
+          "text": "You can make a withdrawal from any machine in the station.",
+          "translation": "駅にあるどの機械でもお金を引き出せます。"
+        },
+        {
+          "id": "example-2",
+          "context": "ニュース",
+          "text": "The withdrawal of troops from the border began early this morning.",
+          "translation": "国境からの部隊の撤退が今朝早く始まった。"
+        },
+        {
+          "id": "example-3",
+          "context": "スポーツ",
+          "text": "His withdrawal from the race surprised many of his fans.",
+          "translation": "彼のレース棄権は多くのファンを驚かせた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "withdrawal",
+          "choices": [
+            {
+              "text": "預け入れ",
+              "meaning": "お金を口座に入れること"
+            },
+            {
+              "text": "借り入れ",
+              "meaning": "お金を借りること"
+            },
+            {
+              "text": "引き出し、撤退",
+              "meaning": "取り出す・退くこと"
+            },
+            {
+              "text": "支払い期限",
+              "meaning": "支払う期日"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "withdrawal は口座からお金を引き出すことや、場所・活動から退くことを表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "引き出し、撤退",
+          "choices": [
+            {
+              "text": "deposit",
+              "meaning": "預金、預け入れ"
+            },
+            {
+              "text": "balance",
+              "meaning": "残高"
+            },
+            {
+              "text": "withdrawal",
+              "meaning": "引き出し、撤退"
+            },
+            {
+              "text": "interest",
+              "meaning": "利息"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "お金を取り出す行為や撤退は withdrawal で表す。他は預金、残高、利息を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面：海外のATMで現金を下ろす。The bank charges a small fee for each cash ___ abroad.",
+          "choices": [
+            {
+              "text": "deposit",
+              "meaning": "預け入れ"
+            },
+            {
+              "text": "balance",
+              "meaning": "残高"
+            },
+            {
+              "text": "receipt",
+              "meaning": "領収書"
+            },
+            {
+              "text": "withdrawal",
+              "meaning": "引き出し"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "海外のATMで現金を引き出す際の手数料なので、cash withdrawal が自然に合う。",
+          "alternatives": [
+            {
+              "answer": "transaction",
+              "explanation": "預け入れや引き出しなど取引全般を指し、withdrawal よりやや広い。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "名詞 withdrawal を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I withdrawal money from the bank every Friday.",
+              "meaning": "毎週金曜に銀行でお金を引き出す。"
+            },
+            {
+              "text": "He withdrawal from the club last week.",
+              "meaning": "先週クラブを退会した。"
+            },
+            {
+              "text": "She did a withdrawal to the bank yesterday.",
+              "meaning": "昨日銀行で引き出しをした。"
+            },
+            {
+              "text": "She made a withdrawal of 200 dollars.",
+              "meaning": "彼女は200ドルを引き出した。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "withdrawal は名詞なので make a withdrawal の形が自然。他は名詞を動詞として使う誤りや、動詞と前置詞の不自然な組み合わせである。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面：海外のATMで現金を下ろす。The bank charges a small fee for each cash ___ abroad.",
+        "answers": [
+          "withdrawal"
+        ],
+        "explanation": "海外のATMで現金を引き出す際の手数料なので、cash withdrawal が自然に合う。",
+        "alternatives": [
+          {
+            "answer": "transaction",
+            "explanation": "預け入れや引き出しなど取引全般を指し、withdrawal よりやや広い。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "withdrawalを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "You can make a withdrawal from any machine in the station.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-withdrawal-usage",
+          "type": "usage",
+          "prompt": "名詞 withdrawal を正しく使った文を選んでください。",
+          "choices": [
+            "I withdrawal money from the bank every Friday.",
+            "He withdrawal from the club last week.",
+            "She did a withdrawal to the bank yesterday.",
+            "She made a withdrawal of 200 dollars."
+          ],
+          "correctIndex": 3,
+          "explanation": "withdrawal は名詞なので make a withdrawal の形が自然。他は名詞を動詞として使う誤りや、動詞と前置詞の不自然な組み合わせである。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "finance",
+          "daily-life"
         ],
         "gradeEstimate": "2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."

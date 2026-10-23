@@ -16633,6 +16633,200 @@
       }
     },
     {
+      "id": "vocab-quote",
+      "word": "quote",
+      "level": "3級",
+      "ipa": "/kwəʊt/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "words from a person or text that are repeated exactly, often shown in quotation marks",
+      "meaning": "引用、引用文",
+      "usageTip": "名詞では a quote from A「Aからの引用」が基本の形。a quote for a job「仕事の見積もり」という別の意味もあるが、ここでは「引用」の意味を扱う。動詞の quote（引用する)とは品詞が違う点にも注意。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "授業",
+          "text": "The teacher wrote a famous quote on the board before the lesson began.",
+          "translation": "先生は授業が始まる前に、有名な引用句を黒板に書いた。"
+        },
+        {
+          "id": "example-2",
+          "context": "記事",
+          "text": "The reporter used a quote from the mayor in her article.",
+          "translation": "記者は市長の発言の引用を記事に使った。"
+        },
+        {
+          "id": "example-3",
+          "context": "読書",
+          "text": "I copied a short quote from that novel into my notebook.",
+          "translation": "私はその小説の短い一節をノートに書き写した。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "quote",
+          "choices": [
+            {
+              "text": "引用文",
+              "meaning": "他人の言葉をそのまま引いたもの"
+            },
+            {
+              "text": "返事",
+              "meaning": "問いかけへの答え"
+            },
+            {
+              "text": "題名",
+              "meaning": "作品につける名前"
+            },
+            {
+              "text": "要約",
+              "meaning": "短くまとめたもの"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "quote は他人の言葉や文章をそのまま引いたものを指す。要約は元の言葉そのものではなく、短くまとめたものである。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "引用、引用文",
+          "choices": [
+            {
+              "text": "journal",
+              "meaning": "雑誌、日誌"
+            },
+            {
+              "text": "melody",
+              "meaning": "旋律"
+            },
+            {
+              "text": "sketch",
+              "meaning": "スケッチ、下絵"
+            },
+            {
+              "text": "quote",
+              "meaning": "引用、引用文"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "他人の言葉をそのまま引いたものは quote。他の語は日誌、旋律、下絵を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "記事の中で、市長が実際に話した言葉をそのまま載せる場面。 The article included a direct ___ from the mayor.",
+          "choices": [
+            {
+              "text": "sketch",
+              "meaning": "スケッチ"
+            },
+            {
+              "text": "melody",
+              "meaning": "旋律"
+            },
+            {
+              "text": "quote",
+              "meaning": "引用"
+            },
+            {
+              "text": "journal",
+              "meaning": "日誌"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "市長の言葉をそのまま載せるので quote が自然。他の語は意味が合わない。",
+          "alternatives": [
+            {
+              "answer": "statement",
+              "explanation": "公式な発言全体を指し、一言一句の引用というニュアンスは弱い。"
+            },
+            {
+              "answer": "comment",
+              "explanation": "意見や感想としての発言を指し、記事に載せる言葉としても使える。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "quote を名詞「引用文」として正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "She wrote two quote from the speech.",
+              "meaning": "誤り：two の後は quotes。"
+            },
+            {
+              "text": "This quote are from her latest book.",
+              "meaning": "誤り：This quote には is。"
+            },
+            {
+              "text": "He included a quote, but forgot where it were from.",
+              "meaning": "誤り：単数の it には was。"
+            },
+            {
+              "text": "I liked the quote from her speech.",
+              "meaning": "私は彼女のスピーチからの引用が気に入った。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "a quote from ～ で引用元を示せます。quote は数えられる名詞で、複数形は quotes。quote には動詞「引用する」もあります。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "記事の中で、市長が実際に話した言葉をそのまま載せる場面。 The article included a direct ___ from the mayor.",
+        "answers": [
+          "quote"
+        ],
+        "explanation": "市長の言葉をそのまま載せるので quote が自然。他の語は意味が合わない。",
+        "alternatives": [
+          {
+            "answer": "statement",
+            "explanation": "公式な発言全体を指し、一言一句の引用というニュアンスは弱い。"
+          },
+          {
+            "answer": "comment",
+            "explanation": "意見や感想としての発言を指し、記事に載せる言葉としても使える。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "quoteを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The teacher wrote a famous quote on the board before the lesson began.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-quote-usage",
+          "type": "usage",
+          "prompt": "quote を名詞「引用文」として正しく使った文を選びなさい。",
+          "choices": [
+            "She wrote two quote from the speech.",
+            "This quote are from her latest book.",
+            "He included a quote, but forgot where it were from.",
+            "I liked the quote from her speech."
+          ],
+          "correctIndex": 3,
+          "explanation": "a quote from ～ で引用元を示せます。quote は数えられる名詞で、複数形は quotes。quote には動詞「引用する」もあります。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "media",
+          "communication"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-publish",
       "word": "publish",
       "level": "3級",

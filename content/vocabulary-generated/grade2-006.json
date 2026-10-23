@@ -16049,6 +16049,191 @@
       }
     },
     {
+      "id": "vocab-last",
+      "word": "last",
+      "level": "2級",
+      "ipa": "/lɑːst/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "形容詞",
+      "definition": "coming after all others, or most recent before now",
+      "meaning": "最後の、この前の",
+      "usageTip": "last week や last night は「先週」「昨夜」の意味で、前に in / on / at を付けない。the last page のように the を付けると「最後の」の意味になる。next と対比できる。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "週末の話",
+          "text": "We went hiking in the mountains last weekend.",
+          "translation": "私たちは先週末に山へハイキングに行きました。"
+        },
+        {
+          "id": "example-2",
+          "context": "読書",
+          "text": "I cried when I read the last page of the book.",
+          "translation": "その本の最後のページを読んだ時、私は泣きました。"
+        },
+        {
+          "id": "example-3",
+          "context": "電車",
+          "text": "We almost missed the last train home last night.",
+          "translation": "私たちは昨夜、帰りの終電にあやうく乗り遅れるところでした。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "last",
+          "choices": [
+            {
+              "text": "最初の",
+              "meaning": "firstの意味"
+            },
+            {
+              "text": "まれな",
+              "meaning": "rareの意味"
+            },
+            {
+              "text": "最後の、この前の",
+              "meaning": "lastの意味"
+            },
+            {
+              "text": "新しい",
+              "meaning": "newの意味"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "lastは順番の最後、または時間的にいちばん近い過去を表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "最後の、この前の",
+          "choices": [
+            {
+              "text": "late",
+              "meaning": "遅い"
+            },
+            {
+              "text": "next",
+              "meaning": "次の"
+            },
+            {
+              "text": "long",
+              "meaning": "長い"
+            },
+            {
+              "text": "last",
+              "meaning": "最後の、この前の"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "最後の、または直近の過去を表す形容詞はlastです。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "先月の結婚式の思い出を話す場面: I saw my cousin at a wedding ___ month.",
+          "choices": [
+            {
+              "text": "next",
+              "meaning": "来月の"
+            },
+            {
+              "text": "last",
+              "meaning": "先月の"
+            },
+            {
+              "text": "every",
+              "meaning": "毎月の"
+            },
+            {
+              "text": "this",
+              "meaning": "今月の"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "sawは過去の出来事で、場面も先月の話なので、last monthが自然です。",
+          "alternatives": [
+            {
+              "answer": "the previous",
+              "explanation": "過去の話の中で、前の月を示す表現です。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "lastの使い方が正しい文を選んでください。",
+          "choices": [
+            {
+              "text": "I visited Kyoto in last summer.",
+              "meaning": "私は昨夏京都を訪れた。(last summerの前にinは不要)"
+            },
+            {
+              "text": "We met on the last week.",
+              "meaning": "私たちは先週会った、のつもり。(「先週」はon the last weekではなくlast week)"
+            },
+            {
+              "text": "I visited Kyoto last summer.",
+              "meaning": "私は昨夏京都を訪れた。"
+            },
+            {
+              "text": "She called me at last night.",
+              "meaning": "彼女は昨夜電話をくれた、のつもり。(last nightの前にatは不要)"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "「昨夏」「先週」「昨夜」を表すlast summer、last week、last nightは前置詞もtheも付けずに使います。他の文はin、on the、atが余分で不自然です。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "先月の結婚式の思い出を話す場面: I saw my cousin at a wedding ___ month.",
+        "answers": [
+          "last"
+        ],
+        "explanation": "sawは過去の出来事で、場面も先月の話なので、last monthが自然です。",
+        "alternatives": [
+          {
+            "answer": "the previous",
+            "explanation": "過去の話の中で、前の月を示す表現です。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "lastを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "We went hiking in the mountains last weekend.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-last-usage",
+          "type": "usage",
+          "prompt": "lastの使い方が正しい文を選んでください。",
+          "choices": [
+            "I visited Kyoto in last summer.",
+            "We met on the last week.",
+            "I visited Kyoto last summer.",
+            "She called me at last night."
+          ],
+          "correctIndex": 2,
+          "explanation": "「昨夏」「先週」「昨夜」を表すlast summer、last week、last nightは前置詞もtheも付けずに使います。他の文はin、on the、atが余分で不自然です。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A1",
+        "domains": [
+          "daily-life"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-next",
       "word": "next",
       "level": "2級",

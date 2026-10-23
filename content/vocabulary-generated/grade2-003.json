@@ -12948,6 +12948,192 @@
       }
     },
     {
+      "id": "vocab-prayer",
+      "word": "prayer",
+      "level": "2級",
+      "ipa": "/preə/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "words or silent thoughts directed to God or a spiritual power, asking for help or giving thanks",
+      "meaning": "祈り・祈りの言葉",
+      "usageTip": "say a prayer for ~ や in prayer の形で覚える。動詞は pray で、pray for ~ と使う。「祈りの言葉」の意味では /preə/(英音)と発音する。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "家庭",
+          "text": "She said a short prayer before the family meal.",
+          "translation": "彼女は家族の食事の前に短い祈りを捧げた。"
+        },
+        {
+          "id": "example-2",
+          "context": "地域",
+          "text": "Many people gathered for prayer at the old church.",
+          "translation": "多くの人が古い教会に祈りのために集まった。"
+        },
+        {
+          "id": "example-3",
+          "context": "励まし",
+          "text": "Our thoughts and prayers are with you during this hard time.",
+          "translation": "この大変な時期、私たちはあなたのことを思い祈っています。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "prayer",
+          "choices": [
+            {
+              "text": "競争",
+              "meaning": "competition"
+            },
+            {
+              "text": "祈り・祈りの言葉",
+              "meaning": "prayer"
+            },
+            {
+              "text": "約束",
+              "meaning": "promise"
+            },
+            {
+              "text": "地図",
+              "meaning": "map"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "prayer は神や精神的な存在への祈りを表す名詞である。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "祈り・祈りの言葉",
+          "choices": [
+            {
+              "text": "price",
+              "meaning": "値段"
+            },
+            {
+              "text": "prize",
+              "meaning": "賞"
+            },
+            {
+              "text": "plan",
+              "meaning": "計画"
+            },
+            {
+              "text": "prayer",
+              "meaning": "祈り"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "祈りや祈りの言葉を表す名詞は prayer である。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "食事前の場面：Before dinner, the children closed their eyes and said a quiet ___.",
+          "choices": [
+            {
+              "text": "invoice",
+              "meaning": "請求書"
+            },
+            {
+              "text": "ticket",
+              "meaning": "切符"
+            },
+            {
+              "text": "journey",
+              "meaning": "旅"
+            },
+            {
+              "text": "prayer",
+              "meaning": "祈り"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "目を閉じて静かに言うものなので、prayer が自然である。",
+          "alternatives": [
+            {
+              "answer": "grace",
+              "explanation": "食前の感謝の祈りを指す。ここでも自然で、より限定的。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "prayer を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "He prayer for his sister every night.",
+              "meaning": "彼は毎晩妹のために祈る、と言いたい誤り。(動詞の誤り)"
+            },
+            {
+              "text": "I will prayer you tomorrow morning.",
+              "meaning": "明日の朝あなたのために祈る、と言いたい誤り。(動詞の誤り)"
+            },
+            {
+              "text": "She said a prayer for her sister every night.",
+              "meaning": "彼女は毎晩妹のために祈りを捧げた。"
+            },
+            {
+              "text": "She prayers for her sister every night.",
+              "meaning": "彼女は毎晩妹のために祈る、と言いたい誤り。(動詞の誤り)"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "prayer は名詞で say a prayer for ~ と使う。動詞として使うなら pray を用いる。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "食事前の場面：Before dinner, the children closed their eyes and said a quiet ___.",
+        "answers": [
+          "prayer"
+        ],
+        "explanation": "目を閉じて静かに言うものなので、prayer が自然である。",
+        "alternatives": [
+          {
+            "answer": "grace",
+            "explanation": "食前の感謝の祈りを指す。ここでも自然で、より限定的。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "prayerを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "She said a short prayer before the family meal.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-prayer-usage",
+          "type": "usage",
+          "prompt": "prayer を正しく使った文を選びなさい。",
+          "choices": [
+            "He prayer for his sister every night.",
+            "I will prayer you tomorrow morning.",
+            "She said a prayer for her sister every night.",
+            "She prayers for her sister every night."
+          ],
+          "correctIndex": 2,
+          "explanation": "prayer は名詞で say a prayer for ~ と使う。動詞として使うなら pray を用いる。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "arts-culture",
+          "society"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-feast",
       "word": "feast",
       "level": "2級",

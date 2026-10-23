@@ -3007,6 +3007,199 @@
       }
     },
     {
+      "id": "vocab-barely",
+      "word": "barely",
+      "level": "3級",
+      "ipa": "/ˈbɛːli/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "副詞",
+      "definition": "only just; almost not at all",
+      "meaning": "かろうじて、ほとんど～ない",
+      "usageTip": "barely は「かろうじて・ほとんど～ない」。can barely hear のように助動詞の後、一般動詞の前などに置きます。基本用法では、ほとんどできないことを barely 自体で表せます。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "朝の通勤",
+          "text": "I barely caught the train this morning because I woke up late.",
+          "translation": "寝坊したので、今朝はかろうじて電車に間に合った。"
+        },
+        {
+          "id": "example-2",
+          "context": "騒がしい教室",
+          "text": "She could barely hear the teacher over the noise.",
+          "translation": "彼女は騒音で先生の声がほとんど聞こえなかった。"
+        },
+        {
+          "id": "example-3",
+          "context": "長旅の後",
+          "text": "After the long flight, he was barely awake.",
+          "translation": "長時間のフライトの後で、彼はほとんど起きていられなかった。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "barely",
+          "choices": [
+            {
+              "text": "いつも",
+              "meaning": "常に"
+            },
+            {
+              "text": "まったく問題なく",
+              "meaning": "簡単に"
+            },
+            {
+              "text": "とても大きく",
+              "meaning": "非常に"
+            },
+            {
+              "text": "かろうじて、ほとんど～ない",
+              "meaning": "ぎりぎり、わずかに"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "barely は、ぎりぎりやほとんどない状態を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "かろうじて、ほとんど～ない",
+          "choices": [
+            {
+              "text": "avenue",
+              "meaning": "大通り"
+            },
+            {
+              "text": "barely",
+              "meaning": "かろうじて"
+            },
+            {
+              "text": "beverage",
+              "meaning": "飲み物"
+            },
+            {
+              "text": "cabbage",
+              "meaning": "キャベツ"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "程度がごくわずかなことを表す副詞は barely。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "試験前の疲れた状況。「昨夜ほとんど眠れず、目をほとんど開けていられない。」 I slept so little that I can ___ keep my eyes open.",
+          "choices": [
+            {
+              "text": "barely",
+              "meaning": "かろうじて"
+            },
+            {
+              "text": "easily",
+              "meaning": "簡単に"
+            },
+            {
+              "text": "proudly",
+              "meaning": "誇らしげに"
+            },
+            {
+              "text": "widely",
+              "meaning": "広く"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "ほとんど眠れず、ぎりぎり目を開けている状況なので barely が合う。",
+          "alternatives": [
+            {
+              "answer": "hardly",
+              "explanation": "can hardly keep と言え、ほぼ同じ意味になる。"
+            },
+            {
+              "answer": "scarcely",
+              "explanation": "やや硬い表現で、同様に「ほとんど～ない」を表す。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "barely を副詞として正しく使った文はどれですか。",
+          "choices": [
+            {
+              "text": "She had a barely voice that nobody heard.",
+              "meaning": "誤り：voice を直接修飾する形容詞の位置に barely は置けない。"
+            },
+            {
+              "text": "She barely to finish the report.",
+              "meaning": "誤り：この文には時制を持つ動詞が必要。"
+            },
+            {
+              "text": "They barely made it to the airport on time.",
+              "meaning": "彼らはかろうじて時間通りに空港に着いた。"
+            },
+            {
+              "text": "His barely surprised everyone.",
+              "meaning": "誤り：His の後に名詞が必要な文で副詞を使っている。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "barely made it で「かろうじて間に合った」。barely は副詞なので、名詞や形容詞の代わりには使えません。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "試験前の疲れた状況。「昨夜ほとんど眠れず、目をほとんど開けていられない。」 I slept so little that I can ___ keep my eyes open.",
+        "answers": [
+          "barely"
+        ],
+        "explanation": "ほとんど眠れず、ぎりぎり目を開けている状況なので barely が合う。",
+        "alternatives": [
+          {
+            "answer": "hardly",
+            "explanation": "can hardly keep と言え、ほぼ同じ意味になる。"
+          },
+          {
+            "answer": "scarcely",
+            "explanation": "やや硬い表現で、同様に「ほとんど～ない」を表す。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "barelyを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I barely caught the train this morning because I woke up late.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-barely-usage",
+          "type": "usage",
+          "prompt": "barely を副詞として正しく使った文はどれですか。",
+          "choices": [
+            "She had a barely voice that nobody heard.",
+            "She barely to finish the report.",
+            "They barely made it to the airport on time.",
+            "His barely surprised everyone."
+          ],
+          "correctIndex": 2,
+          "explanation": "barely made it で「かろうじて間に合った」。barely は副詞なので、名詞や形容詞の代わりには使えません。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "daily-life"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-beverage",
       "word": "beverage",
       "level": "3級",
@@ -4974,6 +5167,217 @@
         "domains": [
           "society",
           "relationships"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-delegate",
+      "word": "delegate",
+      "level": "3級",
+      "ipa": "/ˈdɛlɪɡeɪt/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "動詞",
+      "verbForms": {
+        "base": [
+          "delegate"
+        ],
+        "past": [
+          "delegated"
+        ],
+        "pastParticiple": [
+          "delegated"
+        ],
+        "presentParticiple": [
+          "delegating"
+        ],
+        "thirdPersonSingular": [
+          "delegates"
+        ]
+      },
+      "definition": "to give part of your work or authority to someone else",
+      "meaning": "任せる、委任する",
+      "usageTip": "動詞の意味。delegate A to B で「AをBに任せる」。delegate someone to do ～「人に～する役を任せる」も使える。delegate me the report のように人を直接目的語にする二重目的語の形は不可。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "職場",
+          "text": "A good manager knows when to delegate routine tasks to the team.",
+          "translation": "良い管理職は、定型業務をいつチームに任せるべきか知っている。"
+        },
+        {
+          "id": "example-2",
+          "context": "会議",
+          "text": "She delegated the final report to her most reliable assistant.",
+          "translation": "彼女は最終報告書を最も信頼できる助手に任せた。"
+        },
+        {
+          "id": "example-3",
+          "context": "組織",
+          "text": "The mayor delegated some decisions to local committees.",
+          "translation": "市長はいくつかの決定を地域の委員会に委任した。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "delegate",
+          "choices": [
+            {
+              "text": "汚染する",
+              "meaning": "汚す"
+            },
+            {
+              "text": "任せる、委任する",
+              "meaning": "仕事や権限を渡す"
+            },
+            {
+              "text": "取り壊す",
+              "meaning": "壊す"
+            },
+            {
+              "text": "断る",
+              "meaning": "受けない"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "delegate は仕事や権限を他人に任せること。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "任せる、委任する",
+          "choices": [
+            {
+              "text": "demolish",
+              "meaning": "取り壊す"
+            },
+            {
+              "text": "deliver",
+              "meaning": "届ける"
+            },
+            {
+              "text": "decline",
+              "meaning": "断る"
+            },
+            {
+              "text": "delegate",
+              "meaning": "任せる"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "仕事や権限を任せるのは delegate。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 忙しい部長が作業を部下に渡す。 I need to ___ some of my tasks to the new staff.",
+          "choices": [
+            {
+              "text": "delegate",
+              "meaning": "任せる"
+            },
+            {
+              "text": "borrow",
+              "meaning": "借りる"
+            },
+            {
+              "text": "erase",
+              "meaning": "消す"
+            },
+            {
+              "text": "admire",
+              "meaning": "称賛する"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "tasks to staff の形から、任せる意味の delegate が合う。",
+          "alternatives": [
+            {
+              "answer": "hand over",
+              "explanation": "口語的で、渡すニュアンスが強い表現。"
+            },
+            {
+              "answer": "assign",
+              "explanation": "仕事を割り当てる意味で、権限移譲の意味は弱め。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "delegate を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "He delegated me the budget report.",
+              "meaning": "誤り：人を直接目的語にする二重目的語の形は不可。"
+            },
+            {
+              "text": "He delegated for the budget report.",
+              "meaning": "誤り：for では任せる対象が表せない。"
+            },
+            {
+              "text": "He delegated the budget report to me.",
+              "meaning": "彼は予算報告書を私に任せた。"
+            },
+            {
+              "text": "He delegated me of the budget report.",
+              "meaning": "誤り：of は使えない。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "delegate は delegate A to B の形で使い、任せる仕事を目的語にして、相手は to で示す。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 忙しい部長が作業を部下に渡す。 I need to ___ some of my tasks to the new staff.",
+        "answers": [
+          "delegate"
+        ],
+        "explanation": "tasks to staff の形から、任せる意味の delegate が合う。",
+        "alternatives": [
+          {
+            "answer": "hand over",
+            "explanation": "口語的で、渡すニュアンスが強い表現。"
+          },
+          {
+            "answer": "assign",
+            "explanation": "仕事を割り当てる意味で、権限移譲の意味は弱め。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "delegateを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "A good manager knows when to delegate routine tasks to the team.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-delegate-usage",
+          "type": "usage",
+          "prompt": "delegate を正しく使った文を選んでください。",
+          "choices": [
+            "He delegated me the budget report.",
+            "He delegated for the budget report.",
+            "He delegated the budget report to me.",
+            "He delegated me of the budget report."
+          ],
+          "correctIndex": 2,
+          "explanation": "delegate は delegate A to B の形で使い、任せる仕事を目的語にして、相手は to で示す。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "C1",
+        "domains": [
+          "work",
+          "politics"
         ],
         "gradeEstimate": "3級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."

@@ -187,6 +187,201 @@
       }
     },
     {
+      "id": "vocab-rapport",
+      "word": "rapport",
+      "level": "2級",
+      "ipa": "/ræˈpɔː/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a close, friendly connection in which people understand each other and communicate easily",
+      "meaning": "信頼関係、意思の通じ合い",
+      "usageTip": "build / establish / have (a) rapport with + 人 の形でよく使う。ふつう不可算だが、a good rapport のように形容詞と一緒に a を付ける形もよく見られる。語末の t は発音しない。report と混同しないこと。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "教育現場",
+          "text": "The new teacher quickly built a good rapport with her students.",
+          "translation": "新任の先生はすぐに生徒たちと良い信頼関係を築いた。"
+        },
+        {
+          "id": "example-2",
+          "context": "仕事の面談",
+          "text": "A little friendly conversation can help you establish rapport with new clients.",
+          "translation": "ちょっとした雑談が、新しい顧客との信頼関係を築く助けになる。"
+        },
+        {
+          "id": "example-3",
+          "context": "医療",
+          "text": "Patients often speak more openly when they have rapport with their doctor.",
+          "translation": "患者は医師と信頼関係があると、より率直に話すことが多い。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "rapport",
+          "choices": [
+            {
+              "text": "口論",
+              "meaning": "言い争い"
+            },
+            {
+              "text": "報告書",
+              "meaning": "文書での報告"
+            },
+            {
+              "text": "競争",
+              "meaning": "勝ちを争うこと"
+            },
+            {
+              "text": "信頼関係",
+              "meaning": "互いに理解し合う良好な関係"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "rapport は人同士の理解と親しみのある関係を指す。形が似た report(報告)と混同しないこと。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "信頼関係、意思の通じ合い",
+          "choices": [
+            {
+              "text": "capture",
+              "meaning": "捕らえる"
+            },
+            {
+              "text": "rapport",
+              "meaning": "信頼関係"
+            },
+            {
+              "text": "rumor",
+              "meaning": "うわさ"
+            },
+            {
+              "text": "rivalry",
+              "meaning": "対抗意識"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "人との良好な意思疎通や相互理解を表す語は rapport である。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "面接官として、話しやすい雰囲気で応募者と打ち解けたい場面。 A short chat at the start can help you build ___ with the candidate.",
+          "choices": [
+            {
+              "text": "distance",
+              "meaning": "距離"
+            },
+            {
+              "text": "suspicion",
+              "meaning": "疑い"
+            },
+            {
+              "text": "pressure",
+              "meaning": "圧力"
+            },
+            {
+              "text": "rapport",
+              "meaning": "信頼関係"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "打ち解けるための雑談で築くものは rapport である。他の語は目的と逆、または build with the candidate の文脈に合わない。",
+          "alternatives": [
+            {
+              "answer": "trust",
+              "explanation": "trust は信頼そのものを強調し、打ち解けた雰囲気は rapport ほど出ない。"
+            },
+            {
+              "answer": "a connection",
+              "explanation": "a connection は人とのつながりを表す、やや口語的な表現。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "rapport を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "She has a strong rapport to her team.",
+              "meaning": "チームに対する信頼関係。(前置詞が誤り)"
+            },
+            {
+              "text": "She has a strong rapport with her team.",
+              "meaning": "彼女はチームと強い信頼関係がある。"
+            },
+            {
+              "text": "She has a strong rapport for her team.",
+              "meaning": "チームのための信頼関係。(前置詞が誤り)"
+            },
+            {
+              "text": "She has a strong rapport at her team.",
+              "meaning": "チームでの信頼関係。(前置詞が誤り)"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "相手との関係は rapport with + 人 で表す。to, for, at は相互関係を示す自然な前置詞ではない。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "面接官として、話しやすい雰囲気で応募者と打ち解けたい場面。 A short chat at the start can help you build ___ with the candidate.",
+        "answers": [
+          "rapport"
+        ],
+        "explanation": "打ち解けるための雑談で築くものは rapport である。他の語は目的と逆、または build with the candidate の文脈に合わない。",
+        "alternatives": [
+          {
+            "answer": "trust",
+            "explanation": "trust は信頼そのものを強調し、打ち解けた雰囲気は rapport ほど出ない。"
+          },
+          {
+            "answer": "a connection",
+            "explanation": "a connection は人とのつながりを表す、やや口語的な表現。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "rapportを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The new teacher quickly built a good rapport with her students.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-rapport-usage",
+          "type": "usage",
+          "prompt": "rapport を正しく使った文を選びなさい。",
+          "choices": [
+            "She has a strong rapport to her team.",
+            "She has a strong rapport with her team.",
+            "She has a strong rapport for her team.",
+            "She has a strong rapport at her team."
+          ],
+          "correctIndex": 1,
+          "explanation": "相手との関係は rapport with + 人 で表す。to, for, at は相互関係を示す自然な前置詞ではない。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "C1",
+        "domains": [
+          "relationships",
+          "communication",
+          "work"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-rigorous",
       "word": "rigorous",
       "level": "2級",
@@ -7224,6 +7419,191 @@
       }
     },
     {
+      "id": "vocab-plural",
+      "word": "plural",
+      "level": "2級",
+      "ipa": "ˈplʊrəl",
+      "ipaLabel": "米音",
+      "partOfSpeech": "形容詞",
+      "definition": "Referring to more than one person or thing, especially in grammar.",
+      "meaning": "複数の・複数形の",
+      "usageTip": "plural noun や plural form のように名詞の前で使うほか、be 動詞の後ろでも使える。反対は singular。名詞としても使えるが、ここでは形容詞の用法を扱う。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "授業",
+          "text": "Children is the plural form of the noun child.",
+          "translation": "children は名詞 child の複数形である。"
+        },
+        {
+          "id": "example-2",
+          "context": "作文",
+          "text": "Use a plural verb after the subject my parents.",
+          "translation": "主語 my parents の後には複数形の動詞を使いなさい。"
+        },
+        {
+          "id": "example-3",
+          "context": "文法",
+          "text": "Most plural nouns in English end with -s or -es.",
+          "translation": "英語の複数名詞の多くは -s か -es で終わる。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "plural",
+          "choices": [
+            {
+              "text": "単数の",
+              "meaning": "一つだけを表す"
+            },
+            {
+              "text": "複数の",
+              "meaning": "二つ以上を表す"
+            },
+            {
+              "text": "過去の",
+              "meaning": "過ぎ去った時を表す"
+            },
+            {
+              "text": "丁寧な",
+              "meaning": "礼儀正しい"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "plural は二つ以上を表す「複数の」という意味で、singular の反対である。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "複数の・複数形の",
+          "choices": [
+            {
+              "text": "margin",
+              "meaning": "余白"
+            },
+            {
+              "text": "suffix",
+              "meaning": "接尾辞"
+            },
+            {
+              "text": "plural",
+              "meaning": "複数の"
+            },
+            {
+              "text": "vase",
+              "meaning": "花瓶"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "二つ以上を表す形容詞は plural。他は余白、接尾辞、花瓶という別の意味の語である。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "文法の授業で。mice は mouse の複数形だ。The word mice is the ___ form of mouse.",
+          "choices": [
+            {
+              "text": "margin",
+              "meaning": "余白"
+            },
+            {
+              "text": "vase",
+              "meaning": "花瓶"
+            },
+            {
+              "text": "prefix",
+              "meaning": "接頭辞"
+            },
+            {
+              "text": "plural",
+              "meaning": "複数の"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "mice は二つ以上を表す形なので、plural form となる。",
+          "alternatives": [
+            {
+              "answer": "irregular",
+              "explanation": "mice は不規則変化でもあるが、「複数形」という点を直接示すのは plural。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "形容詞 plural を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "The word cat is a plural noun.",
+              "meaning": "cat は複数名詞だ。(cat は単数なので誤り)"
+            },
+            {
+              "text": "Children is a plurally noun.",
+              "meaning": "children は複数名詞だ。(副詞形を使った誤り)"
+            },
+            {
+              "text": "Books are plural nouns in English.",
+              "meaning": "books は英語の複数名詞だ。"
+            },
+            {
+              "text": "These are plural forms nouns.",
+              "meaning": "これらは複数形名詞だ。(語順の誤り)"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "Books は複数形の名詞なので、plural nouns と言える。cat は単数、plurally は副詞形、plural forms nouns は語の並びが不自然である。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "文法の授業で。mice は mouse の複数形だ。The word mice is the ___ form of mouse.",
+        "answers": [
+          "plural"
+        ],
+        "explanation": "mice は二つ以上を表す形なので、plural form となる。",
+        "alternatives": [
+          {
+            "answer": "irregular",
+            "explanation": "mice は不規則変化でもあるが、「複数形」という点を直接示すのは plural。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "pluralを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Children is the plural form of the noun child.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-plural-usage",
+          "type": "usage",
+          "prompt": "形容詞 plural を正しく使った文を選びなさい。",
+          "choices": [
+            "The word cat is a plural noun.",
+            "Children is a plurally noun.",
+            "Books are plural nouns in English.",
+            "These are plural forms nouns."
+          ],
+          "correctIndex": 2,
+          "explanation": "Books は複数形の名詞なので、plural nouns と言える。cat は単数、plurally は副詞形、plural forms nouns は語の並びが不自然である。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
+        "domains": [
+          "education"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-pouch",
       "word": "pouch",
       "level": "2級",
@@ -9163,6 +9543,199 @@
       "metadata": {
         "schemaVersion": 2,
         "cefrEstimate": "B2",
+        "domains": [
+          "daily-life"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-mitten",
+      "word": "mitten",
+      "level": "2級",
+      "ipa": "ˈmɪtən",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a warm covering for the hand with one space for the thumb and one shared space for the four fingers",
+      "meaning": "ミトン（親指だけが分かれた手袋）",
+      "usageTip": "通常は両手分なので mittens と複数形で使う。片方は a mitten、一組は a pair of mittens。指が一本ずつ分かれた gloves とは形が違う。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "冬の通学",
+          "text": "She pulled on her red mittens before walking to school.",
+          "translation": "彼女は学校へ歩いて行く前に赤いミトンをはめた。"
+        },
+        {
+          "id": "example-2",
+          "context": "紛失",
+          "text": "I lost one mitten on the bus, so my hand got cold.",
+          "translation": "バスでミトンを片方なくして、手が冷たくなった。"
+        },
+        {
+          "id": "example-3",
+          "context": "贈り物",
+          "text": "My grandmother knitted a pair of wool mittens for the baby.",
+          "translation": "祖母は赤ちゃんのためにウールのミトンを編んだ。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "mitten",
+          "choices": [
+            {
+              "text": "長靴",
+              "meaning": "雨や雪の日に履く丈の長い靴"
+            },
+            {
+              "text": "親指だけが分かれた防寒用の手袋",
+              "meaning": "mitten の意味"
+            },
+            {
+              "text": "首に巻く細長い防寒具",
+              "meaning": "マフラー"
+            },
+            {
+              "text": "耳まで覆う防寒用の帽子",
+              "meaning": "耳当て付きの帽子"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "mitten は親指の部分だけが分かれた、手を温めるための手袋を指す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "親指だけが分かれた防寒用の手袋",
+          "choices": [
+            {
+              "text": "scarf",
+              "meaning": "マフラー・スカーフ"
+            },
+            {
+              "text": "sock",
+              "meaning": "靴下"
+            },
+            {
+              "text": "apron",
+              "meaning": "エプロン"
+            },
+            {
+              "text": "mitten",
+              "meaning": "ミトン"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "親指だけが分かれた手袋は mitten。他は首、足、体の前に身につける物。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "雪遊びの場面：It was snowing, so the children put on their ___ to keep their hands warm.",
+          "choices": [
+            {
+              "text": "sandals",
+              "meaning": "サンダル"
+            },
+            {
+              "text": "mittens",
+              "meaning": "ミトン"
+            },
+            {
+              "text": "aprons",
+              "meaning": "エプロン"
+            },
+            {
+              "text": "sunglasses",
+              "meaning": "サングラス"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "雪の日に手を温めるためにはめる物なので mittens が合う。他は手を温める用途に合わない。",
+          "alternatives": [
+            {
+              "answer": "gloves",
+              "explanation": "指が分かれた手袋。mittens より一般的な言い方。"
+            },
+            {
+              "answer": "warm gloves",
+              "explanation": "防寒用であることをはっきり示す言い方。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "mitten の使い方として正しい文を選びなさい。",
+          "choices": [
+            {
+              "text": "I bought a pair of mittens for the snow.",
+              "meaning": "雪のためにミトンを一組買った。"
+            },
+            {
+              "text": "I bought a mitten of mittens for the snow.",
+              "meaning": "of の使い方が誤り。a pair of とするのが正しい。"
+            },
+            {
+              "text": "I bought two pair mitten for the snow.",
+              "meaning": "複数形が誤り。two pairs of mittens が正しい。"
+            },
+            {
+              "text": "I bought a mittens for the snow.",
+              "meaning": "a と複数形の不一致。a mitten か mittens が正しい。"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "ミトンは両手分で一組なので a pair of mittens と言う。他は数や形の誤り。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "雪遊びの場面：It was snowing, so the children put on their ___ to keep their hands warm.",
+        "answers": [
+          "mittens"
+        ],
+        "explanation": "雪の日に手を温めるためにはめる物なので mittens が合う。他は手を温める用途に合わない。",
+        "alternatives": [
+          {
+            "answer": "gloves",
+            "explanation": "指が分かれた手袋。mittens より一般的な言い方。"
+          },
+          {
+            "answer": "warm gloves",
+            "explanation": "防寒用であることをはっきり示す言い方。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "mittenを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "She pulled on her red mittens before walking to school.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-mitten-usage",
+          "type": "usage",
+          "prompt": "mitten の使い方として正しい文を選びなさい。",
+          "choices": [
+            "I bought a pair of mittens for the snow.",
+            "I bought a mitten of mittens for the snow.",
+            "I bought two pair mitten for the snow.",
+            "I bought a mittens for the snow."
+          ],
+          "correctIndex": 0,
+          "explanation": "ミトンは両手分で一組なので a pair of mittens と言う。他は数や形の誤り。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B1",
         "domains": [
           "daily-life"
         ],
@@ -18353,6 +18926,208 @@
         "domains": [
           "society",
           "politics"
+        ],
+        "gradeEstimate": "2級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-artwork",
+      "word": "artwork",
+      "level": "2級",
+      "ipa": "ˈɑːtwɜːk",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a painting, sculpture, or other creative object made as art; also the art in a collection or publication",
+      "meaning": "芸術作品・美術品",
+      "usageTip": "「作品全般」は不可算で artwork、個々の作品は a piece of artwork や an artwork、複数の作品は artworks も使える。ここでは「美術作品」の意味。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "美術館",
+          "text": "The museum bought a rare piece of artwork last year.",
+          "translation": "その美術館は昨年、珍しい芸術作品を購入した。"
+        },
+        {
+          "id": "example-2",
+          "context": "学校",
+          "text": "The children's artwork covered the classroom walls.",
+          "translation": "子どもたちの作品が教室の壁を覆っていた。"
+        },
+        {
+          "id": "example-3",
+          "context": "家",
+          "text": "She hung the artwork above the sofa.",
+          "translation": "彼女はソファの上にその作品を掛けた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "artwork",
+          "choices": [
+            {
+              "text": "美術の宿題",
+              "meaning": "美術の授業の課題"
+            },
+            {
+              "text": "工場の仕事",
+              "meaning": "工場での作業"
+            },
+            {
+              "text": "芸術作品",
+              "meaning": "絵や彫刻などの作品"
+            },
+            {
+              "text": "美術館の入口",
+              "meaning": "美術館の入る場所"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "artwork は絵や彫刻など、芸術として作られた作品を指す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "美術品・芸術作品",
+          "choices": [
+            {
+              "text": "network",
+              "meaning": "ネットワーク"
+            },
+            {
+              "text": "homework",
+              "meaning": "宿題"
+            },
+            {
+              "text": "framework",
+              "meaning": "枠組み"
+            },
+            {
+              "text": "artwork",
+              "meaning": "芸術作品"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "芸術作品を表す語は artwork。他は別の意味の -work の語。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "【美術館で作品を見ている場面】The gallery has a beautiful ___ by a local painter.",
+          "choices": [
+            {
+              "text": "receipt",
+              "meaning": "領収書"
+            },
+            {
+              "text": "artwork",
+              "meaning": "作品"
+            },
+            {
+              "text": "password",
+              "meaning": "パスワード"
+            },
+            {
+              "text": "engine",
+              "meaning": "エンジン"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "地元の画家が作った美しいものなので、作品を表す語が合う。",
+          "alternatives": [
+            {
+              "answer": "painting",
+              "explanation": "絵画に限定され、より具体的な言い方になる。"
+            },
+            {
+              "answer": "piece of art",
+              "explanation": "作品一点を指す自然な言い方で、やや説明的。"
+            },
+            {
+              "answer": "work of art",
+              "explanation": "芸術作品として評価するニュアンスがやや強い。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "artwork を正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "I saw many artworks on the museum.",
+              "meaning": "前置詞の誤り(in the museum が正しい)"
+            },
+            {
+              "text": "She drew an artwork with a pencils.",
+              "meaning": "a pencils の形の誤り"
+            },
+            {
+              "text": "The artwork were sold yesterday at an auction.",
+              "meaning": "単数主語と were の不一致"
+            },
+            {
+              "text": "The artwork on the wall was painted by my aunt.",
+              "meaning": "壁の作品は叔母が描いた。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "単数扱いの The artwork に was を合わせ、by で作者を示している。他は前置詞、冠詞と複数形、主語と動詞の一致に誤りがある。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "【美術館で作品を見ている場面】The gallery has a beautiful ___ by a local painter.",
+        "answers": [
+          "artwork"
+        ],
+        "explanation": "地元の画家が作った美しいものなので、作品を表す語が合う。",
+        "alternatives": [
+          {
+            "answer": "painting",
+            "explanation": "絵画に限定され、より具体的な言い方になる。"
+          },
+          {
+            "answer": "piece of art",
+            "explanation": "作品一点を指す自然な言い方で、やや説明的。"
+          },
+          {
+            "answer": "work of art",
+            "explanation": "芸術作品として評価するニュアンスがやや強い。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "artworkを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "The museum bought a rare piece of artwork last year.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-artwork-usage",
+          "type": "usage",
+          "prompt": "artwork を正しく使った文を選びなさい。",
+          "choices": [
+            "I saw many artworks on the museum.",
+            "She drew an artwork with a pencils.",
+            "The artwork were sold yesterday at an auction.",
+            "The artwork on the wall was painted by my aunt."
+          ],
+          "correctIndex": 3,
+          "explanation": "単数扱いの The artwork に was を合わせ、by で作者を示している。他は前置詞、冠詞と複数形、主語と動詞の一致に誤りがある。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "arts-culture",
+          "education"
         ],
         "gradeEstimate": "2級",
         "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."

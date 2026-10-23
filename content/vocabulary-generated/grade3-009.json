@@ -2832,6 +2832,192 @@
       }
     },
     {
+      "id": "vocab-garage",
+      "word": "garage",
+      "level": "3級",
+      "ipa": "/ˈɡærɑːʒ/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "A building or room, often beside a house, where a car is kept.",
+      "meaning": "車庫",
+      "usageTip": "「車を入れる車庫」の意味で使う。in the garage の形が基本。イギリス英語では修理工場やガソリンスタンドを指すこともあるが、ここでは車庫に絞る。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "家",
+          "text": "She parked the car in the garage before the rain started.",
+          "translation": "彼女は雨が降り出す前に車を車庫に入れた。"
+        },
+        {
+          "id": "example-2",
+          "context": "週末",
+          "text": "Dad keeps his tools and old bicycles in the garage.",
+          "translation": "父は工具や古い自転車を車庫にしまっている。"
+        },
+        {
+          "id": "example-3",
+          "context": "引っ越し",
+          "text": "Our new house has a garage big enough for two cars.",
+          "translation": "私たちの新居には車が2台入る大きさの車庫がある。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "garage",
+          "choices": [
+            {
+              "text": "車庫",
+              "meaning": "車を置く建物や部屋"
+            },
+            {
+              "text": "庭",
+              "meaning": "家の外の草花がある場所"
+            },
+            {
+              "text": "屋根",
+              "meaning": "建物の上を覆う部分"
+            },
+            {
+              "text": "階段",
+              "meaning": "上り下りするための段"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "garage は家に付いた、車を置く建物や部屋を表す。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "車庫",
+          "choices": [
+            {
+              "text": "kitchen",
+              "meaning": "台所"
+            },
+            {
+              "text": "balcony",
+              "meaning": "バルコニー"
+            },
+            {
+              "text": "garage",
+              "meaning": "車庫"
+            },
+            {
+              "text": "basement",
+              "meaning": "地下室"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "車を入れる場所は garage である。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "場面: 嵐の日に車を家の建物の中に入れる。 We put the car in the ___ because of the storm.",
+          "choices": [
+            {
+              "text": "library",
+              "meaning": "図書館"
+            },
+            {
+              "text": "garage",
+              "meaning": "車庫"
+            },
+            {
+              "text": "pharmacy",
+              "meaning": "薬局"
+            },
+            {
+              "text": "stadium",
+              "meaning": "競技場"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "嵐から車を守るために入れる場所として garage が自然。",
+          "alternatives": [
+            {
+              "answer": "carport",
+              "explanation": "屋根だけで壁のない駐車スペース。壁のある車庫とは少し違う。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "garage を名詞「車庫」として正しく使った文を選びなさい。",
+          "choices": [
+            {
+              "text": "There are two garage behind the house.",
+              "meaning": "誤り：two の後は garages。"
+            },
+            {
+              "text": "The garage are next to our house.",
+              "meaning": "誤り：単数主語には is。"
+            },
+            {
+              "text": "My bike is in the garage next to the car.",
+              "meaning": "私の自転車は車庫の中で車の隣にある。"
+            },
+            {
+              "text": "My garage has two doors, but they is broken.",
+              "meaning": "誤り：they に対応する動詞は are。"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "in the garage で車庫の中を表します。garage には動詞の用法もありますが、この問題では可算名詞の形と数の一致を確認しています。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "場面: 嵐の日に車を家の建物の中に入れる。 We put the car in the ___ because of the storm.",
+        "answers": [
+          "garage"
+        ],
+        "explanation": "嵐から車を守るために入れる場所として garage が自然。",
+        "alternatives": [
+          {
+            "answer": "carport",
+            "explanation": "屋根だけで壁のない駐車スペース。壁のある車庫とは少し違う。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "garageを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "She parked the car in the garage before the rain started.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-garage-usage",
+          "type": "usage",
+          "prompt": "garage を名詞「車庫」として正しく使った文を選びなさい。",
+          "choices": [
+            "There are two garage behind the house.",
+            "The garage are next to our house.",
+            "My bike is in the garage next to the car.",
+            "My garage has two doors, but they is broken."
+          ],
+          "correctIndex": 2,
+          "explanation": "in the garage で車庫の中を表します。garage には動詞の用法もありますが、この問題では可算名詞の形と数の一致を確認しています。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "daily-life",
+          "transport"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
       "id": "vocab-sweep",
       "word": "sweep",
       "level": "3級",
