@@ -1,0 +1,5 @@
+import { parseArgs } from 'node:util';
+import { join } from 'node:path';
+import { readJson } from './store.mjs';
+import { dispatchReviewedScope } from './reviewed-scope.mjs';
+try { const {values}=parseArgs({options:{out:{type:'string'},base:{type:'string'},runtime:{type:'string'},authority:{type:'string'},selection:{type:'string'},work:{type:'string'},send:{type:'boolean',default:false}},strict:true});for(const key of ['out','base','runtime','authority','selection','work'])if(!values[key])throw Error('Explicit paths required.');const result=await dispatchReviewedScope({output:values.out,phaseOneOutput:values.base,runtimeDirectory:values.runtime,sharedLockDirectory:join(values.runtime,'shared-spending.lock'),authorityPath:values.authority,selectionPath:values.selection,work:await readJson(values.work),send:values.send});console.log(JSON.stringify(result));}catch(error){const message=String(error?.message??'Unknown internal error').replace(/sk-[A-Za-z0-9_-]+/g,'[REDACTED]').slice(0,1200);console.error(JSON.stringify({code:'REVIEWED_SCOPE_STOPPED',message,automaticRetry:false}));process.exitCode=1;}
