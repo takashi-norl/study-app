@@ -15,6 +15,7 @@ import { aiRequestedSchema, aiUsageSchema } from './ai-usage-schema';
 import { audioSegmentsSchema } from './audio-segments';
 import { personalProfileSavedEventSchema, personalProfileChatRequestedEventSchema, personalProfileChatCompletedEventSchema, personalProfileChatFailedEventSchema } from './personal-profile-schemas';
 import { planTagsSchema } from './plan-tags';
+import { sourceAnalysisRevisionSchema } from './source-analysis-schema';
 
 const EVENT_TYPES = [
   'topic.created', 'source.created', 'question.upserted', 'questions.published', 'session.created',
@@ -230,7 +231,10 @@ function validateEvent(input: StudyEvent): StudyEvent {
     case 'planning.turn.upserted': planningTurnSchema.parse(payload); break;
     case 'generation.batch': z.object({ jobId: idSchema, batch: z.number().int().min(0),
       questions: z.array(questionSchema), job: jobSchema }).parse(payload); break;
-    case 'source.analysis': z.object({ sourceId: idSchema, text: z.string().max(100_000) }).parse(payload); break;
+    case 'source.analysis':
+      if ('revision' in payload || 'reviewed' in payload || 'previousRevision' in payload) sourceAnalysisRevisionSchema.parse(payload);
+      else z.object({ sourceId: idSchema, text: z.string().max(100_000) }).parse(payload);
+      break;
     case 'audio.requested': z.object({cacheKey:z.string().regex(/^[a-f0-9]{64}$/),requestToken:z.string().uuid(),characters:z.number().int().min(1).max(1500)}).strict().parse(payload); break;
     case 'audio.ready': z.object({cacheKey:z.string().regex(/^[a-f0-9]{64}$/),requestToken:z.string().uuid(),fileId:idSchema,segments:audioSegmentsSchema.optional()}).strict().parse(payload); break;
     case 'audio.failed': z.object({cacheKey:z.string().regex(/^[a-f0-9]{64}$/),requestToken:z.string().uuid()}).strict().parse(payload); break;

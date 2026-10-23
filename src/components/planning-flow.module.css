@@ -9,6 +9,10 @@
 .startCard h2 { font-size:20px;line-height:1.6;margin:8px 0; }
 .startCard p,.emptyCard p { color:#6b7b61;font-size:14px;line-height:1.8; }
 .startCard>button { justify-self:start; }
+.kobunStart { display:grid;gap:16px;padding:24px;margin-bottom:16px;border-color:#b8c9a9;background:#f4f8ee; }
+.kobunStart h2 { font-size:21px;line-height:1.6;margin:9px 0 6px; }
+.kobunStart p { font-size:14px;line-height:1.8;color:#617653;margin:0; }
+.kobunStart>button { justify-self:start;white-space:normal;text-align:left; }
 .listActions { display:flex;gap:14px;flex-wrap:wrap; }
 .listActions button { font-size:12px;min-height:40px; }
 .listHeading { display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0 0 14px; }
@@ -34,6 +38,11 @@
 .stepBody :global(.quick-choice-group)>legend { font-size:14px;margin-bottom:12px; }
 .stepBody :global(.material-options) { grid-template-columns:repeat(2,minmax(0,1fr)); }
 .stepBody :global(.material-options) small { font-size:11px; }
+.kobunChoices :global(.quick-choice-options) { display:grid;grid-template-columns:repeat(2,minmax(0,1fr)); }
+.kobunChoices :global(.quick-choice-options)>button { display:block;text-align:left;padding:13px; }
+.kobunChoices strong { display:block;font-size:14px;line-height:1.7; }
+.kobunChoices small { display:block;font-size:12px;line-height:1.7;margin-top:4px;font-weight:400; }
+.kobunChoices>p { margin:12px 0 0; }
 .stepBody input:not([type=checkbox]),.stepBody textarea,.stepBody select { width:100%;font-size:16px;min-width:0; }
 .controlGrid { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px; }
 .hint { font-size:13px;color:#748267;line-height:1.8;overflow-wrap:anywhere; }
@@ -42,6 +51,7 @@
 .selectionSummary>div:last-child { border-bottom:0; }
 .selectionSummary dt { font-size:11px;color:#7b886f;margin-bottom:3px; }
 .selectionSummary dd { margin:0;color:#3f5e3b;font-size:14px;line-height:1.7;overflow-wrap:anywhere; }
+.summaryNote { display:block;font-size:12px;color:#748267;margin-top:3px; }
 .extraOptions { border-top:1px solid #e2e8db;padding-top:13px; }
 .extraOptions>summary,.materialDetails>summary,.replyDetails>summary,.olderTurns>summary,.planDetails>summary,.proposalComment>summary { cursor:pointer;font-size:13px;color:#4f7041;line-height:1.8;min-height:36px; }
 .extraOptions>label { display:block;margin-top:12px; }
@@ -91,6 +101,9 @@
 .proposalComment>label { display:block;margin-top:9px; }
 .replyDetails { margin:14px 0; }
 .replyDetails p { white-space:pre-wrap;font-size:13px;line-height:1.9;overflow-wrap:anywhere; }
+.authoringConditions { margin:0 0 14px;padding:13px 16px;border:1px solid #dfe7d6;border-radius:12px;background:#f7f9f3; }
+.authoringConditions>summary { cursor:pointer;font-size:13px;line-height:1.8;color:#4f7041; }
+.authoringConditions>p { white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;line-height:1.9;margin:12px 0 0; }
 .emptyCard { display:grid;justify-items:start;gap:15px;padding:24px; }
 .emptyCard h2 { font-size:18px;line-height:1.6; }
 .chatPanel>:global(.chat-composer) { border-top:0;padding-top:0;margin-top:0; }
@@ -129,6 +142,10 @@
   .startCard { padding:20px; }
   .startCard h2 { font-size:18px; }
   .startCard>button { width:100%; }
+  .kobunStart { padding:20px; }
+  .kobunStart h2 { font-size:19px; }
+  .kobunStart>button { width:100%; }
+  .kobunChoices :global(.quick-choice-options) { grid-template-columns:minmax(0,1fr); }
   .planHeader h1 { font-size:22px; }
   .detailTabs>button { font-size:12px;min-height:44px; }
   .nextStep strong { font-size:15px; }

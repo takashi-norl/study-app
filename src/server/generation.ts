@@ -6,8 +6,9 @@ import { trackedAnthropicMessage, type AiCallContext } from './ai-usage';
 import type { StudyEvent } from './google-store';
 import type { PlanningSample } from '@/lib/types';
 import { GENERATION_BATCH_SIZE,questionOutputTokenBudget } from './generation-plan';
+import { analysisSchema } from './source-analysis-schema';
 
-export const analysisSchema=z.object({text:z.string().min(1).max(18000),learningPoints:z.array(z.string().max(300)).max(80),uncertainties:z.array(z.string().max(300)).max(50)});
+export { analysisSchema } from './source-analysis-schema';
 export const generatedQuestionSchema=z.object({
   prompt:z.string().trim().min(5).max(2400),choices:z.array(z.string().trim().min(1).max(600)).length(4),
   correctIndex:z.number().int().min(0).max(3),explanation:z.string().trim().min(5).max(2400),
@@ -45,7 +46,7 @@ export async function analyzeDocument(bytes:Uint8Array,mimeType:string,name:stri
   const block:Anthropic.Messages.ContentBlockParam=mimeType==='application/pdf'
     ? {type:'document',source:{type:'base64',media_type:'application/pdf',data}}
     : {type:'image',source:{type:'base64',media_type:mimeType as 'image/jpeg'|'image/png'|'image/webp',data}};
-  return analysisSchema.parse(await callStructured(context,[block,{type:'text',text:`資料名: ${name}\n高校生向けの英語・国語・社会・理科・数学などの学習資料です。本文・例文・単語・設問・答え・文法説明を読み取ってください。ルビ、返り点、助動詞などの区別を可能な限り残し、資料にあるページ/段落も記載してください。読めない文字は[判読不可]、資料にない解答は補わないでください。textは18000文字以内、learningPointsは主な学習項目、uncertaintiesは不確実な箇所。大量のPDFは要約で内容を失うため分割が必要とuncertaintiesに記してください。`}],
+  return analysisSchema.parse(await callStructured(context,[block,{type:'text',text:`資料名: ${name}\n高校生向けの英語・国語・社会・理科・数学などの学習資料です。最初に画像の向きと縦書き/横書きを確認し、横向き・上下逆の写真も文字の向きを合わせて読み取ってください。本文・例文・単語・設問・答え・文法説明を読み取ってください。見える見出し・単語番号・ページ番号をそのまま記録し、分野や掲載単語を本の体裁から推測しないでください。ルビ、返り点、助動詞などの区別を可能な限り残し、資料にあるページ/段落も記載してください。読めない文字は[判読不可]、資料にない解答は補わないでください。textは18000文字以内、learningPointsは主な学習項目、uncertaintiesは不確実な箇所。大量のPDFは要約で内容を失うため分割が必要とuncertaintiesに記してください。`}],
     'extract_source',{type:'object',properties:{text:{type:'string'},learningPoints:{type:'array',items:{type:'string'}},uncertainties:{type:'array',items:{type:'string'}}},required:['text','learningPoints','uncertainties']},14000));
 }
 

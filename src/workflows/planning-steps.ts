@@ -4,6 +4,7 @@ import { ApiError, MAX_SOURCE_BYTES, requireGenerationEnabled } from '@/server/c
 import { analyzeDocument, safeGenerationError } from '@/server/generation';
 import { buildPlanningContext, requestPlanningReply, requireOwnedPlan, validatePlanningSources } from '@/server/planning';
 import { assertPlanningCallNotSent, planningProgress } from '@/server/planning-progress';
+import { latestSourceAnalysis } from '@/server/source-analysis';
 
 function planningInput(state:Awaited<ReturnType<typeof getFullState>>,turnId:string) {
   const turn=state.data.planningTurns.find(item=>item.id===turnId);
@@ -40,7 +41,7 @@ export async function analyzePlanningSource(turnId:string,sourceId:string) {
     const now=new Date();
     const reading=planningProgress(turn,plan.sourceIds,state.events,'reading_sources',now);
     await appendEvent({id:`planning:${turn.id}:source:${sourceId}:reading`,type:'planning.turn.upserted',actorId:turn.requestedBy,createdAt:now.toISOString(),payload:reading});
-    if(state.events.some(event=>event.id===`source-analysis:${sourceId}` && event.type==='source.analysis')) return;
+    if(latestSourceAnalysis(state.events,sourceId)) return;
     assertPlanningCallNotSent(state.events,turn,sourceId);
     requireGenerationEnabled();
     const source=state.data.sources.find(item=>item.id===sourceId);

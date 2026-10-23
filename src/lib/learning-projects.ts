@@ -6,6 +6,13 @@ import { getTopicStats } from './learning';
 export const MAX_PLAN_TAGS = 8;
 export const MAX_PLAN_TAG_LENGTH = 40;
 
+/** Cards show the learner-facing opening; the full goal remains in the consultation conditions. */
+export function planGoalSummary(goal: string): string {
+  const opening = goal.split(/\r?\n/).map(line => line.trim()).find(Boolean) ?? '';
+  const characters = Array.from(opening);
+  return characters.length > 120 ? `${characters.slice(0, 119).join('')}…` : opening;
+}
+
 /** The editor accepts Japanese punctuation as well as commas. Stored labels stay exact. */
 export function parsePlanTags(input: string): string[] {
   return [...new Set(input.split(/[,、，\n]/).map(tag => tag.trim()).filter(Boolean))];

@@ -9,6 +9,8 @@ import { ApiError, requiredEnv, requireGenerationEnabled } from './config';
 import { trackedAnthropicMessage } from './ai-usage';
 import { confirmedProfileContext } from './personal-profile';
 import { planningSamplesSchema, sampleJsonSchema, validateSamples } from './planning-samples';
+import { planTagsSchema } from './plan-tags';
+import { latestSourceAnalysis, sourceAnalysesChangedSince } from './source-analysis';
 
 const sourceIdsSchema=z.array(z.string().uuid()).max(20).transform(ids=>[...new Set(ids)]);
 export const createPlanSchema=z.object({
@@ -17,6 +19,7 @@ export const createPlanSchema=z.object({
   targetDate:z.string().regex(/^\d{4}-\d{2}-\d{2}$/).refine(value=>{const date=new Date(`${value}T00:00:00Z`);return Number.isFinite(date.getTime()) && date.toISOString().slice(0,10)===value;},'日付を確認してください').optional(),
   dailyQuestionTarget:z.number().int().min(1).max(100).default(10),sourceIds:sourceIdsSchema.default([]),
   requestedQuestionCount:z.number().int().min(1).max(300).optional(),
+  tags:planTagsSchema.optional(),
   testOnly:z.boolean().optional(),
 });
 export const planningMessageSchema=z.object({requestId:z.string().uuid(),expectedVersion:z.number().int().min(1),message:z.string().trim().min(1).max(4000)});
@@ -119,7 +122,7 @@ export function buildPlanningContext(data:StudyData,events:StudyEvent[],plan:Lea
   const sourceBudget=Math.min(8000,Math.floor(40000/Math.max(1,plan.sourceIds.length)));
   const sources=plan.sourceIds.map(id=>{
     const source=data.sources.find(source=>source.id===id)!;
-    const analysis=events.find(event=>event.id===`source-analysis:${id}` && event.type==='source.analysis');
+    const analysis=latestSourceAnalysis(events,id);
     if(!analysis || typeof analysis.payload.text!=='string') throw new ApiError(422,'資料の読み取りがまだ完了していません。','SOURCE_NOT_ANALYZED');
     return {id,name:source.name.slice(0,200),analysisExcerpt:boundedAnalysis(analysis.payload.text,sourceBudget)};
   });
@@ -127,6 +130,8 @@ export function buildPlanningContext(data:StudyData,events:StudyEvent[],plan:Lea
     .sort((a,b)=>a.version-b.version).slice(-8);
   const history=priorTurns.map((item,index)=>{
     const recent=index>=priorTurns.length-2;
+    // Keep the learner's request, but never re-feed obsolete AI assertions after the source was corrected.
+    if(sourceAnalysesChangedSince(events,plan.sourceIds,item.createdAt)) return {message:item.message.slice(0,recent?1500:500),sourceReadingChanged:true};
     return {message:item.message.slice(0,recent?1500:500),reply:item.reply?.slice(0,recent?2500:500),
       proposals:item.proposals?.slice(0,recent?1:4).map(proposal=>({title:proposal.title.slice(0,150),difficulty:proposal.difficulty.slice(0,150),targetCount:proposal.targetCount,
         ...(recent?{instructions:proposal.instructions,samples:proposal.samples}:{}),}))};

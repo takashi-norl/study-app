@@ -9,6 +9,7 @@ import { paidWorkSlotId } from './planning';
 import { currentApprovedProposal, generationInstructions, generationReplay, validateBulkCadence, type GenerationSelection } from './proposal-selection';
 import { generationWorkflow } from '@/workflows/generate';
 import { assertQuestionEditable } from './library';
+import { assertSourceAnalysesCurrent } from './source-analysis';
 
 export interface GenerationRequest {
   topic: Topic; newTopic?: boolean; sourceIds: string[]; targetCount: number;
@@ -41,13 +42,14 @@ export function assertGenerationBudget(data: StudyData, now = new Date()) {
 
 /** Every new bulk job needs explicit approval of current server-saved samples. Legacy retries run above this gate. */
 export async function requestGeneration(profile: Profile, input: GenerationRequest) {
-  const { data } = await getFullState();
+  const { data, events } = await getFullState();
   const previous = await resumeGenerationRequest(data,profile,{...input,title:input.topic.title});
   if (previous) return previous;
   requireGenerationEnabled();
   assertQuestionEditable(input.topic);
   if(!canAccessQuestion(input.topic,profile)) throw new ApiError(403,'この問題集にはアクセスできません。','FORBIDDEN');
   const approved=currentApprovedProposal(data,profile,input.planId,input);
+  assertSourceAnalysesCurrent(events,approved.proposal.sourceIds,approved.turn.createdAt);
   const {plan,proposal,samples}=approved;
   if(!input.newTopic) throw new ApiError(409,'既存の問題集はアレンジから新しい問題集として作成してください。','ARRANGEMENT_REQUIRED');
   if(!!plan.testOnly!==!!input.topic.testOnly) throw new ApiError(403,'テスト用の設定が一致しません。','FORBIDDEN');

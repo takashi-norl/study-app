@@ -24,12 +24,12 @@ export function useLearnerPreview(payload: LearnerPreviewPayload, demo: boolean,
   async function unavailableAsync(): Promise<void> { unavailable(); }
   async function unavailableBoolean(): Promise<boolean> { unavailable(); return false; }
   return {
-    data: state.data, profile: state.profile, preview: true, demo, ready: true, busy: false,
+    data: state.data, profile: state.profile, preview: true, demo, ready: true, authStatus: 'authenticated', authError: null, busy: false,
     error: state.error, notice: null, uploadStatus: null,
     sync: { checking: false, lastSyncedAt: null, error: null }, session: state.session,
     currentQuestion: previewCurrentQuestion(state), feedback: state.feedback,
     actions: {
-      refreshStatus: async () => refresh(), switchRole: unavailable,
+      retryAuth: unavailableAsync, refreshStatus: async () => refresh(), switchRole: unavailable,
       startPractice: (mode, topicId) => change(previous => startPreviewPractice(previous, mode, topicId)),
       answer: index => change(previous => answerPreviewQuestion(previous, index, expectedKey)),
       nextQuestion: () => change(previous => advancePreviewQuestion(previous, expectedKey)),
@@ -38,7 +38,7 @@ export function useLearnerPreview(payload: LearnerPreviewPayload, demo: boolean,
       updatePlanTags: unavailableBoolean,
       sendPlanningMessage: unavailableBoolean, resumePlanningTurn: unavailableAsync,
       generateProposal: unavailableAsync, arrangeTopic: unavailableAsync, publishLibrary: unavailableAsync,
-      requestLibraryPublication: unavailableBoolean, addLibraryPlan: unavailableAsync,
+      requestLibraryPublication: unavailableBoolean, addLibraryPlan: unavailableAsync, deliverToLearner: unavailableAsync,
       generate: unavailable, resumeGeneration: unavailable, retryGeneration: unavailableAsync,
       updateQuestion: unavailable, publish: unavailable, resetDemo: unavailable,
       signIn: unavailableAsync, signOut: unavailable, requestNotifications: unavailable, exportData: unavailable,

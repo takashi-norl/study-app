@@ -1,6 +1,8 @@
 import type { GenerationJob, LearningPlan, PlanningSample, PlanningTurn, PracticeSession, Profile, Question, StudyData, Topic } from './types';
 
 import { asPracticeQuestion, isPracticeReadyQuestion, mayPracticeLibraryTopic, topicOwnerId } from './library-policy';
+import { arrangementScopeSummary, normalizePlanTags, ownPlanTagsForTopic } from './plan-organization';
+import type { LibraryDeliveryInput, LibraryDeliveryResult } from './library-delivery';
 
 export type DemoPracticeSession = PracticeSession & { questionSnapshots?: Question[] };
 type DemoTopic = Topic & { demoLibraryRevision?: string };
@@ -121,6 +123,60 @@ export function addDemoLibraryPlan(data: StudyData, profile: Profile, topicId: s
   return { data: { ...data, plans: [...data.plans, plan] }, plan };
 }
 
+/** Demo delivery copies only practice content, never source files or the original private conversation. */
+export async function deliverDemoTopic(data: StudyData, profile: Profile, input: LibraryDeliveryInput,
+  now = new Date().toISOString()): Promise<LibraryDeliveryResult & { data: StudyData }> {
+  const actor = data.profiles.find(member => member.id === profile.id && member.familyId === profile.familyId && member.role === 'parent');
+  const learner = data.profiles.find(member => member.id === input.learnerId && member.familyId === profile.familyId && member.role === 'student');
+  if (profile.role !== 'parent' || !actor || !learner) throw new Error('管理者から、ご家族の学習者を選んで追加してください。');
+  if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(input.requestId)) throw new Error('追加の依頼番号を確認できませんでした。');
+  const projectName = input.projectName?.trim() ?? '';
+  if (input.projectName !== undefined && !projectName) throw new Error('プロジェクト名を入力してください。');
+  const tags = normalizePlanTags(projectName ? [projectName] : []);
+  const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(JSON.stringify([profile.id, input.topicId, learner.id, tags])));
+  const fingerprint = Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, '0')).join('');
+  const prefix = `demo-delivery-${input.requestId}-`;
+  const planId = `${prefix}${fingerprint}`;
+  const previous = data.plans.find(plan => plan.id.startsWith(prefix));
+  if (previous) {
+    if (previous.id !== planId || previous.ownerId !== learner.id) throw new Error('この依頼は別の追加に使われています。内容を確認してください。');
+    const topic = data.topics.find(item => item.planId === previous.id && item.ownerId === learner.id);
+    const deliveredCount = data.questions.filter(question => question.topicId === topic?.id).length;
+    if (!topic || !deliveredCount) throw new Error('追加の保存を確認できませんでした。');
+    return { data, plan: previous, topic, deliveredCount };
+  }
+  const original = data.topics.find(topic => topic.id === input.topicId);
+  const originalPlan = original?.planId ? data.plans.find(plan => plan.id === original.planId) : undefined;
+  if (!original || original.testOnly || originalPlan?.testOnly) throw new Error('テスト用ではない問題集を選んでください。');
+  if (!original.libraryPublished && !data.profiles.some(member => member.id === topicOwnerId(data, original) && member.familyId === profile.familyId)) {
+    throw new Error('ご家族の問題集を選んでください。');
+  }
+  if (data.jobs.some(job => job.topicId === original.id && ['queued', 'running'].includes(job.status))) throw new Error('作問が終わってから追加してください。');
+  const originals = data.questions.filter(question => question.topicId === original.id && question.status !== 'archived');
+  if (!originals.length || originals.length > 300 || originals.some(question => question.testOnly || data.plans.some(plan => plan.id === question.planId && plan.testOnly))) throw new Error('テスト用ではない保存済みの問題が1〜300問ある問題集を選んでください。');
+  const familyMembers = new Set(data.profiles.filter(member => member.familyId === profile.familyId).map(member => member.id));
+  if (originals.some(question => question.ownerId && !familyMembers.has(question.ownerId) || question.audienceUserId && !familyMembers.has(question.audienceUserId))) throw new Error('この問題集の配布範囲を確認できません。');
+  if (new Set(originals.map(question => question.id)).size !== originals.length || originals.some(question => !question.prompt.trim() || question.prompt.length > 6000
+    || question.choices.length < 2 || question.choices.length > 10 || question.choices.some(choice => !choice.trim() || choice.length > 2000)
+    || new Set(question.choices.map(choice => choice.trim())).size !== question.choices.length
+    || !Number.isInteger(question.correctIndex) || question.correctIndex < 0 || question.correctIndex >= question.choices.length
+    || !question.explanation.trim() || question.explanation.length > 6000 || question.learningPoint.length > 1000)) throw new Error('問題文・選択肢・正解・解説を確認してから追加してください。');
+  if (data.plans.filter(plan => plan.ownerId === learner.id).length >= 100) throw new Error('学習プランは1人100件までです。');
+  const title = original.title.slice(0, 150);
+  const plan: LearningPlan = { id: planId, ownerId: learner.id, title, subject: original.subject, tags,
+    goal: `「${title}」を1回10問ずつ練習し、間違えた内容を復習する。`, difficulty: '標準', dailyQuestionTarget: 10,
+    requestedQuestionCount: originals.length, sourceIds: [], version: 1, createdAt: now, updatedAt: now };
+  const topic: Topic = { id: `${planId}-topic`, ownerId: learner.id, audienceUserId: learner.id, planId, title,
+    subject: original.subject, description: '管理者から届けられた練習問題です。', targetCount: originals.length, createdAt: now };
+  const questions: Question[] = originals.map((question, index) => ({ id: `${planId}-question-${index + 1}`, topicId: topic.id,
+    ownerId: learner.id, audienceUserId: learner.id, planId, prompt: question.prompt, choices: [...question.choices],
+    correctIndex: question.correctIndex, explanation: question.explanation, learningPoint: question.learningPoint,
+    sourceIds: [], sourceNote: '管理者から届けられた練習問題です。', status: 'published', needsReview: question.needsReview,
+    aiGenerated: question.aiGenerated, version: 1, createdAt: now, publishedAt: now }));
+  return { data: { ...data, plans: [...data.plans, plan], topics: [...data.topics, topic], questions: [...data.questions, ...questions] },
+    plan, topic, deliveredCount: questions.length };
+}
+
 function demoSamples(data: StudyData, plan: LearningPlan): PlanningSample[] {
   const topicIds = new Set(data.topics.filter(topic => topic.subject === plan.subject && !topic.libraryPublished && !topic.testOnly).map(topic=>topic.id));
   const source = plan.arrangementExamples?.length ? plan.arrangementExamples : data.questions.filter(question=>topicIds.has(question.topicId)&&question.status!=='archived');
@@ -139,7 +195,8 @@ export function arrangeDemoTopic(data: StudyData, profile: Profile, topicId: str
   const questions=data.questions.filter(question=>question.topicId===topic.id&&question.status!=='archived');
   if(!questions.length) throw new Error('問題が保存されてからアレンジできます。');
   const plan:LearningPlan={id:createId(),ownerId:profile.id,title:`${topic.title}のアレンジ`.slice(0,150),subject:topic.subject,
-    goal:`「${topic.title}」の出題方法や難しさを相談し、まず3問で確かめる。元の問題集は変更しない。`,difficulty:'相談して決める',dailyQuestionTarget:10,sourceIds:[],version:1,createdAt:now,updatedAt:now,sampleFirst:true,arrangedFromTopicId:topic.id,
+    tags:ownPlanTagsForTopic(data,profile,topic),
+    goal:`「${topic.title.slice(0,150)}」の出題方法や難しさを相談し、まず3問で確かめる。元の問題集は変更しない。\n${arrangementScopeSummary(topic,questions)}`,difficulty:'相談して決める',dailyQuestionTarget:10,sourceIds:[],version:1,createdAt:now,updatedAt:now,sampleFirst:true,arrangedFromTopicId:topic.id,
     arrangementExamples:questions.slice(0,3).map(question=>({prompt:question.prompt,choices:[...question.choices],correctIndex:question.correctIndex,explanation:question.explanation,learningPoint:question.learningPoint,sourceIds:[],sourceNote:'アレンジ元の問題例',needsReview:!!question.needsReview})),...(topic.testOnly?{testOnly:true}:{})};
   return {data:{...data,plans:[...data.plans,plan]},plan};
 }

@@ -66,3 +66,41 @@ test('source distribution counts a multi-source question once per source and han
     { label: '教材なし・相談から作成', count: 1 }, { label: '元の教材を取得できません', count: 1 },
   ]);
 });
+
+test('subject and source filters distinguish photos with the same filename and keep original numbers', () => {
+  const data = createDemoData();
+  const original = data.questions[0];
+  data.sources = ['a', 'b'].map(id => ({ id, name: 'IMG.jpg', mimeType: 'image/jpeg', createdAt: original.createdAt }));
+  data.questions = [
+    { ...original, id: 'one', sourceIds: ['a'] },
+    { ...original, id: 'two', sourceIds: ['b'] },
+    { ...original, id: 'english', topicId: 'topic-english', sourceIds: ['a'] },
+  ];
+  const rows = reviewRows(data);
+  const filters = { topicId: 'all', subject: '古文', sourceId: 'b', query: '', needsReviewOnly: false, showArchived: false };
+  assert.deepEqual(filterReviewRows(rows, filters).map(row => [row.question.id, row.number]), [['two', 2]]);
+  const kobunTopic = data.topics.find(topic => topic.id === original.topicId)!;
+  kobunTopic.subject = '古文・古文単語（高校1年）';
+  assert.deepEqual(filterReviewRows(reviewRows(data), filters).map(row => row.question.id), ['two']);
+  assert.deepEqual(reviewDistribution(rows.slice(0, 2), 'source'), [
+    { label: 'IMG.jpg（教材1）', count: 1 }, { label: 'IMG.jpg（教材2）', count: 1 },
+  ]);
+  assert.deepEqual(reviewDistribution([rows[1], rows[0], rows[1]], 'source', data.sources), [
+    { label: 'IMG.jpg（教材2）', count: 2 }, { label: 'IMG.jpg（教材1）', count: 1 },
+  ]);
+});
+
+test('same-prompt review detects exact repeats within each problem set without mistaking a published copy', () => {
+  const data = createDemoData();
+  const original = data.questions[0];
+  data.questions = [
+    { ...original, id: 'one', prompt: '古語「いと」の意味は？' },
+    { ...original, id: 'two', prompt: '古語「いと」の 意味は？' },
+    { ...original, id: 'copy', topicId: 'public-copy', prompt: '古語「いと」の意味は？' },
+    { ...original, id: 'different', prompt: '古語「いと」の品詞は？' },
+    { ...original, id: 'hidden', prompt: '古語「いと」の品詞は？', status: 'archived' },
+  ];
+  const filters = { topicId: 'all', query: '', needsReviewOnly: false, showArchived: false, samePromptOnly: true };
+  assert.deepEqual(filterReviewRows(reviewRows(data), filters).map(row => row.question.id), ['one', 'two']);
+  assert.deepEqual(filterReviewRows(reviewRows(data), { ...filters, showArchived: true }).map(row => row.question.id), ['one', 'two', 'different', 'hidden']);
+});
