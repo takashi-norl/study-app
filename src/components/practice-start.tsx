@@ -4,9 +4,12 @@ import { useState } from 'react';
 import { ArrowLeft, ArrowRight, LoaderCircle } from 'lucide-react';
 import type { StudyController } from './controller';
 import styles from './practice-start.module.css';
+import { AnswerEffectsSwitch } from './answer-reaction';
+import { answerEffectsKey, useAnswerEffects } from '@/lib/use-answer-effects';
 
 export function PracticeStart({ c }: { c: StudyController }) {
   const [requireConfirmation, setRequireConfirmation] = useState(false);
+  const [effects, setEffects] = useAnswerEffects(answerEffectsKey(c.profile.id, c.demo, c.preview));
   const request = c.practiceStart!;
   const topic = c.data.topics.find(item => item.id === request.topicId);
   return <section className={styles.setup} aria-labelledby="practice-start-title">
@@ -19,6 +22,7 @@ export function PracticeStart({ c }: { c: StudyController }) {
       <input type="checkbox" role="switch" checked={requireConfirmation} disabled={c.busy} onChange={event => setRequireConfirmation(event.target.checked)} aria-describedby="answer-mode-description"/>
       <span className={styles.switch} aria-hidden="true"/>
     </label>
+    <AnswerEffectsSwitch enabled={effects} onChange={setEffects} disabled={c.busy}/>
     <p className={styles.note}>この練習の間は、選んだ解き方で進みます。{c.preview && '試し解きの回答は本人の記録に保存されません。'}</p>
     <button type="button" className="button primary" disabled={c.busy} onClick={() => void c.actions.beginPractice(requireConfirmation)}>{c.busy ? <LoaderCircle size={17} className="spin"/> : <ArrowRight size={17}/>} {c.busy ? '問題を準備しています' : 'この設定ではじめる'}</button>
   </section>;

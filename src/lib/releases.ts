@@ -8,6 +8,15 @@ export interface AppRelease {
 
 // Newest first. This is the source for Settings, public history and update notices.
 export const APP_RELEASES: readonly AppRelease[] = [{
+  version: '0.14.0',
+  date: '2026-10-23',
+  title: '一問ごとに、気持ちのいい手ごたえを',
+  announcement: 'いつもの練習に、正解のお祝いと連続正解の表示を追加しました。対応端末では短く振動し、間違えた後の正解にも声をかけます。',
+  changes: [
+    { title: '正解も、立て直しも、ひとつずつ', description: '正解すると小さなお祝いが表示され、3・5・10問連続では節目の声かけが出ます。間違いの後に正解したときは切り替えを応援。解説と次へ進むボタンは、待たずに使えます。' },
+    { title: '動きと振動は、好みに合わせて', description: '練習前や練習中に、動き・振動をまとめて切り替えられます。設定はこの端末のブラウザに保存します。振動しない端末でも画面で伝わり、端末の「動きを減らす」設定にも対応。音は鳴りません。' },
+  ],
+}, {
   version: '0.13.1',
   date: '2026-10-23',
   title: '追加した単語を、発音と例文の音声でも',
