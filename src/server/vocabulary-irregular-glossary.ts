@@ -6,8 +6,8 @@ import { getVerbAliases, getVerbForms } from '@/lib/verb-forms';
 const entries: [term: string, meaning: string, definition: string, text: string, translation: string][] = [
   [
     'take',
-    '取る・持っていく（take notes はメモを取る）',
-    'To pick up or carry something; also used in expressions such as taking notes.',
+    '取る・持っていく／乗り物に乗る／時間がかかる（take notes はメモを取る）',
+    'To pick up or carry something, travel using a vehicle, or need a particular amount of time. The meaning depends on the words around it.',
     'I have taken notes during every science lesson this month.',
     '今月は毎回の理科の授業でメモを取っています。',
   ],
@@ -20,8 +20,8 @@ const entries: [term: string, meaning: string, definition: string, text: string,
   ],
   [
     'make',
-    '作る・生み出す',
-    'To create or produce something.',
+    '作る・生み出す／〜を…の状態にする',
+    'To create or produce something, or cause someone or something to be in a particular state.',
     'Our group made a simple model to explain how the bridge works.',
     '私たちの班は、橋の仕組みを説明するために簡単な模型を作りました。',
   ],
