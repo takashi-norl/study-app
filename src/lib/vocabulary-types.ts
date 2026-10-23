@@ -13,7 +13,7 @@ export type VocabularyEntry = {
   usageTip: string;
   voice?: 'female' | 'male';
   examples: { id: string; context: string; text: string; translation: string }[];
-  recall: { prompt: string; answers: string[]; explanation: string };
+  recall: { prompt: string; answers: string[]; explanation: string; alternatives?: { answer: string; explanation: string }[] };
   production: { prompt: string; modelAnswer: string; checkpoints: string[] };
   questions: {
     id: string;

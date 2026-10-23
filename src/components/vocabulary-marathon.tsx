@@ -5,35 +5,45 @@ import Link from 'next/link';
 import { ArrowLeft, ArrowRight, Check, CheckCircle2, ChevronLeft, ChevronRight, Headphones, RotateCcw, Square, Volume2 } from 'lucide-react';
 import type { VocabularyAudio, VocabularyEntry } from '@/lib/vocabulary-types';
 import type { GlossaryEntry } from '@/lib/vocabulary-glossary';
-import { buildVocabularyTest, checkVocabularyAnswer, summarizeVocabularyTest, vocabularyGroups, type VocabularyTestItem } from '@/lib/vocabulary-session';
+import { buildVocabularyTest, checkVocabularyAnswer, summarizeVocabularyTest, vocabularyGroups, type VocabularyTestItem, type VocabularyTestMode } from '@/lib/vocabulary-session';
+import { selectVocabularyAudio } from '@/lib/vocabulary-playback';
 import { GLOSSARY_PAUSE_AUDIO_EVENT, GlossaryHistoryButton, GlossarySentence, VocabularyGlossaryProvider } from './vocabulary-glossary';
 import VerbForms from './verb-forms';
 import styles from './vocabulary-marathon.module.css';
 
+type ChoiceTestMode = Exclude<VocabularyTestMode, 'recall'>;
 type TestState = {
   items: VocabularyTestItem[];
   answers: Record<string, number | string>;
   checked: Record<string, boolean>;
   question: number;
+  isReview: boolean;
 };
 type GroupState = {
   stage: 'learn' | 'test' | 'result' | 'production';
   wordIndex: number;
   examples: Record<string, number>;
   reviewWordIds?: string[];
-  test?: TestState;
-  round: number;
+  reviewMode?: ChoiceTestMode;
+  tests: Partial<Record<ChoiceTestMode, TestState>>;
+  rounds: Partial<Record<ChoiceTestMode, number>>;
   productionWordId?: string;
   writing: Record<string, string>;
   selfChecks: Record<string, number[]>;
   showModel: boolean;
-  completedOnce?: boolean;
+  completedModes: Partial<Record<ChoiceTestMode, boolean>>;
 };
-const initialGroup = (): GroupState => ({ stage: 'learn', wordIndex: 0, examples: {}, round: 0, writing: {}, selfChecks: {}, showModel: false });
+const initialGroup = (): GroupState => ({ stage: 'learn', wordIndex: 0, examples: {}, tests: {}, rounds: {}, writing: {}, selfChecks: {}, showModel: false, completedModes: {} });
+const testModes: { id: ChoiceTestMode; label: string; shortLabel: string; description: string; resultLabel: string; success: string }[] = [
+  { id: 'meaning', label: '意味を選ぶ（やさしい）', shortLabel: '意味を選ぶ', description: '英単語を見て、日本語の意味を選びます。', resultLabel: '意味を選べた', success: 'その意味で合っています' },
+  { id: 'word', label: '英単語を選ぶ', shortLabel: '英単語を選ぶ', description: '日本語の意味に合う英単語を選びます。', resultLabel: '英単語を選べた', success: 'その単語で合っています' },
+  { id: 'context', label: '英文の空欄を選ぶ', shortLabel: '英文の空欄', description: '英文の空欄に入る単語を選びます。', resultLabel: '文脈から選べた', success: '文脈に合う単語を選べました' },
+  { id: 'usage', label: '使い方を選ぶ', shortLabel: '使い方を選ぶ', description: '自然な使い方や、文脈に合う表現を選びます。', resultLabel: '使い方を選べた', success: 'その使い方で合っています' },
+];
 
-function WordAudio({ entry, clip, example, stopKey, busy, onPrepare, onRefresh }: {
+function WordAudio({ entry, clips, example, stopKey, busy, onPrepare, onRefresh }: {
   entry: VocabularyEntry;
-  clip?: VocabularyAudio;
+  clips: VocabularyAudio[];
   example: number;
   stopKey: string;
   busy: boolean;
@@ -41,6 +51,7 @@ function WordAudio({ entry, clip, example, stopKey, busy, onPrepare, onRefresh }
   onRefresh: () => void;
 }) {
   const player = useRef<HTMLAudioElement>(null);
+  const selectedClip = useRef<VocabularyAudio | undefined>(undefined);
   const range = useRef<NonNullable<VocabularyAudio['segments']>[number] | null>(null);
   const pendingSeek = useRef(false);
   const startRequestedAt = useRef(0);
@@ -66,7 +77,15 @@ function WordAudio({ entry, clip, example, stopKey, busy, onPrepare, onRefresh }
   useEffect(() => {
     stop();
     setError('');
-  }, [stopKey, clip?.url, stop]);
+  }, [stopKey, stop]);
+
+  useEffect(() => {
+    const selected = selectedClip.current;
+    if (selected && !clips.some(clip => clip.wordId === entry.id && clip.state === 'ready' && clip.url === selected.url)) {
+      stop();
+      selectedClip.current = undefined;
+    }
+  }, [clips, entry.id, stop]);
 
   useEffect(() => {
     const element = player.current;
@@ -80,7 +99,7 @@ function WordAudio({ entry, clip, example, stopKey, busy, onPrepare, onRefresh }
       if (stopTimer.current) clearInterval(stopTimer.current);
       element?.pause();
     };
-  }, [stop, clip?.url, clip?.state]);
+  }, [stop]);
 
   const completePendingSeek = () => {
     const element = player.current;
@@ -127,13 +146,15 @@ function WordAudio({ entry, clip, example, stopKey, busy, onPrepare, onRefresh }
     if (active === id) { stop(); return; }
     stop();
     setError('');
+    const clip = selectVocabularyAudio(clips, entry.id, id);
     const segment = clip?.segments?.find(item => item.id === id);
     const element = player.current;
-    if (!segment || !element) {
+    if (!clip || !segment || !element) {
       setError('この音声を読み込めませんでした。「準備状況を確認」で確かめてください。');
       return;
     }
     const token = playbackToken.current;
+    selectedClip.current = clip;
     range.current = segment;
     pendingSeek.current = true;
     startRequestedAt.current = Date.now();
@@ -144,6 +165,12 @@ function WordAudio({ entry, clip, example, stopKey, busy, onPrepare, onRefresh }
     // Start playback within the tap gesture on iPhone; stay silent until the requested range is ready.
     element.muted = true;
     try {
+      // Set the chosen source in this same gesture; React must not replace it on a later render.
+      if (element.getAttribute('src') !== clip.url) {
+        element.src = clip.url;
+        element.load();
+      }
+      element.playbackRate = rate;
       const playing = element.play();
       completePendingSeek();
       stopTimer.current = setInterval(checkPlayback, 35);
@@ -161,26 +188,31 @@ function WordAudio({ entry, clip, example, stopKey, busy, onPrepare, onRefresh }
     }
   };
 
-  const state = clip?.state ?? 'missing';
+  const wordClips = clips.filter(clip => clip.wordId === entry.id);
+  const state = wordClips.some(clip => clip.state === 'ready') ? 'ready' : wordClips.some(clip => clip.state === 'pending') ? 'pending' : wordClips.some(clip => clip.state === 'failed') ? 'failed' : 'missing';
   const button = (id: string, label: string) => <button type="button" className={`${styles.listen} ${active === id ? styles.listening : ''}`} onClick={() => play(id)} aria-pressed={active === id}>
     {active === id ? <Square size={17} aria-hidden="true" /> : <Volume2 size={18} aria-hidden="true" />}
     {active === id ? loading ? '読込中・停止' : '再生中・停止' : label}
   </button>;
 
   return <section className={styles.audio} aria-label={`${entry.word}の音声`}>
+    <audio ref={player} preload="metadata" onLoadedMetadata={completePendingSeek} onCanPlay={completePendingSeek} onProgress={completePendingSeek} onSeeked={completePendingSeek} onTimeUpdate={checkPlayback} onEnded={() => {
+      if (pendingSeek.current) {
+        stop();
+        setError('音声の開始位置を読み込めませんでした。もう一度「聞く」を押してください。');
+      } else stop();
+    }} onError={() => {
+      if (!range.current) return;
+      stop();
+      setError('音声を読み込めませんでした。接続を確認して、もう一度お試しください。');
+    }} />
     <div className={styles.audioTop}>
-      <span><Headphones size={16} aria-hidden="true" />{clip?.voiceLabel || '英語の発音'}</span>
+      <span><Headphones size={16} aria-hidden="true" />発音・例文</span>
       <div className={styles.speed} aria-label="再生速度">
         {[1, 0.8].map(value => <button type="button" key={value} aria-pressed={value === rate} onClick={() => { setRate(value); if (player.current) player.current.playbackRate = value; }}>{value === 1 ? '通常' : 'ゆっくり'}</button>)}
       </div>
     </div>
     {state === 'ready' ? <>
-      <audio ref={player} src={clip?.url} preload="metadata" onLoadedMetadata={completePendingSeek} onCanPlay={completePendingSeek} onProgress={completePendingSeek} onSeeked={completePendingSeek} onTimeUpdate={checkPlayback} onEnded={() => {
-        if (pendingSeek.current) {
-          stop();
-          setError('音声の開始位置を読み込めませんでした。もう一度「聞く」を押してください。');
-        } else stop();
-      }} onError={() => { stop(); setError('音声を読み込めませんでした。接続を確認して、もう一度お試しください。'); }} />
       <div className={styles.audioActions}>{button('word', '単語を聞く')}{button(`example-${example + 1}`, `例文${example + 1}を聞く`)}</div>
       <p className={styles.audioHint}>単語と例文を、それぞれ何度でも聞けます。</p>
     </> : <div className={styles.audioStatus} aria-live="polite">
@@ -194,6 +226,7 @@ function WordAudio({ entry, clip, example, stopKey, busy, onPrepare, onRefresh }
 export default function VocabularyMarathon({ entries, audio, preparation, glossary }: { entries: VocabularyEntry[]; audio: VocabularyAudio[]; preparation?: ReactNode; glossary: GlossaryEntry[] }) {
   const [level, setLevel] = useState<VocabularyEntry['level']>('2級');
   const [groupIndex, setGroupIndex] = useState(0);
+  const [mode, setMode] = useState<ChoiceTestMode>('meaning');
   const [sessions, setSessions] = useState<Record<string, GroupState>>({});
   const [availableAudio, setAvailableAudio] = useState(audio);
   const [busyWord, setBusyWord] = useState<string | null>(null);
@@ -202,15 +235,19 @@ export default function VocabularyMarathon({ entries, audio, preparation, glossa
   const heading = useRef<HTMLHeadingElement>(null);
   const card = useRef<HTMLElement>(null);
   const feedback = useRef<HTMLDivElement>(null);
+  const modeSelector = useRef<HTMLSelectElement>(null);
   const groups = vocabularyGroups(entries, level);
   const group = groups[groupIndex] ?? [];
   const sessionKey = `${level}-${groupIndex}`;
   const session = sessions[sessionKey] ?? initialGroup();
-  const learningEntries = session.reviewWordIds ? group.filter(item => session.reviewWordIds?.includes(item.id)) : group;
-  const entry = learningEntries[session.wordIndex] ?? learningEntries[0];
+  const isReview = !!session.reviewWordIds && session.reviewMode === mode;
+  const learningEntries = isReview ? group.filter(item => session.reviewWordIds?.includes(item.id)) : group;
+  const entry = learningEntries.find(word => word.id === group[session.wordIndex]?.id) ?? learningEntries[0];
+  const learningIndex = learningEntries.findIndex(word => word.id === entry?.id);
   const exampleIndex = entry ? session.examples[entry.id] ?? 0 : 0;
   const example = entry?.examples[exampleIndex];
-  const test = session.test;
+  const test = session.tests[mode];
+  const modeInfo = testModes.find(item => item.id === mode)!;
   const item = test?.items[test.question];
   const checked = item ? !!test?.checked[item.id] : false;
   const answer = item ? test?.answers[item.id] : undefined;
@@ -218,15 +255,20 @@ export default function VocabularyMarathon({ entries, audio, preparation, glossa
   const summary = test ? summarizeVocabularyTest(test.items, submittedAnswers) : null;
   const allChecked = !!test && test.items.length > 0 && test.items.every(question => test.checked[question.id]);
   const resultReady = allChecked && !!summary?.completed;
+  const stage: GroupState['stage'] = ((session.stage === 'test' && !test) || ((session.stage === 'result' || session.stage === 'production') && !resultReady)) ? 'learn' : session.stage;
+  const score = summary?.choice;
+  const correct = !!item && checked && checkVocabularyAnswer(item, answer ?? '');
+  const alternativeExpressions = mode === 'context' && correct
+    ? entries.find(word => word.id === item?.wordId)?.recall.alternatives?.slice(0, 3) ?? []
+    : [];
   const weakEntries = group.filter(word => summary?.wrongWordIds.includes(word.id));
   const productionEntry = group.find(word => word.id === session.productionWordId) ?? weakEntries[0] ?? group[0];
   const writing = productionEntry ? session.writing[productionEntry.id] ?? '' : '';
-  const hasInput = typeof answer === 'number' || typeof answer === 'string' && answer.trim().length > 0;
-  const isReview = !!session.reviewWordIds;
-  const finishedSets = Object.values(sessions).filter(saved => saved.completedOnce).length;
+  const hasInput = typeof answer === 'number';
+  const finishedSets = Object.values(sessions).filter(saved => saved.completedModes[mode]).length;
 
   const update = (patch: Partial<GroupState>) => setSessions(previous => ({ ...previous, [sessionKey]: { ...(previous[sessionKey] ?? initialGroup()), ...patch } }));
-  const updateTest = (patch: Partial<TestState>) => { if (test) update({ test: { ...test, ...patch } }); };
+  const updateTest = (patch: Partial<TestState>) => { if (test) update({ tests: { ...session.tests, [mode]: { ...test, ...patch } } }); };
   const focusCard = () => requestAnimationFrame(() => {
     heading.current?.focus({ preventScroll: true });
     if (card.current) window.scrollTo({ top: Math.max(0, card.current.getBoundingClientRect().top + window.scrollY - 14), behavior: 'instant' });
@@ -242,11 +284,21 @@ export default function VocabularyMarathon({ entries, audio, preparation, glossa
     requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: 'instant' }));
   };
   const goLearn = (wordIndex = session.wordIndex) => { update({ stage: 'learn', wordIndex }); focusCard(); };
+  const moveLearningWord = (index: number) => {
+    const word = learningEntries[index];
+    if (word) { update({ wordIndex: group.findIndex(item => item.id === word.id) }); focusCard(); }
+  };
+  const changeMode = (nextMode: ChoiceTestMode) => {
+    if (nextMode === mode) return;
+    update({ stage: 'learn', reviewWordIds: undefined, reviewMode: undefined, wordIndex: Math.max(0, group.findIndex(word => word.id === entry?.id)) });
+    setMode(nextMode);
+  };
   const showExample = (index: number) => { if (entry) update({ examples: { ...session.examples, [entry.id]: index } }); };
   const startTest = (allWords = false) => {
     if (test && !resultReady && !allWords) { update({ stage: 'test' }); focusCard(); return; }
     const words = allWords ? group : learningEntries;
-    update({ stage: 'test', round: session.round + 1, ...(allWords ? { reviewWordIds: undefined } : {}), test: { items: buildVocabularyTest(words, session.round), answers: {}, checked: {}, question: 0 } });
+    const round = session.rounds[mode] ?? 0;
+    update({ stage: 'test', rounds: { ...session.rounds, [mode]: round + 1 }, ...(allWords ? { reviewWordIds: undefined, reviewMode: undefined } : {}), tests: { ...session.tests, [mode]: { items: buildVocabularyTest(words, round, mode, entries.filter(word => word.level === level)), answers: {}, checked: {}, question: 0, isReview: isReview && !allWords } } });
     focusCard();
   };
   const submit = (unknown = false) => {
@@ -254,7 +306,7 @@ export default function VocabularyMarathon({ entries, audio, preparation, glossa
     updateTest({ answers: unknown ? { ...test.answers, [item.id]: '' } : test.answers, checked: { ...test.checked, [item.id]: true } });
     focusFeedback();
   };
-  const finishTest = () => { if (resultReady) { update({ stage: 'result', completedOnce: true }); focusCard(); } };
+  const finishTest = () => { if (resultReady) { update({ stage: 'result', completedModes: { ...session.completedModes, [mode]: true } }); focusCard(); } };
   const nextTest = () => {
     if (!test || !item) return;
     if (!checked) submit();
@@ -263,7 +315,7 @@ export default function VocabularyMarathon({ entries, audio, preparation, glossa
   };
   const reviewWeak = () => {
     if (!summary?.wrongWordIds.length) return;
-    update({ stage: 'learn', reviewWordIds: summary.wrongWordIds, wordIndex: 0 });
+    update({ stage: 'learn', reviewWordIds: summary.wrongWordIds, reviewMode: mode, wordIndex: Math.max(0, group.findIndex(word => word.id === weakEntries[0]?.id)) });
     focusCard();
   };
   const fetchAudioStatus = async () => {
@@ -305,9 +357,9 @@ export default function VocabularyMarathon({ entries, audio, preparation, glossa
   if (!entry || !example) return <main className={styles.page}><Link className={styles.back} href="/admin/eiken-samples"><ArrowLeft size={18} />英検サンプルへ</Link><p>単語セットを準備しています。</p></main>;
 
   const nextSet = groupIndex < groups.length - 1 ? { level, index: groupIndex + 1 } : level === '2級' && entries.some(word => word.level === '準1級') ? { level: '準1級' as const, index: 0 } : undefined;
-  const testLabel = test && !resultReady ? '途中のテストに戻る' : isReview ? `苦手${learningEntries.length}語を再テスト` : `${group.length}語をまとめてテスト`;
+  const testLabel = test && !resultReady ? '途中のテストに戻る' : isReview ? `${learningEntries.length}語を再テスト` : `${group.length}語をまとめてテスト`;
   const nextLearn = () => {
-    if (session.wordIndex < learningEntries.length - 1) { update({ wordIndex: session.wordIndex + 1 }); focusCard(); }
+    if (learningIndex < learningEntries.length - 1) moveLearningWord(learningIndex + 1);
     else startTest();
   };
 
@@ -317,38 +369,45 @@ export default function VocabularyMarathon({ entries, audio, preparation, glossa
       <Link className={styles.back} href="/admin/eiken-samples">英検サンプル<ArrowRight size={16} aria-hidden="true" /></Link>
     </header>
     <div className={styles.intro}>
-      <div><p className={styles.eyebrow}>管理者用サンプル</p><span className={styles.progress}>{finishedSets}セットを確認</span></div>
+      <div><p className={styles.eyebrow}>管理者用サンプル</p><span className={styles.progress}>{modeInfo.shortLabel} · {finishedSets}セット確認</span></div>
       <h1>ボキャブラリーマラソン</h1>
       <p>10語を学ぶ → 混ぜてテスト → 苦手をもう一度</p>
     </div>
-    {(session.stage === 'learn' || session.stage === 'result') && <div className={styles.glossaryTools}><span>例文の下線を押すと、言葉の説明が開きます</span><GlossaryHistoryButton /></div>}
-    {session.stage !== 'test' && session.stage !== 'production' && preparation}
-    {session.stage !== 'test' && session.stage !== 'production' && <>
+    {(stage === 'learn' || stage === 'result') && <div className={styles.glossaryTools}><span>例文の下線を押すと、言葉の説明が開きます</span><GlossaryHistoryButton /></div>}
+    {stage !== 'test' && stage !== 'production' && preparation}
+    {stage !== 'test' && stage !== 'production' && <>
       <div className={styles.levels} aria-label="英検の級">
         {(['2級', '準1級'] as const).map(value => <button type="button" key={value} aria-pressed={value === level} onClick={() => navigateSet(value, 0)}>{value}<small>{entries.filter(word => word.level === value).length}語</small></button>)}
       </div>
       <div className={styles.sets} aria-label="学ぶ単語セット">
         {groups.map((words, index) => <button type="button" key={index} aria-pressed={groupIndex === index} onClick={() => navigateSet(level, index)}><span>セット{index + 1}</span><small>{words.length}語</small></button>)}
       </div>
+      <div className={styles.testMode}>
+        <label htmlFor="vocabulary-test-mode">テストの形式</label>
+        <select id="vocabulary-test-mode" ref={modeSelector} value={mode} onChange={event => changeMode(event.target.value as ChoiceTestMode)} aria-describedby="vocabulary-mode-description">
+          {testModes.map(option => <option key={option.id} value={option.id}>{option.label}</option>)}
+        </select>
+        <p id="vocabulary-mode-description">{modeInfo.description} {group.length}語を順不同で{group.length}問。</p>
+      </div>
     </>}
     <nav className={styles.steps} aria-label="学習のステップ">
-      <button type="button" aria-current={session.stage === 'learn' ? 'step' : undefined} onClick={() => goLearn()}><span>1</span>学ぶ</button>
+      <button type="button" aria-current={stage === 'learn' ? 'step' : undefined} onClick={() => goLearn()}><span>1</span>学ぶ</button>
       <ChevronRight size={13} aria-hidden="true" />
-      <button type="button" aria-current={session.stage === 'test' ? 'step' : undefined} onClick={() => startTest()}><span>2</span>まとめてテスト</button>
+      <button type="button" aria-current={stage === 'test' ? 'step' : undefined} onClick={() => startTest()}><span>2</span>まとめてテスト</button>
       <ChevronRight size={13} aria-hidden="true" />
-      <button type="button" aria-current={session.stage === 'result' || session.stage === 'production' ? 'step' : undefined} disabled={!resultReady} title="全問の答え合わせ後に確認できます" onClick={finishTest}><span>3</span>結果・復習</button>
+      <button type="button" aria-current={stage === 'result' || stage === 'production' ? 'step' : undefined} disabled={!resultReady} title="全問の答え合わせ後に確認できます" onClick={finishTest}><span>3</span>結果・復習</button>
     </nav>
     <article className={styles.card} ref={card}>
-      {session.stage === 'learn' && <>
+      {stage === 'learn' && <>
         <div className={styles.learnTop}><span>{level} · セット{groupIndex + 1}{isReview ? ' · 苦手の学び直し' : ''}</span><button type="button" onClick={() => startTest()}>{testLabel}<ArrowRight size={14} aria-hidden="true" /></button></div>
         <div className={styles.wordHeading}>
-          <div><p>{session.wordIndex + 1} / {learningEntries.length}語目</p><h2 ref={heading} tabIndex={-1} lang="en">{entry.word}</h2></div><span>{entry.partOfSpeech}</span>
+          <div><p>{learningIndex + 1} / {learningEntries.length}語目</p><h2 ref={heading} tabIndex={-1} lang="en">{entry.word}</h2></div><span>{entry.partOfSpeech}</span>
         </div>
         <p className={styles.ipa}><span lang="en">{entry.ipa}</span><small>{entry.ipaLabel}</small></p>
-        <WordAudio key={entry.id} entry={entry} clip={availableAudio.find(clip => clip.wordId === entry.id)} example={exampleIndex} stopKey={`${entry.id}-${session.stage}-${exampleIndex}`} busy={!!busyWord} onPrepare={() => void prepare()} onRefresh={() => void refresh()} />
+        <WordAudio key={`audio-${entry.id}`} entry={entry} clips={availableAudio} example={exampleIndex} stopKey={`${entry.id}-${stage}-${exampleIndex}`} busy={!!busyWord} onPrepare={() => void prepare()} onRefresh={() => void refresh()} />
         {audioError && <p role="alert" className={styles.error}>{audioError}</p>}
         <div className={styles.definition}><p lang="en">{entry.definition}</p><p>{entry.meaning}</p></div>
-        <VerbForms key={entry.id} forms={entry.verbForms} />
+        <VerbForms key={`forms-${entry.id}`} forms={entry.verbForms} />
         <section className={styles.example} aria-label={`例文 ${exampleIndex + 1}`}>
           <div className={styles.exampleHeading}><span>例文 {exampleIndex + 1} / {entry.examples.length}</span><strong>{example.context}</strong></div>
           <p lang="en" className={styles.exampleText}><GlossarySentence text={example.text} /></p>
@@ -360,46 +419,49 @@ export default function VocabularyMarathon({ entries, audio, preparation, glossa
           </div>
         </section>
         <details className={styles.tip}><summary>使い方のポイント</summary><p>{entry.usageTip}</p></details>
-        <details className={styles.wordList}><summary>{isReview ? '学び直す単語' : `このセットの${group.length}語`}から選ぶ</summary><div>{learningEntries.map((word, index) => <button type="button" key={word.id} aria-pressed={entry.id === word.id} onClick={() => { update({ wordIndex: index }); focusCard(); }}><span>{index + 1}</span><span lang="en">{word.word}</span></button>)}</div></details>
+        <details className={styles.wordList}><summary>{isReview ? '学び直す単語' : `このセットの${group.length}語`}から選ぶ</summary><div>{learningEntries.map((word, index) => <button type="button" key={word.id} aria-pressed={entry.id === word.id} onClick={() => moveLearningWord(index)}><span>{index + 1}</span><span lang="en">{word.word}</span></button>)}</div></details>
       </>}
-      {session.stage === 'test' && item && test && <section className={styles.quiz} aria-label="複数の単語を混ぜたテスト">
-        <div className={styles.testHeading}><p>{level} · セット{groupIndex + 1}{isReview ? ' · 苦手の再テスト' : ''}</p><h2 ref={heading} tabIndex={-1}>まとめてテスト</h2></div>
-        <p className={styles.quizMeta}>{item.kind === 'recall' ? '思い出して書く' : '文脈から選ぶ'}<span>{test.question + 1} / {test.items.length}問</span></p>
+      {stage === 'test' && item && test && <section className={styles.quiz} aria-label="複数の単語を混ぜたテスト">
+        <div className={styles.testHeading}><p>{level} · セット{groupIndex + 1}{test.isReview ? ' · 苦手の再テスト' : ''}</p><h2 ref={heading} tabIndex={-1}>{modeInfo.label}</h2></div>
+        <p className={styles.quizMeta}>{test.items.length}語をまとめて確認<span>{test.question + 1} / {test.items.length}問</span></p>
         <div className={styles.testProgress} aria-hidden="true"><span style={{ width: `${(test.question + 1) / test.items.length * 100}%` }} /></div>
         <h3>{item.prompt}</h3>
-        {item.kind === 'choice' ? <fieldset className={styles.choices} disabled={checked}>
+        <fieldset className={styles.choices} disabled={checked}>
           <legend>一番適切なものを1つ選んでください</legend>
           {item.choices?.map((choice, index) => <label key={`${item.id}-${index}`} className={`${styles.choice} ${answer === index ? styles.selected : ''} ${checked && item.correctIndex === index ? styles.correctChoice : ''}`}>
             <input type="radio" name={`vocab-${item.id}`} value={index} checked={answer === index} onChange={() => updateTest({ answers: { ...test.answers, [item.id]: index } })} />
-            <span className={styles.choiceNumber}>{checked && item.correctIndex === index ? <Check size={15} aria-label="正解" /> : index + 1}</span><span lang="en">{choice}</span>
+            <span className={styles.choiceNumber}>{checked && item.correctIndex === index ? <Check size={15} aria-label="正解" /> : index + 1}</span><span lang={mode === 'meaning' ? 'ja' : 'en'}>{choice}</span>
           </label>)}
-        </fieldset> : <form className={styles.recall} onSubmit={event => { event.preventDefault(); submit(); }}>
-          <label htmlFor="vocabulary-recall-answer">空欄に合う英単語を入力</label>
-          <input id="vocabulary-recall-answer" key={item.id} lang="en" autoComplete="off" autoCapitalize="none" autoCorrect="off" spellCheck={false} enterKeyHint="done" value={typeof answer === 'string' ? answer : ''} readOnly={checked} onChange={event => updateTest({ answers: { ...test.answers, [item.id]: event.target.value } })} aria-describedby="vocabulary-recall-hint" />
-          <p id="vocabulary-recall-hint">選択肢や頭文字を見ずに、思い出してみましょう。</p>
-        </form>}
+        </fieldset>
         {!checked && <button type="button" className={styles.unknown} onClick={() => submit(true)}>分からない・答えを見る</button>}
-        {checked && <div ref={feedback} tabIndex={-1} className={`${styles.feedback} ${!checkVocabularyAnswer(item, answer ?? '') ? styles.incorrect : ''}`} role="status">
-          <h4>{checkVocabularyAnswer(item, answer ?? '') ? <><CheckCircle2 size={20} aria-hidden="true" />{item.kind === 'recall' ? '思い出せました' : 'その使い方で合っています'}</> : item.kind === 'recall' ? '答えを確認しましょう' : `正解は ${(item.correctIndex ?? 0) + 1}`}</h4>
-          {item.kind === 'recall' && <p className={styles.recallAnswer} lang="en">{item.answers?.join(' / ')}</p>}
+        {checked && <div ref={feedback} tabIndex={-1} className={`${styles.feedback} ${!correct ? styles.incorrect : ''}`} role="status">
+          <h4>{correct ? <><CheckCircle2 size={20} aria-hidden="true" />{modeInfo.success}</> : `正解は ${(item.correctIndex ?? 0) + 1}`}</h4>
           <p>{item.explanation}</p>
+          {alternativeExpressions.length > 0 && <section className={styles.alternativeExpressions} aria-label="この文で使える別の表現">
+            <h5>この文で使える別の表現</h5>
+            <p>近い意味の表現でも、伝わるニュアンスが少し変わります。</p>
+            <dl>{alternativeExpressions.map(alternative => <div key={alternative.answer}><dt lang="en">{alternative.answer}</dt><dd>{alternative.explanation}</dd></div>)}</dl>
+          </section>}
         </div>}
       </section>}
-      {session.stage === 'result' && summary && test && <section className={styles.result}>
+      {stage === 'result' && summary && test && score && <section className={styles.result}>
         <CheckCircle2 size={34} aria-hidden="true" />
-        <h2 ref={heading} tabIndex={-1}>{isReview ? '苦手の再確認ができました' : `${group.length}語の確認ができました`}</h2>
-        <p className={styles.resultSub}>{level} · セット{groupIndex + 1}{isReview ? ' · 再テストの結果' : ''}</p>
-        <div className={styles.resultScores}>
-          <div><span>選べた</span><p><strong>{summary.choice.correct}</strong> / {summary.choice.total}</p><small>使い方を見分ける</small></div>
-          <div><span>思い出せた</span><p><strong>{summary.recall.correct}</strong> / {summary.recall.total}</p><small>自分で単語を書く</small></div>
+        <h2 ref={heading} tabIndex={-1}>{test.isReview ? '苦手の再確認ができました' : `${test.items.length}語の確認ができました`}</h2>
+        <p className={styles.resultSub}>{level} · セット{groupIndex + 1}{test.isReview ? ' · 再テストの結果' : ''}</p>
+        <p className={styles.resultMode}>{modeInfo.label}</p>
+        <div className={`${styles.resultScores} ${styles.singleScore}`}>
+          <div><span>{modeInfo.resultLabel}</span><p><strong>{score.correct}</strong> / {score.total}</p><small>選択肢から回答</small></div>
         </div>
-        <p className={styles.resultNote}>「選べる」と「何も見ずに思い出せる」を分けて確認しました。</p>
+        <p className={styles.resultNote}>「{modeInfo.shortLabel}」での結果です。ほかの形式の進み具合・結果とは分けて残します。</p>
         {weakEntries.length > 0 ? <div className={styles.weakBox}><h3>もう一度確かめたい {weakEntries.length}語</h3><p lang="en">{weakEntries.map(word => word.word).join(' · ')}</p><button type="button" className={styles.secondary} onClick={reviewWeak}><RotateCcw size={16} aria-hidden="true" />苦手{weakEntries.length}語を学び直す</button><small>例文を確認してから、この単語だけ再テストできます。</small></div> : <p className={styles.allCorrect}>今回の確認はできました。少し時間を空けて、また試してみましょう。</p>}
         <button type="button" className={styles.productionEntry} onClick={() => { update({ stage: 'production', showModel: false }); focusCard(); }}><span><strong>自分の文でも使ってみる</strong><small>英作文1問・任意・自分で確認</small></span><ArrowRight size={18} aria-hidden="true" /></button>
-        <div className={styles.resultLinks}><button type="button" className={styles.textButton} onClick={() => startTest(true)}>このセットの全{group.length * 2}問をもう一度</button><button type="button" className={styles.textButton} onClick={() => { update({ stage: 'learn', wordIndex: 0, reviewWordIds: undefined }); focusCard(); }}>全{group.length}語の学習へ戻る</button></div>
+        <div className={styles.resultLinks}><button type="button" className={styles.textButton} onClick={() => startTest(true)}>この形式で全{group.length}問をもう一度</button><button type="button" className={styles.textButton} onClick={() => {
+          update({ stage: 'learn' });
+          requestAnimationFrame(() => { modeSelector.current?.focus({ preventScroll: true }); modeSelector.current?.scrollIntoView({ block: 'center', behavior: 'instant' }); });
+        }}>別の形式で試す</button><button type="button" className={styles.textButton} onClick={() => { update({ stage: 'learn', wordIndex: 0, reviewWordIds: undefined, reviewMode: undefined }); focusCard(); }}>全{group.length}語の学習へ戻る</button></div>
         <Link className={styles.finishLink} href="/">今日はここまで・ホームへ</Link>
       </section>}
-      {session.stage === 'production' && productionEntry && <section className={styles.production}>
+      {stage === 'production' && productionEntry && <section className={styles.production}>
         <p className={styles.productionLabel}>任意のチャレンジ · 自分で確認</p>
         <h2 ref={heading} tabIndex={-1}>自分の文で使ってみる</h2>
         <label className={styles.productionPicker}>使う単語<select value={productionEntry.id} onChange={event => update({ productionWordId: event.target.value, showModel: false })}>{group.map(word => <option key={word.id} value={word.id}>{word.word}</option>)}</select></label>
@@ -418,20 +480,20 @@ export default function VocabularyMarathon({ entries, audio, preparation, glossa
     </article>
     <p className={styles.previewNote}>管理者だけが見られる試作です。学習者には未公開で、成績には記録しません。このタブでセットを切り替えても回答は残りますが、再読み込みや終了でリセットされます。</p>
     <footer className={styles.footer}>
-      {session.stage === 'learn' ? <>
-        {session.wordIndex > 0 ? <button type="button" className={styles.previous} onClick={() => { update({ wordIndex: session.wordIndex - 1 }); focusCard(); }}><ArrowLeft size={17} aria-hidden="true" />前の単語</button> : isReview && resultReady ? <button type="button" className={styles.previous} onClick={finishTest}><ArrowLeft size={17} aria-hidden="true" />結果へ戻る</button> : <Link className={styles.previous} href="/admin/eiken-samples"><ArrowLeft size={17} aria-hidden="true" />サンプル一覧</Link>}
-        <button type="button" className={styles.primary} onClick={nextLearn}>{session.wordIndex < learningEntries.length - 1 ? '次の単語' : testLabel}<ArrowRight size={18} aria-hidden="true" /></button>
-        <p>{session.wordIndex + 1} / {learningEntries.length}語目 · 例文はカード内の矢印で切り替えられます</p>
-      </> : session.stage === 'test' && test && item ? <>
+      {stage === 'learn' ? <>
+        {learningIndex > 0 ? <button type="button" className={styles.previous} onClick={() => moveLearningWord(learningIndex - 1)}><ArrowLeft size={17} aria-hidden="true" />前の単語</button> : isReview && resultReady ? <button type="button" className={styles.previous} onClick={finishTest}><ArrowLeft size={17} aria-hidden="true" />結果へ戻る</button> : <Link className={styles.previous} href="/admin/eiken-samples"><ArrowLeft size={17} aria-hidden="true" />サンプル一覧</Link>}
+        <button type="button" className={styles.primary} onClick={nextLearn}>{learningIndex < learningEntries.length - 1 ? '次の単語' : testLabel}<ArrowRight size={18} aria-hidden="true" /></button>
+        <p>{learningIndex + 1} / {learningEntries.length}語目 · {modeInfo.shortLabel}でまとめてテストできます</p>
+      </> : stage === 'test' && test && item ? <>
         <button type="button" className={styles.previous} onClick={() => { if (test.question > 0) { updateTest({ question: test.question - 1 }); focusCard(); } else goLearn(); }}><ArrowLeft size={17} aria-hidden="true" />{test.question > 0 ? '前の問題' : '学習へ戻る'}</button>
         <button type="button" className={styles.primary} disabled={!checked && !hasInput} onClick={nextTest}>{!checked ? '答え合わせ' : test.question < test.items.length - 1 ? '次の問題' : '結果を見る'}<ArrowRight size={18} aria-hidden="true" /></button>
-        <p>{test.question + 1} / {test.items.length}問 · {checked ? '理由を確認したら次へ' : item.kind === 'recall' ? '単語を入力すると答え合わせできます' : '答えを1つ選んでください'}</p>
-      </> : session.stage === 'production' ? <>
+        <p>{test.question + 1} / {test.items.length}問 · {checked ? '理由を確認したら次へ' : '答えを1つ選んでください'}</p>
+      </> : stage === 'production' ? <>
         <button type="button" className={styles.previous} onClick={finishTest}><ArrowLeft size={17} aria-hidden="true" />結果へ戻る</button>
         <button type="button" className={styles.primary} disabled={!session.showModel && !writing.trim()} onClick={() => { if (session.showModel) finishTest(); else { update({ showModel: true }); focusFeedback(); } }}>{session.showModel ? '確認を終える' : '解答例と確認ポイント'}<ArrowRight size={18} aria-hidden="true" /></button>
         <p>自分の文を見直す練習です。自動採点はしません。</p>
       </> : <>
-        <button type="button" className={styles.previous} onClick={() => { update({ stage: 'learn', wordIndex: 0, reviewWordIds: undefined }); focusCard(); }}><ArrowLeft size={17} aria-hidden="true" />学習に戻る</button>
+        <button type="button" className={styles.previous} onClick={() => { update({ stage: 'learn', wordIndex: 0, reviewWordIds: undefined, reviewMode: undefined }); focusCard(); }}><ArrowLeft size={17} aria-hidden="true" />学習に戻る</button>
         {nextSet ? <button type="button" className={styles.primary} onClick={() => navigateSet(nextSet.level, nextSet.index)}>{nextSet.level !== level ? '準1級のセット1へ' : '次のセットへ'}<ArrowRight size={18} aria-hidden="true" /></button> : <Link className={styles.primary} href="/">終了してホームへ<ArrowRight size={18} aria-hidden="true" /></Link>}
         <p>{level} · セット{groupIndex + 1}の確認が終わりました</p>
       </>}

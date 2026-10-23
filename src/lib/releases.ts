@@ -8,6 +8,16 @@ export interface AppRelease {
 
 // Newest first. This is the source for Settings, public history and update notices.
 export const APP_RELEASES: readonly AppRelease[] = [{
+  version: '0.10.0',
+  date: '2026-10-23',
+  title: '選んで確かめ、類義語も学ぶ',
+  announcement: '単語のテストを4種類の選択式に。意味を選ぶ練習から始められ、英文の空欄に正解したら別の自然な表現も学べます。',
+  changes: [
+    { title: 'やさしい意味の確認から、文で使う練習へ', description: '意味・英単語・英文の空欄・使い方の4形式から選べます。10語を学んだら、その形式で10問をまとめて確認。形式ごとに進み具合と結果を分け、もう一度確かめたい語だけ復習できます。' },
+    { title: '正解したら、別の自然な表現も', description: '英文の空欄に正解すると、その文で使える類義語がある場合に、意味やニュアンスの違いを表示します。採点と説明には教材に保存した内容を使い、回答のたびにAIは呼びません。自由入力による単語テストは外しました。' },
+    { title: '音声の操作をひとつに', description: '単語を移動したときに音声欄が重複する不具合を修正しました。単語と今の例文をひとつの欄から聞けます。同じ内容の録音が複数ある場合だけ、再生のたびに選びます。' },
+  ],
+}, {
   version: '0.8.1',
   date: '2026-10-23',
   title: '動詞の活用を、辞書のように確認',

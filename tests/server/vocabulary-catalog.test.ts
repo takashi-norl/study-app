@@ -3,6 +3,8 @@ import test from 'node:test';
 import legacy from '../../content/vocabulary-marathon.json';
 import grade2 from '../../content/vocabulary-grade2.json';
 import pre1 from '../../content/vocabulary-pre1.json';
+import alternatives from '../../content/vocabulary-recall-alternatives.json';
+import { buildVocabularyTest, VOCABULARY_TEST_MODES } from '../../src/lib/vocabulary-session';
 import { vocabularyEntries } from '../../src/server/vocabulary-catalog';
 import { glossaryEntries } from '../../src/server/vocabulary-glossary-catalog';
 import { vocabularyAudioSpec } from '../../src/server/vocabulary-audio';
@@ -41,6 +43,27 @@ test('the six saved recordings retain their exact cache identity, example text a
     assert.deepEqual(entry.examples, old.examples, old.word);
     assert.equal(vocabularyAudioSpec(entry).cacheKey, vocabularyAudioSpec(old as VocabularyEntry).cacheKey, old.word);
   }
+});
+
+test('contextual alternatives cover known words, stay distinct from distractors, and retain the saved recordings', () => {
+  assert.deepEqual(Object.keys(alternatives).sort(), vocabularyEntries.map(entry => entry.id).sort());
+  const originals = [...grade2.entries, ...pre1.entries] as VocabularyEntry[];
+  for (const entry of vocabularyEntries) {
+    const synonyms = entry.recall.alternatives ?? [];
+    assert.equal(new Set(synonyms.map(item => item.answer.toLowerCase())).size, synonyms.length, entry.word);
+    for (const item of synonyms) {
+      assert.ok(item.answer.trim() && item.explanation.trim(), entry.word);
+      assert.ok(!entry.recall.answers.includes(item.answer), entry.word);
+    }
+    for (const mode of VOCABULARY_TEST_MODES) {
+      const [question] = buildVocabularyTest([entry], 0, mode.id, vocabularyEntries);
+      assert.equal(question.kind, 'choice');
+      assert.equal(question.choices?.length, 4, `${entry.word}:${mode.id}`);
+      if (mode.id === 'context') for (const synonym of synonyms) assert.ok(!question.choices?.includes(synonym.answer), `${entry.word}: ${synonym.answer} must not be a wrong choice`);
+    }
+    assert.equal(vocabularyAudioSpec(entry).cacheKey, vocabularyAudioSpec(originals.find(old => old.id === entry.id)!).cacheKey, entry.word);
+  }
+  assert.ok(vocabularyEntries.find(entry => entry.id === 'reluctant')?.recall.alternatives?.some(item => item.answer === 'hesitant'));
 });
 test('glossary connects foundation phrases and catalog words without duplicate aliases or dangling references', () => {
   assert.equal(glossaryEntries.length, 146);
