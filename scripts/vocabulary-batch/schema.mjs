@@ -38,6 +38,14 @@ export const generatedEntrySchema = z.object({
 }).strict();
 export const generationSchema = z.object({ entries: z.array(generatedEntrySchema).min(1).max(10) }).strict();
 export const reviewSchema = z.object({ verdicts: z.array(z.object({ word: text(60), approved: z.boolean(), issues: z.array(text(500)).max(12) }).strict()).min(1).max(10) }).strict();
+// Keep the outbound schema immutable: it is part of saved request identities. Locally,
+// retain longer provider explanations without discarding otherwise valid sibling verdicts.
+// Do not trim issues here: recovery must preserve the complete saved evidence text.
+const reviewDecodeSchema = reviewSchema.extend({
+  verdicts: z.array(reviewSchema.shape.verdicts.element.extend({
+    issues: z.array(z.string().min(1).max(8000).refine(value => value.trim().length > 0, 'Review issues must not be blank.')).max(12),
+  }).strict()).min(1).max(10),
+}).strict();
 
 export function validateGeneratedBatch(raw, inventory) {
   const parsed = generationSchema.parse(raw);
@@ -90,7 +98,7 @@ export function materializeEntry(entry, seed, index = 0) {
 }
 
 export function validateReview(raw, entries) {
-  const parsed = reviewSchema.parse(raw);
+  const parsed = reviewDecodeSchema.parse(raw);
   const expected = new Set(entries.map(entry => entry.word));
   if (parsed.verdicts.length !== entries.length || new Set(parsed.verdicts.map(item => item.word)).size !== entries.length || parsed.verdicts.some(item => !expected.has(item.word))) throw new Error('Review must address each requested lemma exactly once.');
   if (parsed.verdicts.some(item => item.approved !== (item.issues.length === 0))) throw new Error('Review verdict and issues disagree.');
