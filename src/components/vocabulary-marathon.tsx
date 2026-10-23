@@ -186,6 +186,7 @@ export default function VocabularyMarathon({ entries, audio }: { entries: Vocabu
   const [audioError, setAudioError] = useState('');
   const heading = useRef<HTMLHeadingElement>(null);
   const card = useRef<HTMLElement>(null);
+  const feedback = useRef<HTMLDivElement>(null);
   const entry = entries.find(item => item.id === wordId);
   const levelEntries = entries.filter(item => item.level === level);
   const wordIndex = levelEntries.findIndex(item => item.id === wordId);
@@ -267,7 +268,13 @@ export default function VocabularyMarathon({ entries, audio }: { entries: Vocabu
       if (study.example < entry.examples.length - 1) update({ example: study.example + 1 });
       else { update({ stage: 'quiz', question: 0 }); focusCard(); }
     } else if (study.stage === 'quiz') {
-      if (!checked) update({ checked: { ...study.checked, [question.id]: true } });
+      if (!checked) {
+        update({ checked: { ...study.checked, [question.id]: true } });
+        requestAnimationFrame(() => {
+          feedback.current?.focus({ preventScroll: true });
+          if (feedback.current) window.scrollTo({ top: Math.max(0, feedback.current.getBoundingClientRect().top + window.scrollY - 16), behavior: 'instant' });
+        });
+      }
       else if (study.question < questions.length - 1) { update({ question: study.question + 1 }); focusCard(); }
       else finish();
     } else if (nextWord) navigate(nextWord.id);
@@ -343,11 +350,11 @@ export default function VocabularyMarathon({ entries, audio }: { entries: Vocabu
           <legend>一番適切なものを1つ選んでください</legend>
           {question.choices.map((choice, index) => <label key={`${question.id}-${index}`} className={`${styles.choice} ${selected === index ? styles.selected : ''} ${checked && question.correctIndex === index ? styles.correctChoice : ''}`}>
             <input type="radio" name={`vocab-${question.id}`} value={index} checked={selected === index} onChange={() => update({ selected: { ...study.selected, [question.id]: index } })} />
-            <span className={styles.choiceNumber}>{checked && question.correctIndex === index ? <Check size={15} aria-label="正解" /> : String.fromCharCode(65 + index)}</span><span lang="en">{choice}</span>
+            <span className={styles.choiceNumber}>{checked && question.correctIndex === index ? <Check size={15} aria-label="正解" /> : index + 1}</span><span lang="en">{choice}</span>
           </label>)}
         </fieldset>
-        {checked && <div className={`${styles.feedback} ${selected !== question.correctIndex ? styles.incorrect : ''}`} role="status">
-          <h4>{selected === question.correctIndex ? <><CheckCircle2 size={20} aria-hidden="true" />その使い方で合っています</> : <>正解は {String.fromCharCode(65 + question.correctIndex)}</>}</h4>
+        {checked && <div ref={feedback} tabIndex={-1} className={`${styles.feedback} ${selected !== question.correctIndex ? styles.incorrect : ''}`} role="status">
+          <h4>{selected === question.correctIndex ? <><CheckCircle2 size={20} aria-hidden="true" />その使い方で合っています</> : <>正解は {question.correctIndex + 1}</>}</h4>
           <p>{question.explanation}</p>
           <button type="button" className={styles.textButton} onClick={() => changeStage('learn')}>例文でもう一度確かめる<ArrowRight size={15} aria-hidden="true" /></button>
         </div>}

@@ -8,6 +8,14 @@ export interface AppRelease {
 
 // Newest first. This is the source for Settings, public history and update notices.
 export const APP_RELEASES: readonly AppRelease[] = [{
+  version: '0.6.3',
+  date: '2026-10-23',
+  title: '答え合わせの理由を、すぐ目の前に',
+  announcement: '単語の見本で答え合わせをすると、解説が見える位置へ移ります。選択肢と解説の番号もそろえました。',
+  changes: [
+    { title: '答えを選んだ後も、迷わず進む', description: 'ボキャブラリーの見本で答え合わせ後に解説を表示位置まで案内し、次の問題へ進む前に理由を確認しやすくしました。選択肢と正解・解説を同じ番号で表示します。' },
+  ],
+}, {
   version: '0.6.2',
   date: '2026-10-23',
   title: '単語を、3つの例文と音声で身につける',
