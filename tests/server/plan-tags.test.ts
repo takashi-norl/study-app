@@ -10,8 +10,8 @@ import { planningSampleSchema } from '../../src/server/planning-samples';
 
 const time = '2026-10-22T00:00:00Z';
 const later = new Date('2026-10-23T00:00:00Z');
-const parent: Profile = { id: 'parent', name: '管理者', role: 'parent', familyId: getFamilyId() };
-const student: Profile = { ...parent, id: 'student', name: '学習者', role: 'student' };
+const parent: Profile = { id: 'parent', name: '運営者', role: 'parent', accessLevel: 'superuser', familyId: getFamilyId() };
+const student: Profile = { ...parent, id: 'student', name: '学習者', role: 'student', accessLevel: 'learner' };
 const other: Profile = { ...student, id: 'other' };
 const profiles = [parent, student, other];
 const plan = (id: string, ownerId = student.id, extra: Partial<LearningPlan> = {}): LearningPlan => ({
@@ -174,7 +174,7 @@ test('forged tag events cannot alter another owner or unknown plan, and tags ret
   assert.equal(stored.plans.some(item => item.id === 'missing'), false);
   assert.deepEqual(studyDataForProfile(stored, student).plans.map(item => [item.id, item.tags]), [['own', ['中間テスト']]]);
   assert.equal(JSON.stringify(studyDataForProfile(stored, other)).includes('中間テスト'), false);
-  assert.deepEqual(studyDataForProfile(stored, parent).plans.find(item => item.id === 'own')?.tags, ['中間テスト']);
+  assert.equal(studyDataForProfile(stored, parent).plans.find(item => item.id === 'own'), undefined);
 });
 
 test('tag replay requires the owner to be a current member of the configured family', () => {

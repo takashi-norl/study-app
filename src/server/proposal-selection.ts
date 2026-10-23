@@ -42,7 +42,7 @@ export function assertGenerationAccess(data: StudyData, job: GenerationJob) {
   if (!requester || !topic) throw new ApiError(403, '作問依頼者の利用権限を確認できません。', 'GENERATION_ACCESS_DENIED');
   if(job.questionTemplate && topic.subject!=='古文')throw new ApiError(403,'古文の単語問題として確認できません。','GENERATION_ACCESS_DENIED');
   if(topic.libraryPublished) throw new ApiError(403,'公開版に問題を追加することはできません。','GENERATION_ACCESS_DENIED');
-  if (job.questionTemplate !== topic.questionTemplate || job.audienceUserId !== topic.audienceUserId || job.planId !== topic.planId || !!job.testOnly!==!!topic.testOnly || !canAccessQuestion(job,requester)) throw new ApiError(403, '作問先の設定が一致しません。', 'GENERATION_ACCESS_DENIED');
+  if (job.questionTemplate !== topic.questionTemplate || job.audienceUserId !== topic.audienceUserId || job.planId !== topic.planId || !!job.testOnly!==!!topic.testOnly || !canAccessQuestion(job,requester) || !canAccessQuestion(topic,requester)) throw new ApiError(403, '作問先の設定が一致しません。', 'GENERATION_ACCESS_DENIED');
   if (job.planId && !data.plans.some(plan => plan.id === job.planId && plan.ownerId === requester.id && canAccessPlan(plan,requester) && !!plan.testOnly===!!job.testOnly)) throw new ApiError(403, 'この相談から作問できるのは本人だけです。', 'GENERATION_ACCESS_DENIED');
   if (requester.role === 'student' && (!job.planId || job.audienceUserId !== requester.id)) throw new ApiError(403, '自分の学習相談から作問してください。', 'GENERATION_ACCESS_DENIED');
   if(job.approvedSamples) {

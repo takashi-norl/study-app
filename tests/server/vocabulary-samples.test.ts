@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { mock, test } from 'node:test';
+import { mock, test, beforeEach, afterEach } from 'node:test';
 import { OAuth2Client } from 'google-auth-library';
 import type { Profile } from '../../src/lib/types';
 import { audioCacheKey, audioRecord } from '../../src/server/audio';
@@ -8,7 +8,14 @@ import { foldEvents, loadEvents, type StudyEvent } from '../../src/server/google
 import { vocabularyAudioSpec } from '../../src/server/vocabulary-audio';
 import { prepareVocabularyAudio, readVocabularyAudio, vocabularyEntry, vocabularyPreview } from '../../src/server/vocabulary-samples';
 
-const parent: Profile = { id: 'test-parent', name: 'Parent', role: 'parent', familyId: getFamilyId() };
+const parent: Profile = { id: 'test-parent', name: 'Parent', role: 'parent', accessLevel: 'superuser', familyId: getFamilyId() };
+const previousMembers = process.env.ALLOWED_FAMILY_MEMBERS_JSON;
+beforeEach(() => { process.env.ALLOWED_FAMILY_MEMBERS_JSON = JSON.stringify([
+  { id: 'test-parent', name: 'Operator', email: 'takashi.oikawa@gmail.com', role: 'parent' },
+  { id: 'manager', name: 'Member', email: 'member@example.com', role: 'parent' },
+  { id: 'student', name: 'Student', email: 'student@example.com', role: 'student' },
+]); });
+afterEach(() => { if (previousMembers === undefined) delete process.env.ALLOWED_FAMILY_MEMBERS_JSON; else process.env.ALLOWED_FAMILY_MEMBERS_JSON = previousMembers; });
 const bytes = new Uint8Array([73, 68, 51, 4]);
 const token = '3c62d3ca-9f79-46eb-a2c3-556f998fbe4c';
 
@@ -40,6 +47,7 @@ async function withStore(action: (state: {
   let savedMetadata: { id: string; appProperties: { cacheKey: string } } | undefined;
   const network = mock.method(globalThis, 'fetch', async (input: string | URL | Request, init?: RequestInit) => {
     const url = String(input);
+    if (url === 'https://sheets.googleapis.com/v4/spreadsheets/unit-sheet?fields=sheets.properties.title') return Response.json({sheets:[{properties:{title:'Events'}}]});
     if (url.startsWith('https://sheets.googleapis.com/v4/spreadsheets/unit-sheet/values/')) {
       if (init?.method === 'POST') {
         rows.push(...JSON.parse(String(init.body)).values);
@@ -85,13 +93,16 @@ async function withStore(action: (state: {
   }
 }
 
-test('vocabulary content, generation and playback all reject student and other-family accounts before network access', async () => {
+test('catalog reading rejects foreign membership while paid preparation still rejects learners', async () => {
   const network = mock.method(globalThis, 'fetch', async () => { throw new Error('Network must not be reached'); });
   try {
-    for (const profile of [{ ...parent, role: 'student' as const }, { ...parent, familyId: 'other-family' }]) {
+    for (const profile of [{ ...parent, familyId: 'other-family' }]) {
       await assert.rejects(() => vocabularyPreview(profile), { code: 'FORBIDDEN' });
       await assert.rejects(() => prepareVocabularyAudio(profile, 'avoid'), { code: 'FORBIDDEN' });
       await assert.rejects(() => readVocabularyAudio(profile, 'avoid'), { code: 'FORBIDDEN' });
+    }
+    for (const id of ['student', 'manager', 'unknown']) {
+      await assert.rejects(() => prepareVocabularyAudio({ ...parent, id, accessLevel: 'superuser' }, 'avoid'), { code: 'FORBIDDEN' });
     }
     for (const id of ['', '../avoid', 'arbitrary spoken text', 'Avoid']) {
       assert.throws(() => vocabularyEntry(id), { code: 'SAMPLE_NOT_FOUND' });
@@ -120,6 +131,8 @@ test('one paid vocabulary recording persists four sections; replay and repeated 
     const preview = await vocabularyPreview(parent);
     assert.equal(preview.audio.find(item => item.wordId === 'avoid')?.state, 'ready');
     assert.equal(preview.entries.length, 100);
+    assert.equal(preview.canPrepareAudio, true);
+    assert.equal((await vocabularyPreview({...parent,id:'manager',accessLevel:'learner'})).canPrepareAudio, false);
     assert.doesNotMatch(JSON.stringify(preview), /unit-audio-file|requestToken|cacheKey|UNIT_TEST_KEY/);
     assert.equal(state.rows.filter(row => row[1] === 'audio.requested').length, 1);
   });
@@ -200,5 +213,13 @@ test('legacy audio.ready rows without sections remain valid and do not collide w
     assert.ok(preview.audio.every(item => item.state === 'missing'));
     assert.doesNotMatch(JSON.stringify(preview), /existing-audio-file/);
     assert.equal(state.paidCalls(), 0);
+  });
+});
+
+test('learners can read the curated catalog without being offered paid preparation', async()=>{
+  await withStore(async()=>{
+    const preview=await vocabularyPreview({...parent,id:'student',role:'student',accessLevel:'learner'});
+    assert.ok(preview.entries.length>0);
+    assert.equal(preview.canPrepareAudio,false);
   });
 });

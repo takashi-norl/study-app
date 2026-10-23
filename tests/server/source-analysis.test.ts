@@ -46,11 +46,11 @@ test('manual reading is append-only, old event readers remain compatible, and th
   assert.equal(planningProgress(turn, [sourceId], all, 'queued').progress?.sourcesRequiringAnalysis, 0);
 });
 
-test('registered owners and parents can read or correct, without exposing sibling, old unowned, or test sources', () => {
+test('only registered owners can read or correct, without exposing sibling, unowned, or test sources', () => {
   const events = base();
   const data = foldEvents(events, profiles);
   assert.equal(requireSourceAnalysisAccess(data, student, sourceId).id, sourceId);
-  assert.equal(prepareSourceAnalysisUpdate(data, events, parent, sourceId, input(), later).event?.actorId, parent.id);
+  assert.throws(() => prepareSourceAnalysisUpdate(data, events, parent, sourceId, input(), later), { code: 'SOURCE_NOT_FOUND' });
   assert.throws(() => requireSourceAnalysisAccess(data, other, sourceId), { code: 'SOURCE_NOT_FOUND' });
   for (const actor of [{ ...student, role: 'parent' as const }, { ...student, familyId: 'foreign' }, { ...student, id: 'not-registered' }]) {
     assert.throws(() => requireSourceAnalysisAccess(data, actor, sourceId), { code: 'SOURCE_ANALYSIS_FORBIDDEN' });
@@ -58,7 +58,7 @@ test('registered owners and parents can read or correct, without exposing siblin
   }
   data.sources[0].ownerId = undefined;
   assert.throws(() => requireSourceAnalysisAccess(data, student, sourceId), { code: 'SOURCE_NOT_FOUND' });
-  assert.doesNotThrow(() => requireSourceAnalysisAccess(data, parent, sourceId));
+  assert.throws(() => requireSourceAnalysisAccess(data, parent, sourceId), { code: 'SOURCE_NOT_FOUND' });
   data.sources[0].ownerId = student.id; data.sources[0].testOnly = true;
   assert.throws(() => requireSourceAnalysisAccess(data, student, sourceId), { code: 'SOURCE_NOT_FOUND' });
   assert.throws(() => requireSourceAnalysisAccess(data, parent, 'missing'), { code: 'SOURCE_NOT_FOUND' });
@@ -68,12 +68,12 @@ test('save retries never overwrite a newer edit and simultaneous changes use one
   const events = base();
   const data = foldEvents(events, profiles);
   const first = prepareSourceAnalysisUpdate(data, events, student, sourceId, input(), later).event!;
-  const competing = prepareSourceAnalysisUpdate(data, events, parent, sourceId, { ...input(), requestId: '33333333-3333-4333-8333-333333333333', text: '競合した別の本文' }, later).event!;
+  const competing = prepareSourceAnalysisUpdate(data, events, student, sourceId, { ...input(), requestId: '33333333-3333-4333-8333-333333333333', text: '競合した別の本文' }, later).event!;
   assert.equal(competing.id, first.id);
   const saved = [...events, first, competing];
   assert.equal(latestSourceAnalysis(saved, sourceId)?.payload.text, first.payload.text);
   assert.equal(prepareSourceAnalysisUpdate(data, saved, student, sourceId, input(), later).event, undefined);
-  assert.throws(() => prepareSourceAnalysisUpdate(data, saved, parent, sourceId, { ...input(), requestId: '44444444-4444-4444-8444-444444444444' }), { code: 'SOURCE_ANALYSIS_CONFLICT' });
+  assert.throws(() => prepareSourceAnalysisUpdate(data, saved, student, sourceId, { ...input(), requestId: '44444444-4444-4444-8444-444444444444' }), { code: 'SOURCE_ANALYSIS_CONFLICT' });
   assert.throws(() => prepareSourceAnalysisUpdate(data, saved, student, sourceId, { ...input(), text: '同じ保存番号で違う内容' }), { code: 'SOURCE_ANALYSIS_REQUEST_CONFLICT' });
   const second = prepareSourceAnalysisUpdate(data, saved, student, sourceId, { ...input(first.id), requestId: '55555555-5555-4555-8555-555555555555', text: '再確認した本文' }, new Date('2026-10-23T00:03:00Z')).event!;
   assert.equal(latestSourceAnalysis([...saved, second], sourceId)?.id, second.id);

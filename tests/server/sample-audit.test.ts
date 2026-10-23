@@ -14,7 +14,7 @@ const now = new Date('2026-10-23T00:00:00.000Z');
 const time = now.toISOString();
 const owner: Profile = { id: 'sample-owner', name: 'Owner', familyId: getFamilyId(), role: 'student' };
 const other: Profile = { ...owner, id: 'sample-other' };
-const manager: Profile = { ...owner, id: 'sample-manager', role: 'parent' };
+const manager: Profile = { ...owner, id: 'sample-manager', role: 'parent', accessLevel: 'superuser' };
 const sourceId = 'b7e948ee-30f4-4bbf-b0c9-51ba86f6a5cb';
 const foreignSourceId = 'b7e948ee-30f4-4bbf-b0c9-51ba86f6a5cc';
 const samples: PlanningSample[] = ['apple', 'pear', 'lemon'].map(word => ({ prompt: `What does ${word} mean?`, choices: [word, 'Dog', 'Blue', 'Run'], correctIndex: 0,
@@ -67,10 +67,11 @@ test('new bulk approval is owner-only, explicit, current, and sourced from saved
 
 test('persisted previews stay out of practice/public question data and other learners cannot see them', () => {
   const state = foldEvents(sampleEvents(), [owner, other, manager]);
-  for (const visible of [state, studyDataForProfile(state, owner, now), studyDataForProfile(state, manager, now)]) {
+  for (const visible of [state, studyDataForProfile(state, owner, now)]) {
     assert.equal(visible.topics.length, 0); assert.equal(visible.questions.length, 0); assert.equal(visible.jobs.length, 0);
     assert.equal(visible.planningTurns[0].proposals?.[0].samples?.length, 3);
   }
+  assert.equal(studyDataForProfile(state, manager, now).planningTurns.length, 0);
   const unrelated = studyDataForProfile(state, other, now);
   assert.equal(unrelated.plans.length, 0); assert.equal(unrelated.planningTurns.length, 0);
   assert.doesNotMatch(JSON.stringify(unrelated), /What does apple mean/);
@@ -150,22 +151,24 @@ test('arrangement copies allowed excerpts into a new private plan without alteri
   assert.throws(() => preparePlanArrangement(saved, other, state.topics[0].id, prepared.plan.id, now), { code: 'REQUEST_CONFLICT' });
 });
 
-test('public arrangement never follows its hidden private origin, instructions or sources', () => {
+test('public arrangements are no longer available, including old source-free clones', () => {
   const state = data(); state.topics = [topic('private-origin'), { ...topic('public-clone'), ownerId: undefined, audienceUserId: undefined, planId: undefined,
     libraryPublished: true, librarySourceTopicId: 'private-origin' }];
   state.plans[0].goal = 'PRIVATE_ORIGIN_GOAL';
   state.jobs = [{ ...savedJob(false), topicId: 'private-origin', instructions: 'PRIVATE_ORIGIN_INSTRUCTIONS' }];
   state.questions = [question('private-question', 'private-origin', { ...samples[0], prompt: 'PRIVATE_ORIGIN_QUESTION' }),
     { ...question('public-question', 'public-clone'), ownerId: undefined, audienceUserId: undefined, planId: undefined, sourceIds: [], sourceNote: '' }];
-  const prepared = preparePlanArrangement(state, other, 'public-clone', 'public-arrangement', now);
-  assert.equal(prepared.plan.ownerId, other.id); assert.deepEqual(prepared.plan.sourceIds, []); assert.equal(prepared.plan.libraryTopicId, undefined);
-  assert.doesNotMatch(JSON.stringify(prepared.plan), /PRIVATE_ORIGIN_/);
+  assert.throws(()=>preparePlanArrangement(state,other,'public-clone','forbidden',new Date()),{code:'TOPIC_NOT_FOUND'});
 });
 
 test('arrangement retains admin-test isolation and rejects other families and active original jobs', () => {
   const state = data(); state.topics = [{ ...topic(), testOnly: true }];
   state.questions = [{ ...question('test-question', state.topics[0].id), testOnly: true }];
   assert.throws(() => preparePlanArrangement(state, owner, state.topics[0].id, 'no-student-test', now), { code: 'TOPIC_NOT_FOUND' });
+  assert.throws(() => preparePlanArrangement(state, manager, state.topics[0].id, 'other-owner', now), { code: 'TOPIC_NOT_FOUND' });
+  state.plans[0].ownerId = manager.id;
+  state.topics[0].ownerId = manager.id; state.topics[0].audienceUserId = manager.id;
+  state.questions[0].ownerId = manager.id; state.questions[0].audienceUserId = manager.id;
   const prepared = preparePlanArrangement(state, manager, state.topics[0].id, 'manager-arrangement', now);
   assert.equal(prepared.plan.ownerId, manager.id); assert.equal(prepared.plan.testOnly, true);
   assert.throws(() => preparePlanArrangement(state, { ...manager, familyId: 'another-family' }, state.topics[0].id, 'wrong-family', now), { code: 'FAMILY_MISMATCH' });

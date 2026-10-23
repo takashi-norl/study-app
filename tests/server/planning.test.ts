@@ -34,9 +34,9 @@ test('requested total survives plan validation and AI context while old plans re
   assert.equal(context.plan.dailyQuestionTarget,10);
 });
 
-test('parents can inspect a child plan but cannot write; other students cannot discover it',()=>{
+test('other users including parents cannot discover or write a plan',()=>{
   assert.equal(requireOwnedPlan(state(),student,plan.id).id,plan.id);
-  assert.throws(()=>requireOwnedPlan(state(),parent,plan.id),{code:'PLAN_READ_ONLY'});
+  assert.throws(()=>requireOwnedPlan(state(),parent,plan.id),{code:'PLAN_NOT_FOUND'});
   assert.throws(()=>requireOwnedPlan(state(),other,plan.id),{code:'PLAN_NOT_FOUND'});
 });
 
@@ -81,12 +81,12 @@ test('a student cannot attach another owner or legacy private source',()=>{
   assert.throws(()=>validatePlanningSources(data,student,[sourceId]),{code:'SOURCE_NOT_FOUND'});
   delete data.sources[0].ownerId;
   assert.throws(()=>validatePlanningSources(data,student,[sourceId]),{code:'SOURCE_NOT_FOUND'});
-  assert.doesNotThrow(()=>validatePlanningSources(data,parent,[sourceId]));
+  assert.throws(()=>validatePlanningSources(data,parent,[sourceId]),{code:'SOURCE_NOT_FOUND'});
   data.sources[0].ownerId=student.id;assert.doesNotThrow(()=>validatePlanningSources(data,student,[sourceId]));
 });
 
 test('learning summaries separate first, repeated and later-day performance without other learner data',()=>{
-  const data=state();data.topics=[{id:'topic',title:'語彙',subject:'英語',description:'',createdAt:now.toISOString(),targetCount:10}];
+  const data=state();data.topics=[{id:'topic',ownerId:student.id,title:'語彙',subject:'英語',description:'',createdAt:now.toISOString(),targetCount:10}];
   data.questions=[{id:'q',topicId:'topic',prompt:'QUESTION_SECRET',choices:['a','b'],correctIndex:0,explanation:'ANSWER_SECRET',learningPoint:'語彙',sourceIds:[],sourceNote:'',status:'published',version:1,createdAt:now.toISOString()}];
   data.attempts=[
     {id:'a1',userId:student.id,questionId:'q',questionVersion:1,sessionId:'s1',selectedIndex:1,correct:false,answeredAt:'2026-10-20T00:00:00Z'},

@@ -23,9 +23,10 @@ function wordCount(text: string) {
   return text.match(/[A-Za-z0-9]+(?:['’\-][A-Za-z0-9]+)*/g)?.length ?? 0;
 }
 
-function AudioPreview({ clips, busy, onPrepare, onRefresh }: {
+function AudioPreview({ clips, busy, canPrepare, onPrepare, onRefresh }: {
   clips: SampleAudio[];
   busy: boolean;
+  canPrepare: boolean;
   onPrepare: (sampleId: string) => void;
   onRefresh: () => void;
 }) {
@@ -100,7 +101,7 @@ function AudioPreview({ clips, busy, onPrepare, onRefresh }: {
           onError={() => setFailed(previous => previous.includes(key) ? previous : [...previous, key])}
           onCanPlay={() => setFailed(previous => previous.filter(item => item !== key))}
         /> : <div className={styles.audioStatus} aria-live="polite">
-          {state === 'missing' && <><p>一度準備すると、繰り返し聞けます。</p><button type="button" className={styles.prepare} disabled={busy} onClick={() => onPrepare(clip.sampleId)}>この音声を準備する</button></>}
+          {state === 'missing' && (canPrepare ? <><p>一度準備すると、繰り返し聞けます。</p><button type="button" className={styles.prepare} disabled={busy} onClick={() => onPrepare(clip.sampleId)}>この音声を準備する</button></> : <p>音声は準備中です。文章の学習は先に進められます。</p>)}
           {state === 'pending' && <><p>音声を準備しています。ほかの見本へ移動しても、ここで準備状況を確認できます。</p><button type="button" className={styles.prepare} disabled={busy} onClick={onRefresh}>{busy ? '準備しています…' : '準備状況を確認'}</button></>}
           {state === 'failed' && <><p>音声の準備が完了しませんでした。重複して作成されないよう、再生成を止めています。</p><button type="button" className={styles.prepare} disabled={busy} onClick={onRefresh}>準備状況を確認</button></>}
         </div>}
@@ -110,7 +111,7 @@ function AudioPreview({ clips, busy, onPrepare, onRefresh }: {
   </section>;
 }
 
-export default function EikenSamples({ samples, audio }: { samples: EikenSample[]; audio: SampleAudio[] }) {
+export default function EikenSamples({ samples, audio, canPrepareAudio = false, operations = false }: { samples: EikenSample[]; audio: SampleAudio[]; canPrepareAudio?: boolean; operations?: boolean }) {
   const [level, setLevel] = useState<EikenSample['level']>('2級');
   const [skill, setSkill] = useState<EikenSample['skill']>('Reading');
   const [responses, setResponses] = useState<Record<string, ResponseState>>({});
@@ -142,7 +143,7 @@ export default function EikenSamples({ samples, audio }: { samples: EikenSample[
   };
 
   const prepareAudio = async (sampleId: string) => {
-    if (audioBusy) return;
+    if (audioBusy || !canPrepareAudio || !operations) return;
     setAudioBusy(true);
     setAudioError('');
     setAvailableAudio(previous => previous.map(clip => clip.sampleId === sampleId ? { ...clip, state: 'pending' } : clip));
@@ -188,15 +189,15 @@ export default function EikenSamples({ samples, audio }: { samples: EikenSample[
 
   return <main className={styles.page}>
     <header className={styles.header}>
-      <Link href="/" className={styles.back}><ArrowLeft size={18} aria-hidden="true" />ホーム</Link>
-      <span className={styles.adminLabel}>管理者用の見本</span>
+      <Link href={operations ? "/admin" : "/"} className={styles.back}><ArrowLeft size={18} aria-hidden="true" />{operations ? "運営画面へ" : "ホーム"}</Link>
+      <span className={styles.adminLabel}>{operations ? "運営用の教材確認" : "用意された教材"}</span>
     </header>
 
     <div className={styles.intro}>
       <p className={styles.eyebrow}>英検 2級・準1級</p>
       <h1>問題と声を、試してみる。</h1>
       <p>読む・聞く・書くを1問ずつ。問題の難しさと、声の聞きやすさを確認できます。</p>
-      <Link className={styles.back} href="/admin/vocabulary-samples">単語・例文3つを音声で試す<ArrowRight size={16} aria-hidden="true" /></Link>
+      <Link className={styles.back} href={operations ? "/admin/vocabulary-samples" : "/learn/vocabulary"}>単語・例文3つを音声で試す<ArrowRight size={16} aria-hidden="true" /></Link>
     </div>
 
     <div className={styles.selectors}>
@@ -217,7 +218,7 @@ export default function EikenSamples({ samples, audio }: { samples: EikenSample[
       <p className={styles.instructions}>{sample.instructions}</p>
       <details className={styles.formatNote}><summary>問題の形式について<ChevronDown size={15} aria-hidden="true" /></summary><p>{sample.formatNote}</p></details>
 
-      <AudioPreview key={sample.id} clips={availableAudio.filter(clip => clip.sampleId === sample.id)} busy={audioBusy} onPrepare={prepareAudio} onRefresh={refreshAudio} />
+      <AudioPreview key={sample.id} clips={availableAudio.filter(clip => clip.sampleId === sample.id)} busy={audioBusy} canPrepare={operations && canPrepareAudio} onPrepare={prepareAudio} onRefresh={refreshAudio} />
       {audioError && <p className={styles.audioRequestError} role="alert">{audioError}</p>}
 
       {skill === 'Listening' && !response.answered && <p className={styles.listenNote}>台本は回答後に確認できます。まず音声を聞いて、答えを選んでください。</p>}
@@ -253,7 +254,7 @@ export default function EikenSamples({ samples, audio }: { samples: EikenSample[
         {sample.modelAnswer && <><button type="button" className={styles.modelButton} aria-expanded={!!response.showModel} onClick={() => update({ showModel: !response.showModel })}>{response.showModel ? '解答例を閉じる' : '解答例とポイントを見る'}<ChevronDown size={17} aria-hidden="true" /></button>{response.showModel && <div className={styles.model}><p className={styles.modelLabel}>解答例・{wordCount(sample.modelAnswer)}語</p><p lang="en">{sample.modelAnswer}</p><h3>書き方のポイント</h3><p>{sample.explanation}</p></div>}</>}
       </section>}
 
-      <p className={styles.testNote}>オリジナルの見本問題です。学習の成績には記録されず、学習者には公開されません。</p>
+      <p className={styles.testNote}>アプリに用意されたオリジナルの問題です。回答はこのタブ内だけで、通常の学習記録には含まれません。再読み込みや終了でリセットされます。</p>
     </article> : <div className={styles.sample}><h2 ref={sampleHeading} tabIndex={-1}>この見本はまだありません</h2><p>ほかの技能を選んでください。</p></div>}
 
     <nav className={styles.navigation} aria-label="次の見本へ">

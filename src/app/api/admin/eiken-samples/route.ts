@@ -3,5 +3,5 @@ import { samplePreview } from '@/server/eiken-samples';
 import { api } from '@/server/http';
 
 export async function GET() {
-  return api(async () => samplePreview((await requireProfile('parent')).profile));
+  return api(async () => samplePreview((await requireProfile()).profile));
 }

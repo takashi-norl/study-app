@@ -1,13 +1,22 @@
 import assert from 'node:assert/strict';
-import test from 'node:test';
+import test, { beforeEach, afterEach } from 'node:test';
 import { questionSetBundleSchema } from '../../src/lib/question-set-import';
 import { prepareQuestionSetImport } from '../../src/server/question-set-import';
 import { foldEvents, studyDataForProfile, type StudyEvent } from '../../src/server/google-store';
 import { getFamilyId } from '../../src/server/env';
 import type { Profile } from '../../src/lib/types';
 
-const parent:Profile={id:'parent',name:'親',role:'parent',familyId:getFamilyId()};
-const learner:Profile={...parent,id:'learner',name:'生徒',role:'student'};
+
+const previousMembers = process.env.ALLOWED_FAMILY_MEMBERS_JSON;
+beforeEach(() => { process.env.ALLOWED_FAMILY_MEMBERS_JSON = JSON.stringify([
+  { id: 'parent', name: 'Operator', email: 'takashi.oikawa@gmail.com', role: 'parent' },
+  { id: 'another-parent', name: 'Member', email: 'member@example.com', role: 'parent' },
+  { id: 'student', name: 'Student', email: 'student@example.com', role: 'student' },
+]); });
+afterEach(() => { if (previousMembers === undefined) delete process.env.ALLOWED_FAMILY_MEMBERS_JSON; else process.env.ALLOWED_FAMILY_MEMBERS_JSON = previousMembers; });
+
+const parent:Profile={id:'parent',name:'運営者',role:'parent',accessLevel:'superuser',familyId:getFamilyId()};
+const learner:Profile={...parent,id:'learner',name:'生徒',role:'student',accessLevel:'learner'};
 const time='2026-10-23T00:00:00.000Z';
 const sourceId='1f226c88-3d32-4ff2-a833-777777777777';
 const planId='1f226c88-3d32-4ff2-a833-666666666666';
@@ -57,11 +66,11 @@ test('malformed choices, forged owner and duplicate prompts are rejected',()=>{
   assert.equal(questionSetBundleSchema.safeParse({...input.bundle,questions:[{...q,choices:['見つめる','見つめる','眠る','帰る']}]}).success,false);
   assert.equal(questionSetBundleSchema.safeParse({...input.bundle,questions:[q,{...q,prompt:` ${q.prompt} `}]}).success,false);
 });
-test('same file belongs separately to each admin and template marker stays classical-only',()=>{
-  const {data,events,input}=fixture();const unlinked={...input,bundle:{...input.bundle,planId:undefined}};
+test('legacy parent roles and forged operator claims cannot import and template stays classical-only',()=>{
+  const {data,events,input}=fixture();const unlinked={...input,bundle:{...input.bundle,planId:undefined,questions:input.bundle.questions.map(q=>({...q,sourceIds:[]}))}};
   const first=prepareQuestionSetImport(data,events,parent,unlinked);
-  const other=prepareQuestionSetImport(data,events,{...parent,id:'another-parent'},unlinked);
-  assert.notEqual(first.topic.id,other.topic.id);
+  assert.ok(first.topic.id);
+  for (const id of ['another-parent', 'unknown']) assert.throws(()=>prepareQuestionSetImport(data,events,{...parent,id,accessLevel:'superuser'},unlinked),{code:'FORBIDDEN'});
   assert.equal(questionSetBundleSchema.safeParse({...input.bundle,subject:'英語',questionTemplate:'kobun-vocabulary'}).success,false);
 });
 

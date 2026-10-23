@@ -4,7 +4,7 @@ import catalog from '../../content/eiken-audio-samples.json';
 import type { EikenSample, SampleAudio } from '@/lib/eiken-sample-types';
 import type { Profile } from '@/lib/types';
 import { ApiError, requiredEnv } from './config';
-import { getFamilyId } from './env';
+import { assertSuperUser, getFamilyId } from './env';
 import { audioRecord, audioSlotId, checkAudioQuota } from './audio';
 import { appendEvent, downloadAudioCache, loadEvents, MAX_AUDIO_BYTES, saveAudioCache } from './google-store';
 
@@ -13,7 +13,7 @@ const model = 'eleven_v3';
 const samples = catalog.samples as EikenSample[];
 
 export function assertSampleAccess(profile: Profile) {
-  if (profile.familyId !== getFamilyId() || profile.role !== 'parent') throw new ApiError(403, '管理者向けの見本です。', 'FORBIDDEN');
+  if (profile.familyId !== getFamilyId()) throw new ApiError(403, 'ログインして教材を利用してください。', 'FORBIDDEN');
 }
 
 /** Only curated, versioned text can incur generation charges; no arbitrary browser input. */
@@ -39,7 +39,7 @@ export async function samplePreview(profile: Profile) {
     return { sampleId: sample.id, url: `/api/admin/eiken-samples/audio?sampleId=${sample.id}`, voiceLabel: spec.voiceLabel, durationSeconds: 0,
       state: record?.fileId ? 'ready' : record?.failed ? 'failed' : record ? 'pending' : 'missing' };
   });
-  return { samples, audio };
+  return { samples, audio, canPrepareAudio: profile.accessLevel === 'superuser' };
 }
 
 /** Official multi-speaker API. Saved once; repeat listening never invokes the provider. */
@@ -66,6 +66,7 @@ export async function createSampleProviderAudio(spec: ReturnType<typeof sampleAu
 
 export async function prepareSampleAudio(profile: Profile, sampleId: string) {
   assertSampleAccess(profile);
+  assertSuperUser(profile);
   const spec = sampleAudioSpec(sampleId);
   const events = await loadEvents();
   const previous = audioRecord(events, spec.cacheKey);

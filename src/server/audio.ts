@@ -28,11 +28,12 @@ export async function authorizedAudioText(data:StudyData,events:StudyEvent[],pro
   if(profile.familyId!==getFamilyId()) throw new ApiError(403,'この音声にはアクセスできません。','AUDIO_FORBIDDEN');
   let question:Question|undefined;
   if(input.sessionId) {
-    const session=data.sessions.find(item=>item.id===input.sessionId && (profile.role==='parent' || item.userId===profile.id));
+    const session=data.sessions.find(item=>item.id===input.sessionId && item.userId===profile.id);
     if(session?.questionIds.includes(input.questionId)) question=(await getSessionSnapshot(session.id,events)).find(item=>item.id===input.questionId);
-  } else if(profile.role==='parent') question=data.questions.find(item=>item.id===input.questionId);
-  if(!question || !canAccessQuestion(question,profile)) throw new ApiError(404,'読み上げる問題が見つかりません。','AUDIO_QUESTION_NOT_FOUND');
-  if(profile.role==='student' && !mayPracticeQuestion(data,profile,question)) throw new ApiError(404,'読み上げる問題が見つかりません。','AUDIO_QUESTION_NOT_FOUND');
+  } else question=data.questions.find(item=>item.id===input.questionId);
+  const topic=data.topics.find(topic=>topic.id===question?.topicId);
+  if(!question || !topic || !canAccessQuestion(topic,profile) || !canAccessQuestion(question,profile)) throw new ApiError(404,'読み上げる問題が見つかりません。','AUDIO_QUESTION_NOT_FOUND');
+  if(input.sessionId && !mayPracticeQuestion(data,profile,question)) throw new ApiError(404,'読み上げる問題が見つかりません。','AUDIO_QUESTION_NOT_FOUND');
   const subject=data.topics.find(topic=>topic.id===question.topicId)?.subject;
   if(subject!=='英語') throw new ApiError(400,'英語の問題で利用できます。','AUDIO_NOT_ENGLISH');
   const text=input.part==='prompt' ? englishSpeechText(question.prompt) : englishChoiceSpeechText(question.choices[input.choiceIndex] ?? '');

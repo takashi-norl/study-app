@@ -72,16 +72,9 @@ test('bulk keeps canonical mode and coverage despite abbreviated AI instructions
   assert.equal(english.questionTemplate,undefined);assert.equal(english.vocabularyCoverage,undefined);
 });
 
-test('a public derived set retains the public mode but never follows the hidden original source or plan',()=>{
+test('public arrangements are no longer available, including old source-free clones',()=>{
   const data=fixture();data.jobs=[];
   data.topics[0]={...topic,libraryPublished:true,librarySourceTopicId:'hidden-original',planId:undefined,audienceUserId:undefined,ownerId:undefined};
   data.questions=materializeQuestions(samples,{job,sourceIds:[sourceId],prior:[],count:3,createdAt:now}).map(q=>({...q,ownerId:undefined,audienceUserId:undefined,sourceIds:[],planId:undefined}));
-  const arranged=preparePlanArrangement(data,profile,topic.id,'derived',new Date(now)).plan;
-  assert.equal(arranged.questionTemplate,'kobun-vocabulary');
-  assert.deepEqual(arranged.sourceIds,[]);
-  assert.equal(arranged.arrangementInstructions,undefined);
-  assert.ok(arranged.arrangementExamples?.length);
-  assert.doesNotMatch(JSON.stringify(arranged),/private-file|hidden-original/);
-  const generated=materializeQuestions([{...samples[0],sourceIds:[],sourceNote:'元の問題を参考にした練習。'}],{job:{...job,sourceIds:[]},sourceIds:[],prior:[],count:1,createdAt:now});
-  assert.equal(generated[0].sourceNote,'元の問題を参考にした練習。');
+  assert.throws(()=>preparePlanArrangement(data,profile,topic.id,'forbidden',new Date()),{code:'TOPIC_NOT_FOUND'});
 });

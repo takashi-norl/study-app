@@ -1,13 +1,13 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { assertSampleAccess, createSampleProviderAudio, sampleAudioResponse, sampleAudioSpec } from '../../src/server/eiken-samples';
+import { assertSampleAccess, prepareSampleAudio, createSampleProviderAudio, sampleAudioResponse, sampleAudioSpec } from '../../src/server/eiken-samples';
 import catalog from '../../content/eiken-audio-samples.json';
 import { getFamilyId } from '../../src/server/env';
 
-test('only parent accounts in this family may access sample content and audio', () => {
+test('authenticated members of every role may access curated content and audio', () => {
   const parent = { id: 'parent', name: 'Parent', role: 'parent' as const, familyId: getFamilyId() };
   assert.doesNotThrow(() => assertSampleAccess(parent));
-  assert.throws(() => assertSampleAccess({ ...parent, role: 'student' }), { code: 'FORBIDDEN' });
+  assert.doesNotThrow(() => assertSampleAccess({ ...parent, role: 'student' }));
   assert.throws(() => assertSampleAccess({ ...parent, familyId: 'other' }), { code: 'FORBIDDEN' });
 });
 
@@ -64,4 +64,27 @@ test('sample provider uses both fixed voices without requiring voice-management 
     });
     assert.equal(paid, 1);
   } finally { globalThis.fetch = original; if (oldKey === undefined) delete process.env.ELEVENLABS_API_KEY; else process.env.ELEVENLABS_API_KEY = oldKey; }
+});
+
+
+test('paid sample preparation rejects legacy parents and forged access levels before storage or provider access', async () => {
+  const previous = process.env.ALLOWED_FAMILY_MEMBERS_JSON;
+  const originalFetch = globalThis.fetch;
+  process.env.ALLOWED_FAMILY_MEMBERS_JSON = JSON.stringify([
+    { id: 'operator', name: 'Operator', email: 'takashi.oikawa@gmail.com', role: 'parent' },
+    { id: 'manager', name: 'Member', email: 'member@example.com', role: 'parent' },
+    { id: 'student', name: 'Student', email: 'student@example.com', role: 'student' },
+  ]);
+  let calls = 0;
+  globalThis.fetch = async () => { calls++; throw new Error('Network must not be reached'); };
+  try {
+    for (const id of ['manager', 'student', 'unknown']) {
+      await assert.rejects(() => prepareSampleAudio({ id, name: 'Member', role: 'parent', accessLevel: 'superuser', familyId: getFamilyId() }, 'grade2-listening'), { code: 'FORBIDDEN' });
+    }
+    await assert.rejects(() => prepareSampleAudio({ id: 'operator', name: 'Operator', role: 'parent', accessLevel: 'superuser', familyId: getFamilyId() }, 'not-curated'), { code: 'SAMPLE_NOT_FOUND' });
+    assert.equal(calls, 0);
+  } finally {
+    globalThis.fetch = originalFetch;
+    if (previous === undefined) delete process.env.ALLOWED_FAMILY_MEMBERS_JSON; else process.env.ALLOWED_FAMILY_MEMBERS_JSON = previous;
+  }
 });

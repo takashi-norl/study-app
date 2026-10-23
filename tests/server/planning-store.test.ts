@@ -25,7 +25,7 @@ test('requested question totals survive saved events and student projection alon
   assert.equal(visible.plans[1].dailyQuestionTarget,10);
 });
 
-test('legacy sources stay parent-only; students see only their own bank and plans',()=>{
+test('unowned legacy sources are hidden and every role sees only its own bank and plans',()=>{
   const events:StudyEvent[]=[];
   for(const [id,ownerId] of [['legacy',undefined],['parent-source',parent.id],['own-source',student.id],['other-source',other.id]] as const) {
     events.push(event(id,'source.created',{id,ownerId,name:'source.jpg',mimeType:'image/jpeg',createdAt:time}));
@@ -42,16 +42,16 @@ test('legacy sources stay parent-only; students see only their own bank and plan
   assert.deepEqual(visible.plans.map(p=>p.id),[`plan-${student.id}`]);
   assert.deepEqual(visible.planningTurns.map(t=>t.id),[`turn-${student.id}`]);
   const all=studyDataForProfile(data,parent,new Date(time));
-  assert.equal(all.sources.length,4);
-  assert.equal(all.plans.length,3);
-  assert.equal(all.planningTurns.length,3);
+  assert.equal(all.sources.length,1);
+  assert.equal(all.plans.length,1);
+  assert.equal(all.planningTurns.length,1);
   assert.equal(canAccessSource({},student),false);
   assert.equal(canAccessSource({ownerId:other.id},student),false);
-  assert.equal(canAccessSource({ownerId:other.id},parent),true);
+  assert.equal(canAccessSource({ownerId:other.id},parent),false);
   assert.equal(canAccessPlan(plan('p',other.id),student),false);
 });
 
-test('private published AI questions are usable only by their student while parents can inspect them',()=>{
+test('private published AI questions are usable only by their student while parents cannot inspect them',()=>{
   const events:StudyEvent[]=[];
   for(const [id,audience] of [['family',undefined],['own',student.id],['other',other.id]] as const) {
     events.push(event(`topic-${id}`,'topic.created',topic(id,audience)),event(`q-${id}`,'question.upserted',question(`q-${id}`,id,audience)));
@@ -61,8 +61,8 @@ test('private published AI questions are usable only by their student while pare
   assert.deepEqual(visible.questions.map(q=>q.id),['q-own']);
   assert.deepEqual(visible.topics.map(t=>t.id),['own']);
   assert.equal(visible.questions.find(q=>q.id==='q-own')?.needsReview,true);
-  assert.equal(JSON.stringify(visible).includes('PRIVATE_ANSWER'),false);
-  assert.equal(studyDataForProfile(data,parent,new Date(time)).questions.length,3);
+  assert.equal(JSON.stringify(visible).includes('PRIVATE_ANSWER'),true);
+  assert.equal(studyDataForProfile(data,parent,new Date(time)).questions.length,1);
   assert.equal(canAccessQuestion({audienceUserId:other.id},student),false);
 });
 

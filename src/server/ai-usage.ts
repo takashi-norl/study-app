@@ -176,3 +176,8 @@ export function summarizeAiUsage(events: StudyEvent[], profiles: Profile[], now 
       '未確定のリクエストや料金表にないモデルは金額に含めず、件数を別に表示します。失敗やタイムアウトでも課金の可能性があるため、0ドルとは扱いません。',
       'ElevenLabsは今月の作成依頼数と文字数です。失敗・未完了の依頼も含みます。契約プランの料金が不明なため金額は計算していません。'] };
 }
+
+/** Operational totals contain no participant identity or individual activity breakdown. */
+export function summarizeOperationalAiUsage(events: StudyEvent[], now = new Date()): AiUsageSummary {
+  return { ...summarizeAiUsage(events, [], now), byUser: [] };
+}

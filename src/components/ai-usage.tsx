@@ -41,7 +41,7 @@ function UsageContent() {
     } finally { clearTimeout(timeout); if (pending.current === controller) { pending.current = null; setBusy(false); } }
   }
   return <section className={`panel ${styles.panel}`} aria-label="AI利用料">
-    <div className={styles.heading}><CircleDollarSign size={24} /><div><h2>AI利用料</h2><p>Super Userだけが確認できます。</p></div>
+    <div className={styles.heading}><CircleDollarSign size={24} /><div><h2>アプリ全体のAI利用状況</h2><p>運営者専用・全体の集計のみ。個人別の明細や学習内容は含みません。</p></div>
       <button className="button secondary" disabled={busy} onClick={() => void refresh()}>{busy ? <LoaderCircle className="spin" size={16} /> : open ? <RefreshCw size={16} /> : null}{open ? '更新する' : '利用状況を見る'}</button>
     </div>
     {error && <p role="alert" className={styles.error}>{error}</p>}
@@ -51,7 +51,6 @@ function UsageContent() {
       <p className={styles.note}>請求額そのものではありません。記録開始前の利用、税・割引・為替換算は含みません。</p>
       {summary.allTime.unknownCostRequests > 0 && <p className={styles.unknown}>金額未確定：今月{number(summary.monthly.unknownCostRequests)}件・全期間{number(summary.allTime.unknownCostRequests)}件。上の概算には含めていません。</p>}
       <h3>今月の内訳</h3><ul className={styles.breakdown}>{summary.byFeature.map(row => <li key={row.feature}><span>{featureLabels[row.feature]}<small>{number(row.usage.requests)}回{row.usage.unknownCostRequests ? `・金額未確定 ${number(row.usage.unknownCostRequests)}件` : ''}</small></span><b>{money(row.usage.estimatedUsd)}</b></li>)}</ul>
-      {summary.byUser.length > 0 && <><h3>利用者ごと</h3><ul className={styles.breakdown}>{summary.byUser.map(row => <li key={row.userId}><span>{row.name}<small>{number(row.usage.requests)}回{row.usage.unknownCostRequests ? `・金額未確定 ${number(row.usage.unknownCostRequests)}件` : ''}</small></span><b>{money(row.usage.estimatedUsd)}</b></li>)}</ul></>}
       <details><summary>利用量と計算について</summary><p>今月の入力：{number(summary.monthly.inputTokens)}トークン／出力：{number(summary.monthly.outputTokens)}トークン。キャッシュ読込：{number(summary.monthly.cacheReadTokens)}、書込：{number(summary.monthly.cacheWriteTokens)}。</p>
         <p>ElevenLabs：{number(summary.elevenLabs.requests)}回・{number(summary.elevenLabs.characters)}文字。契約プランにより料金が異なるため、音声の金額は計算していません。</p>
         <p>Claude記録開始：{summary.trackingSince ? new Intl.DateTimeFormat('ja-JP', { dateStyle: 'medium', timeZone: 'Asia/Tokyo' }).format(new Date(summary.trackingSince)) : 'まだ利用記録がありません'}。</p>
