@@ -24,6 +24,7 @@ export function scaleFiles() {
 
 /** Stable after scale requests are appended: only the exact twenty pilot IDs enter this snapshot. */
 export async function measuredPilotSnapshot(output, reviewedSeeds, repairAuthority, editorialAuthority) {
+  if (await readOptionalJson(join(output, 'native-recoveries', 'scale-hold.json'))) throw new Error('Native editorial recovery does not authorize scale; a separately reviewed quality policy is required.');
   await assertEditorialAuthorityPresent(output, editorialAuthority);
   const editorial = editorialAuthority ? await inspectEditorialOverlay(output, repairAuthority, editorialAuthority) : null;
   const store = await readJson(join(output, 'store.json')), ledger = await readJson(join(output, 'ledger.json'));
