@@ -33,7 +33,15 @@ export function structuredResult(response, toolName) {
   catch { throw invalid('Provider did not return the requested structured result.'); }
 }
 export function messageParams(model, { system, prompt, toolName, schema, maxTokens }) {
-  if (model.endsWith('-5-5')) return { model, max_tokens: maxTokens, system: `${system}\nFor this request return only the JSON object matching the output schema; no tool call.`, messages: [{ role: 'user', content: prompt }], output_config: { effort: toolName === 'review_vocabulary' ? 'medium' : 'low', format: jsonSchemaOutputFormat(schema) } };
+  if (model.endsWith('-5-5')) {
+    const params = { model, max_tokens: maxTokens, system: `${system}\nFor this request return only the JSON object matching the output schema; no tool call.`, messages: [{ role: 'user', content: prompt }], output_config: { effort: toolName === 'review_vocabulary' ? 'medium' : 'low', format: jsonSchemaOutputFormat(schema) } };
+    // Haiku 5.5 otherwise spends the shared output limit on adaptive thinking,
+    // even at low effort. Disable it only for inventory; keep authored content
+    // and independent review settings (and their saved request hashes) intact.
+    // https://platform.claude.com/docs/en/build-with-claude/thinking#turning-thinking-off
+    if (model === 'claude-haiku-5-5' && toolName === 'inventory_words') params.thinking = { type: 'disabled' };
+    return params;
+  }
   return { model, max_tokens: maxTokens, system, messages: [{ role: 'user', content: prompt }], tools: [{ name: toolName, description: 'Return original vocabulary learning assets in the required structure.', input_schema: schema }], tool_choice: { type: 'tool', name: toolName } };
 }
 export function tokenCountParams(params) { const { max_tokens: _maxTokens, ...rest } = params; return rest; }
@@ -64,7 +72,8 @@ export function createProvider(output, { model = 'claude-sonnet-4-6', budgetUsd 
     catch { throw new Error('Input token counting failed. No generation request was sent; check provider access/balance.'); }
     if (!Number.isSafeInteger(count.input_tokens) || count.input_tokens < 0) throw new Error('Could not bound input tokens.');
     if (PRICES[model].maximumInput && Math.ceil(count.input_tokens * 1.01) + 32 > PRICES[model].maximumInput) throw new Error('Input would exceed this model’s explicitly priced context tier; no generation request sent.');
-    // A1% input margin covers token-count variation; no thinking, tools or prompt caching are enabled.
+    // A 1% input margin covers token-count variation. maxTokens reserves all
+    // output, including any model thinking; prompt caching is not enabled.
     const reservedUsd = ((Math.ceil(count.input_tokens * 1.01) + 32) * PRICES[model].input + maxTokens * PRICES[model].output) / 1_000_000;
     reserveBudget(ledger, id, reservedUsd, budgetUsd);
     previous = { id, requestHash, model, status: 'requested', reservedUsd, requestedAt: new Date().toISOString() };
