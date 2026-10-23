@@ -4441,10 +4441,6 @@
           "explanation": "信号故障が遅れを引き起こしたので cause が合います。result だと意味が逆になります。",
           "alternatives": [
             {
-              "answer": "reason",
-              "explanation": "理由を表す一般的な語で、自然に使えます。"
-            },
-            {
               "answer": "source",
               "explanation": "問題の発生源というニュアンスです。"
             }
@@ -4483,10 +4479,6 @@
         ],
         "explanation": "信号故障が遅れを引き起こしたので cause が合います。result だと意味が逆になります。",
         "alternatives": [
-          {
-            "answer": "reason",
-            "explanation": "理由を表す一般的な語で、自然に使えます。"
-          },
           {
             "answer": "source",
             "explanation": "問題の発生源というニュアンスです。"
@@ -19939,6 +19931,34 @@
       "voiceLabel": "Sarah（女性）"
     },
     {
+      "wordId": "vocab-actually",
+      "cacheKey": "13da7d2506fc83ee5a3caf47a6f4ceb9995d91fb690a834e630e8c9455935e28",
+      "fileId": "1Vi-Zy_O3ZsnH2og-2Z-gaOxSWgS5gKGN",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.911
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0179999999999998,
+          "endSeconds": 4.348
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.582,
+          "endSeconds": 7.68
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.111,
+          "endSeconds": 11.099
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
       "wordId": "vocab-age",
       "cacheKey": "f55792430807e3048786da7bb998154e1efd3bf246ce0f848407773e5ff49459",
       "fileId": "1lOnnl_HVTcCubu3DZAfoTm6SPdiQgtI3",
@@ -21421,6 +21441,34 @@
         }
       ],
       "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-fair",
+      "cacheKey": "7b70d137af8f6fba8ac1ecfc9ff1abcd1cccd61efbafc324895dd94662c273e6",
+      "fileId": "1mDlfLfxrLjxP33l2eZ65kZW6IfNOwDJe",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.714
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.739,
+          "endSeconds": 4.011
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.176,
+          "endSeconds": 8.190999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 8.297,
+          "endSeconds": 12.121
+        }
+      ],
+      "voiceLabel": "George（男性）"
     },
     {
       "wordId": "vocab-feel",

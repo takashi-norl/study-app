@@ -10460,10 +10460,6 @@
             {
               "answer": "carry",
               "explanation": "持ち歩いているという意味合いが強い。"
-            },
-            {
-              "answer": "bring",
-              "explanation": "持ってくるという意味で、場面によってはやや不自然。"
             }
           ]
         },
@@ -10503,10 +10499,6 @@
           {
             "answer": "carry",
             "explanation": "持ち歩いているという意味合いが強い。"
-          },
-          {
-            "answer": "bring",
-            "explanation": "持ってくるという意味で、場面によってはやや不自然。"
           }
         ]
       },
@@ -19543,6 +19535,34 @@
       "voiceLabel": "Sarah（女性）"
     },
     {
+      "wordId": "vocab-rapport",
+      "cacheKey": "a0d6f1b6d92c8cb4814535e618542307f2c1bb85a6906b3ee69a3f9601092d2d",
+      "fileId": "1ZnRSBkQkeA8vxusYDDCstMlzDiFuXoEo",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.865
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.029,
+          "endSeconds": 4.476
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.64,
+          "endSeconds": 9.177999999999999
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 9.342,
+          "endSeconds": 13.56
+        }
+      ],
+      "voiceLabel": "George（男性）"
+    },
+    {
       "wordId": "vocab-rigorous",
       "cacheKey": "bbe6eff213519b2e3a59e1e9ca18acc7073f0c4a62434fab7ed0689e71c30343",
       "fileId": "1dZ6yjlvEhq6c6UKWvodbuFilcU3PyHCB",
@@ -20551,6 +20571,34 @@
       "voiceLabel": "George（男性）"
     },
     {
+      "wordId": "vocab-plural",
+      "cacheKey": "2598312ba56e22cedca2aad035de93c0fb1364d21ac5f4021b635a849405dd7e",
+      "fileId": "1MognDJCJ9HIHSAp0OlGxkkZWNMlx2jkc",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.7545
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.762,
+          "endSeconds": 4.046
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.094,
+          "endSeconds": 7.1
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.2059999999999995,
+          "endSeconds": 11.331
+        }
+      ],
+      "voiceLabel": "Sarah（女性）"
+    },
+    {
       "wordId": "vocab-pouch",
       "cacheKey": "d88595cabc11a6aa54e9520560f51812b274b4ee46e02ef6c228c305d18d59ee",
       "fileId": "1ctnuT89gFFIxnoN3DRo16A3KaIo1jwR9",
@@ -20829,6 +20877,34 @@
         }
       ],
       "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-mitten",
+      "cacheKey": "7a0ea05e0893a06ad676633da507e21654aba1f2f3a73b2f15e7e62fde2a0729",
+      "fileId": "1R4eN_9g2F0clNMI7QuTHg1pf5sO7N9WI",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.726
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 0.89,
+          "endSeconds": 3.895
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.06,
+          "endSeconds": 7.332
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.566,
+          "endSeconds": 10.774
+        }
+      ],
+      "voiceLabel": "George（男性）"
     },
     {
       "wordId": "vocab-jetty",
@@ -22145,6 +22221,34 @@
         }
       ],
       "voiceLabel": "Sarah（女性）"
+    },
+    {
+      "wordId": "vocab-artwork",
+      "cacheKey": "3589eb6fcea1d7b030e566083e933f125d10f310e8da28c1ed8859c075931426",
+      "fileId": "1jCXxiGi_nVI_ZDccYGFOsSiJL_TfkfhR",
+      "segments": [
+        {
+          "id": "word",
+          "startSeconds": 0,
+          "endSeconds": 0.911
+        },
+        {
+          "id": "example-1",
+          "startSeconds": 1.0179999999999998,
+          "endSeconds": 4.116
+        },
+        {
+          "id": "example-2",
+          "startSeconds": 4.141,
+          "endSeconds": 7.088
+        },
+        {
+          "id": "example-3",
+          "startSeconds": 7.136,
+          "endSeconds": 9.567
+        }
+      ],
+      "voiceLabel": "George（男性）"
     },
     {
       "wordId": "vocab-doorbell",
