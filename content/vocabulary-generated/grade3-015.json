@@ -1,0 +1,1531 @@
+{
+  "schemaVersion": 2,
+  "entries": [
+    {
+      "id": "vocab-pen",
+      "word": "pen",
+      "level": "3級",
+      "ipa": "/pɛn/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "a tool with ink that you use to write or draw",
+      "meaning": "ペン",
+      "usageTip": "「ペンで書く」は write with a pen。手段を表す前置詞は with を使い、by は使わない。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "授業中",
+          "text": "Please write your name on the form with a blue pen.",
+          "translation": "青いペンで用紙に名前を書いてください。"
+        },
+        {
+          "id": "example-2",
+          "context": "買い物",
+          "text": "I lost my pen, so I bought a new one at the store.",
+          "translation": "ペンをなくしたので、店で新しいのを買った。"
+        },
+        {
+          "id": "example-3",
+          "context": "事務所",
+          "text": "Could I borrow your pen for a moment to sign this?",
+          "translation": "これに署名するので、少しペンをお借りできますか。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "pen",
+          "choices": [
+            {
+              "text": "ペン",
+              "meaning": "インクで書く道具"
+            },
+            {
+              "text": "定規",
+              "meaning": "線を引く道具"
+            },
+            {
+              "text": "消しゴム",
+              "meaning": "字を消す道具"
+            },
+            {
+              "text": "スポンジ",
+              "meaning": "洗う柔らかい道具"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "pen はインクで字を書く道具「ペン」です。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "ペン",
+          "choices": [
+            {
+              "text": "sponge",
+              "meaning": "スポンジ"
+            },
+            {
+              "text": "ruler",
+              "meaning": "定規"
+            },
+            {
+              "text": "backpack",
+              "meaning": "リュックサック"
+            },
+            {
+              "text": "pen",
+              "meaning": "ペン"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "「ペン」は英語で pen です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "契約書に署名する場面。Please sign here with a ___.",
+          "choices": [
+            {
+              "text": "pen",
+              "meaning": "ペン"
+            },
+            {
+              "text": "sponge",
+              "meaning": "スポンジ"
+            },
+            {
+              "text": "backpack",
+              "meaning": "リュックサック"
+            },
+            {
+              "text": "eraser",
+              "meaning": "消しゴム"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "署名には書く道具の pen が自然です。",
+          "alternatives": [
+            {
+              "answer": "pencil",
+              "explanation": "鉛筆でも書けるが、署名では通常ペンを使う。"
+            },
+            {
+              "answer": "marker",
+              "explanation": "太い線のマーカーで、署名にはあまり向かない。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "pen を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I wrote the letter by a pen.",
+              "meaning": "私は手紙をペンによって書いた。(前置詞の誤り)"
+            },
+            {
+              "text": "I wrote the letter with a pen.",
+              "meaning": "私はペンで手紙を書いた。"
+            },
+            {
+              "text": "I wrote the letter in a pen.",
+              "meaning": "私はペンの中で手紙を書いた。(誤り)"
+            },
+            {
+              "text": "I wrote the letter on a pen.",
+              "meaning": "私はペンの上に手紙を書いた。(誤り)"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "道具を表すときは with を使います。他は前置詞が不適切です。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "契約書に署名する場面。Please sign here with a ___.",
+        "answers": [
+          "pen"
+        ],
+        "explanation": "署名には書く道具の pen が自然です。",
+        "alternatives": [
+          {
+            "answer": "pencil",
+            "explanation": "鉛筆でも書けるが、署名では通常ペンを使う。"
+          },
+          {
+            "answer": "marker",
+            "explanation": "太い線のマーカーで、署名にはあまり向かない。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "penを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Please write your name on the form with a blue pen.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-pen-usage",
+          "type": "usage",
+          "prompt": "pen を正しく使った文を選んでください。",
+          "choices": [
+            "I wrote the letter by a pen.",
+            "I wrote the letter with a pen.",
+            "I wrote the letter in a pen.",
+            "I wrote the letter on a pen."
+          ],
+          "correctIndex": 1,
+          "explanation": "道具を表すときは with を使います。他は前置詞が不適切です。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A1",
+        "domains": [
+          "education",
+          "daily-life"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-ruler",
+      "word": "ruler",
+      "level": "3級",
+      "ipa": "/ˈruːlə/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a flat strip used to measure length or draw straight lines",
+      "meaning": "定規",
+      "usageTip": "この意味では measure や draw a line と相性がよい。「支配者」の意味もあるが、ここでは文房具の意味。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "図工",
+          "text": "Use a ruler to draw a straight line across the page.",
+          "translation": "定規を使ってページに一本の直線を引きなさい。"
+        },
+        {
+          "id": "example-2",
+          "context": "教室",
+          "text": "She measured the length of the book with a ruler.",
+          "translation": "彼女は定規で本の長さを測った。"
+        },
+        {
+          "id": "example-3",
+          "context": "筆箱",
+          "text": "My ruler is thirty centimeters long and made of plastic.",
+          "translation": "私の定規は30センチの長さで、プラスチック製だ。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "ruler (文房具の意味)",
+          "choices": [
+            {
+              "text": "消しゴム",
+              "meaning": "字を消す道具"
+            },
+            {
+              "text": "ペン",
+              "meaning": "書く道具"
+            },
+            {
+              "text": "定規",
+              "meaning": "長さを測る道具"
+            },
+            {
+              "text": "リュックサック",
+              "meaning": "背負うかばん"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "文房具の ruler は長さを測り線を引く「定規」です。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "定規",
+          "choices": [
+            {
+              "text": "ruler",
+              "meaning": "定規"
+            },
+            {
+              "text": "eraser",
+              "meaning": "消しゴム"
+            },
+            {
+              "text": "pen",
+              "meaning": "ペン"
+            },
+            {
+              "text": "sponge",
+              "meaning": "スポンジ"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "「定規」は ruler です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "まっすぐな線を引く場面。I need a ___ to draw a straight line.",
+          "choices": [
+            {
+              "text": "sponge",
+              "meaning": "スポンジ"
+            },
+            {
+              "text": "backpack",
+              "meaning": "リュックサック"
+            },
+            {
+              "text": "eraser",
+              "meaning": "消しゴム"
+            },
+            {
+              "text": "ruler",
+              "meaning": "定規"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "直線を引くには定規が必要です。",
+          "alternatives": [
+            {
+              "answer": "straight edge",
+              "explanation": "直線定規を指す少し専門的な言い方。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "ruler を文房具の意味で正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I measured the desk with a ruler.",
+              "meaning": "私は定規で机を測った。"
+            },
+            {
+              "text": "I measured the desk by a ruler.",
+              "meaning": "定規によって机を測った。(前置詞の誤り)"
+            },
+            {
+              "text": "I measured the desk to a ruler.",
+              "meaning": "定規へ机を測った。(誤り)"
+            },
+            {
+              "text": "I measured the desk at a ruler.",
+              "meaning": "定規の所で机を測った。(誤り)"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "道具には with を使います。他の前置詞は手段として不自然です。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "まっすぐな線を引く場面。I need a ___ to draw a straight line.",
+        "answers": [
+          "ruler"
+        ],
+        "explanation": "直線を引くには定規が必要です。",
+        "alternatives": [
+          {
+            "answer": "straight edge",
+            "explanation": "直線定規を指す少し専門的な言い方。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "rulerを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Use a ruler to draw a straight line across the page.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-ruler-usage",
+          "type": "usage",
+          "prompt": "ruler を文房具の意味で正しく使った文を選んでください。",
+          "choices": [
+            "I measured the desk with a ruler.",
+            "I measured the desk by a ruler.",
+            "I measured the desk to a ruler.",
+            "I measured the desk at a ruler."
+          ],
+          "correctIndex": 0,
+          "explanation": "道具には with を使います。他の前置詞は手段として不自然です。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A1",
+        "domains": [
+          "education"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-eraser",
+      "word": "eraser",
+      "level": "3級",
+      "ipa": "/ɪˈreɪsər/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "a small object used to rub out pencil marks",
+      "meaning": "消しゴム",
+      "usageTip": "米国では eraser が一般的。英国では rubber とも言う。黒板消しも eraser と呼ぶ。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "宿題",
+          "text": "I made a mistake, so I used an eraser to fix it.",
+          "translation": "間違えたので、消しゴムを使って直した。"
+        },
+        {
+          "id": "example-2",
+          "context": "筆箱",
+          "text": "The eraser on the end of my pencil is almost gone.",
+          "translation": "鉛筆の端の消しゴムはほとんどなくなった。"
+        },
+        {
+          "id": "example-3",
+          "context": "教室",
+          "text": "Could you pass me an eraser? I wrote the wrong answer.",
+          "translation": "消しゴムを取ってくれる？答えを間違えて書いたの。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "eraser",
+          "choices": [
+            {
+              "text": "定規",
+              "meaning": "長さを測る道具"
+            },
+            {
+              "text": "スポンジ",
+              "meaning": "洗う道具"
+            },
+            {
+              "text": "ペン",
+              "meaning": "書く道具"
+            },
+            {
+              "text": "消しゴム",
+              "meaning": "鉛筆の字を消す物"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "eraser は鉛筆の字を消す「消しゴム」です。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "消しゴム",
+          "choices": [
+            {
+              "text": "eraser",
+              "meaning": "消しゴム"
+            },
+            {
+              "text": "ruler",
+              "meaning": "定規"
+            },
+            {
+              "text": "backpack",
+              "meaning": "リュックサック"
+            },
+            {
+              "text": "pen",
+              "meaning": "ペン"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "「消しゴム」は eraser です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "鉛筆で書いた答えを直す場面。I wrote the wrong answer, so I used an ___.",
+          "choices": [
+            {
+              "text": "backpack",
+              "meaning": "リュックサック"
+            },
+            {
+              "text": "eraser",
+              "meaning": "消しゴム"
+            },
+            {
+              "text": "sponge",
+              "meaning": "スポンジ"
+            },
+            {
+              "text": "ruler",
+              "meaning": "定規"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "間違いを消すには eraser が合います。冠詞 an にも合います。",
+          "alternatives": [
+            {
+              "answer": "rubber",
+              "explanation": "英国で使われる消しゴムの言い方。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "eraser を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I erased the mistake with an eraser.",
+              "meaning": "消しゴムで間違いを消した。"
+            },
+            {
+              "text": "I erased the mistake by an eraser.",
+              "meaning": "消しゴムによって消した。(前置詞の誤り)"
+            },
+            {
+              "text": "I wrote the mistake with an eraser.",
+              "meaning": "消しゴムで間違いを書いた。(動詞の誤り)"
+            },
+            {
+              "text": "I erased the mistake to an eraser.",
+              "meaning": "消しゴムへ間違いを消した。(誤り)"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "消す動作に with で道具を示します。他は動詞や前置詞が不適切です。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "鉛筆で書いた答えを直す場面。I wrote the wrong answer, so I used an ___.",
+        "answers": [
+          "eraser"
+        ],
+        "explanation": "間違いを消すには eraser が合います。冠詞 an にも合います。",
+        "alternatives": [
+          {
+            "answer": "rubber",
+            "explanation": "英国で使われる消しゴムの言い方。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "eraserを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I made a mistake, so I used an eraser to fix it.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-eraser-usage",
+          "type": "usage",
+          "prompt": "eraser を正しく使った文を選んでください。",
+          "choices": [
+            "I erased the mistake with an eraser.",
+            "I erased the mistake by an eraser.",
+            "I wrote the mistake with an eraser.",
+            "I erased the mistake to an eraser."
+          ],
+          "correctIndex": 0,
+          "explanation": "消す動作に with で道具を示します。他は動詞や前置詞が不適切です。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A1",
+        "domains": [
+          "education"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-backpack",
+      "word": "backpack",
+      "level": "3級",
+      "ipa": "/ˈbækpæk/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "a bag carried on your back with two shoulder straps",
+      "meaning": "リュックサック",
+      "usageTip": "通学や旅行で使う。「背負う」は carry a backpack や wear a backpack と言える。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "通学",
+          "text": "He put his books and lunch into his backpack.",
+          "translation": "彼は本と昼食をリュックサックに入れた。"
+        },
+        {
+          "id": "example-2",
+          "context": "旅行",
+          "text": "She travelled across Europe with only a small backpack.",
+          "translation": "彼女は小さなリュックサックだけでヨーロッパを旅した。"
+        },
+        {
+          "id": "example-3",
+          "context": "ハイキング",
+          "text": "My backpack felt heavy after walking uphill for two hours.",
+          "translation": "2時間上り坂を歩いて、リュックサックが重く感じた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "backpack",
+          "choices": [
+            {
+              "text": "ペン",
+              "meaning": "書く道具"
+            },
+            {
+              "text": "スポンジ",
+              "meaning": "洗う道具"
+            },
+            {
+              "text": "消しゴム",
+              "meaning": "消す道具"
+            },
+            {
+              "text": "リュックサック",
+              "meaning": "背負うかばん"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "backpack は背中に背負うかばんです。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "リュックサック",
+          "choices": [
+            {
+              "text": "ruler",
+              "meaning": "定規"
+            },
+            {
+              "text": "backpack",
+              "meaning": "リュックサック"
+            },
+            {
+              "text": "pen",
+              "meaning": "ペン"
+            },
+            {
+              "text": "eraser",
+              "meaning": "消しゴム"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "「リュックサック」は backpack です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "山歩きに荷物を持っていく場面。I carried water and food in my ___.",
+          "choices": [
+            {
+              "text": "ruler",
+              "meaning": "定規"
+            },
+            {
+              "text": "pen",
+              "meaning": "ペン"
+            },
+            {
+              "text": "backpack",
+              "meaning": "リュックサック"
+            },
+            {
+              "text": "eraser",
+              "meaning": "消しゴム"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "水や食べ物を入れて運ぶのは backpack です。",
+          "alternatives": [
+            {
+              "answer": "bag",
+              "explanation": "もっと一般的なかばんを指す。"
+            },
+            {
+              "answer": "rucksack",
+              "explanation": "英国でよく使う同じ意味の語。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "backpack を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "She carried her backpack in the shoulders.",
+              "meaning": "肩の中でリュックを運んだ。(前置詞の誤り)"
+            },
+            {
+              "text": "She carried her backpack at the shoulders.",
+              "meaning": "肩の所でリュックを運んだ。(誤り)"
+            },
+            {
+              "text": "She carried her backpack on her back.",
+              "meaning": "彼女はリュックサックを背負った。"
+            },
+            {
+              "text": "She carried her backpack under her back.",
+              "meaning": "背中の下でリュックを運んだ。(誤り)"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "背負うときは on her back が自然です。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "山歩きに荷物を持っていく場面。I carried water and food in my ___.",
+        "answers": [
+          "backpack"
+        ],
+        "explanation": "水や食べ物を入れて運ぶのは backpack です。",
+        "alternatives": [
+          {
+            "answer": "bag",
+            "explanation": "もっと一般的なかばんを指す。"
+          },
+          {
+            "answer": "rucksack",
+            "explanation": "英国でよく使う同じ意味の語。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "backpackを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "He put his books and lunch into his backpack.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-backpack-usage",
+          "type": "usage",
+          "prompt": "backpack を正しく使った文を選んでください。",
+          "choices": [
+            "She carried her backpack in the shoulders.",
+            "She carried her backpack at the shoulders.",
+            "She carried her backpack on her back.",
+            "She carried her backpack under her back."
+          ],
+          "correctIndex": 2,
+          "explanation": "背負うときは on her back が自然です。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "daily-life",
+          "travel"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-sponge",
+      "word": "sponge",
+      "level": "3級",
+      "ipa": "/spʌndʒ/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "a soft object that soaks up water, used for washing or cleaning",
+      "meaning": "スポンジ",
+      "usageTip": "洗う道具の意味で使う。dish sponge や wipe with a sponge の形がよく使われる。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "台所",
+          "text": "Use a wet sponge to wipe the kitchen table.",
+          "translation": "ぬれたスポンジで台所のテーブルを拭いてください。"
+        },
+        {
+          "id": "example-2",
+          "context": "洗車",
+          "text": "He washed the car with soap, water, and a big sponge.",
+          "translation": "彼は石けんと水と大きなスポンジで車を洗った。"
+        },
+        {
+          "id": "example-3",
+          "context": "買い物",
+          "text": "We need a new sponge because the old one smells bad.",
+          "translation": "古いのがにおうので、新しいスポンジが必要だ。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "sponge (洗う道具の意味)",
+          "choices": [
+            {
+              "text": "定規",
+              "meaning": "測る道具"
+            },
+            {
+              "text": "スポンジ",
+              "meaning": "水を含む洗う道具"
+            },
+            {
+              "text": "ペン",
+              "meaning": "書く道具"
+            },
+            {
+              "text": "リュックサック",
+              "meaning": "背負うかばん"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "sponge は水を含む柔らかい洗う道具です。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "スポンジ",
+          "choices": [
+            {
+              "text": "eraser",
+              "meaning": "消しゴム"
+            },
+            {
+              "text": "pen",
+              "meaning": "ペン"
+            },
+            {
+              "text": "ruler",
+              "meaning": "定規"
+            },
+            {
+              "text": "sponge",
+              "meaning": "スポンジ"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "「スポンジ」は sponge です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "皿を洗う場面。I washed the dirty plates with a soapy ___.",
+          "choices": [
+            {
+              "text": "sponge",
+              "meaning": "スポンジ"
+            },
+            {
+              "text": "ruler",
+              "meaning": "定規"
+            },
+            {
+              "text": "backpack",
+              "meaning": "リュックサック"
+            },
+            {
+              "text": "pen",
+              "meaning": "ペン"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "石けんで皿を洗う道具は sponge です。",
+          "alternatives": [
+            {
+              "answer": "cloth",
+              "explanation": "布でも洗えるが、柔らかい泡立つ道具ではない。"
+            },
+            {
+              "answer": "brush",
+              "explanation": "硬い汚れ向きの道具。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "sponge を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I cleaned the sink on a sponge.",
+              "meaning": "スポンジの上で流しを掃除した。(前置詞の誤り)"
+            },
+            {
+              "text": "I cleaned the sink by a sponge.",
+              "meaning": "スポンジによって掃除した。(前置詞の誤り)"
+            },
+            {
+              "text": "I cleaned the sink to a sponge.",
+              "meaning": "スポンジへ掃除した。(誤り)"
+            },
+            {
+              "text": "I cleaned the sink with a sponge.",
+              "meaning": "スポンジで流しを掃除した。"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "掃除の道具は with で表します。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "皿を洗う場面。I washed the dirty plates with a soapy ___.",
+        "answers": [
+          "sponge"
+        ],
+        "explanation": "石けんで皿を洗う道具は sponge です。",
+        "alternatives": [
+          {
+            "answer": "cloth",
+            "explanation": "布でも洗えるが、柔らかい泡立つ道具ではない。"
+          },
+          {
+            "answer": "brush",
+            "explanation": "硬い汚れ向きの道具。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "spongeを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "Use a wet sponge to wipe the kitchen table.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-sponge-usage",
+          "type": "usage",
+          "prompt": "sponge を正しく使った文を選んでください。",
+          "choices": [
+            "I cleaned the sink on a sponge.",
+            "I cleaned the sink by a sponge.",
+            "I cleaned the sink to a sponge.",
+            "I cleaned the sink with a sponge."
+          ],
+          "correctIndex": 3,
+          "explanation": "掃除の道具は with で表します。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "daily-life"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-shampoo",
+      "word": "shampoo",
+      "level": "3級",
+      "ipa": "/ʃæmˈpuː/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "名詞",
+      "definition": "A liquid soap used for washing hair.",
+      "meaning": "シャンプー",
+      "usageTip": "通常は不可算名詞で、a bottle of shampoo のように数えます。「シャンプーで洗う」は use shampoo です。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "買い物",
+          "text": "I need to buy a new bottle of shampoo today.",
+          "translation": "今日は新しいシャンプーを一本買わないといけない。"
+        },
+        {
+          "id": "example-2",
+          "context": "旅行",
+          "text": "The hotel provides free shampoo and soap in every room.",
+          "translation": "そのホテルは全室に無料のシャンプーと石けんを用意している。"
+        },
+        {
+          "id": "example-3",
+          "context": "美容",
+          "text": "This shampoo smells like lemon and makes my hair soft.",
+          "translation": "このシャンプーはレモンの香りで、髪を柔らかくしてくれる。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "shampoo",
+          "choices": [
+            {
+              "text": "歯みがき粉",
+              "meaning": "歯を磨くためのもの"
+            },
+            {
+              "text": "タオル",
+              "meaning": "体や髪をふく布"
+            },
+            {
+              "text": "シャンプー",
+              "meaning": "髪を洗う液体"
+            },
+            {
+              "text": "くし",
+              "meaning": "髪をとかす道具"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "shampoo は髪を洗うための液体です。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "シャンプー",
+          "choices": [
+            {
+              "text": "shampoo",
+              "meaning": "シャンプー"
+            },
+            {
+              "text": "towel",
+              "meaning": "タオル"
+            },
+            {
+              "text": "mirror",
+              "meaning": "鏡"
+            },
+            {
+              "text": "comb",
+              "meaning": "くし"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "髪を洗う液体は shampoo です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "お風呂の場面: I washed my hair with ___, then used conditioner.",
+          "choices": [
+            {
+              "text": "shampoo",
+              "meaning": "シャンプー"
+            },
+            {
+              "text": "toothpaste",
+              "meaning": "歯みがき粉"
+            },
+            {
+              "text": "sugar",
+              "meaning": "砂糖"
+            },
+            {
+              "text": "paper",
+              "meaning": "紙"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "髪を洗いコンディショナーを使う流れなので shampoo が合います。",
+          "alternatives": [
+            {
+              "answer": "soap",
+              "explanation": "soap でも洗えますが、髪専用というニュアンスは弱くなります。"
+            },
+            {
+              "answer": "body wash",
+              "explanation": "body wash は体用なので、髪には通常使いません。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "shampoo を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I bought a shampoo of lemon yesterday.",
+              "meaning": "数え方が不自然"
+            },
+            {
+              "text": "I forgot to bring my shampoos hair.",
+              "meaning": "語形と語順が誤り"
+            },
+            {
+              "text": "Please give me a bottle of shampoo.",
+              "meaning": "シャンプーを一本ください"
+            },
+            {
+              "text": "I shampoo my head by hair.",
+              "meaning": "前置詞の使い方が誤り"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "不可算名詞なので a bottle of shampoo と容器で数えます。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "お風呂の場面: I washed my hair with ___, then used conditioner.",
+        "answers": [
+          "shampoo"
+        ],
+        "explanation": "髪を洗いコンディショナーを使う流れなので shampoo が合います。",
+        "alternatives": [
+          {
+            "answer": "soap",
+            "explanation": "soap でも洗えますが、髪専用というニュアンスは弱くなります。"
+          },
+          {
+            "answer": "body wash",
+            "explanation": "body wash は体用なので、髪には通常使いません。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "shampooを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I need to buy a new bottle of shampoo today.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-shampoo-usage",
+          "type": "usage",
+          "prompt": "shampoo を正しく使った文を選んでください。",
+          "choices": [
+            "I bought a shampoo of lemon yesterday.",
+            "I forgot to bring my shampoos hair.",
+            "Please give me a bottle of shampoo.",
+            "I shampoo my head by hair."
+          ],
+          "correctIndex": 2,
+          "explanation": "不可算名詞なので a bottle of shampoo と容器で数えます。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "health",
+          "daily-life"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-toothbrush",
+      "word": "toothbrush",
+      "level": "3級",
+      "ipa": "/ˈtuːθbrʌʃ/",
+      "ipaLabel": "英音",
+      "partOfSpeech": "名詞",
+      "definition": "A small brush with a handle, used for cleaning your teeth.",
+      "meaning": "歯ブラシ",
+      "usageTip": "複数形は toothbrushes です。brush your teeth with a toothbrush の形でよく使います。",
+      "voice": "male",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "旅行",
+          "text": "I forgot my toothbrush, so I bought one at the hotel.",
+          "translation": "歯ブラシを忘れたので、ホテルで一本買った。"
+        },
+        {
+          "id": "example-2",
+          "context": "家庭",
+          "text": "Every family member has a different colored toothbrush.",
+          "translation": "家族はそれぞれ違う色の歯ブラシを持っている。"
+        },
+        {
+          "id": "example-3",
+          "context": "健康",
+          "text": "You should change your toothbrush every three months or so.",
+          "translation": "歯ブラシは三か月ごとくらいに替えるべきだ。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "toothbrush",
+          "choices": [
+            {
+              "text": "歯ブラシ",
+              "meaning": "歯を磨く道具"
+            },
+            {
+              "text": "洗面器",
+              "meaning": "顔や手を洗う容器"
+            },
+            {
+              "text": "ヘアブラシ",
+              "meaning": "髪をとかす道具"
+            },
+            {
+              "text": "石けん",
+              "meaning": "洗うためのもの"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "toothbrush は歯を磨く小さなブラシです。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "歯ブラシ",
+          "choices": [
+            {
+              "text": "hairbrush",
+              "meaning": "ヘアブラシ"
+            },
+            {
+              "text": "towel",
+              "meaning": "タオル"
+            },
+            {
+              "text": "toothpaste",
+              "meaning": "歯みがき粉"
+            },
+            {
+              "text": "toothbrush",
+              "meaning": "歯ブラシ"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "歯を磨く道具は toothbrush です。toothpaste は歯みがき粉です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "洗面所の場面: Please brush your teeth with a soft ___ after dinner.",
+          "choices": [
+            {
+              "text": "spoon",
+              "meaning": "スプーン"
+            },
+            {
+              "text": "toothbrush",
+              "meaning": "歯ブラシ"
+            },
+            {
+              "text": "pillow",
+              "meaning": "枕"
+            },
+            {
+              "text": "umbrella",
+              "meaning": "傘"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "歯を磨く道具なので toothbrush が合います。",
+          "alternatives": [
+            {
+              "answer": "brush",
+              "explanation": "brush でも通じますが、歯用だとはっきり示すなら toothbrush が自然です。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "toothbrush を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I brush my teeth by a toothbrush.",
+              "meaning": "前置詞が誤り"
+            },
+            {
+              "text": "I brush my teeth with a toothbrush.",
+              "meaning": "歯ブラシで歯を磨く"
+            },
+            {
+              "text": "I toothbrush my teeth every morning.",
+              "meaning": "名詞を動詞として誤用"
+            },
+            {
+              "text": "I brushed toothbrush after lunch.",
+              "meaning": "目的語が誤り"
+            }
+          ],
+          "correctIndex": 1,
+          "explanation": "道具を表すときは with を使います。toothbrush は通常名詞です。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "洗面所の場面: Please brush your teeth with a soft ___ after dinner.",
+        "answers": [
+          "toothbrush"
+        ],
+        "explanation": "歯を磨く道具なので toothbrush が合います。",
+        "alternatives": [
+          {
+            "answer": "brush",
+            "explanation": "brush でも通じますが、歯用だとはっきり示すなら toothbrush が自然です。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "toothbrushを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I forgot my toothbrush, so I bought one at the hotel.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-toothbrush-usage",
+          "type": "usage",
+          "prompt": "toothbrush を正しく使った文を選んでください。",
+          "choices": [
+            "I brush my teeth by a toothbrush.",
+            "I brush my teeth with a toothbrush.",
+            "I toothbrush my teeth every morning.",
+            "I brushed toothbrush after lunch."
+          ],
+          "correctIndex": 1,
+          "explanation": "道具を表すときは with を使います。toothbrush は通常名詞です。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "A2",
+        "domains": [
+          "health",
+          "daily-life"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    },
+    {
+      "id": "vocab-exhausted",
+      "word": "exhausted",
+      "level": "3級",
+      "ipa": "/ɪɡˈzɔːst/",
+      "ipaLabel": "米音",
+      "partOfSpeech": "形容詞",
+      "definition": "Extremely tired, with almost no energy left.",
+      "meaning": "疲れ果てた",
+      "usageTip": "very exhausted よりも completely exhausted や absolutely exhausted が自然です。be exhausted from/after ~ の形でよく使います。",
+      "voice": "female",
+      "examples": [
+        {
+          "id": "example-1",
+          "context": "仕事",
+          "text": "I was exhausted after working late three nights in a row.",
+          "translation": "三晩続けて遅くまで働いたので、疲れ果てていた。"
+        },
+        {
+          "id": "example-2",
+          "context": "スポーツ",
+          "text": "The runners looked exhausted when they crossed the finish line.",
+          "translation": "ゴールした走者たちは疲れ果てた様子だった。"
+        },
+        {
+          "id": "example-3",
+          "context": "育児",
+          "text": "She felt exhausted from caring for her baby all night.",
+          "translation": "彼女は一晩中赤ちゃんの世話をして疲れ果てていた。"
+        }
+      ],
+      "tests": [
+        {
+          "mode": "meaning",
+          "prompt": "exhausted",
+          "choices": [
+            {
+              "text": "疲れ果てた",
+              "meaning": "ひどく疲れた"
+            },
+            {
+              "text": "退屈した",
+              "meaning": "つまらなく感じた"
+            },
+            {
+              "text": "驚いた",
+              "meaning": "意外で動揺した"
+            },
+            {
+              "text": "空腹の",
+              "meaning": "お腹がすいた"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "exhausted はエネルギーがほとんどない強い疲れを表します。",
+          "alternatives": []
+        },
+        {
+          "mode": "word",
+          "prompt": "疲れ果てた",
+          "choices": [
+            {
+              "text": "nervous",
+              "meaning": "緊張した"
+            },
+            {
+              "text": "curious",
+              "meaning": "好奇心のある"
+            },
+            {
+              "text": "exhausted",
+              "meaning": "疲れ果てた"
+            },
+            {
+              "text": "generous",
+              "meaning": "気前のよい"
+            }
+          ],
+          "correctIndex": 2,
+          "explanation": "強い疲労を表す形容詞は exhausted です。",
+          "alternatives": []
+        },
+        {
+          "mode": "context",
+          "prompt": "マラソン後の場面: After the long race, he was completely ___ and sat down.",
+          "choices": [
+            {
+              "text": "exhausted",
+              "meaning": "疲れ果てた"
+            },
+            {
+              "text": "cheerful",
+              "meaning": "陽気な"
+            },
+            {
+              "text": "honest",
+              "meaning": "正直な"
+            },
+            {
+              "text": "crowded",
+              "meaning": "混雑した"
+            }
+          ],
+          "correctIndex": 0,
+          "explanation": "長いレース後に座り込む様子なので exhausted が合います。",
+          "alternatives": [
+            {
+              "answer": "worn out",
+              "explanation": "worn out は口語的で、使い果たされた感じを表します。"
+            },
+            {
+              "answer": "drained",
+              "explanation": "drained は気力や体力が抜けた感じを強調します。"
+            }
+          ]
+        },
+        {
+          "mode": "usage",
+          "prompt": "exhausted を正しく使った文を選んでください。",
+          "choices": [
+            {
+              "text": "I felt exhaustedly after the trip.",
+              "meaning": "副詞形の誤用"
+            },
+            {
+              "text": "The trip made exhausted me.",
+              "meaning": "語順が誤り"
+            },
+            {
+              "text": "I was exhausting after the trip.",
+              "meaning": "-ing形と-ed形の混同"
+            },
+            {
+              "text": "I was exhausted after the trip.",
+              "meaning": "旅行のあと疲れ果てていた"
+            }
+          ],
+          "correctIndex": 3,
+          "explanation": "人の状態を表すので be exhausted を使います。exhausting は「疲れさせる」です。",
+          "alternatives": []
+        }
+      ],
+      "recall": {
+        "prompt": "マラソン後の場面: After the long race, he was completely ___ and sat down.",
+        "answers": [
+          "exhausted"
+        ],
+        "explanation": "長いレース後に座り込む様子なので exhausted が合います。",
+        "alternatives": [
+          {
+            "answer": "worn out",
+            "explanation": "worn out は口語的で、使い果たされた感じを表します。"
+          },
+          {
+            "answer": "drained",
+            "explanation": "drained は気力や体力が抜けた感じを強調します。"
+          }
+        ]
+      },
+      "production": {
+        "prompt": "exhaustedを使って、自分の生活に関する英文を1文作ってみましょう。",
+        "modelAnswer": "I was exhausted after working late three nights in a row.",
+        "checkpoints": [
+          "意味が場面に合っている",
+          "品詞と文の形が合っている",
+          "自分の伝えたいことを表している"
+        ]
+      },
+      "questions": [
+        {
+          "id": "vocab-exhausted-usage",
+          "type": "usage",
+          "prompt": "exhausted を正しく使った文を選んでください。",
+          "choices": [
+            "I felt exhaustedly after the trip.",
+            "The trip made exhausted me.",
+            "I was exhausting after the trip.",
+            "I was exhausted after the trip."
+          ],
+          "correctIndex": 3,
+          "explanation": "人の状態を表すので be exhausted を使います。exhausting は「疲れさせる」です。"
+        }
+      ],
+      "metadata": {
+        "schemaVersion": 2,
+        "cefrEstimate": "B2",
+        "domains": [
+          "health",
+          "daily-life"
+        ],
+        "gradeEstimate": "3級",
+        "levelPolicy": "AI-estimated learning bands, not an official examination list or a score guarantee."
+      }
+    }
+  ],
+  "audio": []
+}
