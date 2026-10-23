@@ -20,7 +20,7 @@ export function preparePlanTagsUpdate(data: StudyData, profile: Profile, planId:
   }
   const plan = data.plans.find(item => item.id === planId);
   if (!plan) throw new ApiError(404, '学習プランが見つかりません。', 'PLAN_NOT_FOUND');
-  if (plan.ownerId !== member.id || (plan.testOnly && member.role !== 'parent')) {
+  if (plan.ownerId !== member.id || (plan.testOnly && member.accessLevel !== 'superuser')) {
     throw new ApiError(403, 'タグは、この学習プランを作った本人が変更してください。', 'PLAN_TAGS_FORBIDDEN');
   }
   const normalized = planTagsSchema.parse(tags);

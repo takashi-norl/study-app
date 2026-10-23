@@ -9,8 +9,8 @@ import styles from './vocabulary-marathon.module.css';
 type BatchPreview = { entries: VocabularyEntry[]; audio: VocabularyAudio[]; batchId: string; canPrepareAudio: boolean };
 
 /** Fetch only the chosen batch. Thousands of cards are never included in the initial page. */
-export default function VocabularyLibraryPreview({ initial, batches, glossary, preparation }: {
-  initial: BatchPreview; batches: VocabularyBatchSummary[]; glossary: GlossaryEntry[]; preparation?: ReactNode;
+export default function VocabularyLibraryPreview({ initial, batches, glossary, preparation, operations = false }: {
+  initial: BatchPreview; batches: VocabularyBatchSummary[]; glossary: GlossaryEntry[]; preparation?: ReactNode; operations?: boolean;
 }) {
   const [preview, setPreview] = useState(initial);
   const [selected, setSelected] = useState(initial.batchId);
@@ -49,11 +49,11 @@ export default function VocabularyLibraryPreview({ initial, batches, glossary, p
         {batches.filter(batch => batch.level === level).map(batch => <option key={batch.id} value={batch.id}>{batch.title}（{batch.entryCount}語）</option>)}
       </optgroup>)}
     </select>
-    <p id="vocabulary-library-help">全{batches.reduce((count, batch) => count + batch.entryCount, 0).toLocaleString()}語から選べます。別の教材に切り替えると、この見本の回答はリセットされます。</p>
+    <p id="vocabulary-library-help">全{batches.reduce((count, batch) => count + batch.entryCount, 0).toLocaleString()}語から選べます。別の教材に切り替えると、この教材の回答はリセットされます。</p>
     {busy && <p role="status">選んだ教材を読み込んでいます…</p>}
     {error && <p className={styles.error} role="alert">{error}</p>}
   </section> : null;
 
-  return <VocabularyMarathon key={preview.batchId} {...preview} glossary={glossary}
-    preparation={<>{picker}{preview.canPrepareAudio && preparation}</>} />;
+  return <VocabularyMarathon key={preview.batchId} {...preview} glossary={glossary} operations={operations} canPrepareAudio={operations && preview.canPrepareAudio}
+    preparation={<>{picker}{operations && preview.canPrepareAudio && preparation}</>} />;
 }

@@ -5,7 +5,7 @@ import { validateVocabularyQuestions } from '@/lib/kobun-vocabulary';
 import { questionSetImportSchema } from '@/lib/question-set-import';
 import { canAccessSource } from './access';
 import { ApiError } from './config';
-import { getFamilyId } from './env';
+import { assertSuperUser } from './env';
 import type { StudyEvent } from './google-store';
 
 function stableId(value:string) {
@@ -14,7 +14,7 @@ function stableId(value:string) {
 }
 
 export function prepareQuestionSetImport(data:StudyData,events:StudyEvent[],profile:Profile,raw:unknown,now=new Date()) {
-  if(profile.role!=='parent'||profile.familyId!==getFamilyId()) throw new ApiError(403,'管理者だけが取り込めます。','FORBIDDEN');
+  assertSuperUser(profile);
   const {bundle:parsed}=questionSetImportSchema.parse(raw);
   let bundle=parsed;
   if(bundle.questionTemplate){

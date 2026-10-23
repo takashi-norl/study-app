@@ -7,7 +7,6 @@ import type { StudyController, UploadStatus } from './controller';
 import { PlanningWait } from './planning-wait';
 import { PlanningSamples } from './planning-samples';
 import { SourceReadingEditor } from './source-reading-editor';
-import { SetSharingActions } from './question-library';
 import { isPracticeReadyQuestion, mayPracticeLibraryTopic } from '@/lib/library-policy';
 import { PRACTICE_CATEGORIES, LEVEL_OPTIONS, SCHEDULE_OPTIONS, DAILY_MINUTES, KOBUN_QUESTION_STYLES, buildQuickStart, quickStartDefaults, purposeOptionsForSubject, type QuickStartPreset, type KobunQuestionStyle } from '@/lib/quick-start';
 import styles from './planning-flow.module.css';
@@ -50,7 +49,7 @@ export function SourceBank({ c, onConsult }: { c: StudyController; onConsult: (i
   const input = useRef<HTMLInputElement>(null);
   const [selected, setSelected] = useState<string[]>([]);
   const [dragging, setDragging] = useState(false);
-  const sources = c.data.sources.filter(source => c.profile.role === 'parent' || source.ownerId === c.profile.id);
+  const sources = c.data.sources.filter(source => !source.ownerId || source.ownerId === c.profile.id);
   const selection = selected.filter(id => sources.some(source => source.id === id));
   const status = c.uploadStatus && !c.uploadStatus.topicId ? c.uploadStatus : null;
   const uploading = !!status && status.phase !== 'complete' && status.phase !== 'failed';
@@ -67,7 +66,7 @@ export function SourceBank({ c, onConsult }: { c: StudyController; onConsult: (i
       <div className="source-bank-content"><div className="planning-section-heading"><h3>保存した教材 <span>{sources.length}件</span></h3><span>{selection.length} / 20件を選択</span></div>
         {sources.length ? <div className={styles.sourceList}><SourceRows demo={c.demo} sources={sources} selected={selection} onChange={setSelected} disabled={c.busy} /></div> : <p className="planning-empty">まだ教材がありません。教材を使わず、目標だけで学習相談を始めることもできます。</p>}
         <div className={`planning-actions ${styles.sourceAction}`}><span>{selection.length ? `${selection.length}件を選択中` : '教材なしでも作れます'}</span><button className="button primary" disabled={c.busy} onClick={() => onConsult(selection)}><MessageCircle size={17} />{selection.length ? 'この教材で問題を作る' : '教材なしで問題を作る'}<ArrowRight size={16} /></button></div>
-        <p className="under-note">保存だけではAIは動きません。「この内容で3問を試作」を押したときに、選んだ教材と希望をAIへ送ります。</p>
+        <p className="under-note">保存だけではAIは動きません。「この内容で3問を試作」を押したときに、選んだ教材と希望をAIへ送ります。ほかの利用者には公開されません。</p>
       </div>
     </section>
   </div>;
@@ -83,7 +82,7 @@ export default function Planning({ c, initialSourceIds, initialPreset, initialRe
   const [creationKey, setCreationKey] = useState(0);
   const [sourceIds, setSourceIds] = useState<string[]>(initialSourceIds ?? []);
   const [preset, setPreset] = useState<QuickStartPreset | undefined>(initialPreset);
-  const plans = c.data.plans.filter(item => c.profile.role === 'parent' || item.ownerId === c.profile.id).sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
+  const plans = c.data.plans.filter(item => item.ownerId === c.profile.id).sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
   const uploading = !!c.uploadStatus && !['complete','failed'].includes(c.uploadStatus.phase);
   const navigationBusy = uploading || savingDraft;
   useEffect(() => { if (requestedPlanId) { openPlan(requestedPlanId); } else if (initialSourceIds || initialPreset) { newConsultation(initialSourceIds ?? [], initialPreset); } }, [initialRequest]);
@@ -139,14 +138,13 @@ function NewPlan({ c, sourceIds: initialIds, preset, created, cancel, savingChan
   const [difficulty, setDifficulty] = useState<string>(LEVEL_OPTIONS[0]);
   const [comment, setComment] = useState('');
   const [targetDate, setTargetDate] = useState('');
-  const [testOnly, setTestOnly] = useState(false);
   const [selected, setSelected] = useState(initialIds);
   const [materialsOpen, setMaterialsOpen] = useState(initialIds.length === 0);
   const [localBusy, setLocalBusy] = useState(false);
   const input = useRef<HTMLInputElement>(null);
   const uploadSelection = useRef<{ before: Set<string>; ownerId: string; finished: boolean } | null>(null);
   const [uploadFinished, setUploadFinished] = useState(0);
-  const sources = c.data.sources.filter(source => c.profile.role === 'parent' || source.ownerId === c.profile.id);
+  const sources = c.data.sources.filter(source => !source.ownerId || source.ownerId === c.profile.id);
   const selection = selected.filter(id => sources.some(source => source.id === id));
   const category = PRACTICE_CATEGORIES.find(item => item.subject === subject) ?? PRACTICE_CATEGORIES[0];
   const kobunStyle = KOBUN_QUESTION_STYLES.find(item=>item.id===kobunQuestionStyle)!;
@@ -181,7 +179,7 @@ function NewPlan({ c, sourceIds: initialIds, preset, created, cancel, savingChan
     try {
       const input = buildQuickStart({ subject, materialMode, focus, difficulty, sourceIds: selection, comment: comment.trim(), targetDate: targetDate || undefined, purpose, schedule, minutesPerDay, examTarget: purpose === '英検' ? examTarget : undefined, kobunQuestionStyle: subject==='古文'?kobunQuestionStyle:undefined });
       const project = projectName.trim();
-      const id = await c.actions.createPlan({ ...input.plan, ...(project ? { tags: [project], title: `${project}｜${subject}${focus === 'おまかせ' ? '' : `・${focus}`}`.slice(0, 150) } : {}), ...(c.profile.role === 'parent' && testOnly ? { testOnly: true } : {}) });
+      const id = await c.actions.createPlan({ ...input.plan, ...(project ? { tags: [project], title: `${project}｜${subject}${focus === 'おまかせ' ? '' : `・${focus}`}`.slice(0, 150) } : {}) });
       if (!id) return;
       if (consult) await c.actions.sendPlanningMessage(id, input.message);
       created(id);
@@ -216,8 +214,8 @@ function NewPlan({ c, sourceIds: initialIds, preset, created, cancel, savingChan
       <div hidden={step!==3} className={styles.stepBody}>
         <dl className={styles.selectionSummary}>{projectName.trim()&&<div><dt>プロジェクト</dt><dd>{projectName.trim()} → {subject}</dd></div>}<div><dt>科目・目的</dt><dd>{subject} · {purpose}{purpose==='英検'?` ${examTarget}`:''}</dd></div><div><dt>練習内容</dt><dd>{focus} · {difficulty}</dd></div>{subject==='古文'&&<div><dt>出題方法</dt><dd>{kobunStyle.label}<small className={styles.summaryNote}>{kobunQuestionStyle==='vocabulary' ? '教材をもとに基本の意味・文脈・記載のある活用を出題し、専用の作問ルールを適用します。' : '本文の根拠・正解が一つか・誤答の理由を、試作3問で確認します。'}</small></dd></div>}<div><dt>教材</dt><dd>{materialMode==='sources'?`選んだ教材 ${selection.length}件`:'AIにおまかせ（教材なし）'}</dd></div><div><dt>期間・ペース</dt><dd>{schedule}{schedule==='あと1時間'?'':` · 1日${minutesPerDay}分`}</dd></div></dl>
         <label>ひとこと添える <span className="optional">任意</span><textarea disabled={disabled} value={comment} onChange={event=>setComment(event.target.value)} rows={2} maxLength={2000} placeholder="例：試験範囲に合わせて／単語を多めに"/></label>
-        <details className={styles.extraOptions}><summary>目標日・その他の設定</summary>{schedule!=='身につくまで'&&<label>目標の日 <span className="optional">任意</span><input disabled={disabled} type="date" value={targetDate} onChange={event=>setTargetDate(event.target.value)}/></label>}{c.profile.role==='parent'&&<label className={styles.testToggle}><input type="checkbox" checked={testOnly} onChange={event=>setTestOnly(event.target.checked)} disabled={disabled}/><span>テスト用として作る<small>学習者には表示しません</small></span></label>}<button type="button" className="text-button" disabled={disabled||needsSources} onClick={()=>void save(false)}>AIに送らず、選択だけ保存</button></details>
-        <p className={styles.hint}>提案とサンプル3問が届きます。出し方や難しさを確かめてから、まとめて作る分量を決めます。</p>
+        <details className={styles.extraOptions}><summary>目標日・その他の設定</summary>{schedule!=='身につくまで'&&<label>目標の日 <span className="optional">任意</span><input disabled={disabled} type="date" value={targetDate} onChange={event=>setTargetDate(event.target.value)}/></label>}<button type="button" className="text-button" disabled={disabled||needsSources} onClick={()=>void save(false)}>AIに送らず、選択だけ保存</button></details>
+        <p className={styles.hint}>選んだ教材と希望をAIへ送り、試作3問を作ります。教材や問題はほかの利用者に公開されません。出し方を確かめてから、まとめて作る分量を決めます。</p>
         {c.error&&<div className="flash error" role="alert"><CircleHelp size={17}/><span>{c.error}</span></div>}
         {needsSources&&<p className={styles.hint}>教材の選択を確認してください。</p>}
       </div>
@@ -278,7 +276,7 @@ function PlanConversation({ c, plan, review, openTopic, active, onLocationChange
         {proposals.length>1&&<div className={styles.proposalPicker} aria-label="問題作成案を選ぶ">{proposals.map((proposal,index)=><button type="button" key={proposal.id} aria-pressed={activeProposal===index} onClick={()=>setProposalIndex(index)}><span>案 {index+1}</span><strong>{proposal.title}</strong></button>)}</div>}
         {proposals.map((proposal,index)=><div key={`${latest.id}:${proposal.id}`} hidden={activeProposal!==index} className={styles.screen}><details className={styles.authoringConditions}><summary>この作り方の条件</summary><p>{proposal.instructions}</p></details><PlanningSamples c={c} plan={plan} turn={latest} proposal={proposal} canGenerate={own&&!waiting&&!generating&&latest.version===plan.version} onGenerated={()=>selectTab('questions')} blockedAction={blockedAction}/></div>)}
         {latest.reply&&<details className={styles.replyDetails}><summary>AIの説明・学習の進め方を見る</summary><p>{latest.reply}</p></details>}
-        {own&&<p className={styles.hint}>{plan.testOnly?'テスト用の問題は保護者だけが試せます。あとでライブラリに公開できます。':c.profile.role==='student'?'自分で作った問題はすぐ練習できます。保護者も内容と記録を確認できます。':'作った問題は管理者用に保存します。「学習者に届ける」で本人用のセットを渡せます。登録ユーザー全体への公開も別に選べます。'}</p>}
+        {own&&<p className={styles.hint}>作った問題は、自分の練習に使えます。問題・教材・相談履歴をほかの利用者へ公開する機能はありません。</p>}
       </>:!pending&&<section className={`panel ${styles.emptyCard}`}><Sparkles size={25}/><h2>{latest?.reply?'AIからの回答を確認しよう。':'このプランの提案をもらおう。'}</h2>{latest?.reply?<p className={styles.clarificationReply}>{latest.reply}</p>:<p>条件は保存済みです。相談を送ると、作れる問題の案が届きます。</p>}{c.error&&!latest?.reply&&<p className={styles.stateError} role="alert">{c.error}</p>}{own?<button type="button" className="button primary" disabled={c.busy||waiting} onClick={()=>{if(!message.trim()&&!latest?.reply)setMessage('保存した目標と教材に合わせて、最初の試作3問を提案してください。');selectTab('chat');}}>{latest?.reply?'回答・希望を伝える':'相談内容を確認して送る'}<ArrowRight size={16}/></button>:<p className={styles.hint}>返信は、このプランを作った本人のアカウントから行えます。</p>}</section>}
       {jobs.length>0&&<button type="button" className={`button secondary ${styles.wideAction}`} onClick={()=>selectTab('questions')}><BookOpen size={17}/>できた問題を確認する<ArrowRight size={16}/></button>}
     </div>
@@ -297,15 +295,14 @@ function PlanConversation({ c, plan, review, openTopic, active, onLocationChange
       const practice = !!topic && mayPracticeLibraryTopic(c.data,c.profile,topic) && c.data.questions.some(question => question.topicId === job.topicId && isPracticeReadyQuestion(question));
       const active = job.status === 'queued' || job.status === 'running';
       const savedCount = Math.max(job.generatedCount, savedTopicQuestionCount(c.data.questions, [job.topicId]));
-      const available = c.data.questions.some(question => question.topicId === job.topicId && question.status !== 'archived' && (c.profile.role === 'parent' || practice));
+      const available = c.data.questions.some(question => question.topicId === job.topicId && question.status !== 'archived');
       const canConfirmStart = job.status === 'queued' && job.requestedBy === c.profile.id;
       const canContinue = own && job.requestedBy === c.profile.id && job.status === 'failed' && savedCount < job.targetCount;
       return <article key={job.id}>
         <div><strong>{topic?.title || '作成中の問題集'}</strong><p role={active ? 'status' : undefined}>{active ? job.status === 'queued' ? '作成の依頼を受け付けました' : '問題を作成しています' : job.status === 'failed' ? '作成が途中で止まりました' : test ? 'プライベート・テスト用' : 'プライベート'} · {savedCount} / {job.targetCount}問を保存済み</p>{active && <p>10問ずつ保存します。保存した問題から確認できます。</p>}{job.error && <p className="planning-job-error">{job.error}</p>}</div>
         {practice && <button type="button" className="button primary" disabled={c.busy} onClick={() => openTopic(job.topicId)}>10問練習する<ArrowRight size={15}/></button>}
-        {available && c.profile.role === 'parent' && <button type="button" className="text-button" onClick={()=>review(job.topicId,true)}>一覧でレビュー・編集<ArrowRight size={15}/></button>}
+        {available && own && <button type="button" className="text-button" onClick={()=>review(job.topicId,true)}>一覧でレビュー・編集<ArrowRight size={15}/></button>}
         {canContinue && <div className="job-recovery"><span>{generating ? 'ほかの問題を作成中です。その作成が終わると続きを依頼できます。' : savedCount ? `保存した${savedCount}問は残して、同じ条件で残りの作成をAIに依頼します。` : '条件は保存されています。同じ条件で、もう一度作成をAIに依頼できます。'}</span><button type="button" className="button primary" disabled={c.busy || generating || !!retryingJob} onClick={() => void retry(job.id)}><RefreshCw size={15} />{retryingJob === job.id ? '依頼を確認しています' : '同じ条件で続きを作る'}</button>{retryAttempt === job.id && c.error && <div className="flash error" role="alert"><CircleHelp size={17} /><span>{c.error}</span></div>}</div>}
-        {topic && <div className="job-sharing"><SetSharingActions c={c} topic={topic}/></div>}
         {active && <div className="job-recovery"><span>{c.sync.error ? '最新の状況を確認できていません。通信が戻ると、保存済みの件数を確認できます。' : 'ほかの画面に移っても、保存済みの問題はここから確認できます。'}</span><button type="button" className="text-button" disabled={c.busy || c.sync.checking} onClick={() => void (canConfirmStart ? c.actions.resumeGeneration(job.id) : c.actions.refreshStatus())}><RefreshCw size={14} />{c.busy || c.sync.checking ? '状況を確認しています' : canConfirmStart ? '開始を確認する' : '最新の状況を確認'}</button></div>}
       </article>;
     })}</section>}

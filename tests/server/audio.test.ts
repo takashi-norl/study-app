@@ -11,7 +11,7 @@ const parent:Profile={...student,id:'parent',role:'parent'};
 const questionId='f2af7295-1ea7-4c49-9ff4-1869f9db9c77';
 const sessionId='1510983f-34c0-4e86-8de1-2e751749c152';
 const requestToken='8af85cfc-fcd9-4e38-9c15-7026035f8bd7';
-const question:Question={id:questionId,topicId:'topic',prompt:'適切な答えを選びなさい。\nI have a book.',choices:['book','pen','a','I'],correctIndex:0,explanation:'SECRET_EXPLANATION',learningPoint:'SECRET_POINT',sourceIds:[],sourceNote:'PRIVATE_SOURCE',status:'published',version:1,createdAt:now,publishedAt:now};
+const question:Question={id:questionId,ownerId:student.id,topicId:'topic',prompt:'適切な答えを選びなさい。\nI have a book.',choices:['book','pen','a','I'],correctIndex:0,explanation:'SECRET_EXPLANATION',learningPoint:'SECRET_POINT',sourceIds:[],sourceNote:'PRIVATE_SOURCE',status:'published',version:1,createdAt:now,publishedAt:now};
 const event=(id:string,type:StudyEvent['type'],payload:unknown,createdAt=now):StudyEvent=>({id,type,actorId:student.id,createdAt,payload});
 function practice() {
   const events=[event('topic','topic.created',{id:'topic',title:'English',subject:'英語',description:'',targetCount:10,createdAt:now}),
@@ -25,11 +25,11 @@ test('audio accepts only selectors and reads the authorized immutable snapshot, 
   data.questions[0]={...data.questions[0],prompt:'Edited since this session.'};
   assert.equal(await authorizedAudioText(data,events,student,{questionId,sessionId,part:'prompt'}),'I have a book.');
   assert.equal(await authorizedAudioText(data,events,student,{questionId,sessionId,part:'choice',choiceIndex:2}),'a');
-  assert.equal(await authorizedAudioText(data,events,parent,{questionId,part:'prompt'}),'Edited since this session.');
+  await assert.rejects(()=>authorizedAudioText(data,events,parent,{questionId,part:'prompt'}),{code:'AUDIO_QUESTION_NOT_FOUND'});
   for(const payload of [{questionId,sessionId,part:'prompt',text:'arbitrary'}, {questionId,sessionId,part:'explanation'}, {questionId,part:'choice',choiceIndex:-1}]) {
     assert.equal(audioRequestSchema.safeParse(payload).success,false);
   }
-  await assert.rejects(()=>authorizedAudioText(data,events,student,{questionId,part:'prompt'}),{code:'AUDIO_QUESTION_NOT_FOUND'});
+  assert.equal(await authorizedAudioText(data,events,student,{questionId,part:'prompt'}),'Edited since this session.');
   await assert.rejects(()=>authorizedAudioText(data,events,{...student,id:'another-student'},{questionId,sessionId,part:'prompt'}),{code:'AUDIO_QUESTION_NOT_FOUND'});
   await assert.rejects(()=>authorizedAudioText(data,events,{...student,familyId:'other-family'},{questionId,sessionId,part:'prompt'}),{code:'AUDIO_FORBIDDEN'});
 });
@@ -42,7 +42,7 @@ test('audio bounds text and rejects non-English questions, private audiences and
   data.topics[0].subject='英語';
   events[2].payload.questionSnapshots[0]={...question,prompt:'long '.repeat(400)};
   await assert.rejects(()=>authorizedAudioText(data,events,student,{questionId,sessionId,part:'prompt'}),{code:'AUDIO_TEXT_TOO_LONG'});
-  events[2].payload.questionSnapshots[0]={...question,audienceUserId:'another-student'};
+  events[2].payload.questionSnapshots[0]={...question,ownerId:'another-student',audienceUserId:'another-student'};
   await assert.rejects(()=>authorizedAudioText(data,events,student,{questionId,sessionId,part:'prompt'}),{code:'AUDIO_QUESTION_NOT_FOUND'});
 });
 

@@ -27,21 +27,22 @@ export function getFamilyMembers(): FamilyMember[] {
     return parsed;
   } catch (error) {
     if (error instanceof ApiError) throw error;
-    throw new ApiError(503, '家族アカウントの設定を確認してください。', 'INVALID_FAMILY_CONFIG');
+    throw new ApiError(503, '登録アカウントの設定を確認してください。', 'INVALID_FAMILY_CONFIG');
   }
 }
 
 export function profileForMember(member: FamilyMember): Profile {
   const superUser = member.email.trim().toLowerCase() === SUPER_USER_EMAIL;
   return { id: member.id, name: member.name, role: superUser ? 'parent' : member.role, familyId: getFamilyId(),
-    accessLevel: superUser ? 'superuser' : member.role === 'parent' ? 'manager' : 'learner' };
+    // Keep legacy roles for stored-record compatibility; only the operator has administrative access.
+    accessLevel: superUser ? 'superuser' : 'learner' };
 }
 
 /** Only use with a profile obtained from the verified Google session, never a request body. */
 export function assertSuperUser(profile: Profile): Profile {
   const member = getFamilyMembers().find(entry => entry.id === profile.id);
   if (profile.familyId !== getFamilyId() || member?.email !== SUPER_USER_EMAIL) {
-    throw new ApiError(403, 'この画面はSuper Userだけが利用できます。', 'FORBIDDEN');
+    throw new ApiError(403, 'この画面は運営者だけが利用できます。', 'FORBIDDEN');
   }
   // Ignore stale or client-supplied role/accessLevel values and resolve the current allowlist.
   return profileForMember(member);

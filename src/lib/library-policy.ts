@@ -8,9 +8,8 @@ export function topicOwnerId(data: StudyData, topic: Topic): string | undefined 
 }
 
 export function mayPracticeLibraryTopic(data: StudyData, profile: Profile, topic: Topic): boolean {
-  if (topic.testOnly) return profile.role === 'parent';
-  if (topic.libraryPublished) return data.plans.some(plan => plan.ownerId === profile.id && !plan.testOnly && plan.libraryTopicId === topic.id);
-  return topicOwnerId(data, topic) === profile.id;
+  return !topic.libraryPublished && topicOwnerId(data, topic) === profile.id
+    && (!topic.testOnly || profile.accessLevel === 'superuser');
 }
 
 /** Approval is editing metadata, not a gate to practicing your saved questions. */

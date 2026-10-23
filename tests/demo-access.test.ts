@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { createDemoData } from '../src/lib/demo-data';
-import { addDemoLibraryPlan, addDemoPlanningTurn, arrangeDemoTopic, demoPracticeQuestions, demoSessionAllowed, demoSessionQuestions, demoStudyDataForProfile, generateDemoProposal, publishDemoLibrary, requestDemoLibraryPublication } from '../src/lib/demo-access';
+import { addDemoLibraryPlan, addDemoPlanningTurn, arrangeDemoTopic, demoPracticeQuestionView, demoPracticeQuestions, demoSessionAllowed, demoSessionQuestions, demoStudyDataForProfile, generateDemoProposal, publishDemoLibrary, requestDemoLibraryPublication, updateDemoQuestion } from '../src/lib/demo-access';
 import type { LearningPlan, StudyData } from '../src/lib/types';
 
 const now = '2024-01-20T12:00:00.000Z';
@@ -9,141 +9,155 @@ function fixture() {
   let counter = 0;
   const id = () => `test-id-${++counter}`;
   let data = createDemoData(new Date(now));
-  const parent = data.profiles.find(profile => profile.role === 'parent')!;
+  const parent = { ...data.profiles.find(profile => profile.role === 'parent')!, accessLevel: 'superuser' as const };
+  data = { ...data, profiles: data.profiles.map(profile => profile.id === parent.id ? parent : profile) };
   const student = data.profiles.find(profile => profile.role === 'student')!;
-  const plan: LearningPlan = { id: 'private-plan', ownerId: parent.id, title: '英語のテスト', subject: '英語', goal: '親だけで動作確認', difficulty: '標準',
+  const plan: LearningPlan = { id: 'private-plan', ownerId: parent.id, title: '自分の試作', subject: '英語', goal: '自分で動作確認', difficulty: '標準',
     dailyQuestionTarget: 10, sourceIds: ['private-source'], version: 1, createdAt: now, updatedAt: now, testOnly: true };
   data = { ...data, plans: [...data.plans, plan], sources: [{ id: 'private-source', ownerId: parent.id, name: 'private-note.jpg', mimeType: 'image/jpeg', storagePath: 'private-drive-file', testOnly: true, createdAt: now }] };
-  data = addDemoPlanningTurn(data, parent, plan.id, '親だけが見るコメント', now, id);
+  data = addDemoPlanningTurn(data, parent, plan.id, '本人だけのコメント', now, id);
   const turn = data.planningTurns.at(-1)!;
-  const result = generateDemoProposal(data, parent, plan.id, turn.id, turn.proposals![0].id, 100, now, id, {approveSamples:true});
+  const result = generateDemoProposal(data, parent, plan.id, turn.id, turn.proposals![0].id, 100, now, id, { approveSamples: true });
   return { data: result.data, parent, student, plan, topic: result.topic, id };
 }
 
-test('parent test plans, questions, sources, jobs and conversations stay absent from the student demo view', () => {
+test('every role sees only its own profiles, content, sources and records, while editing keeps full answers', () => {
   const { data, parent, student, topic } = fixture();
-  const questions = data.questions.filter(question => question.topicId === topic.id);
-  const mixed: StudyData = { ...data, sessions: [{ id: 'mixed', userId: student.id, mode: 'daily', questionIds: [data.questions[0].id, questions[0].id], createdAt: now }],
-    attempts: [{ id: 'parent-test-answer', userId: parent.id, sessionId: 'test', questionId: questions[0].id, questionVersion: 1, selectedIndex: 0, correct: true, answeredAt: now }] };
-  const visible = demoStudyDataForProfile(mixed, student);
-  assert.ok(!visible.topics.some(item => item.id === topic.id));
-  assert.ok(visible.questions.every(item => !item.testOnly && item.correctIndex === -1));
-  assert.ok(visible.plans.every(item => !item.testOnly));
-  assert.ok(!visible.planningTurns.some(item => item.message === '親だけが見るコメント'));
-  assert.equal(visible.sources.length, 0);
-  assert.ok(visible.jobs.every(item => !item.testOnly));
-  assert.equal(visible.sessions.length, 0);
-  assert.equal(visible.attempts.length, 0);
-  assert.equal(demoStudyDataForProfile(data, parent).questions.length, data.questions.length);
+  const ownQuestion = data.questions.find(question => question.topicId === topic.id)!;
+  const mixed: StudyData = { ...data,
+    sessions: [{ id: 'mixed', userId: student.id, mode: 'daily', questionIds: [data.questions[0].id, ownQuestion.id], createdAt: now }],
+    attempts: [{ id: 'parent-answer', userId: parent.id, sessionId: 'test', questionId: ownQuestion.id, questionVersion: 1, selectedIndex: 0, correct: true, answeredAt: now }] };
+  for (const actor of [student, parent, { ...parent, accessLevel: 'superuser' as const }]) {
+    const view = demoStudyDataForProfile(mixed, actor);
+    assert.deepEqual(view.profiles.map(member => member.id), [actor.id]);
+    assert.ok(view.topics.every(item => item.ownerId === actor.id && !item.libraryPublished));
+    assert.ok(view.questions.every(item => item.ownerId === actor.id && item.correctIndex >= 0 && item.explanation));
+    assert.ok(view.plans.every(item => item.ownerId === actor.id));
+    assert.ok(view.planningTurns.every(item => item.requestedBy === actor.id));
+    assert.ok(view.sources.every(item => item.ownerId === actor.id));
+    assert.ok(view.jobs.every(item => item.requestedBy === actor.id));
+    assert.ok(view.attempts.every(item => item.userId === actor.id));
+    assert.equal(view.sessions.length, 0, 'a mixed-user session is not projected');
+  }
+  assert.equal(demoStudyDataForProfile(mixed, student).sources.length, 0);
+  assert.equal(demoStudyDataForProfile(mixed, parent).sources[0].name, 'private-note.jpg');
+  assert.equal(demoStudyDataForProfile(mixed, parent).questions.length, 100);
+  assert.ok(demoStudyDataForProfile(mixed, student).questions.some(item => item.status === 'draft'), 'review state is not converted to published');
 });
 
-test('parent practice requires an explicit test topic and mixed or other-user sessions cannot resume', () => {
+test('legacy public copies, adopted public topics and unknown ownership fail closed for every role', () => {
   const { data, parent, student, topic } = fixture();
-  assert.ok(demoPracticeQuestions(data,parent).every(question=>question.testOnly));
+  const publicTopic = { ...topic, id: 'legacy-public', planId: undefined, ownerId: undefined, testOnly: undefined, libraryPublished: true, librarySourceTopicId: topic.id };
+  const orphan = { ...topic, id: 'orphan', planId: undefined, ownerId: undefined, audienceUserId: undefined };
+  const extended = { ...data, topics: [...data.topics, publicTopic, orphan], questions: [...data.questions,
+    { ...data.questions[0], id: 'public-q', topicId: publicTopic.id, ownerId: undefined },
+    { ...data.questions[0], id: 'orphan-q', topicId: orphan.id, ownerId: undefined }],
+    plans: [...data.plans, { ...data.plans[0], id: 'adopted', ownerId: student.id, libraryTopicId: publicTopic.id }] };
+  for (const profile of [parent, student]) {
+    const visible = demoStudyDataForProfile(extended, profile);
+    assert.ok(!visible.topics.some(item => [publicTopic.id, orphan.id].includes(item.id)));
+    assert.ok(!visible.questions.some(item => ['public-q', 'orphan-q'].includes(item.id)));
+    assert.throws(() => demoPracticeQuestions(extended, profile, publicTopic.id), /ご自身/);
+    assert.throws(() => arrangeDemoTopic(extended, profile, publicTopic.id), /利用できる/);
+  }
+});
+
+test('the old parent role never grants access to test-only operations without superuser capability', () => {
+  const { data, parent, plan, topic, id } = fixture();
+  const ordinary = { ...parent, accessLevel: undefined };
+  const view = demoStudyDataForProfile(data, ordinary);
+  for (const items of [view.plans, view.topics, view.questions, view.sources, view.jobs]) assert.equal(items.length, 0);
+  assert.throws(() => demoPracticeQuestions(data, ordinary, topic.id), /ご自身/);
+  assert.throws(() => addDemoPlanningTurn(data, ordinary, plan.id, '試作', now, id), /ご自身/);
+  assert.throws(() => arrangeDemoTopic(data, ordinary, topic.id, now, id), /利用できる/);
+  assert.equal(demoStudyDataForProfile(data, parent).questions.length, 100);
+});
+
+test('own ordinary practice works for either role, while other owners and stale snapshots cannot resume', () => {
+  const { data, parent, student, topic } = fixture();
   assert.throws(() => demoPracticeQuestions(data, parent, 'topic-english'), /ご自身/);
   const available = demoPracticeQuestions(data, parent, topic.id);
-  assert.equal(available.length, 100);
-  assert.ok(available.every(question => question.testOnly && question.topicId === topic.id));
   const session = { id: 'test-session', userId: parent.id, mode: 'daily' as const, questionIds: available.map(question => question.id), questionSnapshots: available, createdAt: now };
   assert.equal(demoSessionAllowed(session, available, parent), true);
   assert.equal(demoSessionAllowed({ ...session, userId: student.id }, available, parent), false);
   assert.equal(demoSessionAllowed({ ...session, questionIds: [...session.questionIds, 'topic-english-q01'] }, available, parent), false);
-  assert.ok(!demoPracticeQuestions(data, student).some(question => question.testOnly));
   const edited = available.map((question, index) => index ? question : { ...question, version: question.version + 1, prompt: '更新した設問' });
   assert.equal(demoSessionAllowed(session, edited, parent), false);
   assert.equal(demoSessionQuestions(session, edited)[0].prompt, available[0].prompt);
-  const legacySession = { ...session, questionSnapshots: undefined };
-  assert.equal(demoSessionAllowed(legacySession, available, parent), false);
+  const legacy = { ...session, questionSnapshots: undefined };
+  assert.equal(demoSessionAllowed(legacy, available, parent), false);
+  const repeated = { ...session, questionSnapshots: available.map(() => available[0]) };
+  assert.equal(demoSessionAllowed(repeated, available, parent), false);
+  const ordinary = { ...data, topics: data.topics.map(item => item.id === topic.id ? { ...item, testOnly: false } : item),
+    plans: data.plans.map(item => item.id === topic.planId ? { ...item, testOnly: false } : item),
+    questions: data.questions.map(item => item.topicId === topic.id ? { ...item, testOnly: false } : item) };
+  assert.equal(demoPracticeQuestions(ordinary, parent, topic.id).length, 100);
+  assert.ok(demoPracticeQuestions(data, student).length > 0, 'initial student samples remain available');
 });
 
-test('publishing makes an independent library clone without private source or conversation links and preserves the original', () => {
-  const { data, parent, student, topic, id } = fixture();
-  const before = JSON.stringify(data);
-  const result = publishDemoLibrary(data, parent, topic.id, now, id);
-  assert.equal(JSON.stringify(data), before);
-  assert.equal(result.topic.libraryPublished, true);
-  assert.notEqual(result.topic.id, topic.id);
-  const clones = result.data.questions.filter(question => question.topicId === result.topic.id);
-  assert.equal(clones.length, 100);
-  for (const question of clones) {
-    assert.equal(question.testOnly, undefined);
-    assert.equal(question.planId, undefined);
-    assert.equal(question.audienceUserId, undefined);
-    assert.deepEqual(question.sourceIds, []);
-    assert.ok(!data.questions.some(original => original.id === question.id));
+test('practice hides the answer and evidence until accepted feedback without changing the editable original', () => {
+  const question = createDemoData(new Date(now)).questions[0];
+  const before = structuredClone(question);
+  const hidden = demoPracticeQuestionView(question, false);
+  assert.equal(hidden.correctIndex, -1); assert.equal(hidden.explanation, ''); assert.equal(hidden.learningPoint, '');
+  assert.deepEqual(hidden.sourceIds, []); assert.equal(hidden.sourceNote, '');
+  const answered = demoPracticeQuestionView(question, true);
+  assert.equal(answered.correctIndex, question.correctIndex); assert.equal(answered.explanation, question.explanation);
+  assert.deepEqual(question, before);
+});
+
+test('owners may edit, archive and restore their questions, with immutable ownership and validated choices', () => {
+  const { data, parent, student } = fixture();
+  const question = data.questions[0];
+  const before = structuredClone(data);
+  assert.throws(() => updateDemoQuestion(data, parent, question.id, { prompt: '他人の問題' }), /自分/);
+  const changed = updateDemoQuestion(data, student, question.id, { prompt: '自分で直した問題', ownerId: parent.id, sourceIds: ['private-source'],
+    topicId: 'other', audienceUserId: parent.id, status: 'archived' }, now);
+  const saved = changed.questions.find(item => item.id === question.id)!;
+  assert.equal(saved.topicId, question.topicId); assert.equal(saved.audienceUserId, question.audienceUserId);
+  assert.equal(saved.ownerId, question.ownerId); assert.deepEqual(saved.sourceIds, question.sourceIds);
+  assert.equal(saved.status, 'archived'); assert.equal(saved.version, question.version + 1);
+  assert.ok(demoStudyDataForProfile(changed, student).questions.some(item => item.id === question.id));
+  assert.ok(!demoPracticeQuestions(changed, student).some(item => item.id === question.id));
+  const restored = updateDemoQuestion(changed, student, question.id, { status: 'approved', needsReview: false }, now);
+  assert.ok(demoPracticeQuestions(restored, student).some(item => item.id === question.id));
+  assert.throws(() => updateDemoQuestion(data, student, question.id, { choices: ['a', ' a '] }), /正解/);
+  assert.throws(() => updateDemoQuestion(data, student, question.id, { correctIndex: 99 }), /正解/);
+  assert.throws(() => updateDemoQuestion(data, student, question.id, { status: 'approved', needsReview: true }), /確認/);
+  assert.deepEqual(data, before);
+});
+
+test('publishing, publication requests and public adoption are disabled without mutating local data', () => {
+  const { data, parent, student, topic } = fixture();
+  const before = structuredClone(data);
+  for (const actor of [student, parent, { ...parent, accessLevel: 'superuser' as const }]) {
+    assert.throws(() => publishDemoLibrary(data, actor, topic.id), /公開・共有・配布は利用できません/);
+    assert.throws(() => requestDemoLibraryPublication(data, actor, topic.id), /公開・共有・配布は利用できません/);
+    assert.throws(() => addDemoLibraryPlan(data, actor, topic.id), /公開・共有・配布は利用できません/);
   }
-  const visible = demoStudyDataForProfile(result.data, student);
-  assert.equal(visible.topics.find(item => item.id === result.topic.id)?.librarySourceTopicId, undefined);
-  assert.ok(!visible.questions.some(question => question.topicId === result.topic.id));
-  assert.equal(publishDemoLibrary(result.data, parent, topic.id, now, id).topic.id, result.topic.id);
-  const modified = { ...result.data, questions: result.data.questions.map(question => question.topicId === topic.id ? { ...question, prompt: `${question.prompt}（更新）`, version: question.version + 1 } : question) };
-  const revision = publishDemoLibrary(modified, parent, topic.id, now, id);
-  assert.notEqual(revision.topic.id, result.topic.id);
-  assert.ok(revision.data.questions.filter(question => question.topicId === result.topic.id).every(question => !question.prompt.includes('（更新）')));
-  assert.throws(() => publishDemoLibrary(data, student, topic.id), /管理者/);
-  const otherParent = { ...parent, id: 'other-parent' };
-  const familyData = { ...data, profiles: [...data.profiles, otherParent] };
-  assert.equal(publishDemoLibrary(familyData, otherParent, topic.id, now, id).topic.libraryPublished, true);
-  assert.throws(() => publishDemoLibrary(familyData, { ...otherParent, familyId: 'other-family' }, topic.id), /ご家族/);
+  assert.deepEqual(data, before);
 });
 
-test('library questions enter practice only after the learner adopts them; repeated adoption is idempotent', () => {
-  const { data, parent, student, topic, id } = fixture();
-  const published = publishDemoLibrary(data, parent, topic.id, now, id);
-  assert.throws(()=>demoPracticeQuestions(published.data, student, published.topic.id),/追加済み/);
-  const added = addDemoLibraryPlan(published.data, student, published.topic.id, now, id);
-  assert.equal(added.plan.libraryTopicId, published.topic.id);
-  assert.equal(added.plan.ownerId, student.id);
-  assert.deepEqual(added.plan.sourceIds, []);
-  assert.equal(demoPracticeQuestions(added.data, student, published.topic.id).length, 100);
-  assert.equal(addDemoLibraryPlan(added.data, student, published.topic.id, now, id).plan.id, added.plan.id);
-  assert.equal(addDemoLibraryPlan(published.data,parent,published.topic.id).plan.ownerId,parent.id);
-  assert.throws(() => addDemoLibraryPlan(published.data, student, topic.id), /見つかりません/);
-});
-
-test('demo consultation and generation are labelled samples, bounded, and reject stale proposals', () => {
+test('demo samples never borrow another owner’s content and generation rejects stale proposals', () => {
   const { data, parent, plan, topic, id } = fixture();
   const turn = data.planningTurns.at(-1)!;
   assert.match(turn.reply!, /AIには送信しておらず/);
   assert.match(turn.reply!, /内容には反映されません/);
+  assert.ok(turn.proposals![0].samples!.every(sample => !data.questions.some(question => question.topicId.startsWith('topic-') && question.prompt === sample.prompt)));
   assert.equal(topic.targetCount, 100);
-  assert.ok(data.questions.filter(question => question.topicId === topic.id).every(question => /サンプル/.test(question.sourceNote)));
   const updated = addDemoPlanningTurn(data, parent, plan.id, '追加のコメント', now, id);
   assert.throws(() => generateDemoProposal(updated, parent, plan.id, turn.id, turn.proposals![0].id, 10, now, id), /最新/);
 });
 
-test('demo arrangements preserve only the caller’s chosen project and public additions start unclassified', () => {
-  let data = createDemoData(new Date(now));
-  const student = data.profiles.find(profile => profile.role === 'student')!;
-  const parent = data.profiles.find(profile => profile.role === 'parent')!;
+test('arrangements use only the owner’s collection, preserve project tags and leave originals untouched', () => {
+  const { data, student, parent, id } = fixture();
   const topic = data.topics.find(item => item.subject === '古文')!;
-  data = { ...data, plans: data.plans.map(plan => plan.id === topic.planId ? { ...plan, tags: ['2学期中間テスト'] } : plan) };
-  let counter = 0;
-  const id = () => `project-demo-${++counter}`;
+  const before = structuredClone(data);
   const own = arrangeDemoTopic(data, student, topic.id, now, id);
-  assert.deepEqual(own.plan.tags, ['2学期中間テスト']);
+  assert.deepEqual(own.plan.tags, data.plans.find(plan => plan.id === topic.planId)?.tags);
+  assert.equal(own.plan.arrangementExamples?.length, 3);
+  assert.match(own.plan.goal, /試験範囲全体を網羅した資料ではありません/);
   own.plan.tags!.push('別の範囲');
-  assert.deepEqual(data.plans.find(plan => plan.id === topic.planId)?.tags, ['2学期中間テスト']);
-  assert.equal(arrangeDemoTopic(data, parent, topic.id, now, id).plan.tags, undefined);
-
-  const requested = requestDemoLibraryPublication(data, student, topic.id, now);
-  const published = publishDemoLibrary(requested.data, parent, topic.id, now, id);
-  published.topic.description = '公開されている古文の出題範囲';
-  const publicQuestion = published.data.questions.find(item => item.topicId === published.topic.id)!;
-  published.data.questions.push({ ...publicQuestion, id: id(), learningPoint: '参考3問より後の内容理解' });
-  const publicArrangement = arrangeDemoTopic(published.data, parent, published.topic.id, now, id).plan;
-  assert.equal(publicArrangement.tags, undefined);
-  assert.equal(publicArrangement.arrangementExamples?.length, 3);
-  assert.match(publicArrangement.goal, /公開されている古文の出題範囲/);
-  assert.match(publicArrangement.goal, /参考3問より後の内容理解/);
-  assert.match(publicArrangement.goal, /試験範囲全体を網羅した資料ではありません/);
-  assert.ok(publicArrangement.goal.length <= 4000);
-  assert.equal(arrangeDemoTopic(published.data, student, published.topic.id, now, id).plan.tags, undefined);
-  const added = addDemoLibraryPlan(published.data, student, published.topic.id, now, id);
-  assert.equal(added.plan.title, published.topic.title);
-  assert.equal(added.plan.tags, undefined, 'a public addition does not read even the caller’s private origin');
-  const assigned = { ...added.data, plans: added.data.plans.map(plan => plan.id === added.plan.id ? { ...plan, tags: ['自分で選んだプロジェクト'] } : plan) };
-  assert.deepEqual(addDemoLibraryPlan(assigned, student, published.topic.id, now, id).plan.tags, ['自分で選んだプロジェクト']);
-  assert.deepEqual(arrangeDemoTopic(assigned, student, published.topic.id, now, id).plan.tags, ['自分で選んだプロジェクト']);
-  assert.equal(arrangeDemoTopic(assigned, parent, published.topic.id, now, id).plan.tags, undefined);
+  assert.deepEqual(data, before);
+  assert.throws(() => arrangeDemoTopic(data, parent, topic.id, now, id), /利用できる/);
 });

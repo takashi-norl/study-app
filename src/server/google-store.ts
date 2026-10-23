@@ -6,9 +6,9 @@ import type {
   Attempt, Exposure, GenerationJob, LearningPlan, PlanningTurn, PracticeSession, Profile, Question, SourceDocument, StudyData, Topic,
 } from '@/lib/types';
 import { ApiError, MAX_SOURCE_BYTES, SOURCE_MIME_TYPES } from './config';
-import { assertStorageGrant, getDriveConfig, getFamilyId, getFamilyMembers, profileForMember } from './env';
+import { assertStorageGrant, getDriveConfig, getFamilyId } from './env';
 import { canAccessPlan, canAccessQuestion, canAccessSource } from './access';
-import { asPracticeQuestion, isPracticeReadyQuestion, topicOwnerId } from '@/lib/library-policy';
+import { topicOwnerId } from '@/lib/library-policy';
 import { libraryRevision } from './library';
 import { planningSamplesSchema, planningSampleSchema } from './planning-samples';
 import { aiRequestedSchema, aiUsageSchema } from './ai-usage-schema';
@@ -17,6 +17,8 @@ import { audioSegmentsSchema } from './audio-segments';
 import { personalProfileSavedEventSchema, personalProfileChatRequestedEventSchema, personalProfileChatCompletedEventSchema, personalProfileChatFailedEventSchema } from './personal-profile-schemas';
 import { planTagsSchema } from './plan-tags';
 import { sourceAnalysisRevisionSchema } from './source-analysis-schema';
+import { betaInvitationCreatedSchema, betaMemberRegisteredSchema, betaAccessRevokedSchema, profilesWithBetaMembers } from './beta-membership-schema';
+import { feedbackSubmittedSchema } from './feedback-schema';
 
 const EVENT_TYPES = [
   'topic.created', 'source.created', 'question.upserted', 'questions.published', 'session.created',
@@ -27,7 +29,8 @@ const EVENT_TYPES = [
   'library.questions', 'library.published', 'library.adopted', 'library.publication-requested',
   'ai.requested', 'ai.usage',
   'personal-profile.saved', 'personal-profile.chat.requested', 'personal-profile.chat.completed', 'personal-profile.chat.failed',
-  'vocabulary.lookup',
+  'vocabulary.lookup', 'feedback.submitted',
+  'beta.invitation.created', 'beta.member.registered', 'beta.access.revoked',
 ] as const;
 export type StudyEventType = typeof EVENT_TYPES[number];
 export interface StudyEvent {
@@ -170,9 +173,17 @@ async function googleFetch(url: string, init: RequestInit = {}, timeoutMs = 20_0
 function validateEvent(input: StudyEvent): StudyEvent {
   const metadata = z.object({ id: idSchema, type: z.enum(EVENT_TYPES), actorId: idSchema,
     familyId: z.string().optional(), createdAt: isoSchema }).parse(input);
-  if (metadata.familyId && metadata.familyId !== getFamilyId()) throw new ApiError(403, '別の家族の記録にはアクセスできません。', 'FAMILY_MISMATCH');
+  if (metadata.familyId && metadata.familyId !== getFamilyId()) throw new ApiError(403, 'このアプリの記録にはアクセスできません。', 'FAMILY_MISMATCH');
   const payload = input.payload;
   switch (metadata.type) {
+    case 'beta.invitation.created': betaInvitationCreatedSchema.parse(payload); break;
+    case 'beta.member.registered': betaMemberRegisteredSchema.parse(payload); break;
+    case 'beta.access.revoked': betaAccessRevokedSchema.parse(payload); break;
+    case 'feedback.submitted': {
+      const feedback = feedbackSubmittedSchema.parse(payload);
+      if (feedback.userId !== metadata.actorId) throw new ApiError(400, '送信者が一致しません。', 'INVALID_FEEDBACK');
+      break;
+    }
     case 'vocabulary.lookup': vocabularyLookupSchema.parse(payload); break;
     case 'ai.requested': aiRequestedSchema.parse(payload); break;
     case 'ai.usage': aiUsageSchema.parse(payload); break;
@@ -250,18 +261,48 @@ function validateEvent(input: StudyEvent): StudyEvent {
   return { ...metadata, familyId: getFamilyId(), payload };
 }
 
-function sheetRange(): string {
-  return `${getDriveConfig().tab}!A:M`;
+// Keep these out of the legacy ledger: older deployments reject unknown event types.
+const OPERATIONAL_EVENT_TYPES = new Set<StudyEventType>([
+  'feedback.submitted', 'beta.invitation.created', 'beta.member.registered', 'beta.access.revoked',
+]);
+function operationalTab(): string { return `${getDriveConfig().tab}_Operations`; }
+function sheetRange(tab = getDriveConfig().tab): string { return `${tab}!A:M`; }
+
+/** Missing is decided from metadata, never by swallowing a permissions/network/read error. */
+async function operationalTabExists(): Promise<boolean> {
+  const config = getDriveConfig();
+  const response = await googleFetch(`https://sheets.googleapis.com/v4/spreadsheets/${config.spreadsheetId}?fields=sheets.properties.title`);
+  const parsed = z.object({ sheets: z.array(z.object({ properties: z.object({ title: z.string() }) })).min(1) }).safeParse(await response.json());
+  if (!parsed.success) throw new ApiError(502, '保存先の一覧を確認できません。', 'INVALID_EVENT_LOG');
+  return parsed.data.sheets.some(sheet => sheet.properties.title === operationalTab());
 }
 
-/** Rows are append-only. The Google row order, not client timestamps, is the event order. */
-export async function loadEvents(): Promise<StudyEvent[]> {
+async function ensureOperationalTab(): Promise<void> {
+  if (await operationalTabExists()) return;
   const config = getDriveConfig();
-  const response = await googleFetch(`https://sheets.googleapis.com/v4/spreadsheets/${config.spreadsheetId}/values/${encodeURIComponent(sheetRange())}?valueRenderOption=UNFORMATTED_VALUE`);
-  const body = await response.json() as { values?: unknown[][] };
+  try {
+    const response = await googleFetch(`https://sheets.googleapis.com/v4/spreadsheets/${config.spreadsheetId}:batchUpdate`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ requests: [{ addSheet: { properties: { title: operationalTab() } } }] }),
+    });
+    await response.body?.cancel();
+  } catch (error) {
+    // Another first writer may have created it, or the response may have been lost.
+    // Authorization failures remain errors even when another writer succeeded.
+    if (!(error instanceof ApiError) || error.code === 'GOOGLE_ACCESS_DENIED' || error.code === 'GOOGLE_AUTH_EXPIRED') throw error;
+    if (!(await operationalTabExists())) throw error;
+  }
+}
+
+/** Rows retain their append order within each independent ledger. Never sort client timestamps. */
+async function loadEventTab(tab: string, operational: boolean): Promise<StudyEvent[]> {
+  const config = getDriveConfig();
+  const response = await googleFetch(`https://sheets.googleapis.com/v4/spreadsheets/${config.spreadsheetId}/values/${encodeURIComponent(sheetRange(tab))}?valueRenderOption=UNFORMATTED_VALUE`);
+  const parsed = z.object({ values: z.array(z.array(z.unknown())).optional() }).safeParse(await response.json());
+  if (!parsed.success) throw new ApiError(502, '保存された記録を読み取れません。', 'INVALID_EVENT_LOG');
   const result: StudyEvent[] = [];
   const seen = new Set<string>();
-  for (const [index, row] of (body.values ?? []).entries()) {
+  for (const [index, row] of (parsed.data.values ?? []).entries()) {
     if (!row.some((value) => value !== '')) continue;
     if (index === 0 && ['id', 'eventId'].includes(String(row[0]))) continue;
     try {
@@ -270,12 +311,24 @@ export async function loadEvents(): Promise<StudyEvent[]> {
         || typeof familyId !== 'string' || typeof createdAt !== 'string') throw new Error('Invalid event row');
       const payload = JSON.parse(row.slice(5, 5 + PAYLOAD_CELLS).map((part) => String(part ?? '')).join(''));
       const event = validateEvent({ id, type: type as StudyEventType, actorId, familyId, createdAt, payload });
+      if (OPERATIONAL_EVENT_TYPES.has(event.type) !== operational) throw new Error('Event in wrong ledger');
       if (!seen.has(event.id)) { result.push(event); seen.add(event.id); }
     } catch {
-      throw new ApiError(502, `学習記録の${index + 1}行目を読み取れません。記録シートを確認してください。`, 'INVALID_EVENT_LOG');
+      throw new ApiError(502, `${operational ? '運営' : '学習'}記録の${index + 1}行目を読み取れません。記録シートを確認してください。`, 'INVALID_EVENT_LOG');
     }
   }
   return result;
+}
+
+/** Auth and feedback do not need to read anyone's learning ledger. */
+export async function loadOperationsEvents(): Promise<StudyEvent[]> {
+  return await operationalTabExists() ? loadEventTab(operationalTab(), true) : [];
+}
+
+export async function loadEvents(): Promise<StudyEvent[]> {
+  const [study, operations] = await Promise.all([loadEventTab(getDriveConfig().tab, false), loadOperationsEvents()]);
+  // Operational events affect membership/feedback only; their row order is independent of study records.
+  return [...study, ...operations];
 }
 
 /** Retrying an append may create a duplicate row; stable event IDs make replay idempotent. */
@@ -283,6 +336,10 @@ export async function appendEvents(events: StudyEvent[]): Promise<void> {
   if (!events.length) return;
   if (events.length > 100) throw new ApiError(413, '一度に保存する件数が多すぎます。', 'EVENT_BATCH_TOO_LARGE');
   const config = getDriveConfig();
+  const operational = OPERATIONAL_EVENT_TYPES.has(events[0].type);
+  if (events.some(event => OPERATIONAL_EVENT_TYPES.has(event.type) !== operational)) {
+    throw new ApiError(400, '学習記録と運営記録は分けて保存してください。', 'MIXED_EVENT_LEDGERS');
+  }
   const values = events.map((input) => {
     const event = validateEvent(input);
     const serialized = JSON.stringify(event.payload);
@@ -301,7 +358,9 @@ export async function appendEvents(events: StudyEvent[]): Promise<void> {
   });
   const body = JSON.stringify({ majorDimension: 'ROWS', values });
   if (Buffer.byteLength(body, 'utf8') > 1_500_000) throw new ApiError(413, '一度に保存する内容が大きすぎます。分けて保存してください。', 'EVENT_BATCH_TOO_LARGE');
-  const response = await googleFetch(`https://sheets.googleapis.com/v4/spreadsheets/${config.spreadsheetId}/values/${encodeURIComponent(sheetRange())}:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`, {
+  if (operational) await ensureOperationalTab();
+  const tab = operational ? operationalTab() : config.tab;
+  const response = await googleFetch(`https://sheets.googleapis.com/v4/spreadsheets/${config.spreadsheetId}/values/${encodeURIComponent(sheetRange(tab))}:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`, {
     method: 'POST', headers: { 'Content-Type': 'application/json' }, body,
   });
   await response.body?.cancel();
@@ -410,7 +469,7 @@ export function foldEvents(events: StudyEvent[], profiles: Profile[] = []): Stud
           const owner = profiles.find(profile => profile.id === event.actorId && profile.familyId === getFamilyId());
           // An in-flight AI update may already have advanced the version. Never replace its content.
           if (previous && owner && plan.ownerId === previous.ownerId && event.actorId === previous.ownerId
-            && plan.version <= previous.version && (!previous.testOnly || owner.role === 'parent')) {
+            && plan.version <= previous.version && (!previous.testOnly || owner.accessLevel === 'superuser')) {
             plans.set(previous.id, { ...previous, tags: plan.tags, updatedAt: event.createdAt });
           }
         } else if (previous && plan.ownerId === previous.ownerId && plan.version > previous.version) {
@@ -484,7 +543,7 @@ export function foldEvents(events: StudyEvent[], profiles: Profile[] = []): Stud
 
 export async function getFullState(): Promise<{ data: StudyData; events: StudyEvent[] }> {
   const events = await loadEvents();
-  return { data: foldEvents(events, getFamilyMembers().map(profileForMember)), events };
+  return { data: foldEvents(events, profilesWithBetaMembers(events)), events };
 }
 
 export async function getSessionSnapshot(sessionId: string, events?: StudyEvent[]): Promise<Question[]> {
@@ -492,32 +551,27 @@ export async function getSessionSnapshot(sessionId: string, events?: StudyEvent[
   return event ? structuredClone(sessionSchema.parse(event.payload).questionSnapshots) : [];
 }
 
-export function studyDataForProfile(data: StudyData, profile: Profile, now = new Date()): StudyData {
-  if (profile.familyId !== getFamilyId()) throw new ApiError(403, '別の家族の記録にはアクセスできません。', 'FAMILY_MISMATCH');
-  if (profile.role === 'parent') {
-    return { ...data, sources: data.sources.map((source) => ({ ...source, previewUrl: `/api/sources/${encodeURIComponent(source.id)}` })) };
-  }
-  const accessibleTopics=new Map(data.topics.filter(topic=>canAccessQuestion(topic,profile)).map(topic=>[topic.id,topic]));
-  const adopted=new Set(data.plans.filter(plan=>plan.ownerId===profile.id && !plan.testOnly).map(plan=>plan.libraryTopicId).filter(Boolean));
-  const published = data.questions.filter((question) => canAccessQuestion(question, profile) && accessibleTopics.has(question.topicId)
-    && (!accessibleTopics.get(question.topicId)?.libraryPublished || adopted.has(question.topicId)) && isPracticeReadyQuestion(question,now));
-  const visibleTopics = new Set(published.map((question) => question.topicId));
-  const plans = data.plans.filter((plan) => canAccessPlan(plan, profile));
-  const planIds = new Set(plans.map((plan) => plan.id));
-  return { ...data, topics: data.topics.filter((topic) => (visibleTopics.has(topic.id) || topic.libraryPublished || topic.ownerId===profile.id) && canAccessQuestion(topic, profile))
-      .map(({librarySourceTopicId:_privateSource,...topic})=>topic),
-    sources: data.sources.filter((source) => canAccessSource(source, profile))
-      .map((source) => ({ ...source, previewUrl: `/api/sources/${encodeURIComponent(source.id)}` })),
-    jobs: data.jobs.filter((job) => !job.testOnly && (job.requestedBy === profile.id || job.audienceUserId === profile.id) && accessibleTopics.has(job.topicId)), profiles: [profile],
-    plans, planningTurns: data.planningTurns.filter((turn) => planIds.has(turn.planId)),
-    questions: published.map(asPracticeQuestion)
-      .map((question) => ({ id: question.id, topicId: question.topicId, prompt: question.prompt, choices: [...question.choices],
-        correctIndex: -1, explanation: '', learningPoint: '', sourceNote: '', sourceIds: [],
-        status: question.status, version: question.version, createdAt: question.createdAt, publishedAt: question.publishedAt,
-        ownerId:question.ownerId,aiGenerated:question.aiGenerated,audienceUserId: question.audienceUserId, planId: question.planId, needsReview: question.needsReview,testOnly:question.testOnly })),
-    attempts: data.attempts.filter((attempt) => attempt.userId === profile.id),
-    exposures: data.exposures.filter((exposure) => exposure.userId === profile.id),
-    sessions: data.sessions.filter((session) => session.userId === profile.id).map((session) => ({
+export function studyDataForProfile(data: StudyData, profile: Profile, _now = new Date()): StudyData {
+  if (profile.familyId !== getFamilyId()) throw new ApiError(403, 'この記録にはアクセスできません。', 'FAMILY_MISMATCH');
+  const topics = data.topics.filter(topic => canAccessQuestion(topic, profile));
+  const topicIds = new Set(topics.map(topic => topic.id));
+  const sources = data.sources.filter(source => canAccessSource(source, profile));
+  const sourceIds = new Set(sources.map(source => source.id));
+  const plans = data.plans.filter(plan => canAccessPlan(plan, profile) && !plan.libraryTopicId);
+  const planIds = new Set(plans.map(plan => plan.id));
+  // Own authoring screens need the answer. Practice responses still hide it until grading.
+  return {
+    topics: topics.map(({librarySourceTopicId:_origin, publicationRequest:_request, publishedSourceRevision:_published, ...topic}) => topic),
+    sources: sources.map(source => ({ ...source, previewUrl: `/api/sources/${encodeURIComponent(source.id)}` })),
+    questions: data.questions.filter(question => topicIds.has(question.topicId) && canAccessQuestion(question, profile))
+      .map(question => ({ ...question, choices: [...question.choices], sourceIds: question.sourceIds.filter(id => sourceIds.has(id)) })),
+    jobs: data.jobs.filter(job => job.requestedBy === profile.id && topicIds.has(job.topicId) && (!job.testOnly || profile.accessLevel === 'superuser')),
+    profiles: [{ ...profile }],
+    plans: plans.map(plan => ({ ...plan, sourceIds: plan.sourceIds.filter(id => sourceIds.has(id)) })),
+    planningTurns: data.planningTurns.filter(turn => planIds.has(turn.planId) && turn.requestedBy === profile.id),
+    attempts: data.attempts.filter(attempt => attempt.userId === profile.id),
+    exposures: data.exposures.filter(exposure => exposure.userId === profile.id),
+    sessions: data.sessions.filter(session => session.userId === profile.id).map(session => ({
       id: session.id, userId: session.userId, mode: session.mode, questionIds: [...session.questionIds],
       createdAt: session.createdAt, completedAt: session.completedAt,
     })),
@@ -525,7 +579,7 @@ export function studyDataForProfile(data: StudyData, profile: Profile, now = new
 }
 
 export async function loadStudyData(profile: Profile): Promise<StudyData> {
-  if (profile.familyId !== getFamilyId()) throw new ApiError(403, '別の家族の記録にはアクセスできません。', 'FAMILY_MISMATCH');
+  if (profile.familyId !== getFamilyId()) throw new ApiError(403, 'このアプリの記録にはアクセスできません。', 'FAMILY_MISMATCH');
   return studyDataForProfile((await getFullState()).data, profile);
 }
 

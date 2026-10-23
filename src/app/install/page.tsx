@@ -34,9 +34,9 @@ export default function InstallPage() {
     </section>
 
     <section className={styles.start} aria-labelledby="first-title"><div className={styles.heading}><BookOpen size={21} /><h2 id="first-title">ログインしたら</h2></div><div className={styles.roles}>
-      <article><h3>学習する人</h3><p>ライブラリから気になる問題を自分の学習に追加。学習相談では、試験や目標に合わせて問題を作れます。</p></article>
-      <article><h3>管理する人</h3><p>教材の写真を保存し、問題を作成・確認。テスト用の問題を試してからライブラリへ公開できます。</p></article>
-    </div><p className={styles.familyNote}>使うアプリは全員同じです。Googleアカウントに応じた画面が開きます。</p><Link href="/" className={styles.secondary}>アプリを開いてログイン<ArrowRight size={17} /></Link></section>
+      <article><h3>学習する人</h3><p>「用意された教材」から学ぶか、自分の問題集で練習。1回10問を目安に、自分のペースで進められます。</p></article>
+      <article><h3>自分の教材で作る</h3><p>写真・PDFを追加して、まず3問を試作。問題を確認してから本作成へ。教材と問題は本人の個人利用だけで、共有・公開はできません。</p></article>
+    </div><p className={styles.familyNote}>招待された自分のGoogleアカウントで利用できます。教材や成績は本人だけが確認できます。</p><Link href="/" className={styles.secondary}>アプリを開いてログイン<ArrowRight size={17} /></Link></section>
     <footer className={styles.footer}><span>ひとつずつ、自分の力に。</span><nav aria-label="アプリについて"><Link href="/privacy">プライバシー</Link><Link href="/terms">利用条件</Link></nav></footer>
   </div></main>;
 }

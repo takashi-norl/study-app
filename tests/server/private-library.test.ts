@@ -1,94 +1,85 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import type { GenerationJob, Profile, Question, Topic } from '../../src/lib/types';
+import type { Profile, StudyData, Question } from '../../src/lib/types';
 import { foldEvents, studyDataForProfile, type StudyEvent } from '../../src/server/google-store';
 import { getFamilyId } from '../../src/server/env';
-import { prepareLibraryAdoption, prepareLibraryPublication, prepareLibraryPublicationRequest } from '../../src/server/library';
-import { assertPracticeTopic, mayPracticeQuestion } from '../../src/server/practice-access';
-import { assertGenerationAccess } from '../../src/server/proposal-selection';
-import { asPracticeQuestion } from '../../src/lib/library-policy';
-import { selectQuestions } from '../../src/lib/learning';
+import { canAccessSource, canAccessPlan, canAccessQuestion, assertOwnQuestion } from '../../src/server/access';
+import { assertPracticeTopic, mayPracticeQuestion, authorizedPracticeSession } from '../../src/server/practice-access';
+import { authorizedAudioText } from '../../src/server/audio';
+import { preparePlanArrangement } from '../../src/server/plan-arrangement';
+import { buildPlanningContext, learningSummary } from '../../src/server/planning';
 
-const now='2026-01-01T00:00:00Z';
-const parent:Profile={id:'parent',role:'parent',name:'P',familyId:getFamilyId()};
-const student:Profile={...parent,id:'student',role:'student'};
-const other:Profile={...student,id:'other'};
-const profiles=[parent,student,other];
-const topic:Topic={id:'private-topic',title:'Private practice',subject:'英語',description:'Words',createdAt:now,targetCount:100};
-const question:Question={id:'q1',topicId:topic.id,prompt:'Choose apple',choices:['apple','pear'],correctIndex:0,explanation:'Answer',learningPoint:'Vocabulary',sourceIds:['SECRET_SOURCE'],sourceNote:'SECRET_NOTE',status:'draft',needsReview:true,version:1,createdAt:now};
-const event=(id:string,type:StudyEvent['type'],payload:unknown,actorId=parent.id):StudyEvent=>({id,type,payload,actorId,createdAt:now});
-const base=(owner=parent)=>[event('topic','topic.created',topic,owner.id),event('q','question.upserted',question,owner.id)];
+const now='2026-10-23T00:00:00Z';
+const people:Profile[]=[{id:'owner',name:'Owner',role:'student',familyId:getFamilyId()},
+  {id:'parent',name:'Parent',role:'parent',familyId:getFamilyId()}, {id:'other-parent',name:'Other parent',role:'parent',familyId:getFamilyId()}];
+const [owner,parent,otherParent]=people;
+const q:Question={id:'q-owner',ownerId:owner.id,audienceUserId:owner.id,topicId:'topic-owner',prompt:'Read a book.',choices:['book','pen'],correctIndex:0,
+  explanation:'PERSONAL_EXPLANATION',learningPoint:'PERSONAL_POINT',sourceIds:['source-owner'],sourceNote:'PERSONAL_SOURCE_NOTE',status:'published',version:1,createdAt:now};
+function fixture() {
+  const events:StudyEvent[]=people.flatMap(person=>{
+    const id=person.id;
+    const e=(suffix:string,type:StudyEvent['type'],payload:unknown):StudyEvent=>({id:`${id}:${suffix}`,type,actorId:id,createdAt:now,payload});
+    const question={...q,id:`q-${id}`,topicId:`topic-${id}`,ownerId:id,audienceUserId:id,sourceIds:[`source-${id}`],explanation:`${id}_PRIVATE_EXPLANATION`};
+    return [e('topic','topic.created',{id:`topic-${id}`,ownerId:id,title:`${id}_PRIVATE_TOPIC`,subject:'英語',description:'',targetCount:1,createdAt:now}),
+      e('q','question.upserted',question),e('source','source.created',{id:`source-${id}`,ownerId:id,name:`${id}_PRIVATE_FILE`,mimeType:'image/jpeg',storagePath:`${id}_PRIVATE_PATH`,createdAt:now}),
+      e('plan','plan.created',{id:`plan-${id}`,ownerId:id,title:`${id}_PRIVATE_PLAN`,subject:'英語',goal:'Study',difficulty:'標準',dailyQuestionTarget:10,sourceIds:[`source-${id}`],version:1,createdAt:now,updatedAt:now}),
+      e('turn','planning.turn.upserted',{id:`turn-${id}`,requestedBy:id,planId:`plan-${id}`,message:`${id}_PRIVATE_MESSAGE`,version:2,status:'queued',createdAt:now}),
+      e('job','job.upserted',{id:`job-${id}`,requestedBy:id,topicId:`topic-${id}`,status:'review',targetCount:1,generatedCount:1,createdAt:now}),
+      e('session','session.created',{id:`session-${id}`,userId:id,mode:'daily',questionIds:[question.id],questionSnapshots:[question],createdAt:now}),
+      e('attempt','attempt.recorded',{id:`attempt-${id}`,userId:id,sessionId:`session-${id}`,questionId:question.id,questionVersion:1,selectedIndex:0,correct:true,answeredAt:now}),
+      e('exposure','exposure.recorded',{id:`exposure-${id}`,userId:id,sessionId:`session-${id}`,questionId:question.id,questionVersion:1,shownAt:now})];
+  });
+  return {events,data:foldEvents(events,people)};
+}
 
-test('legacy parent drafts become privately usable without altering audience, source privacy, or in-flight generation access',()=>{
-  const job:GenerationJob={id:'job',topicId:topic.id,requestedBy:parent.id,status:'review',targetCount:100,generatedCount:1,createdAt:now,sourceIds:[]};
-  const data=foldEvents([...base(),event('job','job.upserted',job)],profiles);
-  assert.equal(data.topics[0].ownerId,parent.id);
-  assert.equal(data.topics[0].audienceUserId,undefined);
-  assert.equal(data.jobs[0].audienceUserId,undefined);
-  assert.equal(assertGenerationAccess(data,job).id,parent.id);
-  assert.equal(data.questions[0].status,'draft');
-  assert.equal(mayPracticeQuestion(data,parent,data.questions[0]),true);
-  assert.equal(selectQuestions(data.questions.map(asPracticeQuestion),[],[],parent.id,'extra',new Date(now)).length,1);
-  assert.equal(studyDataForProfile(data,student).topics.length,0);
-  assert.equal(studyDataForProfile(data,other).questions.length,0);
-  const published=prepareLibraryPublication(data,parent,topic.id,new Date(now));
-  const full=foldEvents([...base(),event('job','job.upserted',job),...published.events],profiles);
-  const clone=full.questions.find(q=>q.topicId===published.topic.id)!;
-  assert.equal(clone.aiGenerated,true);
-  assert.equal(clone.needsReview,true); // Public does not falsely claim a human verified it.
-  assert.deepEqual(clone.sourceIds,[]);
-  assert.equal(clone.ownerId,undefined);
-  assert.doesNotMatch(JSON.stringify(clone),/SECRET_/);
-  assert.equal(full.questions.find(q=>q.id==='q1')?.status,'draft');
-  assert.throws(()=>assertPracticeTopic(full,parent,published.topic.id),{code:'LIBRARY_NOT_ADOPTED'});
-  const adopted=prepareLibraryAdoption(full,parent,published.topic.id,new Date(now));
-  assert.equal(adopted.plan.ownerId,parent.id);
+test('all roles receive only their own full authoring data, records and profile',()=>{
+  const {data}=fixture();
+  for(const person of people) {
+    const visible=studyDataForProfile(data,person);
+    for(const key of ['topics','questions','sources','plans','planningTurns','jobs','sessions','attempts','exposures','profiles'] as const) assert.equal(visible[key].length,1,key);
+    assert.equal(visible.questions[0].correctIndex,0);
+    assert.match(visible.questions[0].explanation,/PRIVATE_EXPLANATION/);
+    assert.equal('questionSnapshots' in visible.sessions[0],false);
+    for(const foreign of people.filter(p=>p.id!==person.id)) assert.equal(JSON.stringify(visible).includes(`"${foreign.id}_PRIVATE`),false);
+    const summary=learningSummary(data,person,'英語',new Date(now));
+    assert.equal(summary.length,1);assert.equal(summary[0].learner,person.name);assert.equal(summary[0].first.answered,1);
+  }
+  assert.equal(canAccessSource({},parent),false);
+  assert.equal(canAccessSource({ownerId:owner.id},parent),false);
+  assert.equal(canAccessPlan(data.plans[0],parent),false);
+  assert.equal(canAccessQuestion({ownerId:owner.id,audienceUserId:parent.id},parent),false,'owner marker wins over stale audience');
 });
 
-test('student private drafts remain own-only, parents can inspect, and set publication requires a current owner request',()=>{
-  const events=base(student);
-  const data=foldEvents(events,profiles);
-  assert.equal(studyDataForProfile(data,student).questions[0].correctIndex,-1);
-  assert.equal(studyDataForProfile(data,student).questions[0].status,'published');
-  assert.equal(studyDataForProfile(data,other).questions.length,0);
-  assert.equal(studyDataForProfile(data,parent).questions[0].correctIndex,0);
-  assert.equal(mayPracticeQuestion(data,parent,data.questions[0]),false);
-  assert.throws(()=>prepareLibraryPublicationRequest(data,other,topic.id),{code:'LIBRARY_REQUEST_FORBIDDEN'});
-  assert.throws(()=>prepareLibraryPublicationRequest(data,{...student,familyId:'foreign'},topic.id),{code:'LIBRARY_REQUEST_FORBIDDEN'});
-  assert.throws(()=>prepareLibraryPublication(data,parent,topic.id),{code:'LIBRARY_REQUEST_REQUIRED'});
-  const request=prepareLibraryPublicationRequest(data,student,topic.id,new Date(now));
-  const requested=foldEvents([...events,request.event!,request.event!],profiles);
-  assert.equal(requested.topics[0].publicationRequest?.sequence,1);
-  assert.equal(prepareLibraryPublicationRequest(requested,student,topic.id).event,undefined);
-  assert.throws(()=>prepareLibraryPublication(requested,student,topic.id),{code:'LIBRARY_PUBLISH_FORBIDDEN'});
-  const published=prepareLibraryPublication(requested,parent,topic.id,new Date(now));
-  const edited=foldEvents([...events,request.event!,event('edit','question.upserted',{...question,version:2},student.id)],profiles);
-  assert.throws(()=>prepareLibraryPublication(edited,parent,topic.id),{code:'LIBRARY_REQUEST_REQUIRED'});
-  const shared=foldEvents([...events,request.event!,...published.events],profiles);
-  assert.equal(studyDataForProfile(shared,other).topics.length,1);
-  assert.equal(studyDataForProfile(shared,other).questions.length,0);
-  const adoption=prepareLibraryAdoption(shared,other,published.topic.id,new Date(now));
-  const joined=foldEvents([...events,request.event!,...published.events,adoption.event!],profiles);
-  const view=studyDataForProfile(joined,other);
-  assert.equal(view.questions.length,1);
-  assert.equal(view.questions[0].correctIndex,-1);
-  assert.doesNotMatch(JSON.stringify(view),/SECRET_|private-topic/);
+test('parents cannot read another owner question, audio, plan arrangement or frozen session',async()=>{
+  const {data,events}=fixture();
+  for(const actor of [parent,otherParent]) {
+    assert.throws(()=>buildPlanningContext(data,events,data.plans[0],data.planningTurns[0],actor),{code:'PLAN_NOT_FOUND'});
+    assert.throws(()=>assertOwnQuestion(data,actor,q.id),{code:'QUESTION_NOT_FOUND'});
+    assert.throws(()=>assertPracticeTopic(data,actor,q.topicId),{code:'TOPIC_NOT_FOUND'});
+    assert.equal(mayPracticeQuestion(data,actor,q),false);
+    assert.throws(()=>preparePlanArrangement(data,actor,q.topicId,'new-id'),{code:'TOPIC_NOT_FOUND'});
+    await assert.rejects(()=>authorizedPracticeSession(data,events,actor,'session-owner'),{code:'SESSION_ACCESS_DENIED'});
+    for(const sessionId of [undefined,'session-owner']) await assert.rejects(()=>authorizedAudioText(data,events,actor,{questionId:q.id,sessionId,part:'prompt'}),{code:'AUDIO_QUESTION_NOT_FOUND'});
+  }
+  assert.equal(assertOwnQuestion(data,owner,q.id).id,q.id);
+  assert.equal(await authorizedAudioText(data,events,owner,{questionId:q.id,part:'prompt'}),'Read a book.');
 });
 
-test('request generations permit R1 → R2 → R1 and earlier public revisions are recognized after reverting',()=>{
-  const events=base(student);
-  const read=()=>foldEvents(events,profiles);
-  const first=prepareLibraryPublicationRequest(read(),student,topic.id,new Date(now));events.push(first.event!);
-  const firstPublic=prepareLibraryPublication(read(),parent,topic.id,new Date(now));events.push(...firstPublic.events);
-  events.push(event('add-q2','question.upserted',{...question,id:'q2'},student.id));
-  const second=prepareLibraryPublicationRequest(read(),student,topic.id,new Date(now));events.push(second.event!);
-  events.push(...prepareLibraryPublication(read(),parent,topic.id,new Date(now)).events);
-  events.push(event('archive-q2','question.upserted',{...question,id:'q2',status:'archived',version:2},student.id));
-  const third=prepareLibraryPublicationRequest(read(),student,topic.id,new Date(now));
-  assert.equal(third.request.revision,first.request.revision);
-  assert.notEqual(third.event!.id,first.event!.id);
-  events.push(third.event!,third.event!);
-  assert.equal(read().topics[0].publicationRequest?.sequence,3);
-  assert.equal(read().topics[0].publishedSourceRevision,read().topics[0].currentSourceRevision);
-  assert.equal(prepareLibraryPublication(read(),parent,topic.id).topic.id,firstPublic.topic.id);
+test('all legacy public clones are hidden and unusable even after adoption or source removal',async()=>{
+  const {data,events}=fixture();
+  for(const sourceIds of [[],['source-owner']]) {
+    const topic={...data.topics[0],id:'public',ownerId:undefined,audienceUserId:undefined,libraryPublished:true,librarySourceTopicId:q.topicId};
+    const question={...q,id:'public-question',topicId:'public',ownerId:undefined,audienceUserId:undefined,sourceIds};
+    const publicData:StudyData={...data,topics:[...data.topics,topic],questions:[...data.questions,question],
+      plans:[...data.plans,{...data.plans[0],id:'adopted',ownerId:parent.id,libraryTopicId:'public',sourceIds:[]}]};
+    for(const person of people) {
+      const visible=studyDataForProfile(publicData,person);
+      assert.ok(visible.topics.every(t=>!t.libraryPublished));
+      assert.ok(visible.questions.every(q=>q.id!=='public-question'));
+      assert.ok(visible.plans.every(p=>!p.libraryTopicId));
+      assert.equal(mayPracticeQuestion(publicData,person,question),false);
+      assert.throws(()=>assertPracticeTopic(publicData,person,'public'),{code:'TOPIC_NOT_FOUND'});
+      await assert.rejects(()=>authorizedAudioText(publicData,events,person,{questionId:question.id,part:'prompt'}),{code:'AUDIO_QUESTION_NOT_FOUND'});
+    }
+  }
 });

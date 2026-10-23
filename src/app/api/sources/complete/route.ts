@@ -13,7 +13,7 @@ export async function POST(request:Request) { return api(async()=>{
   const input=await readJson(request,z.object({sourceId:z.string().uuid(),topicId:z.string().uuid().optional(),storagePath:z.string().regex(/^[a-zA-Z0-9_-]{8,200}$/)}));
   const {data}=await getFullState();
   const topic=data.topics.find(t=>t.id===input.topicId);
-  if(input.topicId && (!topic || !canAccessQuestion(topic,profile) || (profile.role!=='parent' && topic.audienceUserId!==profile.id))) throw new ApiError(404,'問題集が見つかりません。');
+  if(input.topicId && (!topic || !canAccessQuestion(topic,profile))) throw new ApiError(404,'問題集が見つかりません。');
   const existing=data.sources.find(source=>source.id===input.sourceId);
   if(existing) {
     if(!canAccessSource(existing,profile)) throw new ApiError(403,'この資料にはアクセスできません。');

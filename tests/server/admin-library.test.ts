@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import test from 'node:test';
+import test, { beforeEach, afterEach } from 'node:test';
 import type { GenerationJob,LearningPlan,Profile,Question,Topic } from '../../src/lib/types';
 import { foldEvents,studyDataForProfile,type StudyEvent } from '../../src/server/google-store';
 import { getFamilyId } from '../../src/server/env';
@@ -13,9 +13,18 @@ import { notificationQuestions } from '../../src/server/push';
 import { canAccessSource } from '../../src/server/access';
 
 const now='2026-10-23T00:00:00Z';
-const parent:Profile={id:'parent',familyId:getFamilyId(),role:'parent',name:'Parent'};
-const otherParent:Profile={...parent,id:'other-parent'};
-const student:Profile={...parent,id:'student',role:'student',name:'Student'};
+
+const previousMembers = process.env.ALLOWED_FAMILY_MEMBERS_JSON;
+beforeEach(() => { process.env.ALLOWED_FAMILY_MEMBERS_JSON = JSON.stringify([
+  { id: 'parent', name: 'Operator', email: 'takashi.oikawa@gmail.com', role: 'parent' },
+  { id: 'another-parent', name: 'Member', email: 'member@example.com', role: 'parent' },
+  { id: 'student', name: 'Student', email: 'student@example.com', role: 'student' },
+]); });
+afterEach(() => { if (previousMembers === undefined) delete process.env.ALLOWED_FAMILY_MEMBERS_JSON; else process.env.ALLOWED_FAMILY_MEMBERS_JSON = previousMembers; });
+
+const parent:Profile={id:'parent',familyId:getFamilyId(),role:'parent',accessLevel:'superuser',name:'Operator'};
+const otherParent:Profile={...parent,id:'other-parent',accessLevel:'learner'};
+const student:Profile={...parent,id:'student',role:'student',accessLevel:'learner',name:'Student'};
 const profiles=[parent,otherParent,student];
 const topic:Topic={id:'f82ca4c5-44b1-475c-bfa1-5e4746cfa2de',title:'英語の確認',subject:'英語',description:'基本語彙',createdAt:now,targetCount:10,testOnly:true,audienceUserId:parent.id,planId:'PRIVATE_PLAN'};
 const plan:LearningPlan={id:'PRIVATE_PLAN',ownerId:parent.id,title:topic.title,subject:'英語',goal:'PRIVATE_PARENT_GOAL',difficulty:'高校1年',dailyQuestionTarget:10,sourceIds:['PRIVATE_SOURCE'],testOnly:true,version:1,createdAt:now,updatedAt:now};
@@ -29,12 +38,13 @@ function fixture() {
   return {events,data:foldEvents(events,profiles)};
 }
 
-test('test mode is parent-only, survives generation serialization and is invisible in every student collection',()=>{
+test('test mode is operator-only, survives generation serialization and is invisible in every student collection',()=>{
   assert.doesNotThrow(()=>assertPlanMode(parent,true));
   assert.throws(()=>assertPlanMode(student,true),{code:'TEST_MODE_FORBIDDEN'});
+  assert.throws(()=>assertPlanMode({...otherParent,id:'another-parent',accessLevel:'superuser'},true),{code:'TEST_MODE_FORBIDDEN'});
   const {data}=fixture();
   assert.equal(assertGenerationAccess(data,job).id,parent.id);
-  assert.throws(()=>assertGenerationAccess({...data,profiles:[{...parent,role:'student'}]},job),{code:'GENERATION_ACCESS_DENIED'});
+  assert.throws(()=>assertGenerationAccess({...data,profiles:[{...parent,role:'student',accessLevel:'learner'}]},job),{code:'GENERATION_ACCESS_DENIED'});
   const generated=materializeQuestions([{...question,sourceIds:[]}],{job,sourceIds:[],prior:[],count:1,createdAt:now})[0];
   assert.equal(generated.testOnly,true);assert.equal(generated.status,'published');assert.equal(generated.needsReview,false);
   const projected=studyDataForProfile(data,student,new Date(now));
@@ -42,13 +52,13 @@ test('test mode is parent-only, survives generation serialization and is invisib
   assert.doesNotMatch(JSON.stringify(projected),/PRIVATE_/);
   assert.equal(canAccessSource(data.sources[0],student),false);
   assert.equal(studyDataForProfile(data,parent).questions.length,1);
-  assert.throws(()=>assertOrdinaryPublication(question,topic),{code:'TEST_PUBLISH_FORBIDDEN'});
+  assert.throws(()=>assertOrdinaryPublication(question,topic),{code:'SHARING_DISABLED'});
   assert.equal(notificationQuestions(data,student,[question.id],new Date(now)).length,0);
 });
 
-test('parents can rehearse test sets in their own sessions; tests never enter student practice, audio or growth',async()=>{
+test('operators can rehearse test sets in their own sessions; tests never enter student practice, audio or growth',async()=>{
   const {data,events}=fixture();
-  assert.doesNotThrow(()=>assertPracticeTopic(data,otherParent,topic.id));
+  assert.throws(()=>assertPracticeTopic(data,otherParent,topic.id),{code:'TOPIC_NOT_FOUND'});
   assert.doesNotThrow(()=>assertPracticeTopic(data,parent));
   assert.throws(()=>assertPracticeTopic(data,student,topic.id),{code:'TOPIC_NOT_FOUND'});
   assert.equal(mayPracticeQuestion(data,student,question),false);
@@ -66,45 +76,11 @@ test('parents can rehearse test sets in their own sessions; tests never enter st
   assert.equal(studyDataForProfile(full,student,new Date(now)).attempts.length,0);
 });
 
-test('explicit library publication is idempotent, atomic and sanitized; adoption unlocks only the public clone',async()=>{
-  const {data,events}=fixture();
-  const first=prepareLibraryPublication(data,parent,topic.id,new Date(now));
-  const retry=prepareLibraryPublication(data,otherParent,topic.id,new Date('2026-10-24T00:00:00Z'));
-  assert.equal(first.topic.id,retry.topic.id);
-  assert.equal(first.events.at(-1)?.id,retry.events.at(-1)?.id);
-  assert.throws(()=>prepareLibraryPublication(data,student,topic.id),{code:'LIBRARY_PUBLISH_FORBIDDEN'});
-  const staged=foldEvents([...events,...first.events.slice(0,-1)],profiles);
-  assert.equal(studyDataForProfile(staged,student).topics.length,0);
-  const publicData=foldEvents([...events,...first.events,...retry.events],profiles);
-  assert.equal(publicData.topics.length,2);assert.equal(publicData.questions.length,2);
-  const before=studyDataForProfile(publicData,student,new Date('2026-10-25T00:00:00Z'));
-  assert.equal(before.topics.length,1);assert.equal(before.topics[0].libraryPublished,true);assert.equal(before.topics[0].librarySourceTopicId,undefined);assert.equal(before.questions.length,0);
-  assert.doesNotMatch(JSON.stringify(before),/PRIVATE_/);
-  assert.throws(()=>assertPracticeTopic(publicData,student,first.topic.id),{code:'LIBRARY_NOT_ADOPTED'});
-  assert.throws(()=>prepareLibraryAdoption(publicData,student,topic.id),{code:'LIBRARY_NOT_FOUND'});
-  const added=prepareLibraryAdoption(publicData,student,first.topic.id,new Date(now));
-  const adopted=foldEvents([...events,...first.events,added.event!,added.event!],profiles);
-  const visible=studyDataForProfile(adopted,student,new Date(now));
-  assert.equal(visible.plans.length,1);assert.equal(visible.questions.length,1);
-  assert.equal(prepareLibraryAdoption(adopted,student,first.topic.id).event,undefined);
-  const publicQuestion=adopted.questions.find(q=>q.topicId===first.topic.id)!;
-  assert.throws(()=>assertQuestionEditable(first.topic),{code:'LIBRARY_READ_ONLY'});
-  assert.throws(()=>assertOrdinaryPublication(publicQuestion,first.topic),{code:'LIBRARY_READ_ONLY'});
-  assert.notEqual(publicQuestion.id,question.id);assert.deepEqual(publicQuestion.sourceIds,[]);assert.equal(publicQuestion.planId,undefined);assert.equal(publicQuestion.testOnly,undefined);assert.equal(publicQuestion.audienceUserId,undefined);
-  assert.doesNotMatch(JSON.stringify(publicQuestion),/PRIVATE_/);
-  assert.doesNotThrow(()=>assertPracticeTopic(adopted,student,first.topic.id));
-  assert.equal(mayPracticeQuestion(adopted,student,publicQuestion),true);
-  assert.equal(notificationQuestions(publicData,student,[publicQuestion.id],new Date(now)).length,0);
-  assert.equal(notificationQuestions(adopted,student,[publicQuestion.id],new Date(now)).length,1);
-  assert.equal(adopted.questions.find(q=>q.id===question.id)?.testOnly,true);
-});
-
-test('library publication accepts saved drafts but rejects unfinished generation or an unrequested student set',()=>{
+test('even administrators cannot publish or adopt a private or test set',()=>{
   const {data}=fixture();
-  assert.throws(()=>prepareLibraryPublication({...data,jobs:[{...job,status:'running'}]},parent,topic.id),{code:'GENERATION_ACTIVE'});
-  assert.equal(prepareLibraryPublication({...data,questions:[{...question,status:'draft',needsReview:true}]},parent,topic.id).publishedCount,1);
-  assert.throws(()=>prepareLibraryPublication({...data,plans:[{...plan,ownerId:student.id}]},parent,topic.id),{code:'LIBRARY_REQUEST_REQUIRED'});
-  assert.throws(()=>prepareLibraryPublication(data,{...parent,familyId:'other-family'},topic.id),{code:'LIBRARY_PUBLISH_FORBIDDEN'});
-  const changed=prepareLibraryPublication({...data,questions:[{...question,version:2}]},parent,topic.id);
-  assert.notEqual(changed.topic.id,prepareLibraryPublication(data,parent,topic.id).topic.id);
+  for(const actor of [parent,otherParent,student]) {
+    assert.throws(()=>prepareLibraryPublication(data,actor,topic.id),{code:'SHARING_DISABLED'});
+    assert.throws(()=>prepareLibraryPublicationRequest(data,actor,topic.id),{code:'SHARING_DISABLED'});
+    assert.throws(()=>prepareLibraryAdoption(data,actor,topic.id),{code:'SHARING_DISABLED'});
+  }
 });
