@@ -2,6 +2,7 @@ import { randomUUID } from 'node:crypto';
 import { mkdir, open, readFile, readdir, rename, rm, link, unlink } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { approveUnit, canonicalJson, hashContent, validateRelations, validateSeed, validateUnit } from './schema.mjs';
+import { assertSharedSpendingFence, withSharedSpendingFence } from '../shared-spending-fence.mjs';
 
 const leases = new WeakSet();
 const safeId = id => { if (typeof id !== 'string' || !/^[a-z0-9][a-z0-9-]{0,159}$/.test(id)) throw new Error('Invalid durable identity.'); return id; };
@@ -22,20 +23,13 @@ async function durableJson(file, value, immutable = false) {
   } catch (error) { await rm(temporary, { force: true }); throw error; }
 }
 export async function withExpansionLock({ output, sharedLockDirectory }, action) {
-  const owner = { schemaVersion: 1, output: resolve(output), sharedLockDirectory: resolve(sharedLockDirectory), pid: process.pid, nonce: randomUUID(), acquiredAt: new Date().toISOString() };
-  await mkdir(dirname(owner.sharedLockDirectory), { recursive: true, mode: 0o700 });
-  try { await mkdir(owner.sharedLockDirectory, { mode: 0o700 }); }
-  catch (error) { if (error.code === 'EEXIST') throw new Error('Shared spending lock is already held; never clear it automatically.'); throw error; }
-  const lease = Object.freeze(owner); leases.add(lease);
-  try { await durableJson(join(owner.sharedLockDirectory, 'owner.json'), owner, true); return await action(lease); }
-  finally {
-    leases.delete(lease);
-    const current = await readOptionalJson(join(owner.sharedLockDirectory, 'owner.json'));
-    if (current?.nonce === owner.nonce) { await rm(owner.sharedLockDirectory, { recursive: true }); await syncDirectory(dirname(owner.sharedLockDirectory)); }
-  }
+  return withSharedSpendingFence({ output, sharedLockDirectory, ownerKind: 'phase-two' }, async lease => {
+    leases.add(lease); try { return await action(lease); } finally { leases.delete(lease); }
+  });
 }
 export async function assertLease(lease, output) {
   if (!leases.has(lease) || lease.output !== resolve(output)) throw new Error('A real exclusive lease is required for this store.');
+  await assertSharedSpendingFence(lease, 'phase-two');
   const current = await readJson(join(lease.sharedLockDirectory, 'owner.json'));
   if (current.nonce !== lease.nonce || current.output !== lease.output) throw new Error('Shared spending lock changed ownership.');
 }
@@ -90,6 +84,24 @@ export async function persistLedger(lease, ledger) {
 export async function persistRequest(lease, request) {
   await assertLease(lease, lease.output);
   await durableJson(join(lease.output, 'requests', safeId(request.id), 'request.json'), request, true);
+}
+export async function persistWork(lease, work, quote) {
+  await assertLease(lease, lease.output);
+  await durableJson(join(lease.output, 'requests', safeId(work.id), 'work.json'), { work, quote }, true);
+}
+export async function persistPhaseOneHandoff(lease, runtimeDirectory, record) {
+  await assertLease(lease, lease.output);
+  if (lease.sharedLockDirectory !== join(resolve(runtimeDirectory), 'shared-spending.lock') || record.phaseTwoOutput !== lease.output || !/^[a-f0-9]{64}$/.test(record.phaseOneFingerprint) || !/^[a-f0-9]{64}$/.test(record.integrationSha256)) throw new Error('Invalid shared-budget handoff evidence.');
+  const file = join(runtimeDirectory, 'phase-two-handoff.json'), previous = await readOptionalJson(file);
+  if (previous) {
+    if (previous.schemaVersion !== 1 || previous.phaseTwoOutput !== record.phaseTwoOutput || previous.phaseOneFingerprint !== record.phaseOneFingerprint) throw new Error('Existing handoff belongs to a different frozen budget/catalog.');
+    return previous;
+  }
+  await durableJson(file, { schemaVersion: 1, ...record }, true); return record;
+}
+export async function persistReviewResult(lease, requestId, result) {
+  await assertLease(lease, lease.output);
+  await durableJson(join(lease.output, 'requests', safeId(requestId), 'review-result.json'), result, true);
 }
 export async function persistRawResponse(lease, request, response) {
   await assertLease(lease, lease.output);

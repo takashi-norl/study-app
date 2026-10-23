@@ -4,10 +4,10 @@ import { TARGET_ALLOCATION, validateAllocation } from './allocation.mjs';
 
 export function planningStatus(registry, ownApprovedUnits = []) {
   validateAllocation();
-  const baseForms = new Set([...registry.units.values()].filter(unit => ['base-approved', 'frozen'].includes(unit.source)).map(unit => unit.lemma));
+  const baseForms = new Set([...registry.units.values()].filter(unit => ['base-approved', 'frozen'].includes(unit.source)).map(unit => unit.canonicalKey ?? unit.lemma));
   const approved = new Set(ownApprovedUnits.map(unit => unit.id));
   if ([...approved].some(id => !registry.units.has(id) || registry.units.get(id).source !== 'expansion')) throw new Error('Approved expansion identity is not registered.');
-  return { baseApprovedDistinct: baseForms.size, baseTarget: TARGET_ALLOCATION.baseTarget, baseReady: baseForms.size >= TARGET_ALLOCATION.baseTarget, registeredDistinct: countDistinct(registry).lexicalUnits, expansionApprovedDistinct: approved.size, totalApprovedDistinct: baseForms.size + approved.size, totalTarget: TARGET_ALLOCATION.totalTarget };
+  return { baseApprovedDistinct: baseForms.size, countBasis: registry.canonicalAudit ? 'reviewed-canonical-lexemes' : 'normalized-headwords-not-yet-family-audited', canonicalAuditVerified: Boolean(registry.canonicalAudit), baseTarget: TARGET_ALLOCATION.baseTarget, baseReady: baseForms.size >= TARGET_ALLOCATION.baseTarget, registeredDistinct: countDistinct(registry).lexicalUnits, expansionApprovedDistinct: approved.size, totalApprovedDistinct: baseForms.size + approved.size, totalTarget: TARGET_ALLOCATION.totalTarget };
 }
 
 /** Pure plan only. A production dispatcher must lock and persist before sending. */

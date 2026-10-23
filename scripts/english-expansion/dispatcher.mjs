@@ -5,6 +5,7 @@ import { classifyCandidates } from './registry.mjs';
 import { hashContent, normalizeForm, validateSeed } from './schema.mjs';
 import { TARGET_ALLOCATION } from './allocation.mjs';
 import { isPublicCandidate } from '../vocabulary-batch/catalog-policy.mjs';
+import { applyCanonicalAudit } from './canonical-families.mjs';
 import { reserveExpansionRequest } from './budget.mjs';
 import { assertLease, initializeStore, persistLedger, persistRawResponse, persistRequest, readJson, readOptionalJson, registerPilotSeeds, withExpansionLock } from './store.mjs';
 
@@ -22,30 +23,33 @@ async function catalogFingerprint(output) {
 }
 
 /** Real filesystem evidence, not caller-provided true lifecycle flags. No writes to phase one. */
-export async function inspectPhaseOneGate(lease, { phaseOneOutput, runtimeDirectory, cashPurchases = [], mockExpectedBaseTarget = 7500 }) {
+export async function inspectPhaseOneGate(lease, { phaseOneOutput, runtimeDirectory, cashPurchases = [], historicalCommitments, mockExpectedBaseTarget = 7500, canonicalAudit }) {
   await assertLease(lease, lease.output);
   if (!Number.isInteger(mockExpectedBaseTarget) || mockExpectedBaseTarget < 1 || mockExpectedBaseTarget > 7500) throw new Error('Invalid mocked base target.');
   if (!await exists(join(runtimeDirectory, 'stop-production'))) throw new Error('Phase-one stop checkpoint is required.');
   for (const lock of [join(runtimeDirectory, 'production.lock'), join(phaseOneOutput, '.text-build-lock'), join(phaseOneOutput, 'audio', 'batch.lock')]) {
     if (await exists(lock)) throw new Error('Phase one is still running or owns a work lock.');
   }
-  const [snapshot, registry, manifest, audioReport, contentHash] = await Promise.all([
-    loadBudgetSnapshot({ phaseOneOutput, expansionLedgerPath: join(lease.output, 'ledger.json'), allowNewExpansion: true, cashPurchases }),
+  const [snapshot, rawRegistry, manifest, audioReport, contentHash] = await Promise.all([
+    loadBudgetSnapshot({ phaseOneOutput, expansionLedgerPath: join(lease.output, 'ledger.json'), allowNewExpansion: true, cashPurchases, historicalCommitments }),
     loadRegistry({ phaseOneOutput }), readJson(join(phaseOneOutput, 'manifest.json')), readJson(join(phaseOneOutput, 'audio', 'last-report.json')), catalogFingerprint(phaseOneOutput),
   ]);
+  const registry = canonicalAudit ? applyCanonicalAudit(rawRegistry, canonicalAudit.proposal, canonicalAudit.review) : rawRegistry;
   if (snapshot.phaseOneText.calls.some(call => call.status !== 'complete')) throw new Error('Phase-one text requests must be fully settled.');
   if (snapshot.phaseOneAudioReservations.some(record => !['ready', 'known-quota-rejection'].includes(record.outcome))) throw new Error('Phase-one audio requests must be fully settled.');
   const approvedForms = new Set([...registry.units.values()].filter(unit => ['base-approved', 'frozen'].includes(unit.source)).map(unit => unit.lemma));
   const activeWords = Array.isArray(manifest.words) ? manifest.words.filter(isPublicCandidate) : [];
   const activeForms = new Set(activeWords.map(word => normalizeForm(word.word ?? word.lemma ?? '')));
-  if (approvedForms.size !== mockExpectedBaseTarget || activeWords.length !== mockExpectedBaseTarget || activeForms.size !== mockExpectedBaseTarget || activeWords.some(word => !['approved', 'preserved'].includes(word.status)) || [...activeForms].some(form => !approvedForms.has(form))) throw new Error('Phase-one approved catalog is not complete; held inventory is not completion.');
+  const completedCount = registry.canonicalAudit?.canonicalLexemeCount ?? approvedForms.size;
+  const approvedIds = new Set([...registry.units.values()].filter(unit => ['base-approved', 'frozen'].includes(unit.source)).map(unit => unit.id));
+  if (completedCount !== mockExpectedBaseTarget || activeWords.length !== approvedIds.size || new Set(activeWords.map(word => word.id)).size !== approvedIds.size || activeWords.some(word => !approvedIds.has(word.id) || !['approved', 'preserved'].includes(word.status)) || [...activeForms].some(form => !approvedForms.has(form))) throw new Error('Phase-one approved catalog is not complete; held inventory is not completion.');
   const heldWords = manifest.words.filter(word => word.inventoryHold);
   if (heldWords.some(word => ['approved', 'preserved'].includes(word.status))) throw new Error('Held inventory must not appear in the approved base catalog.');
   // Audio reports cover all paid approved assets, including retained non-base content.
   // Do not discard those reservations or demand another recording to reach the base target.
   const approvedNew = manifest.words.filter(word => word.status === 'approved').length;
   if (audioReport.total !== approvedNew || audioReport.ready + audioReport.existing !== approvedNew || audioReport.missing !== 0 || audioReport.failed !== 0 || audioReport.stopped || snapshot.phaseOneAudioReservations.filter(record => record.outcome === 'ready').length < audioReport.ready) throw new Error('Phase-one audio has not drained to a complete final report.');
-  const phaseOneFingerprint = hashContent({ manifest, ledger: snapshot.phaseOneText, audioReservations: snapshot.phaseOneAudioReservations, contentHash });
+  const phaseOneFingerprint = hashContent({ manifest, ledger: snapshot.phaseOneText, audioReservations: snapshot.phaseOneAudioReservations, contentHash, ...(historicalCommitments ? { historicalCommitments } : {}), ...(registry.canonicalAudit ? { canonicalAudit: registry.canonicalAudit } : {}) });
   // Quarantined seeds remain reserved lexical identities. They are not completed assets,
   // and cannot silently become phase-two candidates without an explicit review workflow.
   for (const word of heldWords) {
@@ -61,7 +65,7 @@ export async function inspectPhaseOneGate(lease, { phaseOneOutput, runtimeDirect
 export function boundedRequest({ id, stage, unitIds, params, reservedUsd }) {
   if (typeof id !== 'string' || !/^[a-z0-9][a-z0-9-]{0,159}$/.test(id) || !['generation', 'review'].includes(stage) || !Array.isArray(unitIds) || unitIds.length < 1 || unitIds.length > 5 || new Set(unitIds).size !== unitIds.length || unitIds.some(id => typeof id !== 'string' || !/^en-(word|phrase)-[a-f0-9]{24}$/.test(id))) throw new Error('A request must have a stable identity, stage and 1–5 unique unit IDs.');
   if (!params || typeof params !== 'object' || Array.isArray(params) || !Number.isInteger(params.max_tokens) || params.max_tokens < 1 || params.max_tokens > 20000 || typeof params.model !== 'string' || !params.model) throw new Error('Bounded provider model/output parameters required.');
-  const allowed = new Set(['model', 'max_tokens', 'system', 'messages', 'output_config', 'thinking', 'tools', 'tool_choice']);
+  const allowed = new Set(['model', 'max_tokens', 'system', 'messages', 'output_config', 'thinking', 'tools', 'tool_choice', 'service_tier', 'inference_geo']);
   if (Object.keys(params).some(key => !allowed.has(key)) || JSON.stringify(params).length > 2_000_000) throw new Error('Provider parameters must not include credentials, headers or unbounded payloads.');
   if (!Number.isFinite(reservedUsd) || reservedUsd <= 0 || reservedUsd > 500) throw new Error('A positive worst-case spending ceiling is required.');
   const requestHash = hashContent({ adapterVersion: 1, stage, unitIds, params });

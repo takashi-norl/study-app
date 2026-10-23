@@ -1,10 +1,15 @@
-# Durable phase-two foundation — mock only
+# Durable phase-two dispatcher — activation still closed
 
 `store.mjs` and `dispatcher.mjs` are an offline foundation, not a production worker.
-There is no SDK, HTTP implementation, API key loader, CLI, or audio generation in
-these modules. `assertProductionDispatchReady()` always throws
+The original `dispatcher.mjs` mock entry has no SDK or HTTP implementation.
+`assertProductionDispatchReady()` still always throws
 `LIVE_EXPANSION_NOT_INTEGRATED`. Calling code must not remove that blocker merely
 because the budget has room or the phase-one process happens to be idle.
+
+The separate `live-pilot.mjs` now supplies a real, one-request Anthropic adapter.
+It remains closed until an independent, hash-bound integration receipt is
+installed. See [LIVE-PILOT.md](./LIVE-PILOT.md). No live receipt has been created
+by this implementation, and no paid request has been made to verify it.
 
 ## State and evidence
 
@@ -52,12 +57,15 @@ The gate reads actual files and derives lifecycle flags itself. It requires:
 1. A stop checkpoint and absence of production, text-build and audio work locks.
 2. All text outcomes settled and all audio reservations either ready or an
    explicitly known quota rejection; missing or uncertain evidence blocks.
-3. Exactly 7,500 distinct, hash-approved/frozen base entries matching the 7,500
-   nonheld manifest entries, each approved or preserved. Quarantined inventory
+3. Exactly 7,500 distinct, hash-approved/frozen base lexical units matching
+   nonheld manifest entries, each approved or preserved. The live entry additionally
+   requires a complete independently reviewed canonical-family audit; multiple
+   source cards/senses can belong to one counted lexical family. Quarantined inventory
    may remain outside that total, but is never counted as completed. Its words
    and aliases stay in the dedup registry and need a deliberate review workflow
    before reuse.
-4. A complete final audio report for all newly approved base entries.
+4. A complete final audio report for **all** newly approved paid entries, including
+   retained/excluded cards whose audio reservations cannot disappear from accounting.
 5. The same frozen catalog/accounting fingerprint when reopening the store,
    before reserving, and immediately before the mocked provider boundary.
 
@@ -74,11 +82,14 @@ paid-dispatch path must honor the same exclusive spending fence, and phase one
 must be stopped and drained, before a real phase-two adapter is enabled. This is
 the outstanding TOCTOU blocker, not an implemented production guarantee.
 
-The next integration also needs reviewed provider-specific token counting and
-worst-case pricing, generation/review prompt and parsing adapters, a durable
-queue or batch submit/collect reconciler, explicit operator handling for unknown
-submissions, a review-identity/content-binding adapter, and an importer for word
-and phrase assets. The first actual 20-item pilot must be reviewed for quality
+The provider-specific quote, prompt, parser and full-card independent-review
+adapters are now implemented separately and tested with a network-disabled SDK.
+The outstanding live requirement is the actual reviewed phase-one fence/handoff
+integration, a canonical audit of the finished base, a reviewed 20-unit inventory,
+and a current complete cash-obligation record. Bulk batch scheduling, editorial
+repair/resume for uncertain submissions, and an app importer for word/phrase
+assets remain outside this first-pilot implementation.
+The first actual 20-item pilot must be reviewed for quality
 and marginal cost before authorizing a larger wave. New audio is deferred and
 would need a separate reservation under the same overall budget.
 

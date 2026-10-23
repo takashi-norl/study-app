@@ -1,3 +1,4 @@
+import { validateHistoricalCommitments } from './historical-costs.mjs';
 export const TOTAL_CAP_USD = 500;
 export const PHASE_ONE_CAPS_USD = { text: 100, audio: 400 };
 export const DEFAULT_YEN_POLICY = { capJpy: 100000, jpyPerUsd: 180, bufferMultiplier: 1.1 };
@@ -66,21 +67,23 @@ export function assessYenGuard({ textUsd, audioUsd }, cashPurchases = [], policy
   return { capJpy: policy.capJpy, allInPlanningRate, usageCommittedJpy, cashCommittedJpy, cashPurchasedUsdPreTax: cashUsdPreTax, cashByPool, poolLiabilitiesJpy, combinedAllInJpy, combinedObligationUsd, observationsExceedingGuard, blocked: combinedAllInJpy > policy.capJpy || observationsExceedingGuard.length > 0, note: 'Sum the larger usage/prepayment liability within each funding pool; do not double-count the same consumed credit. Planning conversion/buffer is not a quoted FX/tax rate.' };
 }
 /** Cash top-ups fund usage; adding them again would double-count the same credit. */
-export function assessSharedBudget({ phaseOneText, phaseOneAudioReservations, expansion, cashPurchases = [], capUsd = TOTAL_CAP_USD, yenPolicy = DEFAULT_YEN_POLICY, lifecycle = {} }) {
+export function assessSharedBudget({ phaseOneText, phaseOneAudioReservations, expansion, cashPurchases = [], historicalCommitments, capUsd = TOTAL_CAP_USD, yenPolicy = DEFAULT_YEN_POLICY, lifecycle = {} }) {
   if (!Number.isFinite(capUsd) || capUsd <= 0 || capUsd > TOTAL_CAP_USD) throw new Error('Shared budget cannot exceed USD 500.');
   const base = callsCost(phaseOneText?.calls, 'phase-one'), next = callsCost(expansion?.calls, 'expansion');
   const audio = audioCost(phaseOneAudioReservations), cap = money(capUsd, 'budget cap');
-  const committed = base.actual + base.reserved + audio.total + next.actual + next.reserved;
+  const historical = historicalCommitments ? validateHistoricalCommitments(historicalCommitments) : null;
+  const priorText = money(historical?.textUsd ?? 0, 'historical text allowance'), priorAudio = money(historical?.audioUsd ?? 0, 'historical audio allowance');
+  const committed = base.actual + base.reserved + audio.total + next.actual + next.reserved + priorText + priorAudio;
   const capViolations = [];
   if (base.actual + base.reserved > money(PHASE_ONE_CAPS_USD.text, 'phase-one text cap')) capViolations.push('phase-one-text');
   if (audio.total > money(PHASE_ONE_CAPS_USD.audio, 'phase-one audio cap')) capViolations.push('phase-one-audio');
   if (committed > cap) capViolations.push('shared-total');
   const unresolved = [...base.unresolved, ...next.unresolved, ...audio.unresolved];
-  const yen = assessYenGuard({ textUsd: dollars(base.actual + base.reserved + next.actual + next.reserved), audioUsd: dollars(audio.total) }, cashPurchases, yenPolicy);
+  const yen = assessYenGuard({ textUsd: dollars(base.actual + base.reserved + next.actual + next.reserved + priorText), audioUsd: dollars(audio.total + priorAudio) }, cashPurchases, yenPolicy);
   if (money(yen.combinedObligationUsd, 'combined funding liability') > cap) capViolations.push('funding-obligations-total');
   if (yen.blocked) capViolations.push('yen-guard');
   const lifecycleReady = lifecycle.phaseOneStopped === true && lifecycle.phaseOneSettled === true && lifecycle.exclusiveSharedLockHeld === true && base.reserved === 0 && audio.unsettled === 0;
-  return { capUsd, committedUsd: dollars(committed), remainingUsd: Math.max(0, dollars(cap - money(yen.combinedObligationUsd, 'combined funding liability'))), phaseOneTextUsd: dollars(base.actual + base.reserved), phaseOneAudioUsd: dollars(audio.total), expansionUsd: dollars(next.actual + next.reserved), unresolved, capViolations, canReserve: !unresolved.length && !capViolations.length, canCommitExpansion: lifecycleReady && !unresolved.length && !capViolations.length, lifecycleReady, yen, cashPurchasedUsdPreTax: yen.cashPurchasedUsdPreTax, cashIsNotAdditionalUsage: true };
+  return { capUsd, committedUsd: dollars(committed), remainingUsd: Math.max(0, dollars(cap - money(yen.combinedObligationUsd, 'combined funding liability'))), phaseOneTextUsd: dollars(base.actual + base.reserved), phaseOneAudioUsd: dollars(audio.total), expansionUsd: dollars(next.actual + next.reserved), unresolved, capViolations, canReserve: !unresolved.length && !capViolations.length, canCommitExpansion: lifecycleReady && !unresolved.length && !capViolations.length, lifecycleReady, yen, cashPurchasedUsdPreTax: yen.cashPurchasedUsdPreTax, cashIsNotAdditionalUsage: true, historical };
 }
 
 export function reserveExpansionRequest(snapshot, request) {

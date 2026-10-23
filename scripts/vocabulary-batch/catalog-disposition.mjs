@@ -28,6 +28,7 @@ export function planCatalogDispositions({ state, proposal: rawProposal, review: 
   const byId = new Map(state.words.map(word => [word.id, word]));
   const changes = proposal.decisions.map(decision => {
     const seed = byId.get(decision.id), row = records.get(decision.id);
+    if (seed?.catalogFamily) throw new Error('A grouped sense card needs an explicit family migration before disposition.');
     if (!seed || seed.frozen || seed.inventoryHold || !['approved', 'rejected'].includes(seed.status)
       || hashVocabularyEntry(originalSeed(seed)) !== decision.seedSha256) throw new Error('Disposition seed is stale, held, frozen or still in progress.');
     if (!row || row.entry?.id !== seed.id || row.entry.word !== seed.word || row.review?.status !== seed.status

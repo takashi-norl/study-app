@@ -7,7 +7,7 @@ export function createRegistry({ approvedBatches = [], frozenEntries = [], ownIn
     const lemma = normalizeForm(entry.lemma ?? entry.word), id = entry.id;
     if (!id || !lemma) throw new Error('Existing catalog identity is missing.');
     const aliases = [...(entry.aliases ?? []), ...Object.values(entry.verbForms ?? {}).flat()].map(normalizeForm);
-    const identity = { id, lemma, source, aliases: [...new Set(aliases)].filter(alias => alias !== lemma) };
+    const identity = { id, lemma, source, contentSha256: hashContent(entry), aliases: [...new Set(aliases)].filter(alias => alias !== lemma) };
     const previous = units.get(id);
     if (previous && previous.lemma !== lemma) throw new Error('Existing ID resolves to different lemmas.');
     if (!previous) units.set(id, identity);
@@ -54,6 +54,6 @@ export function classifyCandidates(registry, rawCandidates) {
 }
 
 export function countDistinct(registry) {
-  const forms = new Set([...registry.units.values()].filter(unit => ['base-approved', 'frozen', 'expansion'].includes(unit.source)).map(unit => unit.lemma));
+  const forms = new Set([...registry.units.values()].filter(unit => ['base-approved', 'frozen', 'expansion'].includes(unit.source)).map(unit => unit.canonicalKey ?? unit.lemma));
   return { lexicalUnits: forms.size, words: [...forms].filter(form => !form.includes(' ')).length, phrases: [...forms].filter(form => form.includes(' ')).length };
 }

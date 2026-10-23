@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { hashVocabularyEntry } from './schema.mjs';
+import { assertCatalogFamilies, assertFamilyContent, familyFor } from './canonical-policy.mjs';
 
 const hash = z.string().regex(/^[a-f0-9]{64}$/);
 export const dispositionKinds = ['expansion-only', 'alias-only', 'invalid-lemma'];
@@ -21,9 +22,10 @@ export function dispositionFor(seed) {
   return disposition;
 }
 export const isCatalogExcluded = seed => dispositionFor(seed) !== null;
-export const isPublicCandidate = seed => !seed.inventoryHold && !isCatalogExcluded(seed);
+export const isPublicCandidate = seed => { familyFor(seed); return !seed.inventoryHold && !isCatalogExcluded(seed); };
 
 export function assertDispositionContent(seed, row) {
+  assertFamilyContent(seed, row);
   const disposition = dispositionFor(seed);
   if (disposition && (row.entry?.id !== seed.id || hashVocabularyEntry(row.entry) !== disposition.contentSha256
     || hashVocabularyEntry(row.review) !== disposition.contentReviewSha256)) throw new Error('Catalog disposition content or original review has changed.');
@@ -31,18 +33,28 @@ export function assertDispositionContent(seed, row) {
 }
 
 export function catalogCounts(words, grade) {
+  const families = assertCatalogFamilies(words);
   const selected = words.filter(word => !grade || word.grade === grade);
-  const eligible = selected.filter(isPublicCandidate);
+  const publicCards = selected.filter(isPublicCandidate);
+  // Completed sense cards stay public; only the reviewed representative consumes a slot.
+  const eligible = words.filter(isPublicCandidate).filter(word => {
+    const family = familyFor(word);
+    return (!family || family.canonicalId === word.id) && (!grade || (family?.canonicalGrade ?? word.grade) === grade);
+  });
   return { registered: selected.length, inventoryHolds: selected.filter(word => word.inventoryHold).length,
     catalogExcluded: selected.filter(isCatalogExcluded).length, baseEligible: eligible.length,
     baseCompleted: eligible.filter(word => ['approved', 'preserved'].includes(word.status)).length,
     baseApprovedNew: eligible.filter(word => word.status === 'approved').length,
     allApprovedNew: selected.filter(word => word.status === 'approved').length,
-    baseRejected: eligible.filter(word => word.status === 'rejected').length };
+    baseRejected: eligible.filter(word => word.status === 'rejected').length,
+    publicCardCount: publicCards.length, completedCardCount: publicCards.filter(word => ['approved', 'preserved'].includes(word.status)).length,
+    canonicalMerges: publicCards.length - eligible.length,
+    canonicalFamilyCount: grade ? new Set(publicCards.flatMap(word => word.catalogFamily ? [word.catalogFamily.familyId] : [])).size : families.size };
 }
 
 /** Partition first, then exclude: adding a disposition must never renumber later sets. */
 export function publicCatalogGroups(words, approvedById, grade) {
+  assertCatalogFamilies(words);
   const ordered = words.filter(word => word.grade === grade && !word.frozen), groups = [];
   for (let offset = 0; offset < ordered.length; offset += 100) {
     const entries = ordered.slice(offset, offset + 100).flatMap(word => isPublicCandidate(word) && approvedById.has(word.id) ? [approvedById.get(word.id)] : []);

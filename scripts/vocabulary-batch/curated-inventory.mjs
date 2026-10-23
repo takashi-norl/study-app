@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { assertCatalogFamilies, assertFamilyContent } from './canonical-policy.mjs';
 import { readFile, readdir } from 'node:fs/promises';
 import { dirname, isAbsolute, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -88,11 +89,14 @@ export function planCuratedInventory({ state, source: rawSource, review: rawRevi
 }
 
 async function loadKnownEntries(output, state) {
+  assertCatalogFamilies(state.words);
+  const seeds = new Map(state.words.map(seed => [seed.id, seed]));
   const frozen = await readJson(join(output, 'frozen-100.json'));
   if (hashVocabularyEntry(frozen) !== state.frozenSha256) throw new Error('Frozen snapshot integrity failed.');
   const entries = [];
   for (const row of frozen) {
     if (!row.entry || hashVocabularyEntry(row.entry) !== row.contentSha256) throw new Error('Frozen entry hash differs.');
+    if (seeds.get(row.entry.id)?.catalogFamily) assertFamilyContent(seeds.get(row.entry.id), row);
     entries.push(row.entry);
   }
   const directory = join(output, 'approved');
@@ -102,6 +106,7 @@ async function loadKnownEntries(output, state) {
       if (batch.schemaVersion !== 1 || !Array.isArray(batch.entries)) throw new Error('Invalid approved batch.');
       for (const row of batch.entries) {
         if (row.review?.status !== 'approved' || hashVocabularyEntry(row.entry) !== row.review.contentSha256) throw new Error('Approved entry is not bound to its review.');
+        if (seeds.get(row.entry.id)?.catalogFamily) assertFamilyContent(seeds.get(row.entry.id), row);
         entries.push(row.entry);
       }
     }
