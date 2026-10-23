@@ -67,13 +67,13 @@ async function progress(lease, state, ledger) {
   return { generated, reviewed, approved, held, drafts, open };
 }
 
-async function acceptSavedSubmission(lease, plan, ledger) {
-  const raw = await readOptionalJson(join(lease.output, wavePath(plan.id, 'create-response.json')));
+export async function acceptSavedBatchSubmission(lease, plan, ledger, paths = wavePath) {
+  const raw = await readOptionalJson(join(lease.output, paths(plan.id, 'create-response.json')));
   if (!raw) throw new Error('Prior batch submission has no saved response. Outcome is unknown or unsent; never resubmit automatically.');
   if (raw.planSha256 !== hashContent(plan)) throw new Error('Saved submission belongs to another wave.');
   const id = providerId(raw.response?.id);
   const receipt = { providerBatchId: id, planSha256: hashContent(plan), responseSha256: hashContent(raw.response) };
-  await scaleJson(lease, wavePath(plan.id, 'accepted.json'), receipt);
+  await scaleJson(lease, paths(plan.id, 'accepted.json'), receipt);
   for (const row of plan.requests) {
     const call = ledger.calls.find(item => item.id === row.id);
     if (call.providerBatchId && call.providerBatchId !== id) throw new Error('Provider batch ID changed.');
@@ -116,25 +116,25 @@ async function interpretSavedResult(lease, state, plan, row, raw, call) {
 }
 
 /** Collection only repeats read operations; it never calls create or resends content. */
-async function collectWave(lease, state, plan, adapter) {
+export async function collectPersistedBatchWave(lease, state, plan, adapter, { paths = wavePath, interpret = interpretSavedResult } = {}) {
   let ledger = await readJson(join(lease.output, 'ledger.json'));
-  const accepted = await acceptSavedSubmission(lease, plan, ledger);
-  let ended = await readOptionalJson(join(lease.output, wavePath(plan.id, 'ended.json')));
+  const accepted = await acceptSavedBatchSubmission(lease, plan, ledger, paths);
+  let ended = await readOptionalJson(join(lease.output, paths(plan.id, 'ended.json')));
   if (!ended) {
     const status = await adapter.retrieve(accepted.providerBatchId);
     if (status.id !== accepted.providerBatchId || !['in_progress', 'canceling', 'ended'].includes(status.processing_status)) throw new Error('Provider returned an unknown batch status; retain all reservations.');
     if (status.processing_status !== 'ended') return { state: 'batch-processing', waveId: plan.id, providerBatchId: status.id, stage: plan.stage };
     // Preserve terminal metadata before any result interpretation or zero-bill decision.
     ended = { providerBatchId: status.id, status, savedAt: new Date().toISOString() };
-    await scaleJson(lease, wavePath(plan.id, 'ended.json'), ended);
+    await scaleJson(lease, paths(plan.id, 'ended.json'), ended);
   }
   if (ended.providerBatchId !== accepted.providerBatchId || ended.status.processing_status !== 'ended') throw new Error('Saved terminal status changed.');
   const expected = new Set(plan.requests.map(row => row.id)), saved = new Map();
   for (const row of plan.requests) {
-    const prior = await readOptionalJson(join(lease.output, wavePath(plan.id, `results/${row.id}.json`)));
+    const prior = await readOptionalJson(join(lease.output, paths(plan.id, `results/${row.id}.json`)));
     if (prior) saved.set(row.id, prior);
   }
-  const streamIndex = await readOptionalJson(join(lease.output, wavePath(plan.id, 'results-index.json')));
+  const streamIndex = await readOptionalJson(join(lease.output, paths(plan.id, 'results-index.json')));
   if (!streamIndex) {
     const seen = new Set();
     try {
@@ -144,11 +144,11 @@ async function collectWave(lease, state, plan, adapter) {
         const prior = saved.get(result.custom_id);
         if (prior && hashContent(prior.result) !== hashContent(result)) throw new Error('Immutable provider result changed.');
         const raw = prior ?? { schemaVersion: 1, providerBatchId: accepted.providerBatchId, result, savedAt: ended.savedAt };
-        await scaleJson(lease, wavePath(plan.id, `results/${result.custom_id}.json`), raw); saved.set(result.custom_id, raw);
+        await scaleJson(lease, paths(plan.id, `results/${result.custom_id}.json`), raw); saved.set(result.custom_id, raw);
       }
     } catch { throw new Error('Result download is incomplete or inconsistent; saved raw is retained. Retry collection only, never submission.'); }
     if (seen.size !== expected.size) throw new Error('Ended batch omitted expected results; retain reservations and retry collection only.');
-    await scaleJson(lease, wavePath(plan.id, 'results-index.json'), { providerBatchId: accepted.providerBatchId,
+    await scaleJson(lease, paths(plan.id, 'results-index.json'), { providerBatchId: accepted.providerBatchId,
       rows: plan.requests.map(row => ({ id: row.id, sha256: hashContent(saved.get(row.id).result) })) });
   } else if (streamIndex.providerBatchId !== accepted.providerBatchId || saved.size !== expected.size
     || hashContent(streamIndex.rows) !== hashContent(plan.requests.map(row => ({ id: row.id, sha256: hashContent(saved.get(row.id).result) })))) {
@@ -161,15 +161,19 @@ async function collectWave(lease, state, plan, adapter) {
     const responseHash = hashContent(raw.result);
     if (call.status === 'complete') { if (call.responseHash !== responseHash) throw new Error('Settled batch response changed.'); continue; }
     let actualUsd;
-    try { actualUsd = adapter.price(raw.result); if (!Number.isFinite(actualUsd) || actualUsd < 0) throw new Error(); }
+    try {
+      const request = await readJson(join(lease.output, 'requests', row.id, 'request.json'));
+      if (boundedRequest(request).requestHash !== call.requestHash || raw.result.result.type === 'succeeded' && raw.result.result.message?.model !== request.params.model) throw new Error('Result model differs from the exact paid request.');
+      actualUsd = adapter.price(raw.result); if (!Number.isFinite(actualUsd) || actualUsd < 0) throw new Error();
+    }
     catch { call.accountingHold = 'unpriced-saved-batch-response'; await persistLedger(lease, ledger); throw new Error('Raw batch results are saved, but billing needs explicit review. No retry.'); }
     Object.assign(call, { status: 'complete', actualUsd, responseHash, completedAt: ended.savedAt });
     if (actualUsd > call.reservedUsd + 1e-9) call.accountingHold = 'charge-exceeded-reservation';
   }
   await persistLedger(lease, ledger);
   if (ledger.calls.some(call => call.accountingHold)) throw new Error('Accounting hold blocks interpretation and new spending.');
-  for (const row of plan.requests) await interpretSavedResult(lease, state, plan, row, saved.get(row.id), ledger.calls.find(item => item.id === row.id));
-  await scaleJson(lease, wavePath(plan.id, 'complete.json'), { planSha256: hashContent(plan), providerBatchId: accepted.providerBatchId, resultHashes: plan.requests.map(row => ({ id: row.id, sha256: hashContent(saved.get(row.id).result) })) });
+  for (const row of plan.requests) await interpret(lease, state, plan, row, saved.get(row.id), ledger.calls.find(item => item.id === row.id));
+  await scaleJson(lease, paths(plan.id, 'complete.json'), { planSha256: hashContent(plan), providerBatchId: accepted.providerBatchId, resultHashes: plan.requests.map(row => ({ id: row.id, sha256: hashContent(saved.get(row.id).result) })) });
   return { state: 'batch-collected', waveId: plan.id, stage: plan.stage, requests: plan.requests.length };
 }
 
@@ -240,7 +244,7 @@ async function submitWave(lease, options, approval, gate, state, works, adapter)
     await persistLedger(lease, ledger); throw new Error('Batch submission outcome is unknown. Entire wave reserved; no automatic retry.');
   }
   await scaleJson(lease, wavePath(waveId, 'create-response.json'), { planSha256: hashContent(plan), response, savedAt: new Date().toISOString() });
-  const accepted = await acceptSavedSubmission(lease, plan, ledger);
+  const accepted = await acceptSavedBatchSubmission(lease, plan, ledger);
   return { state: 'batch-submitted', waveId, providerBatchId: accepted.providerBatchId, stage: plan.stage,
     requests: selected.length, units: selected.reduce((sum, row) => sum + row.work.unitIds.length, 0), reservedUsd: selected.reduce((sum, row) => sum + row.quote.reservedUsd, 0) };
 }
@@ -257,7 +261,7 @@ async function cycle(options, adapterFactory) {
     const seen = await progress(lease, state, ledger);
     // Collection remains possible after a stop request; it cannot purchase anything.
     // Unknown create outcomes stop here before a second adapter.create can occur.
-    if (seen.open.length) return collectWave(lease, state, seen.open[0], adapterFactory());
+    if (seen.open.length) return collectPersistedBatchWave(lease, state, seen.open[0], adapterFactory());
     if (!report.canCommitExpansion) throw new Error('Shared budget/lifecycle is blocked; no new wave can be submitted.');
     if (await exists(join(options.runtimeDirectory, 'stop-scale'))) return { state: 'stopped-at-checkpoint' };
     state = await importInbox(lease, state, approval, gate.registry);

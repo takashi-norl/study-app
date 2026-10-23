@@ -1,3 +1,4 @@
+import { validateCommitmentTransition } from './budget.mjs';
 import { randomUUID } from 'node:crypto';
 import { mkdir, open, readFile, readdir, rename, rm, link, unlink } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
@@ -75,10 +76,11 @@ export async function persistLedger(lease, ledger) {
   for (const old of previous.calls) {
     const next = ledger.calls.find(call => call.id === old.id);
     if (!next || !transitions[old.status]?.includes(next.status)) throw new Error('Spending history cannot be removed or rolled back.');
-    for (const field of ['requestHash', 'reservedUsd', 'stage', 'unitIds', 'params', 'adapterVersion', 'repairOf', 'repairPlanSha256']) if (canonicalJson(old[field]) !== canonicalJson(next[field])) throw new Error('An immutable request reservation changed.');
+    for (const field of ['requestHash', 'reservedUsd', 'stage', 'unitIds', 'params', 'adapterVersion', 'repairOf', 'repairPlanSha256', 'prefixId', 'commitmentId', 'submissionId', 'billing']) if (canonicalJson(old[field]) !== canonicalJson(next[field])) throw new Error('An immutable request reservation changed.');
     if (old.status === 'complete' && (old.actualUsd !== next.actualUsd || old.responseHash !== next.responseHash)) throw new Error('Completed spending evidence is immutable.');
     if (old.accountingHold && old.accountingHold !== next.accountingHold) throw new Error('Accounting holds require a separate explicit reconciliation workflow.');
   }
+  validateCommitmentTransition(previous, ledger);
   await durableJson(join(lease.output, 'ledger.json'), ledger);
 }
 export async function persistRequest(lease, request) {
