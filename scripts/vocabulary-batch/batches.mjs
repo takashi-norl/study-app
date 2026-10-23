@@ -48,8 +48,10 @@ export async function submitBatch(output, { budgetUsd = 100, maxRequests = MAX_B
   for (const file of await files(join(output, 'prepared'))) {
     const candidate = await readJson(join(output, 'prepared', file));
     if (!known.has(candidate.id)) candidates.push(candidate);
-    if (candidates.length >= maxRequests) break;
   }
+  // Finish checking material already generated before spending on more first drafts.
+  candidates.sort((a, b) => Number(b.id.startsWith('review-')) - Number(a.id.startsWith('review-')) || a.id.localeCompare(b.id));
+  candidates.splice(maxRequests);
   if (!candidates.length) return { submitted: 0 };
   const spent = ledger.calls.reduce((sum, item) => sum + item.actualUsd, 0);
   if (!Number.isFinite(spent)) throw new Error('Ledger contains unknown costs.');

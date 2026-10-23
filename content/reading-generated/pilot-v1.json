@@ -1,0 +1,1707 @@
+{
+  "schemaVersion": 1,
+  "seriesId": "reading-domains-pilot-v1",
+  "title": "分野で読む英語・最初の12編",
+  "reviewStatus": "approved",
+  "provenance": {
+    "contentOrigin": "original-ai-authored",
+    "contentScope": "fictional-stable-scenarios",
+    "externalGenerationCostUsd": 0
+  },
+  "questionPolicy": "4択の保存済み正解で採点します。回答時のAI呼び出しはありません。",
+  "difficultyPolicy": "級・CEFRは教材作成上の推定目安です。英検公式教材ではなく、TOEIC・TOEFL・IELTSとのスコア換算を示しません。",
+  "readings": [
+    {
+      "id": "reading-grade2-medical-001",
+      "seriesId": "reading-domains-pilot-v1",
+      "level": "2級",
+      "cefrEstimate": "B1",
+      "domainIds": [
+        "medical"
+      ],
+      "title": "A Clearer Visit",
+      "levelNote": "英検対策の学習目安です。公式問題・公式の級別認定・他試験とのスコア換算ではありません。",
+      "scenarioPolicy": "架空の人物・組織によるオリジナルの場面です。実在する研究・統計・時事報道の引用ではありません。",
+      "paragraphs": [
+        {
+          "id": "p1",
+          "text": "When Harbor Clinic moved to a larger building, the staff expected visits to become easier. There were more chairs, wider doors, and a bright waiting room. Yet visitors often arrived at the wrong desk. Others missed appointments because they misunderstood the letters the clinic sent. Nurses spent time explaining directions instead of helping people prepare for their visits."
+        },
+        {
+          "id": "p2",
+          "text": "The clinic invited a small group of visitors to discuss the problem. One visitor said the letters contained several unfamiliar words. Another pointed out that the building map used room numbers that were difficult to find on the walls. The group did not ask for more information. They wanted the information they already received to be easier to understand."
+        },
+        {
+          "id": "p3",
+          "text": "A receptionist named Maya worked with the group to redesign the appointment letter. The new version put the date, arrival time, and entrance on the first page. It used short sentences and included a simple drawing of the building. Detailed information was still available on a second page. Visitors could also request a large-print copy or ask a receptionist to read the letter with them."
+        },
+        {
+          "id": "p4",
+          "text": "During a short trial, staff counted how often visitors needed help finding the correct desk. This happened less often with the new letter. However, the clinic did not conclude that every problem had been solved. Some people still needed personal assistance. Maya also noticed that a letter could be perfectly clear but arrive too late to be useful. The team therefore checked the mailing schedule as well. The changes showed that improving a visit was not only about providing a better building. It also meant looking carefully at the small steps that visitors took before they arrived."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "detail",
+          "prompt": "What problem remained after the clinic moved?",
+          "choices": [
+            "The new waiting room had too few chairs.",
+            "Visitors sometimes had difficulty understanding where to go.",
+            "The clinic could no longer send appointment letters.",
+            "Nurses were unable to enter the wider rooms."
+          ],
+          "correctIndex": 1,
+          "explanationJa": "移転後も来院者が違う窓口へ行ったり、手紙を誤解したりしていました。建物の広さだけでは解決しませんでした。",
+          "evidence": [
+            {
+              "paragraphId": "p1",
+              "quote": "visitors often arrived at the wrong desk"
+            }
+          ]
+        },
+        {
+          "id": "q2",
+          "type": "detail",
+          "prompt": "What did the new appointment letter do?",
+          "choices": [
+            "It removed all detailed information.",
+            "It replaced the appointment date with a room map.",
+            "It required visitors to read the letter online.",
+            "It placed the most immediately useful details first."
+          ],
+          "correctIndex": 3,
+          "explanationJa": "新しい手紙は日付・到着時刻・入口を最初のページにまとめ、詳細は次のページに残しました。",
+          "evidence": [
+            {
+              "paragraphId": "p3",
+              "quote": "put the date, arrival time, and entrance on the first page"
+            }
+          ]
+        },
+        {
+          "id": "q3",
+          "type": "inference",
+          "prompt": "Why did the team also check the mailing schedule?",
+          "choices": [
+            "Clear information is less useful if people receive it too late.",
+            "The building map changed every day.",
+            "Visitors preferred letters without arrival times.",
+            "The receptionists wanted to stop providing personal help."
+          ],
+          "correctIndex": 0,
+          "explanationJa": "内容が明確でも遅く届けば役立たないため、文章だけでなく発送時期も改善対象にしました。",
+          "evidence": [
+            {
+              "paragraphId": "p4",
+              "quote": "a letter could be perfectly clear but arrive too late to be useful"
+            }
+          ]
+        },
+        {
+          "id": "q4",
+          "type": "main-idea",
+          "prompt": "What is the main message of the passage?",
+          "choices": [
+            "Larger buildings usually create more serious health problems.",
+            "Detailed information should never be given to clinic visitors.",
+            "Services can improve when staff examine users’ everyday difficulties.",
+            "A single written letter can replace every form of personal support."
+          ],
+          "correctIndex": 2,
+          "explanationJa": "来院者の経験を聞き、案内の読みやすさや届く時期など具体的なつまずきを改善したことが本文全体の主題です。",
+          "evidence": [
+            {
+              "paragraphId": "p4",
+              "quote": "looking carefully at the small steps that visitors took before they arrived"
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        {
+          "term": "appointment",
+          "meaningJa": "予約・面会の約束",
+          "linkPolicy": "resolve-lemma-in-shared-catalog"
+        },
+        {
+          "term": "unfamiliar",
+          "meaningJa": "よく知らない・不慣れな",
+          "linkPolicy": "resolve-lemma-in-shared-catalog"
+        },
+        {
+          "term": "assistance",
+          "meaningJa": "援助・手助け",
+          "linkPolicy": "resolve-lemma-in-shared-catalog"
+        }
+      ],
+      "wordCount": 279,
+      "contentSha256": "02144851deb83b9c229694622000460af2bea117bc0d076fd5152a2f95c81891",
+      "review": {
+        "status": "approved",
+        "method": "independent-ai-review",
+        "reviewer": "Codex independent review agent /root/bulk_audio_assets",
+        "reviewedAt": "2026-10-23T13:02:55.419Z",
+        "contentSha256": "02144851deb83b9c229694622000460af2bea117bc0d076fd5152a2f95c81891"
+      },
+      "audio": {
+        "status": "not-generated"
+      }
+    },
+    {
+      "id": "reading-grade2-travel-001",
+      "seriesId": "reading-domains-pilot-v1",
+      "level": "2級",
+      "cefrEstimate": "B1",
+      "domainIds": [
+        "travel"
+      ],
+      "title": "Beyond the Famous View",
+      "levelNote": "英検対策の学習目安です。公式問題・公式の級別認定・他試験とのスコア換算ではありません。",
+      "scenarioPolicy": "架空の人物・組織によるオリジナルの場面です。実在する研究・統計・時事報道の引用ではありません。",
+      "paragraphs": [
+        {
+          "id": "p1",
+          "text": "Most visitors to Bellmere came to photograph its old stone bridge. They usually arrived in the morning, bought a drink near the station, and left after lunch. Shop owners on nearby streets rarely saw them. The town’s tourism office wanted visitors to discover more of the area, but it had little money for a large advertising campaign."
+        },
+        {
+          "id": "p2",
+          "text": "A local guide, Ken, suggested a walking route with several short stops. It would connect the bridge to a garden, a small history room, and a street of family businesses. Instead of describing each place with a long list of facts, volunteers recorded short stories told by local residents. Visitors could listen on their phones or borrow a printed booklet from the station."
+        },
+        {
+          "id": "p3",
+          "text": "The first version of the route took nearly three hours. Families with young children and travelers carrying bags found it tiring. In response, the office divided it into three sections. Each section had its own starting point, clear signs, and an estimate of walking time. No one had to complete the whole route. The booklet also identified places where people could sit without buying anything."
+        },
+        {
+          "id": "p4",
+          "text": "Several businesses offered discounts to route users, but Ken asked the office not to describe the walk simply as a shopping trip. The garden and residents’ stories mattered even when visitors spent nothing. After the route opened, some visitors stayed longer, while others returned on another day to try a different section. The office interviewed visitors at both the station and the bridge, including people who had not used the route. Their answers helped explain why some travelers still preferred a short visit. The town learned that encouraging people to explore did not mean deciding how everyone should spend the day."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "detail",
+          "prompt": "What did the tourism office hope to change?",
+          "choices": [
+            "The material used to build the bridge.",
+            "The location of the railway station.",
+            "The limited area that most visitors explored.",
+            "The number of residents living near the garden."
+          ],
+          "correctIndex": 2,
+          "explanationJa": "旅行者が有名な橋だけを見て帰り、周辺の通りへ足を運ばない状況を変えたいと考えていました。",
+          "evidence": [
+            {
+              "paragraphId": "p1",
+              "quote": "Shop owners on nearby streets rarely saw them"
+            }
+          ]
+        },
+        {
+          "id": "q2",
+          "type": "detail",
+          "prompt": "How was the walking route changed after people tried it?",
+          "choices": [
+            "It was divided into independent, shorter sections.",
+            "It was closed to families carrying bags.",
+            "All printed information was removed.",
+            "Every stop was moved inside a shop."
+          ],
+          "correctIndex": 0,
+          "explanationJa": "長いコースが負担だったため、別々の出発点を持つ三つの短い区間へ分けました。",
+          "evidence": [
+            {
+              "paragraphId": "p3",
+              "quote": "the office divided it into three sections"
+            }
+          ]
+        },
+        {
+          "id": "q3",
+          "type": "inference",
+          "prompt": "Why did Ken oppose presenting the route only as a shopping trip?",
+          "choices": [
+            "He believed visitors should avoid all local businesses.",
+            "The discounts were too difficult to understand.",
+            "The office had already sold every printed booklet.",
+            "He thought the cultural experience had value beyond spending money."
+          ],
+          "correctIndex": 3,
+          "explanationJa": "庭園や住民の話は買い物をしなくても価値があるため、消費だけを目的に見せたくなかったのです。",
+          "evidence": [
+            {
+              "paragraphId": "p4",
+              "quote": "The garden and residents’ stories mattered even when visitors spent nothing"
+            }
+          ]
+        },
+        {
+          "id": "q4",
+          "type": "purpose",
+          "prompt": "Why did the office interview people who had not used the route?",
+          "choices": [
+            "To prevent them from visiting the bridge again.",
+            "To understand preferences that route users alone might not reveal.",
+            "To prove that every traveler wanted a longer walk.",
+            "To decide which residents should stop telling stories."
+          ],
+          "correctIndex": 1,
+          "explanationJa": "利用者だけでは分からない、短い訪問を好む理由も調べるためです。",
+          "evidence": [
+            {
+              "paragraphId": "p4",
+              "quote": "Their answers helped explain why some travelers still preferred a short visit"
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        {
+          "term": "explore",
+          "meaningJa": "探索する・詳しく見て回る",
+          "linkPolicy": "resolve-lemma-in-shared-catalog"
+        },
+        {
+          "term": "route",
+          "meaningJa": "道筋・経路",
+          "linkPolicy": "resolve-lemma-in-shared-catalog"
+        },
+        {
+          "term": "resident",
+          "meaningJa": "住民",
+          "linkPolicy": "resolve-lemma-in-shared-catalog"
+        }
+      ],
+      "wordCount": 286,
+      "contentSha256": "c5a2ab5949410dcd756d432409427eb7e0a4241058452e1d5220bfc4ba294e8a",
+      "review": {
+        "status": "approved",
+        "method": "independent-ai-review",
+        "reviewer": "Codex independent review agent /root/bulk_audio_assets",
+        "reviewedAt": "2026-10-23T13:02:55.419Z",
+        "contentSha256": "c5a2ab5949410dcd756d432409427eb7e0a4241058452e1d5220bfc4ba294e8a"
+      },
+      "audio": {
+        "status": "not-generated"
+      }
+    },
+    {
+      "id": "reading-grade2-business-001",
+      "seriesId": "reading-domains-pilot-v1",
+      "level": "2級",
+      "cefrEstimate": "B1",
+      "domainIds": [
+        "business"
+      ],
+      "title": "A Different Kind of Subscription",
+      "levelNote": "英検対策の学習目安です。公式問題・公式の級別認定・他試験とのスコア換算ではありません。",
+      "scenarioPolicy": "架空の人物・組織によるオリジナルの場面です。実在する研究・統計・時事報道の引用ではありません。",
+      "paragraphs": [
+        {
+          "id": "p1",
+          "text": "Lena owned a small shop that sold and repaired bicycles. Summer was busy, but winter brought fewer customers. Some riders delayed simple repairs until their bicycles became difficult to use. Lena wondered whether a monthly maintenance plan could make her income more predictable while helping customers keep their bicycles in good condition."
+        },
+        {
+          "id": "p2",
+          "text": "Her first plan included an unlimited number of repairs for one fixed monthly payment. A mechanic at the shop warned that this promise could be expensive. A customer with a badly damaged bicycle might require many hours of work, while another customer might use almost none of the service. The shop needed a plan that customers could understand and that the small team could actually provide."
+        },
+        {
+          "id": "p3",
+          "text": "Lena changed the offer to include two scheduled checks each year and a discount on additional repair work. Parts were charged separately. She explained these limits in plain language, both on the website and beside the cash register. Customers could cancel before the next monthly payment without paying an extra fee. Before joining, they received a written example showing what a typical visit might cost."
+        },
+        {
+          "id": "p4",
+          "text": "The shop tested the plan with twenty customers. Lena recorded not only the payments received but also the time spent on checks and questions. A large number of members would not help if the staff could no longer serve other customers. During the trial, several people asked for an evening appointment, so she offered one late opening each month. At the end, Lena decided to keep the plan small until the team understood its workload better. She had learned that a new source of income was useful only if the promises behind it remained realistic."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "detail",
+          "prompt": "Why did Lena consider a monthly plan?",
+          "choices": [
+            "To make winter weather easier to predict.",
+            "To earn steadier income while encouraging regular maintenance.",
+            "To stop selling bicycles during the summer.",
+            "To replace all mechanics with an online service."
+          ],
+          "correctIndex": 1,
+          "explanationJa": "冬の客数減少に対して収入を安定させつつ、顧客が自転車を定期的に整備することを目指しました。",
+          "evidence": [
+            {
+              "paragraphId": "p1",
+              "quote": "make her income more predictable while helping customers keep their bicycles in good condition"
+            }
+          ]
+        },
+        {
+          "id": "q2",
+          "type": "detail",
+          "prompt": "Which service was included in the revised plan?",
+          "choices": [
+            "Every replacement part at no extra cost.",
+            "An unlimited number of major repairs.",
+            "A free new bicycle each winter.",
+            "Two scheduled maintenance checks a year."
+          ],
+          "correctIndex": 3,
+          "explanationJa": "改訂後は年二回の点検と追加修理の割引が含まれ、部品代は別でした。",
+          "evidence": [
+            {
+              "paragraphId": "p3",
+              "quote": "include two scheduled checks each year"
+            }
+          ]
+        },
+        {
+          "id": "q3",
+          "type": "inference",
+          "prompt": "Why did Lena measure the time spent serving members?",
+          "choices": [
+            "She needed to check whether the plan used too much staff capacity.",
+            "She wanted members to repair their own bicycles at the shop.",
+            "She planned to charge every customer the same repair price.",
+            "She had decided to eliminate appointments completely."
+          ],
+          "correctIndex": 0,
+          "explanationJa": "会員数や売上だけでなく、スタッフの負担が通常業務を圧迫しないか確認するためです。",
+          "evidence": [
+            {
+              "paragraphId": "p4",
+              "quote": "A large number of members would not help if the staff could no longer serve other customers"
+            }
+          ]
+        },
+        {
+          "id": "q4",
+          "type": "main-idea",
+          "prompt": "Which statement best describes Lena’s final approach?",
+          "choices": [
+            "Expand immediately whenever customers show interest.",
+            "Avoid explaining limits because customers may dislike them.",
+            "Match a new offer to the business’s ability to deliver it.",
+            "Judge a service only by how much money it receives."
+          ],
+          "correctIndex": 2,
+          "explanationJa": "提供できる作業量を把握し、約束を守れる規模で制度を続ける方針です。",
+          "evidence": [
+            {
+              "paragraphId": "p4",
+              "quote": "the promises behind it remained realistic"
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        {
+          "term": "maintenance",
+          "meaningJa": "維持管理・整備",
+          "linkPolicy": "resolve-lemma-in-shared-catalog"
+        },
+        {
+          "term": "predictable",
+          "meaningJa": "予測できる",
+          "linkPolicy": "resolve-lemma-in-shared-catalog"
+        },
+        {
+          "term": "workload",
+          "meaningJa": "仕事量・作業負担",
+          "linkPolicy": "resolve-lemma-in-shared-catalog"
+        }
+      ],
+      "wordCount": 278,
+      "contentSha256": "6b7960180eefcf3f0ccf0c2b05f2f88ebc7bbbfb32cb1a14e37d04d345e290a0",
+      "review": {
+        "status": "approved",
+        "method": "independent-ai-review",
+        "reviewer": "Codex independent review agent /root/bulk_audio_assets",
+        "reviewedAt": "2026-10-23T13:02:55.419Z",
+        "contentSha256": "6b7960180eefcf3f0ccf0c2b05f2f88ebc7bbbfb32cb1a14e37d04d345e290a0"
+      },
+      "audio": {
+        "status": "not-generated"
+      }
+    },
+    {
+      "id": "reading-grade2-technology-001",
+      "seriesId": "reading-domains-pilot-v1",
+      "level": "2級",
+      "cefrEstimate": "B1",
+      "domainIds": [
+        "technology"
+      ],
+      "title": "The Library’s Quiet Experiment",
+      "levelNote": "英検対策の学習目安です。公式問題・公式の級別認定・他試験とのスコア換算ではありません。",
+      "scenarioPolicy": "架空の人物・組織によるオリジナルの場面です。実在する研究・統計・時事報道の引用ではありません。",
+      "paragraphs": [
+        {
+          "id": "p1",
+          "text": "At Northfield Library, visitors often asked where they could find a quiet seat. The building had several study areas, but people could not easily see which ones were crowded. Walking from room to room took time and sometimes disturbed readers. The library considered installing a system that would show the number of available seats on a screen near the entrance."
+        },
+        {
+          "id": "p2",
+          "text": "One company offered cameras that could count people automatically. However, some library users were uncomfortable with being recorded while they read. The staff therefore tested a simpler method. Small sensors under chairs detected whether a seat was occupied. The sensors did not collect names, photographs, or information about the books people were using."
+        },
+        {
+          "id": "p3",
+          "text": "The technology still made mistakes. A heavy bag could make an empty chair appear occupied, and a visitor standing briefly might make a seat appear free. To avoid giving a false impression of perfect accuracy, the screen showed whether each room had many, a few, or almost no seats available. It did not promise an exact number. Clear notices explained how the system worked and what information it did not collect."
+        },
+        {
+          "id": "p4",
+          "text": "During the trial, librarians compared the screen with their own observations. They also asked visitors whether the information had helped them choose a room. The results were useful, but the staff noticed another problem: some people needed a seat near a power socket rather than simply any empty chair. The library added this detail to its ordinary floor map. The experiment did not remove the need for human assistance. Instead, it gave visitors a better starting point and helped staff understand what people actually needed when they searched for a place to study."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "detail",
+          "prompt": "What was the original purpose of the proposed system?",
+          "choices": [
+            "To record which books every visitor read.",
+            "To prevent people from moving between rooms.",
+            "To help visitors locate study areas with available seats.",
+            "To replace the library’s collection with digital books."
+          ],
+          "correctIndex": 2,
+          "explanationJa": "空いている学習席がどのエリアにあるかを、各部屋を回らず把握できるようにする計画でした。",
+          "evidence": [
+            {
+              "paragraphId": "p1",
+              "quote": "show the number of available seats on a screen near the entrance"
+            }
+          ]
+        },
+        {
+          "id": "q2",
+          "type": "detail",
+          "prompt": "Why did the library choose chair sensors instead of cameras?",
+          "choices": [
+            "Some users had concerns about being recorded.",
+            "Cameras could not operate in a library building.",
+            "Chair sensors could identify every visitor by name.",
+            "The company refused to provide information about cameras."
+          ],
+          "correctIndex": 0,
+          "explanationJa": "読書中に撮影されることへの利用者の不安を考慮し、氏名や写真を集めない方法を選びました。",
+          "evidence": [
+            {
+              "paragraphId": "p2",
+              "quote": "some library users were uncomfortable with being recorded while they read"
+            }
+          ]
+        },
+        {
+          "id": "q3",
+          "type": "inference",
+          "prompt": "Why did the screen use broad categories rather than exact numbers?",
+          "choices": [
+            "The rooms always contained the same number of people.",
+            "The staff wanted to hide all information about empty seats.",
+            "Most visitors were unable to read numbers.",
+            "The sensors could not always determine availability precisely."
+          ],
+          "correctIndex": 3,
+          "explanationJa": "荷物や一時的な離席で誤判定するため、厳密な数を約束せず、おおまかな空き状況を示しました。",
+          "evidence": [
+            {
+              "paragraphId": "p3",
+              "quote": "To avoid giving a false impression of perfect accuracy"
+            }
+          ]
+        },
+        {
+          "id": "q4",
+          "type": "main-idea",
+          "prompt": "What did the trial show about useful technology?",
+          "choices": [
+            "A successful device removes every need for staff.",
+            "Its design should reflect both its limitations and users’ real needs.",
+            "A more complicated system is always more helpful.",
+            "Privacy matters only when a system makes counting errors."
+          ],
+          "correctIndex": 1,
+          "explanationJa": "精度の限界を正直に示すことと、電源など具体的な利用者の希望を把握することの両方が大切だと分かりました。",
+          "evidence": [
+            {
+              "paragraphId": "p4",
+              "quote": "helped staff understand what people actually needed"
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        {
+          "term": "occupied",
+          "meaningJa": "使用中の・人がいる",
+          "linkPolicy": "resolve-lemma-in-shared-catalog"
+        },
+        {
+          "term": "accuracy",
+          "meaningJa": "正確さ",
+          "linkPolicy": "resolve-lemma-in-shared-catalog"
+        },
+        {
+          "term": "observation",
+          "meaningJa": "観察",
+          "linkPolicy": "resolve-lemma-in-shared-catalog"
+        }
+      ],
+      "wordCount": 277,
+      "contentSha256": "ff0854bbf7aa8396f3c58b7c9068d794bd3234a11a70f05bdabaf59cea0e40f7",
+      "review": {
+        "status": "approved",
+        "method": "independent-ai-review",
+        "reviewer": "Codex independent review agent /root/bulk_audio_assets",
+        "reviewedAt": "2026-10-23T13:02:55.419Z",
+        "contentSha256": "ff0854bbf7aa8396f3c58b7c9068d794bd3234a11a70f05bdabaf59cea0e40f7"
+      },
+      "audio": {
+        "status": "not-generated"
+      }
+    },
+    {
+      "id": "reading-grade2-politics-001",
+      "seriesId": "reading-domains-pilot-v1",
+      "level": "2級",
+      "cefrEstimate": "B1",
+      "domainIds": [
+        "politics"
+      ],
+      "title": "Who Gets to Speak?",
+      "levelNote": "英検対策の学習目安です。公式問題・公式の級別認定・他試験とのスコア換算ではありません。",
+      "scenarioPolicy": "架空の人物・組織によるオリジナルの場面です。実在する研究・統計・時事報道の引用ではありません。",
+      "paragraphs": [
+        {
+          "id": "p1",
+          "text": "The town of Elmford planned to improve a small public square. Officials held an evening meeting to ask residents what they wanted. Many speakers supported a larger space for outdoor events. When the meeting ended, the planning team almost decided that this was the clear preference of the whole town."
+        },
+        {
+          "id": "p2",
+          "text": "However, a student named Aiko asked who had been unable to attend. People working evening shifts, parents caring for young children, and residents with limited transport might have stayed home. Their absence did not necessarily mean that they agreed with the speakers. The team realized that counting opinions at one meeting was not the same as understanding all residents."
+        },
+        {
+          "id": "p3",
+          "text": "Over the next two weeks, the town offered a short paper survey at the library and a simple online version. Staff also spoke with people at the square during different times of day. These conversations revealed another important need: a quiet place with shade where people could rest. Some residents liked the idea of events but did not want the square to become noisy every afternoon."
+        },
+        {
+          "id": "p4",
+          "text": "The final proposal kept a smaller area for performances and added trees and permanent benches. The team published a brief explanation of how residents’ comments had influenced the design. It also described requests that could not be included because of limited space or money. Not everyone preferred the final result. Nevertheless, residents could see that disagreement had not simply been ignored. Aiko thought the process had improved because the town had asked more carefully, not because it had found a plan that pleased everyone. The experience encouraged officials to consider several ways of gathering opinions before making their next public decision."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "detail",
+          "prompt": "What did many speakers at the first meeting support?",
+          "choices": [
+            "Closing the square to all outdoor activities.",
+            "A larger area for outdoor events.",
+            "Removing the library’s paper surveys.",
+            "Moving every public meeting to the morning."
+          ],
+          "correctIndex": 1,
+          "explanationJa": "最初の会議では、屋外イベント用スペースを拡大したいという発言が多く出ました。",
+          "evidence": [
+            {
+              "paragraphId": "p1",
+              "quote": "Many speakers supported a larger space for outdoor events"
+            }
+          ]
+        },
+        {
+          "id": "q2",
+          "type": "inference",
+          "prompt": "What was the main point of Aiko’s question?",
+          "choices": [
+            "People who stayed home must have opposed all improvements.",
+            "Online surveys always represent every resident accurately.",
+            "Students should make the final decision without adults.",
+            "A meeting may leave out people whose views still matter."
+          ],
+          "correctIndex": 3,
+          "explanationJa": "参加できなかった人にも意見があるため、出席者だけで町全体の希望を判断できないという指摘です。",
+          "evidence": [
+            {
+              "paragraphId": "p2",
+              "quote": "Their absence did not necessarily mean that they agreed with the speakers"
+            }
+          ]
+        },
+        {
+          "id": "q3",
+          "type": "detail",
+          "prompt": "What did the additional consultation reveal?",
+          "choices": [
+            "A need for a quieter place with shade and seating.",
+            "A demand to cancel every future public survey.",
+            "A shortage of evening entertainment in every neighborhood.",
+            "A wish to replace the square with a private shop."
+          ],
+          "correctIndex": 0,
+          "explanationJa": "調査方法を増やした結果、静かに休める日陰のある場所も求められていると分かりました。",
+          "evidence": [
+            {
+              "paragraphId": "p3",
+              "quote": "a quiet place with shade where people could rest"
+            }
+          ]
+        },
+        {
+          "id": "q4",
+          "type": "main-idea",
+          "prompt": "Why did Aiko think the planning process had improved?",
+          "choices": [
+            "Every resident finally preferred exactly the same design.",
+            "Officials stopped explaining unpopular decisions.",
+            "The town gathered a wider range of views and explained its choices.",
+            "The largest group automatically received everything it requested."
+          ],
+          "correctIndex": 2,
+          "explanationJa": "多様な声を集め、採用した意見や採用できない理由も説明した点が改善です。全員一致になったわけではありません。",
+          "evidence": [
+            {
+              "paragraphId": "p4",
+              "quote": "the town had asked more carefully, not because it had found a plan that pleased everyone"
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        {
+          "term": "resident",
+          "meaningJa": "住民",
+          "linkPolicy": "resolve-lemma-in-shared-catalog"
+        },
+        {
+          "term": "preference",
+          "meaningJa": "好み・希望",
+          "linkPolicy": "resolve-lemma-in-shared-catalog"
+        },
+        {
+          "term": "proposal",
+          "meaningJa": "提案",
+          "linkPolicy": "resolve-lemma-in-shared-catalog"
+        }
+      ],
+      "wordCount": 276,
+      "contentSha256": "80bb808a61b410e72657731235242db040ff1ed88fa21cdf858092048c2755ad",
+      "review": {
+        "status": "approved",
+        "method": "independent-ai-review",
+        "reviewer": "Codex independent review agent /root/bulk_audio_assets",
+        "reviewedAt": "2026-10-23T13:02:55.419Z",
+        "contentSha256": "80bb808a61b410e72657731235242db040ff1ed88fa21cdf858092048c2755ad"
+      },
+      "audio": {
+        "status": "not-generated"
+      }
+    },
+    {
+      "id": "reading-grade2-economics-001",
+      "seriesId": "reading-domains-pilot-v1",
+      "level": "2級",
+      "cefrEstimate": "B1",
+      "domainIds": [
+        "economics"
+      ],
+      "title": "The Cost of a Free Cup",
+      "levelNote": "英検対策の学習目安です。公式問題・公式の級別認定・他試験とのスコア換算ではありません。",
+      "scenarioPolicy": "架空の人物・組織によるオリジナルの場面です。実在する研究・統計・時事報道の引用ではありません。",
+      "paragraphs": [
+        {
+          "id": "p1",
+          "text": "Students at Brook School wanted to reduce the number of paper cups used at school events. Their club proposed lending reusable cups for free. Members expected everyone to welcome the idea. After all, visitors would not have to buy anything new, and the same cups could be used many times."
+        },
+        {
+          "id": "p2",
+          "text": "At the first event, the club placed clean cups beside the drinks table and a collection box near the exit. Many people borrowed them, but only half were returned. Some visitors assumed that the cups were gifts. Others left them in classrooms because they did not know where to take them. Buying replacements and searching the building required more money and time than the club had expected."
+        },
+        {
+          "id": "p3",
+          "text": "For the next event, the club introduced a small deposit. Visitors paid it when they borrowed a cup and received all of it back when they returned the cup. Large signs explained the system. The club also added collection points beside the busiest doors. The purpose was not to earn money from forgotten cups. It was to make returning them a clear and convenient part of the event."
+        },
+        {
+          "id": "p4",
+          "text": "The return rate improved, but the students continued to record the time needed to wash, collect, and store the cups. They compared this work with the cost of buying new paper cups for each event. They also asked whether the deposit discouraged anyone from borrowing. The club eventually allowed visitors without cash to leave a simple numbered ticket instead. The students discovered that a product described as free could still require resources. To make their idea work, they had to consider not only what people paid, but also how the system affected their decisions and how much effort was needed to keep it running."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "detail",
+          "prompt": "Why were many cups not returned at the first event?",
+          "choices": [
+            "The collection box was already full before the event began.",
+            "Visitors were required to purchase the cups.",
+            "People misunderstood the arrangement or did not know where to return them.",
+            "The club had asked everyone to take a cup home."
+          ],
+          "correctIndex": 2,
+          "explanationJa": "贈り物だと誤解した人や返却場所が分からなかった人がいたためです。",
+          "evidence": [
+            {
+              "paragraphId": "p2",
+              "quote": "Some visitors assumed that the cups were gifts"
+            }
+          ]
+        },
+        {
+          "id": "q2",
+          "type": "detail",
+          "prompt": "How did the deposit work?",
+          "choices": [
+            "It was returned in full when the cup was brought back.",
+            "It increased each time the visitor borrowed another drink.",
+            "It paid for a permanent personal cup.",
+            "It was kept by the club even when the cup was returned."
+          ],
+          "correctIndex": 0,
+          "explanationJa": "返却すると預けた金額が全額戻る仕組みです。購入代金や罰金ではありません。",
+          "evidence": [
+            {
+              "paragraphId": "p3",
+              "quote": "received all of it back when they returned the cup"
+            }
+          ]
+        },
+        {
+          "id": "q3",
+          "type": "inference",
+          "prompt": "Why did the club offer a numbered ticket as an alternative?",
+          "choices": [
+            "It wanted to stop keeping records of missing cups.",
+            "It decided that washing the cups was unnecessary.",
+            "It needed a way to increase the price of drinks.",
+            "It wanted people without cash to be able to use the system."
+          ],
+          "correctIndex": 3,
+          "explanationJa": "現金がないために利用を控える人が出ないよう、別の預け方を用意しました。",
+          "evidence": [
+            {
+              "paragraphId": "p4",
+              "quote": "allowed visitors without cash to leave a simple numbered ticket instead"
+            }
+          ]
+        },
+        {
+          "id": "q4",
+          "type": "main-idea",
+          "prompt": "What broader lesson did the students learn?",
+          "choices": [
+            "Reusable items always cost less than disposable ones.",
+            "A useful system must account for behavior, effort, and resources.",
+            "Free services should never require clear explanations.",
+            "A deposit works best when returning an item is inconvenient."
+          ],
+          "correctIndex": 1,
+          "explanationJa": "金銭だけでなく利用者の行動や回収・洗浄・保管の労力も含めて考える必要がある、という学びです。",
+          "evidence": [
+            {
+              "paragraphId": "p4",
+              "quote": "how much effort was needed to keep it running"
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        {
+          "term": "deposit",
+          "meaningJa": "預かり金・保証金",
+          "linkPolicy": "resolve-lemma-in-shared-catalog"
+        },
+        {
+          "term": "resource",
+          "meaningJa": "資源・利用できる手段",
+          "linkPolicy": "resolve-lemma-in-shared-catalog"
+        },
+        {
+          "term": "discourage",
+          "meaningJa": "思いとどまらせる",
+          "linkPolicy": "resolve-lemma-in-shared-catalog"
+        }
+      ],
+      "wordCount": 289,
+      "contentSha256": "afee403b1956e1abc892c08bd74b7c8ffacbe4fe6f1b0d2b0ca10284d171a4e8",
+      "review": {
+        "status": "approved",
+        "method": "independent-ai-review",
+        "reviewer": "Codex independent review agent /root/bulk_audio_assets",
+        "reviewedAt": "2026-10-23T13:02:55.419Z",
+        "contentSha256": "afee403b1956e1abc892c08bd74b7c8ffacbe4fe6f1b0d2b0ca10284d171a4e8"
+      },
+      "audio": {
+        "status": "not-generated"
+      }
+    },
+    {
+      "id": "reading-pre1-medical-001",
+      "seriesId": "reading-domains-pilot-v1",
+      "level": "準1級",
+      "cefrEstimate": "B2",
+      "domainIds": [
+        "medical"
+      ],
+      "title": "When a Shorter Wait Is Not the Whole Answer",
+      "levelNote": "英検対策の学習目安です。公式問題・公式の級別認定・他試験とのスコア換算ではありません。",
+      "scenarioPolicy": "架空の人物・組織によるオリジナルの場面です。実在する研究・統計・時事報道の引用ではありません。",
+      "paragraphs": [
+        {
+          "id": "p1",
+          "text": "The managers of a fictional community clinic introduced an online booking system to reduce the time patients spent waiting on the telephone. The system allowed people to request an appointment at any hour, and the average telephone queue soon became shorter. At first, the figures seemed to provide a straightforward verdict: the investment had succeeded. However, the clinic’s patient advisory group argued that the result described only part of the experience."
+        },
+        {
+          "id": "p2",
+          "text": "The average was calculated from calls that staff answered. It excluded callers who abandoned the queue, people who never tried calling because they expected a delay, and patients who asked a relative to make arrangements for them. Meanwhile, some online users were submitting several requests because they could not tell whether the first one had been received. A faster telephone service could therefore coexist with confusion elsewhere. The advisers were not claiming that the new system had failed. They were questioning whether one convenient measure could establish its overall value."
+        },
+        {
+          "id": "p3",
+          "text": "To investigate, the clinic followed a small, varied group of patients through the booking process. Staff recorded the number of steps each person completed and asked whether the next step was clear. They deliberately included patients who preferred telephone contact as well as confident online users. The exercise revealed that uncertainty was often more troublesome than the delay itself. People were willing to wait when they knew that their request had arrived and when they could expect an answer. Repeatedly entering the same information, by contrast, made them doubt that anyone was handling it."
+        },
+        {
+          "id": "p4",
+          "text": "The clinic revised its confirmation message to state what had been received, what would happen next, and whom to contact if circumstances changed. It avoided promising an exact response time that staff could not reliably meet. Telephone booking remained available, and receptionists could see requests from both channels in the same list. This reduced the risk that a patient using two channels would appear to be two separate cases."
+        },
+        {
+          "id": "p5",
+          "text": "These changes also altered how success was discussed. Managers continued to monitor waiting times, since long delays still mattered. But they added measures of repeated requests and unfinished bookings, together with brief accounts of patients’ experiences. The accounts were not treated as representative statistics; they helped identify problems that the statistics might overlook. Nor did the clinic assume that every request for personal assistance reflected a lack of digital skill. Some patients simply wanted to clarify an unusual situation."
+        },
+        {
+          "id": "p6",
+          "text": "The lesson was not that numerical targets should be abandoned or that online services were inherently inferior. Rather, a measure becomes useful when its boundaries are understood. A short queue tells managers something important about one part of a service. It does not, by itself, show whether people can reach that service, understand it, or complete the task they came to perform. Improving access requires attention to the whole journey, including those whose difficulties never appear in the most visible figures."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "inference",
+          "prompt": "What limitation of the original waiting-time figure concerns the advisers?",
+          "choices": [
+            "It includes online requests that should be measured separately.",
+            "It is based on a part of the process that leaves some users’ difficulties uncounted.",
+            "It gives equal importance to every kind of medical appointment.",
+            "It measures patient satisfaction more accurately than telephone efficiency."
+          ],
+          "correctIndex": 1,
+          "explanationJa": "電話に出た通話だけが平均の対象で、諦めた人や最初から電話しなかった人などは含まれません。指標の範囲外にある困難が見えない点が問題です。",
+          "evidence": [
+            {
+              "paragraphId": "p2",
+              "quote": "It excluded callers who abandoned the queue"
+            }
+          ]
+        },
+        {
+          "id": "q2",
+          "type": "detail",
+          "prompt": "Why did the clinic avoid an exact response-time promise?",
+          "choices": [
+            "Patients preferred receiving no information about their requests.",
+            "The online system could not display numerical information.",
+            "All appointments required the same amount of preparation.",
+            "The staff might be unable to keep that promise consistently."
+          ],
+          "correctIndex": 3,
+          "explanationJa": "確実に守れない時間を約束して安心させるのではなく、次の手順や問い合わせ先を明確にする方針でした。",
+          "evidence": [
+            {
+              "paragraphId": "p4",
+              "quote": "an exact response time that staff could not reliably meet"
+            }
+          ]
+        },
+        {
+          "id": "q3",
+          "type": "purpose",
+          "prompt": "What role did brief accounts of patients’ experiences play?",
+          "choices": [
+            "They pointed to possible problems that numerical results alone might miss.",
+            "They replaced the need to collect any figures about waiting.",
+            "They established how common every problem was across all patients.",
+            "They showed that requests for assistance always resulted from poor digital skills."
+          ],
+          "correctIndex": 0,
+          "explanationJa": "体験談は代表性のある統計としてではなく、数字が見落としうる問題を発見する手掛かりとして使われました。",
+          "evidence": [
+            {
+              "paragraphId": "p5",
+              "quote": "they helped identify problems that the statistics might overlook"
+            }
+          ]
+        },
+        {
+          "id": "q4",
+          "type": "main-idea",
+          "prompt": "Which statement best captures the author’s conclusion?",
+          "choices": [
+            "Online booking should be judged mainly by how much telephone use it removes.",
+            "A service is accessible whenever its most visible waiting line becomes shorter.",
+            "Performance measures should be interpreted within the limits of what they capture.",
+            "Personal accounts are generally more reliable than carefully collected numerical data."
+          ],
+          "correctIndex": 2,
+          "explanationJa": "数字は有用ですが、何を測り、何を含まないのかを理解した上で判断する必要がある、という結論です。",
+          "evidence": [
+            {
+              "paragraphId": "p6",
+              "quote": "a measure becomes useful when its boundaries are understood"
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        {
+          "term": "coexist",
+          "meaningJa": "共存する",
+          "linkPolicy": "resolve-lemma-in-shared-catalog"
+        },
+        {
+          "term": "representative",
+          "meaningJa": "全体を代表する",
+          "linkPolicy": "resolve-lemma-in-shared-catalog"
+        },
+        {
+          "term": "inherently",
+          "meaningJa": "本質的に・生来",
+          "linkPolicy": "resolve-lemma-in-shared-catalog"
+        }
+      ],
+      "wordCount": 484,
+      "contentSha256": "6ac7bf7cd284489043329fe7b32eb7d9b65428109fe301fae503aa4f25bb30d2",
+      "review": {
+        "status": "approved",
+        "method": "independent-ai-review",
+        "reviewer": "Codex independent review agent /root/bulk_audio_assets",
+        "reviewedAt": "2026-10-23T13:02:55.419Z",
+        "contentSha256": "6ac7bf7cd284489043329fe7b32eb7d9b65428109fe301fae503aa4f25bb30d2"
+      },
+      "audio": {
+        "status": "not-generated"
+      }
+    },
+    {
+      "id": "reading-pre1-travel-001",
+      "seriesId": "reading-domains-pilot-v1",
+      "level": "準1級",
+      "cefrEstimate": "B2",
+      "domainIds": [
+        "travel"
+      ],
+      "title": "The Village That Looked Beyond Arrival Numbers",
+      "levelNote": "英検対策の学習目安です。公式問題・公式の級別認定・他試験とのスコア換算ではありません。",
+      "scenarioPolicy": "架空の人物・組織によるオリジナルの場面です。実在する研究・統計・時事報道の引用ではありません。",
+      "paragraphs": [
+        {
+          "id": "p1",
+          "text": "For years, the fictional mountain village of Arden judged its tourism policy by the number of people arriving each summer. An increase was celebrated as evidence of success, while a decline prompted additional advertising. Eventually, however, visitor numbers and local satisfaction began moving in opposite directions. Streets were crowded at midday, waste collections became more expensive, and residents complained that ordinary errands were difficult. At the same time, several guesthouses struggled to fill their rooms."
+        },
+        {
+          "id": "p2",
+          "text": "The apparent contradiction reflected the changing pattern of visits. Most newcomers arrived on coaches, stayed for a few hours, and left before the evening. They brought activity to the central square but used few overnight services. Money was spent in the village, yet the benefits and burdens were unevenly distributed. A café beside the coach stop gained customers, while a guesthouse farther uphill faced rising maintenance costs without a corresponding increase in bookings. Simply attracting more people would not necessarily address either situation."
+        },
+        {
+          "id": "p3",
+          "text": "Some residents proposed limiting the number of coaches. Others warned that such a measure could reduce income for businesses already dependent on day visitors. Instead of treating these positions as mutually exclusive, the council distinguished between a crowded moment and a crowded destination. It first tested scheduled arrival periods for large groups, leaving room between them. Independent visitors were not required to reserve a time, but the village published information about busy periods and alternative routes."
+        },
+        {
+          "id": "p4",
+          "text": "The pilot eased pressure around the coach stop, although it did not automatically produce longer stays. To encourage those, local businesses developed small evening activities, including a guided walk and a shared meal featuring stories from residents. Participation was optional, and the programme was deliberately limited so that it would not turn every quiet evening into an organized event. Guesthouses helped visitors plan travel connections, since an attractive activity was of little use if people could not get home or reach their next destination afterwards."
+        },
+        {
+          "id": "p5",
+          "text": "Evaluating the experiment required a different set of questions. The council still counted arrivals, but it also examined how long people stayed, which services they used, and how residents experienced the busiest hours. These indicators did not always improve together. A less crowded afternoon might coincide with lower sales at one shop, while an additional overnight booking could benefit another. Publishing those differences made the discussion more difficult, but also more honest. There was no single total that could settle every disagreement."
+        },
+        {
+          "id": "p6",
+          "text": "Arden did not stop welcoming visitors. It stopped assuming that every increase in arrivals represented the same kind of gain. The village’s experience suggests that tourism planning is partly a question of timing, location, and distribution, rather than volume alone. A policy can create value overall while leaving particular groups worse off. Recognizing that possibility does not supply an easy solution, but it allows a community to discuss concrete trade-offs instead of arguing over whether growth, in the abstract, is good or bad."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "detail",
+          "prompt": "Why could visitor numbers rise while guesthouses remained underused?",
+          "choices": [
+            "The village had prohibited visitors from staying overnight.",
+            "Every local business benefited equally from coach arrivals.",
+            "Many visitors left before they needed accommodation.",
+            "The new visitors all avoided the central square."
+          ],
+          "correctIndex": 2,
+          "explanationJa": "増えたのは数時間で帰る日帰り客が中心で、宿泊サービスをあまり使わなかったためです。",
+          "evidence": [
+            {
+              "paragraphId": "p2",
+              "quote": "left before the evening"
+            }
+          ]
+        },
+        {
+          "id": "q2",
+          "type": "inference",
+          "prompt": "What distinction guided the council’s initial response?",
+          "choices": [
+            "Congestion at a particular time can be addressed without rejecting visitors altogether.",
+            "Overnight guests create no costs for a destination.",
+            "Independent travelers are always more profitable than groups.",
+            "Advertising is useful only when visitor numbers are falling."
+          ],
+          "correctIndex": 0,
+          "explanationJa": "特定時刻への集中と観光地全体の受け入れを区別し、まず大型団体の到着時間を分散させました。",
+          "evidence": [
+            {
+              "paragraphId": "p3",
+              "quote": "distinguished between a crowded moment and a crowded destination"
+            }
+          ]
+        },
+        {
+          "id": "q3",
+          "type": "purpose",
+          "prompt": "Why does the author mention transport connections for evening activities?",
+          "choices": [
+            "To argue that the village should build a new railway.",
+            "To show that guests were interested only in free transport.",
+            "To explain why every evening should contain an organized event.",
+            "To illustrate that an appealing activity also needs practical supporting arrangements."
+          ],
+          "correctIndex": 3,
+          "explanationJa": "魅力的な企画だけでは足りず、その後の移動など実際に参加できる条件も整える必要があると示しています。",
+          "evidence": [
+            {
+              "paragraphId": "p4",
+              "quote": "an attractive activity was of little use if people could not get home"
+            }
+          ]
+        },
+        {
+          "id": "q4",
+          "type": "main-idea",
+          "prompt": "What is the passage’s central argument about tourism growth?",
+          "choices": [
+            "Increasing arrivals is the most reliable way to resolve conflicts among businesses.",
+            "Its value depends on how benefits and costs are distributed, not just on total numbers.",
+            "Residents’ concerns should outweigh every consideration of visitor experience.",
+            "Short visits inevitably harm every business in a tourist destination."
+          ],
+          "correctIndex": 1,
+          "explanationJa": "人数の増加そのものではなく、滞在時間・場所・誰が利益や負担を受けるかを見て評価するべきだという議論です。",
+          "evidence": [
+            {
+              "paragraphId": "p6",
+              "quote": "timing, location, and distribution, rather than volume alone"
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        {
+          "term": "corresponding",
+          "meaningJa": "それに対応する・見合う",
+          "linkPolicy": "resolve-lemma-in-shared-catalog"
+        },
+        {
+          "term": "mutually exclusive",
+          "meaningJa": "互いに両立しない",
+          "linkPolicy": "resolve-lemma-in-shared-catalog"
+        },
+        {
+          "term": "trade-off",
+          "meaningJa": "一方を得ると他方を犠牲にする関係",
+          "linkPolicy": "resolve-lemma-in-shared-catalog"
+        }
+      ],
+      "wordCount": 484,
+      "contentSha256": "b61e301c910d110542ad1b2fa31fd9a7829de71cab27b41f6ee53bd9682649d2",
+      "review": {
+        "status": "approved",
+        "method": "independent-ai-review",
+        "reviewer": "Codex independent review agent /root/bulk_audio_assets",
+        "reviewedAt": "2026-10-23T13:02:55.419Z",
+        "contentSha256": "b61e301c910d110542ad1b2fa31fd9a7829de71cab27b41f6ee53bd9682649d2"
+      },
+      "audio": {
+        "status": "not-generated"
+      }
+    },
+    {
+      "id": "reading-pre1-business-001",
+      "seriesId": "reading-domains-pilot-v1",
+      "level": "準1級",
+      "cefrEstimate": "B2",
+      "domainIds": [
+        "business"
+      ],
+      "title": "Selling the Ability to Keep Using Something",
+      "levelNote": "英検対策の学習目安です。公式問題・公式の級別認定・他試験とのスコア換算ではありません。",
+      "scenarioPolicy": "架空の人物・組織によるオリジナルの場面です。実在する研究・統計・時事報道の引用ではありません。",
+      "paragraphs": [
+        {
+          "id": "p1",
+          "text": "A fictional manufacturer called Lumen made desk lamps for schools and offices. Its older products were durable, but repairing them was inconvenient. When a switch failed, customers often replaced the whole lamp because a local technician could not obtain the correct part. The company earned revenue from replacement sales, yet its managers also heard increasing frustration from customers who felt that a small fault should not make an otherwise useful object worthless."
+        },
+        {
+          "id": "p2",
+          "text": "Lumen’s design team proposed a modular lamp. Its switch, cable, and light unit could be replaced separately, using parts that the company promised to keep available for several years. The proposal was attractive from a customer’s perspective, but the financial department raised a reasonable concern. If each lamp remained in service longer, the company might sell fewer new ones. Repairability would be difficult to sustain if the business model continued to depend entirely on frequent replacement."
+        },
+        {
+          "id": "p3",
+          "text": "Rather than treating repair as an additional cost attached to an unchanged product, the company reconsidered what it was offering. Large customers could buy a maintenance agreement covering inspections and access to replacement parts. Smaller customers could purchase parts individually, with clear instructions available without charge. Neither arrangement guaranteed that every lamp could be repaired indefinitely. Damage, changing safety requirements, and unavailable materials could still impose limits. Making those limits explicit was important to avoid replacing one unrealistic promise with another."
+        },
+        {
+          "id": "p4",
+          "text": "The new approach created practical demands that were less visible than the redesigned lamp. Parts had to be labeled consistently, stored efficiently, and matched to earlier versions. Service staff needed enough information to distinguish a simple fault from a problem that required specialist attention. The company also had to decide which components to keep unchanged when introducing improvements. Constantly revising every part might produce a slightly better new model while making older lamps more difficult to support."
+        },
+        {
+          "id": "p5",
+          "text": "During a trial with several schools, Lumen found that some customers valued the predictable maintenance budget more than the opportunity to perform repairs themselves. Others preferred to keep control of repair decisions and buy parts only when needed. This difference discouraged the company from forcing everyone into a subscription. It also complicated the assessment of success. Revenue from new lamps fell among trial customers, but service income increased and fewer customers left for competing suppliers. Whether the approach was sustainable depended on the combined costs and revenues over time."
+        },
+        {
+          "id": "p6",
+          "text": "The case illustrates why a product’s useful life is shaped by more than its physical strength. Instructions, compatible components, and a viable service organization can determine whether a technically repairable object is repaired in practice. Designing for durability therefore involves an organizational commitment as well as an engineering decision. For a company, the challenge is to earn enough from supporting continued use without making that support so expensive or restrictive that replacing the product becomes the easier option again."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "detail",
+          "prompt": "What problem did the modular design aim to address?",
+          "choices": [
+            "Customers could not easily replace a small faulty component.",
+            "The lamps were unsuitable for use on desks.",
+            "Schools preferred lamps without electrical switches.",
+            "Local technicians had stopped offering any repair services."
+          ],
+          "correctIndex": 0,
+          "explanationJa": "小さな部品故障でも部品を入手できず、本体ごと交換する状況を変えるための設計です。",
+          "evidence": [
+            {
+              "paragraphId": "p1",
+              "quote": "a local technician could not obtain the correct part"
+            }
+          ]
+        },
+        {
+          "id": "q2",
+          "type": "inference",
+          "prompt": "Why did the financial department question the proposal?",
+          "choices": [
+            "It believed customers would refuse every maintenance service.",
+            "It expected modular lamps to fail more frequently.",
+            "Longer product life might conflict with revenue based mainly on replacement sales.",
+            "It wanted to eliminate the sale of all replacement parts."
+          ],
+          "correctIndex": 2,
+          "explanationJa": "買い替えが減ることは、従来の買い替え販売に依存した収益構造と衝突する可能性があるからです。",
+          "evidence": [
+            {
+              "paragraphId": "p2",
+              "quote": "the company might sell fewer new ones"
+            }
+          ]
+        },
+        {
+          "id": "q3",
+          "type": "detail",
+          "prompt": "What did the trial reveal about customers?",
+          "choices": [
+            "All schools wanted to repair every lamp themselves.",
+            "They valued different ways of obtaining and controlling maintenance.",
+            "They preferred subscriptions whenever those subscriptions cost more.",
+            "They had become uninterested in the predictability of costs."
+          ],
+          "correctIndex": 1,
+          "explanationJa": "予算を予測できる契約を好む客と、必要な時だけ部品を買って判断権を持ちたい客の両方がいました。",
+          "evidence": [
+            {
+              "paragraphId": "p5",
+              "quote": "Others preferred to keep control of repair decisions and buy parts only when needed"
+            }
+          ]
+        },
+        {
+          "id": "q4",
+          "type": "main-idea",
+          "prompt": "Which conclusion is most consistent with the passage?",
+          "choices": [
+            "Durability can be achieved primarily by using stronger materials.",
+            "A maintenance subscription is the only viable alternative to replacement sales.",
+            "Successful repair services remove every limit on how long products can last.",
+            "Keeping products in use requires a workable support system as well as repairable design."
+          ],
+          "correctIndex": 3,
+          "explanationJa": "修理可能な設計だけでなく、説明書・互換部品・サービスを継続できる組織と収益の仕組みも必要だと論じています。",
+          "evidence": [
+            {
+              "paragraphId": "p6",
+              "quote": "an organizational commitment as well as an engineering decision"
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        {
+          "term": "modular",
+          "meaningJa": "部品単位で組み合わせ・交換ができる",
+          "linkPolicy": "resolve-lemma-in-shared-catalog"
+        },
+        {
+          "term": "viable",
+          "meaningJa": "実行・継続が可能な",
+          "linkPolicy": "resolve-lemma-in-shared-catalog"
+        },
+        {
+          "term": "compatible",
+          "meaningJa": "互換性のある・両立する",
+          "linkPolicy": "resolve-lemma-in-shared-catalog"
+        }
+      ],
+      "wordCount": 474,
+      "contentSha256": "cc01b9b2f5fb0b7dc96ef5d81777fafed38977d15138a0b3d5c242b39fdf734f",
+      "review": {
+        "status": "approved",
+        "method": "independent-ai-review",
+        "reviewer": "Codex independent review agent /root/bulk_audio_assets",
+        "reviewedAt": "2026-10-23T13:02:55.419Z",
+        "contentSha256": "cc01b9b2f5fb0b7dc96ef5d81777fafed38977d15138a0b3d5c242b39fdf734f"
+      },
+      "audio": {
+        "status": "not-generated"
+      }
+    },
+    {
+      "id": "reading-pre1-technology-001",
+      "seriesId": "reading-domains-pilot-v1",
+      "level": "準1級",
+      "cefrEstimate": "B2",
+      "domainIds": [
+        "technology"
+      ],
+      "title": "A Recommendation Is Not a Neutral Mirror",
+      "levelNote": "英検対策の学習目安です。公式問題・公式の級別認定・他試験とのスコア換算ではありません。",
+      "scenarioPolicy": "架空の人物・組織によるオリジナルの場面です。実在する研究・統計・時事報道の引用ではありません。",
+      "paragraphs": [
+        {
+          "id": "p1",
+          "text": "A fictional digital library introduced a recommendation feature intended to help readers discover books. Its first version suggested titles similar to those a person had recently borrowed. The system was easy to explain, and many readers appreciated receiving relevant suggestions without searching the entire catalog. Yet librarians noticed that a useful shortcut could gradually narrow the range of books that some people encountered."
+        },
+        {
+          "id": "p2",
+          "text": "Consider a reader who borrows several gardening books while preparing a small project. The borrowing history is genuine, but it does not necessarily describe that person’s permanent interests. If the system keeps treating the project as a stable preference, gardening titles will dominate future suggestions. The reader may choose one because it is prominently displayed, and that choice may then be interpreted as fresh evidence that the original assumption was correct. The system is observing behavior partly shaped by its own earlier recommendations."
+        },
+        {
+          "id": "p3",
+          "text": "This feedback loop made the library cautious about using borrowing rates as the sole measure of quality. A title selected from the first screen could be convenient rather than especially valuable. Conversely, a challenging book might benefit a reader even if it was borrowed less quickly. Neither possibility meant that borrowing data was useless. It meant that the data required interpretation, particularly when the library’s goal included exploration rather than only immediate selection."
+        },
+        {
+          "id": "p4",
+          "text": "The librarians tested several modest changes. Readers could indicate whether a topic represented a temporary project or an ongoing interest. Each recommendation carried a short explanation, such as “similar to a book you borrowed,” and users could remove individual items from the history used for suggestions. The library also reserved one space for a clearly labeled alternative from a different subject. That item was not chosen simply to be surprising; staff checked that it offered a reasonable connection, perhaps through a shared historical setting or a different approach to the same question."
+        },
+        {
+          "id": "p5",
+          "text": "Evaluation became a mixture of behavioral evidence and direct feedback. Staff asked whether recommendations had helped people find something worthwhile, whether the explanations made sense, and whether readers felt able to change the system’s assumptions. They still tracked borrowing, but they resisted claiming that any increase proved the system understood users better. The same rise could reflect improved relevance, greater visibility, or a design that made some choices unusually easy. Distinguishing these explanations was essential to responsible improvement."
+        },
+        {
+          "id": "p6",
+          "text": "The experiment suggests that personalization should be treated as a continuing conversation rather than a final portrait of a person. A useful system may form provisional assumptions, but it should also make those assumptions understandable and easy to revise. The aim is not to remove all influence from recommendations, which necessarily direct attention. It is to acknowledge that influence and give users practical ways to redirect it, so that convenience does not quietly become a constraint on discovery."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "inference",
+          "prompt": "What does the gardening example illustrate?",
+          "choices": [
+            "Temporary projects usually prevent readers from enjoying fiction.",
+            "An accurately recorded action may still be interpreted too broadly.",
+            "Borrowing histories contain no useful information about readers.",
+            "Recommendations have little effect on the choices users make."
+          ],
+          "correctIndex": 1,
+          "explanationJa": "貸出記録そのものが正しくても、一時的な目的を恒久的な興味と解釈すると誤りが生じます。",
+          "evidence": [
+            {
+              "paragraphId": "p2",
+              "quote": "it does not necessarily describe that person’s permanent interests"
+            }
+          ]
+        },
+        {
+          "id": "q2",
+          "type": "purpose",
+          "prompt": "Why does the author describe the recommendation process as a feedback loop?",
+          "choices": [
+            "The library repeatedly asks users the same survey questions.",
+            "Readers can borrow the same book more than once.",
+            "Librarians must enter every title into the catalog twice.",
+            "Suggestions influence choices that are then used to justify similar suggestions."
+          ],
+          "correctIndex": 3,
+          "explanationJa": "提示された候補が選ばれ、その選択が「同じ候補を出すべきだ」という新しい根拠として使われる循環です。",
+          "evidence": [
+            {
+              "paragraphId": "p2",
+              "quote": "behavior partly shaped by its own earlier recommendations"
+            }
+          ]
+        },
+        {
+          "id": "q3",
+          "type": "detail",
+          "prompt": "How was the recommendation from a different subject selected?",
+          "choices": [
+            "It needed a meaningful connection rather than novelty alone.",
+            "It was always drawn at random from the entire collection.",
+            "It replaced all suggestions related to previous borrowing.",
+            "It was chosen solely because it had the lowest borrowing rate."
+          ],
+          "correctIndex": 0,
+          "explanationJa": "単に意外なだけではなく、歴史的背景や共通の問いなど、理解できる関連性が必要でした。",
+          "evidence": [
+            {
+              "paragraphId": "p4",
+              "quote": "it offered a reasonable connection"
+            }
+          ]
+        },
+        {
+          "id": "q4",
+          "type": "main-idea",
+          "prompt": "What approach to personalization does the passage favor?",
+          "choices": [
+            "Treating a user’s past behavior as a complete and permanent identity.",
+            "Measuring usefulness only by immediate selection rates.",
+            "Making provisional assumptions visible and allowing users to revise them.",
+            "Avoiding explanations so that recommendations feel effortless."
+          ],
+          "correctIndex": 2,
+          "explanationJa": "利用者像を固定せず、仮の理解を分かりやすく示して利用者が修正できる仕組みを支持しています。",
+          "evidence": [
+            {
+              "paragraphId": "p6",
+              "quote": "make those assumptions understandable and easy to revise"
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        {
+          "term": "provisional",
+          "meaningJa": "暫定的な",
+          "linkPolicy": "resolve-lemma-in-shared-catalog"
+        },
+        {
+          "term": "constraint",
+          "meaningJa": "制約",
+          "linkPolicy": "resolve-lemma-in-shared-catalog"
+        },
+        {
+          "term": "feedback loop",
+          "meaningJa": "結果が次の判断に戻って影響する循環",
+          "linkPolicy": "resolve-lemma-in-shared-catalog"
+        }
+      ],
+      "wordCount": 467,
+      "contentSha256": "4586483826889c624d535a02fc497240c73af2ad6a7b09293a06f9f91e2e2b66",
+      "review": {
+        "status": "approved",
+        "method": "independent-ai-review",
+        "reviewer": "Codex independent review agent /root/bulk_audio_assets",
+        "reviewedAt": "2026-10-23T13:02:55.419Z",
+        "contentSha256": "4586483826889c624d535a02fc497240c73af2ad6a7b09293a06f9f91e2e2b66"
+      },
+      "audio": {
+        "status": "not-generated"
+      }
+    },
+    {
+      "id": "reading-pre1-politics-001",
+      "seriesId": "reading-domains-pilot-v1",
+      "level": "準1級",
+      "cefrEstimate": "B2",
+      "domainIds": [
+        "politics"
+      ],
+      "title": "A Seat at the Table Is Only a Beginning",
+      "levelNote": "英検対策の学習目安です。公式問題・公式の級別認定・他試験とのスコア換算ではありません。",
+      "scenarioPolicy": "架空の人物・組織によるオリジナルの場面です。実在する研究・統計・時事報道の引用ではありません。",
+      "paragraphs": [
+        {
+          "id": "p1",
+          "text": "A fictional city, Westhaven, wanted residents to help decide how a vacant public building should be used. Rather than relying only on an open meeting, the council invited a small panel selected to include people of different ages, neighborhoods, and working circumstances. The organizers hoped that this approach would bring voices into the discussion that were rarely heard at conventional evening meetings."
+        },
+        {
+          "id": "p2",
+          "text": "The panel’s diversity was a genuine improvement, but it did not guarantee an equally influential discussion. Some members were comfortable speaking before a group and interpreting budget documents. Others had valuable local knowledge but hesitated to interrupt or ask for clarification. Even when participants had equal time on the agenda, differences in confidence and familiarity with official language affected whose ideas received attention. Counting who was present was therefore a necessary starting point, not a complete measure of participation."
+        },
+        {
+          "id": "p3",
+          "text": "To reduce these barriers, the organizers provided short explanations of unfamiliar terms before the first session. Members could submit questions privately, and a facilitator checked that disagreements were understood before moving to a decision. Travel expenses and replacement childcare costs were covered. These arrangements were not intended to produce a particular recommendation. They were intended to make it more realistic for people with different resources to take part in forming one."
+        },
+        {
+          "id": "p4",
+          "text": "Another challenge concerned the evidence supplied to the panel. A detailed proposal for a business center looked more convincing than a brief description of a community workshop, partly because the first group had paid for professional presentation materials. The facilitator asked both groups to answer the same basic questions about costs, likely users, and practical limitations. The aim was not to pretend that their proposals were equally strong. It was to separate the quality of the proposal from the quality of the resources available to present it."
+        },
+        {
+          "id": "p5",
+          "text": "After several sessions, the panel recommended a mixed use of the building. The council accepted some elements but rejected others because they conflicted with requirements that had not been clearly explained at the beginning. This caused frustration. In response, the council published a detailed account of its decision and acknowledged that the panel should have known those constraints earlier. The experience demonstrated that participation could be undermined even after a thoughtful discussion if the connection between advice and final authority remained unclear."
+        },
+        {
+          "id": "p6",
+          "text": "Westhaven’s process was neither a simple success nor an argument against involving residents. It showed that meaningful participation depends on several linked conditions: access to the discussion, the ability to contribute within it, fair treatment of evidence, and clarity about what influence the result will have. A diverse group seated around a table may create the opportunity for these conditions, but cannot establish them automatically. Public consultation becomes more credible when institutions explain not only who may speak, but also how contributions will be considered and where the limits of the process lie."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "inference",
+          "prompt": "Why was a diverse membership insufficient on its own?",
+          "choices": [
+            "Members from different neighborhoods inevitably preferred incompatible outcomes.",
+            "The council had already chosen the final use of the building.",
+            "Participants differed in their ability to make their contributions heard.",
+            "Diversity prevented the panel from receiving budget information."
+          ],
+          "correctIndex": 2,
+          "explanationJa": "参加者が多様でも、発言への慣れや公式用語の理解に差があり、影響力が均等になるとは限りません。",
+          "evidence": [
+            {
+              "paragraphId": "p2",
+              "quote": "differences in confidence and familiarity with official language affected whose ideas received attention"
+            }
+          ]
+        },
+        {
+          "id": "q2",
+          "type": "purpose",
+          "prompt": "Why were both proposal groups asked the same basic questions?",
+          "choices": [
+            "To compare their substantive plans on a more consistent basis.",
+            "To guarantee that the less polished proposal would be selected.",
+            "To prevent the panel from considering financial limitations.",
+            "To show that professional presentations are always misleading."
+          ],
+          "correctIndex": 0,
+          "explanationJa": "見栄えを整える資金力と、計画そのものの良さを区別して比較するためです。",
+          "evidence": [
+            {
+              "paragraphId": "p4",
+              "quote": "separate the quality of the proposal from the quality of the resources available to present it"
+            }
+          ]
+        },
+        {
+          "id": "q3",
+          "type": "detail",
+          "prompt": "What caused frustration after the panel made its recommendation?",
+          "choices": [
+            "The panel had refused to discuss any mixed use of the building.",
+            "Travel and childcare expenses had been withdrawn without explanation.",
+            "The council had accepted every proposal without examining it.",
+            "Important constraints became clear only after the panel had done its work."
+          ],
+          "correctIndex": 3,
+          "explanationJa": "最初に十分知らされていない要件を理由に一部案が拒否され、協議の意味に疑問が生じました。",
+          "evidence": [
+            {
+              "paragraphId": "p5",
+              "quote": "requirements that had not been clearly explained at the beginning"
+            }
+          ]
+        },
+        {
+          "id": "q4",
+          "type": "main-idea",
+          "prompt": "What does the passage suggest makes consultation credible?",
+          "choices": [
+            "Guaranteeing that residents’ recommendations will always be accepted unchanged.",
+            "Connecting inclusive discussion to fair procedures and clearly explained influence.",
+            "Selecting only participants who already understand technical documents.",
+            "Avoiding disagreement by limiting the range of proposals."
+          ],
+          "correctIndex": 1,
+          "explanationJa": "参加しやすさだけでなく、発言・根拠の扱い・最終判断への影響と限界を明確にすることが必要です。",
+          "evidence": [
+            {
+              "paragraphId": "p6",
+              "quote": "how contributions will be considered and where the limits of the process lie"
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        {
+          "term": "facilitator",
+          "meaningJa": "話し合いを進める役割の人",
+          "linkPolicy": "resolve-lemma-in-shared-catalog"
+        },
+        {
+          "term": "substantive",
+          "meaningJa": "内容・実質に関わる",
+          "linkPolicy": "resolve-lemma-in-shared-catalog"
+        },
+        {
+          "term": "credible",
+          "meaningJa": "信頼できる",
+          "linkPolicy": "resolve-lemma-in-shared-catalog"
+        }
+      ],
+      "wordCount": 474,
+      "contentSha256": "3f23bc4dc5bdc6f39d4b62c18d277e6d82aefe1f0c4c0a439ea89d8d69520131",
+      "review": {
+        "status": "approved",
+        "method": "independent-ai-review",
+        "reviewer": "Codex independent review agent /root/bulk_audio_assets",
+        "reviewedAt": "2026-10-23T13:02:55.419Z",
+        "contentSha256": "3f23bc4dc5bdc6f39d4b62c18d277e6d82aefe1f0c4c0a439ea89d8d69520131"
+      },
+      "audio": {
+        "status": "not-generated"
+      }
+    },
+    {
+      "id": "reading-pre1-economics-001",
+      "seriesId": "reading-domains-pilot-v1",
+      "level": "準1級",
+      "cefrEstimate": "B2",
+      "domainIds": [
+        "economics"
+      ],
+      "title": "What a Price Can—and Cannot—Tell Us",
+      "levelNote": "英検対策の学習目安です。公式問題・公式の級別認定・他試験とのスコア換算ではありません。",
+      "scenarioPolicy": "架空の人物・組織によるオリジナルの場面です。実在する研究・統計・時事報道の引用ではありません。",
+      "paragraphs": [
+        {
+          "id": "p1",
+          "text": "When the fictional city of Riverton opened a new sports hall, its managers expected a modest entrance fee to cover part of the running costs. The fee was the same for everyone, and the managers initially described this as a fair arrangement. People who valued the facility, they reasoned, would choose to pay; those who did not would spend their money elsewhere."
+        },
+        {
+          "id": "p2",
+          "text": "After several months, however, a survey suggested that some residents who wanted to use the hall rarely attended. The entrance fee was only one barrier. A visit also involved transport, time away from work, and sometimes the cost of arranging care for a family member. Two residents could value the same activity equally while facing very different total costs of participating. Their decisions at the entrance desk therefore did not provide a direct comparison of how much the activity mattered to them."
+        },
+        {
+          "id": "p3",
+          "text": "This distinction challenged the idea that observed purchases were a complete expression of preference. A person’s willingness to pay is constrained by the resources available, and a decision not to buy may reflect other urgent needs rather than indifference. At the same time, the managers could not simply ignore financial limits. Cleaning, staffing, and maintenance had to be funded. Removing the entrance fee without replacing the lost income might eventually reduce opening hours, making the hall less accessible in another way."
+        },
+        {
+          "id": "p4",
+          "text": "The city tested a combination of approaches. It retained ordinary paid sessions, introduced some lower-cost periods, and worked with local groups to provide a limited number of supported memberships. Crucially, the managers also changed session times after learning that the cheapest periods were initially scheduled when many interested residents were working. A lower price had little practical value if the service was unavailable at a usable time. The trial made clear that affordability and availability needed to be considered together."
+        },
+        {
+          "id": "p5",
+          "text": "Evaluating the changes involved more than counting additional visits. The managers examined whether new users continued attending, whether existing users were displaced, and whether operating costs remained manageable. They also watched for unintended effects. A complicated application for supported membership could discourage precisely the people it was meant to help. Collecting detailed financial information might improve targeting but also create administrative costs and privacy concerns. The city therefore tried to keep eligibility rules understandable and the information requested proportionate to the support offered."
+        },
+        {
+          "id": "p6",
+          "text": "Riverton’s experience does not establish that one pricing system is universally fair. Different communities will face different resources, priorities, and constraints. It does show why a price should not be mistaken for a complete account of value. Prices can help allocate limited capacity and support the continued operation of a service, but they do not reveal every reason behind a person’s choice. Sound decisions require both financial information and attention to the circumstances in which people are able—or unable—to act on their preferences."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "inference",
+          "prompt": "Why does the author compare two residents who value an activity equally?",
+          "choices": [
+            "To show that differences in participation can arise from unequal total costs.",
+            "To prove that entrance fees never influence attendance.",
+            "To argue that every resident should receive the same membership.",
+            "To suggest that transport costs are always greater than entrance fees."
+          ],
+          "correctIndex": 0,
+          "explanationJa": "同じ価値を感じていても交通費・時間・家族の世話などの負担が異なれば、参加行動は変わると説明しています。",
+          "evidence": [
+            {
+              "paragraphId": "p2",
+              "quote": "facing very different total costs of participating"
+            }
+          ]
+        },
+        {
+          "id": "q2",
+          "type": "detail",
+          "prompt": "What possible problem with removing the fee is mentioned?",
+          "choices": [
+            "It would make residents less interested in sport.",
+            "It would automatically increase administrative privacy risks.",
+            "Unreplaced income could lead to reduced opening hours.",
+            "It would prevent the city from scheduling lower-cost periods."
+          ],
+          "correctIndex": 2,
+          "explanationJa": "収入を補えなければ運営費不足で営業時間が減り、別の意味で利用しにくくなる可能性が挙げられています。",
+          "evidence": [
+            {
+              "paragraphId": "p3",
+              "quote": "might eventually reduce opening hours"
+            }
+          ]
+        },
+        {
+          "id": "q3",
+          "type": "inference",
+          "prompt": "What did changing the timing of cheaper sessions demonstrate?",
+          "choices": [
+            "The lowest price should always be offered during working hours.",
+            "A low price is helpful only when people can actually use the service.",
+            "Operating costs depend entirely on the number of supported memberships.",
+            "Existing users should never be asked about timetable changes."
+          ],
+          "correctIndex": 1,
+          "explanationJa": "安くても仕事中で参加できなければ意味がなく、費用と利用可能な時間を合わせて考える必要があります。",
+          "evidence": [
+            {
+              "paragraphId": "p4",
+              "quote": "A lower price had little practical value if the service was unavailable at a usable time"
+            }
+          ]
+        },
+        {
+          "id": "q4",
+          "type": "main-idea",
+          "prompt": "Which statement best represents the passage’s view of prices?",
+          "choices": [
+            "They accurately reveal the importance of an activity to every individual.",
+            "They should be removed whenever participation is unequal.",
+            "They are useful only for privately operated services.",
+            "They provide useful information but cannot explain all the circumstances behind choices."
+          ],
+          "correctIndex": 3,
+          "explanationJa": "価格は運営や資源配分に役立つ一方、人が選べる条件や選ばない理由のすべてを表すわけではないという立場です。",
+          "evidence": [
+            {
+              "paragraphId": "p6",
+              "quote": "they do not reveal every reason behind a person’s choice"
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        {
+          "term": "allocate",
+          "meaningJa": "割り当てる・配分する",
+          "linkPolicy": "resolve-lemma-in-shared-catalog"
+        },
+        {
+          "term": "proportionate",
+          "meaningJa": "釣り合った・相応の",
+          "linkPolicy": "resolve-lemma-in-shared-catalog"
+        },
+        {
+          "term": "eligibility",
+          "meaningJa": "利用・申請などの資格",
+          "linkPolicy": "resolve-lemma-in-shared-catalog"
+        }
+      ],
+      "wordCount": 473,
+      "contentSha256": "4ff2d4572b4bc4919efef55390f29b59e0019e0b626b09e06242346ede1bfa88",
+      "review": {
+        "status": "approved",
+        "method": "independent-ai-review",
+        "reviewer": "Codex independent review agent /root/bulk_audio_assets",
+        "reviewedAt": "2026-10-23T13:02:55.419Z",
+        "contentSha256": "4ff2d4572b4bc4919efef55390f29b59e0019e0b626b09e06242346ede1bfa88"
+      },
+      "audio": {
+        "status": "not-generated"
+      }
+    }
+  ]
+}
