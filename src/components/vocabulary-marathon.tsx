@@ -235,6 +235,7 @@ export default function VocabularyMarathon({ entries, audio, preparation, glossa
   const heading = useRef<HTMLHeadingElement>(null);
   const card = useRef<HTMLElement>(null);
   const feedback = useRef<HTMLDivElement>(null);
+  const choiceList = useRef<HTMLFieldSetElement>(null);
   const modeSelector = useRef<HTMLSelectElement>(null);
   const groups = vocabularyGroups(entries, level);
   const group = groups[groupIndex] ?? [];
@@ -258,6 +259,9 @@ export default function VocabularyMarathon({ entries, audio, preparation, glossa
   const stage: GroupState['stage'] = ((session.stage === 'test' && !test) || ((session.stage === 'result' || session.stage === 'production') && !resultReady)) ? 'learn' : session.stage;
   const score = summary?.choice;
   const correct = !!item && checked && checkVocabularyAnswer(item, answer ?? '');
+  const choiceMeanings = checked && (mode === 'word' || mode === 'context')
+    ? new Map(entries.map(word => [word.word.toLowerCase(), word.meaning]))
+    : undefined;
   const alternativeExpressions = mode === 'context' && correct
     ? entries.find(word => word.id === item?.wordId)?.recall.alternatives?.slice(0, 3) ?? []
     : [];
@@ -275,7 +279,8 @@ export default function VocabularyMarathon({ entries, audio, preparation, glossa
   });
   const focusFeedback = () => requestAnimationFrame(() => {
     feedback.current?.focus({ preventScroll: true });
-    if (feedback.current) window.scrollTo({ top: Math.max(0, feedback.current.getBoundingClientRect().top + window.scrollY - 16), behavior: 'instant' });
+    const target = (mode === 'word' || mode === 'context') && choiceList.current ? choiceList.current : feedback.current;
+    if (target) window.scrollTo({ top: Math.max(0, target.getBoundingClientRect().top + window.scrollY - 16), behavior: 'instant' });
   });
   const navigateSet = (nextLevel: VocabularyEntry['level'], nextIndex: number) => {
     setLevel(nextLevel);
@@ -426,11 +431,14 @@ export default function VocabularyMarathon({ entries, audio, preparation, glossa
         <p className={styles.quizMeta}>{test.items.length}語をまとめて確認<span>{test.question + 1} / {test.items.length}問</span></p>
         <div className={styles.testProgress} aria-hidden="true"><span style={{ width: `${(test.question + 1) / test.items.length * 100}%` }} /></div>
         <h3>{item.prompt}</h3>
-        <fieldset className={styles.choices} disabled={checked}>
-          <legend>一番適切なものを1つ選んでください</legend>
+        <fieldset ref={choiceList} className={styles.choices} disabled={checked}>
+          <legend>{choiceMeanings ? '答え合わせ · 選択肢の意味も確認しましょう' : '一番適切なものを1つ選んでください'}</legend>
           {item.choices?.map((choice, index) => <label key={`${item.id}-${index}`} className={`${styles.choice} ${answer === index ? styles.selected : ''} ${checked && item.correctIndex === index ? styles.correctChoice : ''}`}>
             <input type="radio" name={`vocab-${item.id}`} value={index} checked={answer === index} onChange={() => updateTest({ answers: { ...test.answers, [item.id]: index } })} />
-            <span className={styles.choiceNumber}>{checked && item.correctIndex === index ? <Check size={15} aria-label="正解" /> : index + 1}</span><span lang={mode === 'meaning' ? 'ja' : 'en'}>{choice}</span>
+            <span className={styles.choiceNumber}>{checked && item.correctIndex === index ? <Check size={15} aria-label="正解" /> : index + 1}</span>
+            <span className={styles.choiceCopy}><span lang={mode === 'meaning' ? 'ja' : 'en'}>{choice}</span>
+              {choiceMeanings?.get(choice.trim().toLowerCase()) && <small className={styles.choiceMeaning} lang="ja">{choiceMeanings.get(choice.trim().toLowerCase())}</small>}
+            </span>
           </label>)}
         </fieldset>
         {!checked && <button type="button" className={styles.unknown} onClick={() => submit(true)}>分からない・答えを見る</button>}

@@ -71,6 +71,8 @@
 .choices legend{font-size:11px;color:#849078;padding:0 0 10px}
 .choice{display:flex;align-items:flex-start;gap:10px;position:relative;min-height:58px;padding:12px;border:1px solid #dbe5d4;border-radius:10px;cursor:pointer;font-weight:400;font-size:15px;line-height:1.65;color:#334d3c}
 .choice>span:last-child{flex:1;min-width:0;overflow-wrap:break-word}
+.choiceCopy{display:grid;gap:3px}
+.choiceMeaning{font-size:13px;line-height:1.65;color:#536b4c;font-weight:400}
 .choice input{position:absolute;width:1px;height:1px;opacity:0;margin:0}
 .choice:has(input:focus-visible){outline:3px solid #9bc8b3;outline-offset:3px}
 .choiceNumber{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;width:24px;height:24px;border-radius:50%;border:1px solid #d7e1ce;background:#f3f7ef;color:#728663;font-size:11px;margin-top:1px}

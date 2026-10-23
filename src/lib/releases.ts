@@ -8,6 +8,14 @@ export interface AppRelease {
 
 // Newest first. This is the source for Settings, public history and update notices.
 export const APP_RELEASES: readonly AppRelease[] = [{
+  version: '0.10.2',
+  date: '2026-10-23',
+  title: '答え合わせで、選択肢の単語も学ぶ',
+  announcement: '英単語の選択肢に、答え合わせ後だけ日本語の意味を表示します。選ばなかった単語も一緒に確認できます。',
+  changes: [
+    { title: '4つの選択肢すべてに意味を表示', description: '「英単語を選ぶ」「英文の空欄を選ぶ」で答え合わせをすると、正解・不正解にかかわらず各単語の下に日本語の意味を表示します。意味が見える位置へ移り、そのまま解説を読めます。保存済みの教材を使い、AIは呼びません。' },
+  ],
+}, {
   version: '0.10.0',
   date: '2026-10-23',
   title: '選んで確かめ、類義語も学ぶ',
