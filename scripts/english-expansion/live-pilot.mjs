@@ -5,15 +5,14 @@ import { createAnthropicAdapter, PRICING_POLICY_SHA256, quoteInput } from './ant
 import { TARGET_ALLOCATION } from './allocation.mjs';
 import { reserveExpansionRequest } from './budget.mjs';
 import { boundedRequest, inspectPhaseOneGate } from './dispatcher.mjs';
-import { generationWork, parseGenerated, parseReviewed, reviewWork } from './prompts.mjs';
+import { checkedVersionedWork, parseVersionedGeneration, parseVersionedReview } from './work-versions.mjs';
+import { assertOnlyTestsChanged, assertSingleRepairDispatch, inspectRepairEvidence, assertRepairAwareReview } from './pilot-repair.mjs';
 import { classifyCandidates } from './registry.mjs';
 import { hashContent } from './schema.mjs';
-import { initializeStore, persistDraft, persistLedger, persistPhaseOneHandoff, persistRawResponse, persistRequest, persistReviewResult, persistWork, publishReviewedUnit, readJson, readOptionalJson, registerPilotSeeds, withExpansionLock } from './store.mjs';
+import { initializeStore, persistDraft, persistLedger, persistPhaseOneHandoff, persistRawResponse, persistRepairRevision, persistRequest, persistReviewResult, persistWork, publishReviewedUnit, readJson, readOptionalJson, registerPilotSeeds, withExpansionLock } from './store.mjs';
 
 function checkedWork(work) {
-  const config = { id: work?.id, createdAt: work?.createdAt, model: work?.params?.model };
-  const expected = work?.stage === 'generation' ? generationWork(work.seeds ?? [], config) : work?.stage === 'review' ? reviewWork(work.units ?? [], config) : null;
-  if (!expected || hashContent(work) !== hashContent(expected)) throw new Error('Work differs from the exact reviewed prompt builder.');
+  const expected = checkedVersionedWork(work);
   boundedRequest({ ...work, reservedUsd: 1 }); // Identity, bounds and credential-free params.
   return expected;
 }
@@ -35,11 +34,18 @@ async function finishSaved(lease, request, work, raw, adapter) {
   // Validation failures keep all paid raw data and exact known cost. A new ID is
   // not a retry permission; revision/repair needs a separate reviewed workflow.
   if (work.stage === 'generation') {
-    const units = parseGenerated(raw.response, work);
+    const units = parseVersionedGeneration(raw.response, work);
+    if (work.kind === 'tests-only-repair') {
+      for (const unit of units) assertOnlyTestsChanged(work.units.find(original => original.id === unit.id), unit);
+      await persistRepairRevision(lease, request.id, { schemaVersion: 1, kind: 'tests-only-repair', requestId: request.id,
+        sourceRequestId: work.repairPlan.sourceRequestId, planSha256: hashContent(work.repairPlan), rejectionSha256: hashContent(work.rejection),
+        responseSha256: responseHash, savedAt: raw.savedAt,
+        units: units.map(unit => ({ unitId: unit.id, beforeSha256: hashContent(work.units.find(original => original.id === unit.id)), afterSha256: hashContent(unit) })) });
+    }
     for (const unit of units) await persistDraft(lease, unit);
     return { requestId: request.id, stage: work.stage, actualUsd: call.actualUsd, unitIds: units.map(unit => unit.id), state: 'drafts-awaiting-independent-review' };
   }
-  const results = parseReviewed(raw.response, work, raw.savedAt);
+  const results = parseVersionedReview(raw.response, work, raw.savedAt);
   await persistReviewResult(lease, request.id, results.map(({ unit, receipt }) => ({ unitId: unit.id, contentSha256: hashContent(unit), receipt })));
   for (const { unit, receipt } of results) if (receipt.approved) await publishReviewedUnit(lease, unit, receipt);
   return { requestId: request.id, stage: work.stage, actualUsd: call.actualUsd, approved: results.filter(row => row.receipt.approved).map(row => row.unit.id), held: results.filter(row => !row.receipt.approved).map(row => row.unit.id), state: 'pilot-cost-and-quality-review-required-before-scaling' };
@@ -60,32 +66,37 @@ async function pilotAction(options, adapterFactory) {
     for (const id of work.unitIds) {
       const seed = registered.pilot.seeds.find(seed => seed.id === id);
       if (!seed) throw new Error('Work references an unregistered pilot seed.');
-      if (work.stage === 'generation' && hashContent(seed) !== hashContent(work.seeds.find(row => row.id === id))) throw new Error('Generation work changed its reviewed seed.');
+      if (work.stage === 'generation' && work.kind !== 'tests-only-repair' && hashContent(seed) !== hashContent(work.seeds.find(row => row.id === id))) throw new Error('Generation work changed its reviewed seed.');
     }
     if (work.stage === 'review') for (const unit of work.units) {
       const draft = await readJson(join(lease.output, 'drafts', unit.id, `${hashContent(unit)}.json`));
       if (draft.contentSha256 !== hashContent(unit) || hashContent(draft.unit) !== hashContent(unit)) throw new Error('Review must use the complete immutable saved draft.');
     }
     let ledger = await readJson(join(lease.output, 'ledger.json'));
+    if (ledger.calls.some(call => call.repairOf || call.repairPlanSha256) && !approval.config.pilotRepair) throw new Error('Existing pilot repair authority cannot be omitted from later requests.');
     const prior = ledger.calls.find(call => call.id === work.id);
+    const repair = work.kind === 'tests-only-repair' ? await inspectRepairEvidence(lease.output, approval.config.pilotRepair, work, { allowApprovedReplacement: Boolean(prior) }) : null;
+    if (repair && !prior) assertSingleRepairDispatch(ledger, work, repair);
     const adapter = adapterFactory(); // No credentials/network constructed before actual completion gate.
     if (prior) {
       const savedWork = await readJson(join(lease.output, 'requests', work.id, 'work.json'));
       if (hashContent(savedWork.work) !== hashContent(work) || savedWork.quote.pricingPolicySha256 !== PRICING_POLICY_SHA256) throw new Error('Saved work or historical pricing policy changed; do not resend.');
-      const request = boundedRequest({ ...work, reservedUsd: savedWork.quote.reservedUsd });
-      if (request.requestHash !== prior.requestHash || request.reservedUsd !== prior.reservedUsd) throw new Error('Existing request differs from saved work.');
+      const request = { ...boundedRequest({ ...work, reservedUsd: savedWork.quote.reservedUsd }), ...(repair ? { repairOf: repair.plan.sourceRequestId, repairPlanSha256: repair.planSha256 } : {}) };
+      if (request.requestHash !== prior.requestHash || request.reservedUsd !== prior.reservedUsd || request.repairOf !== prior.repairOf || request.repairPlanSha256 !== prior.repairPlanSha256) throw new Error('Existing request differs from saved work.');
       const raw = await readOptionalJson(join(lease.output, 'requests', work.id, 'response.json'));
       if (!raw) throw new Error('Existing request has no saved response. Outcome may be unknown; never resend automatically.');
       return { ...await finishSaved(lease, request, work, raw, adapter), replayed: true };
     }
+    if (approval.config.pilotRepair && work.promptVersion !== 'v2') throw new Error('New requests require the reviewed v2 quality prompt; historical work can only replay saved raw.');
+    if (work.stage === 'review' && approval.config.pilotRepair) await assertRepairAwareReview(lease.output, approval.config.pilotRepair, work, ledger);
     if (ledger.calls.some(call => call.accountingHold)) throw new Error('An accounting hold blocks further spending.');
     if (ledger.calls.length >= 10) throw new Error('Initial pilot is limited to ten total generation/review submissions.');
-    if (ledger.calls.some(call => call.stage === work.stage && call.unitIds.some(id => work.unitIds.includes(id)))) throw new Error('These units already have a request for this stage. Reconcile saved evidence; a new ID is not retry permission.');
+    if (!repair && ledger.calls.some(call => call.stage === work.stage && call.unitIds.some(id => work.unitIds.includes(id)))) throw new Error('These units already have a request for this stage. Reconcile saved evidence; a new ID is not retry permission.');
     // Read-only preflight follows the gate. Generation remains prohibited until
     // all reserve/request evidence has been fsynced and the gate rechecked.
     const quote = await adapter.quote(work.params), expectedQuote = quoteInput(work.params, quote.countedInputTokens);
     if (hashContent(quote) !== hashContent(expectedQuote)) throw new Error('Provider quote differs from the verified conservative pricing policy.');
-    const request = boundedRequest({ ...work, reservedUsd: quote.reservedUsd });
+    const request = { ...boundedRequest({ ...work, reservedUsd: quote.reservedUsd }), ...(repair ? { repairOf: repair.plan.sourceRequestId, repairPlanSha256: repair.planSha256 } : {}) };
     gate = await inspectPhaseOneGate(lease, gateOptions);
     if (gate.phaseOneFingerprint !== state.phaseOneFingerprint) throw new Error('Frozen phase-one evidence changed before reservation.');
     const reserved = reserveExpansionRequest({ ...gate.snapshot, expansion: ledger }, request);

@@ -61,7 +61,7 @@ export function validateUnit(raw) {
     if (new Set(sense.tests.map(item => item.mode)).size !== 4) throw new Error('Each sense requires all four authored multiple-choice modes, including phrases.');
     for (const question of sense.tests) {
       if (!unique(question.choices.map(choice => choice.text))) throw new Error('Four distinct answer choices required.');
-      if (question.mode === 'word' && normalizeForm(question.choices[question.correctIndex].text) !== unit.lemma) throw new Error('Word/phrase selection must choose the canonical target.');
+      if (question.mode === 'word' && ![unit.lemma, ...unit.aliases].map(normalizeForm).includes(normalizeForm(question.choices[question.correctIndex].text))) throw new Error('Word/phrase selection must choose the canonical target or an explicitly declared alias.');
       if (question.mode === 'context' && !/_{3,}/.test(question.prompt)) throw new Error('Context question must include a cloze.');
       if (question.mode !== 'context' && question.alternatives.length) throw new Error('Contextual synonyms belong only to a context question.');
       const wrong = new Set(question.choices.filter((_, index) => index !== question.correctIndex).map(choice => normalizeForm(choice.text)));

@@ -118,16 +118,16 @@ is already included in billed `output_tokens` and must not be added twice.
 Structured output uses the SDK's JSON-schema helper and local strict validation;
 raw `.create()` output is saved before parsing. See
 [structured-output documentation](https://platform.claude.com/docs/en/build-with-claude/structured-outputs).
-Sonnet5.5 adaptive thinking is left supported; generation uses low effort and
-review medium effort, with full output reservation. The
+Sonnet5.5 adaptive thinking is left supported; historical v1 generation uses low effort; v2 generation, repair and
+review use medium effort, with full output reservation. The
 [thinking documentation](https://platform.claude.com/docs/en/build-with-claude/thinking)
 explains why hidden thinking can still consume billed output.
 
-Create a private work JSON with `generationWork(approvedSeeds, {id,createdAt})`
+Create new private work JSON with `newGenerationWork(approvedSeeds, {id,createdAt})` from `work-versions.mjs`
 for at most five seeds. IDs and dates are bound into the exact provider prompt.
 The compact output is expanded deterministically into one sense, three examples
 and four authored MCQ modes. There is no runtime AI grading. Build review work
-with `reviewWork(savedDraftUnits, {id,createdAt})`; it uses fresh context and checks
+with `newReviewWork(savedDraftUnits, {id,createdAt})`; it uses fresh context and checks
 every complete card. Reviews bind full content SHA256. Approved private assets
 are immutable; rejected cards keep their raw, cost and review issues.
 
@@ -176,3 +176,44 @@ Live activation now requires `expenseCoverage: "reviewed-ledgers-plus-bounded-hi
 The fixed USD 51 is a planning commitment, not a reported bill: USD 40 text covers the recorded USD 2.739465 estimate, three failed requests whose actual costs remain unknown at USD 8 each, plus contingency. USD 11 audio covers all 31,091 recorded requested characters at USD 0.33 / thousand plus contingency. No historical request is resubmitted and no reserve is automatically released. Current pipeline unknown outcomes still block spending. Any additional historical activity requires a new reviewed policy.
 
 The allowance enters both USD 500 and JPY 100,000 guards by funding pool. Existing audio prepayments and consumed audio are not counted twice. The allowance's complete receipt is bound into the phase-one fingerprint, preventing later omission after the first phase-two reservation.
+
+## One explicit, tests-only pilot repair
+
+Historical `prompts.mjs` is frozen. Unversioned saved work always rebuilds its
+original v1 wire request. `prompts-v2.mjs` adds worked natural situational options
+and realistic learner errors; new work carries `promptVersion: "v2"`. New prompts
+are canonically serialized so saved work replays after durable key sorting.
+No old raw response, prompt, draft, reservation or cost is rewritten.
+
+A known paid original result with material question defects can receive **one**
+separately authorized repair, at most five cards. This is not an automatic retry.
+The integration receipt must include `pilotRepair: {plan,rejection,review}`:
+
+- `plan` follows exported `repairPlanSchema`: source request ID/hash, exact inner
+  work hash, entire saved raw-envelope hash, independent rejection hash, ordered
+  full-card hashes, a distinct repair request ID, all four allowed modes, one
+  repair maximum, and `preserveNonTestFields: true`.
+- `rejection` binds the same work/raw/cards, names an independent reviewer, and
+  holds every card with concrete issues. It is an offline quality judgment,
+  not another paid provider request or a claim about billing.
+- `review` is root's exact plan acceptance: `schemaVersion:1`,
+  `sourceSha256:hashContent(plan)`, `reviewedBy:"/root"`, ISO `reviewedAt`,
+  `approved:true`, `issues:[]`.
+
+Use `repairWorkV2(originalUnits, plan, rejection, {id:plan.repairWorkId,createdAt})`.
+The provider may return only unit IDs, original hashes and the four tests. Local
+composition preserves every other field, including meanings, examples, seed,
+sense IDs, relations and original provenance. Separate immutable
+`repair-revision.json` records before/after hashes, response and plan lineage.
+The source must be complete with exact saved raw/cost and an unapproved draft.
+Unknown submissions cannot authorize repair. A second repair, another paid review
+of the rejected original, or changed source is blocked.
+
+The initial pilot is still 20 distinct items and **10 total paid submissions**.
+For the first five: one original + one repair + three remaining generation calls
++ four final independent reviews = nine. Final reviews use complete repaired
+cards, not the old rejected content. All nine costs enter the measured snapshot;
+only the final20 IDs count. Once repair is configured, new requests require v2;
+old work can only replay its already saved raw. A root-reviewed integration
+receipt with all new module hashes is required before any new request. These
+scripts do not install or update that live receipt.

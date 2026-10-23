@@ -75,7 +75,7 @@ export async function persistLedger(lease, ledger) {
   for (const old of previous.calls) {
     const next = ledger.calls.find(call => call.id === old.id);
     if (!next || !transitions[old.status]?.includes(next.status)) throw new Error('Spending history cannot be removed or rolled back.');
-    for (const field of ['requestHash', 'reservedUsd', 'stage', 'unitIds', 'params', 'adapterVersion']) if (canonicalJson(old[field]) !== canonicalJson(next[field])) throw new Error('An immutable request reservation changed.');
+    for (const field of ['requestHash', 'reservedUsd', 'stage', 'unitIds', 'params', 'adapterVersion', 'repairOf', 'repairPlanSha256']) if (canonicalJson(old[field]) !== canonicalJson(next[field])) throw new Error('An immutable request reservation changed.');
     if (old.status === 'complete' && (old.actualUsd !== next.actualUsd || old.responseHash !== next.responseHash)) throw new Error('Completed spending evidence is immutable.');
     if (old.accountingHold && old.accountingHold !== next.accountingHold) throw new Error('Accounting holds require a separate explicit reconciliation workflow.');
   }
@@ -102,6 +102,11 @@ export async function persistPhaseOneHandoff(lease, runtimeDirectory, record) {
 export async function persistReviewResult(lease, requestId, result) {
   await assertLease(lease, lease.output);
   await durableJson(join(lease.output, 'requests', safeId(requestId), 'review-result.json'), result, true);
+}
+export async function persistRepairRevision(lease, requestId, revision) {
+  await assertLease(lease, lease.output);
+  await durableJson(join(lease.output, 'requests', safeId(requestId), 'repair-revision.json'), revision, true);
+  return revision;
 }
 export async function persistRawResponse(lease, request, response) {
   await assertLease(lease, lease.output);
