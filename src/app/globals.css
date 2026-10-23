@@ -107,6 +107,12 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
   .settings-panel>.button{max-width:100%;white-space:normal}
 }
 
+.practice-momentum{min-height:38px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:9px 0;font-size:12px;color:#637168}.practice-streak{display:inline-flex;gap:5px;align-items:center;font-weight:700;color:#86601f}
+.answer-effects-on .choice.correct.chosen{animation:choice-success .3s ease-out}.answer-effects-on .choice.wrong{animation:choice-retry .22s ease-out}
+@keyframes choice-success{0%{box-shadow:0 0 0 0 #82ad7655}100%{box-shadow:0 0 0 7px #82ad7600}}
+@keyframes choice-retry{0%,100%{transform:translateX(0)}30%{transform:translateX(-3px)}65%{transform:translateX(3px)}}
+@media(prefers-reduced-motion:reduce){.answer-effects-on .choice{animation:none!important}}
+
 @media(max-width:570px){
   .topic-grid{grid-template-columns:minmax(0,1fr)}
   .topic-card{min-width:0;grid-template-columns:minmax(0,1fr) 90px}
