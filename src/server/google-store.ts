@@ -13,12 +13,13 @@ import { libraryRevision } from './library';
 import { planningSamplesSchema, planningSampleSchema } from './planning-samples';
 import { aiRequestedSchema, aiUsageSchema } from './ai-usage-schema';
 import { personalProfileSavedEventSchema, personalProfileChatRequestedEventSchema, personalProfileChatCompletedEventSchema, personalProfileChatFailedEventSchema } from './personal-profile-schemas';
+import { planTagsSchema, planTagsUpdatedEventSchema } from './plan-tags';
 
 const EVENT_TYPES = [
   'topic.created', 'source.created', 'question.upserted', 'questions.published', 'session.created',
   'session.completed', 'attempt.recorded', 'exposure.recorded', 'job.upserted', 'push.subscribed',
   'generation.batch', 'generation.requested', 'source.analysis',
-  'plan.created', 'plan.updated', 'planning.turn.upserted',
+  'plan.created', 'plan.updated', 'plan.tags.updated', 'planning.turn.upserted',
   'audio.requested', 'audio.ready', 'audio.failed',
   'library.questions', 'library.published', 'library.adopted', 'library.publication-requested',
   'ai.requested', 'ai.usage',
@@ -64,6 +65,7 @@ const jobSchema = z.object({ id: idSchema, topicId: idSchema, status: z.enum(['q
   dailyQuestionTarget:z.number().int().min(1).max(100).optional(),plannedDays:z.number().int().min(1).max(300).optional() });
 const planSchema = z.object({
   id: idSchema, ownerId: idSchema, title: z.string().trim().min(1).max(150), subject: subjectSchema,
+  tags: planTagsSchema.optional(),
   goal: z.string().max(4000), difficulty: z.string().max(200), targetDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
   dailyQuestionTarget: z.number().int().min(1).max(100), sourceIds: z.array(idSchema).max(20),
   requestedQuestionCount: z.number().int().min(1).max(300).optional(),
@@ -195,6 +197,7 @@ function validateEvent(input: StudyEvent): StudyEvent {
       break;
     }
     case 'plan.created': case 'plan.updated': planSchema.parse(payload); break;
+    case 'plan.tags.updated': planTagsUpdatedEventSchema.parse(payload); break;
     case 'library.publication-requested': {
       const pending=z.object({sourceTopicId:idSchema,requestedBy:idSchema,requestedAt:isoSchema,revision:z.string().length(64),sequence:z.number().int().positive()}).strict().parse(payload);
       if(pending.requestedBy!==metadata.actorId) throw new ApiError(400,'公開依頼者が一致しません。','INVALID_LIBRARY');
@@ -358,7 +361,7 @@ export function foldEvents(events: StudyEvent[], profiles: Profile[] = []): Stud
           if(payload.updatedPlan) {
             const updated=planSchema.parse(payload.updatedPlan);
             const previous=plans.get(updated.id);
-            if(previous && previous.ownerId===updated.ownerId && updated.version===previous.version+1) plans.set(updated.id,updated);
+            if(previous && previous.ownerId===updated.ownerId && updated.version===previous.version+1) plans.set(updated.id,{...updated,tags:previous.tags});
           }
         }
         break;
@@ -388,7 +391,17 @@ export function foldEvents(events: StudyEvent[], profiles: Profile[] = []): Stud
       case 'plan.updated': {
         const plan = planSchema.parse(payload);
         const previous = plans.get(plan.id);
-        if (previous && plan.ownerId === previous.ownerId && plan.version > previous.version) plans.set(plan.id, plan);
+        if (previous && plan.ownerId === previous.ownerId && plan.version > previous.version) plans.set(plan.id, { ...plan, tags: previous.tags });
+        break;
+      }
+      case 'plan.tags.updated': {
+        const update = planTagsUpdatedEventSchema.parse(payload);
+        const plan = plans.get(update.planId);
+        const owner = profiles.find(profile => profile.id === event.actorId && profile.familyId === getFamilyId());
+        if (plan && owner && plan.ownerId === update.ownerId && event.actorId === plan.ownerId
+          && (!plan.testOnly || owner?.role === 'parent')) {
+          plans.set(plan.id, { ...plan, tags: update.tags, updatedAt: event.createdAt });
+        }
         break;
       }
       case 'planning.turn.upserted': {

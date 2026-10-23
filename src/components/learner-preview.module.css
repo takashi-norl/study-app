@@ -1,0 +1,55 @@
+.preview{min-width:0;max-width:100%;color:#324e3e}
+.banner{position:sticky;top:10px;z-index:15;padding:18px 20px;margin-bottom:24px;border:1px solid #a4bcab;border-radius:15px;background:#edf5ef;box-shadow:0 4px 20px #314d3d0c}
+.bannerHeading{display:flex;align-items:flex-start;gap:11px}
+.bannerHeading>svg{flex-shrink:0;margin-top:2px}
+.bannerHeading strong{font-size:15px;line-height:1.6}
+.bannerHeading p{font-size:12px;line-height:1.8;margin:4px 0 0;color:#567261;overflow-wrap:anywhere}
+.controls{display:flex;align-items:flex-end;flex-wrap:wrap;gap:10px 14px;margin-top:15px}
+.controls label{min-width:140px;flex:1;max-width:280px}
+.controls label>span{display:block;font-size:11px;margin-bottom:5px;color:#536d5b}
+.controls select{width:100%;min-height:42px;background:#fff;border:1px solid #bacdbd;border-radius:8px;padding:8px 11px;color:#34533d;font-size:14px}
+.refresh,.exit{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:42px;padding:9px 12px;font-size:12px;line-height:1.5;border-radius:8px}
+.refresh{color:#486953;border:1px solid #bdcfbf;background:#fff}
+.exit{margin-left:auto;background:#365c45;color:#fff}
+.refresh:disabled{opacity:.5;cursor:default}
+.controls button:focus-visible,.controls select:focus-visible,.navigation button:focus-visible,.visibility button:focus-visible,.catalogNote button:focus-visible{outline:3px solid #91bca5;outline-offset:3px}
+.contents{min-width:0;max-width:100%}
+.navigation{display:flex;align-items:center;flex-wrap:wrap;gap:6px 10px;margin-bottom:25px;padding-bottom:15px;border-bottom:1px solid #e0e7db}
+.navigation>button{display:flex;align-items:center;gap:7px;min-height:42px;padding:9px 13px;border-radius:8px;color:#71836a;font-size:13px}
+.navigation>button[aria-current=page]{background:#edf3e8;color:#395f40;font-weight:650}
+.navigation>span{margin-left:auto;font-size:11px;line-height:1.8;color:#7c8676}
+.heading{margin-bottom:24px}
+.heading>p,.eyebrow{font-size:10px;letter-spacing:.13em;font-weight:650;color:#789165;margin:0 0 8px}
+.heading h1{font-size:27px;line-height:1.6;margin:0 0 9px;overflow-wrap:anywhere}
+.heading>span{font-size:13px;line-height:1.9;color:#6e8065}
+.visibility{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.visibility>button{display:flex;align-items:flex-start;text-align:left;gap:13px;padding:21px 18px;border:1px solid #dce5d5;border-radius:14px;background:#fff;min-width:0}
+.visibility>button>svg{flex:none;margin-top:4px;color:#70905c}
+.visibility>button>svg:last-child{margin-top:auto;margin-bottom:auto}
+.visibility>button>span{min-width:0;flex:1}
+.visibility strong{font-size:13px;line-height:1.6;font-weight:600}
+.visibility b{display:block;font-size:29px;line-height:1.5;margin:4px 0 3px;color:#45673f}
+.visibility b small{font-size:12px;font-weight:400;color:#728568;margin-left:7px}
+.visibility em{display:block;font-style:normal;font-size:11px;line-height:1.7;color:#7a8770;overflow-wrap:anywhere}
+.catalogNote{font-size:12px;line-height:1.9;color:#758469;margin:12px 0 25px}
+.catalogNote button{display:inline-flex;align-items:center;gap:4px;text-decoration:underline;text-underline-offset:3px;color:#4e744c;font-size:12px;margin-left:7px}
+.practice{padding:26px;border-radius:17px;background:#fff;border:1px solid #dbe6d3}
+.practice h2{font-size:23px;line-height:1.65;margin:0 0 8px}
+.practice>div>p:not(.eyebrow){font-size:13px;line-height:1.9;color:#728168;max-width:650px;margin:0 0 20px}
+.practice>button{min-height:48px;white-space:normal;text-align:center;max-width:100%;font-size:14px}
+.noQuestions{font-size:12px;line-height:1.9;color:#7a826e;margin:12px 0 0}
+.secondary{display:flex;align-items:center;flex-wrap:wrap;gap:12px 18px;margin-top:17px;padding-top:16px;border-top:1px solid #e8ede1}
+.secondary>button{font-size:12px;min-height:36px;text-align:left}
+.secondary>small{font-size:11px;line-height:1.8;color:#849079}
+.flow{list-style:none;margin:22px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.flow li{display:flex;align-items:flex-start;gap:10px;min-width:0}
+.flow li>span{width:25px;height:25px;flex:none;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#e9f0e3;font-size:12px;color:#6a8556}
+.flow strong{font-size:12px;line-height:1.8;color:#5b7151}
+.flow p{font-size:11px;line-height:1.8;color:#849078;margin:3px 0 0}
+.empty{text-align:center;padding:45px 24px;border:1px solid #dce5d5;border-radius:15px;background:#fff;color:#6b845d}
+.empty h2{font-size:20px;line-height:1.7;margin:13px 0 8px;color:#425f42}
+.empty p{font-size:13px;line-height:1.9;margin:0 auto 18px;max-width:540px;overflow-wrap:anywhere}
+.empty>button{margin:auto}
+.error{padding:13px 16px;margin:0 0 18px;border:1px solid #e5cbbb;border-radius:10px;background:#fff5ed;color:#956346;font-size:13px;line-height:1.8;overflow-wrap:anywhere}
+@media(max-width:760px){.banner{top:6px;padding:16px;margin-bottom:20px}.controls{gap:8px}.controls label{max-width:none;flex:1 1 160px}.exit{margin-left:0}.navigation>span{flex-basis:100%;margin-left:0;font-size:11px}.visibility{gap:10px}.visibility>button{padding:17px 13px;gap:8px}.visibility>button>svg:last-child{display:none}.flow{grid-template-columns:1fr;gap:15px}.heading h1{font-size:24px}.practice{padding:22px}.practice h2{font-size:21px}}
+@media(max-width:500px){.banner{position:static;padding:15px}.bannerHeading>svg{width:18px}.bannerHeading strong{font-size:14px}.bannerHeading p{font-size:11px}.controls label{flex-basis:100%;max-width:none}.controls select{font-size:16px}.refresh,.exit{flex:1;font-size:11px;padding:9px 7px}.navigation{gap:5px;margin-bottom:20px}.navigation>button{padding:9px 10px;font-size:12px}.visibility{grid-template-columns:1fr}.visibility>button{padding:16px}.visibility>button>svg:last-child{display:block}.visibility b{font-size:26px}.visibility em{font-size:11px}.practice{padding:20px}.practice>button{width:100%;font-size:13px}.heading h1{font-size:22px}.heading>span,.practice>div>p:not(.eyebrow){font-size:12px}.catalogNote{font-size:11px}.secondary>small{font-size:11px}}

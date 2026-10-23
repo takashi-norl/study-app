@@ -3,3 +3,5 @@
 .work{padding:11px 0 15px;min-width:0}.work p{font-size:12px;line-height:1.7;color:#7e8b73;margin:0 0 7px}.work button{min-height:44px;max-width:100%;white-space:normal;font-size:12px}.work .error{color:#9c5940}
 
 .arrange{display:inline-flex;flex-direction:column;min-width:0;max-width:100%}.arrange button{min-height:44px;font-size:12px;white-space:normal;max-width:100%}.arrange .error{font-size:12px;line-height:1.7;color:#9c5940;overflow-wrap:anywhere}
+
+.visibility{display:flex;align-items:flex-start;gap:6px;margin:14px 0 0;padding:8px 10px;background:#f4f7ef;border-radius:8px;color:#526b46;font-size:12px;line-height:1.7}.visibility svg{flex-shrink:0;margin-top:3px}

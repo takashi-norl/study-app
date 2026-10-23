@@ -120,8 +120,8 @@ export function createDemoData(now = new Date()): StudyData {
     });
   }
   return {
-    topics, sources: [], questions, attempts, exposures, sessions,
-    plans: [{ id: 'demo-plan-vocabulary', ownerId: 'student-demo', title: '英単語を基礎から、少しずつ', subject: '英語', goal: '10か月かけて、長文を読むための英単語を基礎から増やしたい。', difficulty: '中学の単語はわかるが、長文では思い出せないことがある。', dailyQuestionTarget: 10, sourceIds: [], version: 2, createdAt: atDay(2), updatedAt: atDay(1) }],
+    topics: topics.map(topic => ({ ...topic, planId: `demo-plan-project-${topic.id}` })), sources: [], questions, attempts, exposures, sessions,
+    plans: [{ tags: ['英語の基礎'], id: 'demo-plan-vocabulary', ownerId: 'student-demo', title: '英単語を基礎から、少しずつ', subject: '英語', goal: '10か月かけて、長文を読むための英単語を基礎から増やしたい。', difficulty: '中学の単語はわかるが、長文では思い出せないことがある。', dailyQuestionTarget: 10, sourceIds: [], version: 2, createdAt: atDay(2), updatedAt: atDay(1) }, ...topics.map(topic => ({ id: `demo-plan-project-${topic.id}`, ownerId: 'student-demo', title: topic.title, subject: topic.subject, goal: `中間テストに向けて${topic.subject}の基礎を復習する。`, difficulty: '基礎', dailyQuestionTarget: 10, tags: ['中間テスト', topic.subject], sourceIds: [], version: 1, createdAt: atDay(14), updatedAt: atDay(1) }))],
     planningTurns: [{ id: 'demo-planning-turn', planId: 'demo-plan-vocabulary', requestedBy: 'student-demo', version: 2, status: 'complete', message: 'まず何から始めればいい？難しすぎない10問を提案して。', reply: 'これは画面確認用の相談例です。AIが実際に回答したものではありません。\n\n最初は基礎単語の意味を確認する10問から始める案です。間違えた単語は日を空けて復習し、無理なく解けるようになったら、短い文の中で意味を選ぶ問題へ進めます。\n\n本番では、目標の日と実際の学習記録をもとに、時期ごとの進め方を相談できます。目標を保存するだけで、毎日自動で新しい問題が作られる機能ではありません。', proposals: [{ id: 'demo-proposal-vocabulary', title: '基礎単語の意味を確認しよう', subject: '英語', description: '身近な生活や学校で使う英単語から、正しい意味を選ぶ10問。', instructions: '中学から高校初級の英単語を扱い、紛らわしい選択肢を入れすぎず、短い例文と日本語の解説を添える。', difficulty: '基礎', targetCount: 10, format: 'multiple-choice', sourceIds: [] }], createdAt: atDay(1), completedAt: atDay(1, 1) }],
     jobs: [{ id: 'demo-job-review', topicId: 'topic-kobun', status: 'review', targetCount: 1,
       generatedCount: 1, createdAt: atDay(1) }],
