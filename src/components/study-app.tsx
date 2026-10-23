@@ -23,6 +23,8 @@ import { PersonalProfileProvider, usePersonalProfile } from './personal-profile-
 import { PersonalProfilePanel, PersonalEncouragement } from './personal-profile';
 import { AiUsagePanel } from './ai-usage';
 import { PlanningWorkNotice } from './planning-work-notice';
+import { PracticeStart } from './practice-start';
+import { createAnswerInteraction, chooseAnswer, submitAnswer, settleAnswer, type AnswerInteraction } from '@/lib/answer-interaction';
 
 type View = 'home' | 'topics' | 'history' | 'library' | 'review' | 'settings' | 'planning' | 'catalog' | 'menu' | 'preview' | 'projects';
 type SettingsSection = 'index' | 'profile' | 'usage' | 'releases' | 'guide' | 'account' | 'notifications' | 'data';
@@ -65,16 +67,17 @@ export default function StudyApp({ controller: c }: { controller: StudyControlle
   const [settingsSection, setSettingsSection] = useState<SettingsSection>('index');
   const reviewDirty = useRef(false);
   const onReviewDirtyChange = useCallback((dirty: boolean) => { reviewDirty.current = dirty; }, []);
+  const practicing = !!(c.session || c.practiceStart);
   const uploading = !!c.uploadStatus && !['complete', 'failed'].includes(c.uploadStatus.phase);
   function setView(next: View) {
-    if (uploading || c.session && c.busy || view === 'review' && c.busy) return;
+    if (uploading || practicing && c.busy || view === 'review' && c.busy) return;
     if (next !== view && view === 'review' && reviewDirty.current && !window.confirm('未保存の変更があります。保存せずに移動しますか？')) return;
     if (next !== view) reviewDirty.current = false;
-    if (c.session) void c.actions.finishSession();
+    if (practicing) void c.actions.finishSession();
     updateView(next);
     setVisited(items => items.includes(next) ? items : [...items, next]);
   }
-  function openSettings(section: SettingsSection = 'index') { if (uploading || c.session && c.busy) return; setSettingsSection(section); setView('settings'); }
+  function openSettings(section: SettingsSection = 'index') { if (uploading || practicing && c.busy) return; setSettingsSection(section); setView('settings'); }
 
   const [reviewTopic, setReviewTopic] = useState('all');
   const [reviewSubject, setReviewSubject] = useState('all');
@@ -91,21 +94,21 @@ export default function StudyApp({ controller: c }: { controller: StudyControlle
   const [planningRequest, setPlanningRequest] = useState(0);
   const [requestedPlanId, setRequestedPlanId] = useState<string>();
   const [planningScreen, setPlanningScreen] = useState<'list'|'new'|'plan'|'sources'>('list');
-  function openPlanById(id: string) { if (uploading || c.session && c.busy) return; setPlanningPreset(undefined); setPlanningSources(undefined); setRequestedPlanId(id); setPlanningRequest(value => value + 1); setView('planning'); }
-  function consult(sourceIds: string[]) { if (uploading || c.session && c.busy) return; setPlanningPreset(undefined); setRequestedPlanId(undefined); setPlanningSources(sourceIds); setPlanningRequest(value => value + 1); setView('planning'); }
+  function openPlanById(id: string) { if (uploading || practicing && c.busy) return; setPlanningPreset(undefined); setPlanningSources(undefined); setRequestedPlanId(id); setPlanningRequest(value => value + 1); setView('planning'); }
+  function consult(sourceIds: string[]) { if (uploading || practicing && c.busy) return; setPlanningPreset(undefined); setRequestedPlanId(undefined); setPlanningSources(sourceIds); setPlanningRequest(value => value + 1); setView('planning'); }
   function createKobun() { if (uploading || c.busy) return; setPlanningPreset('kobun-material'); setRequestedPlanId(undefined); setPlanningSources([]); setPlanningRequest(value => value + 1); setView('planning'); }
   const parent = c.profile.role === 'parent';
   const student = parent ? c.data.profiles.find(p => p.role === 'student') : c.profile;
   const studentId = student?.id ?? '';
   useEffect(() => { updateView('home'); setVisited([]); setSettingsSection('index'); setPlanningPreset(undefined); setPlanningSources(undefined); setRequestedPlanId(undefined); setReviewTopic('all'); setReviewSubject('all'); }, [c.profile.id, c.profile.role]);
-  useEffect(() => { window.scrollTo({ top: 0, behavior: 'auto' }); }, [view, c.profile.role, c.currentQuestion?.id, c.session?.completedAt]);
+  useEffect(() => { window.scrollTo({ top: 0, behavior: 'auto' }); }, [view, c.profile.role, c.currentQuestion?.id, c.session?.completedAt, c.practiceStart]);
   useEffect(() => {
     if (!uploading) return;
     const warn = (event: BeforeUnloadEvent) => { event.preventDefault(); event.returnValue = ''; };
     window.addEventListener('beforeunload', warn);
     return () => window.removeEventListener('beforeunload', warn);
   }, [uploading]);
-  const locationLabel = c.session ? c.currentQuestion ? '練習中' : '練習の結果' : view === 'planning' ? planningLocation : view === 'settings' ? settingsSection === 'profile' ? profileLocation : SETTINGS_TITLES[settingsSection] : VIEW_TITLES[view];
+  const locationLabel = c.practiceStart ? '練習の設定' : c.session ? c.currentQuestion ? '練習中' : '練習の結果' : view === 'planning' ? planningLocation : view === 'settings' ? settingsSection === 'profile' ? profileLocation : SETTINGS_TITLES[settingsSection] : VIEW_TITLES[view];
   const pending = c.data.topics.filter(topic => topic.publicationRequest?.revision && topic.publicationRequest.revision === topic.currentSourceRevision && topic.publishedSourceRevision !== topic.currentSourceRevision).length;
   const nav: { id: View; title: string; icon: ReactNode; badge?: number }[] = parent ? [
     { id: 'home', title: '学習のようす', icon: <LayoutDashboard size={19} /> },
@@ -135,11 +138,11 @@ export default function StudyApp({ controller: c }: { controller: StudyControlle
       <div className="sidebar-bottom"><div className="small-note"><span className="tiny-sprout">✦</span><p><PersonalEncouragement occasion="sidebar" fallback="毎日の「わかった」が、明日の自信になる。" /></p></div><button onClick={() => openSettings()} className={`nav-item ${view === 'settings' ? 'active' : ''}`}><Settings2 size={18} /><span>設定</span></button><div className="profile-line"><span className="avatar">{parent ? '保' : (c.profile.name?.slice(0, 1) || '学')}</span><span>{c.profile.name || (parent ? '保護者' : '学習者')}<small>{accountLabel(c.profile)}</small><span className="online-dot" /></span></div></div>
     </aside>
     <div className="main-shell">
-      <header className="topbar"><div className="mobile-location">{c.session ? <button disabled={c.busy} className="text-button" onClick={() => c.actions.finishSession()}><ArrowLeft size={18} />{c.session.completedAt ? '戻る' : '中断して戻る'}</button> : view !== 'home' ? <button disabled={uploading} className="text-button" onClick={() => setView('home')}><ArrowLeft size={18} />ホーム</button> : <span><Sprout size={20} />ひび学習</span>}<strong>{locationLabel}</strong></div><span className="breadcrumb">{parent ? '管理者モード' : '学習ルーム'}<ChevronRight size={14} />{locationLabel}</span><div className="topbar-right"><span className="topbar-date">{new Intl.DateTimeFormat('ja-JP', { month: 'long', day: 'numeric', weekday: 'short', timeZone: 'Asia/Tokyo' }).format(new Date())}</span><button className="text-button" onClick={() => openSettings('guide')}><CircleHelp size={17} />使い方</button><button className="icon-button" aria-label="通知の設定" onClick={() => openSettings('notifications')}><Bell size={20} /></button></div></header>
+      <header className="topbar"><div className="mobile-location">{practicing ? <button disabled={c.busy} className="text-button" onClick={() => c.actions.finishSession()}><ArrowLeft size={18} />{c.practiceStart || c.session?.completedAt ? '戻る' : '中断して戻る'}</button> : view !== 'home' ? <button disabled={uploading} className="text-button" onClick={() => setView('home')}><ArrowLeft size={18} />ホーム</button> : <span><Sprout size={20} />ひび学習</span>}<strong>{locationLabel}</strong></div><span className="breadcrumb">{parent ? '管理者モード' : '学習ルーム'}<ChevronRight size={14} />{locationLabel}</span><div className="topbar-right"><span className="topbar-date">{new Intl.DateTimeFormat('ja-JP', { month: 'long', day: 'numeric', weekday: 'short', timeZone: 'Asia/Tokyo' }).format(new Date())}</span><button className="text-button" onClick={() => openSettings('guide')}><CircleHelp size={17} />使い方</button><button className="icon-button" aria-label="通知の設定" onClick={() => openSettings('notifications')}><Bell size={20} /></button></div></header>
       {c.demo && <div className="demo-strip"><span><span className="demo-dot" />デモ体験中 <span className="demo-detail">— サンプルの問題と学習記録です。データはこのブラウザに保存されます。</span></span><div className="role-switch" aria-label="デモの表示を切り替え"><button className={!parent ? 'selected' : ''} onClick={() => c.actions.switchRole('student')}>生徒</button><button className={parent ? 'selected' : ''} onClick={() => c.actions.switchRole('parent')}>保護者</button></div></div>}
       {uploading && <div className="app-upload-notice" role="status"><Upload size={17} /><span>教材を保存しています（{c.uploadStatus?.completed} / {c.uploadStatus?.total}件）。完了するまでこの画面でお待ちください。</span></div>}
-      <main className="main-content"><AppReleaseNotice busy={c.busy || !!(c.session && !c.session.completedAt) || !!(c.uploadStatus && !['complete', 'failed'].includes(c.uploadStatus.phase))} /><Flash c={c} /><PlanningWorkNotice c={c} onOpenPlan={openPlanById} hidden={!!c.session || (view === 'planning' && planningScreen !== 'list') || uploading} />
-        {c.session ? <Practice c={c} /> : <>
+      <main className="main-content"><AppReleaseNotice busy={!!c.practiceStart || c.busy || !!(c.session && !c.session.completedAt) || !!(c.uploadStatus && !['complete', 'failed'].includes(c.uploadStatus.phase))} /><Flash c={c} /><PlanningWorkNotice c={c} onOpenPlan={openPlanById} hidden={practicing || (view === 'planning' && planningScreen !== 'list') || uploading} />
+        {c.practiceStart ? <PracticeStart c={c}/> : c.session ? <Practice c={c} /> : <>
           {view === 'home' && (parent ? <ParentHome c={c} student={student} studentId={studentId} navigate={setView} onKobunCreate={createKobun} onKobunReview={openKobunReview} openProfile={() => openSettings('profile')} /> : <StudentHome c={c} studentId={studentId} navigate={setView} openProfile={() => openSettings('profile')} />)}
           {(view === 'topics' || view === 'catalog') && <><PageHeading eyebrow="YOUR LIBRARY" title="ライブラリ" description="自分で作った問題も、共有された問題も、ここから。"><button className="button primary" onClick={() => consult([])}><Sparkles size={17} />問題を作る</button></PageHeading><QuestionLibrary key={view} c={c} initialTab={view === 'catalog' ? 'public' : 'private'} onCreate={() => consult([])} onEdit={id=>openReview(id,true)} onOpenPlan={openPlanById}/></>}
           {view === 'projects' && <LearningProjects c={c} onOpenPlan={openPlanById} onCreate={() => consult([])}/>}
@@ -149,12 +152,12 @@ export default function StudyApp({ controller: c }: { controller: StudyControlle
 
           {view === 'menu' && <AppMenu c={c} navigate={setView} openSettings={openSettings} />}
         </>}
-        {view === 'review' && !c.session && parent && <div><QuestionReview c={c} initialTopic={reviewTopic} initialSubject={reviewSubject} onOpenPlan={openPlanById} onBack={()=>setView('library')} onPreview={openPreview} onDirtyChange={onReviewDirtyChange} renderEditor={(question, onDirtyChange) => <QuestionEditor key={question.id + ':' + question.version} c={c} question={question} onDirtyChange={onDirtyChange} />} /></div>}
-        {visited.includes('planning') && <div hidden={!!c.session || view !== 'planning'}><Planning active={view === 'planning' && !c.session} requestedPlanId={requestedPlanId} onScreenChange={setPlanningScreen} onLocationChange={setPlanningLocation} c={c} initialSourceIds={planningSources} initialPreset={planningPreset} initialRequest={planningRequest} review={openReview} onBack={() => setView('home')} openTopic={id => { void c.actions.startPractice('daily', id); }} /></div>}
-        {visited.includes('settings') && <div hidden={!!c.session || view !== 'settings'}><Settings onLocationChange={setProfileLocation} active={view === 'settings' && !c.session} c={c} section={settingsSection} setSection={setSettingsSection} onCreate={() => consult([])} onHome={() => setView('home')} /></div>}
+        {view === 'review' && !practicing && parent && <div><QuestionReview c={c} initialTopic={reviewTopic} initialSubject={reviewSubject} onOpenPlan={openPlanById} onBack={()=>setView('library')} onPreview={openPreview} onDirtyChange={onReviewDirtyChange} renderEditor={(question, onDirtyChange) => <QuestionEditor key={question.id + ':' + question.version} c={c} question={question} onDirtyChange={onDirtyChange} />} /></div>}
+        {visited.includes('planning') && <div hidden={practicing || view !== 'planning'}><Planning active={view === 'planning' && !practicing} requestedPlanId={requestedPlanId} onScreenChange={setPlanningScreen} onLocationChange={setPlanningLocation} c={c} initialSourceIds={planningSources} initialPreset={planningPreset} initialRequest={planningRequest} review={openReview} onBack={() => setView('home')} openTopic={id => { void c.actions.startPractice('daily', id); }} /></div>}
+        {visited.includes('settings') && <div hidden={practicing || view !== 'settings'}><Settings onLocationChange={setProfileLocation} active={view === 'settings' && !practicing} c={c} section={settingsSection} setSection={setSettingsSection} onCreate={() => consult([])} onHome={() => setView('home')} /></div>}
       </main><footer className="page-footer">ひび学習 v{CURRENT_RELEASE.version} <span>小さな積み重ねを、大きな自信に。</span></footer>
     </div>
-    {!c.session && <nav className="mobile-nav" aria-label="モバイルメニュー">{([
+    {!practicing && <nav className="mobile-nav" aria-label="モバイルメニュー">{([
       { id: 'home', title: 'ホーム', icon: <Sprout size={21} /> },
       { id: 'planning', title: '問題を作る', icon: <Sparkles size={21} /> },
       { id: parent ? 'library' : 'topics', title: 'ライブラリ', icon: <BookOpen size={21} /> },
@@ -193,17 +196,45 @@ function TopicGrid({ c, studentId, limit }: { c: StudyController; studentId: str
 }
 
 function Practice({ c }: { c: StudyController }) {
-  const [selected, setSelected] = useState<number | null>(null);
   const q = c.currentQuestion;
-  useEffect(() => { setSelected(null); }, [q?.id, c.session?.id]);
   const session = c.session!;
   const attempts = c.data.attempts.filter(a => a.sessionId === session.id);
   const completed = new Set(attempts.map(a => a.questionId)).size;
   const index = q ? session.questionIds.indexOf(q.id) : session.questionIds.length;
-  const topic = c.data.topics.find(t => t.id === q?.topicId);
   const testTopic = c.profile.role === 'parent' ? c.data.topics.find(t => t.testOnly && c.data.questions.some(item => item.topicId === t.id && session.questionIds.includes(item.id))) : undefined;
   if (!q) return <div className="session-complete"><div className="complete-emblem"><Sprout size={44} strokeWidth={1.5} /></div><p className="eyebrow">ONE STEP FORWARD</p><h1>今日の一歩、おつかれさま。</h1><p>{c.preview ? 'プレビューの結果です。本人の学習記録には保存していません。' : testTopic ? '管理者のテスト記録です。学習者の成績には入りません。' : '取り組んだ記録は、ちゃんと残っています。'}</p><div className="result-numbers"><div><strong>{completed}</strong><span>取り組んだ問題</span></div><div><strong>{attempts.filter(a => a.correct).length}<small> / {attempts.length}</small></strong><span>正解した問題</span></div><div><strong>{percent(attempts.filter(a => a.correct).length, attempts.length)}</strong><span>今回の正答率</span></div></div><div className="result-note"><RefreshCw size={20} /><p>{c.preview ? '通常の学習では、間違えた問題を次の復習へ回します。この試し解きでは本人の復習予定も変わりません。' : <>間違えた問題は、次の復習へ。<br />一度正解した後も、間隔を空けて練習します。</>}</p></div><div className="result-actions"><button className="button primary" disabled={c.busy} onClick={() => c.actions.finishSession()}>今日はここまで・戻る</button><button className="button secondary" disabled={c.busy} onClick={() => c.actions.startPractice('extra', testTopic?.id)}>もう10問やってみる<ArrowRight size={17} /></button></div></div>;
-  return <div className="practice-wrap"><div className="practice-top"><button className="text-button" disabled={c.busy} onClick={() => c.actions.finishSession()}><ArrowLeft size={17} />中断して戻る</button><span>{testTopic ? '管理者だけのテスト' : session.mode === 'weak' ? '苦手な問題の復習' : '今日の練習'}<b>{index + 1} / {session.questionIds.length}</b></span></div><ProgressBar value={completed / session.questionIds.length * 100} label="練習の進み具合" /><div className="question-card"><div className="question-meta">{topic && <SubjectBadge subject={topic.subject} />}<span>{topic?.title}</span><span className="question-number">QUESTION {String(index + 1).padStart(2, '0')}</span></div>{q.testOnly ? <div className="self-study-notice">管理者のテスト用です。学習者には表示されず、学習成績にも入りません。</div> : q.audienceUserId && <div className="self-study-notice">学習相談から作成した自習問題です。</div>}<h1 className="question-prompt">{q.prompt}</h1><EnglishAudio questionId={q.id} sessionId={session.id} prompt={q.prompt} choices={q.choices} enabled={topic?.subject === '英語'} deviceOnly={c.preview} /><div className="choices">{q.choices.map((choice, i) => { const correct = !!c.feedback && i === c.feedback.correctIndex; const wrong = !!c.feedback && selected === i && !correct; return <button key={i} className={`choice ${selected === i ? 'chosen' : ''} ${correct ? 'correct' : ''} ${wrong ? 'wrong' : ''}`} disabled={!!c.feedback || c.busy} onClick={() => setSelected(i)} aria-pressed={selected === i}><span className="choice-label">{String.fromCharCode(65 + i)}</span><span>{choice}</span>{correct ? <CheckCircle2 size={20} /> : wrong ? <X size={20} /> : selected === i ? <Check size={20} /> : null}</button>; })}</div>{!c.feedback ? <div className="answer-row"><span>答えをひとつ選んでください</span><button className="button primary" disabled={selected === null || c.busy} onClick={() => selected !== null && c.actions.answer(selected)}>{c.busy ? <LoaderCircle className="spin" size={17} /> : null}答え合わせ<ArrowRight size={17} /></button></div> : <div className={`answer-feedback ${c.feedback.correct ? 'is-correct' : 'is-wrong'}`} role="status"><div className="feedback-title">{c.feedback.correct ? <CheckCircle2 size={24} /> : <RefreshCw size={23} />}<h2>{c.feedback.correct ? '正解！ その調子。' : '次の「わかった」につなげよう。'}</h2></div>{!c.feedback.correct && <p className="correct-answer">正解：{String.fromCharCode(65 + c.feedback.correctIndex)}. {q.choices[c.feedback.correctIndex]}</p>}<p>{c.feedback.explanation}</p>{q.learningPoint && <div className="learning-point"><span>覚えるポイント</span>{q.learningPoint}</div>}<div className="feedback-bottom"><small>{c.preview ? '試し解きです。本人の成績や復習予定は変わりません。' : c.feedback.correct ? '日を空けた復習で、しっかり定着。' : 'この問題は、後日の復習に追加されます。'}</small><button className="button primary" disabled={c.busy} onClick={() => c.actions.nextQuestion()}>{index + 1 === session.questionIds.length ? '今回の結果を見る' : '次の問題へ'}<ArrowRight size={17} /></button></div></div>}</div></div>;
+  return <PracticeQuestion key={`${session.id}:${q.id}`} c={c} question={q} index={index} completed={completed} testOnly={!!testTopic}/>;
+}
+
+function PracticeQuestion({ c, question: q, index, completed, testOnly }: { c: StudyController; question: Question; index: number; completed: number; testOnly: boolean }) {
+  const session = c.session!;
+  const topic = c.data.topics.find(item => item.id === q.topicId);
+  const [input, setInput] = useState(() => createAnswerInteraction(c.answerConfirmation));
+  const latest = useRef(input);
+  const feedbackElement = useRef<HTMLDivElement>(null);
+  const selected = c.feedback?.selectedIndex ?? input.selected;
+  useEffect(() => {
+    if (c.feedback) feedbackElement.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, [c.feedback]);
+  function change(next: AnswerInteraction) { latest.current = next; setInput(next); }
+  async function send(next: AnswerInteraction) {
+    change(next);
+    let saved = false;
+    try { saved = await c.actions.answer(next.selected!); }
+    finally { change(settleAnswer(latest.current, saved)); }
+  }
+  function select(index: number) {
+    if (c.busy || c.feedback) return;
+    const next = chooseAnswer(latest.current, index, q.choices.length);
+    if (next === latest.current) return;
+    if (next.phase === 'submitting') void send(next); else change(next);
+  }
+  function confirm() {
+    if (c.busy || c.feedback) return;
+    const next = submitAnswer(latest.current);
+    if (next !== latest.current) void send(next);
+  }
+  return <div className="practice-wrap"><div className="practice-top"><button className="text-button" disabled={c.busy} onClick={() => c.actions.finishSession()}><ArrowLeft size={17} />中断して戻る</button><span>{testOnly ? '管理者だけのテスト' : session.mode === 'weak' ? '苦手な問題の復習' : '今日の練習'}<b>{index + 1} / {session.questionIds.length}</b></span></div><ProgressBar value={completed / session.questionIds.length * 100} label="練習の進み具合" /><div className="question-card"><div className="question-meta">{topic && <SubjectBadge subject={topic.subject} />}<span>{topic?.title}</span><span className="question-number">QUESTION {String(index + 1).padStart(2, '0')}</span></div>{q.testOnly ? <div className="self-study-notice">管理者のテスト用です。学習者には表示されず、学習成績にも入りません。</div> : q.audienceUserId && <div className="self-study-notice">学習相談から作成した自習問題です。</div>}<h1 className="question-prompt">{q.prompt}</h1><EnglishAudio questionId={q.id} sessionId={session.id} prompt={q.prompt} choices={q.choices} enabled={topic?.subject === '英語'} deviceOnly={c.preview} /><div className="choices">{q.choices.map((choice, i) => { const correct = !!c.feedback && i === c.feedback.correctIndex; const wrong = !!c.feedback && selected === i && !correct; return <button key={i} className={`choice ${selected === i ? 'chosen' : ''} ${correct ? 'correct' : ''} ${wrong ? 'wrong' : ''}`} disabled={!!c.feedback || c.busy || input.phase !== 'choosing'} onClick={() => select(i)} aria-pressed={selected === i}><span className="choice-label">{String.fromCharCode(65 + i)}</span><span>{choice}</span>{correct ? <CheckCircle2 size={20} /> : wrong ? <X size={20} /> : selected === i ? <Check size={20} /> : null}</button>; })}</div>{!c.feedback ? <div className="answer-row"><span role="status">{input.phase === 'submitting' ? '回答を確認しています…' : input.phase === 'failed' ? '回答の保存を確認できませんでした。同じ回答をもう一度送れます。' : input.requireConfirmation ? '選び直してから、答え合わせできます' : '答えを選ぶと、正解と解説が表示されます'}</span>{input.phase === 'failed' ? <button type="button" className="button primary" disabled={c.busy} onClick={confirm}>同じ回答をもう一度送る<RefreshCw size={17}/></button> : input.requireConfirmation ? <button type="button" className="button primary" disabled={selected === null || c.busy || input.phase !== 'choosing'} onClick={confirm}>{input.phase === 'submitting' ? <LoaderCircle className="spin" size={17} /> : null}答え合わせ<ArrowRight size={17} /></button> : null}</div> : <div ref={feedbackElement} className={`answer-feedback ${c.feedback.correct ? 'is-correct' : 'is-wrong'}`} role="status"><div className="feedback-title">{c.feedback.correct ? <CheckCircle2 size={24} /> : <RefreshCw size={23} />}<h2>{c.feedback.correct ? '正解！ その調子。' : '次の「わかった」につなげよう。'}</h2></div>{!c.feedback.correct && <p className="correct-answer">正解：{String.fromCharCode(65 + c.feedback.correctIndex)}. {q.choices[c.feedback.correctIndex]}</p>}<p>{c.feedback.explanation}</p>{q.learningPoint && <div className="learning-point"><span>覚えるポイント</span>{q.learningPoint}</div>}<div className="feedback-bottom"><small>{c.preview ? '試し解きです。本人の成績や復習予定は変わりません。' : c.feedback.correct ? '日を空けた復習で、しっかり定着。' : 'この問題は、後日の復習に追加されます。'}</small><button className="button primary" disabled={c.busy} onClick={() => c.actions.nextQuestion()}>{index + 1 === session.questionIds.length ? '今回の結果を見る' : '次の問題へ'}<ArrowRight size={17} /></button></div></div>}</div></div>;
 }
 
 function ParentHome({ c, student, studentId, navigate, openProfile, onKobunCreate, onKobunReview }: { c: StudyController; student?: Profile; studentId: string; navigate: (v: View) => void; openProfile: () => void; onKobunCreate: () => void; onKobunReview: () => void }) {

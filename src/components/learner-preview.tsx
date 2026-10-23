@@ -1,5 +1,7 @@
 'use client';
 
+import { PracticeStart } from './practice-start';
+
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { ArrowLeft, ArrowRight, BookOpen, Eye, Globe2, Home, LoaderCircle, LockKeyhole, RefreshCw } from 'lucide-react';
 import { demoPracticeQuestions, demoStudyDataForProfile } from '@/lib/demo-access';
@@ -112,7 +114,7 @@ function PreviewContents({ payload, demo, refresh, renderPractice }: {
       <span>作成・編集・追加などの変更操作は無効です</span>
     </nav>
     {c.error && <p className={styles.error} role="alert">{c.error}</p>}
-    {c.session ? renderPractice(c) : view === 'projects' ? <LearningProjects c={c}/> : view !== 'home'
+    {c.practiceStart ? <PracticeStart c={c}/> : c.session ? renderPractice(c) : view === 'projects' ? <LearningProjects c={c}/> : view !== 'home'
       ? <QuestionLibrary c={c} initialTab={view} onCreate={() => {}} onEdit={() => {}}/>
       : <>
         <div className={styles.heading}><p>LEARNER VIEW</p><h1>{c.profile.name}さんの学習画面</h1><span>本人の問題集と、本人が追加した公開問題集が出題の対象です。</span></div>
@@ -127,7 +129,7 @@ function PreviewContents({ payload, demo, refresh, renderPractice }: {
           {!available.length && <p className={styles.noQuestions}>{c.data.questions.length ? '今日正解した問題は、日を空けると復習に出ます。問題集の保存内容は「問題集を見る」から確認できます。' : '本人の問題集が保存されるか、本人が公開問題集を学習に追加すると、ここから解けるようになります。'}</p>}
           <div className={styles.secondary}><button type="button" className="text-button" disabled={!weak.length} onClick={() => c.actions.startPractice('weak')}><RefreshCw size={15}/>間違えた問題を復習{weak.length ? `（最大${weak.length}問）` : '（対象なし）'}</button><small>この画面での練習結果は、プレビュー内だけに反映されます。</small></div>
         </section>
-        <ol className={styles.flow} aria-label="問題を解く流れ"><li><span>1</span><div><strong>答えをひとつ選ぶ</strong><p>本人と同じ問題文・選択肢が表示されます。</p></div></li><li><span>2</span><div><strong>答え合わせで解説を見る</strong><p>正解・不正解と、解き方を確認できます。</p></div></li><li><span>3</span><div><strong>次の問題へ進む</strong><p>最後に今回の結果が表示されます。</p></div></li></ol>
+        <ol className={styles.flow} aria-label="問題を解く流れ"><li><span>1</span><div><strong>答えをひとつ選ぶ</strong><p>本人と同じ問題文・選択肢が表示されます。</p></div></li><li><span>2</span><div><strong>選んだら正解と解説を見る</strong><p>標準では選ぶとすぐ表示します。開始前に答え合わせボタンを使う方法にも切り替えられます。</p></div></li><li><span>3</span><div><strong>次の問題へ進む</strong><p>最後に今回の結果が表示されます。</p></div></li></ol>
       </>}
   </div>;
 }

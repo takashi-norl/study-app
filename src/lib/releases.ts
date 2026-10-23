@@ -8,6 +8,15 @@ export interface AppRelease {
 
 // Newest first. This is the source for Settings, public history and update notices.
 export const APP_RELEASES: readonly AppRelease[] = [{
+  version: '0.12.0',
+  date: '2026-10-23',
+  title: '選ぶとすぐに、正解と解説へ',
+  announcement: 'いつもの練習は、答えを選ぶだけですぐに結果を表示します。開始前に、答え合わせボタンを使う方法も選べます。',
+  changes: [
+    { title: 'タップしたら、その場で答え合わせ', description: '通常の練習と学習者プレビューで、答えを選ぶと正解と解説が表示されます。結果を確かめてから次の問題へ進めます。' },
+    { title: '解き方は、練習をはじめる前に選べる', description: 'ホーム・問題集・学習プランなど、どの入口から始めても「答え合わせボタンを使う」を切り替えられます。オンにすると、選び直してから答え合わせできます。標準はオフです。' },
+  ],
+}, {
   version: '0.11.0',
   date: '2026-10-23',
   title: '単語教材を、級とセットから選べるように',

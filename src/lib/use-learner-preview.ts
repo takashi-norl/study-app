@@ -11,6 +11,10 @@ import {
 export function useLearnerPreview(payload: LearnerPreviewPayload, demo: boolean, refresh: () => void): StudyController {
   const [state, setState] = useState(() => createPreviewPractice(payload));
   const current = useRef(state);
+  const [practiceStart, setPracticeStart] = useState<StudyController['practiceStart']>(null);
+  const pendingPractice = useRef<StudyController['practiceStart']>(null);
+  const [answerConfirmation, setAnswerConfirmation] = useState(false);
+  function updatePracticeStart(next: StudyController['practiceStart']) { pendingPractice.current = next; setPracticeStart(next); }
   const expectedKey = previewQuestionKey(state);
   function change(update: (previous: PreviewPracticeState) => PreviewPracticeState) {
     // Update the ref synchronously: repeated clicks before React renders cannot answer or skip twice.
@@ -26,14 +30,29 @@ export function useLearnerPreview(payload: LearnerPreviewPayload, demo: boolean,
   return {
     data: state.data, profile: state.profile, preview: true, demo, ready: true, authStatus: 'authenticated', authError: null, busy: false,
     error: state.error, notice: null, uploadStatus: null,
-    sync: { checking: false, lastSyncedAt: null, error: null }, session: state.session,
+    sync: { checking: false, lastSyncedAt: null, error: null }, practiceStart, answerConfirmation, session: state.session,
     currentQuestion: previewCurrentQuestion(state), feedback: state.feedback,
     actions: {
       retryAuth: unavailableAsync, refreshStatus: async () => refresh(), switchRole: unavailable,
-      startPractice: (mode, topicId) => change(previous => startPreviewPractice(previous, mode, topicId)),
-      answer: index => change(previous => answerPreviewQuestion(previous, index, expectedKey)),
+      startPractice: (mode, topicId) => {
+        if (current.current.session && !current.current.session.completedAt) return;
+        change(previous => ({ ...previous, error: null }));
+        updatePracticeStart({ mode, topicId });
+      },
+      beginPractice: requireConfirmation => {
+        const request = pendingPractice.current;
+        if (!request) return;
+        updatePracticeStart(null); setAnswerConfirmation(requireConfirmation);
+        change(previous => startPreviewPractice(previous, request.mode, request.topicId));
+      },
+      cancelPracticeStart: () => updatePracticeStart(null),
+      answer: index => {
+        const previous = current.current;
+        change(state => answerPreviewQuestion(state, index, expectedKey));
+        return current.current !== previous;
+      },
       nextQuestion: () => change(previous => advancePreviewQuestion(previous, expectedKey)),
-      finishSession: () => change(finishPreviewPractice),
+      finishSession: () => { updatePracticeStart(null); change(finishPreviewPractice); },
       createTopic: unavailableAsync, uploadSources: unavailableAsync, createPlan: unavailableAsync,
       updatePlanTags: unavailableBoolean,
       sendPlanningMessage: unavailableBoolean, resumePlanningTurn: unavailableAsync,
