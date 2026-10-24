@@ -1,5 +1,27 @@
 # Production / Staging 導入案
 
+## 担当と現在地（2026-10-24 JST 更新）
+
+ユーザーの指示により、**Production / Staging の実装・アプリの改修・公開は別のアプリ担当チャットへ移管**します。教材担当チャット「問題追加対応の学習アプリ設計」は、2万語と長文・文法・その他問題の作成に専念します。教材担当はVercel設定、Google認証、画面、本番公開を変更しません。
+
+引き継ぎ先は既存チャット「問題の管理・ユーザー表示モードを追加」（`01a16688-0dd3-7030-94e1-4c207e2277a7`）。同一mainの同時編集を避け、アプリ側の作業ブランチ・作業ディレクトリで実装してください。教材の進行状態・成果物は [CONTENT_HANDOFF.md](./CONTENT_HANDOFF.md) を参照してください。
+
+2026-10-24 09:29 JSTにVercelの実設定を確認済みです。
+
+- 個人チーム：`takashi-7721s-projects`。対象プロジェクト：`study-app`。
+- チームID：`team_i0sbGWNAI80VNxfJ6e0t5mWP`。プロジェクトID：`prj_htxD2yC0URXwqtEEffRzi5aK6KjU`。
+- **現在はProductionだけです。Stagingプロジェクト・Custom Environmentは未作成です。** 環境変数の対象はproductionのみ、Git連携も未設定でした。
+- 本番URLは `https://study-app-opal-eight.vercel.app/`。最後に確認した本番版は0.15.3、音声付きカードは4,552件です。更新前に再確認してください。
+- 0.16.0の7,500語／7,507カードの教材・音声はローカルで完成し、GitHub mainへ保存済みですが、**まだ本番反映していません**。
+- 正しい個人アカウントの既存CLI接続はローカルの `/private/tmp/hibi-vercel-takashi-7721`。`whoami` が `takashi-7721` であることを確認済みです。通常の会社アカウント設定を上書きしないでください。
+- `/private/tmp/hibi-vocabulary-build/vercel-personal` は誤って会社アカウントにつながった一時設定で、ログアウト済みです。使用しないでください。
+- `.vercelignore` を追加済み（commit `27c43c6`）。Vercel CLIは`.gitignore`を代用しないため、`.env*`等の除外を維持してください。教材作成の非公開資産・出力・ローカル鍵を送らず、実際のアップロード対象を確認してください。
+- ローカルの確認記録：`/private/tmp/hibi-vocabulary-build/vercel-environment-state-20261024.json`、`deploy-0160-independent-preflight-v1.json`。秘密値はこの文書に記載しません。
+
+以下の設計に沿って、保存先・認証・通知・有料処理まで分離したStagingを実装し、検証後に本番へ反映してください。単なる管理者用テスト画面や本番の保存先を使うPreviewを、独立したStagingと扱わないでください。教材担当の継続生成は環境分離の完了を待たず進めます。
+
+---
+
 作成日: 2026-10-23。これは設計案です。Vercel・Googleの設定や本番データは、この計画に合わせてまだ変更していません。
 
 ## 推奨構成
