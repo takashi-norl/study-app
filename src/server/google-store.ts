@@ -6,7 +6,7 @@ import type {
   Attempt, Exposure, GenerationJob, LearningPlan, PlanningTurn, PracticeSession, Profile, Question, SourceDocument, StudyData, Topic,
 } from '@/lib/types';
 import { ApiError, MAX_SOURCE_BYTES, SOURCE_MIME_TYPES } from './config';
-import { assertStorageGrant, getDriveConfig, getFamilyId } from './env';
+import { assertStorageGrant, getDriveConfig, getWorkspaceId } from './env';
 import { canAccessPlan, canAccessQuestion, canAccessSource } from './access';
 import { topicOwnerId } from '@/lib/library-policy';
 import { libraryRevision } from './library';
@@ -34,7 +34,7 @@ const EVENT_TYPES = [
 ] as const;
 export type StudyEventType = typeof EVENT_TYPES[number];
 export interface StudyEvent {
-  id: string; type: StudyEventType; actorId: string; familyId?: string; createdAt: string; payload: any;
+  id: string; type: StudyEventType; actorId: string; workspaceId?: string; createdAt: string; payload: any;
 }
 
 const idSchema = z.string().min(1).max(200);
@@ -172,8 +172,8 @@ async function googleFetch(url: string, init: RequestInit = {}, timeoutMs = 20_0
 
 function validateEvent(input: StudyEvent): StudyEvent {
   const metadata = z.object({ id: idSchema, type: z.enum(EVENT_TYPES), actorId: idSchema,
-    familyId: z.string().optional(), createdAt: isoSchema }).parse(input);
-  if (metadata.familyId && metadata.familyId !== getFamilyId()) throw new ApiError(403, 'このアプリの記録にはアクセスできません。', 'FAMILY_MISMATCH');
+    workspaceId: z.string().optional(), createdAt: isoSchema }).parse(input);
+  if (metadata.workspaceId && metadata.workspaceId !== getWorkspaceId()) throw new ApiError(403, 'このアプリの記録にはアクセスできません。', 'WORKSPACE_MISMATCH');
   const payload = input.payload;
   switch (metadata.type) {
     case 'beta.invitation.created': betaInvitationCreatedSchema.parse(payload); break;
@@ -258,7 +258,7 @@ function validateEvent(input: StudyEvent): StudyEvent {
     case 'push.subscribed': z.object({ userId: idSchema, subscription: z.object({ endpoint: z.string().url(),
       keys: z.object({ auth: z.string(), p256dh: z.string() }) }).nullable() }).parse(payload); break;
   }
-  return { ...metadata, familyId: getFamilyId(), payload };
+  return { ...metadata, workspaceId: getWorkspaceId(), payload };
 }
 
 // Keep these out of the legacy ledger: older deployments reject unknown event types.
@@ -306,11 +306,11 @@ async function loadEventTab(tab: string, operational: boolean): Promise<StudyEve
     if (!row.some((value) => value !== '')) continue;
     if (index === 0 && ['id', 'eventId'].includes(String(row[0]))) continue;
     try {
-      const [id, type, actorId, familyId, createdAt] = row;
+      const [id, type, actorId, workspaceId, createdAt] = row;
       if (typeof id !== 'string' || typeof type !== 'string' || typeof actorId !== 'string'
-        || typeof familyId !== 'string' || typeof createdAt !== 'string') throw new Error('Invalid event row');
+        || typeof workspaceId !== 'string' || typeof createdAt !== 'string') throw new Error('Invalid event row');
       const payload = JSON.parse(row.slice(5, 5 + PAYLOAD_CELLS).map((part) => String(part ?? '')).join(''));
-      const event = validateEvent({ id, type: type as StudyEventType, actorId, familyId, createdAt, payload });
+      const event = validateEvent({ id, type: type as StudyEventType, actorId, workspaceId, createdAt, payload });
       if (OPERATIONAL_EVENT_TYPES.has(event.type) !== operational) throw new Error('Event in wrong ledger');
       if (!seen.has(event.id)) { result.push(event); seen.add(event.id); }
     } catch {
@@ -354,7 +354,7 @@ export async function appendEvents(events: StudyEvent[]): Promise<void> {
     }
     if (chunks.length > PAYLOAD_CELLS) throw new ApiError(413, '保存する内容が大きすぎます。問題数を減らしてください。', 'EVENT_TOO_LARGE');
     while (chunks.length < PAYLOAD_CELLS) chunks.push('');
-    return [event.id, event.type, event.actorId, event.familyId, event.createdAt, ...chunks];
+    return [event.id, event.type, event.actorId, event.workspaceId, event.createdAt, ...chunks];
   });
   const body = JSON.stringify({ majorDimension: 'ROWS', values });
   if (Buffer.byteLength(body, 'utf8') > 1_500_000) throw new ApiError(413, '一度に保存する内容が大きすぎます。分けて保存してください。', 'EVENT_BATCH_TOO_LARGE');
@@ -466,7 +466,7 @@ export function foldEvents(events: StudyEvent[], profiles: Profile[] = []): Stud
         const plan = planSchema.parse(payload);
         const previous = plans.get(plan.id);
         if (payload.tagsOnly === true) {
-          const owner = profiles.find(profile => profile.id === event.actorId && profile.familyId === getFamilyId());
+          const owner = profiles.find(profile => profile.id === event.actorId && profile.workspaceId === getWorkspaceId());
           // An in-flight AI update may already have advanced the version. Never replace its content.
           if (previous && owner && plan.ownerId === previous.ownerId && event.actorId === previous.ownerId
             && plan.version <= previous.version && (!previous.testOnly || owner.accessLevel === 'superuser')) {
@@ -552,7 +552,7 @@ export async function getSessionSnapshot(sessionId: string, events?: StudyEvent[
 }
 
 export function studyDataForProfile(data: StudyData, profile: Profile, _now = new Date()): StudyData {
-  if (profile.familyId !== getFamilyId()) throw new ApiError(403, 'この記録にはアクセスできません。', 'FAMILY_MISMATCH');
+  if (profile.workspaceId !== getWorkspaceId()) throw new ApiError(403, 'この記録にはアクセスできません。', 'WORKSPACE_MISMATCH');
   const topics = data.topics.filter(topic => canAccessQuestion(topic, profile));
   const topicIds = new Set(topics.map(topic => topic.id));
   const sources = data.sources.filter(source => canAccessSource(source, profile));
@@ -579,7 +579,7 @@ export function studyDataForProfile(data: StudyData, profile: Profile, _now = ne
 }
 
 export async function loadStudyData(profile: Profile): Promise<StudyData> {
-  if (profile.familyId !== getFamilyId()) throw new ApiError(403, 'このアプリの記録にはアクセスできません。', 'FAMILY_MISMATCH');
+  if (profile.workspaceId !== getWorkspaceId()) throw new ApiError(403, 'このアプリの記録にはアクセスできません。', 'WORKSPACE_MISMATCH');
   return studyDataForProfile((await getFullState()).data, profile);
 }
 

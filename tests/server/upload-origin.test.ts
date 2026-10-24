@@ -35,13 +35,13 @@ test('Drive resumable initiation binds final upload CORS to the validated browse
     const metadata=JSON.parse(String(init?.body));
     assert.deepEqual(metadata.parents,[values.GOOGLE_DRIVE_FOLDER_ID]);
     assert.equal(metadata.appProperties.sourceId,'test-source');
-    assert.equal(metadata.appProperties.ownerId,'test-parent');
+    assert.equal(metadata.appProperties.ownerId,'test-operator');
     assert.equal('topicId' in metadata.appProperties,false);
     initiationSeen=true;
     return new Response(null,{status:200,headers:{location:'https://www.googleapis.com/upload/drive/v3/files?uploadType=resumable&upload_id=test-only-session'}});
   });
   try {
-    const result=await createSourceUpload({sourceId:'test-source',ownerId:'test-parent',name:'photo.jpg',mimeType:'image/jpeg',size:100},origin);
+    const result=await createSourceUpload({sourceId:'test-source',ownerId:'test-operator',name:'photo.jpg',mimeType:'image/jpeg',size:100},origin);
     assert.equal(initiationSeen,true);
     assert.equal(result.fileId,'test-file-12345678');
     assert.equal(JSON.stringify(result).includes('test-only-access-token'),false);

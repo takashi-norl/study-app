@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { createBoundedSourceStream, foldEvents, getSessionSnapshot, studyDataForProfile, type StudyEvent } from '../../src/server/google-store';
-import { assertStorageGrant, getAuthConfig, getFamilyMembers, getFamilyId } from '../../src/server/env';
+import { assertStorageGrant, getAuthConfig, getRegisteredAccounts, getWorkspaceId } from '../../src/server/env';
 import { getAuthOptions } from '../../src/server/auth';
 import { resolveRegisteredMember } from '../../src/server/beta-membership';
 import type { Attempt, Profile, Question } from '../../src/lib/types';
@@ -17,7 +17,7 @@ const event = (id: string, type: StudyEvent['type'], payload: StudyEvent['payloa
 const session = { id: 's', userId: 'student', mode: 'daily', questionIds: ['q'], createdAt: time, questionSnapshots: [q] };
 const answer: Attempt = { id: 'a', userId: 'student', questionId: 'q', questionVersion: 1, sessionId: 's',
   selectedIndex: 1, correct: true, answeredAt: time };
-const student: Profile = { id: 'student', familyId: getFamilyId(), name: '生徒', role: 'student' };
+const student: Profile = { id: 'student', workspaceId: getWorkspaceId(), name: '生徒', };
 
 test('event replay and concurrent answer requests preserve one canonical answer and frozen grading', async () => {
   const events = [event('q1', 'question.upserted', q), event('s1', 'session.created', session),
@@ -62,13 +62,13 @@ test('a session completes only after every question has a canonical answer, usin
   assert.equal(foldEvents(events).sessions[0].completedAt, '2026-10-22T00:05:00Z');
 });
 
-test('different families are rejected and duplicate exposure rows do not increase coverage', () => {
-  assert.throws(() => foldEvents([{ ...event('q', 'question.upserted', q), familyId: 'another-family' }]));
+test('different workspaces are rejected and duplicate exposure rows do not increase coverage', () => {
+  assert.throws(() => foldEvents([{ ...event('q', 'question.upserted', q), workspaceId: 'another-workspace' }]));
   const exposure = { id: 'seen', userId: 'student', questionId: 'q', questionVersion: 1, sessionId: 's', shownAt: time };
   const data = foldEvents([event('s', 'session.created', session), event('seen1', 'exposure.recorded', exposure),
     event('seen2', 'exposure.recorded', { ...exposure, id: 'new-request' })]);
   assert.equal(data.exposures.length, 1);
-  assert.throws(() => studyDataForProfile(data, { ...student, familyId: 'another-family' }));
+  assert.throws(() => studyDataForProfile(data, { ...student, workspaceId: 'another-workspace' }));
 });
 
 test('owner authoring retains answers while hiding foreign sources, frozen snapshots and other users records', () => {
@@ -102,23 +102,23 @@ test('owner authoring retains answers while hiding foreign sources, frozen snaps
   assert.equal(data.questions[0].correctIndex, 0);
 });
 
-test('missing, empty, duplicate and malformed family configuration fails closed', () => {
-  const oldValue = process.env.ALLOWED_FAMILY_MEMBERS_JSON;
+test('missing, empty, duplicate and malformed account configuration fails closed', () => {
+  const oldValue = process.env.REGISTERED_ACCOUNTS_JSON;
   try {
-    delete process.env.ALLOWED_FAMILY_MEMBERS_JSON;
-    assert.throws(() => getFamilyMembers());
-    for (const invalid of ['[]', '{bad json}', '[{"id":"student","email":"s@example.com","name":"s","role":"student"}]']) {
-      process.env.ALLOWED_FAMILY_MEMBERS_JSON = invalid;
-      assert.throws(() => getFamilyMembers());
+    delete process.env.REGISTERED_ACCOUNTS_JSON;
+    assert.throws(() => getRegisteredAccounts());
+    for (const invalid of ['[]', '{bad json}', '[{"id":"student","email":"not-an-email","name":"s"}]']) {
+      process.env.REGISTERED_ACCOUNTS_JSON = invalid;
+      assert.throws(() => getRegisteredAccounts());
     }
-    const parent = { id: 'parent', email: 'PARENT@example.com', name: '保護者', role: 'parent' };
-    process.env.ALLOWED_FAMILY_MEMBERS_JSON = JSON.stringify([parent]);
-    assert.equal(getFamilyMembers()[0].email, 'parent@example.com');
-    process.env.ALLOWED_FAMILY_MEMBERS_JSON = JSON.stringify([parent, { ...parent, id: 'another-parent', email: 'parent@example.com' }]);
-    assert.throws(() => getFamilyMembers());
+    const operator = { id: 'operator', email: 'OPERATOR@example.com', name: '利用者', };
+    process.env.REGISTERED_ACCOUNTS_JSON = JSON.stringify([operator]);
+    assert.equal(getRegisteredAccounts()[0].email, 'operator@example.com');
+    process.env.REGISTERED_ACCOUNTS_JSON = JSON.stringify([operator, { ...operator, id: 'another-operator', email: 'operator@example.com' }]);
+    assert.throws(() => getRegisteredAccounts());
   } finally {
-    if (oldValue === undefined) delete process.env.ALLOWED_FAMILY_MEMBERS_JSON;
-    else process.env.ALLOWED_FAMILY_MEMBERS_JSON = oldValue;
+    if (oldValue === undefined) delete process.env.REGISTERED_ACCOUNTS_JSON;
+    else process.env.REGISTERED_ACCOUNTS_JSON = oldValue;
   }
 });
 
@@ -184,15 +184,15 @@ test('source stream does not eagerly drain Drive and propagates browser cancella
 });
 
 test('Google login requires a verified allowlisted email and a removed member loses session authorization', async () => {
-  const keys = ['NEXTAUTH_SECRET', 'GOOGLE_CLIENT_ID', 'GOOGLE_CLIENT_SECRET', 'ALLOWED_FAMILY_MEMBERS_JSON'] as const;
+  const keys = ['NEXTAUTH_SECRET', 'GOOGLE_CLIENT_ID', 'GOOGLE_CLIENT_SECRET', 'REGISTERED_ACCOUNTS_JSON'] as const;
   const previous = Object.fromEntries(keys.map((key) => [key, process.env[key]]));
-  const parent = { id: 'parent', email: 'parent@example.com', name: '保護者', role: 'parent' };
-  const child = { id: 'student', email: 'child@example.com', name: '生徒', role: 'student' };
+  const operator = { id: 'operator', email: 'operator@example.com', name: '利用者', };
+  const child = { id: 'student', email: 'child@example.com', name: '生徒', };
   try {
     process.env.NEXTAUTH_SECRET = 'test-only-secret-with-at-least-thirty-two-characters';
     process.env.GOOGLE_CLIENT_ID = 'test-client';
     process.env.GOOGLE_CLIENT_SECRET = 'test-secret';
-    process.env.ALLOWED_FAMILY_MEMBERS_JSON = JSON.stringify([parent, child]);
+    process.env.REGISTERED_ACCOUNTS_JSON = JSON.stringify([operator, child]);
     const callbacks = getAuthOptions({ resolveMember: (email, subject) => resolveRegisteredMember(email, subject, { load: async () => [] }) }).callbacks!;
     const signIn = callbacks.signIn!;
     const args = { user: { id: 'google-subject' }, account: { provider: 'google', type: 'oauth' as const, providerAccountId: 'google-subject' } };
@@ -203,7 +203,7 @@ test('Google login requires a verified allowlisted email and a removed member lo
     const token = { email: child.email, googleVerified: true };
     const authorized = await callbacks.session!({ session, token, user: { id: '' } } as any);
     assert.equal((authorized as any).profile.id, 'student');
-    process.env.ALLOWED_FAMILY_MEMBERS_JSON = JSON.stringify([parent]);
+    process.env.REGISTERED_ACCOUNTS_JSON = JSON.stringify([operator]);
     const revoked = await callbacks.session!({ session, token, user: { id: '' } } as any);
     assert.equal((revoked as any).profile, undefined);
   } finally {

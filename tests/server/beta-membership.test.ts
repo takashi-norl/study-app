@@ -3,18 +3,18 @@ import test from 'node:test';
 import { randomUUID } from 'node:crypto';
 import { getAuthOptions } from '../../src/server/auth';
 import { ApiError } from '../../src/server/config';
-import { getFamilyMembers, profileForMember } from '../../src/server/env';
+import { getRegisteredAccounts, profileForAccount } from '../../src/server/env';
 import { betaAdministrationState, checkBetaInvitation, createBetaInvitation, registerInvitedMember, resolveRegisteredMember, revokeBetaAccess } from '../../src/server/beta-membership';
 import { betaMemberId, foldBetaMembership, profilesWithBetaMembers } from '../../src/server/beta-membership-schema';
 import type { StudyEvent } from '../../src/server/google-store';
 
-const seeds = [{ id: 'admin', email: 'takashi.oikawa@gmail.com', name: '運営', role: 'parent' },
-  { id: 'existing-learner', email: 'existing@example.com', name: '既存', role: 'student' }];
+const seeds = [{ id: 'admin', email: 'takashi.oikawa@gmail.com', name: '運営', },
+  { id: 'existing-learner', email: 'existing@example.com', name: '既存', }];
 const at = new Date('2026-10-23T10:00:00.000Z');
 async function configured(action: () => Promise<void>) {
-  const keys = ['ALLOWED_FAMILY_MEMBERS_JSON', 'NEXTAUTH_SECRET', 'GOOGLE_CLIENT_ID', 'GOOGLE_CLIENT_SECRET'] as const;
+  const keys = ['REGISTERED_ACCOUNTS_JSON', 'NEXTAUTH_SECRET', 'GOOGLE_CLIENT_ID', 'GOOGLE_CLIENT_SECRET'] as const;
   const saved = Object.fromEntries(keys.map(key => [key, process.env[key]]));
-  process.env.ALLOWED_FAMILY_MEMBERS_JSON = JSON.stringify(seeds);
+  process.env.REGISTERED_ACCOUNTS_JSON = JSON.stringify(seeds);
   process.env.NEXTAUTH_SECRET = 'test-only-secret-with-at-least-thirty-two-characters';
   process.env.GOOGLE_CLIENT_ID = 'test-client'; process.env.GOOGLE_CLIENT_SECRET = 'test-client-secret';
   try { await action(); } finally { for (const key of keys) { if (saved[key] === undefined) delete process.env[key]; else process.env[key] = saved[key]; } }
@@ -25,7 +25,7 @@ function harness() {
   const deps = { load: async () => structuredClone(events), append: async (event: StudyEvent) => { events.push(structuredClone(event)); }, now: () => now };
   return { events, deps, setTime: (date: Date) => { now = date; } };
 }
-const admin = () => profileForMember(getFamilyMembers()[0]);
+const admin = () => profileForAccount(getRegisteredAccounts()[0]);
 const request = () => ({ requestId: randomUUID(), email: 'friend@example.com', name: '友達', expiresInDays: 7 });
 async function registeredFixture(count: number) {
   const h = harness();
@@ -46,7 +46,7 @@ test('email-bound invitation is one account, stores only a hash, and retries pre
   assert.equal(await registerInvitedMember(invitation.token, 'other@example.com', 'other-sub', h.deps), undefined);
   assert.equal(await resolveRegisteredMember(input.email, 'friend-sub', h.deps), undefined);
   const member = await registerInvitedMember(invitation.token, ' FRIEND@example.com ', 'friend-sub', h.deps);
-  assert.equal(member?.profile.id, betaMemberId(input.email)); assert.equal(member?.profile.role, 'student'); assert.equal(member?.profile.accessLevel, 'learner');
+  assert.equal(member?.profile.id, betaMemberId(input.email)); assert.equal('role' in member!.profile, false); assert.equal(member?.profile.accessLevel, 'learner');
   assert.equal((await registerInvitedMember(invitation.token, input.email, 'friend-sub', h.deps))?.profile.id, member?.profile.id);
   assert.equal(await resolveRegisteredMember(input.email, 'different-sub', h.deps), undefined);
   assert.equal(await resolveRegisteredMember(input.email, undefined, h.deps), undefined);
@@ -84,9 +84,9 @@ test('concurrent acceptance cannot create two identities or overwrite the canoni
 }));
 
 test('only the configured Super User issues invitations; malformed and forged events grant no access', () => configured(async () => {
-  const h = harness(), learner = profileForMember(getFamilyMembers()[1]);
-  await assert.rejects(createBetaInvitation({ ...learner, role: 'parent', accessLevel: 'superuser' }, request(), h.deps), { code: 'FORBIDDEN' });
-  await assert.rejects(createBetaInvitation(admin(), { ...request(), role: 'parent' }, h.deps));
+  const h = harness(), learner = profileForAccount(getRegisteredAccounts()[1]);
+  await assert.rejects(createBetaInvitation({ ...learner,  accessLevel: 'superuser' }, request(), h.deps), { code: 'FORBIDDEN' });
+  await assert.rejects(createBetaInvitation(admin(), { ...request(), accessLevel: 'superuser' }, h.deps));
   const input = request(), invitation = await createBetaInvitation(admin(), input, h.deps);
   await assert.rejects(createBetaInvitation(admin(), { ...input, email: 'different@example.com' }, h.deps), { code: 'REQUEST_CONFLICT' });
   const forged = structuredClone(h.events); forged[0].actorId = learner.id;
@@ -94,8 +94,8 @@ test('only the configured Super User issues invitations; malformed and forged ev
   const member = await registerInvitedMember(invitation.token, input.email, 'friend-sub', h.deps); assert.ok(member);
   const spoofed = structuredClone(h.events); spoofed[1].actorId = learner.id;
   assert.equal(foldBetaMembership(spoofed).members.size, 0);
-  const crossFamily = structuredClone(h.events); crossFamily[0].familyId = 'another-family';
-  assert.equal(foldBetaMembership(crossFamily).members.size, 0);
+  const crossWorkspace = structuredClone(h.events); crossWorkspace[0].workspaceId = 'another-workspace';
+  assert.equal(foldBetaMembership(crossWorkspace).members.size, 0);
   assert.equal((await resolveRegisteredMember('existing@example.com', 'subject', h.deps))?.profile.id, 'existing-learner');
 }));
 

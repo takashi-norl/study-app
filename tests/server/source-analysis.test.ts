@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import type { LearningPlan, PlanningTurn, Profile, SourceDocument } from '../../src/lib/types';
 import { foldEvents, type StudyEvent } from '../../src/server/google-store';
-import { getFamilyId } from '../../src/server/env';
+import { getWorkspaceId } from '../../src/server/env';
 import { assertSourceAnalysesCurrent, latestSourceAnalysis, prepareSourceAnalysisUpdate, requireSourceAnalysisAccess, sourceAnalysisView } from '../../src/server/source-analysis';
 import { sourceAnalysisUpdateSchema } from '../../src/server/source-analysis-schema';
 import { buildPlanningContext } from '../../src/server/planning';
@@ -10,10 +10,10 @@ import { planningProgress } from '../../src/server/planning-progress';
 
 const time = '2026-10-23T00:00:00.000Z';
 const later = new Date('2026-10-23T00:01:00.000Z');
-const parent: Profile = { id: 'parent', name: '管理者', role: 'parent', familyId: getFamilyId() };
-const student: Profile = { ...parent, id: 'student', name: '学習者', role: 'student' };
+const operator: Profile = { id: 'operator', name: '管理者',  workspaceId: getWorkspaceId() };
+const student: Profile = { ...operator, id: 'student', name: '学習者', };
 const other: Profile = { ...student, id: 'other' };
-const profiles = [parent, student, other];
+const profiles = [operator, student, other];
 const sourceId = '11111111-1111-4111-8111-111111111111';
 const requestId = '22222222-2222-4222-8222-222222222222';
 const source: SourceDocument = { id: sourceId, ownerId: student.id, name: '古文の範囲.jpg', mimeType: 'image/jpeg', storagePath: 'private-file', createdAt: time };
@@ -46,22 +46,23 @@ test('manual reading is append-only, old event readers remain compatible, and th
   assert.equal(planningProgress(turn, [sourceId], all, 'queued').progress?.sourcesRequiringAnalysis, 0);
 });
 
-test('only registered owners can read or correct, without exposing sibling, unowned, or test sources', () => {
+test('only registered owners can read or correct, without exposing other-owner, unowned, or test sources', () => {
   const events = base();
   const data = foldEvents(events, profiles);
   assert.equal(requireSourceAnalysisAccess(data, student, sourceId).id, sourceId);
-  assert.throws(() => prepareSourceAnalysisUpdate(data, events, parent, sourceId, input(), later), { code: 'SOURCE_NOT_FOUND' });
+  assert.throws(() => prepareSourceAnalysisUpdate(data, events, operator, sourceId, input(), later), { code: 'SOURCE_NOT_FOUND' });
   assert.throws(() => requireSourceAnalysisAccess(data, other, sourceId), { code: 'SOURCE_NOT_FOUND' });
-  for (const actor of [{ ...student, role: 'parent' as const }, { ...student, familyId: 'foreign' }, { ...student, id: 'not-registered' }]) {
+  for (const actor of [{ ...student, workspaceId: 'foreign' }, { ...student, id: 'not-registered' }]) {
     assert.throws(() => requireSourceAnalysisAccess(data, actor, sourceId), { code: 'SOURCE_ANALYSIS_FORBIDDEN' });
     assert.throws(() => prepareSourceAnalysisUpdate(data, events, actor, sourceId, input()), { code: 'SOURCE_ANALYSIS_FORBIDDEN' });
   }
   data.sources[0].ownerId = undefined;
   assert.throws(() => requireSourceAnalysisAccess(data, student, sourceId), { code: 'SOURCE_NOT_FOUND' });
-  assert.throws(() => requireSourceAnalysisAccess(data, parent, sourceId), { code: 'SOURCE_NOT_FOUND' });
+  assert.throws(() => requireSourceAnalysisAccess(data, operator, sourceId), { code: 'SOURCE_NOT_FOUND' });
   data.sources[0].ownerId = student.id; data.sources[0].testOnly = true;
   assert.throws(() => requireSourceAnalysisAccess(data, student, sourceId), { code: 'SOURCE_NOT_FOUND' });
-  assert.throws(() => requireSourceAnalysisAccess(data, parent, 'missing'), { code: 'SOURCE_NOT_FOUND' });
+  assert.throws(() => requireSourceAnalysisAccess(data, { ...student, accessLevel: 'superuser' }, sourceId), { code: 'SOURCE_NOT_FOUND' }, 'stored membership wins over a forged capability');
+  assert.throws(() => requireSourceAnalysisAccess(data, operator, 'missing'), { code: 'SOURCE_NOT_FOUND' });
 });
 
 test('save retries never overwrite a newer edit and simultaneous changes use one canonical revision slot', () => {

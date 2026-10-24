@@ -157,5 +157,5 @@ test('demo contains at least twelve published questions per subject and clearly 
   assert.ok(demo.questions.some((q) => q.status === 'draft'));
   assert.ok(demo.questions.every((q) => q.correctIndex >= 0 && q.correctIndex < q.choices.length));
   assert.equal(demo.attempts.filter((a) => formatJapanDate(a.answeredAt) === '2026-10-22').length, 0);
-  assert.equal(demo.profiles.find((profile) => profile.role === 'student')?.id, 'student-demo');
+  assert.equal(demo.profiles[0].id, 'student-demo');
 });

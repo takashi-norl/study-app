@@ -2,14 +2,14 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { foldEvents, studyDataForProfile, type StudyEvent } from '../../src/server/google-store';
 import { canAccessPlan, canAccessQuestion, canAccessSource } from '../../src/server/access';
-import { getFamilyId } from '../../src/server/env';
+import { getWorkspaceId } from '../../src/server/env';
 import type { GenerationJob, LearningPlan, PlanningTurn, Profile, Question, Topic } from '../../src/lib/types';
 
 const time='2026-10-22T00:00:00Z';
-const parent:Profile={id:'parent',name:'Parent',role:'parent',familyId:getFamilyId()};
-const student:Profile={id:'student-one',name:'Student',role:'student',familyId:getFamilyId()};
-const other:Profile={id:'student-two',name:'Other',role:'student',familyId:getFamilyId()};
-const event=(id:string,type:StudyEvent['type'],payload:unknown):StudyEvent=>({id,type,actorId:parent.id,createdAt:time,payload});
+const operator:Profile={id:'operator',name:'Operator',workspaceId:getWorkspaceId()};
+const student:Profile={id:'student-one',name:'Student',workspaceId:getWorkspaceId()};
+const other:Profile={id:'student-two',name:'Other',workspaceId:getWorkspaceId()};
+const event=(id:string,type:StudyEvent['type'],payload:unknown):StudyEvent=>({id,type,actorId:operator.id,createdAt:time,payload});
 const plan=(id:string,ownerId:string):LearningPlan=>({id,ownerId,title:'世界史の学習',subject:'世界史',goal:'出来事のつながりを理解する',difficulty:'高校基礎',dailyQuestionTarget:10,sourceIds:[],version:1,createdAt:time,updatedAt:time});
 const turn=(id:string,planId:string,ownerId:string):PlanningTurn=>({id,planId,requestedBy:ownerId,version:2,status:'queued',message:'資料なしで基礎問題を相談したい',createdAt:time});
 const topic=(id:string,audienceUserId?:string):Topic=>({id,title:'科学の基礎',subject:'理科',description:'',createdAt:time,targetCount:10,audienceUserId});
@@ -18,51 +18,51 @@ const question=(id:string,topicId:string,audienceUserId?:string):Question=>({id,
 test('requested question totals survive saved events and student projection alongside legacy plans',()=>{
   const legacy=plan('legacy-plan',student.id);
   const selected={...plan('selected-plan',student.id),requestedQuestionCount:100};
-  const data=foldEvents([event('legacy','plan.created',legacy),event('selected','plan.created',selected)],[parent,student]);
+  const data=foldEvents([event('legacy','plan.created',legacy),event('selected','plan.created',selected)],[operator,student]);
   const visible=studyDataForProfile(data,student,new Date(time));
   assert.equal(visible.plans[0].requestedQuestionCount,undefined);
   assert.equal(visible.plans[1].requestedQuestionCount,100);
   assert.equal(visible.plans[1].dailyQuestionTarget,10);
 });
 
-test('unowned legacy sources are hidden and every role sees only its own bank and plans',()=>{
+test('unowned legacy sources are hidden and every account sees only its own bank and plans',()=>{
   const events:StudyEvent[]=[];
-  for(const [id,ownerId] of [['legacy',undefined],['parent-source',parent.id],['own-source',student.id],['other-source',other.id]] as const) {
+  for(const [id,ownerId] of [['legacy',undefined],['operator-source',operator.id],['own-source',student.id],['other-source',other.id]] as const) {
     events.push(event(id,'source.created',{id,ownerId,name:'source.jpg',mimeType:'image/jpeg',createdAt:time}));
   }
-  for(const owner of [parent,student,other]) {
+  for(const owner of [operator,student,other]) {
     const p=plan(`plan-${owner.id}`,owner.id);
     events.push(event(p.id,'plan.created',p),event(`turn-${owner.id}`,'planning.turn.upserted',turn(`turn-${owner.id}`,p.id,owner.id)));
   }
-  const data=foldEvents(events,[parent,student,other]);
+  const data=foldEvents(events,[operator,student,other]);
   const visible=studyDataForProfile(data,student,new Date(time));
   assert.deepEqual(visible.sources.map(s=>s.id),['own-source']);
   assert.equal(visible.sources[0].previewUrl,'/api/sources/own-source');
   assert.equal(visible.sources[0].topicId,undefined);
   assert.deepEqual(visible.plans.map(p=>p.id),[`plan-${student.id}`]);
   assert.deepEqual(visible.planningTurns.map(t=>t.id),[`turn-${student.id}`]);
-  const all=studyDataForProfile(data,parent,new Date(time));
+  const all=studyDataForProfile(data,operator,new Date(time));
   assert.equal(all.sources.length,1);
   assert.equal(all.plans.length,1);
   assert.equal(all.planningTurns.length,1);
   assert.equal(canAccessSource({},student),false);
   assert.equal(canAccessSource({ownerId:other.id},student),false);
-  assert.equal(canAccessSource({ownerId:other.id},parent),false);
+  assert.equal(canAccessSource({ownerId:other.id},operator),false);
   assert.equal(canAccessPlan(plan('p',other.id),student),false);
 });
 
-test('private published AI questions are usable only by their student while parents cannot inspect them',()=>{
+test('private published AI questions are usable only by their student while operators cannot inspect them',()=>{
   const events:StudyEvent[]=[];
-  for(const [id,audience] of [['family',undefined],['own',student.id],['other',other.id]] as const) {
+  for(const [id,audience] of [['workspace',undefined],['own',student.id],['other',other.id]] as const) {
     events.push(event(`topic-${id}`,'topic.created',topic(id,audience)),event(`q-${id}`,'question.upserted',question(`q-${id}`,id,audience)));
   }
-  const data=foldEvents(events,[parent,student,other]);
+  const data=foldEvents(events,[operator,student,other]);
   const visible=studyDataForProfile(data,student,new Date(time));
   assert.deepEqual(visible.questions.map(q=>q.id),['q-own']);
   assert.deepEqual(visible.topics.map(t=>t.id),['own']);
   assert.equal(visible.questions.find(q=>q.id==='q-own')?.needsReview,true);
   assert.equal(JSON.stringify(visible).includes('PRIVATE_ANSWER'),true);
-  assert.equal(studyDataForProfile(data,parent,new Date(time)).questions.length,1);
+  assert.equal(studyDataForProfile(data,operator,new Date(time)).questions.length,1);
   assert.equal(canAccessQuestion({audienceUserId:other.id},student),false);
 });
 

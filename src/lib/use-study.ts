@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { signIn as googleSignIn, signOut as googleSignOut } from 'next-auth/react';
 import type { NewLearningPlan, StudyController, UploadStatus } from '@/components/controller';
-import type { Attempt, GenerationJob, LearningPlan, PracticeMode, PracticeSession, Profile, Question, Role, SourceDocument, StudyData, Subject } from './types';
-import { createDemoData } from './demo-data';
+import type { Attempt, GenerationJob, LearningPlan, PracticeMode, PracticeSession, Profile, Question, SourceDocument, StudyData, Subject } from './types';
+import { createDemoData, normalizeDemoProfiles } from './demo-data';
 import { selectQuestions } from './learning';
 import { clearLocalFiles, loadLocalFile, saveLocalFile } from './local-files';
 import { prepareSourceFile } from './source-files';
@@ -15,7 +15,7 @@ import { addDemoPlanningTurn, arrangeDemoTopic, demoPracticeQuestions, demoPract
 import { topicOwnerId } from './library-policy';
 
 const KEY='hibi-study-demo-v1';
-const GUEST:Profile={id:'guest',familyId:'',name:'ゲスト',role:'student'};
+const GUEST:Profile={id:'guest',workspaceId:'',name:'ゲスト',accessLevel:'learner'};
 const EMPTY:StudyData={topics:[],sources:[],questions:[],attempts:[],exposures:[],sessions:[],jobs:[],profiles:[],plans:[],planningTurns:[]};
 type Feedback=StudyController['feedback'];
 
@@ -175,13 +175,14 @@ export function useStudy():StudyController {
           const stored=localStorage.getItem(KEY);
           if(stored){const candidate=JSON.parse(stored);if(Array.isArray(candidate?.questions)&&Array.isArray(candidate?.attempts)&&Array.isArray(candidate?.profiles))loaded=candidate;}
         }catch{}
+        loaded=normalizeDemoProfiles(loaded);
         loaded.plans??=[];loaded.planningTurns??=[];
         loaded.sources=await Promise.all(loaded.sources.map(async source=>{
           const file=await loadLocalFile(source.id).catch(()=>undefined);
           return {...source,previewUrl:file?URL.createObjectURL(file):source.previewUrl?.startsWith('blob:')?undefined:source.previewUrl};
         }));
         if(cancelled)return;
-        state.current=loaded;setData(loaded);const demoProfile=loaded.profiles.find(p=>p.role==='student')||GUEST;
+        state.current=loaded;setData(loaded);const demoProfile=loaded.profiles[0]||GUEST;
         identity.current=demoProfile;setProfile(demoProfile);setAuthStatus('authenticated');setAuthError(null);
       }else{
         await checkAuthentication(startup.signal);
@@ -545,7 +546,6 @@ export function useStudy():StudyController {
   }
   return {data:demo?demoStudyDataForProfile(data,profile):data,profile,demo,ready,authStatus,authError,busy,error,notice,uploadStatus,sync,practiceStart,answerConfirmation,session,currentQuestion:demo&&currentQuestion?demoPracticeQuestionView(currentQuestion,!!feedback):currentQuestion,feedback,actions:{
     retryAuth,refreshStatus,updatePlanTags,startPractice,beginPractice,cancelPracticeStart(){if(!lock.current)updatePracticeStart(null);},answer,nextQuestion,createTopic,uploadSources,createPlan,sendPlanningMessage,resumePlanningTurn,generateProposal,arrangeTopic,generate,resumeGeneration,retryGeneration,updateQuestion,publish,publishLibrary,requestLibraryPublication,addLibraryPlan,deliverToLearner,requestNotifications,
-    switchRole(_role:Role){setError('この画面は自分の学習専用です。アカウントの切り替えはログアウトして行ってください。');},
     finishSession(){updatePracticeStart(null);setSession(null);setSessionQuestions([]);setFeedback(null);},
     async resetDemo(){if(!demo)return;await run(async()=>{await clearLocalFiles();setData(createDemoData());updatePracticeStart(null);setSession(null);setFeedback(null);setNotice('サンプルの記録を初期状態に戻しました。');});},
     async signIn(){if(!signingOut.current)await googleSignIn('google',{callbackUrl:'/'});},

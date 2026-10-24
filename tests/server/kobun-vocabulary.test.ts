@@ -8,11 +8,11 @@ import { foldEvents, type StudyEvent } from '../../src/server/google-store';
 import { preparePlanArrangement } from '../../src/server/plan-arrangement';
 import { assertGenerationAccess, currentApprovedProposal } from '../../src/server/proposal-selection';
 import { prepareGenerationRetry } from '../../src/server/generation-retry';
-import { getFamilyId } from '../../src/server/env';
+import { getWorkspaceId } from '../../src/server/env';
 
 const now='2026-10-24T00:00:00.000Z';
 const sourceId='12345678-1234-4234-8234-123456789abc';
-const profile:Profile={id:'owner',familyId:getFamilyId(),name:'Learner',role:'student'};
+const profile:Profile={id:'owner',workspaceId:getWorkspaceId(),name:'Learner',};
 const plan:LearningPlan={id:'plan',ownerId:profile.id,title:'古文単語',subject:'古文',questionTemplate:'kobun-vocabulary',goal:'教材の範囲を覚える',difficulty:'基礎',sourceIds:[sourceId],dailyQuestionTarget:10,version:2,createdAt:now,updatedAt:now};
 const samples:PlanningSample[]=['まもる','あそぶ','めづ'].map((word,i)=>({prompt:`【意味】古文単語「${word}」の意味として適切なものを選びなさい。`,
   choices:[['じっと見つめる','管絃を楽しむ','ほめる'][i],'歩き回る','怒り散らす','隠れて待つ'],correctIndex:0,

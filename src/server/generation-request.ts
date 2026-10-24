@@ -55,7 +55,7 @@ export async function requestGeneration(profile: Profile, input: GenerationReque
   if(!!plan.testOnly!==!!input.topic.testOnly) throw new ApiError(403,'テスト用の設定が一致しません。','FORBIDDEN');
   if(JSON.stringify([...new Set(input.sourceIds)].sort())!==JSON.stringify([...proposal.sourceIds].sort())) throw new ApiError(409,'確認したサンプルと作問する資料が一致しません。','SAMPLE_SOURCE_MISMATCH');
   validateBulkCadence(input.targetCount,input.dailyQuestionTarget,input.plannedDays);
-  if (profile.role === 'student' && (!input.planId || input.topic.audienceUserId !== profile.id)) throw new ApiError(403, '自分の学習相談から作問してください。', 'FORBIDDEN');
+  if (!input.planId || input.topic.audienceUserId !== profile.id) throw new ApiError(403, '自分の学習相談から作問してください。', 'FORBIDDEN');
   if (input.topic.planId && (!input.planId || input.topic.planId !== input.planId || !data.plans.some(plan=>plan.id===input.topic.planId && plan.ownerId===profile.id))) throw new ApiError(403,'この相談から作問できるのは本人だけです。','FORBIDDEN');
   if (!Number.isInteger(input.targetCount) || input.targetCount < 1 || input.targetCount > 300) throw new ApiError(400, '問題数は1〜300問で指定してください。');
   const sourceIds = [...new Set(input.sourceIds)];

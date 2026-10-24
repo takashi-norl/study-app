@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto';
 import { z } from 'zod';
 import type { Profile } from '@/lib/types';
 import type { StudyEvent } from './google-store';
-import { getFamilyId, getFamilyMembers, profileForMember } from './env';
+import { getWorkspaceId, getRegisteredAccounts, profileForAccount } from './env';
 
 const email = z.string().trim().toLowerCase().email().max(254);
 const memberId = z.string().regex(/^beta-[a-f0-9]{40}$/);
@@ -22,17 +22,17 @@ export const betaAccessRevokedSchema = z.discriminatedUnion('kind', [
 ]);
 export type BetaInvitation = z.infer<typeof betaInvitationCreatedSchema> & { createdAt: string; usedBy?: string };
 export type BetaMember = z.infer<typeof betaMemberRegisteredSchema> & { createdAt: string };
-export const betaMemberId = (address: string) => `beta-${createHash('sha256').update(`${getFamilyId()}\0${address.trim().toLowerCase()}`).digest('hex').slice(0,40)}`;
+export const betaMemberId = (address: string) => `beta-${createHash('sha256').update(`${getWorkspaceId()}\0${address.trim().toLowerCase()}`).digest('hex').slice(0,40)}`;
 export const betaTokenHash = (token: string) => createHash('sha256').update(token).digest('hex');
 
-/** Replay only server-authorized invitations. An invitation never grants a manager role. */
+/** Replay only server-authorized invitations. An invitation never grants administrative access. */
 export function foldBetaMembership(events: readonly StudyEvent[]) {
-  const seeds = getFamilyMembers();
-  const administrators = new Set(seeds.filter(member => profileForMember(member).accessLevel === 'superuser').map(member => member.id));
+  const seeds = getRegisteredAccounts();
+  const administrators = new Set(seeds.filter(member => profileForAccount(member).accessLevel === 'superuser').map(member => member.id));
   const invitations = new Map<string, BetaInvitation>(), members = new Map<string, BetaMember>();
   const revokedInvitations = new Set<string>(), revokedMembers = new Set<string>(), seen = new Set<string>();
   for (const event of events) {
-    if (seen.has(event.id) || (event.familyId && event.familyId !== getFamilyId())) continue;
+    if (seen.has(event.id) || (event.workspaceId && event.workspaceId !== getWorkspaceId())) continue;
     seen.add(event.id);
     const at = Date.parse(event.createdAt);
     if (!Number.isFinite(at)) continue;
@@ -64,11 +64,11 @@ export function foldBetaMembership(events: readonly StudyEvent[]) {
 }
 
 export function profileForBetaMember(member: BetaMember): Profile {
-  return { id: member.id, name: member.name, familyId: getFamilyId(), role: 'student', accessLevel: 'learner' };
+  return { id: member.id, name: member.name, workspaceId: getWorkspaceId(), accessLevel: 'learner' };
 }
 
 export function profilesWithBetaMembers(events: readonly StudyEvent[]): Profile[] {
   const state = foldBetaMembership(events);
-  return [...getFamilyMembers().map(profileForMember), ...[...state.members.values()]
+  return [...getRegisteredAccounts().map(profileForAccount), ...[...state.members.values()]
     .filter(member => !state.revokedMembers.has(member.id)).map(profileForBetaMember)];
 }

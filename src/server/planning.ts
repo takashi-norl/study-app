@@ -7,6 +7,7 @@ import type { StudyEvent } from './google-store';
 import { canAccessPlan, canAccessSource } from './access';
 import { ApiError, requiredEnv, requireGenerationEnabled } from './config';
 import { assertSuperUser } from './env';
+import { persistedPaidWorkSlotId } from './legacy-settings';
 import { trackedAnthropicMessage } from './ai-usage';
 import { confirmedProfileContext } from './personal-profile';
 import { planningSamplesSchema, sampleJsonSchema, validateSamples } from './planning-samples';
@@ -42,7 +43,7 @@ const dateInJapan=(date:string|Date)=>new Intl.DateTimeFormat('sv-SE',{timeZone:
 /** Both types of paid work compete for one immutable event slot in the Sheets log. */
 export function paidWorkSlotId(data:Pick<StudyData,'jobs'|'planningTurns'>):string {
   const history=[...data.jobs.map(job=>`job:${job.id}`),...data.planningTurns.map(turn=>`turn:${turn.id}`)].sort();
-  return `family-paid-slot:${createHash('sha256').update(JSON.stringify(history)).digest('hex')}`;
+  return persistedPaidWorkSlotId(createHash('sha256').update(JSON.stringify(history)).digest('hex'));
 }
 
 export function requireOwnedPlan(data:StudyData,profile:Profile,planId:string):LearningPlan {

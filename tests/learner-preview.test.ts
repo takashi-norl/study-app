@@ -12,7 +12,7 @@ const now = new Date('2026-10-23T00:00:00.000Z');
 function fixture(count = 3) {
   let sequence = 0;
   const id = () => `id-${++sequence}`;
-  const profile = { id: 'learner', familyId: 'family', name: '学習者', role: 'student' as const };
+  const profile = { id: 'learner', workspaceId: 'workspace', name: '学習者' };
   const questions: Question[] = Array.from({ length: count }, (_, index) => ({
     id: `question-${String(index).padStart(2, '0')}`, topicId: 'private-topic',
     prompt: `問題 ${index + 1}`, choices: ['正解', '不正解'], correctIndex: 0,

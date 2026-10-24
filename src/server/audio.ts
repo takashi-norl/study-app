@@ -6,7 +6,7 @@ import { englishChoiceSpeechText, englishSpeechText } from '@/lib/speech';
 import { canAccessQuestion } from './access';
 import { ApiError } from './config';
 import { appendEvent, downloadAudioCache, getFullState, getSessionSnapshot, loadEvents, MAX_AUDIO_BYTES, saveAudioCache, type StudyEvent } from './google-store';
-import { getFamilyId } from './env';
+import { getWorkspaceId } from './env';
 import { mayPracticeQuestion } from './practice-access';
 import type { AudioSegment } from './audio-segments';
 
@@ -25,7 +25,7 @@ export function audioConfigured():boolean {return !!process.env.ELEVENLABS_API_K
 
 /** Never accepts text, answers, source material or arbitrary provider options from a browser. */
 export async function authorizedAudioText(data:StudyData,events:StudyEvent[],profile:Profile,input:AudioRequest):Promise<string> {
-  if(profile.familyId!==getFamilyId()) throw new ApiError(403,'この音声にはアクセスできません。','AUDIO_FORBIDDEN');
+  if(profile.workspaceId!==getWorkspaceId()) throw new ApiError(403,'この音声にはアクセスできません。','AUDIO_FORBIDDEN');
   let question:Question|undefined;
   if(input.sessionId) {
     const session=data.sessions.find(item=>item.id===input.sessionId && item.userId===profile.id);

@@ -10,16 +10,15 @@ export type StudyAccessResult =
 export const STUDY_CONNECTION_ERROR = '学習データを読み込めませんでした。接続を確認して、もう一度お試しください。';
 
 export function sameStudyIdentity(a: Profile, b: Profile): boolean {
-  return a.id === b.id && a.familyId === b.familyId && a.role === b.role && a.accessLevel === b.accessLevel;
+  return a.id === b.id && a.workspaceId === b.workspaceId && a.accessLevel === b.accessLevel;
 }
 
 export function isStudyStatePayload(value: unknown): value is StudyStatePayload {
   if (!value || typeof value !== 'object') return false;
   const { data, profile } = value as Partial<StudyStatePayload>;
   return !!profile && typeof profile.id === 'string' && !!profile.id && profile.id !== 'guest'
-    && typeof profile.familyId === 'string' && !!profile.familyId && typeof profile.name === 'string'
-    && (profile.role === 'parent' || profile.role === 'student')
-    && (profile.accessLevel === undefined || ['superuser', 'manager', 'learner'].includes(profile.accessLevel)) && !!data
+    && typeof profile.workspaceId === 'string' && !!profile.workspaceId && typeof profile.name === 'string'
+    && (profile.accessLevel === undefined || ['superuser', 'learner'].includes(profile.accessLevel)) && !!data
     && ['topics', 'sources', 'questions', 'attempts', 'exposures', 'sessions', 'jobs', 'profiles', 'plans', 'planningTurns']
       .every(key => Array.isArray(data[key as keyof StudyData]));
 }

@@ -15,16 +15,16 @@ const entry: VocabularyEntry = {
 const bytes = Buffer.from([73, 68, 51, 4, 0, 0, 0]);
 const clip = { wordId: entry.id, cacheKey: vocabularyAudioSpec(entry).cacheKey, segments: ['word', 'example-1', 'example-2', 'example-3'].map((id, index) => ({ id: id as 'word' | 'example-1' | 'example-2' | 'example-3', startSeconds: index * 2, endSeconds: index * 2 + 1 })), audioBase64: bytes.toString('base64'), sha256: createHash('sha256').update(bytes).digest('hex') };
 const input = { schemaVersion: 2, batchId: 'grade3-001', clips: [clip] };
-const profile: Profile = { id: 'super', name: 'Owner', role: 'parent', familyId: 'import-test-family', accessLevel: 'superuser' };
+const profile: Profile = { id: 'super', name: 'Owner',  workspaceId: 'import-test-workspace', accessLevel: 'superuser' };
 const request = (body: unknown, headers: Record<string, string> = {}) => new Request('https://study.example/api/admin/vocabulary-import', { method: 'POST', headers: { origin: 'https://study.example', 'content-type': 'application/json', ...headers }, body: JSON.stringify(body) });
 
 async function withMembers(work: () => Promise<void>) {
-  const previous = { family: process.env.FAMILY_ID, members: process.env.ALLOWED_FAMILY_MEMBERS_JSON };
-  process.env.FAMILY_ID = 'import-test-family';
-  process.env.ALLOWED_FAMILY_MEMBERS_JSON = JSON.stringify([{ id: 'super', name: 'Owner', email: 'takashi.oikawa@gmail.com', role: 'parent' }, { id: 'manager', name: 'Manager', email: 'manager@example.com', role: 'parent' }, { id: 'student', name: 'Student', email: 'student@example.com', role: 'student' }]);
+  const previous = { workspace: process.env.WORKSPACE_ID, members: process.env.REGISTERED_ACCOUNTS_JSON };
+  process.env.WORKSPACE_ID = 'import-test-workspace';
+  process.env.REGISTERED_ACCOUNTS_JSON = JSON.stringify([{ id: 'super', name: 'Owner', email: 'takashi.oikawa@gmail.com', }, { id: 'member', name: 'Member', email: 'member@example.com', }, { id: 'student', name: 'Student', email: 'student@example.com', }]);
   try { await work(); } finally {
-    if (previous.family === undefined) delete process.env.FAMILY_ID; else process.env.FAMILY_ID = previous.family;
-    if (previous.members === undefined) delete process.env.ALLOWED_FAMILY_MEMBERS_JSON; else process.env.ALLOWED_FAMILY_MEMBERS_JSON = previous.members;
+    if (previous.workspace === undefined) delete process.env.WORKSPACE_ID; else process.env.WORKSPACE_ID = previous.workspace;
+    if (previous.members === undefined) delete process.env.REGISTERED_ACCOUNTS_JSON; else process.env.REGISTERED_ACCOUNTS_JSON = previous.members;
   }
 }
 
@@ -53,10 +53,10 @@ test('import reader rejects cross-origin, absent-origin, oversize header, and st
   await assert.rejects(() => readVocabularyImport(request({ ...input, clips: [clip, clip] })));
 });
 
-test('only current Super User can import; manager/student or unindexed word cannot touch storage', () => withMembers(async () => {
+test('only current Super User can import; member/student or unindexed word cannot touch storage', () => withMembers(async () => {
   let calls = 0;
   const store = { entries: () => [entry], find: async () => { calls++; return null; }, save: async () => { calls++; return 'private-file-id'; }, download: async () => bytes };
-  for (const id of ['manager', 'student', 'unknown']) await assert.rejects(() => importVocabularyAudio({ ...profile, id }, input, store), { status: 403 });
+  for (const id of ['member', 'student', 'unknown']) await assert.rejects(() => importVocabularyAudio({ ...profile, id }, input, store), { status: 403 });
   await assert.rejects(() => importVocabularyAudio(profile, { ...input, clips: [{ ...clip, wordId: 'not-indexed' }] }, store), { status: 400 });
   await assert.rejects(() => importVocabularyAudio(profile, { ...input, batchId: 'legacy-100' }, store), { status: 409 });
   assert.equal(calls, 0);

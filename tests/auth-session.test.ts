@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { createLoginSessionReader } from '../src/lib/auth-session';
 
-const profile = { id: 'learner', familyId: 'family-primary', name: '学習者', role: 'student' as const, accessLevel: 'learner' as const };
+const profile = { id: 'learner', workspaceId: 'workspace-primary', name: '学習者', accessLevel: 'learner' as const };
 const json = (value: unknown, status = 200) => new Response(JSON.stringify(value), { status, headers: { 'Content-Type': 'application/json' } });
 
 test('session checks use the cookie-renewing official route and deduplicate only overlapping calls', async () => {
@@ -33,7 +33,7 @@ test('only a missing or rejected session means login is required', async () => {
 
 test('network, server, malformed responses and timeout do not pretend the user logged out', async () => {
   for (const response of [json({ error: 'temporary' }, 503), json({ error: 'temporary' }), new Response('<html>error</html>'),
-    json({ profile: { ...profile, role: 'admin' } }), json({ unexpected: true })]) {
+    json({ profile: { ...profile, accessLevel: 'invalid' } }), json({ unexpected: true })]) {
     assert.equal((await createLoginSessionReader(async () => response)()).status, 'unavailable');
   }
   assert.equal((await createLoginSessionReader(async () => { throw new TypeError('network'); })()).status, 'unavailable');
@@ -45,8 +45,15 @@ test('network, server, malformed responses and timeout do not pretend the user l
 });
 
 test('session response exposes only the application profile', async () => {
-  const reader = createLoginSessionReader(async () => json({ profile: { ...profile, secret: 'not-a-profile-field' }, user: { email: 'private@example.com' } }));
+  const reader = createLoginSessionReader(async () => json({ profile: { ...profile, role: 'obsolete-value', secret: 'not-a-profile-field' }, user: { email: 'private@example.com' } }));
   assert.deepEqual(await reader(), { status: 'authenticated', profile });
+});
+
+test('operational capability does not require a different learner identity or an extra profile field', async () => {
+  const operator = { ...profile, accessLevel: 'superuser' as const };
+  assert.deepEqual(await createLoginSessionReader(async () => json({ profile: operator }))(), { status: 'authenticated', profile: operator });
+  const ordinary = { id: profile.id, workspaceId: profile.workspaceId, name: profile.name };
+  assert.deepEqual(await createLoginSessionReader(async () => json({ profile: ordinary }))(), { status: 'authenticated', profile: ordinary });
 });
 
 test('logout waits for an outstanding cookie renewal and blocks new focus renewals until recovery', async () => {

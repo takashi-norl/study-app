@@ -5,15 +5,15 @@ import { prepareGenerationRetry, retryGeneration, type GenerationRetryDependenci
 import { foldEvents, type StudyEvent } from '../../src/server/google-store';
 
 const now = new Date('2026-10-23T00:00:00.000Z');
-const owner: Profile = { id: 'owner', familyId: 'family-primary', name: 'Owner', role: 'student' };
-const manager: Profile = { ...owner, id: 'manager', role: 'parent' };
+const owner: Profile = { id: 'owner', workspaceId: 'workspace-primary', name: 'Owner', };
+const member: Profile = { ...owner, id: 'member', };
 const original: GenerationJob = { id: 'old', topicId: 'topic', planId: 'plan', requestedBy: owner.id,
   audienceUserId: owner.id, status: 'failed', targetCount: 100, generatedCount: 10,
   instructions: 'Keep this exact saved scope', sourceIds: [], createdAt: now.toISOString(), error: 'Previous timeout' };
 function data(): StudyData {
   return { jobs: [original], topics: [{ id: 'topic', planId: 'plan', audienceUserId: owner.id, title: 'Topic', subject: '古文', description: '', targetCount: 100, createdAt: now.toISOString() }],
     plans: [{ id: 'plan', ownerId: owner.id, title: 'Plan', subject: '古文', goal: 'Goal', difficulty: '高校1年', dailyQuestionTarget: 10, sourceIds: [], version: 4, createdAt: now.toISOString(), updatedAt: now.toISOString() }],
-    profiles: [owner, manager], sources: [], questions: Array.from({ length: 10 }, (_, i) => ({ id: `q${i}`, topicId: 'topic' } as Question)),
+    profiles: [owner, member], sources: [], questions: Array.from({ length: 10 }, (_, i) => ({ id: `q${i}`, topicId: 'topic' } as Question)),
     planningTurns: [], attempts: [], exposures: [], sessions: [] };
 }
 
@@ -35,7 +35,7 @@ test('explicit recovery keeps the saved topic, scope and audience and counts dur
 });
 
 test('retry cannot change owners, use removed material, or append into published library content', () => {
-  assert.throws(() => prepareGenerationRetry(data(), manager, original.id, 'request', now, 'new'), { code: 'JOB_NOT_FOUND' });
+  assert.throws(() => prepareGenerationRetry(data(), member, original.id, 'request', now, 'new'), { code: 'JOB_NOT_FOUND' });
   const state = data(); state.jobs = [{ ...original, sourceIds: ['gone'] }];
   assert.throws(() => prepareGenerationRetry(state, owner, original.id, 'request', now, 'new'), { code: 'GENERATION_ACCESS_DENIED' });
   const published = data(); published.topics[0].libraryPublished = true;

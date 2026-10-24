@@ -11,7 +11,7 @@ export const ORIGIN = 'http://localhost:8765';
 export const REDIRECT_URI = `${ORIGIN}/oauth/callback`;
 export const SCOPES = ['openid', 'https://www.googleapis.com/auth/userinfo.email',
   'https://www.googleapis.com/auth/drive.file'];
-export const HEADERS = ['id', 'type', 'actorId', 'familyId', 'createdAt',
+export const HEADERS = ['id', 'type', 'actorId', 'workspaceId', 'createdAt',
   'payload1', 'payload2', 'payload3', 'payload4', 'payload5', 'payload6', 'payload7', 'payload8'];
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const OUTPUT = resolve(ROOT, '.env.google-setup.json');
@@ -103,6 +103,12 @@ function googleId(value) {
   return value;
 }
 
+/** Read-only compatibility: only the fourth column may retain its old heading. Never rewrite a saved sheet. */
+function compatibleEventHeaders(headers) {
+  return Array.isArray(headers) && headers.length === HEADERS.length
+    && HEADERS.every((name, index) => headers[index] === name || (index === 3 && headers[index] === 'familyId'));
+}
+
 export function validateSaved(input) {
   if (input?.version !== 1 || !['authorized', 'creating-folder', 'folder-created', 'creating-sheet',
     'sheet-created', 'complete'].includes(input.phase)) fail('保存済みセットアップ情報の形式を確認してください。');
@@ -160,7 +166,7 @@ export async function provisionStorage(record, request, save) {
     record.phase = 'creating-folder'; await save(record);
     const folder = await request('https://www.googleapis.com/drive/v3/files?fields=id', { method: 'POST',
       body: JSON.stringify({ name: FOLDER_NAME, mimeType: 'application/vnd.google-apps.folder',
-        description: '家族用学習アプリの教材保存先。アプリ専用。' }) });
+        description: '本人専用の学習教材保存先。アプリ専用。' }) });
     record.env.GOOGLE_DRIVE_FOLDER_ID = googleId(folder.id);
     record.phase = 'folder-created'; await save(record);
   }
@@ -180,7 +186,7 @@ export async function provisionStorage(record, request, save) {
     await request(`${fileUrl}?${query}`, { method: 'PATCH', body: '{}' });
   }
   const header = await request(`https://sheets.googleapis.com/v4/spreadsheets/${record.env.GOOGLE_SHEETS_ID}/values/Events!A1:M1`);
-  if (JSON.stringify(header.values?.[0]) !== JSON.stringify(HEADERS)) fail('記録シートの見出しを確認してください。既存の内容は変更していません。');
+  if (!compatibleEventHeaders(header.values?.[0])) fail('記録シートの見出しを確認してください。既存の内容は変更していません。');
   record.phase = 'complete'; await save(record);
   return record;
 }
@@ -256,7 +262,7 @@ export async function startSetup(config, { output = OUTPUT, saved, log = console
       if (request.method === 'GET' && url.pathname === '/' && !url.search) {
         respond(response, 200, page('学習アプリのGoogle保存先を設定', `<p>保存先所有者：<strong>${escapeHtml(config.ownerEmail)}</strong></p>
           <p>${saved ? '前回保存した専用フォルダ・記録シートの設定を確認し、残りの作業を再開します。' : `このアカウントのマイドライブに「${FOLDER_NAME}」フォルダと「${SHEET_NAME}」を新しく作成します。`}</p>
-          <p>アプリが作成したファイルだけを管理する権限（drive.file）を使います。家族の通常ログインに保存権限は追加しません。</p>
+          <p>アプリが作成したファイルだけを管理する権限（drive.file）を使います。利用者の通常ログインに保存権限は追加しません。</p>
           <p>接続情報はこのMacの秘密ファイルに保存します。Vercelへの登録・公開、AIの呼び出しは行いません。</p>
           ${status === 'ready' ? `<form method="post" action="/start"><input type="hidden" name="confirm" value="${startToken}"><button type="submit">${saved ? '保存した設定で再開する' : 'Googleで接続し、専用の保存先を作成する'}</button></form>` : '<p><a href="/status">設定状況を見る</a></p>'}`),
         // no-referrer makes native form POSTs send Origin:null. Preserve the local

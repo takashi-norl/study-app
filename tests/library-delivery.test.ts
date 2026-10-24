@@ -16,18 +16,18 @@ test('a lost delivery response retries with the same request and normalized proj
   const calls: LibraryDeliveryInput[] = [];
   let ids = 0;
   const createId = () => `request-${++ids}`;
-  await assert.rejects(requestLibraryDelivery(requests, 'parent', { ...input, projectName: ` ${input.projectName} ` }, async body => {
+  await assert.rejects(requestLibraryDelivery(requests, 'operator', { ...input, projectName: ` ${input.projectName} ` }, async body => {
     calls.push(body); throw new TypeError('Failed to fetch');
   }, createId), /同じ依頼/);
   assert.equal(requests.size, 1);
-  const result = await requestLibraryDelivery(requests, 'parent', input, async (body, signal) => {
+  const result = await requestLibraryDelivery(requests, 'operator', input, async (body, signal) => {
     assert.equal(signal.aborted, false); calls.push(body); return saved(body);
   }, createId);
   assert.deepEqual(calls[0], calls[1]);
   assert.equal(ids, 1);
   assert.equal(result.plan.id, 'request-1');
   assert.equal(requests.size, 0);
-  await requestLibraryDelivery(requests, 'parent', input, async body => saved(body), createId);
+  await requestLibraryDelivery(requests, 'operator', input, async body => saved(body), createId);
   assert.equal(ids, 2, 'a later intentional delivery starts a new request');
 });
 
@@ -39,9 +39,9 @@ test('an invalid or unconfirmed delivery response retains the request for safe r
     (result: LibraryDeliveryResult) => ({ ...result, topic: { ...result.topic, planId: 'other' } }),
   ]) {
     const requests = new Map<string, string>();
-    await assert.rejects(requestLibraryDelivery(requests, 'parent', input, async body => corrupt(saved(body)), () => 'same-request'), /保存の確認/);
+    await assert.rejects(requestLibraryDelivery(requests, 'operator', input, async body => corrupt(saved(body)), () => 'same-request'), /保存の確認/);
     assert.equal(requests.size, 1);
-    await requestLibraryDelivery(requests, 'parent', input, async body => {
+    await requestLibraryDelivery(requests, 'operator', input, async body => {
       assert.equal(body.requestId, 'same-request'); return saved(body);
     }, () => { throw new Error('must reuse the request'); });
     assert.equal(requests.size, 0);
@@ -52,8 +52,8 @@ test('delivery requests are scoped to actor, source, recipient and chosen projec
   const requests = new Map<string, string>();
   let ids = 0;
   for (const [actor, value] of [
-    ['parent', input], ['parent2', input], ['parent', { ...input, topicId: 'other-source' }],
-    ['parent', { ...input, learnerId: 'other-learner' }], ['parent', { ...input, projectName: '期末テスト' }],
+    ['operator', input], ['operator2', input], ['operator', { ...input, topicId: 'other-source' }],
+    ['operator', { ...input, learnerId: 'other-learner' }], ['operator', { ...input, projectName: '期末テスト' }],
   ] as const) {
     await assert.rejects(requestLibraryDelivery(requests, actor, value, async () => { throw new Error('unconfirmed'); }, () => `request-${++ids}`));
   }
@@ -63,11 +63,11 @@ test('delivery requests are scoped to actor, source, recipient and chosen projec
 
 test('a blank project is omitted and overlong project names fail before delivery starts', async () => {
   const requests = new Map<string, string>();
-  await requestLibraryDelivery(requests, 'parent', { ...input, projectName: '   ' }, async body => {
+  await requestLibraryDelivery(requests, 'operator', { ...input, projectName: '   ' }, async body => {
     assert.equal(Object.hasOwn(body, 'projectName'), false); return saved(body);
   });
   let sent = false;
-  await assert.rejects(requestLibraryDelivery(requests, 'parent', { ...input, projectName: '名'.repeat(41) }, async body => {
+  await assert.rejects(requestLibraryDelivery(requests, 'operator', { ...input, projectName: '名'.repeat(41) }, async body => {
     sent = true; return saved(body);
   }), /40文字/);
   assert.equal(sent, false);

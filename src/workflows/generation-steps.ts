@@ -73,7 +73,7 @@ export async function analyzeSource(jobId:string,sourceId:string) {
   } catch(error) { throw new FatalError(safeGenerationError(error)); }
 }
 // Retrying a paid provider call can spend twice after an uncertain network failure.
-// A failed paid step is visible to the parent; explicit later jobs reuse cached analyses.
+// A failed paid step is visible to the requesting learner; explicit later jobs reuse cached analyses.
 analyzeSource.maxRetries=0;
 
 export async function generateBatch(jobId:string,batch:number,totalBatches:number) {

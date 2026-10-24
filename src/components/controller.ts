@@ -1,4 +1,4 @@
-import type { PracticeMode, PracticeSession, Profile, Question, Role, StudyData, Subject } from '@/lib/types';
+import type { PracticeMode, PracticeSession, Profile, Question, StudyData, Subject } from '@/lib/types';
 import type { StudyAuthStatus } from '@/lib/study-auth';
 
 export interface UploadStatus {
@@ -47,7 +47,6 @@ export interface StudyController {
   actions: {
     retryAuth(): Promise<void>;
     refreshStatus(): Promise<void>;
-    switchRole(role: Role): void;
     startPractice(mode: PracticeMode, topicId?: string): void | Promise<void>;
     beginPractice(requireConfirmation: boolean): void | Promise<void>;
     cancelPracticeStart(): void;

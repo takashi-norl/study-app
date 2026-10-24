@@ -20,10 +20,10 @@ function sessionResult(value: unknown): LoginSessionResult {
   }
   if (typeof session.profile !== 'object' || Array.isArray(session.profile)) return unavailable();
   const profile = session.profile as Record<string, unknown>;
-  if (typeof profile.id !== 'string' || !profile.id || typeof profile.familyId !== 'string' || !profile.familyId
-    || typeof profile.name !== 'string' || (profile.role !== 'parent' && profile.role !== 'student')) return unavailable();
-  if (profile.accessLevel !== undefined && !['superuser', 'manager', 'learner'].includes(String(profile.accessLevel))) return unavailable();
-  return { status: 'authenticated', profile: { id: profile.id, familyId: profile.familyId, name: profile.name, role: profile.role,
+  if (typeof profile.id !== 'string' || !profile.id || typeof profile.workspaceId !== 'string' || !profile.workspaceId
+    || typeof profile.name !== 'string') return unavailable();
+  if (profile.accessLevel !== undefined && !['superuser', 'learner'].includes(String(profile.accessLevel))) return unavailable();
+  return { status: 'authenticated', profile: { id: profile.id, workspaceId: profile.workspaceId, name: profile.name,
     ...(profile.accessLevel ? { accessLevel: profile.accessLevel as Profile['accessLevel'] } : {}) } };
 }
 

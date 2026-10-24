@@ -6,12 +6,12 @@ import { createPlanSchema } from '../../src/server/planning';
 import { preparePlanArrangement } from '../../src/server/plan-arrangement';
 import { prepareLibraryAdoption } from '../../src/server/library';
 import { foldEvents, type StudyEvent } from '../../src/server/google-store';
-import { getFamilyId } from '../../src/server/env';
+import { getWorkspaceId } from '../../src/server/env';
 
 const now = new Date('2026-10-23T12:00:00.000Z');
 const time = now.toISOString();
-const parent: Profile = { id: 'parent', name: '運営者', familyId: getFamilyId(), role: 'parent', accessLevel: 'superuser' };
-const student: Profile = { ...parent, id: 'student', name: '学習者', role: 'student', accessLevel: 'learner' };
+const operator: Profile = { id: 'operator', name: '運営者', workspaceId: getWorkspaceId(),  accessLevel: 'superuser' };
+const student: Profile = { ...operator, id: 'student', name: '学習者',  accessLevel: 'learner' };
 const other: Profile = { ...student, id: 'other', name: '別の学習者' };
 const plan: LearningPlan = { id: 'kobun-plan', ownerId: student.id, title: '古文の文脈', subject: '古文', tags: ['2学期中間テスト'],
   goal: '本文から意味を考える', difficulty: '標準', dailyQuestionTarget: 10, sourceIds: [], version: 3, createdAt: time, updatedAt: time };
@@ -21,7 +21,7 @@ const question: Question = { id: 'kobun-question', topicId: topic.id, prompt: '�
   correctIndex: 0, explanation: '本文の前後関係から意味Aと判断します。', learningPoint: '文脈', sourceIds: [], sourceNote: '自作例文',
   status: 'draft', needsReview: false, version: 1, ownerId: student.id, audienceUserId: student.id, planId: plan.id, createdAt: time };
 function fixture(): StudyData {
-  return structuredClone({ profiles: [parent, student, other], plans: [plan], topics: [topic], questions: [question],
+  return structuredClone({ profiles: [operator, student, other], plans: [plan], topics: [topic], questions: [question],
     sources: [], jobs: [], planningTurns: [], attempts: [], exposures: [], sessions: [] });
 }
 function publicFixture(): StudyData {
@@ -62,7 +62,7 @@ test('a private arrangement inherits only its caller-owned plan tags and keeps o
   assert.equal(own.plan.version, 1);
   own.plan.tags!.push('新しい範囲');
   assert.deepEqual(data, before);
-  assert.throws(() => preparePlanArrangement(data, parent, topic.id, 'admin-arrangement', now), { code: 'TOPIC_NOT_FOUND' });
+  assert.throws(() => preparePlanArrangement(data, operator, topic.id, 'admin-arrangement', now), { code: 'TOPIC_NOT_FOUND' });
   assert.throws(() => preparePlanArrangement(data, other, topic.id, 'forbidden', now), { code: 'TOPIC_NOT_FOUND' });
   const saved = { ...data, plans: [...data.plans, own.plan] };
   const replay = preparePlanArrangement(saved, student, topic.id, own.plan.id, now);
@@ -70,9 +70,9 @@ test('a private arrangement inherits only its caller-owned plan tags and keeps o
   assert.equal(replay.event, undefined);
 });
 
-test('closed public libraries cannot be adopted or arranged by any role', () => {
+test('closed public libraries cannot be adopted or arranged by any account', () => {
   const data = publicFixture();
-  for (const caller of [student, parent, other]) {
+  for (const caller of [student, operator, other]) {
     assert.throws(() => prepareLibraryAdoption(data, caller, 'public-set', now), { code: 'SHARING_DISABLED' });
     assert.throws(() => preparePlanArrangement(data, caller, 'public-set', `denied-${caller.id}`, now), { code: 'TOPIC_NOT_FOUND' });
   }
@@ -80,13 +80,26 @@ test('closed public libraries cannot be adopted or arranged by any role', () => 
 
 test('test plans keep project inheritance inside the administrator’s own test scope', () => {
   const data = fixture();
-  data.plans[0] = { ...data.plans[0], ownerId: parent.id, testOnly: true, tags: ['管理者の確認用'] };
-  data.topics[0] = { ...data.topics[0], ownerId: parent.id, audienceUserId: parent.id, testOnly: true };
-  data.questions[0] = { ...data.questions[0], ownerId: parent.id, audienceUserId: parent.id, testOnly: true };
-  const arranged = preparePlanArrangement(data, parent, topic.id, 'test-arrangement', now).plan;
+  data.plans[0] = { ...data.plans[0], ownerId: operator.id, testOnly: true, tags: ['管理者の確認用'] };
+  data.topics[0] = { ...data.topics[0], ownerId: operator.id, audienceUserId: operator.id, testOnly: true };
+  data.questions[0] = { ...data.questions[0], ownerId: operator.id, audienceUserId: operator.id, testOnly: true };
+  const arranged = preparePlanArrangement(data, operator, topic.id, 'test-arrangement', now).plan;
   assert.deepEqual(arranged.tags, ['管理者の確認用']);
   assert.equal(arranged.testOnly, true);
   assert.throws(() => preparePlanArrangement(data, student, topic.id, 'student-test', now), { code: 'TOPIC_NOT_FOUND' });
+});
+
+test('an operator with a learning account retains only their own test-plan tags', () => {
+  const data = fixture();
+  data.profiles[0] = operator;
+  data.plans[0] = { ...data.plans[0], ownerId: operator.id, testOnly: true, tags: ['自分の試作'] };
+  data.topics[0] = { ...data.topics[0], ownerId: operator.id, audienceUserId: operator.id, testOnly: true };
+  data.questions[0] = { ...data.questions[0], ownerId: operator.id, audienceUserId: operator.id, testOnly: true };
+  const arranged = preparePlanArrangement(data, operator, topic.id, 'learner-operator-arrangement', now).plan;
+  assert.deepEqual(arranged.tags, ['自分の試作']);
+  assert.equal(arranged.ownerId, operator.id);
+  assert.equal(arranged.testOnly, true);
+  assert.throws(() => preparePlanArrangement(data, student, topic.id, 'different-learner', now), { code: 'TOPIC_NOT_FOUND' });
 });
 
 test('a bounded scope goal preserves existing private approved instructions verbatim', () => {

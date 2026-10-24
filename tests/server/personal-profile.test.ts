@@ -22,16 +22,16 @@ function harness(seed:StudyEvent[] = []) {
   return {events,deps,calls:()=>calls};
 }
 
-test('personal profile state exposes only the requesting owner, even for managers and superusers',()=>{
-  const data = [saved('learner-one'),saved('manager',0,{...prefs,nickname:'PRIVATE_MANAGER'}),saved('superuser',0,{...prefs,nickname:'PRIVATE_SUPER'})];
+test('personal profile state exposes only the requesting owner, even for members and operators',()=>{
+  const data = [saved('learner-one'),saved('member',0,{...prefs,nickname:'PRIVATE_MEMBER'}),saved('superuser',0,{...prefs,nickname:'PRIVATE_SUPER'})];
   const state = personalProfileState(data,owner.id,now());
   assert.equal(state.profile?.nickname,'ユウセイ');
   assert.equal(JSON.stringify(state).includes('PRIVATE_'),false);
   assert.equal(personalProfileState(data,'new-user',now()).profile,null);
-  assert.equal(confirmedProfileContext(data,'manager')?.nickname,'PRIVATE_MANAGER');
+  assert.equal(confirmedProfileContext(data,'member')?.nickname,'PRIVATE_MEMBER');
   assert.equal(confirmedProfileContext(data,'new-user'),undefined);
   assert.equal(confirmedProfileContext([saved('learner-one',0,{...prefs,enabled:false})],owner.id),undefined);
-  const forged = {...saved(owner.id),actorId:'manager'};
+  const forged = {...saved(owner.id),actorId:'member'};
   assert.equal(personalProfileState([forged],owner.id,now()).profile,null);
   // The shared study-state projection never includes this separate private event stream.
   assert.equal(JSON.stringify(foldEvents(data)).includes('PRIVATE_'),false);
@@ -45,7 +45,7 @@ test('manual changes require the current version, reject overposting, and retry 
   assert.equal((await savePersonalProfile(owner,input,h.deps)).version,1);
   await assert.rejects(savePersonalProfile(owner,{...input,preferences:{...prefs,nickname:'別の名前'}},h.deps),(error:unknown)=>error instanceof ApiError && error.code==='REQUEST_CONFLICT');
   await assert.rejects(savePersonalProfile(owner,{...input,requestId:randomUUID()},h.deps),(error:unknown)=>error instanceof ApiError && error.code==='STALE_PROFILE');
-  assert.equal(personalProfileSaveSchema.safeParse({...input,ownerId:'manager'}).success,false);
+  assert.equal(personalProfileSaveSchema.safeParse({...input,ownerId:'member'}).success,false);
   assert.equal(personalProfileSaveSchema.safeParse({...input,preferences:{...prefs,personalityDiagnosis:'unwanted'}}).success,false);
 });
 
@@ -109,11 +109,11 @@ test('per-person daily allowance counts accepted failed calls too and allows man
 });
 
 test('context is bounded, excludes another person, and the inference contract forbids sensitive labels and coercion',async()=>{
-  const h=harness([saved('manager',0,{...prefs,nickname:'SECRET_MANAGER'})]);
+  const h=harness([saved('member',0,{...prefs,nickname:'SECRET_MEMBER'})]);
   for(let index=0;index<8;index+=1) await chatPersonalProfile(owner,{requestId:randomUUID(),expectedVersion:index,message:`会話 ${index}`},h.deps);
   const context=buildPersonalProfileContext(h.events,owner.id,'新しい質問',now());
   assert.equal(context.confirmedPreferences,null);assert.equal(context.untrustedConversationHistory.length,6);
-  assert.equal(JSON.stringify(context).includes('SECRET_MANAGER'),false);
+  assert.equal(JSON.stringify(context).includes('SECRET_MEMBER'),false);
   assert.equal(context.untrustedCurrentMessage,'新しい質問');
   assert.match(PERSONAL_PROFILE_SYSTEM_PROMPT,/敏感な属性を推測・分類してはいけません/);
   assert.match(PERSONAL_PROFILE_SYSTEM_PROMPT,/罪悪感/);

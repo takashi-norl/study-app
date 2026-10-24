@@ -1,6 +1,6 @@
 # Google Drive / Sheets の接続設定
 
-現在は本人専用の招待制アプリです。運営用Web画面はSuper Userだけが利用できます。以下の `ALLOWED_FAMILY_MEMBERS_JSON` / `FAMILY_ID` / 内部の役割名は既存環境との互換用で、利用者同士を連携する機能ではありません。新規テスト利用者の招待は `/admin/invitations` から行います。
+現在は本人専用の招待制アプリです。全員が自分の学習アカウントを持ち、運営用Web画面 `/admin` は確認済みの運営アカウント（Super User）だけが利用できます。運営者も学習画面では自分の教材と記録だけを使います。初期登録は `REGISTERED_ACCOUNTS_JSON`、保存先の識別は `WORKSPACE_ID` を使い、新規テスト利用者の招待は `/admin/invitations` から行います。
 
 写真・PDFは個人Google Driveのアプリ専用フォルダ、問題・履歴は同じアカウントのGoogle Sheetsに保存します。保存には所有者のOAuth接続を使います。利用者のログインは別の処理で、利用者にDriveの権限を求めません。サービスアカウントは使用しません。
 
@@ -53,13 +53,13 @@ Google Consoleからダウンロードした `web` 形式のJSONをそのまま�
 
 セットアップは次を実行します。
 
-- `openid`、メール、`drive.file` のみでoffline accessを要求します。家族の通常ログイン設定は変更しません。
+- `openid`、メール、`drive.file` のみでoffline accessを要求します。利用者の通常ログイン設定は変更しません。
 - Googleから返された認証を、state・PKCE・ブラウザ用Cookie・ID tokenの署名／発行元／audience／nonce・本人確認済み所有者メールで検証します。指定と異なるアカウントや広いDrive権限なら、ファイル作成前に停止します。
 - マイドライブに「ひび学習アプリ」フォルダと「ひび学習アプリ・学習記録」を作成し、シートを専用フォルダに移動します。共有リンクは公開しません。
 - `Events` タブのA〜M列に以下の見出しを設定します。
 
   ```text
-  id type actorId familyId createdAt payload1 payload2 payload3 payload4 payload5 payload6 payload7 payload8
+  id type actorId workspaceId createdAt payload1 payload2 payload3 payload4 payload5 payload6 payload7 payload8
   ```
 
 接続結果はプロジェクト直下の **`.env.google-setup.json`** に、所有者のみ読み書き可能な `0600` で保存されます。秘密値はブラウザ、標準出力、ログに表示しません。access tokenやID tokenは出力ファイルに保存しません。保存されるrefresh tokenとclient secretは秘密情報です。セットアップはVercelへ自動送信せず、AIも呼び出しません。[GoogleのOffline access](https://developers.google.com/identity/protocols/oauth2/web-server#offline)
@@ -95,23 +95,29 @@ node --test tests/setup-google.test.mjs
 | `GOOGLE_DRIVE_FOLDER_ID` | セットアップで作成した保存フォルダID |
 | `GOOGLE_SHEETS_ID` | セットアップで作成した記録スプレッドシートID |
 | `GOOGLE_SHEETS_EVENTS_TAB` | `Events`（省略時も同じ） |
-| `FAMILY_ID` | `family-primary`（省略時も同じ。運用開始後は変更しない） |
-| `ALLOWED_FAMILY_MEMBERS_JSON` | 下記の形式。実際の家族のメールに置換 |
+| `WORKSPACE_ID` | 新しい保存先の例: `workspace-primary`。既存環境は現在の識別子をそのまま指定し、運用開始後は変更しない |
+| `REGISTERED_ACCOUNTS_JSON` | 下記の形式。実際に利用するGoogleメールに置換 |
 
 ```json
-[{"id":"parent","email":"parent@example.com","name":"お母さん","role":"parent"},{"id":"student","email":"student@example.com","name":"高校生","role":"student"}]
+[{"id":"operator","email":"takashi.oikawa@gmail.com","name":"Takashi"},{"id":"learner-1","email":"learner@example.com","name":"学習者"}]
 ```
 
-`id` は学習履歴と結びつくので運用開始後は変えません。役割は `parent` / `student` のみです。許可リストを空にする、同じメールやIDを重複させる、設定が欠ける場合はログインできません。所有者と利用する保護者が別アカウントでも構いません。
+各登録の項目は `id`・`email`・`name` だけです。`id` は教材・学習履歴と結びつくので運用開始後は変えません。既存環境ではこの例のIDへ置き換えないでください。登録を空にする、同じメールやIDを重複させる、設定が欠ける場合はログインできません。保存先所有者と学習に使うアカウントは別でも構いません。
+
+現在の運営権限は `takashi.oikawa@gmail.com` を登録し、そのメールのGoogle本人確認が済んだ場合にだけ認めます。登録JSONに権限フィールドを追加しても運営権限は付与しません。一般の学習者は、運営画面・招待管理・固定教材の有料音声準備などを使えません。
+
+既存デプロイの旧設定は `src/server/legacy-settings.ts` で読み継ぐため、環境変数を即時に変更する必要はありません。新しい設定名へ切り替える際も、アカウントIDと保存先IDの値を維持します。既存Sheetsの4列目は同じ保存先識別子のまま読み書きし、見出し変更やデータ移行は不要です。
 
 Claude API・Web Push・Vercel Workflowの設定は別途必要です。Google接続の確認中は `AI_GENERATION_ENABLED=false` にしておけます。
 
 ## 5. 接続確認と運用上の範囲
 
-本番URLで保護者としてログインし、問題集を1つ作成、写真を1枚アップロードします。Eventsへの行追加、指定フォルダへの写真追加、認証された原本プレビューを確認します。次に生徒としてログインし、下書き・解答・原本が公開前の画面に出ないことを確認します。
+本番URLで自分の学習アカウントにログインし、写真を1枚アップロードして問題集を作ります。Eventsへの行追加、指定フォルダへの写真追加、本人だけが開ける原本プレビューを確認します。本人の一覧レビュー・編集では正解を確認でき、練習では回答前の正解を隠します。
+
+別の登録アカウントに切り替え、最初の人の教材・問題・会話・成績が一覧にも直接指定したAPIにも現れないことを確認します。運営アカウントも他人の学習データは開けません。運営者では `/admin` に入れ、一般アカウントでは運営画面と操作APIが拒否されることも確認してください。教材の共有・公開・配布は行いません。
 
 ブラウザの写真アップロードは、サーバーが作った単一ファイル用resumable URLへ直接PUTします。OAuthトークンはブラウザに渡しません。Googleの公式ブラウザ例と同じ方式ですが、**実運用URLとiPhone SafariでのCORS・10MBのアップロードは実接続後に確認する必要があります。** URLはアップロード権限を持つため、ログや学習記録へ保存しません。失敗した場合は写真を選び直してアップロードします。[Googleのresumable upload](https://developers.google.com/workspace/drive/api/guides/manage-uploads)
 
-Sheetsはデータベースではありません。読み書きは所有者の割当量を家族で共有します。現在の目安では10問で約30回の読み取りと20回の書き込みに、画面更新・開始処理が加わります。毎問後の全履歴確認で競合を防ぐため、履歴をキャッシュして読み飛ばすことはしていません。高速な連続練習・複数端末・保護者の頻繁な更新が重なると429が発生し得ます。既定の割当はユーザー・プロジェクト当たり毎分60回ずつで、長期に履歴が増えると全件読込みも重くなります。規模が増えたら問題・解答履歴だけをデータベースへ移す設計です。[Sheetsの割当量](https://developers.google.com/workspace/sheets/api/limits)
+Sheetsはデータベースではありません。読み書きは保存用アカウントの割当量をアプリ全体で共有します。現在の目安では10問で約30回の読み取りと20回の書き込みに、画面更新・開始処理が加わります。毎問後の全履歴確認で競合を検出するため、履歴をキャッシュして読み飛ばすことはしていません。高速な連続練習・複数端末・頻繁な更新が重なると429が発生し得ます。既定の割当はユーザー・プロジェクト当たり毎分60回ずつで、長期に履歴が増えると全件読込みも重くなります。多人数での利用に向けたDB・ファイル保存・認証の変更は [設計文書](MULTI_USER_ARCHITECTURE.md) にまとめますが、現時点では未実装です。[Sheetsの割当量](https://developers.google.com/workspace/sheets/api/limits)
 
 問題の生成上限はアプリ内のジョブ回数・問題数上限です。API側で発生する正確な料金を保証する金額上限ではないため、Claude側でも利用上限を設定します。通信が不明な状態で終わった場合、課金済みの応答を再取得できないことがあります。

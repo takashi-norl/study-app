@@ -4,7 +4,7 @@ import catalog from '../../content/eiken-audio-samples.json';
 import type { EikenSample, SampleAudio } from '@/lib/eiken-sample-types';
 import type { Profile } from '@/lib/types';
 import { ApiError, requiredEnv } from './config';
-import { assertSuperUser, getFamilyId } from './env';
+import { assertSuperUser, getWorkspaceId } from './env';
 import { audioRecord, audioSlotId, checkAudioQuota } from './audio';
 import { appendEvent, downloadAudioCache, loadEvents, MAX_AUDIO_BYTES, saveAudioCache } from './google-store';
 
@@ -13,7 +13,7 @@ const model = 'eleven_v3';
 const samples = catalog.samples as EikenSample[];
 
 export function assertSampleAccess(profile: Profile) {
-  if (profile.familyId !== getFamilyId()) throw new ApiError(403, 'ログインして教材を利用してください。', 'FORBIDDEN');
+  if (profile.workspaceId !== getWorkspaceId()) throw new ApiError(403, 'ログインして教材を利用してください。', 'FORBIDDEN');
 }
 
 /** Only curated, versioned text can incur generation charges; no arbitrary browser input. */

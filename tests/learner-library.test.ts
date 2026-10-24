@@ -3,7 +3,7 @@ import test from 'node:test';
 import { createDemoData } from '../src/lib/demo-data';
 import { learnerQuestions } from '../src/lib/learner-library';
 
-test('parent dashboard excludes tests, other learners, and unadopted library content', () => {
+test('learning collection excludes tests, other learners, and unadopted library content', () => {
   const data = createDemoData();
   const original = data.questions[0];
   const topic = data.topics[0];

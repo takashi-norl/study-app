@@ -3,7 +3,7 @@ import test from 'node:test';
 import { checkStudyAccess, isStudyStatePayload, sameStudyIdentity, studyAccessFailure, type StudyStatePayload } from '../src/lib/study-auth';
 import type { Profile } from '../src/lib/types';
 
-const profile: Profile = { id: 'learner', familyId: 'family', name: '本人', role: 'student', accessLevel: 'learner' };
+const profile: Profile = { id: 'learner', workspaceId: 'workspace', name: '本人', accessLevel: 'learner' };
 function state(): StudyStatePayload {
   return { profile, data: { topics: [], sources: [], questions: [], attempts: [], exposures: [], sessions: [], jobs: [], profiles: [profile], plans: [], planningTurns: [] } };
 }
@@ -34,7 +34,7 @@ test('storage timeout, network/server failure and malformed state keep the recov
     assert.equal((await checkStudyAccess(async () => ({ status: 'authenticated', profile }), async () => { throw failure; })).status, 'unavailable');
     assert.equal(studyAccessFailure(failure).status, 'unavailable');
   }
-  for (const malformed of [null, { error: 'state unavailable' }, { ...state(), data: {} }, { ...state(), profile: { ...profile, role: 'admin' } }]) {
+  for (const malformed of [null, { error: 'state unavailable' }, { ...state(), data: {} }, { ...state(), profile: { ...profile, accessLevel: 'invalid' } }]) {
     assert.equal(isStudyStatePayload(malformed), false);
     assert.equal((await checkStudyAccess(async () => ({ status: 'authenticated', profile }), async () => malformed)).status, 'unavailable');
   }
@@ -51,12 +51,20 @@ test('missing session and membership revoked between session and state both requ
 });
 
 test('changing identity or privileges never combines the old session with a different private state', async () => {
-  for (const changed of [{ ...profile, id: 'other' }, { ...profile, familyId: 'other-family' },
-    { ...profile, role: 'parent' as const }, { ...profile, accessLevel: 'manager' as const }]) {
+  for (const changed of [{ ...profile, id: 'other' }, { ...profile, workspaceId: 'other-workspace' },
+    { ...profile, accessLevel: 'superuser' as const }]) {
     assert.equal(sameStudyIdentity(profile, changed), false);
     const result = await checkStudyAccess(async () => ({ status: 'authenticated', profile }), async () => ({ ...state(), profile: changed }));
     assert.equal(result.status, 'unavailable');
     if(result.status==='unavailable')assert.equal(result.identityChanged, true, 'the previous private screen must be cleared');
   }
   assert.equal(sameStudyIdentity(profile, { ...profile, name: '更新された名前' }), true);
+});
+
+test('obsolete profile fields do not select another identity or capability', async () => {
+  const obsolete = { ...profile, role: 'obsolete-value' };
+  assert.equal(sameStudyIdentity(profile, obsolete), true);
+  const result = await checkStudyAccess(async () => ({ status: 'authenticated', profile }), async () => ({ ...state(), profile: obsolete }));
+  assert.equal(result.status, 'authenticated');
+  assert.equal(result.status === 'authenticated' && result.profile.accessLevel, 'learner');
 });

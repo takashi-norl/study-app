@@ -89,6 +89,7 @@ test('new folder and sheet are initialized with the correct event headers and ch
   const sheet = JSON.parse(writes[1].body);
   assert.equal(sheet.sheets[0].properties.title, 'Events');
   assert.deepEqual(sheet.sheets[0].data[0].rowData[0].values.map((cell) => cell.userEnteredValue.stringValue), HEADERS);
+  assert.equal(HEADERS[3], 'workspaceId');
   assert.match(writes[2].url, /addParents=folder-12345678/);
   assert.match(writes[2].url, /removeParents=root-12345678/);
   assert.equal(validateSaved(input).ownerEmail, config.ownerEmail);
@@ -110,6 +111,50 @@ test('ambiguous creates cannot be retried blindly; completed setup does not crea
     return url.includes('/values/') ? { values: [HEADERS] } : { parents: ['folder-12345678'] };
   }, async () => {});
   assert.throws(() => validateSaved({ ...record(), phase: 'complete' }));
+});
+
+test('resuming an existing sheet accepts either fourth-column heading without modifying headers or saved IDs', async () => {
+  for (const fourthColumn of ['workspaceId', 'familyId']) {
+    for (const phase of ['sheet-created', 'complete']) {
+      const input = { ...record(), phase, env: { ...record().env,
+        GOOGLE_DRIVE_FOLDER_ID: 'folder-12345678', GOOGLE_SHEETS_ID: 'sheet-12345678' } };
+      const savedEnvironment = structuredClone(input.env);
+      const header = Object.freeze(HEADERS.map((name, index) => index === 3 ? fourthColumn : name));
+      const calls = [], checkpoints = [];
+      await provisionStorage(input, async (url, options) => {
+        assert.equal(options, undefined, 'existing storage is only read, never repaired or recreated');
+        calls.push(url);
+        return url.includes('/values/') ? { values: [header] } : { parents: ['folder-12345678'] };
+      }, async value => { checkpoints.push(value.phase); });
+      assert.equal(calls.length, 2);
+      assert.equal(calls[1], 'https://sheets.googleapis.com/v4/spreadsheets/sheet-12345678/values/Events!A1:M1');
+      assert.deepEqual(checkpoints, ['complete']);
+      assert.deepEqual(input.env, savedEnvironment);
+      assert.equal(header[3], fourthColumn);
+    }
+  }
+});
+
+test('legacy-header compatibility rejects every other changed, reordered, missing or extra column without writes', async () => {
+  const legacy = HEADERS.map((name, index) => index === 3 ? 'familyId' : name);
+  const invalidHeaders = [
+    undefined, null, {}, HEADERS.join(','), HEADERS.slice(0, -1), [...HEADERS, 'extra'],
+    [...legacy.slice(0, 3), ...legacy.slice(4)],
+    legacy.map((name, index) => index === 2 ? legacy[3] : index === 3 ? legacy[2] : name),
+    ...HEADERS.map((_, changedIndex) => legacy.map((name, index) => index === changedIndex ? 'wrong' : name)),
+  ];
+  for (const header of invalidHeaders) {
+    const input = { ...record(), phase: 'complete', env: { ...record().env,
+      GOOGLE_DRIVE_FOLDER_ID: 'folder-12345678', GOOGLE_SHEETS_ID: 'sheet-12345678' } };
+    const before = structuredClone(input);
+    let checkpoints = 0;
+    await assert.rejects(() => provisionStorage(input, async (url, options) => {
+      assert.equal(options, undefined);
+      return url.includes('/values/') ? { values: [header] } : { parents: ['folder-12345678'] };
+    }, async () => { checkpoints++; }), /記録シートの見出しを確認/);
+    assert.equal(checkpoints, 0);
+    assert.deepEqual(input, before);
+  }
 });
 
 test('localhost start page rejects hostile host/origin and requires a browser-bound POST before OAuth', async () => {

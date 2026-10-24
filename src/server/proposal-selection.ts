@@ -3,6 +3,7 @@ import { ApiError } from './config';
 import { canAccessSource,canAccessQuestion,canAccessPlan } from './access';
 import { questionTemplateRules, validateVocabularyQuestions } from '@/lib/kobun-vocabulary';
 import { validateSamples } from './planning-samples';
+import { assertSuperUser } from './env';
 
 export interface GenerationSelection {
   requestId?: string; planId?: string; turnId?: string; proposalId?: string; targetCount?: number; title?: string; dailyQuestionTarget?:number; plannedDays?:number;
@@ -44,7 +45,12 @@ export function assertGenerationAccess(data: StudyData, job: GenerationJob) {
   if(topic.libraryPublished) throw new ApiError(403,'公開版に問題を追加することはできません。','GENERATION_ACCESS_DENIED');
   if (job.questionTemplate !== topic.questionTemplate || job.audienceUserId !== topic.audienceUserId || job.planId !== topic.planId || !!job.testOnly!==!!topic.testOnly || !canAccessQuestion(job,requester) || !canAccessQuestion(topic,requester)) throw new ApiError(403, '作問先の設定が一致しません。', 'GENERATION_ACCESS_DENIED');
   if (job.planId && !data.plans.some(plan => plan.id === job.planId && plan.ownerId === requester.id && canAccessPlan(plan,requester) && !!plan.testOnly===!!job.testOnly)) throw new ApiError(403, 'この相談から作問できるのは本人だけです。', 'GENERATION_ACCESS_DENIED');
-  if (requester.role === 'student' && (!job.planId || job.audienceUserId !== requester.id)) throw new ApiError(403, '自分の学習相談から作問してください。', 'GENERATION_ACCESS_DENIED');
+  if (!job.planId || job.audienceUserId !== requester.id) {
+    // Older operator jobs omitted the audience before the account also became a learner.
+    // All ownership checks above still apply; never extend this exception to another learner's audience.
+    if (job.audienceUserId !== undefined || requester.accessLevel !== 'superuser') throw new ApiError(403, '自分の学習相談から作問してください。', 'GENERATION_ACCESS_DENIED');
+    assertSuperUser(requester);
+  }
   if(job.approvedSamples) {
     const turn=data.planningTurns.find(turn=>turn.id===job.turnId && turn.planId===job.planId && turn.requestedBy===requester.id && turn.version===job.approvedSampleVersion && turn.status==='complete');
     const proposal=turn?.proposals?.find(proposal=>proposal.id===job.proposalId);

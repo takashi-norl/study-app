@@ -1,12 +1,12 @@
 import { FatalError } from 'workflow';
-import { getFamilyMembers, profileForMember, assertSuperUser } from '@/server/env';
+import { getRegisteredAccounts, profileForAccount, assertSuperUser } from '@/server/env';
 import { vocabularyPreview, prepareVocabularyAudio } from '@/server/vocabulary-samples';
 import { ApiError } from '@/server/config';
 
 function profile(actorId: string) {
-  const member = getFamilyMembers().find(item => item.id === actorId);
+  const member = getRegisteredAccounts().find(item => item.id === actorId);
   if (!member) throw new FatalError('音声準備の権限を確認できません。');
-  return assertSuperUser(profileForMember(member));
+  return assertSuperUser(profileForAccount(member));
 }
 export async function vocabularyBuildInput(actorId: string) {
   'use step';

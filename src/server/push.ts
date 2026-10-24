@@ -33,15 +33,15 @@ export async function notifyPublished(questionIds:string[]) {
   for(const event of events) {
     if(event.type!=='push.subscribed') continue;
     const payload=event.payload as {userId:string;subscription:PushSubscription|null};
-    // One subscription per student keeps recovery and revocation simple for the family app.
-    if(!data.profiles.some(p=>p.id===payload.userId && p.role==='student')) continue;
+    // One subscription per registered account keeps recovery and revocation simple.
+    if(!data.profiles.some(p=>p.id===payload.userId)) continue;
     if(payload.subscription) subscriptions.set(payload.userId,payload.subscription);
     else subscriptions.delete(payload.userId);
   }
   webpush.setVapidDetails(requiredEnv('VAPID_SUBJECT'),requiredEnv('NEXT_PUBLIC_VAPID_PUBLIC_KEY'),requiredEnv('VAPID_PRIVATE_KEY'));
   let sent=0,failed=0;
   for(const [userId,subscription] of subscriptions) {
-    const recipient=data.profiles.find(profile=>profile.id===userId && profile.role==='student');
+    const recipient=data.profiles.find(profile=>profile.id===userId);
     const visible=recipient ? notificationQuestions(data,recipient,questionIds) : [];
     if(!visible.length) continue;
     try {

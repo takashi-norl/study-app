@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import type { GenerationJob, LearningPlan, PlanningProposal, PlanningSample, PlanningTurn, Profile, Question, StudyData, Topic } from '../../src/lib/types';
 import { foldEvents, studyDataForProfile, type StudyEvent } from '../../src/server/google-store';
-import { getFamilyId } from '../../src/server/env';
+import { getWorkspaceId } from '../../src/server/env';
 import { validateSamples } from '../../src/server/planning-samples';
 import { buildPlanningContext, checkPlanningRequest, validatePlanningReply } from '../../src/server/planning';
 import { assertGenerationAccess, currentApprovedProposal, generationReplay, validateBulkCadence } from '../../src/server/proposal-selection';
@@ -12,9 +12,9 @@ import { preparePlanArrangement } from '../../src/server/plan-arrangement';
 
 const now = new Date('2026-10-23T00:00:00.000Z');
 const time = now.toISOString();
-const owner: Profile = { id: 'sample-owner', name: 'Owner', familyId: getFamilyId(), role: 'student' };
+const owner: Profile = { id: 'sample-owner', name: 'Owner', workspaceId: getWorkspaceId(), };
 const other: Profile = { ...owner, id: 'sample-other' };
-const manager: Profile = { ...owner, id: 'sample-manager', role: 'parent', accessLevel: 'superuser' };
+const member: Profile = { ...owner, id: 'sample-member',  accessLevel: 'superuser' };
 const sourceId = 'b7e948ee-30f4-4bbf-b0c9-51ba86f6a5cb';
 const foreignSourceId = 'b7e948ee-30f4-4bbf-b0c9-51ba86f6a5cc';
 const samples: PlanningSample[] = ['apple', 'pear', 'lemon'].map(word => ({ prompt: `What does ${word} mean?`, choices: [word, 'Dog', 'Blue', 'Run'], correctIndex: 0,
@@ -27,7 +27,7 @@ const turn: PlanningTurn = { id: 'sample-turn', planId: plan.id, requestedBy: ow
   message: 'Show three vocabulary questions', reply: 'Check the three samples.', proposals: [proposal], createdAt: time };
 const selection = { expectedVersion: 2, turnId: turn.id, proposalId: proposal.id, approveSamples: true };
 function data(): StudyData { return structuredClone({ topics: [], sources: [], questions: [], attempts: [], exposures: [], sessions: [], jobs: [],
-  profiles: [owner, other, manager], plans: [plan], planningTurns: [turn] }); }
+  profiles: [owner, other, member], plans: [plan], planningTurns: [turn] }); }
 function event(id: string, type: StudyEvent['type'], payload: unknown): StudyEvent { return { id, type, actorId: owner.id, createdAt: time, payload }; }
 function sampleEvents(): StudyEvent[] { return [event('plan', 'plan.created', { ...plan, version: 1 }),
   event('queued', 'planning.turn.upserted', { ...turn, status: 'queued', reply: undefined, proposals: undefined }),
@@ -56,7 +56,7 @@ test('sample-first output permits clarification but rejects incomplete, duplicat
 test('new bulk approval is owner-only, explicit, current, and sourced from saved samples', () => {
   const state = data();
   assert.deepEqual(currentApprovedProposal(state, owner, plan.id, selection).samples, samples);
-  for (const unauthorized of [manager, other]) assert.throws(() => currentApprovedProposal(state, unauthorized, plan.id, selection), { code: 'PLAN_NOT_FOUND' });
+  for (const unauthorized of [member, other]) assert.throws(() => currentApprovedProposal(state, unauthorized, plan.id, selection), { code: 'PLAN_NOT_FOUND' });
   for (const input of [{ ...selection, approveSamples: false }, { ...selection, turnId: undefined }, { ...selection, expectedVersion: undefined }])
     assert.throws(() => currentApprovedProposal(state, owner, plan.id, input), { code: 'SAMPLE_APPROVAL_REQUIRED' });
   assert.throws(() => currentApprovedProposal(state, owner, undefined, selection), { code: 'SAMPLE_APPROVAL_REQUIRED' });
@@ -66,12 +66,12 @@ test('new bulk approval is owner-only, explicit, current, and sourced from saved
 });
 
 test('persisted previews stay out of practice/public question data and other learners cannot see them', () => {
-  const state = foldEvents(sampleEvents(), [owner, other, manager]);
+  const state = foldEvents(sampleEvents(), [owner, other, member]);
   for (const visible of [state, studyDataForProfile(state, owner, now)]) {
     assert.equal(visible.topics.length, 0); assert.equal(visible.questions.length, 0); assert.equal(visible.jobs.length, 0);
     assert.equal(visible.planningTurns[0].proposals?.[0].samples?.length, 3);
   }
-  assert.equal(studyDataForProfile(state, manager, now).planningTurns.length, 0);
+  assert.equal(studyDataForProfile(state, member, now).planningTurns.length, 0);
   const unrelated = studyDataForProfile(state, other, now);
   assert.equal(unrelated.plans.length, 0); assert.equal(unrelated.planningTurns.length, 0);
   assert.doesNotMatch(JSON.stringify(unrelated), /What does apple mean/);
@@ -161,17 +161,17 @@ test('public arrangements are no longer available, including old source-free clo
   assert.throws(()=>preparePlanArrangement(state,other,'public-clone','forbidden',new Date()),{code:'TOPIC_NOT_FOUND'});
 });
 
-test('arrangement retains admin-test isolation and rejects other families and active original jobs', () => {
+test('arrangement retains admin-test isolation and rejects other workspaces and active original jobs', () => {
   const state = data(); state.topics = [{ ...topic(), testOnly: true }];
   state.questions = [{ ...question('test-question', state.topics[0].id), testOnly: true }];
   assert.throws(() => preparePlanArrangement(state, owner, state.topics[0].id, 'no-student-test', now), { code: 'TOPIC_NOT_FOUND' });
-  assert.throws(() => preparePlanArrangement(state, manager, state.topics[0].id, 'other-owner', now), { code: 'TOPIC_NOT_FOUND' });
-  state.plans[0].ownerId = manager.id;
-  state.topics[0].ownerId = manager.id; state.topics[0].audienceUserId = manager.id;
-  state.questions[0].ownerId = manager.id; state.questions[0].audienceUserId = manager.id;
-  const prepared = preparePlanArrangement(state, manager, state.topics[0].id, 'manager-arrangement', now);
-  assert.equal(prepared.plan.ownerId, manager.id); assert.equal(prepared.plan.testOnly, true);
-  assert.throws(() => preparePlanArrangement(state, { ...manager, familyId: 'another-family' }, state.topics[0].id, 'wrong-family', now), { code: 'FAMILY_MISMATCH' });
+  assert.throws(() => preparePlanArrangement(state, member, state.topics[0].id, 'other-owner', now), { code: 'TOPIC_NOT_FOUND' });
+  state.plans[0].ownerId = member.id;
+  state.topics[0].ownerId = member.id; state.topics[0].audienceUserId = member.id;
+  state.questions[0].ownerId = member.id; state.questions[0].audienceUserId = member.id;
+  const prepared = preparePlanArrangement(state, member, state.topics[0].id, 'member-arrangement', now);
+  assert.equal(prepared.plan.ownerId, member.id); assert.equal(prepared.plan.testOnly, true);
+  assert.throws(() => preparePlanArrangement(state, { ...member, workspaceId: 'another-workspace' }, state.topics[0].id, 'wrong-workspace', now), { code: 'WORKSPACE_MISMATCH' });
   state.jobs = [{ ...savedJob(false), status: 'running' }];
-  assert.throws(() => preparePlanArrangement(state, manager, state.topics[0].id, 'running', now), { code: 'GENERATION_ACTIVE' });
+  assert.throws(() => preparePlanArrangement(state, member, state.topics[0].id, 'running', now), { code: 'GENERATION_ACTIVE' });
 });

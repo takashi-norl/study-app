@@ -4,14 +4,14 @@ import type { LearningPlan, PlanningTurn, Profile, StudyData } from '../../src/l
 import type { StudyEvent } from '../../src/server/google-store';
 import { buildPlanningContext, checkPlanningRequest, createPlanSchema, learningSummary, paidWorkSlotId, requireOwnedPlan, validatePlanningReply, validatePlanningSources } from '../../src/server/planning';
 
-const student:Profile={id:'student',familyId:'family',name:'Student',role:'student'};
-const parent:Profile={id:'parent',familyId:'family',name:'Parent',role:'parent'};
-const other:Profile={id:'other',familyId:'family',name:'OTHER_PRIVATE_NAME',role:'student'};
+const student:Profile={id:'student',workspaceId:'workspace',name:'Student',};
+const operator:Profile={id:'operator',workspaceId:'workspace',name:'Operator',};
+const other:Profile={id:'other',workspaceId:'workspace',name:'OTHER_PRIVATE_NAME',};
 const now=new Date('2026-10-22T15:30:00Z');
 const sourceId='bd44916c-9994-4cee-8cf7-0a063ae17d87';
 const plan:LearningPlan={id:'plan',ownerId:student.id,title:'英語の語彙',subject:'英語',goal:'10か月で語彙を増やす',difficulty:'相談',dailyQuestionTarget:10,sourceIds:[],version:1,createdAt:now.toISOString(),updatedAt:now.toISOString()};
 const turn:PlanningTurn={id:'4167726c-4e4e-4adc-b86f-c5c00bb1364f',planId:plan.id,requestedBy:student.id,version:2,status:'queued',message:'10問ずつ練習したい',createdAt:now.toISOString()};
-function state():StudyData {return {plans:[structuredClone(plan)],planningTurns:[],topics:[],sources:[],questions:[],attempts:[],exposures:[],sessions:[],jobs:[],profiles:[student,parent,other]};}
+function state():StudyData {return {plans:[structuredClone(plan)],planningTurns:[],topics:[],sources:[],questions:[],attempts:[],exposures:[],sessions:[],jobs:[],profiles:[student,operator,other]};}
 const input={requestId:turn.id,expectedVersion:1,message:turn.message};
 
 test('a plan accepts optional sources and arbitrary school subjects, but rejects invalid calendar dates and excess material',()=>{
@@ -34,13 +34,13 @@ test('requested total survives plan validation and AI context while old plans re
   assert.equal(context.plan.dailyQuestionTarget,10);
 });
 
-test('other users including parents cannot discover or write a plan',()=>{
+test('other users including operators cannot discover or write a plan',()=>{
   assert.equal(requireOwnedPlan(state(),student,plan.id).id,plan.id);
-  assert.throws(()=>requireOwnedPlan(state(),parent,plan.id),{code:'PLAN_NOT_FOUND'});
+  assert.throws(()=>requireOwnedPlan(state(),operator,plan.id),{code:'PLAN_NOT_FOUND'});
   assert.throws(()=>requireOwnedPlan(state(),other,plan.id),{code:'PLAN_NOT_FOUND'});
 });
 
-test('new turns reject stale versions and either type of active family AI work',()=>{
+test('new turns reject stale versions and either type of active workspace AI work',()=>{
   const data=state();
   assert.equal(checkPlanningRequest(data,student,plan.id,input,now).previous,undefined);
   assert.throws(()=>checkPlanningRequest(data,student,plan.id,{...input,expectedVersion:2},now),{code:'STALE_PLAN'});
@@ -77,11 +77,11 @@ test('paid event slot is shared across work types and stable under reordering',(
 
 test('a student cannot attach another owner or legacy private source',()=>{
   const data=state();
-  data.sources=[{id:sourceId,name:'Source',mimeType:'image/jpeg',ownerId:parent.id,storagePath:'drive-file',createdAt:now.toISOString()}];
+  data.sources=[{id:sourceId,name:'Source',mimeType:'image/jpeg',ownerId:operator.id,storagePath:'drive-file',createdAt:now.toISOString()}];
   assert.throws(()=>validatePlanningSources(data,student,[sourceId]),{code:'SOURCE_NOT_FOUND'});
   delete data.sources[0].ownerId;
   assert.throws(()=>validatePlanningSources(data,student,[sourceId]),{code:'SOURCE_NOT_FOUND'});
-  assert.throws(()=>validatePlanningSources(data,parent,[sourceId]),{code:'SOURCE_NOT_FOUND'});
+  assert.throws(()=>validatePlanningSources(data,operator,[sourceId]),{code:'SOURCE_NOT_FOUND'});
   data.sources[0].ownerId=student.id;assert.doesNotThrow(()=>validatePlanningSources(data,student,[sourceId]));
 });
 

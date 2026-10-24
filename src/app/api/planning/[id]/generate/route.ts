@@ -22,7 +22,7 @@ export async function POST(request: Request, context: { params: Promise<{ id: st
   const {turn,proposal}=currentApprovedProposal(data,profile,id,input);
   const topic: Topic = { id: randomUUID(), ownerId: profile.id, title: input.title || proposal.title, subject: proposal.subject, questionTemplate:plan.questionTemplate, description: proposal.description,
     targetCount: input.targetCount ?? proposal.targetCount, createdAt: new Date().toISOString(), planId: id,
-    audienceUserId: profile.role === 'student' || plan.testOnly ? profile.id : undefined,testOnly:plan.testOnly };
+    audienceUserId: profile.id,testOnly:plan.testOnly };
   return requestGeneration(profile, { topic, newTopic: true, sourceIds: proposal.sourceIds, targetCount: topic.targetCount,
     requestId: input.requestId, expectedVersion:input.expectedVersion, planId: id, turnId: turn!.id, proposalId: proposal.id,
     approveSamples:input.approveSamples,dailyQuestionTarget:input.dailyQuestionTarget,plannedDays:input.plannedDays,instructions: generationInstructions(plan,proposal) });

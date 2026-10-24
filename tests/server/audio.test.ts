@@ -2,12 +2,12 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { audioCacheKey, audioRecord, audioRequestSchema, audioSlotId, authorizedAudioText, checkAudioQuota, createProviderAudio } from '../../src/server/audio';
 import { foldEvents, type StudyEvent } from '../../src/server/google-store';
-import { getFamilyId } from '../../src/server/env';
+import { getWorkspaceId } from '../../src/server/env';
 import type { Profile, Question } from '../../src/lib/types';
 
 const now='2026-10-23T00:00:00Z';
-const student:Profile={id:'student',familyId:getFamilyId(),name:'Student',role:'student'};
-const parent:Profile={...student,id:'parent',role:'parent'};
+const student:Profile={id:'student',workspaceId:getWorkspaceId(),name:'Student',};
+const operator:Profile={...student,id:'operator',};
 const questionId='f2af7295-1ea7-4c49-9ff4-1869f9db9c77';
 const sessionId='1510983f-34c0-4e86-8de1-2e751749c152';
 const requestToken='8af85cfc-fcd9-4e38-9c15-7026035f8bd7';
@@ -16,7 +16,7 @@ const event=(id:string,type:StudyEvent['type'],payload:unknown,createdAt=now):St
 function practice() {
   const events=[event('topic','topic.created',{id:'topic',title:'English',subject:'英語',description:'',targetCount:10,createdAt:now}),
     event('question','question.upserted',question),event('session','session.created',{id:sessionId,userId:student.id,mode:'daily',questionIds:[questionId],questionSnapshots:[question],createdAt:now})];
-  return {events,data:foldEvents(events,[student,parent])};
+  return {events,data:foldEvents(events,[student,operator])};
 }
 const audioEvent=(id:string,characters=100,createdAt=now)=>event(id,'audio.requested',{cacheKey:audioCacheKey(id,'voice'),requestToken,characters},createdAt);
 
@@ -25,13 +25,13 @@ test('audio accepts only selectors and reads the authorized immutable snapshot, 
   data.questions[0]={...data.questions[0],prompt:'Edited since this session.'};
   assert.equal(await authorizedAudioText(data,events,student,{questionId,sessionId,part:'prompt'}),'I have a book.');
   assert.equal(await authorizedAudioText(data,events,student,{questionId,sessionId,part:'choice',choiceIndex:2}),'a');
-  await assert.rejects(()=>authorizedAudioText(data,events,parent,{questionId,part:'prompt'}),{code:'AUDIO_QUESTION_NOT_FOUND'});
+  await assert.rejects(()=>authorizedAudioText(data,events,operator,{questionId,part:'prompt'}),{code:'AUDIO_QUESTION_NOT_FOUND'});
   for(const payload of [{questionId,sessionId,part:'prompt',text:'arbitrary'}, {questionId,sessionId,part:'explanation'}, {questionId,part:'choice',choiceIndex:-1}]) {
     assert.equal(audioRequestSchema.safeParse(payload).success,false);
   }
   assert.equal(await authorizedAudioText(data,events,student,{questionId,part:'prompt'}),'Edited since this session.');
   await assert.rejects(()=>authorizedAudioText(data,events,{...student,id:'another-student'},{questionId,sessionId,part:'prompt'}),{code:'AUDIO_QUESTION_NOT_FOUND'});
-  await assert.rejects(()=>authorizedAudioText(data,events,{...student,familyId:'other-family'},{questionId,sessionId,part:'prompt'}),{code:'AUDIO_FORBIDDEN'});
+  await assert.rejects(()=>authorizedAudioText(data,events,{...student,workspaceId:'other-workspace'},{questionId,sessionId,part:'prompt'}),{code:'AUDIO_FORBIDDEN'});
 });
 
 test('audio bounds text and rejects non-English questions, private audiences and invalid choices',async()=>{

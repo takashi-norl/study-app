@@ -1,9 +1,9 @@
 import 'server-only';
 import { getServerSession, type NextAuthOptions } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
-import type { Profile as StudyProfile, Role } from '@/lib/types';
+import type { Profile as StudyProfile } from '@/lib/types';
 import { ApiError } from './config';
-import { assertSuperUser, getAuthConfig, getFamilyMembers } from './env';
+import { assertSuperUser, getAuthConfig, getRegisteredAccounts } from './env';
 import { registerInvitedMember, resolveRegisteredMember } from './beta-membership';
 
 declare module 'next-auth' {
@@ -21,7 +21,7 @@ interface MembershipOptions {
 
 export function getAuthOptions(membership: MembershipOptions = {}): NextAuthOptions {
   const config = getAuthConfig();
-  getFamilyMembers();
+  getRegisteredAccounts();
   return {
     secret: config.secret,
     // The client visits /api/auth/session on startup/focus so NextAuth can renew the persistent cookie.
@@ -73,10 +73,9 @@ export function getAuthOptions(membership: MembershipOptions = {}): NextAuthOpti
   };
 }
 
-export async function requireProfile(role?: Role): Promise<{ profile: StudyProfile }> {
+export async function requireProfile(): Promise<{ profile: StudyProfile }> {
   const session = await getServerSession(getAuthOptions());
   if (!session?.profile) throw new ApiError(401, '登録したGoogleアカウントでログインしてください。', 'UNAUTHENTICATED');
-  if (role && session.profile.role !== role) throw new ApiError(403, 'この操作を行う権限がありません。', 'FORBIDDEN');
   return { profile: session.profile };
 }
 

@@ -31,7 +31,7 @@ function receiptId(ownerId: string, requestId: string): string { return `${profi
 function dateInJapan(date: Date | string): string { return new Intl.DateTimeFormat('sv-SE', {timeZone:'Asia/Tokyo'}).format(new Date(date)); }
 function aiAvailable(): boolean { return process.env.AI_GENERATION_ENABLED === 'true' && !!process.env.ANTHROPIC_API_KEY && !!process.env.ANTHROPIC_MODEL; }
 
-/** Profiles and conversations are private to their owner, irrespective of family role. */
+/** Profiles and conversations are private to their owner, irrespective of administrative access. */
 export function foldPersonalProfile(events: StudyEvent[], ownerId: string, now = new Date()) {
   const state: PersonalProfileState = {profile:null, version:0, turns:[], aiEnabled:aiAvailable()};
   const requests = new Map<string,RequestRecord>();

@@ -4,7 +4,7 @@ import { z } from 'zod';
 import type { LearningPlan, Profile, StudyData } from '@/lib/types';
 import type { StudyEvent } from './google-store';
 import { ApiError } from './config';
-import { getFamilyId } from './env';
+import { getWorkspaceId } from './env';
 
 export const planTagsSchema = z.array(z.string().trim().min(1).max(40)).max(64)
   .transform(tags => [...new Set(tags)])
@@ -14,8 +14,8 @@ export const planTagsUpdateSchema = z.object({ tags: planTagsSchema }).strict();
 /** Tags organize plans without changing the version used to approve AI proposals. */
 export function preparePlanTagsUpdate(data: StudyData, profile: Profile, planId: string, tags: unknown,
   now = new Date(), createId: () => string = () => randomUUID()): { plan: LearningPlan; event?: StudyEvent } {
-  const member = data.profiles.find(item => item.id === profile.id && item.familyId === getFamilyId());
-  if (profile.familyId !== getFamilyId() || !member || member.role !== profile.role) {
+  const member = data.profiles.find(item => item.id === profile.id && item.workspaceId === getWorkspaceId());
+  if (profile.workspaceId !== getWorkspaceId() || !member) {
     throw new ApiError(403, 'この学習プランのタグを変更する権限がありません。', 'PLAN_TAGS_FORBIDDEN');
   }
   const plan = data.plans.find(item => item.id === planId);

@@ -3,7 +3,7 @@ import type { Profile, StudyData } from '@/lib/types';
 import type { StudyEvent } from './google-store';
 import { canAccessSource } from './access';
 import { ApiError } from './config';
-import { getFamilyId } from './env';
+import { getWorkspaceId } from './env';
 import { analysisSchema, sourceAnalysisRevisionSchema, sourceAnalysisUpdateSchema } from './source-analysis-schema';
 import type { z } from 'zod';
 
@@ -39,8 +39,8 @@ export function sourceAnalysisView(events: StudyEvent[], sourceId: string) {
 }
 
 export function requireSourceAnalysisAccess(data: StudyData, profile: Profile, sourceId: string) {
-  const member = data.profiles.find(item => item.id === profile.id && item.familyId === getFamilyId());
-  if (profile.familyId !== getFamilyId() || !member || member.role !== profile.role) {
+  const member = data.profiles.find(item => item.id === profile.id && item.workspaceId === getWorkspaceId());
+  if (profile.workspaceId !== getWorkspaceId() || !member) {
     throw new ApiError(403, 'この教材の読み取りを確認する権限がありません。', 'SOURCE_ANALYSIS_FORBIDDEN');
   }
   const source = data.sources.find(item => item.id === sourceId && item.storagePath);

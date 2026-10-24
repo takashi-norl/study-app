@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 export default async function Page() {
   try {
     const { profile } = await requireSuperUser();
-    return <VocabularyImport receiptScope={`${profile.familyId}:${profile.id}`} />;
+    return <VocabularyImport receiptScope={`${profile.workspaceId}:${profile.id}`} />;
   } catch (error) {
     const login = error instanceof ApiError && error.status === 401;
     return <main style={{ maxWidth: 600, margin: '8vh auto', padding: 24 }}>

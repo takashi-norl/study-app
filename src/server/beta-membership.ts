@@ -3,7 +3,7 @@ import { createHmac } from 'node:crypto';
 import { z } from 'zod';
 import type { Profile } from '@/lib/types';
 import { ApiError } from './config';
-import { assertSuperUser, getAuthConfig, getFamilyMembers, profileForMember } from './env';
+import { assertSuperUser, getAuthConfig, getRegisteredAccounts, profileForAccount } from './env';
 import { appendEvent, loadOperationsEvents, type StudyEvent } from './google-store';
 import { BETA_MEMBER_LIMIT, betaAccessRevokedSchema, betaMemberId, betaTokenHash, foldBetaMembership, profileForBetaMember } from './beta-membership-schema';
 
@@ -40,7 +40,7 @@ export async function createBetaInvitation(profile: Profile, raw: unknown, overr
     if (state.revokedInvitations.has(previous.id) || previous.usedBy || Date.parse(previous.expiresAt) <= store.now().getTime()) throw invitationError();
     return { token, invitation: { id: previous.id, email: previous.email, name: previous.name, expiresAt: previous.expiresAt } };
   }
-  if (getFamilyMembers().some(member => member.email === input.email) || [...state.members.values()].some(member => member.email === input.email)) {
+  if (getRegisteredAccounts().some(member => member.email === input.email) || [...state.members.values()].some(member => member.email === input.email)) {
     throw new ApiError(409, 'このGoogleアカウントは登録済みです。', 'MEMBER_EXISTS');
   }
   const reservedInvitations = [...state.invitations.values()].filter(invitation => !invitation.usedBy && !state.revokedInvitations.has(invitation.id)
@@ -66,8 +66,8 @@ export async function checkBetaInvitation(token: string, overrides: Partial<Memb
 
 export async function resolveRegisteredMember(email: string, googleSubject?: string, overrides: Partial<MembershipStore> = {}) {
   const normalized = email.trim().toLowerCase();
-  const seed = getFamilyMembers().find(member => member.email === normalized);
-  if (seed) return { email: seed.email, profile: profileForMember(seed) };
+  const seed = getRegisteredAccounts().find(member => member.email === normalized);
+  if (seed) return { email: seed.email, profile: profileForAccount(seed) };
   if (!googleSubject) return undefined;
   const state = foldBetaMembership(await storeFor(overrides).load());
   const member = state.members.get(betaMemberId(normalized));
