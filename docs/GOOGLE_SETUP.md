@@ -2,7 +2,9 @@
 
 現在は本人専用の招待制アプリです。全員が自分の学習アカウントを持ち、運営用Web画面 `/admin` は確認済みの運営アカウント（Super User）だけが利用できます。運営者も学習画面では自分の教材と記録だけを使います。初期登録は `REGISTERED_ACCOUNTS_JSON`、保存先の識別は `WORKSPACE_ID` を使い、新規テスト利用者の招待は `/admin/invitations` から行います。
 
-写真・PDFは個人Google Driveのアプリ専用フォルダ、問題・履歴は同じアカウントのGoogle Sheetsに保存します。保存には所有者のOAuth接続を使います。利用者のログインは別の処理で、利用者にDriveの権限を求めません。サービスアカウントは使用しません。
+写真・PDFは保存先所有者のGoogle Driveのアプリ専用フォルダ、問題・履歴は同じアカウントのGoogle Sheetsに保存します。保存には所有者のOAuth接続を使います。利用者のログインは別の処理で、利用者にDriveの権限を求めません。サービスアカウントは使用しません。
+
+設定対象の環境ごとに、意図したGoogleアカウントとCloudプロジェクトを確認します。既存本番は従来の個人アカウントの設定を維持し、新しいStagingは会社管理の`takashi@norl.ai`と`norl.ai`組織配下のプロジェクト`norl-hibi-study-staging`を使います。Stagingの準備によって本番の所有者や接続先を変更しません。
 
 この手順では、所有者が接続を承認した後、専用フォルダと記録シートを**アプリ自身が新規作成**します。`drive.file` はアプリが作成したファイルにアクセスできるため、Google Picker、Picker用APIキー、トークンの手動コピーは不要です。既存のDriveファイルには権限を追加しません。[Driveのファイル単位権限](https://developers.google.com/workspace/drive/api/guides/api-specific-auth)、[Sheets作成APIの権限](https://developers.google.com/workspace/sheets/api/reference/rest/v4/spreadsheets/create)
 
@@ -10,7 +12,7 @@ Googleの `/drive/project/…` は通常の保存フォルダとは限りませ�
 
 ## 1. Google Cloudにアプリを登録する
 
-1. 保存先所有者の**個人用Chromeプロフィール**で [Google Cloud Console](https://console.cloud.google.com/)を開き、専用プロジェクトを作成します。
+1. 設定対象のGoogleアカウントでログインしたブラウザプロフィールで [Google Cloud Console](https://console.cloud.google.com/)を開き、アカウント・所属組織・プロジェクトを確認します。専用プロジェクトが未作成の場合だけ新規作成します。
 2. **Google Drive API** と **Google Sheets API** を有効にします。
 3. Google Auth Platformのアプリ情報・対象ユーザー・連絡先を設定します。個人Googleアカウントを含む場合はExternalを選び、テスト中は所有者とテスト利用するアカウントをテストユーザーに追加します。
 4. Data Accessには `openid`、`https://www.googleapis.com/auth/userinfo.email`、`https://www.googleapis.com/auth/userinfo.profile`、`https://www.googleapis.com/auth/drive.file` を登録します。`drive`や`spreadsheets`全体の権限は不要です。
@@ -21,7 +23,7 @@ Googleの `/drive/project/…` は通常の保存フォルダとは限りませ�
    http://localhost:8765/oauth/callback
    ```
 
-   別の本番ドメインを使う場合は1行目を置換します。現在のローカル画面はデモ専用で、クラウド接続は停止しています。接続確認は分離したStagingを使います。現在のサーバー側OAuth方式ではJavaScript originsやPlayground redirectは不要です。
+   上記1行目は既存本番の例です。Staging用クライアントでは`https://study-app-staging.vercel.app/api/auth/callback/google`に置換し、本番callbackを追加しません。別の本番ドメインを使う場合も、対象環境のURLに置換します。現在のローカル画面はデモ専用で、クラウド接続は停止しています。接続確認は分離したStagingを使います。現在のサーバー側OAuth方式ではJavaScript originsやPlayground redirectは不要です。
 6. `GOOGLE_CLIENT_ID` と `GOOGLE_CLIENT_SECRET` を、次の秘密設定ファイルに保存します。チャットやリポジトリに貼り付けません。
 
 Externalで公開ステータスがTestingの場合、Driveを含むrefresh tokenは原則7日で期限切れになります。継続運用前にGoogle側でProductionへの切替・必要な確認を済ませ、その後に最終的な接続を取得してください。Productionでもアプリ側の既存登録・招待制限は有効です。[Googleのトークン有効期限](https://developers.google.com/identity/protocols/oauth2/)
@@ -49,7 +51,7 @@ Google Consoleからダウンロードした `web` 形式のJSONをそのまま�
 
 ## 3. 所有者が接続を確認する
 
-個人用Chromeで [セットアップ画面](http://localhost:8765)を開き、表示される所有者メールと作成内容を確認します。「Googleで接続し、専用の保存先を作成する」を押し、指定した所有者のGoogleアカウントで許可します。開始画面の有効期限は10分です。
+保存先所有者のGoogleアカウントを選べるブラウザプロフィールで [セットアップ画面](http://localhost:8765)を開き、表示される所有者メール・対象環境・作成内容を確認します。「Googleで接続し、専用の保存先を作成する」を押し、指定した所有者のGoogleアカウントで許可します。個人用か会社用かを決め打ちせず、設定ファイルの所有者メールとの一致を確認します。開始画面の有効期限は10分です。
 
 セットアップは次を実行します。
 
@@ -127,7 +129,26 @@ Sheetsはデータベースではありません。読み書きは保存用ア�
 
 この手順は既存本番とは別の新規設定です。本番の保存先の移行・削除や、既存の接続情報のコピーは行いません。まずStagingの画面・デモだけを公開でき、Googleログインと保存は専用設定が揃うまで停止します。
 
-1. 本番とは別のGoogle Cloudプロジェクトと**新しいWeb OAuthクライアント**を作り、この資料の手順1と同じ最小権限を設定します。OAuth callbackにはStagingの固定URLの `/api/auth/callback/google` と `http://localhost:8765/oauth/callback` だけを登録します。本番OAuthクライアントを再利用しません。
+2026-10-24時点で、ユーザーの承認に基づき次の会社管理の設定を準備済みです。
+
+| 項目 | 状態・識別情報 |
+|---|---|
+| 管理アカウント・保存先所有者 | `takashi@norl.ai` |
+| Google組織 | `norl.ai` |
+| Cloudプロジェクト | `norl-hibi-study-staging`（表示名: `Hibi Study TEST`） |
+| Web OAuthクライアント | 作成済み。公開client ID: `1089477603802-6togub5fvpue8djhg5itdknmia4p8rff.apps.googleusercontent.com` |
+| API | Google Drive API・Google Sheets APIを有効化済み |
+| client secret | クラウド同期の対象外に`0600`で保存済み。値と実際の保存場所はこの文書に記載しない |
+| 保存用OAuth同意 | `takashi@norl.ai`による`openid`・メール・`drive.file`の同意が完了 |
+| TEST専用Driveフォルダ | 作成済み。`1VSQZ35k_0ZWnrg7bDt-xEqNtTQMYtYF0` |
+| TEST専用Sheets | 作成済み。`1O0bt-tx5sRzBOBQJ-aa6QkaJ59MRGecakgGuP6TpRgM`。新しい`Events`タブの見出しを確認し、学習イベントは空 |
+| Vercelへの接続反映 | 接続用環境変数・bindingの登録と再デプロイは未実施 |
+
+個人Gmail側の`hibi-study-staging-20261024`は未使用のまま残し、この手順には使用しません。公開環境の確認結果は [STAGING_STATUS.md](STAGING_STATUS.md) を参照してください。
+
+この会社Stagingでは、以下の手順1〜3に相当する準備が完了しています。既存本番と別の空の保存先を新規作成しており、本番の原本・学習記録はコピーしていません。続きは手順4・5のVercel設定と再デプロイです。OAuthはExternalのTestingモードのため、保存用refresh tokenは原則7日で期限切れになります。継続運用時の切替・再接続については手順1の注意を参照してください。
+
+1. 上記の会社管理プロジェクトと専用Web OAuthクライアントを使い、この資料の手順1と同じ最小権限を確認します。別の環境を新規準備する場合だけ、本番とは別のプロジェクト・クライアントを作成します。OAuth callbackにはStagingの固定URLの `/api/auth/callback/google` と `http://localhost:8765/oauth/callback` だけを登録します。本番OAuthクライアントを再利用しません。
 2. 本番用の秘密ファイルとは別の `.env.google-client.staging.json` に次の形式を保存し、`chmod 600` で保護します。値は新しいStagingクライアントと所有者のものにします。
 
    ```json
@@ -135,7 +156,7 @@ Sheetsはデータベースではありません。読み書きは保存用ア�
      "APP_ENV": "staging",
      "GOOGLE_CLIENT_ID": "YOUR_STAGING_CLIENT_ID.apps.googleusercontent.com",
      "GOOGLE_CLIENT_SECRET": "YOUR_STAGING_CLIENT_SECRET",
-     "GOOGLE_DRIVE_OWNER_EMAIL": "owner@example.com"
+     "GOOGLE_DRIVE_OWNER_EMAIL": "takashi@norl.ai"
    }
    ```
 
@@ -164,6 +185,6 @@ Sheetsはデータベースではありません。読み書きは保存用ア�
 
 5. `APP_ENV_BINDINGS_JSON` で、本番/Staging双方の `projectId`・`workspaceId`・`googleClientId`・`driveFolderId`・`sheetsId`・`origin` を固定します。これらは秘密ではない識別情報です。値は両環境で異なる必要があります。Stagingにだけ、新しい署名鍵の `authSecretSha256` を追加します。構造は [Staging計画](STAGING_PLAN.md) と `src/server/environment.ts` を参照してください。既知プロジェクト・実際の設定との一致を確認できない場合は認証・保存を停止します。
 
-設定を終えるまで、残る作業は新しいGoogle OAuthクライアントの準備と所有者本人の同意、専用保存先とbindingの登録です。このセットアップツールが自動でVercelへ値を登録したり、AI・音声・通知を有効化したりすることはありません。
+現在残る作業は、Vercel設定・bindingの登録、再デプロイ、アプリのGoogleログインと本人限定の保存・読み取りの確認です。保存用OAuth同意と保存先作成の完了は、配信中のアプリへの接続反映やログイン確認を意味しません。このセットアップツールが自動でVercelへ値を登録したり、AI・音声・通知を有効化したりすることはありません。
 
 任意の外部機能を後から有効にする際は、専用キーと対応するpinを確認してから個別に許可します。pinは**確認したキー以外への差し替えを拒否するもの**で、提供元アカウントの独立性そのものを証明しません。Google接続は別OAuthクライアントIDと実際のtoken audience・`drive.file`権限も検証します。本番の秘密値を読む作業はこの手順に含みません。

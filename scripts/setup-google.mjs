@@ -354,7 +354,7 @@ export async function startSetup(config, { environment = 'production', output = 
   const expiryTimer = setTimeout(() => { if (status === 'ready' || status === 'authorizing') server.close(); }, 10 * 60_000);
   expiryTimer.unref();
   server.once('close', () => clearTimeout(expiryTimer));
-  log(`セットアップ画面：${ORIGIN} （個人用GoogleアカウントのChromeで開いてください）`);
+  log(`セットアップ画面：${ORIGIN} （保存先所有者のGoogleアカウントでログインしたブラウザで開いてください）`);
   return server;
 }
 

@@ -25,7 +25,7 @@
 
 公開前のアプリテスト161件、サーバーテスト258件、Google設定補助テスト11件の計430件が成功しました。型検査と本番ビルドも成功しています。これらは、実際のGoogle接続・有料AI・音声生成・通知送信の成功を示すものではありません。
 
-その後、Apple対応コミット`f48baa1`で、アプリテスト162件・サーバーテスト269件が成功しました。変更のないGoogle設定補助テスト11件の既存成功分を含めると計442件です。担当者によるビルド成功も確認しています。この追加検証は公開コミット`31768c3`の配信内容を示すものではなく、Apple対応はまだStagingに公開していません。
+その後、Apple対応コミット`f48baa1`で、アプリテスト162件・サーバーテスト269件が成功しました。Google設定補助テスト11件も表示文言の更新後に再実行して成功し、計442件です。担当者によるビルド成功も確認しています。この追加検証は公開コミット`31768c3`の配信内容を示すものではなく、Apple対応はまだStagingに公開していません。
 
 ### 公開後の読み取り確認（2026-10-24 10:30 JST）
 
@@ -51,7 +51,7 @@ CLI 65.1.0では`curl`への長い`--global-config`指定がcurl本体へ転送�
 | 通知送信 | `PUSH_NOTIFICATIONS_ENABLED=false` |
 | Workflow実行 | `WORKFLOW_EXECUTION_ENABLED=false` |
 
-Staging専用のGoogle認証・Drive・Sheetsと保存先bindingは準備中です。専用設定が揃うまで認証・クラウド保存を停止します。Google OAuthのアプリ用callbackは、固定URLの`https://study-app-staging.vercel.app/api/auth/callback/google`を使用します。
+Staging専用のGoogle OAuthクライアント・保存用の同意・Drive・Sheetsは準備済みです。ユーザーの明示承認後、Stagingプロジェクトだけに19項目の接続用環境変数・保存先bindingを暗号化設定として登録しました。再デプロイは未実施で、配信中の旧版では認証・クラウド保存を引き続き停止しています。Google OAuthのアプリ用callbackは、固定URLの`https://study-app-staging.vercel.app/api/auth/callback/google`を使用します。
 
 ## Googleの管理先と準備状況（2026-10-24更新）
 
@@ -66,7 +66,23 @@ Staging専用のGoogle認証・Drive・Sheetsと保存先bindingは準備中で�
 
 会社側のOAuthブランド`ひび学習 TEST`を、サポート・連絡先`takashi@norl.ai`、ExternalのTestingモードで作成しました。Google API Services User Data Policyへの同意は、会社側の設定についてユーザーが承認済みで、作成成功を画面で確認しています。Google Drive APIとGoogle Sheets APIを有効化し、それぞれの管理画面で`Enabled`を確認しました。APIの有効化は、ファイルへのアクセス同意や保存先の作成ではありません。
 
-専用OAuthクライアント`Hibi Study TEST Web`は、Stagingアプリとローカル設定補助の2つのcallbackだけを入力して作成直前で承認待ちです。認証情報の作成、保存先の作成・アクセス権付与はまだ行っていません。Googleの画面には会社アカウントの2段階認証が必要との案内があり、その設定はユーザーの操作待ちです。会社Googleへのログイン確認は、アプリのGoogleログイン成功を意味しません。
+専用OAuthクライアント`Hibi Study TEST Web`を、ユーザーの承認後に作成しました。callbackはStagingアプリとローカル設定補助の2つだけです。公開client IDは`1089477603802-6togub5fvpue8djhg5itdknmia4p8rff.apps.googleusercontent.com`です。client secretはクラウド同期の対象外に`0600`で保存しており、値と実際の保存場所はこの文書には記載しません。
+
+所有者`takashi@norl.ai`が`openid`・メール・`drive.file`の保存用OAuth同意を完了し、本番とは別のTEST専用保存先を新規作成しました。
+
+| 保存先 | 確認した値・状態 |
+|---|---|
+| Driveフォルダ | `1VSQZ35k_0ZWnrg7bDt-xEqNtTQMYtYF0` |
+| Sheets | `1O0bt-tx5sRzBOBQJ-aa6QkaJ59MRGecakgGuP6TpRgM` |
+| 初期データ | 新しい`Events`タブの見出しを確認済み。学習イベントは空で、本番の記録・原本はコピーしていない |
+
+GoogleのTESTユーザーには`takashi@norl.ai`と`takashi.oikawa@gmail.com`を登録し、画面に両方表示されることを確認しました。アプリにも別々のTEST用IDを登録し、会社アカウントは学習者、既存の運営者Gmailは運営権限を維持します。
+
+本人の明示承認に基づき、Gmail側の既存アプリフォルダと学習記録Sheetのメタデータだけで本番IDを確認しました。文書内容は開いていません。Stagingの保存先が本番のどちらのIDとも異なることをbindingとローカルguardで確認済みです。Stagingのログイン署名鍵は新規発行で、本番の秘密値は取得・流用していません。
+
+OAuthはExternalのTestingモードで、保存用refresh tokenは原則7日で期限切れになります。継続運用への切替と再接続は [Google設定手順](GOOGLE_SETUP.md) の注意に従います。保存先の準備完了は、アプリのGoogleログインやクラウド保存の結合テスト成功を意味しません。
+
+Googleの画面には会社アカウントの2段階認証が必要との案内がありましたが、設定完了はまだ確認していません。
 
 それ以前に、個人GmailアカウントでGoogleプロジェクト`hibi-study-staging-20261024`を作成し、OAuthブランド`Hibi Study TEST`を設定しました。ポリシーへの同意はユーザーが明示的に承認済みです。ただし、OAuthクライアントは作成していません。作成フォームが失われた後、管理先を会社アカウントに変更しました。Drive・Sheetsの作成やアクセス権の付与も行っていません。この個人側プロジェクトは未使用のまま残し、削除しません。
 
@@ -74,9 +90,10 @@ GitHubリポジトリの会社管理への移管は相談した段階であり�
 
 ## 未完了の作業
 
-- 会社管理の`takashi@norl.ai`で必要な2段階認証を設定する。専用OAuthクライアントの作成、テストユーザー・scopeの設定、保存先所有者の同意、Staging専用Drive・Sheets・アカウント設定・bindingを完了する。
+- 会社管理の`takashi@norl.ai`で必要な2段階認証の設定完了を確認する。
+- 登録済みのStaging専用接続設定で再デプロイする。Google側の保存用同意・専用保存先・検証アカウント・bindingの登録は完了済み。
 - 接続後にGoogleログインと本人限定の保存・読み取りを検証し、Vercel Authenticationを維持した状態でcallbackを確認する。
-- 外部機能を有効にする場合は、専用設定と利用範囲を個別に確認する。現時点では有効化・実接続試験をしていない。
+- AI作問・音声生成・通知送信・Workflowを有効にする場合は、専用設定と利用範囲を個別に確認する。これらの機能は現時点では有効化・実接続試験をしていない。
 - ユーザーは会社メールでApple Accountを作成済みと報告。Apple Developerの法人会員登録・アプリ登録は未実施で、手順を案内済み。アプリ側のApple対応は無効状態で準備中であり、今回の公開版で利用可能と確認した機能には含めない。
 - 新規アップロードの一時処理・自動削除は別変更。既存原本のStorage移行は後回しとする。
 
