@@ -1,0 +1,32 @@
+# Local credentials and account state: never upload.
+.env*
+**/.env*
+.vercel/
+.credentials/
+credentials/
+secrets/
+private/
+*.pem
+*.key
+
+# Local caches and generated build artifacts.
+node_modules/
+.next/
+.swc/
+.workflow-data/
+src/app/.well-known/workflow/
+coverage/
+*.tsbuildinfo
+.DS_Store
+.git/
+.agents/
+.codex/
+
+# Offline generation, tests, previews, and private production work.
+artifacts/
+outputs/
+scripts/
+tests/
+docs/
+vocabulary-assets-2026/
+english-expansion-2026/
