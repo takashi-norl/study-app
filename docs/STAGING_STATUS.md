@@ -4,18 +4,18 @@
 
 ## 現在使える範囲
 
-**画面・デモを確認するためのStagingを公開済みです。Googleログイン・クラウド保存を含む結合テスト環境はまだ完成していません。** Vercel Authenticationによる保護を維持しており、誰でも入れる公開環境にはしていません。
+**会社Googleの専用接続設定を反映したStagingを公開済みです。会社アカウント・Gmailの実ログイン、本人のプラン保存・再読み込み、別アカウントへの非表示、運営Consoleへのアクセスを確認しました。** Vercel Authenticationによる保護を維持しており、誰でも入れる公開環境にはしていません。
 
 | 項目 | 確認した値・状態 |
 |---|---|
 | プロジェクト | `study-app-staging` |
 | プロジェクトID | `prj_2Ny51kBEY1Y1VyqVThuXlmALj8lA` |
 | 固定URL | [study-app-staging.vercel.app](https://study-app-staging.vercel.app) |
-| この版の固定デプロイURL | [確認済みのStagingデプロイ](https://study-app-staging-o11fn432u-takashi-7721s-projects.vercel.app) |
-| デプロイID | `dpl_EMjiZHD94TKXeq2eRuopKVSGEWuW` |
+| この版の固定デプロイURL | [確認済みのStagingデプロイ](https://study-app-staging-f4353hc4p-takashi-7721s-projects.vercel.app) |
+| デプロイID | `dpl_5BH1fa8MnXwkBUXFNSKmXpFjk9zf` |
 | デプロイ状態 | `READY` |
-| 公開ソースコミット | `31768c3ae0e8a7174aa4de22f1e62ed6f052858f` |
-| ページ確認 | 保護された環境でルートページのHTTP 200とTESTタイトルを確認 |
+| 公開ソースコミット | `efa319c4447166766baddffb4fbb6618b9407d7b` |
+| 公開後確認 | 保護を維持したCLI確認で認証関連API・未認証時の拒否・TEST manifestを確認。詳細は下記 |
 | 実行基盤 | Node 24 / Next.js |
 | システム環境変数の設定 | 既存本番・Staging両プロジェクトの`autoExposeSystemEnvs=true`を設定情報で確認。本番の新ガードを通す実行時確認は公開時に実施予定 |
 
@@ -23,11 +23,35 @@
 
 ## 確認と停止状態
 
-公開前のアプリテスト161件、サーバーテスト258件、Google設定補助テスト11件の計430件が成功しました。型検査と本番ビルドも成功しています。これらは、実際のGoogle接続・有料AI・音声生成・通知送信の成功を示すものではありません。
+最初の公開前に、アプリテスト161件、サーバーテスト258件、Google設定補助テスト11件の計430件が成功しました。型検査と本番ビルドも成功しています。これらは、実際のGoogle接続・有料AI・音声生成・通知送信の成功を示すものではありません。
 
-その後、Apple対応コミット`f48baa1`で、アプリテスト162件・サーバーテスト269件が成功しました。Google設定補助テスト11件も表示文言の更新後に再実行して成功し、計442件です。担当者によるビルド成功も確認しています。この追加検証は公開コミット`31768c3`の配信内容を示すものではなく、Apple対応はまだStagingに公開していません。
+その後、Apple対応コミット`f48baa1`で、アプリテスト162件・サーバーテスト269件が成功しました。Google設定補助テスト11件も表示文言の更新後に再実行して成功し、計442件です。担当者によるビルド成功も確認しています。現在の公開版`efa319c`にはApple対応コードを含みますが、機能フラグは`false`のままで、実際のAppleログインは未確認です。
 
-### 公開後の読み取り確認（2026-10-24 10:30 JST）
+### 現在の公開版の読み取り確認（2026-10-24 JST）
+
+コミット`efa319c`のデプロイが`READY`となった後、Vercel Authenticationを維持したまま、CLIの通常の認証・保護通過機能で次のGETを確認しました。
+
+| パス | HTTP | 実際の応答で確認した内容 |
+|---|---|---|
+| `/api/auth/session` | 200 | `{}`。アプリには未ログインの状態 |
+| `/api/auth/providers` | 200 | Googleのみ。Appleログインは無効 |
+| `/api/state` | 401 | `code: UNAUTHENTICATED`。未ログインでは学習データを返さない |
+| `/manifest.webmanifest` | 200 | TEST表示を確認 |
+
+接続設定不足による503から、認証設定を読み込んだ上で未ログインを扱う応答に変わりました。この未ログイン確認に加え、次の実ブラウザ検証を行いました。
+
+### 本人ログイン・保存・分離の実ブラウザ確認（2026-10-24）
+
+- `takashi@norl.ai`でGoogleのcallbackを完了し、`Takashi TEST (company)`の学習画面を表示。
+- `TEST 保存確認 2026-10-24｜古文`という合成プランを「AIに送らず、選択だけ保存」で作成。再読み込み後も学習プラン一覧に1件表示され、クラウドへの保存・読み取りを確認。
+- 会社アカウントからログアウトし、`takashi.oikawa@gmail.com`で別途Googleログイン。Gmailの学習プラン一覧は空で、会社アカウントのプランは非表示。
+- 同じGmailで`/admin`を開き、`Super User`・検証用TEST・課金未開始の表示を確認。学習画面ではGmailも学習者として表示。
+
+合成プラン1件はTEST側に保存確認用として残しています。教材・原本のアップロード、AIへの相談・作問、音声・通知・Workflowは実行していません。これは実アカウントでのプラン保存と表示分離の確認であり、全APIの侵入試験・モバイル実機試験・原本アップロード試験の完了を示すものではありません。
+
+### 初回公開版の読み取り確認（履歴：2026-10-24 10:30 JST）
+
+以下は旧コミット`31768c3ae0e8a7174aa4de22f1e62ed6f052858f`、デプロイ`dpl_EMjiZHD94TKXeq2eRuopKVSGEWuW`の確認記録です。[当時の固定デプロイURL](https://study-app-staging-o11fn432u-takashi-7721s-projects.vercel.app)では、ルートページのHTTP 200とTESTタイトルも確認しました。現在の公開版の応答とは区別します。
 
 固定URL `https://study-app-staging.vercel.app` に対し、Vercel CLI 65.1.0の通常の認証・保護通過機能を使って次のGETを確認しました。Vercel Authenticationは解除していません。保護用tokenを手動で読み出したり、文書やログに転記したりしていません。
 
@@ -42,6 +66,8 @@ APIの503は、この時点のクラウド未接続状態で意図した停止�
 
 CLI 65.1.0では`curl`への長い`--global-config`指定がcurl本体へ転送される問題があったため、パス指定後の短縮`-Q`と`--scope`を使用しました。認証情報を引数へ取り出す回避策は使っていません。
 
+### 現在の機能設定
+
 次の設定はすべて`false`です。
 
 | 機能 | 設定 |
@@ -51,7 +77,7 @@ CLI 65.1.0では`curl`への長い`--global-config`指定がcurl本体へ転送�
 | 通知送信 | `PUSH_NOTIFICATIONS_ENABLED=false` |
 | Workflow実行 | `WORKFLOW_EXECUTION_ENABLED=false` |
 
-Staging専用のGoogle OAuthクライアント・保存用の同意・Drive・Sheetsは準備済みです。ユーザーの明示承認後、Stagingプロジェクトだけに19項目の接続用環境変数・保存先bindingを暗号化設定として登録しました。再デプロイは未実施で、配信中の旧版では認証・クラウド保存を引き続き停止しています。Google OAuthのアプリ用callbackは、固定URLの`https://study-app-staging.vercel.app/api/auth/callback/google`を使用します。
+Staging専用のGoogle OAuthクライアント・保存用の同意・Drive・Sheetsは準備済みです。ユーザーの明示承認後、Stagingプロジェクトだけに19項目の接続用環境変数・保存先bindingを暗号化設定として登録し、コミット`efa319c`を再デプロイしました。Google OAuthのアプリ用callbackは、固定URLの`https://study-app-staging.vercel.app/api/auth/callback/google`を使用します。本人ログイン後の合成プラン保存・再読み込みと、別アカウントへの非表示を確認済みです。
 
 ## Googleの管理先と準備状況（2026-10-24更新）
 
@@ -74,13 +100,13 @@ Staging専用のGoogle OAuthクライアント・保存用の同意・Drive・Sh
 |---|---|
 | Driveフォルダ | `1VSQZ35k_0ZWnrg7bDt-xEqNtTQMYtYF0` |
 | Sheets | `1O0bt-tx5sRzBOBQJ-aa6QkaJ59MRGecakgGuP6TpRgM` |
-| 初期データ | 新しい`Events`タブの見出しを確認済み。学習イベントは空で、本番の記録・原本はコピーしていない |
+| 作成時の初期データ | 新しい`Events`タブの見出しを確認し、学習イベントが空であることを確認。本番の記録・原本はコピーしていない |
 
 GoogleのTESTユーザーには`takashi@norl.ai`と`takashi.oikawa@gmail.com`を登録し、画面に両方表示されることを確認しました。アプリにも別々のTEST用IDを登録し、会社アカウントは学習者、既存の運営者Gmailは運営権限を維持します。
 
 本人の明示承認に基づき、Gmail側の既存アプリフォルダと学習記録Sheetのメタデータだけで本番IDを確認しました。文書内容は開いていません。Stagingの保存先が本番のどちらのIDとも異なることをbindingとローカルguardで確認済みです。Stagingのログイン署名鍵は新規発行で、本番の秘密値は取得・流用していません。
 
-OAuthはExternalのTestingモードで、保存用refresh tokenは原則7日で期限切れになります。継続運用への切替と再接続は [Google設定手順](GOOGLE_SETUP.md) の注意に従います。保存先の準備完了は、アプリのGoogleログインやクラウド保存の結合テスト成功を意味しません。
+OAuthはExternalのTestingモードで、保存用refresh tokenは原則7日で期限切れになります。継続運用への切替と再接続は [Google設定手順](GOOGLE_SETUP.md) の注意に従います。実アプリのGoogleログインと合成プランの保存確認は、上記の別手順で実施しました。
 
 Googleの画面には会社アカウントの2段階認証が必要との案内がありましたが、設定完了はまだ確認していません。
 
@@ -91,10 +117,9 @@ GitHubリポジトリの会社管理への移管は相談した段階であり�
 ## 未完了の作業
 
 - 会社管理の`takashi@norl.ai`で必要な2段階認証の設定完了を確認する。
-- 登録済みのStaging専用接続設定で再デプロイする。Google側の保存用同意・専用保存先・検証アカウント・bindingの登録は完了済み。
-- 接続後にGoogleログインと本人限定の保存・読み取りを検証し、Vercel Authenticationを維持した状態でcallbackを確認する。
+- Google Testingの保存用refresh tokenが期限切れになる前に、再接続または継続運用への切替方針を決める。現在の実ログイン・プラン保存・アカウント間の表示分離は確認済み。
 - AI作問・音声生成・通知送信・Workflowを有効にする場合は、専用設定と利用範囲を個別に確認する。これらの機能は現時点では有効化・実接続試験をしていない。
-- ユーザーは会社メールでApple Accountを作成済みと報告。Apple Developerの法人会員登録・アプリ登録は未実施で、手順を案内済み。アプリ側のApple対応は無効状態で準備中であり、今回の公開版で利用可能と確認した機能には含めない。
+- ユーザーは会社メールでApple Accountを作成済みと報告。Apple Developerの法人会員登録・アプリ登録は未実施で、手順を案内済み。Apple対応コードは今回の公開版に含まれるが、機能フラグは`false`で、実際のAppleログインは未確認。
 - 新規アップロードの一時処理・自動削除は別変更。既存原本のStorage移行は後回しとする。
 
 ## 本番への影響

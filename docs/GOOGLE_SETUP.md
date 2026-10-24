@@ -141,12 +141,12 @@ Sheetsはデータベースではありません。読み書きは保存用ア�
 | client secret | クラウド同期の対象外に`0600`で保存済み。値と実際の保存場所はこの文書に記載しない |
 | 保存用OAuth同意 | `takashi@norl.ai`による`openid`・メール・`drive.file`の同意が完了 |
 | TEST専用Driveフォルダ | 作成済み。`1VSQZ35k_0ZWnrg7bDt-xEqNtTQMYtYF0` |
-| TEST専用Sheets | 作成済み。`1O0bt-tx5sRzBOBQJ-aa6QkaJ59MRGecakgGuP6TpRgM`。新しい`Events`タブの見出しを確認し、学習イベントは空 |
-| Vercelへの接続反映 | 接続用環境変数・bindingの登録と再デプロイは未実施 |
+| TEST専用Sheets | 作成済み。`1O0bt-tx5sRzBOBQJ-aa6QkaJ59MRGecakgGuP6TpRgM`。作成時に新しい`Events`タブの見出しと、学習イベントが空であることを確認 |
+| Vercelへの接続反映 | ユーザーの明示承認後、Stagingだけに19項目の接続設定・bindingを暗号化登録し、コミット`efa319c`を再デプロイ済み。Vercel Authenticationを維持 |
 
 個人Gmail側の`hibi-study-staging-20261024`は未使用のまま残し、この手順には使用しません。公開環境の確認結果は [STAGING_STATUS.md](STAGING_STATUS.md) を参照してください。
 
-この会社Stagingでは、以下の手順1〜3に相当する準備が完了しています。既存本番と別の空の保存先を新規作成しており、本番の原本・学習記録はコピーしていません。続きは手順4・5のVercel設定と再デプロイです。OAuthはExternalのTestingモードのため、保存用refresh tokenは原則7日で期限切れになります。継続運用時の切替・再接続については手順1の注意を参照してください。
+この会社Stagingでは、以下の手順1〜5と再デプロイが完了しています。既存本番と別の空の保存先を新規作成しており、本番の原本・学習記録はコピーしていません。未ログイン状態のAPIとTEST表示を確認し、両TESTアカウントの実Googleログイン、会社アカウントの合成プラン保存・再読み込み、Gmail側への非表示、GmailでのAdmin Console表示を確認しました。OAuthはExternalのTestingモードのため、保存用refresh tokenは原則7日で期限切れになります。継続運用時の切替・再接続については手順1の注意を参照してください。
 
 1. 上記の会社管理プロジェクトと専用Web OAuthクライアントを使い、この資料の手順1と同じ最小権限を確認します。別の環境を新規準備する場合だけ、本番とは別のプロジェクト・クライアントを作成します。OAuth callbackにはStagingの固定URLの `/api/auth/callback/google` と `http://localhost:8765/oauth/callback` だけを登録します。本番OAuthクライアントを再利用しません。
 2. 本番用の秘密ファイルとは別の `.env.google-client.staging.json` に次の形式を保存し、`chmod 600` で保護します。値は新しいStagingクライアントと所有者のものにします。
@@ -185,6 +185,6 @@ Sheetsはデータベースではありません。読み書きは保存用ア�
 
 5. `APP_ENV_BINDINGS_JSON` で、本番/Staging双方の `projectId`・`workspaceId`・`googleClientId`・`driveFolderId`・`sheetsId`・`origin` を固定します。これらは秘密ではない識別情報です。値は両環境で異なる必要があります。Stagingにだけ、新しい署名鍵の `authSecretSha256` を追加します。構造は [Staging計画](STAGING_PLAN.md) と `src/server/environment.ts` を参照してください。既知プロジェクト・実際の設定との一致を確認できない場合は認証・保存を停止します。
 
-現在残る作業は、Vercel設定・bindingの登録、再デプロイ、アプリのGoogleログインと本人限定の保存・読み取りの確認です。保存用OAuth同意と保存先作成の完了は、配信中のアプリへの接続反映やログイン確認を意味しません。このセットアップツールが自動でVercelへ値を登録したり、AI・音声・通知を有効化したりすることはありません。
+未ログイン状態では認証関連APIが200を返し、学習データのAPIは401で拒否することを確認しました。本人ログイン後は、合成プランの保存と再読み込み、別アカウントへの非表示を実ブラウザで確認済みです。合成プラン1件をTEST側に残しています。原本アップロードと有料AIの実行は今回の確認には含みません。このセットアップツール自体が自動でVercelへ値を登録したり、AI・音声・通知を有効化したりすることはありません。
 
 任意の外部機能を後から有効にする際は、専用キーと対応するpinを確認してから個別に許可します。pinは**確認したキー以外への差し替えを拒否するもの**で、提供元アカウントの独立性そのものを証明しません。Google接続は別OAuthクライアントIDと実際のtoken audience・`drive.file`権限も検証します。本番の秘密値を読む作業はこの手順に含みません。
