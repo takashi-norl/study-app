@@ -1,15 +1,17 @@
+import { assertExternalEffectAllowed } from '@/server/environment';
 import { FatalError } from 'workflow';
-import { getFamilyMembers, profileForMember, assertSuperUser } from '@/server/env';
+import { getRegisteredAccounts, profileForAccount, assertSuperUser } from '@/server/env';
 import { vocabularyPreview, prepareVocabularyAudio } from '@/server/vocabulary-samples';
 import { ApiError } from '@/server/config';
 
 function profile(actorId: string) {
-  const member = getFamilyMembers().find(item => item.id === actorId);
+  const member = getRegisteredAccounts().find(item => item.id === actorId);
   if (!member) throw new FatalError('音声準備の権限を確認できません。');
-  return assertSuperUser(profileForMember(member));
+  return assertSuperUser(profileForAccount(member));
 }
 export async function vocabularyBuildInput(actorId: string) {
   'use step';
+  try { assertExternalEffectAllowed('workflow'); } catch { throw new FatalError('この環境ではバックグラウンド処理を停止しています。'); }
   try { return (await vocabularyPreview(profile(actorId))).audio.filter(item => item.state === 'missing').map(item => item.wordId); }
   catch { throw new FatalError('音声セットを読み込めませんでした。保存済み音声は残っています。'); }
 }
@@ -17,6 +19,7 @@ vocabularyBuildInput.maxRetries = 1;
 
 export async function buildVocabularyWord(actorId: string, wordId: string) {
   'use step';
+  try { assertExternalEffectAllowed('workflow'); } catch { throw new FatalError('この環境ではバックグラウンド処理を停止しています。'); }
   try { await prepareVocabularyAudio(profile(actorId), wordId, true); return 'ready'; }
   catch (error) {
     if (error instanceof ApiError && ['AUDIO_PENDING', 'SAMPLE_AUDIO_FAILED'].includes(error.code)) return 'reserved';

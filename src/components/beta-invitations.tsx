@@ -45,13 +45,14 @@ export default function BetaInvitations() {
   }
   return <main className={styles.page}>
     <a href="/admin" className={styles.back}>運営画面へ戻る</a><h1>テスト利用に招待</h1>
-    <p className={styles.intro}>Googleアカウントを指定して招待します。リンクは自分で友達に渡してください。教材や学習記録は、招待した人にも共有されません。</p>
+    <p className={styles.intro}>ログインに使うメールアドレスを指定して招待します。リンクは自分で友達に渡してください。教材や学習記録は、招待した人にも共有されません。</p>
     {error && <p className={styles.error} role="alert">{error}</p>}
     {!data && !error && <p role="status">招待を読み込んでいます…</p>}
     {data && <>
       <section className={styles.panel}><h2>招待リンクを作る</h2>
         <form className={styles.form} onSubmit={event => void create(event)}>
-          <label>友達のGoogleメールアドレス<input type="email" required maxLength={254} value={email} disabled={pending} onChange={event => { setEmail(event.target.value); setLink(''); }} autoComplete="off" /></label>
+          <label>友達のログイン用メールアドレス<input type="email" required maxLength={254} value={email} disabled={pending} onChange={event => { setEmail(event.target.value); setLink(''); }} autoComplete="off" /></label>
+          <p className={styles.note}>Appleの「メールを非公開」を使う場合は、Appleがこのアプリに共有する非公開メールアドレスを指定します。既存GoogleアカウントとAppleの連携は、まだ利用できません。</p>
           <label>表示名<input required maxLength={80} value={name} disabled={pending} onChange={event => { setName(event.target.value); setLink(''); }} autoComplete="off" /></label>
           <label>リンクの有効期限<select value={days} disabled={pending} onChange={event => { setDays(Number(event.target.value)); setLink(''); }}><option value={1}>1日間</option><option value={7}>7日間</option><option value={14}>14日間</option></select></label>
           <button className="button primary" disabled={pending}>{pending ? '処理しています…' : '招待リンクを発行'}</button>

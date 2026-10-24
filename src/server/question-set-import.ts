@@ -38,7 +38,7 @@ export function prepareQuestionSetImport(data:StudyData,events:StudyEvent[],prof
     ...(bundle.questionTemplate?{questionTemplate:bundle.questionTemplate}:{})};
   const questions:Question[]=bundle.questions.map((q,index)=>({...q,id:stableId(`${key}:${index}`),topicId,ownerId:profile.id,
     ...(plan?{planId:plan.id}:{}),status:'approved',needsReview:false,version:1,createdAt}));
-  const event=(id:string,type:StudyEvent['type'],payload:unknown):StudyEvent=>({id,type,actorId:profile.id,familyId:profile.familyId,createdAt,payload});
+  const event=(id:string,type:StudyEvent['type'],payload:unknown):StudyEvent=>({id,type,actorId:profile.id,workspaceId:profile.workspaceId,createdAt,payload});
   // Commit the private topic after its question snapshot; retry IDs never overwrite later edits.
   const writes=[event(questionEventId,'questions.published',{questions}),event(topicEventId,'topic.created',topic)]
     .filter(e=>!events.some(saved=>saved.id===e.id));

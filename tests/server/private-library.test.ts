@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import type { Profile, StudyData, Question } from '../../src/lib/types';
 import { foldEvents, studyDataForProfile, type StudyEvent } from '../../src/server/google-store';
-import { getFamilyId } from '../../src/server/env';
+import { getWorkspaceId } from '../../src/server/env';
 import { canAccessSource, canAccessPlan, canAccessQuestion, assertOwnQuestion } from '../../src/server/access';
 import { assertPracticeTopic, mayPracticeQuestion, authorizedPracticeSession } from '../../src/server/practice-access';
 import { authorizedAudioText } from '../../src/server/audio';
@@ -10,9 +10,9 @@ import { preparePlanArrangement } from '../../src/server/plan-arrangement';
 import { buildPlanningContext, learningSummary } from '../../src/server/planning';
 
 const now='2026-10-23T00:00:00Z';
-const people:Profile[]=[{id:'owner',name:'Owner',role:'student',familyId:getFamilyId()},
-  {id:'parent',name:'Parent',role:'parent',familyId:getFamilyId()}, {id:'other-parent',name:'Other parent',role:'parent',familyId:getFamilyId()}];
-const [owner,parent,otherParent]=people;
+const people:Profile[]=[{id:'owner',name:'Owner',workspaceId:getWorkspaceId()},
+  {id:'operator',name:'Operator',workspaceId:getWorkspaceId()}, {id:'other-operator',name:'Other operator',workspaceId:getWorkspaceId()}];
+const [owner,operator,otherMember]=people;
 const q:Question={id:'q-owner',ownerId:owner.id,audienceUserId:owner.id,topicId:'topic-owner',prompt:'Read a book.',choices:['book','pen'],correctIndex:0,
   explanation:'PERSONAL_EXPLANATION',learningPoint:'PERSONAL_POINT',sourceIds:['source-owner'],sourceNote:'PERSONAL_SOURCE_NOTE',status:'published',version:1,createdAt:now};
 function fixture() {
@@ -32,7 +32,7 @@ function fixture() {
   return {events,data:foldEvents(events,people)};
 }
 
-test('all roles receive only their own full authoring data, records and profile',()=>{
+test('all accounts receive only their own full authoring data, records and profile',()=>{
   const {data}=fixture();
   for(const person of people) {
     const visible=studyDataForProfile(data,person);
@@ -44,15 +44,15 @@ test('all roles receive only their own full authoring data, records and profile'
     const summary=learningSummary(data,person,'英語',new Date(now));
     assert.equal(summary.length,1);assert.equal(summary[0].learner,person.name);assert.equal(summary[0].first.answered,1);
   }
-  assert.equal(canAccessSource({},parent),false);
-  assert.equal(canAccessSource({ownerId:owner.id},parent),false);
-  assert.equal(canAccessPlan(data.plans[0],parent),false);
-  assert.equal(canAccessQuestion({ownerId:owner.id,audienceUserId:parent.id},parent),false,'owner marker wins over stale audience');
+  assert.equal(canAccessSource({},operator),false);
+  assert.equal(canAccessSource({ownerId:owner.id},operator),false);
+  assert.equal(canAccessPlan(data.plans[0],operator),false);
+  assert.equal(canAccessQuestion({ownerId:owner.id,audienceUserId:operator.id},operator),false,'owner marker wins over stale audience');
 });
 
-test('parents cannot read another owner question, audio, plan arrangement or frozen session',async()=>{
+test('operators cannot read another owner question, audio, plan arrangement or frozen session',async()=>{
   const {data,events}=fixture();
-  for(const actor of [parent,otherParent]) {
+  for(const actor of [operator,otherMember]) {
     assert.throws(()=>buildPlanningContext(data,events,data.plans[0],data.planningTurns[0],actor),{code:'PLAN_NOT_FOUND'});
     assert.throws(()=>assertOwnQuestion(data,actor,q.id),{code:'QUESTION_NOT_FOUND'});
     assert.throws(()=>assertPracticeTopic(data,actor,q.topicId),{code:'TOPIC_NOT_FOUND'});
@@ -71,7 +71,7 @@ test('all legacy public clones are hidden and unusable even after adoption or so
     const topic={...data.topics[0],id:'public',ownerId:undefined,audienceUserId:undefined,libraryPublished:true,librarySourceTopicId:q.topicId};
     const question={...q,id:'public-question',topicId:'public',ownerId:undefined,audienceUserId:undefined,sourceIds};
     const publicData:StudyData={...data,topics:[...data.topics,topic],questions:[...data.questions,question],
-      plans:[...data.plans,{...data.plans[0],id:'adopted',ownerId:parent.id,libraryTopicId:'public',sourceIds:[]}]};
+      plans:[...data.plans,{...data.plans[0],id:'adopted',ownerId:operator.id,libraryTopicId:'public',sourceIds:[]}]};
     for(const person of people) {
       const visible=studyDataForProfile(publicData,person);
       assert.ok(visible.topics.every(t=>!t.libraryPublished));

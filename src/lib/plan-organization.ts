@@ -14,7 +14,7 @@ export function normalizePlanTags(value: unknown): string[] {
 
 /** Public content can use only this caller's adoption, never the public clone's private origin. */
 export function ownPlanTagsForTopic(data: Pick<StudyData, 'plans'>, profile: Profile, topic: Topic): LearningPlan['tags'] {
-  const plan = data.plans.find(item => item.ownerId === profile.id && (!item.testOnly || profile.role === 'parent')
+  const plan = data.plans.find(item => item.ownerId === profile.id && (!item.testOnly || profile.accessLevel === 'superuser')
     && (topic.libraryPublished ? item.libraryTopicId === topic.id && !item.testOnly : item.id === topic.planId));
   return plan?.tags === undefined ? undefined : [...plan.tags];
 }

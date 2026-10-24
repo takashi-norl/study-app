@@ -1,6 +1,5 @@
 export type Subject = string;
-export type Role = 'parent' | 'student';
-export type AccessLevel = 'superuser' | 'manager' | 'learner';
+export type AccessLevel = 'superuser' | 'learner';
 export type PracticeMode = 'daily' | 'extra' | 'weak';
 export type QuestionTemplate = 'kobun-vocabulary';
 export type QuestionStatus = 'draft' | 'approved' | 'published' | 'archived';
@@ -93,7 +92,7 @@ export interface PlanningTurn {
   };
 }
 export interface Profile {
-  id: string; familyId: string; name: string; role: Role;
+  id: string; workspaceId: string; name: string;
   accessLevel?: AccessLevel;
 }
 export interface StudyData {

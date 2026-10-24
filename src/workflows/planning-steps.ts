@@ -1,3 +1,4 @@
+import { assertExternalEffectAllowed } from '@/server/environment';
 import { FatalError, getWorkflowMetadata } from 'workflow';
 import { appendEvent, downloadSourceFile, getDriveFileMetadata, getFullState } from '@/server/google-store';
 import { ApiError, MAX_SOURCE_BYTES, requireGenerationEnabled } from '@/server/config';
@@ -18,6 +19,7 @@ function planningInput(state:Awaited<ReturnType<typeof getFullState>>,turnId:str
 
 export async function beginPlanning(turnId:string) {
   'use step';
+  try { assertExternalEffectAllowed('workflow'); } catch { throw new FatalError('この環境ではバックグラウンド処理を停止しています。'); }
   try {
     requireGenerationEnabled();
     const state=await getFullState();
@@ -33,6 +35,7 @@ beginPlanning.maxRetries=1;
 
 export async function analyzePlanningSource(turnId:string,sourceId:string) {
   'use step';
+  try { assertExternalEffectAllowed('workflow'); } catch { throw new FatalError('この環境ではバックグラウンド処理を停止しています。'); }
   try {
     const state=await getFullState();
     const {turn,plan}=planningInput(state,turnId);
@@ -61,6 +64,7 @@ analyzePlanningSource.maxRetries=0;
 
 export async function completePlanning(turnId:string) {
   'use step';
+  try { assertExternalEffectAllowed('workflow'); } catch { throw new FatalError('この環境ではバックグラウンド処理を停止しています。'); }
   try {
     const state=await getFullState();
     const {turn,plan,profile}=planningInput(state,turnId);
@@ -81,6 +85,7 @@ completePlanning.maxRetries=0;
 
 export async function failPlanning(turnId:string,message:string) {
   'use step';
+  try { assertExternalEffectAllowed('workflow'); } catch { throw new FatalError('この環境ではバックグラウンド処理を停止しています。'); }
   const {data,events}=await getFullState();
   const turn=data.planningTurns.find(item=>item.id===turnId);
   if(!turn || turn.status==='complete' || turn.status==='failed') return;

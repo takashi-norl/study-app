@@ -6,11 +6,11 @@ import { topicOwnerId } from '@/lib/library-policy';
 import { arrangementScopeSummary, ownPlanTagsForTopic } from '@/lib/plan-organization';
 import { planningSampleSchema } from './planning-samples';
 import { ApiError } from './config';
-import { getFamilyId } from './env';
+import { getWorkspaceId } from './env';
 
 /** Start a separate private conversation from allowed content; never follow a public clone's private origin. */
 export function preparePlanArrangement(data:StudyData,profile:Profile,topicId:string,requestId:string,now=new Date()):{plan:LearningPlan;event?:StudyEvent} {
-  if(profile.familyId!==getFamilyId()) throw new ApiError(403,'登録したアカウントで操作してください。','FAMILY_MISMATCH');
+  if(profile.workspaceId!==getWorkspaceId()) throw new ApiError(403,'登録したアカウントで操作してください。','WORKSPACE_MISMATCH');
   const existing=data.plans.find(plan=>plan.id===requestId);
   if(existing) {
     if(existing.ownerId!==profile.id || existing.arrangedFromTopicId!==topicId) throw new ApiError(409,'別の相談に使われた依頼です。画面を更新してください。','REQUEST_CONFLICT');

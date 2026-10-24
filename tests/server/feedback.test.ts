@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { prepareFeedback } from '../../src/server/feedback';
 import type { Profile } from '../../src/lib/types';
-const profile: Profile = { id: 'learner', name: '本人', role: 'student', familyId: 'beta' };
+const profile: Profile = { id: 'learner', name: '本人',  workspaceId: 'beta' };
 const raw = { requestId: 'c0bf864a-6530-4097-9d7e-f6801a3f69c0', category: '困った', message: ' 次へのボタンを見つけにくい ' };
 const now = new Date('2026-10-23T04:00:00Z');
 test('feedback contains only the submitted text, category and safe server metadata', () => {

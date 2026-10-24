@@ -4,7 +4,8 @@ import catalog from '../../content/eiken-audio-samples.json';
 import type { EikenSample, SampleAudio } from '@/lib/eiken-sample-types';
 import type { Profile } from '@/lib/types';
 import { ApiError, requiredEnv } from './config';
-import { assertSuperUser, getFamilyId } from './env';
+import { assertExternalEffectAllowed, externalEffectEnabled } from './environment';
+import { assertSuperUser, getWorkspaceId } from './env';
 import { audioRecord, audioSlotId, checkAudioQuota } from './audio';
 import { appendEvent, downloadAudioCache, loadEvents, MAX_AUDIO_BYTES, saveAudioCache } from './google-store';
 
@@ -13,7 +14,7 @@ const model = 'eleven_v3';
 const samples = catalog.samples as EikenSample[];
 
 export function assertSampleAccess(profile: Profile) {
-  if (profile.familyId !== getFamilyId()) throw new ApiError(403, 'ログインして教材を利用してください。', 'FORBIDDEN');
+  if (profile.workspaceId !== getWorkspaceId()) throw new ApiError(403, 'ログインして教材を利用してください。', 'FORBIDDEN');
 }
 
 /** Only curated, versioned text can incur generation charges; no arbitrary browser input. */
@@ -39,11 +40,12 @@ export async function samplePreview(profile: Profile) {
     return { sampleId: sample.id, url: `/api/admin/eiken-samples/audio?sampleId=${sample.id}`, voiceLabel: spec.voiceLabel, durationSeconds: 0,
       state: record?.fileId ? 'ready' : record?.failed ? 'failed' : record ? 'pending' : 'missing' };
   });
-  return { samples, audio, canPrepareAudio: profile.accessLevel === 'superuser' };
+  return { samples, audio, canPrepareAudio: profile.accessLevel === 'superuser' && externalEffectEnabled('audio') };
 }
 
 /** Official multi-speaker API. Saved once; repeat listening never invokes the provider. */
 export async function createSampleProviderAudio(spec: ReturnType<typeof sampleAudioSpec>): Promise<Uint8Array> {
+  assertExternalEffectAllowed('audio');
   const key = requiredEnv('ELEVENLABS_API_KEY').trim();
   const response = await fetch('https://api.elevenlabs.io/v1/text-to-dialogue?output_format=mp3_44100_128', {
     method: 'POST', headers: { 'xi-api-key': key, 'Content-Type': 'application/json', Accept: 'audio/mpeg' },
@@ -72,6 +74,7 @@ export async function prepareSampleAudio(profile: Profile, sampleId: string) {
   const previous = audioRecord(events, spec.cacheKey);
   if (previous?.fileId) return { ready: true };
   if (previous) throw new ApiError(409, previous.failed ? '準備に失敗しています。内容を確認してから再試行します。' : '音声を準備中です。状況を確認してください。', previous.failed ? 'SAMPLE_AUDIO_FAILED' : 'AUDIO_PENDING');
+  assertExternalEffectAllowed('audio');
   requiredEnv('ELEVENLABS_API_KEY');
   checkAudioQuota(events, spec.characters);
   const slotId = audioSlotId(events); const requestToken = randomUUID();

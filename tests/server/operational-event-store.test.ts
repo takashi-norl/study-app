@@ -1,3 +1,4 @@
+import './legacy-production-runtime';
 import assert from 'node:assert/strict';
 import { mock, test } from 'node:test';
 import { OAuth2Client } from 'google-auth-library';
@@ -5,7 +6,7 @@ import { appendEvent, appendEvents, loadEvents, loadOperationsEvents, type Study
 import { betaMemberId, foldBetaMembership } from '../../src/server/beta-membership-schema';
 
 const time = '2026-10-23T00:00:00.000Z';
-const familyId = 'ledger-test-family';
+const workspaceId = 'ledger-test-workspace';
 const invitationId = 'b9b8f760-c607-4ed9-a18c-df188343aa9c';
 const studyEvent: StudyEvent = { id: 'source-existing', type: 'source.created', actorId: 'operator', createdAt: time,
   payload: { id: 'source-existing', ownerId: 'operator', name: '本人の教材', mimeType: 'image/jpeg', createdAt: time } };
@@ -22,7 +23,7 @@ function operationalEvents(): StudyEvent[] {
       payload: { kind: 'member', id } },
   ];
 }
-const row = (event: StudyEvent): unknown[] => [event.id, event.type, event.actorId, event.familyId ?? familyId, event.createdAt, JSON.stringify(event.payload)];
+const row = (event: StudyEvent): unknown[] => [event.id, event.type, event.actorId, event.workspaceId ?? workspaceId, event.createdAt, JSON.stringify(event.payload)];
 
 async function withStore(action: (state: {
   tabs: Map<string, unknown[][]>; writes: Array<{ method: string; url: string }>;
@@ -30,7 +31,7 @@ async function withStore(action: (state: {
   raceCreation: () => void;
 }) => Promise<void>) {
   const environment = {
-    FAMILY_ID: familyId, ALLOWED_FAMILY_MEMBERS_JSON: JSON.stringify([{ id: 'operator', name: 'Operator', email: 'takashi.oikawa@gmail.com', role: 'parent' }]),
+    WORKSPACE_ID: workspaceId, REGISTERED_ACCOUNTS_JSON: JSON.stringify([{ id: 'operator', name: 'Operator', email: 'takashi.oikawa@gmail.com', }]),
     NEXTAUTH_SECRET: 'unit-test-secret-with-at-least-thirty-two-characters', GOOGLE_CLIENT_ID: 'unit-client', GOOGLE_CLIENT_SECRET: 'unit-secret',
     GOOGLE_DRIVE_REFRESH_TOKEN: `unit-refresh-${Math.random()}`, GOOGLE_DRIVE_FOLDER_ID: 'unit-folder', GOOGLE_SHEETS_ID: 'unit-sheet', GOOGLE_SHEETS_EVENTS_TAB: 'Events',
   };
@@ -87,6 +88,17 @@ test('missing operations tab is read as empty without creating it or changing le
   await appendEvent({...studyEvent,id:'source-next'});
   assert.equal(state.tabs.get('Events')!.length, 2);
   assert.equal(state.tabs.has('Events_Operations'), false);
+}));
+
+test('renaming the workspace metadata preserves the existing fourth Sheets column and its exact value', async () => withStore(async state => {
+  const before = structuredClone(state.tabs.get('Events'));
+  const loaded = await loadEvents();
+  assert.equal(loaded[0].workspaceId, workspaceId);
+  assert.equal('familyId' in loaded[0], false);
+  assert.deepEqual(state.tabs.get('Events'), before);
+  await appendEvent({ ...studyEvent, id: 'source-next' });
+  const saved = state.tabs.get('Events')![1];
+  assert.deepEqual(saved.slice(0, 5), ['source-next', studyEvent.type, studyEvent.actorId, workspaceId, studyEvent.createdAt]);
 }));
 
 test('all four new event types use only the operations tab and replay registration and revocation in append order', async () => withStore(async state => {

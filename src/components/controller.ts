@@ -1,4 +1,4 @@
-import type { PracticeMode, PracticeSession, Profile, Question, Role, StudyData, Subject } from '@/lib/types';
+import type { PracticeMode, PracticeSession, Profile, Question, StudyData, Subject } from '@/lib/types';
 import type { StudyAuthStatus } from '@/lib/study-auth';
 
 export interface UploadStatus {
@@ -47,7 +47,6 @@ export interface StudyController {
   actions: {
     retryAuth(): Promise<void>;
     refreshStatus(): Promise<void>;
-    switchRole(role: Role): void;
     startPractice(mode: PracticeMode, topicId?: string): void | Promise<void>;
     beginPractice(requireConfirmation: boolean): void | Promise<void>;
     cancelPracticeStart(): void;
@@ -72,7 +71,7 @@ export interface StudyController {
     updateQuestion(id: string, patch: Partial<Question>): void | Promise<void>;
     publish(questionIds: string[], at?: string): void | Promise<void>;
     resetDemo(): void | Promise<void>;
-    signIn(): Promise<void>;
+    signIn(provider?: 'google' | 'apple'): Promise<void>;
     signOut(): void | Promise<void>;
     requestNotifications(): void | Promise<void>;
     exportData(): void | Promise<void>;

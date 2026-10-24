@@ -1,21 +1,22 @@
+import './legacy-production-runtime';
 import assert from 'node:assert/strict';
 import { mock, test, beforeEach, afterEach } from 'node:test';
 import { OAuth2Client } from 'google-auth-library';
 import type { Profile } from '../../src/lib/types';
 import { audioCacheKey, audioRecord } from '../../src/server/audio';
-import { getFamilyId } from '../../src/server/env';
+import { getWorkspaceId } from '../../src/server/env';
 import { foldEvents, loadEvents, type StudyEvent } from '../../src/server/google-store';
 import { vocabularyAudioSpec } from '../../src/server/vocabulary-audio';
 import { prepareVocabularyAudio, readVocabularyAudio, vocabularyEntry, vocabularyPreview } from '../../src/server/vocabulary-samples';
 
-const parent: Profile = { id: 'test-parent', name: 'Parent', role: 'parent', accessLevel: 'superuser', familyId: getFamilyId() };
-const previousMembers = process.env.ALLOWED_FAMILY_MEMBERS_JSON;
-beforeEach(() => { process.env.ALLOWED_FAMILY_MEMBERS_JSON = JSON.stringify([
-  { id: 'test-parent', name: 'Operator', email: 'takashi.oikawa@gmail.com', role: 'parent' },
-  { id: 'manager', name: 'Member', email: 'member@example.com', role: 'parent' },
-  { id: 'student', name: 'Student', email: 'student@example.com', role: 'student' },
+const operator: Profile = { id: 'test-operator', name: 'Operator',  accessLevel: 'superuser', workspaceId: getWorkspaceId() };
+const previousMembers = process.env.REGISTERED_ACCOUNTS_JSON;
+beforeEach(() => { process.env.REGISTERED_ACCOUNTS_JSON = JSON.stringify([
+  { id: 'test-operator', name: 'Operator', email: 'takashi.oikawa@gmail.com', },
+  { id: 'member', name: 'Member', email: 'member@example.com', },
+  { id: 'student', name: 'Student', email: 'student@example.com', },
 ]); });
-afterEach(() => { if (previousMembers === undefined) delete process.env.ALLOWED_FAMILY_MEMBERS_JSON; else process.env.ALLOWED_FAMILY_MEMBERS_JSON = previousMembers; });
+afterEach(() => { if (previousMembers === undefined) delete process.env.REGISTERED_ACCOUNTS_JSON; else process.env.REGISTERED_ACCOUNTS_JSON = previousMembers; });
 const bytes = new Uint8Array([73, 68, 51, 4]);
 const token = '3c62d3ca-9f79-46eb-a2c3-556f998fbe4c';
 
@@ -82,7 +83,7 @@ async function withStore(action: (state: {
   try {
     await action({ rows, paidCalls: () => paid, failProvider: () => { failing = true; },
       omitKey: () => { delete process.env.ELEVENLABS_API_KEY; },
-      seed: event => { rows.push([event.id, event.type, event.actorId, getFamilyId(), event.createdAt, JSON.stringify(event.payload)]); },
+      seed: event => { rows.push([event.id, event.type, event.actorId, getWorkspaceId(), event.createdAt, JSON.stringify(event.payload)]); },
     });
   } finally {
     network.mock.restore(); accessToken.mock.restore(); tokenInfo.mock.restore();
@@ -96,17 +97,17 @@ async function withStore(action: (state: {
 test('catalog reading rejects foreign membership while paid preparation still rejects learners', async () => {
   const network = mock.method(globalThis, 'fetch', async () => { throw new Error('Network must not be reached'); });
   try {
-    for (const profile of [{ ...parent, familyId: 'other-family' }]) {
+    for (const profile of [{ ...operator, workspaceId: 'other-workspace' }]) {
       await assert.rejects(() => vocabularyPreview(profile), { code: 'FORBIDDEN' });
       await assert.rejects(() => prepareVocabularyAudio(profile, 'avoid'), { code: 'FORBIDDEN' });
       await assert.rejects(() => readVocabularyAudio(profile, 'avoid'), { code: 'FORBIDDEN' });
     }
-    for (const id of ['student', 'manager', 'unknown']) {
-      await assert.rejects(() => prepareVocabularyAudio({ ...parent, id, accessLevel: 'superuser' }, 'avoid'), { code: 'FORBIDDEN' });
+    for (const id of ['student', 'member', 'unknown']) {
+      await assert.rejects(() => prepareVocabularyAudio({ ...operator, id, accessLevel: 'superuser' }, 'avoid'), { code: 'FORBIDDEN' });
     }
     for (const id of ['', '../avoid', 'arbitrary spoken text', 'Avoid']) {
       assert.throws(() => vocabularyEntry(id), { code: 'SAMPLE_NOT_FOUND' });
-      await assert.rejects(() => prepareVocabularyAudio(parent, id), { code: 'SAMPLE_NOT_FOUND' });
+      await assert.rejects(() => prepareVocabularyAudio(operator, id), { code: 'SAMPLE_NOT_FOUND' });
     }
     assert.equal(network.mock.callCount(), 0);
   } finally { network.mock.restore(); }
@@ -114,9 +115,9 @@ test('catalog reading rejects foreign membership while paid preparation still re
 
 test('one paid vocabulary recording persists four sections; replay and repeated prepare reuse the private saved asset', async () => {
   await withStore(async state => {
-    await assert.rejects(() => readVocabularyAudio(parent, 'avoid'), { code: 'SAMPLE_NOT_READY' });
+    await assert.rejects(() => readVocabularyAudio(operator, 'avoid'), { code: 'SAMPLE_NOT_READY' });
     assert.equal(state.paidCalls(), 0, 'GET/playback must never generate audio');
-    await prepareVocabularyAudio(parent, 'avoid');
+    await prepareVocabularyAudio(operator, 'avoid');
     assert.equal(state.paidCalls(), 1);
     const events = await loadEvents();
     const spec = vocabularyAudioSpec(vocabularyEntry('avoid'));
@@ -124,15 +125,15 @@ test('one paid vocabulary recording persists four sections; replay and repeated 
     assert.equal(record.fileId, 'unit-audio-file');
     assert.deepEqual(record.segments?.map(section => section.id), ['word', 'example-1', 'example-2', 'example-3']);
     assert.equal(record.request.payload.characters, spec.characters);
-    assert.deepEqual(await prepareVocabularyAudio(parent, 'avoid'), { ready: true });
-    assert.deepEqual(await readVocabularyAudio(parent, 'avoid'), bytes);
-    assert.deepEqual(await readVocabularyAudio(parent, 'avoid'), bytes);
+    assert.deepEqual(await prepareVocabularyAudio(operator, 'avoid'), { ready: true });
+    assert.deepEqual(await readVocabularyAudio(operator, 'avoid'), bytes);
+    assert.deepEqual(await readVocabularyAudio(operator, 'avoid'), bytes);
     assert.equal(state.paidCalls(), 1);
-    const preview = await vocabularyPreview(parent);
+    const preview = await vocabularyPreview(operator);
     assert.equal(preview.audio.find(item => item.wordId === 'avoid')?.state, 'ready');
     assert.equal(preview.entries.length, 100);
     assert.equal(preview.canPrepareAudio, true);
-    assert.equal((await vocabularyPreview({...parent,id:'manager',accessLevel:'learner'})).canPrepareAudio, false);
+    assert.equal((await vocabularyPreview({...operator,id:'member',accessLevel:'learner'})).canPrepareAudio, false);
     assert.doesNotMatch(JSON.stringify(preview), /unit-audio-file|requestToken|cacheKey|UNIT_TEST_KEY/);
     assert.equal(state.rows.filter(row => row[1] === 'audio.requested').length, 1);
   });
@@ -140,7 +141,7 @@ test('one paid vocabulary recording persists four sections; replay and repeated 
 
 test('concurrent preparation cannot pay twice for the same vocabulary recording', async () => {
   await withStore(async state => {
-    const results = await Promise.allSettled([prepareVocabularyAudio(parent, 'afford'), prepareVocabularyAudio(parent, 'afford')]);
+    const results = await Promise.allSettled([prepareVocabularyAudio(operator, 'afford'), prepareVocabularyAudio(operator, 'afford')]);
     assert.equal(results.filter(result => result.status === 'fulfilled').length, 1);
     const rejected = results.find(result => result.status === 'rejected') as PromiseRejectedResult;
     assert.equal(rejected.reason.code, 'AUDIO_PENDING');
@@ -154,14 +155,14 @@ test('concurrent preparation cannot pay twice for the same vocabulary recording'
 test('failed provider request remains reserved; refresh and another prepare do not retry or reveal provider details', async () => {
   await withStore(async state => {
     state.failProvider();
-    await assert.rejects(() => prepareVocabularyAudio(parent, 'reluctant'), error => {
+    await assert.rejects(() => prepareVocabularyAudio(operator, 'reluctant'), error => {
       assert.doesNotMatch(String(error), /PRIVATE_PROVIDER_DETAILS|UNIT_TEST_KEY/);
       return true;
     });
     assert.equal(state.paidCalls(), 1);
-    assert.equal((await vocabularyPreview(parent)).audio.find(item => item.wordId === 'reluctant')?.state, 'failed');
-    await assert.rejects(() => prepareVocabularyAudio(parent, 'reluctant'), { code: 'SAMPLE_AUDIO_FAILED' });
-    await assert.rejects(() => readVocabularyAudio(parent, 'reluctant'), { code: 'SAMPLE_NOT_READY' });
+    assert.equal((await vocabularyPreview(operator)).audio.find(item => item.wordId === 'reluctant')?.state, 'failed');
+    await assert.rejects(() => prepareVocabularyAudio(operator, 'reluctant'), { code: 'SAMPLE_AUDIO_FAILED' });
+    await assert.rejects(() => readVocabularyAudio(operator, 'reluctant'), { code: 'SAMPLE_NOT_READY' });
     assert.equal(state.paidCalls(), 1);
     assert.equal(state.rows.filter(row => row[1] === 'audio.requested').length, 1);
   });
@@ -170,14 +171,14 @@ test('failed provider request remains reserved; refresh and another prepare do n
 test('missing API key and exhausted shared audio quota refuse generation before reserving or paying', async () => {
   await withStore(async state => {
     state.omitKey();
-    await assert.rejects(() => prepareVocabularyAudio(parent, 'contribute'));
+    await assert.rejects(() => prepareVocabularyAudio(operator, 'contribute'));
     assert.equal(state.rows.length, 0);
     assert.equal(state.paidCalls(), 0);
   });
   await withStore(async state => {
-    for (let index = 0; index < 30; index++) state.seed({ id: `past-${index}`, type: 'audio.requested', actorId: parent.id,
+    for (let index = 0; index < 30; index++) state.seed({ id: `past-${index}`, type: 'audio.requested', actorId: operator.id,
       createdAt: new Date().toISOString(), payload: { cacheKey: index.toString(16).padStart(64, '0'), requestToken: token, characters: 100 } });
-    await assert.rejects(() => prepareVocabularyAudio(parent, 'contribute'), { code: 'AUDIO_LIMIT' });
+    await assert.rejects(() => prepareVocabularyAudio(operator, 'contribute'), { code: 'AUDIO_LIMIT' });
     assert.equal(state.rows.length, 30);
     assert.equal(state.paidCalls(), 0);
   });
@@ -186,13 +187,13 @@ test('missing API key and exhausted shared audio quota refuse generation before 
 test('uncompleted reservations and ready records with a different token never trigger another paid request', async () => {
   await withStore(async state => {
     const cacheKey = vocabularyAudioSpec(vocabularyEntry('undermine')).cacheKey;
-    state.seed({ id: 'existing-reservation', type: 'audio.requested', actorId: parent.id,
+    state.seed({ id: 'existing-reservation', type: 'audio.requested', actorId: operator.id,
       createdAt: new Date().toISOString(), payload: { cacheKey, requestToken: token, characters: 100 } });
-    state.seed({ id: 'unrelated-ready', type: 'audio.ready', actorId: parent.id,
+    state.seed({ id: 'unrelated-ready', type: 'audio.ready', actorId: operator.id,
       createdAt: new Date().toISOString(), payload: { cacheKey, requestToken: '5105ed26-813a-4b0b-a322-51f75547ae91', fileId: 'unrelated-file' } });
-    assert.equal((await vocabularyPreview(parent)).audio.find(item => item.wordId === 'undermine')?.state, 'pending');
-    await assert.rejects(() => prepareVocabularyAudio(parent, 'undermine'), { code: 'AUDIO_PENDING' });
-    await assert.rejects(() => readVocabularyAudio(parent, 'undermine'), { code: 'SAMPLE_NOT_READY' });
+    assert.equal((await vocabularyPreview(operator)).audio.find(item => item.wordId === 'undermine')?.state, 'pending');
+    await assert.rejects(() => prepareVocabularyAudio(operator, 'undermine'), { code: 'AUDIO_PENDING' });
+    await assert.rejects(() => readVocabularyAudio(operator, 'undermine'), { code: 'SAMPLE_NOT_READY' });
     assert.equal(state.paidCalls(), 0);
   });
 });
@@ -201,15 +202,15 @@ test('legacy audio.ready rows without sections remain valid and do not collide w
   await withStore(async state => {
     const cacheKey = audioCacheKey('An existing English question.', 'JBFqnCBsd6RMkjVDRZzb');
     const createdAt = new Date().toISOString();
-    state.seed({ id: 'legacy-reservation', type: 'audio.requested', actorId: parent.id, createdAt,
+    state.seed({ id: 'legacy-reservation', type: 'audio.requested', actorId: operator.id, createdAt,
       payload: { cacheKey, requestToken: token, characters: 29 } });
-    state.seed({ id: 'legacy-ready', type: 'audio.ready', actorId: parent.id, createdAt,
+    state.seed({ id: 'legacy-ready', type: 'audio.ready', actorId: operator.id, createdAt,
       payload: { cacheKey, requestToken: token, fileId: 'existing-audio-file' } });
     const events = await loadEvents();
     assert.equal(audioRecord(events, cacheKey)?.fileId, 'existing-audio-file');
     assert.equal(audioRecord(events, cacheKey)?.segments, undefined);
     assert.doesNotThrow(() => foldEvents(events));
-    const preview = await vocabularyPreview(parent);
+    const preview = await vocabularyPreview(operator);
     assert.ok(preview.audio.every(item => item.state === 'missing'));
     assert.doesNotMatch(JSON.stringify(preview), /existing-audio-file/);
     assert.equal(state.paidCalls(), 0);
@@ -218,7 +219,7 @@ test('legacy audio.ready rows without sections remain valid and do not collide w
 
 test('learners can read the curated catalog without being offered paid preparation', async()=>{
   await withStore(async()=>{
-    const preview=await vocabularyPreview({...parent,id:'student',role:'student',accessLevel:'learner'});
+    const preview=await vocabularyPreview({...operator,id:'student',accessLevel:'learner'});
     assert.ok(preview.entries.length>0);
     assert.equal(preview.canPrepareAudio,false);
   });

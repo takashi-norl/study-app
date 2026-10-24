@@ -8,6 +8,7 @@ import { appendEvent, getFullState, type StudyEvent } from './google-store';
 import { assertGenerationAccess } from './proposal-selection';
 import { assertGenerationBudget } from './generation-request';
 import { paidWorkSlotId } from './planning';
+import { assertExternalEffectAllowed } from './environment';
 
 export function prepareGenerationRetry(data: StudyData, profile: Profile, jobId: string, requestId: string, now: Date, newId: string) {
   const original = data.jobs.find(job => job.id === jobId);
@@ -37,7 +38,7 @@ export interface GenerationRetryDependencies {
   newId: () => string;
 }
 const defaults: GenerationRetryDependencies = { load: getFullState, append: appendEvent,
-  dispatch: jobId => start(generationWorkflow, [jobId]), enabled: requireGenerationEnabled, now: () => new Date(), newId: randomUUID };
+  dispatch: jobId => start(generationWorkflow, [jobId]), enabled: () => { assertExternalEffectAllowed('workflow'); requireGenerationEnabled(); }, now: () => new Date(), newId: randomUUID };
 
 export async function retryGeneration(profile: Profile, jobId: string, requestId: string, deps: GenerationRetryDependencies = defaults) {
   deps.enabled();

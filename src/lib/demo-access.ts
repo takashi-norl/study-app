@@ -18,7 +18,7 @@ function normalizeDemoOwnership(data: StudyData): StudyData {
     ownerId: question.ownerId ?? topics.find(topic => topic.id === question.topicId)?.ownerId })) };
 }
 
-/** All roles see their own workspace; legacy public and other people's records stay private. */
+/** Every account sees its own workspace; legacy public and other people's records stay private. */
 export function demoStudyDataForProfile(data: StudyData, profile: Profile): StudyData {
   data = normalizeDemoOwnership(data);
   const testAllowed = (item: { testOnly?: boolean }) => !item.testOnly || profile.accessLevel === 'superuser';
@@ -77,7 +77,7 @@ export function updateDemoQuestion(data: StudyData, profile: Profile, id: string
     status, needsReview, publishedAt: status === 'published' ? now : undefined, version: item.version + 1 } : item) };
 }
 
-/** Saved private questions belong to their owner, regardless of the old role label. */
+/** Saved private questions belong only to their owner. */
 export function demoPracticeQuestions(data: StudyData, profile: Profile, topicId?: string): Question[] {
   data = normalizeDemoOwnership(data);
   const own = demoStudyDataForProfile(data, profile);

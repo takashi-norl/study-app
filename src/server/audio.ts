@@ -5,8 +5,9 @@ import type { Profile, Question, StudyData } from '@/lib/types';
 import { englishChoiceSpeechText, englishSpeechText } from '@/lib/speech';
 import { canAccessQuestion } from './access';
 import { ApiError } from './config';
+import { assertExternalEffectAllowed, externalEffectEnabled } from './environment';
 import { appendEvent, downloadAudioCache, getFullState, getSessionSnapshot, loadEvents, MAX_AUDIO_BYTES, saveAudioCache, type StudyEvent } from './google-store';
-import { getFamilyId } from './env';
+import { getWorkspaceId } from './env';
 import { mayPracticeQuestion } from './practice-access';
 import type { AudioSegment } from './audio-segments';
 
@@ -21,11 +22,11 @@ const model='eleven_flash_v2_5';
 const dateInJapan=(date:string|Date)=>new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Tokyo'}).format(new Date(date));
 const hash=(value:unknown)=>createHash('sha256').update(JSON.stringify(value)).digest('hex');
 
-export function audioConfigured():boolean {return !!process.env.ELEVENLABS_API_KEY?.trim();}
+export function audioConfigured():boolean {return externalEffectEnabled('audio') && !!process.env.ELEVENLABS_API_KEY?.trim();}
 
 /** Never accepts text, answers, source material or arbitrary provider options from a browser. */
 export async function authorizedAudioText(data:StudyData,events:StudyEvent[],profile:Profile,input:AudioRequest):Promise<string> {
-  if(profile.familyId!==getFamilyId()) throw new ApiError(403,'この音声にはアクセスできません。','AUDIO_FORBIDDEN');
+  if(profile.workspaceId!==getWorkspaceId()) throw new ApiError(403,'この音声にはアクセスできません。','AUDIO_FORBIDDEN');
   let question:Question|undefined;
   if(input.sessionId) {
     const session=data.sessions.find(item=>item.id===input.sessionId && item.userId===profile.id);
@@ -71,6 +72,7 @@ export function audioRecord(events:StudyEvent[],cacheKey:string) {
 /** Official API: https://elevenlabs.io/docs/api-reference/text-to-speech/convert . No automatic paid retries. */
 export async function createProviderAudio(text:string,voiceId:string,key:string):Promise<Uint8Array> {
   if(!/^[a-zA-Z0-9_-]{10,100}$/.test(voiceId) || !text || text.length>AUDIO_LIMITS.charactersPerClip) throw new ApiError(503,'音声の設定を確認してください。','AUDIO_UNAVAILABLE');
+  assertExternalEffectAllowed('audio');
   let response:Response;
   try {
     response=await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}?output_format=mp3_44100_128`,{
@@ -105,6 +107,7 @@ export async function questionAudio(profile:Profile,input:AudioRequest):Promise<
   const previous=audioRecord(events,cacheKey);
   if(previous?.fileId) return downloadAudioCache(previous.fileId,cacheKey);
   if(previous) throw new ApiError(previous.failed ? 503 : 409,'この部分は端末の音声で再生できます。',previous.failed ? 'AUDIO_UNAVAILABLE' : 'AUDIO_PENDING');
+  assertExternalEffectAllowed('audio');
   checkAudioQuota(events,text.length);
   const slotId=audioSlotId(events);const requestToken=randomUUID();const now=new Date().toISOString();
   await appendEvent({id:slotId,type:'audio.requested',actorId:profile.id,createdAt:now,payload:{cacheKey,requestToken,characters:text.length}});

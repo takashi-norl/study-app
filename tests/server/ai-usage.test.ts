@@ -1,9 +1,10 @@
+import './legacy-production-runtime';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import type Anthropic from '@anthropic-ai/sdk';
 import { priceAnthropicUsage, summarizeAiUsage, summarizeOperationalAiUsage, trackedAnthropicMessage } from '../../src/server/ai-usage';
 import { aiRequestedSchema, aiUsageSchema } from '../../src/server/ai-usage-schema';
-import { assertSuperUser, getFamilyId, getFamilyMembers, profileForMember } from '../../src/server/env';
+import { assertSuperUser, getWorkspaceId, getRegisteredAccounts, profileForAccount } from '../../src/server/env';
 import { getAuthOptions } from '../../src/server/auth';
 import { foldEvents, studyDataForProfile, type StudyEvent } from '../../src/server/google-store';
 import { ApiError } from '../../src/server/config';
@@ -14,9 +15,9 @@ const usage = { input_tokens: 1_000, output_tokens: 200, cache_read_input_tokens
 const response = { id: 'msg_sample', model, content: [], stop_reason: 'max_tokens', usage } as unknown as Anthropic.Messages.Message;
 const params: Anthropic.Messages.MessageCreateParamsNonStreaming = { model, max_tokens: 100, messages: [{ role: 'user', content: 'PRIVATE PROMPT MUST NEVER BE LOGGED' }] };
 const context = { actorId: 'student', feature: 'profile' as const, requestId: 'logical-request' };
-const members = [{ id: 'super', email: 'takashi.oikawa@gmail.com', role: 'parent' as const, name: 'Takashi' },
-  { id: 'manager', email: 'leo.oikawa55@gmail.com', role: 'parent' as const, name: 'Leo' },
-  { id: 'student', email: 'yusei.oikawa@gmail.com', role: 'student' as const, name: 'Yusei' }];
+const members = [{ id: 'super', email: 'takashi.oikawa@gmail.com',  name: 'Takashi' },
+  { id: 'member', email: 'leo.oikawa55@gmail.com',  name: 'Leo' },
+  { id: 'student', email: 'yusei.oikawa@gmail.com',  name: 'Yusei' }];
 
 test('standard Claude estimate counts input, output, cache reads and both cache write durations separately', () => {
   const priced = priceAnthropicUsage(model, usage);
@@ -84,7 +85,7 @@ test('failed calls are unknown charges, append failure prevents spending, and mi
     append: async event => { if (event.type === 'ai.usage') throw new Error('result store down'); unresolved.push(event); },
     create: async () => response,
   }), (error: unknown) => error instanceof ApiError && error.code === 'AI_RECORD_FAILED');
-  const summary = summarizeAiUsage([...events, ...unresolved], members.map(profileForMember));
+  const summary = summarizeAiUsage([...events, ...unresolved], members.map(profileForAccount));
   assert.equal(summary.allTime.failed, 1);
   assert.equal(summary.allTime.unresolved, 1);
   assert.equal(summary.allTime.unknownCostRequests, 2);
@@ -95,7 +96,7 @@ test('replaying events does not duplicate charges; monthly grouping uses Japan t
   await trackedAnthropicMessage(context, params, { append: async event => { events.push({ ...event, createdAt: '2026-09-30T15:30:00Z' }); }, create: async () => response });
   const audio: StudyEvent = { id: 'audio1', type: 'audio.requested', actorId: 'student', createdAt: '2026-10-02T00:00:00Z',
     payload: { cacheKey: 'a'.repeat(64), requestToken: 'c08c663d-d5df-4ad5-8976-a7bc0574f0f2', characters: 40 } };
-  const summary = summarizeAiUsage([...events, ...events, audio, audio], members.map(profileForMember), new Date('2026-10-23T00:00:00Z'));
+  const summary = summarizeAiUsage([...events, ...events, audio, audio], members.map(profileForAccount), new Date('2026-10-23T00:00:00Z'));
   assert.equal(summary.monthly.requests, 1);
   assert.equal(summary.monthly.estimatedUsd, 0.007725);
   assert.equal(summary.byFeature.find(item => item.feature === 'profile')?.usage.requests, 1);
@@ -106,10 +107,10 @@ test('replaying events does not duplicate charges; monthly grouping uses Japan t
   assert.equal(summary.elevenLabs.estimatedUsd, null);
 });
 
-test('cost events never enter the normal Manager/student state or its JSON export', async () => {
+test('cost events never enter the normal Member/student state or its JSON export', async () => {
   const events: StudyEvent[] = [];
   await trackedAnthropicMessage(context, params, { append: async event => { events.push(event); }, create: async () => response });
-  const profiles = members.map(profileForMember);
+  const profiles = members.map(profileForAccount);
   const state = foldEvents(events, profiles);
   for (const profile of profiles) {
     const serialized = JSON.stringify(studyDataForProfile(state, profile));
@@ -119,29 +120,29 @@ test('cost events never enter the normal Manager/student state or its JSON expor
   }
 });
 
-test('Super User is only the verified allowlisted owner; Manager/student cannot escalate with accessLevel', async () => {
-  const keys = ['ALLOWED_FAMILY_MEMBERS_JSON', 'NEXTAUTH_SECRET', 'GOOGLE_CLIENT_ID', 'GOOGLE_CLIENT_SECRET'] as const;
+test('Super User is only the verified allowlisted owner; Member/student cannot escalate with accessLevel', async () => {
+  const keys = ['REGISTERED_ACCOUNTS_JSON', 'NEXTAUTH_SECRET', 'GOOGLE_CLIENT_ID', 'GOOGLE_CLIENT_SECRET'] as const;
   const previous = Object.fromEntries(keys.map(key => [key, process.env[key]]));
   try {
-    process.env.ALLOWED_FAMILY_MEMBERS_JSON = JSON.stringify(members);
+    process.env.REGISTERED_ACCOUNTS_JSON = JSON.stringify(members);
     process.env.NEXTAUTH_SECRET = 'test-only-secret-with-at-least-thirty-two-characters';
     process.env.GOOGLE_CLIENT_ID = 'test-client'; process.env.GOOGLE_CLIENT_SECRET = 'test-secret';
-    const profiles = getFamilyMembers().map(profileForMember);
+    const profiles = getRegisteredAccounts().map(profileForAccount);
     assert.equal(profiles[0].accessLevel, 'superuser');
     assert.equal(profiles[1].accessLevel, 'learner');
     assert.equal(profiles[2].accessLevel, 'learner');
     assert.equal(assertSuperUser(profiles[0]).id, 'super');
     for (const profile of profiles.slice(1)) {
-      assert.throws(() => assertSuperUser({ ...profile, accessLevel: 'superuser', role: 'parent' }), (error: unknown) => error instanceof ApiError && error.status === 403);
+      assert.throws(() => assertSuperUser({ ...profile, accessLevel: 'superuser', }), (error: unknown) => error instanceof ApiError && error.status === 403);
     }
-    assert.throws(() => assertSuperUser({ ...profiles[0], familyId: `${getFamilyId()}-other` }));
+    assert.throws(() => assertSuperUser({ ...profiles[0], workspaceId: `${getWorkspaceId()}-other` }));
     const callbacks = getAuthOptions().callbacks!;
     const session = { expires: '2026-10-30T00:00:00Z', user: { email: members[0].email } };
     const unverified = await callbacks.session!({ session, token: { email: members[0].email, googleVerified: false }, user: { id: '' } } as any);
     assert.equal((unverified as any).profile, undefined);
     const verified = await callbacks.session!({ session, token: { email: members[0].email, googleVerified: true }, user: { id: '' } } as any);
     assert.equal((verified as any).profile.accessLevel, 'superuser');
-    process.env.ALLOWED_FAMILY_MEMBERS_JSON = JSON.stringify(members.slice(1));
+    process.env.REGISTERED_ACCOUNTS_JSON = JSON.stringify(members.slice(1));
     assert.throws(() => assertSuperUser(profiles[0]));
   } finally {
     for (const key of keys) { if (previous[key] === undefined) delete process.env[key]; else process.env[key] = previous[key]; }

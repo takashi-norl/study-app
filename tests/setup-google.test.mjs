@@ -4,8 +4,9 @@ import { mkdtemp, chmod, stat, symlink, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { once } from 'node:events';
+import { get as httpGet } from 'node:http';
 import { HEADERS, ORIGIN, SCOPES, REDIRECT_URI, validateConfig, validateGrant, validateCallback,
-  readPrivateJson, savePrivateJson, validateSaved, provisionStorage, startSetup } from '../scripts/setup-google.mjs';
+  readPrivateJson, savePrivateJson, validateSaved, provisionStorage, startSetup, parseSetupArgs, setupOutput } from '../scripts/setup-google.mjs';
 
 const config = { clientId: '123-example.apps.googleusercontent.com', clientSecret: 'not-a-real-secret', ownerEmail: 'owner@example.com' };
 function record() {
@@ -89,6 +90,7 @@ test('new folder and sheet are initialized with the correct event headers and ch
   const sheet = JSON.parse(writes[1].body);
   assert.equal(sheet.sheets[0].properties.title, 'Events');
   assert.deepEqual(sheet.sheets[0].data[0].rowData[0].values.map((cell) => cell.userEnteredValue.stringValue), HEADERS);
+  assert.equal(HEADERS[3], 'workspaceId');
   assert.match(writes[2].url, /addParents=folder-12345678/);
   assert.match(writes[2].url, /removeParents=root-12345678/);
   assert.equal(validateSaved(input).ownerEmail, config.ownerEmail);
@@ -110,6 +112,50 @@ test('ambiguous creates cannot be retried blindly; completed setup does not crea
     return url.includes('/values/') ? { values: [HEADERS] } : { parents: ['folder-12345678'] };
   }, async () => {});
   assert.throws(() => validateSaved({ ...record(), phase: 'complete' }));
+});
+
+test('resuming an existing sheet accepts either fourth-column heading without modifying headers or saved IDs', async () => {
+  for (const fourthColumn of ['workspaceId', 'familyId']) {
+    for (const phase of ['sheet-created', 'complete']) {
+      const input = { ...record(), phase, env: { ...record().env,
+        GOOGLE_DRIVE_FOLDER_ID: 'folder-12345678', GOOGLE_SHEETS_ID: 'sheet-12345678' } };
+      const savedEnvironment = structuredClone(input.env);
+      const header = Object.freeze(HEADERS.map((name, index) => index === 3 ? fourthColumn : name));
+      const calls = [], checkpoints = [];
+      await provisionStorage(input, async (url, options) => {
+        assert.equal(options, undefined, 'existing storage is only read, never repaired or recreated');
+        calls.push(url);
+        return url.includes('/values/') ? { values: [header] } : { parents: ['folder-12345678'] };
+      }, async value => { checkpoints.push(value.phase); });
+      assert.equal(calls.length, 2);
+      assert.equal(calls[1], 'https://sheets.googleapis.com/v4/spreadsheets/sheet-12345678/values/Events!A1:M1');
+      assert.deepEqual(checkpoints, ['complete']);
+      assert.deepEqual(input.env, savedEnvironment);
+      assert.equal(header[3], fourthColumn);
+    }
+  }
+});
+
+test('legacy-header compatibility rejects every other changed, reordered, missing or extra column without writes', async () => {
+  const legacy = HEADERS.map((name, index) => index === 3 ? 'familyId' : name);
+  const invalidHeaders = [
+    undefined, null, {}, HEADERS.join(','), HEADERS.slice(0, -1), [...HEADERS, 'extra'],
+    [...legacy.slice(0, 3), ...legacy.slice(4)],
+    legacy.map((name, index) => index === 2 ? legacy[3] : index === 3 ? legacy[2] : name),
+    ...HEADERS.map((_, changedIndex) => legacy.map((name, index) => index === changedIndex ? 'wrong' : name)),
+  ];
+  for (const header of invalidHeaders) {
+    const input = { ...record(), phase: 'complete', env: { ...record().env,
+      GOOGLE_DRIVE_FOLDER_ID: 'folder-12345678', GOOGLE_SHEETS_ID: 'sheet-12345678' } };
+    const before = structuredClone(input);
+    let checkpoints = 0;
+    await assert.rejects(() => provisionStorage(input, async (url, options) => {
+      assert.equal(options, undefined);
+      return url.includes('/values/') ? { values: [header] } : { parents: ['folder-12345678'] };
+    }, async () => { checkpoints++; }), /記録シートの見出しを確認/);
+    assert.equal(checkpoints, 0);
+    assert.deepEqual(input, before);
+  }
 });
 
 test('localhost start page rejects hostile host/origin and requires a browser-bound POST before OAuth', async () => {
@@ -154,6 +200,77 @@ test('localhost start page rejects hostile host/origin and requires a browser-bo
     assert.equal(forged.status, 400);
     assert.equal(forged.headers.get('referrer-policy'), 'no-referrer');
     assert.equal((await post(ORIGIN, confirm)).status, 400);
+  } finally {
+    server.close(); server.closeAllConnections(); await once(server, 'close');
+  }
+});
+
+
+test('staging is explicit, uses a distinct output and never implicitly reuses production config or resume data', async () => {
+  assert.deepEqual(parseSetupArgs([]), { help: false, environment: 'production', resume: false, configPath: undefined });
+  assert.equal(parseSetupArgs(['--resume']).environment, 'production');
+  assert.deepEqual(parseSetupArgs(['--environment', 'staging', '--config', '/private/staging.json']),
+    { help: false, environment: 'staging', resume: false, configPath: '/private/staging.json' });
+  assert.equal(parseSetupArgs(['--resume', '--environment', 'staging']).resume, true);
+  for (const args of [['--environment', 'staging'], ['--environment', 'preview'], ['--environment'], ['--config'],
+    ['--config', 'one', '--config', 'two'], ['--resume', '--config', 'one'], ['--resume', '--resume'], ['--environment', 'staging', '--environment', 'production']]) {
+    assert.throws(() => parseSetupArgs(args));
+  }
+  assert.match(setupOutput(), /\.env\.google-setup\.json$/);
+  assert.match(setupOutput('staging'), /\.env\.google-setup\.staging\.json$/);
+  assert.notEqual(setupOutput(), setupOutput('staging'));
+  assert.throws(() => validateConfig(record().env, 'staging'), /APP_ENV/);
+  assert.throws(() => validateConfig({ ...record().env, APP_ENV: 'staging' }), /APP_ENV/);
+  assert.throws(() => validateSaved(record(), 'staging'), /環境/);
+  const stage = { ...record(), environment: 'staging', env: { ...record().env, APP_ENV: 'staging' } };
+  assert.equal(validateSaved(stage, 'staging').clientId, config.clientId);
+  assert.throws(() => validateSaved(stage), /環境/);
+  assert.throws(() => validateSaved({ ...stage, environment: 'other' }, 'staging'), /環境/);
+  await assert.rejects(() => startSetup(config, { environment: 'staging', output: setupOutput() }), /別の環境/);
+  await assert.rejects(() => startSetup(config, { environment: 'production', output: setupOutput('staging') }), /別の環境/);
+  await assert.rejects(() => startSetup(config, { environment: 'staging', saved: record() }), /環境/);
+});
+
+test('staging creates TEST-only storage and keeps its environment marker through checkpoints and resume', async () => {
+  const production = record(), before = structuredClone(production);
+  const input = { ...record(), environment: 'staging', env: { ...record().env, APP_ENV: 'staging' } };
+  const writes = [], saved = [];
+  await provisionStorage(input, async (url, options = {}) => {
+    if (options.method) writes.push(JSON.parse(options.body));
+    if (url.includes('/drive/v3/files?')) return { id: 'test-folder-12345678' };
+    if (url.includes('/v4/spreadsheets?')) return { spreadsheetId: 'test-sheet-12345678' };
+    return url.includes('/values/') ? { values: [HEADERS] } : { parents: ['test-folder-12345678'] };
+  }, async value => saved.push(structuredClone(value)));
+  assert.equal(writes[0].name, '【TEST】ひび学習アプリ');
+  assert.equal(writes[1].properties.title, '【TEST】ひび学習アプリ・学習記録');
+  assert.ok(saved.length && saved.every(item => item.environment === 'staging' && item.env.APP_ENV === 'staging'));
+  assert.equal(input.phase, 'complete');
+  assert.deepEqual(production, before);
+  await provisionStorage(input, async (url, options) => {
+    assert.equal(options, undefined, 'completed TEST storage is only read');
+    return url.includes('/values/') ? { values: [HEADERS] } : { parents: ['test-folder-12345678'] };
+  }, async () => {});
+  assert.equal(validateSaved(input, 'staging').ownerEmail, config.ownerEmail);
+  let calls = 0;
+  await assert.rejects(() => provisionStorage({ ...input, env: { ...input.env, APP_ENV: 'production' } }, async () => { calls++; }, async () => { calls++; }), /APP_ENV/);
+  assert.equal(calls, 0);
+});
+
+test('staging localhost setup is visibly TEST before consent and never displays credentials', async () => {
+  const server = await startSetup(config, { environment: 'staging', log: () => {} });
+  try {
+    // A fresh connection avoids reusing a keep-alive socket from the previous localhost server.
+    const { status, html } = await new Promise((resolve, reject) => {
+      const request = httpGet(ORIGIN, { agent: false }, response => {
+        let html = ''; response.setEncoding('utf8'); response.on('data', chunk => { html += chunk; });
+        response.on('end', () => resolve({ status: response.statusCode, html })); response.on('error', reject);
+      });
+      request.on('error', reject);
+    });
+    assert.equal(status, 200);
+    assert.match(html, /【TEST】学習アプリのGoogle保存先を設定/);
+    assert.match(html, /【TEST】ひび学習アプリ・学習記録/);
+    assert.doesNotMatch(html, new RegExp(config.clientSecret));
   } finally {
     server.close(); server.closeAllConnections(); await once(server, 'close');
   }

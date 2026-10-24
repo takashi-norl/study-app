@@ -1,7 +1,7 @@
 import type { LearningPlan, Profile, Question, SourceDocument, StudyData } from '@/lib/types';
 import { ApiError } from './config';
 
-/** Roles grant system capabilities, never access to another person's study data. */
+/** Administrative capabilities never grant access to another person's study data. */
 export function canAccessSource(source: Pick<SourceDocument, 'ownerId'|'testOnly'>, profile: Profile): boolean {
   return source.ownerId === profile.id && (!source.testOnly || profile.accessLevel === 'superuser');
 }

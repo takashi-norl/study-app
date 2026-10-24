@@ -1,8 +1,10 @@
 # Google Drive / Sheets の接続設定
 
-現在は本人専用の招待制アプリです。運営用Web画面はSuper Userだけが利用できます。以下の `ALLOWED_FAMILY_MEMBERS_JSON` / `FAMILY_ID` / 内部の役割名は既存環境との互換用で、利用者同士を連携する機能ではありません。新規テスト利用者の招待は `/admin/invitations` から行います。
+現在は本人専用の招待制アプリです。全員が自分の学習アカウントを持ち、運営用Web画面 `/admin` は確認済みの運営アカウント（Super User）だけが利用できます。運営者も学習画面では自分の教材と記録だけを使います。初期登録は `REGISTERED_ACCOUNTS_JSON`、保存先の識別は `WORKSPACE_ID` を使い、新規テスト利用者の招待は `/admin/invitations` から行います。
 
-写真・PDFは個人Google Driveのアプリ専用フォルダ、問題・履歴は同じアカウントのGoogle Sheetsに保存します。保存には所有者のOAuth接続を使います。利用者のログインは別の処理で、利用者にDriveの権限を求めません。サービスアカウントは使用しません。
+写真・PDFは保存先所有者のGoogle Driveのアプリ専用フォルダ、問題・履歴は同じアカウントのGoogle Sheetsに保存します。保存には所有者のOAuth接続を使います。利用者のログインは別の処理で、利用者にDriveの権限を求めません。サービスアカウントは使用しません。
+
+設定対象の環境ごとに、意図したGoogleアカウントとCloudプロジェクトを確認します。既存本番は従来の個人アカウントの設定を維持し、新しいStagingは会社管理の`takashi@norl.ai`と`norl.ai`組織配下のプロジェクト`norl-hibi-study-staging`を使います。Stagingの準備によって本番の所有者や接続先を変更しません。
 
 この手順では、所有者が接続を承認した後、専用フォルダと記録シートを**アプリ自身が新規作成**します。`drive.file` はアプリが作成したファイルにアクセスできるため、Google Picker、Picker用APIキー、トークンの手動コピーは不要です。既存のDriveファイルには権限を追加しません。[Driveのファイル単位権限](https://developers.google.com/workspace/drive/api/guides/api-specific-auth)、[Sheets作成APIの権限](https://developers.google.com/workspace/sheets/api/reference/rest/v4/spreadsheets/create)
 
@@ -10,7 +12,7 @@ Googleの `/drive/project/…` は通常の保存フォルダとは限りませ�
 
 ## 1. Google Cloudにアプリを登録する
 
-1. 保存先所有者の**個人用Chromeプロフィール**で [Google Cloud Console](https://console.cloud.google.com/)を開き、専用プロジェクトを作成します。
+1. 設定対象のGoogleアカウントでログインしたブラウザプロフィールで [Google Cloud Console](https://console.cloud.google.com/)を開き、アカウント・所属組織・プロジェクトを確認します。専用プロジェクトが未作成の場合だけ新規作成します。
 2. **Google Drive API** と **Google Sheets API** を有効にします。
 3. Google Auth Platformのアプリ情報・対象ユーザー・連絡先を設定します。個人Googleアカウントを含む場合はExternalを選び、テスト中は所有者とテスト利用するアカウントをテストユーザーに追加します。
 4. Data Accessには `openid`、`https://www.googleapis.com/auth/userinfo.email`、`https://www.googleapis.com/auth/userinfo.profile`、`https://www.googleapis.com/auth/drive.file` を登録します。`drive`や`spreadsheets`全体の権限は不要です。
@@ -21,7 +23,7 @@ Googleの `/drive/project/…` は通常の保存フォルダとは限りませ�
    http://localhost:8765/oauth/callback
    ```
 
-   別の本番ドメインを使う場合は1行目を置換します。ローカルのアプリログインも検証する場合だけ `http://localhost:3000/api/auth/callback/google` を追加します。現在のサーバー側OAuth方式ではJavaScript originsやPlayground redirectは不要です。
+   上記1行目は既存本番の例です。Staging用クライアントでは`https://study-app-staging.vercel.app/api/auth/callback/google`に置換し、本番callbackを追加しません。別の本番ドメインを使う場合も、対象環境のURLに置換します。現在のローカル画面はデモ専用で、クラウド接続は停止しています。接続確認は分離したStagingを使います。現在のサーバー側OAuth方式ではJavaScript originsやPlayground redirectは不要です。
 6. `GOOGLE_CLIENT_ID` と `GOOGLE_CLIENT_SECRET` を、次の秘密設定ファイルに保存します。チャットやリポジトリに貼り付けません。
 
 Externalで公開ステータスがTestingの場合、Driveを含むrefresh tokenは原則7日で期限切れになります。継続運用前にGoogle側でProductionへの切替・必要な確認を済ませ、その後に最終的な接続を取得してください。Productionでもアプリ側の既存登録・招待制限は有効です。[Googleのトークン有効期限](https://developers.google.com/identity/protocols/oauth2/)
@@ -49,17 +51,17 @@ Google Consoleからダウンロードした `web` 形式のJSONをそのまま�
 
 ## 3. 所有者が接続を確認する
 
-個人用Chromeで [セットアップ画面](http://localhost:8765)を開き、表示される所有者メールと作成内容を確認します。「Googleで接続し、専用の保存先を作成する」を押し、指定した所有者のGoogleアカウントで許可します。開始画面の有効期限は10分です。
+保存先所有者のGoogleアカウントを選べるブラウザプロフィールで [セットアップ画面](http://localhost:8765)を開き、表示される所有者メール・対象環境・作成内容を確認します。「Googleで接続し、専用の保存先を作成する」を押し、指定した所有者のGoogleアカウントで許可します。個人用か会社用かを決め打ちせず、設定ファイルの所有者メールとの一致を確認します。開始画面の有効期限は10分です。
 
 セットアップは次を実行します。
 
-- `openid`、メール、`drive.file` のみでoffline accessを要求します。家族の通常ログイン設定は変更しません。
+- `openid`、メール、`drive.file` のみでoffline accessを要求します。利用者の通常ログイン設定は変更しません。
 - Googleから返された認証を、state・PKCE・ブラウザ用Cookie・ID tokenの署名／発行元／audience／nonce・本人確認済み所有者メールで検証します。指定と異なるアカウントや広いDrive権限なら、ファイル作成前に停止します。
 - マイドライブに「ひび学習アプリ」フォルダと「ひび学習アプリ・学習記録」を作成し、シートを専用フォルダに移動します。共有リンクは公開しません。
 - `Events` タブのA〜M列に以下の見出しを設定します。
 
   ```text
-  id type actorId familyId createdAt payload1 payload2 payload3 payload4 payload5 payload6 payload7 payload8
+  id type actorId workspaceId createdAt payload1 payload2 payload3 payload4 payload5 payload6 payload7 payload8
   ```
 
 接続結果はプロジェクト直下の **`.env.google-setup.json`** に、所有者のみ読み書き可能な `0600` で保存されます。秘密値はブラウザ、標準出力、ログに表示しません。access tokenやID tokenは出力ファイルに保存しません。保存されるrefresh tokenとclient secretは秘密情報です。セットアップはVercelへ自動送信せず、AIも呼び出しません。[GoogleのOffline access](https://developers.google.com/identity/protocols/oauth2/web-server#offline)
@@ -82,7 +84,7 @@ node --test tests/setup-google.test.mjs
 
 ## 4. Vercelの環境変数
 
-`.env.google-setup.json` の `env` 内にある接続値を、明示的な操作でVercelのProduction環境へ登録し、再デプロイします。ファイル全体を表示・チャットへ貼付せず、設定画面または値を標準入力で渡すCLI操作を使ってください。必ず意図したVercelアカウント・チームを確認します。Preview環境も使う場合は、そのURLのOAuth callbackと環境変数も別途設定します。
+`.env.google-setup.json` の `env` 内にある接続値を、明示的な操作でVercelのProduction環境へ登録し、再デプロイします。ファイル全体を表示・チャットへ貼付せず、設定画面または値を標準入力で渡すCLI操作を使ってください。必ず意図したVercelアカウント・チームを確認します。本番のPreviewへ本番接続をコピーしないでください。接続確認は次の独立したStagingの手順を使います。
 
 | 名前 | 値 |
 |---|---|
@@ -95,23 +97,94 @@ node --test tests/setup-google.test.mjs
 | `GOOGLE_DRIVE_FOLDER_ID` | セットアップで作成した保存フォルダID |
 | `GOOGLE_SHEETS_ID` | セットアップで作成した記録スプレッドシートID |
 | `GOOGLE_SHEETS_EVENTS_TAB` | `Events`（省略時も同じ） |
-| `FAMILY_ID` | `family-primary`（省略時も同じ。運用開始後は変更しない） |
-| `ALLOWED_FAMILY_MEMBERS_JSON` | 下記の形式。実際の家族のメールに置換 |
+| `WORKSPACE_ID` | 新しい保存先の例: `workspace-primary`。既存環境は現在の識別子をそのまま指定し、運用開始後は変更しない |
+| `REGISTERED_ACCOUNTS_JSON` | 下記の形式。実際に利用するGoogleメールに置換 |
 
 ```json
-[{"id":"parent","email":"parent@example.com","name":"お母さん","role":"parent"},{"id":"student","email":"student@example.com","name":"高校生","role":"student"}]
+[{"id":"operator","email":"takashi.oikawa@gmail.com","name":"Takashi"},{"id":"learner-1","email":"learner@example.com","name":"学習者"}]
 ```
 
-`id` は学習履歴と結びつくので運用開始後は変えません。役割は `parent` / `student` のみです。許可リストを空にする、同じメールやIDを重複させる、設定が欠ける場合はログインできません。所有者と利用する保護者が別アカウントでも構いません。
+各登録の項目は `id`・`email`・`name` だけです。`id` は教材・学習履歴と結びつくので運用開始後は変えません。既存環境ではこの例のIDへ置き換えないでください。登録を空にする、同じメールやIDを重複させる、設定が欠ける場合はログインできません。保存先所有者と学習に使うアカウントは別でも構いません。
+
+現在の運営権限は `takashi.oikawa@gmail.com` を登録し、そのメールのGoogle本人確認が済んだ場合にだけ認めます。登録JSONに権限フィールドを追加しても運営権限は付与しません。一般の学習者は、運営画面・招待管理・固定教材の有料音声準備などを使えません。
+
+既存デプロイの旧設定は `src/server/legacy-settings.ts` で読み継ぐため、環境変数を即時に変更する必要はありません。新しい設定名へ切り替える際も、アカウントIDと保存先IDの値を維持します。既存Sheetsの4列目は同じ保存先識別子のまま読み書きし、見出し変更やデータ移行は不要です。
 
 Claude API・Web Push・Vercel Workflowの設定は別途必要です。Google接続の確認中は `AI_GENERATION_ENABLED=false` にしておけます。
 
 ## 5. 接続確認と運用上の範囲
 
-本番URLで保護者としてログインし、問題集を1つ作成、写真を1枚アップロードします。Eventsへの行追加、指定フォルダへの写真追加、認証された原本プレビューを確認します。次に生徒としてログインし、下書き・解答・原本が公開前の画面に出ないことを確認します。
+本番URLで自分の学習アカウントにログインし、写真を1枚アップロードして問題集を作ります。Eventsへの行追加、指定フォルダへの写真追加、本人だけが開ける原本プレビューを確認します。本人の一覧レビュー・編集では正解を確認でき、練習では回答前の正解を隠します。
+
+別の登録アカウントに切り替え、最初の人の教材・問題・会話・成績が一覧にも直接指定したAPIにも現れないことを確認します。運営アカウントも他人の学習データは開けません。運営者では `/admin` に入れ、一般アカウントでは運営画面と操作APIが拒否されることも確認してください。教材の共有・公開・配布は行いません。
 
 ブラウザの写真アップロードは、サーバーが作った単一ファイル用resumable URLへ直接PUTします。OAuthトークンはブラウザに渡しません。Googleの公式ブラウザ例と同じ方式ですが、**実運用URLとiPhone SafariでのCORS・10MBのアップロードは実接続後に確認する必要があります。** URLはアップロード権限を持つため、ログや学習記録へ保存しません。失敗した場合は写真を選び直してアップロードします。[Googleのresumable upload](https://developers.google.com/workspace/drive/api/guides/manage-uploads)
 
-Sheetsはデータベースではありません。読み書きは所有者の割当量を家族で共有します。現在の目安では10問で約30回の読み取りと20回の書き込みに、画面更新・開始処理が加わります。毎問後の全履歴確認で競合を防ぐため、履歴をキャッシュして読み飛ばすことはしていません。高速な連続練習・複数端末・保護者の頻繁な更新が重なると429が発生し得ます。既定の割当はユーザー・プロジェクト当たり毎分60回ずつで、長期に履歴が増えると全件読込みも重くなります。規模が増えたら問題・解答履歴だけをデータベースへ移す設計です。[Sheetsの割当量](https://developers.google.com/workspace/sheets/api/limits)
+Sheetsはデータベースではありません。読み書きは保存用アカウントの割当量をアプリ全体で共有します。現在の目安では10問で約30回の読み取りと20回の書き込みに、画面更新・開始処理が加わります。毎問後の全履歴確認で競合を検出するため、履歴をキャッシュして読み飛ばすことはしていません。高速な連続練習・複数端末・頻繁な更新が重なると429が発生し得ます。既定の割当はユーザー・プロジェクト当たり毎分60回ずつで、長期に履歴が増えると全件読込みも重くなります。多人数での利用に向けたDB・ファイル保存・認証の変更は [設計文書](MULTI_USER_ARCHITECTURE.md) にまとめますが、現時点では未実装です。[Sheetsの割当量](https://developers.google.com/workspace/sheets/api/limits)
 
 問題の生成上限はアプリ内のジョブ回数・問題数上限です。API側で発生する正確な料金を保証する金額上限ではないため、Claude側でも利用上限を設定します。通信が不明な状態で終わった場合、課金済みの応答を再取得できないことがあります。
+
+
+## 6. 独立したStagingを準備する
+
+この手順は既存本番とは別の新規設定です。本番の保存先の移行・削除や、既存の接続情報のコピーは行いません。まずStagingの画面・デモだけを公開でき、Googleログインと保存は専用設定が揃うまで停止します。
+
+2026-10-24時点で、ユーザーの承認に基づき次の会社管理の設定を準備済みです。
+
+| 項目 | 状態・識別情報 |
+|---|---|
+| 管理アカウント・保存先所有者 | `takashi@norl.ai` |
+| Google組織 | `norl.ai` |
+| Cloudプロジェクト | `norl-hibi-study-staging`（表示名: `Hibi Study TEST`） |
+| Web OAuthクライアント | 作成済み。公開client ID: `1089477603802-6togub5fvpue8djhg5itdknmia4p8rff.apps.googleusercontent.com` |
+| API | Google Drive API・Google Sheets APIを有効化済み |
+| client secret | クラウド同期の対象外に`0600`で保存済み。値と実際の保存場所はこの文書に記載しない |
+| 保存用OAuth同意 | `takashi@norl.ai`による`openid`・メール・`drive.file`の同意が完了 |
+| TEST専用Driveフォルダ | 作成済み。`1VSQZ35k_0ZWnrg7bDt-xEqNtTQMYtYF0` |
+| TEST専用Sheets | 作成済み。`1O0bt-tx5sRzBOBQJ-aa6QkaJ59MRGecakgGuP6TpRgM`。作成時に新しい`Events`タブの見出しと、学習イベントが空であることを確認 |
+| Vercelへの接続反映 | ユーザーの明示承認後、Stagingだけに19項目の接続設定・bindingを暗号化登録し、コミット`efa319c`を再デプロイ済み。Vercel Authenticationを維持 |
+
+個人Gmail側の`hibi-study-staging-20261024`は未使用のまま残し、この手順には使用しません。公開環境の確認結果は [STAGING_STATUS.md](STAGING_STATUS.md) を参照してください。
+
+この会社Stagingでは、以下の手順1〜5と再デプロイが完了しています。既存本番と別の空の保存先を新規作成しており、本番の原本・学習記録はコピーしていません。未ログイン状態のAPIとTEST表示を確認し、両TESTアカウントの実Googleログイン、会社アカウントの合成プラン保存・再読み込み、Gmail側への非表示、GmailでのAdmin Console表示を確認しました。OAuthはExternalのTestingモードのため、保存用refresh tokenは原則7日で期限切れになります。継続運用時の切替・再接続については手順1の注意を参照してください。
+
+1. 上記の会社管理プロジェクトと専用Web OAuthクライアントを使い、この資料の手順1と同じ最小権限を確認します。別の環境を新規準備する場合だけ、本番とは別のプロジェクト・クライアントを作成します。OAuth callbackにはStagingの固定URLの `/api/auth/callback/google` と `http://localhost:8765/oauth/callback` だけを登録します。本番OAuthクライアントを再利用しません。
+2. 本番用の秘密ファイルとは別の `.env.google-client.staging.json` に次の形式を保存し、`chmod 600` で保護します。値は新しいStagingクライアントと所有者のものにします。
+
+   ```json
+   {
+     "APP_ENV": "staging",
+     "GOOGLE_CLIENT_ID": "YOUR_STAGING_CLIENT_ID.apps.googleusercontent.com",
+     "GOOGLE_CLIENT_SECRET": "YOUR_STAGING_CLIENT_SECRET",
+     "GOOGLE_DRIVE_OWNER_EMAIL": "takashi@norl.ai"
+   }
+   ```
+
+3. 次のコマンドで開始画面を開き、TEST表示と保存先を確認してから所有者がGoogleの同意操作を行います。Stagingでは `--config` の明示が必須です。
+
+   ```sh
+   node scripts/setup-google.mjs --environment staging --config .env.google-client.staging.json
+   ```
+
+   作成する名前は「【TEST】ひび学習アプリ」フォルダと「【TEST】ひび学習アプリ・学習記録」です。結果は **`.env.google-setup.staging.json`** に保存し、レコードにも `environment: "staging"` を記録します。本番の `.env.google-setup.json` は開かず、上書きしません。再開は次の指定に限定します。
+
+   ```sh
+   node scripts/setup-google.mjs --environment staging --resume
+   ```
+
+   保存レコードの環境が異なる場合は、Googleへ接続する前に拒否します。環境未指定の既存コマンドと既存レコードは本番用として読み継ぎます。
+
+4. Staging専用Vercelプロジェクトへ、Staging出力の接続情報・新規の `WORKSPACE_ID`・新規の `NEXTAUTH_SECRET`・StagingのURLを登録します。`REGISTERED_ACCOUNTS_JSON` も検証用アカウントだけで明示設定します（Stagingでは旧許可リストへフォールバックしません）。秘密値を本番から取得する必要はありません。`APP_ENV=staging` とし、次の機能は接続確認中すべて `false` のままにします。
+
+   ```text
+   AI_GENERATION_ENABLED=false
+   AUDIO_GENERATION_ENABLED=false
+   PUSH_NOTIFICATIONS_ENABLED=false
+   WORKFLOW_EXECUTION_ENABLED=false
+   ```
+
+5. `APP_ENV_BINDINGS_JSON` で、本番/Staging双方の `projectId`・`workspaceId`・`googleClientId`・`driveFolderId`・`sheetsId`・`origin` を固定します。これらは秘密ではない識別情報です。値は両環境で異なる必要があります。Stagingにだけ、新しい署名鍵の `authSecretSha256` を追加します。構造は [Staging計画](STAGING_PLAN.md) と `src/server/environment.ts` を参照してください。既知プロジェクト・実際の設定との一致を確認できない場合は認証・保存を停止します。
+
+未ログイン状態では認証関連APIが200を返し、学習データのAPIは401で拒否することを確認しました。本人ログイン後は、合成プランの保存と再読み込み、別アカウントへの非表示を実ブラウザで確認済みです。合成プラン1件をTEST側に残しています。原本アップロードと有料AIの実行は今回の確認には含みません。このセットアップツール自体が自動でVercelへ値を登録したり、AI・音声・通知を有効化したりすることはありません。
+
+任意の外部機能を後から有効にする際は、専用キーと対応するpinを確認してから個別に許可します。pinは**確認したキー以外への差し替えを拒否するもの**で、提供元アカウントの独立性そのものを証明しません。Google接続は別OAuthクライアントIDと実際のtoken audience・`drive.file`権限も検証します。本番の秘密値を読む作業はこの手順に含みません。

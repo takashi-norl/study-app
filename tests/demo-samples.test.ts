@@ -6,7 +6,7 @@ import type {LearningPlan} from '../src/lib/types';
 
 const now='2026-10-23T00:00:00.000Z';
 function setup(){
-  const data=createDemoData(new Date(now));const user=data.profiles.find(p=>p.role==='student')!;let number=0;const id=()=>`sample-${++number}`;
+  const data=createDemoData(new Date(now));const user=data.profiles[0];let number=0;const id=()=>`sample-${++number}`;
   const plan:LearningPlan={id:'sample-plan',ownerId:user.id,title:'英語の練習',subject:'英語',goal:'語彙を練習',difficulty:'標準',dailyQuestionTarget:10,sourceIds:[],sampleFirst:true,version:1,createdAt:now,updatedAt:now};
   return {data:{...data,plans:[...data.plans,plan]},user,plan,id};
 }

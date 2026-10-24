@@ -3,6 +3,7 @@ import webpush from 'web-push';
 import type { PushSubscription } from 'web-push';
 import { appendEvent,getFullState } from './google-store';
 import { ApiError,requiredEnv } from './config';
+import { assertExternalEffectAllowed, externalEffectEnabled } from './environment';
 import { mayPracticeQuestion } from './practice-access';
 import type { Profile,StudyData } from '@/lib/types';
 
@@ -12,7 +13,7 @@ export function notificationQuestions(data:StudyData,profile:Profile,questionIds
 }
 
 export function pushConfigured() {
-  return !!(process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY && process.env.VAPID_PRIVATE_KEY && process.env.VAPID_SUBJECT);
+  return externalEffectEnabled('push') && !!(process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY && process.env.VAPID_PRIVATE_KEY && process.env.VAPID_SUBJECT);
 }
 
 export function validatePushEndpoint(endpoint:string) {
@@ -33,19 +34,20 @@ export async function notifyPublished(questionIds:string[]) {
   for(const event of events) {
     if(event.type!=='push.subscribed') continue;
     const payload=event.payload as {userId:string;subscription:PushSubscription|null};
-    // One subscription per student keeps recovery and revocation simple for the family app.
-    if(!data.profiles.some(p=>p.id===payload.userId && p.role==='student')) continue;
+    // One subscription per registered account keeps recovery and revocation simple.
+    if(!data.profiles.some(p=>p.id===payload.userId)) continue;
     if(payload.subscription) subscriptions.set(payload.userId,payload.subscription);
     else subscriptions.delete(payload.userId);
   }
   webpush.setVapidDetails(requiredEnv('VAPID_SUBJECT'),requiredEnv('NEXT_PUBLIC_VAPID_PUBLIC_KEY'),requiredEnv('VAPID_PRIVATE_KEY'));
   let sent=0,failed=0;
   for(const [userId,subscription] of subscriptions) {
-    const recipient=data.profiles.find(profile=>profile.id===userId && profile.role==='student');
+    const recipient=data.profiles.find(profile=>profile.id===userId);
     const visible=recipient ? notificationQuestions(data,recipient,questionIds) : [];
     if(!visible.length) continue;
     try {
       validatePushEndpoint(subscription.endpoint);
+      assertExternalEffectAllowed('push');
       await webpush.sendNotification(subscription,JSON.stringify({title:'新しい問題が届きました',body:`${visible.length}問が追加されました。今日の10問から始めよう。`,url:'/',tag:'hibi-new-questions'}),{TTL:24*60*60,timeout:10000});
       sent++;
     } catch(error) {

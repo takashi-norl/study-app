@@ -5,7 +5,7 @@ import { appendEvents, loadEvents, type StudyEvent } from './google-store';
 import { ApiError } from './config';
 import { vocabularyLookupSchema } from './vocabulary-lookup-schemas';
 
-/** Owner is always the authenticated actor; managers do not receive another person's lookup history. */
+/** Owner is always the authenticated actor; administrative access never grants another person's lookup history. */
 export function foldVocabularyLookups(events: StudyEvent[], ownerId: string): LookupRecord[] {
   const records = new Map<string, LookupRecord>();
   const seen = new Set<string>();

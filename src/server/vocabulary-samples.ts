@@ -4,6 +4,7 @@ import { vocabularyEntries } from './vocabulary-catalog';
 import type { VocabularyAudio, VocabularyEntry } from '@/lib/vocabulary-types';
 import type { Profile } from '@/lib/types';
 import { ApiError, requiredEnv } from './config';
+import { assertExternalEffectAllowed, externalEffectEnabled } from './environment';
 import { assertSampleAccess } from './eiken-samples';
 import { audioRecord, audioSlotId, checkAudioQuota } from './audio';
 import { audioSegmentsSchema } from './audio-segments';
@@ -34,7 +35,7 @@ export async function vocabularyPreview(profile: Profile, batchId = LEGACY_VOCAB
       ...(record?.fileId && record.segments ? { segments: record.segments } : {}),
     };
   });
-  return { entries, audio, batchId, batches: vocabularyBatchIndex(), canPrepareAudio: profile.accessLevel === 'superuser' && batchId === LEGACY_VOCABULARY_BATCH };
+  return { entries, audio, batchId, batches: vocabularyBatchIndex(), canPrepareAudio: profile.accessLevel === 'superuser' && externalEffectEnabled('audio') && batchId === LEGACY_VOCABULARY_BATCH };
 }
 
 /** A fixed catalog and an append-only reservation prevent arbitrary text and repeat paid requests. */
@@ -46,6 +47,7 @@ export async function prepareVocabularyAudio(profile: Profile, wordId: string, c
   const previous = audioRecord(events, spec.cacheKey);
   if (previous?.fileId && previous.segments) return { ready: true };
   if (previous) throw new ApiError(409, previous.failed ? '準備に失敗しています。運営者が状況を確認します。' : '音声を準備中です。「状況を確認」から確認できます。', previous.failed ? 'SAMPLE_AUDIO_FAILED' : 'AUDIO_PENDING');
+  assertExternalEffectAllowed('audio');
   requiredEnv('ELEVENLABS_API_KEY');
   if (catalogBuild) checkVocabularyBuildQuota(events, entries.map(vocabularyAudioSpec), spec.cacheKey);
   else checkAudioQuota(events, spec.characters);

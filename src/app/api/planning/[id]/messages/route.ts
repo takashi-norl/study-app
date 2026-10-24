@@ -9,6 +9,7 @@ import { planningWorkflow } from '@/workflows/planning';
 import { planningProgress } from '@/server/planning-progress';
 import { inspectPlanningRun } from '@/server/planning-status';
 import type { PlanningTurn } from '@/lib/types';
+import { assertExternalEffectAllowed } from '@/server/environment';
 
 export const maxDuration=300;
 export async function POST(request:Request,context:{params:Promise<{id:string}>}) {return api(async()=>{
@@ -22,12 +23,14 @@ export async function POST(request:Request,context:{params:Promise<{id:string}>}
     // Only an explicit queued request without an active run can be dispatched again.
     // A running/unknown result is never repeated; the hook also handles dispatch races.
     if(inspected.shouldDispatch) {
+      assertExternalEffectAllowed('workflow');
       requireGenerationEnabled();
       try {await start(planningWorkflow,[previous.id]);}
       catch {throw new ApiError(503,'AI相談の開始を確認できませんでした。同じ内容で再度送信してください。','WORKFLOW_UNAVAILABLE');}
     }
     return {planId:plan.id,turn:inspected.turn,notice:inspected.shouldDispatch?'保存済みの相談を受け付けました。進み具合は画面に表示されます。':inspected.notice};
   }
+  assertExternalEffectAllowed('workflow');
   requireGenerationEnabled();
   const now=new Date();
   const turn:PlanningTurn=planningProgress({id:input.requestId,planId:plan.id,requestedBy:profile.id,version:plan.version+1,status:'queued',samplePreview:true,message:input.message,createdAt:now.toISOString()},plan.sourceIds,events,'queued',now);

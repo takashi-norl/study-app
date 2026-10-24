@@ -19,6 +19,6 @@ export function prepareFeedback(events: StudyEvent[], profile: Profile, raw: unk
   const day = (value: string | Date) => new Intl.DateTimeFormat('sv-SE', { timeZone: 'Asia/Tokyo' }).format(new Date(value));
   const count = new Set(events.filter(event => event.type === 'feedback.submitted' && event.actorId === profile.id && day(event.createdAt) === day(now)).map(event => event.id)).size;
   if (count >= 5) throw new ApiError(429, '感想は1日5件まで送れます。続きは明日お願いします。', 'FEEDBACK_LIMIT');
-  return { id, type: 'feedback.submitted', actorId: profile.id, familyId: profile.familyId, createdAt: now.toISOString(),
+  return { id, type: 'feedback.submitted', actorId: profile.id, workspaceId: profile.workspaceId, createdAt: now.toISOString(),
     payload: { userId: profile.id, category: input.category, message: input.message, version: CURRENT_RELEASE.version } };
 }

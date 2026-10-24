@@ -1,14 +1,14 @@
+import './legacy-production-runtime';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { assertSampleAccess, prepareSampleAudio, createSampleProviderAudio, sampleAudioResponse, sampleAudioSpec } from '../../src/server/eiken-samples';
 import catalog from '../../content/eiken-audio-samples.json';
-import { getFamilyId } from '../../src/server/env';
+import { getWorkspaceId } from '../../src/server/env';
 
-test('authenticated members of every role may access curated content and audio', () => {
-  const parent = { id: 'parent', name: 'Parent', role: 'parent' as const, familyId: getFamilyId() };
-  assert.doesNotThrow(() => assertSampleAccess(parent));
-  assert.doesNotThrow(() => assertSampleAccess({ ...parent, role: 'student' }));
-  assert.throws(() => assertSampleAccess({ ...parent, familyId: 'other' }), { code: 'FORBIDDEN' });
+test('authenticated learners and operators may access curated content and audio', () => {
+  const operator = { id: 'operator', name: 'Operator',  workspaceId: getWorkspaceId() };
+  for (const accessLevel of ['learner', 'superuser'] as const) assert.doesNotThrow(() => assertSampleAccess({ ...operator, accessLevel }));
+  assert.throws(() => assertSampleAccess({ ...operator, workspaceId: 'other' }), { code: 'FORBIDDEN' });
 });
 
 test('six original samples have valid answers and writing word counts; only curated IDs can generate audio', () => {
@@ -67,24 +67,24 @@ test('sample provider uses both fixed voices without requiring voice-management 
 });
 
 
-test('paid sample preparation rejects legacy parents and forged access levels before storage or provider access', async () => {
-  const previous = process.env.ALLOWED_FAMILY_MEMBERS_JSON;
+test('paid sample preparation rejects ordinary accounts and forged access levels before storage or provider access', async () => {
+  const previous = process.env.REGISTERED_ACCOUNTS_JSON;
   const originalFetch = globalThis.fetch;
-  process.env.ALLOWED_FAMILY_MEMBERS_JSON = JSON.stringify([
-    { id: 'operator', name: 'Operator', email: 'takashi.oikawa@gmail.com', role: 'parent' },
-    { id: 'manager', name: 'Member', email: 'member@example.com', role: 'parent' },
-    { id: 'student', name: 'Student', email: 'student@example.com', role: 'student' },
+  process.env.REGISTERED_ACCOUNTS_JSON = JSON.stringify([
+    { id: 'operator', name: 'Operator', email: 'takashi.oikawa@gmail.com', },
+    { id: 'member', name: 'Member', email: 'member@example.com', },
+    { id: 'student', name: 'Student', email: 'student@example.com', },
   ]);
   let calls = 0;
   globalThis.fetch = async () => { calls++; throw new Error('Network must not be reached'); };
   try {
-    for (const id of ['manager', 'student', 'unknown']) {
-      await assert.rejects(() => prepareSampleAudio({ id, name: 'Member', role: 'parent', accessLevel: 'superuser', familyId: getFamilyId() }, 'grade2-listening'), { code: 'FORBIDDEN' });
+    for (const id of ['member', 'student', 'unknown']) {
+      await assert.rejects(() => prepareSampleAudio({ id, name: 'Member',  accessLevel: 'superuser', workspaceId: getWorkspaceId() }, 'grade2-listening'), { code: 'FORBIDDEN' });
     }
-    await assert.rejects(() => prepareSampleAudio({ id: 'operator', name: 'Operator', role: 'parent', accessLevel: 'superuser', familyId: getFamilyId() }, 'not-curated'), { code: 'SAMPLE_NOT_FOUND' });
+    await assert.rejects(() => prepareSampleAudio({ id: 'operator', name: 'Operator',  accessLevel: 'superuser', workspaceId: getWorkspaceId() }, 'not-curated'), { code: 'SAMPLE_NOT_FOUND' });
     assert.equal(calls, 0);
   } finally {
     globalThis.fetch = originalFetch;
-    if (previous === undefined) delete process.env.ALLOWED_FAMILY_MEMBERS_JSON; else process.env.ALLOWED_FAMILY_MEMBERS_JSON = previous;
+    if (previous === undefined) delete process.env.REGISTERED_ACCOUNTS_JSON; else process.env.REGISTERED_ACCOUNTS_JSON = previous;
   }
 });

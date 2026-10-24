@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
 import { ArrowRight, BookOpen, LockKeyhole, Pencil, RefreshCw, Sparkles } from 'lucide-react';
 import { isPracticeReadyQuestion, mayPracticeLibraryTopic, topicOwnerId } from '@/lib/library-policy';
 import type { StudyController } from './controller';
@@ -26,7 +25,6 @@ export function QuestionLibrary({ c, onEdit, onCreate, onOpenPlan }: {
   const generating = c.data.jobs.some(job => job.requestedBy === c.profile.id && (job.status === 'queued' || job.status === 'running'));
   const topics = c.data.topics.filter(topic => !topic.libraryPublished && topicOwnerId(c.data, topic) === c.profile.id).sort((a,b)=>b.createdAt.localeCompare(a.createdAt));
   return <section className={styles.library} aria-label="自分の問題集">
-    {c.profile.accessLevel === 'superuser' && !c.preview && !c.demo && <Link className="text-button" href="/admin/question-set-import">確認済みの問題セットを取り込む<ArrowRight size={15}/></Link>}
     <p className={styles.intro}>自分で作った問題は、そのまま練習・編集できます。問題・教材・相談履歴はほかの利用者に公開されません。</p>
       {!topics.length ? <div className={styles.empty}><BookOpen size={28}/><h2>最初の問題集を作ろう。</h2><p>教材を使っても、AIへの相談だけでも始められます。</p>{!c.preview && <button type="button" className="button primary" onClick={onCreate}>問題を作る<ArrowRight size={16}/></button>}</div> : <div className={styles.grid}>{topics.map(topic=>{
         const questions=c.data.questions.filter(question=>question.topicId===topic.id && question.status!=='archived');

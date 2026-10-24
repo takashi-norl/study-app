@@ -2,6 +2,7 @@ import 'server-only';
 import { createHash } from 'node:crypto';
 import type { VocabularyEntry } from '@/lib/vocabulary-types';
 import { ApiError } from './config';
+import { assertExternalEffectAllowed } from './environment';
 
 export const VOCABULARY_AUDIO_LIMITS = { characters: 1500, audioBytes: 2 * 1024 * 1024, responseBytes: 4 * 1024 * 1024 } as const;
 const MODEL = 'eleven_multilingual_v2';
@@ -146,6 +147,7 @@ export async function createVocabularyProviderAudio(spec: VocabularyAudioSpec): 
   validateSpec(spec);
   const key = process.env.ELEVENLABS_API_KEY?.trim();
   if (!key) throw new ApiError(503, '音声の接続設定が必要です。', 'VOCABULARY_AUDIO_NOT_CONFIGURED');
+  assertExternalEffectAllowed('audio');
   let response: Response;
   try {
     response = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${spec.voiceId}/with-timestamps?output_format=mp3_44100_128`, {

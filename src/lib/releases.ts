@@ -8,6 +8,15 @@ export interface AppRelease {
 
 // Newest first. This is the source for Settings, public history and update notices.
 export const APP_RELEASES: readonly AppRelease[] = [{
+  version: '0.17.0',
+  date: '2026-10-24',
+  title: '自分の学習と、運営の入口を整理',
+  announcement: 'アプリは全員が自分の学習に使う画面へ。運営の操作はWebのAdmin Consoleにまとめました。',
+  changes: [
+    { title: '運営アカウントでも自分の勉強を', description: '同じアカウントで自分の教材・問題・進度を管理できます。教材や学習記録は引き続き本人専用です。' },
+    { title: 'Admin Consoleを用意', description: '招待、感想・不具合、共通教材の準備、アプリ全体のAI利用集計をまとめました。運営権限のあるアカウントの設定から開けます。' },
+  ],
+}, {
   version: '0.16.0',
   date: '2026-10-24',
   title: '3級から準1級まで、基本7,500語に',
@@ -223,12 +232,12 @@ export const APP_RELEASES: readonly AppRelease[] = [{
 }, {
   version: '0.5.0',
   date: '2026-10-23',
-  title: '自分用の問題から、みんなのライブラリへ',
-  announcement: '作った問題はプライベートライブラリですぐ練習。共有したい問題集は、まとめて公開・公開依頼できます。',
+  title: '作った問題を、そのまま練習',
+  announcement: '自分で作った問題をすぐに練習できるようになりました。旧版の共有機能は終了し、現在は本人専用です。',
   changes: [
     { title: '作ったら、そのまま練習', description: '自分で作った問題はプライベートライブラリに保存します。1問ずつ承認する必要はなく、できた分から練習できます。内容の確認・修正は必要なときに行えます。' },
-    { title: '問題集単位で、共有する', description: 'ManagerとSuper Userは、問題集をパブリックライブラリに公開できます。一般ユーザーは公開を依頼でき、管理者がその依頼から公開します。パブリックは、このアプリの登録ユーザー向けです。' },
-    { title: '元の教材と相談は、そのまま手元に', description: '公開するのは共有用にコピーした問題と解説です。元の教材や相談履歴は公開版に添付しません。プライベートの内容は、本人と管理者が確認できます。' },
+    { title: '旧版の共有機能について', description: 'この版に含まれていた共有・公開依頼の機能は終了しました。現在、自分の教材から作った問題は本人だけが利用できます。' },
+    { title: '元の教材と相談は、そのまま手元に', description: '元の教材やAIとの相談を、問題集と一緒に保存できるようになりました。現在は教材・相談・問題のすべてが本人専用です。' },
   ],
 }, {
   version: '0.4.3',
@@ -280,7 +289,7 @@ export const APP_RELEASES: readonly AppRelease[] = [{
   changes: [
     { title: '会話でつくる学び方プロフィール', description: '設定から目標・興味・使える時間・声かけの好みを相談できます。AIがまとめた案は、自分で直して保存できます。入力だけでの登録や、後からの変更もできます。' },
     { title: '自分に合う一言をホームに', description: '保存したプロフィールに合わせて毎日の一言が変わります。学習の目安を達成した日は、ひと息つく声かけに。画面を開くだけではAIを呼びません。' },
-    { title: '管理の役割を分けました', description: 'Super UserとManagerを区別しました。AI利用量と概算料金はSuper Userだけが確認でき、従来の教材・学習管理はManagerも使えます。' },
+    { title: 'AI利用の集計を追加', description: '運営用にAI利用量と概算料金の確認を追加しました。現在の運営操作はAdmin Consoleにまとまっています。' },
   ],
 }, {
   version: '0.2.1',

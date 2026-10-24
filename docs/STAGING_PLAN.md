@@ -1,4 +1,14 @@
-# Production / Staging 導入案
+# Production / Staging 導入計画
+
+## 実装の現在地（アプリ担当、2026-10-24）
+
+`study-app-staging` を同じ個人チームに作成し、[Stagingの固定URL](https://study-app-staging.vercel.app)へ画面・デモ用の版を公開しました。Vercel Authenticationによる保護は維持しています。公開コミット、デプロイID、確認内容は [STAGING_STATUS.md](STAGING_STATUS.md) を正本とします。
+
+プロジェクトIDは `prj_2Ny51kBEY1Y1VyqVThuXlmALj8lA`、Node 24 / Next.jsです。両プロジェクトの `autoExposeSystemEnvs=true` を設定情報で確認済みです。本番には新しい環境ガードをまだ公開しておらず、その実行時確認は本番公開時に行います。以下の09:29の引き継ぎ記録は、その時点の履歴として残しています。
+
+PR #9の環境照合、外部処理の個別停止、TEST専用PWA表示を含むコミット `31768c3ae0e8a7174aa4de22f1e62ed6f052858f` のデプロイがREADYになり、保護された環境でルートページのHTTP 200とTESTタイトルを確認しました。**専用Google認証・Drive・Sheetsは接続準備中で、ログインやクラウド保存を含む結合テスト環境はまだ完成していません。** AI・音声・通知・Workflowの4機能はすべて停止したままです。本番のデプロイ・設定は変更せず、秘密設定・学習記録・原本もコピーしていません。
+
+利用者の指示により、原本の一括Storage移行は後回しにします。新規アップロードの一時処理・自動削除は別変更として実装し、既存の資料と学習記録には触れません。移行先の選定は [MULTI_USER_ARCHITECTURE.md](MULTI_USER_ARCHITECTURE.md)、一時処理の変更範囲は [TEMPORARY_UPLOAD_PLAN.md](TEMPORARY_UPLOAD_PLAN.md) を参照してください。
 
 ## 担当と現在地（2026-10-24 JST 更新）
 
@@ -10,7 +20,7 @@
 
 - 個人チーム：`takashi-7721s-projects`。対象プロジェクト：`study-app`。
 - チームID：`team_i0sbGWNAI80VNxfJ6e0t5mWP`。プロジェクトID：`prj_htxD2yC0URXwqtEEffRzi5aK6KjU`。
-- **現在はProductionだけです。Stagingプロジェクト・Custom Environmentは未作成です。** 環境変数の対象はproductionのみ、Git連携も未設定でした。
+- **09:29時点ではProductionだけで、Stagingプロジェクト・Custom Environmentは未作成でした。** 当時の環境変数の対象はproductionのみ、Git連携も未設定でした。以降のStaging公開状況は上記の現在地を参照してください。
 - 本番URLは `https://study-app-opal-eight.vercel.app/`。最後に確認した本番版は0.15.3、音声付きカードは4,552件です。更新前に再確認してください。
 - 0.16.0の7,500語／7,507カードの教材・音声はローカルで完成し、GitHub mainへ保存済みですが、**まだ本番反映していません**。
 - 正しい個人アカウントの既存CLI接続はローカルの `/private/tmp/hibi-vercel-takashi-7721`。`whoami` が `takashi-7721` であることを確認済みです。通常の会社アカウント設定を上書きしないでください。
@@ -22,7 +32,24 @@
 
 ---
 
-作成日: 2026-10-23。これは設計案です。Vercel・Googleの設定や本番データは、この計画に合わせてまだ変更していません。
+計画の作成日: 2026-10-23。2026-10-24にStagingの画面・デモ公開まで進みました。以下には未完了の目標構成・接続試験も含みます。実施済みの範囲は [STAGING_STATUS.md](STAGING_STATUS.md) を参照してください。本番データの移行・削除は行っていません。
+
+## 多人数利用への接続（2026-10-24追記）
+
+DB・Storage・ユーザー管理の推奨設計は [MULTI_USER_ARCHITECTURE.md](MULTI_USER_ARCHITECTURE.md) に整理しました。以下のGoogle保存先の分離は現行版の検証環境を作る手順です。利用者拡大の移行先は、Production/Stagingそれぞれ別のSupabase Postgres・Auth・非公開Storageです。Sheets版の環境分離だけではスケールの課題は解消しません。新基盤はまだ構築していません。
+
+APP_ENVと保存先の検証、音声・通知・Workflowの個別停止、Staging専用PWA表示はPR #9に実装し、Stagingへ公開済みです。専用の接続設定と結合テストが終わるまでは画面確認用です。新基盤の契約/作成と本番切替は設計書の段階B〜Eで行います。
+
+### 実装済みの設定契約
+
+- 表示用 `APP_ENV` は `production` / `staging` / `local`。未知・矛盾した環境は通常アプリとして表示せずTEST扱いにします。
+- クラウド接続は既知のVercel project IDとdeployment target、`APP_ENV_BINDINGS_JSON`の照合が必須です。既存の本番だけ、`APP_ENV`とbindingが両方未設定で既知production project / production targetの場合に旧設定の互換動作を残しています。ローカルと本番projectのPreviewにこの例外は適用しません。
+- bindingは `production` と `staging` の両方を含み、それぞれ `projectId`, `workspaceId`, `googleClientId`, `driveFolderId`, `sheetsId`, `origin` を持ちます。両環境の値は異なる必要があり、現在の環境変数とも一致させます。originは末尾スラッシュなしのHTTPS originです。
+- Stagingの `authSecretSha256` は新しく作った専用 `NEXTAUTH_SECRET` のSHA-256です。有料AI、音声、通知を将来有効にする場合は、該当する `aiKeySha256` / `audioKeySha256` / `pushKeySha256` も設定します。pinは確認済みキーの差し替えを検出するもので、別アカウント・別契約であることを証明するものではありません。専用キーの発行・確認を別途行います。
+- `AI_GENERATION_ENABLED`, `AUDIO_GENERATION_ENABLED`, `PUSH_NOTIFICATIONS_ENABLED`, `WORKFLOW_EXECUTION_ENABLED` はStagingで全てfalse。開始前だけでなく、再開したWorkflowの各stepと外部provider直前でも確認します。停止中のjobは自動再送しません。
+- Vercel Workflowの既存runは開始した旧デプロイに結び付いています。新しいガードのデプロイや設定変更だけで、旧runまで即停止するとは限りません。本番で処理を止めるときは既存runの確認・取消を別途行います。今回の新Stagingには既存runはありません。
+- StagingのGoogle OAuth client IDを本番から分離し、保存先grantのaudienceと `drive.file` scopeを照合します。本番refresh tokenは使いません。個人情報を含む本番ログもコピーしません。
+- URL・cookie・manifestはStaging originに限定します。`/install` のコピー先は閲覧中のoriginで、PWA名・アイコン・常設バナー・オフライン案内はTEST表示です。本番PWAの既存IDとURLは維持します。
 
 ## 推奨構成
 
@@ -30,13 +57,13 @@
 
 | | Production | Staging |
 |---|---|---|
-| 用途 | Yuseiと家族が日々使う | 変更・不具合修正を試す |
-| Vercelプロジェクト | 現在のstudy-app | study-app-staging（候補名） |
-| 固定URL | 現在のstudy-app-opal-eight.vercel.appを維持 | 新規プロジェクトの固定URL、作成後に確定 |
+| 用途 | 招待された学習者が日々使う | 変更・不具合修正を試す |
+| Vercelプロジェクト | 現在のstudy-app | study-app-staging（作成済み） |
+| 固定URL | 現在のstudy-app-opal-eight.vercel.appを維持 | study-app-staging.vercel.app（画面・デモ公開済み） |
 | Gitブランチ | main | staging |
 | Google Drive | 既存の本番フォルダ | 検証専用フォルダ |
 | Google Sheets | 既存の本番記録シート | 検証専用シート |
-| Googleログイン | 現在の家族アカウント | まずTakashi、必要に応じてManagerとテスト利用者 |
+| Googleログイン | 現在の登録アカウント | まずTakashi、必要に応じて検証用アカウント |
 | 有料AI・音声 | 現行の利用制限 | 原則無効、実接続テスト時だけ少額の専用枠 |
 | 通知 | 本番端末への通知 | 送信無効、試験時は検証用購読だけ |
 | PWA | 現在の名前・アイコン | 「ひび学習 TEST」、別アイコン・常時テスト表示 |
@@ -47,10 +74,10 @@ Vercel Proには1プロジェクト内のCustom Environmentも1つ含まれま�
 
 - 有料のVercelチームに現在のプロジェクトが所属していること、Git連携状況、別チャットの未反映変更を確認します。
 - Stagingには別のGoogle OAuthクライアント、Drive所有者の接続、NEXTAUTH_SECRET、固定URLを設定します。同じ個人Googleアカウントを所有者にできますが、本番のrefresh tokenをコピーしません。
-- GOOGLE_DRIVE_FOLDER_ID / GOOGLE_SHEETS_ID / FAMILY_IDを分けます。FAMILY_IDだけ変えて同じシートを使うと、現行のログ検証で読み込みに失敗します。
+- GOOGLE_DRIVE_FOLDER_ID / GOOGLE_SHEETS_ID / WORKSPACE_IDを分けます。WORKSPACE_IDだけ変えて同じシートを使うと、現行のログ検証で読み込みに失敗します。
 - APP_ENVと許可する保存先IDの組み合わせを検証し、Stagingから本番の保存先を指定した場合は処理開始前に拒否します。2プロジェクト方式ではVercel側のtargetがどちらもproductionになり得るため、NODE_ENVやVERCEL_ENVだけで判定しません。
 - StagingのAI_GENERATION_ENABLEDはfalse。これは音声APIには適用されないため、ElevenLabsの鍵も外し、音声生成・通知・Workflow開始に個別の停止ガードを設けます。
-- 100語の音声を再生成しません。必要な見本と音声を検証フォルダへコピーし、参照するファイルIDと記録を検証専用に作り直します。実際の回答・プロフィール・通知先を丸ごとコピーしません。
+- 既存の承認済み音声を再生成しません。検証対象として選んだ共通教材と音声だけを検証フォルダへコピーし、参照するファイルIDと記録を検証専用に作り直します。実際の回答・プロフィール・通知先を丸ごとコピーしません。
 - Stagingはアプリ側のGoogle許可リストで制限します。必要に応じVercel Authenticationも加え、Googleログインの戻り先とWorkflowが保護設定と両立することを確認します。
 
 ## 開発と公開の手順
@@ -64,7 +91,7 @@ Vercel Proには1プロジェクト内のCustom Environmentも1つ含まれま�
 
 VercelのGit連携は2プロジェクトとも同じリポジトリから反応するため、ブランチごとのビルド対象を明示します。本番プロジェクトはmainのみ、Stagingはstagingを対象にします。Previewの追加は本番設定を渡さない運用を確認してから行います。
 
-コードの公開と教材のPublishは別です。Stagingで確認した教材を本番へ出す場合は、教材・問題・必要な音声だけを明示して取り込み、学習履歴やテスト用ユーザーは移しません。
+コードの公開と、運営が権利確認した共通教材のPublishは別です。利用者の私有教材を公開する機能は作りません。Stagingで確認した教材を本番へ出す場合は、教材・問題・必要な音声だけを明示して取り込み、学習履歴やテスト用ユーザーは移しません。
 
 ## 戻す手順と完了条件
 

@@ -6,12 +6,12 @@ import { materializeQuestions } from '../../src/server/generated-batch';
 import { anthropicRequestPolicy } from '../../src/server/ai-usage';
 import { assertGenerationAccess, validateBulkCadence } from '../../src/server/proposal-selection';
 import { foldEvents, type StudyEvent } from '../../src/server/google-store';
-import { getFamilyId } from '../../src/server/env';
+import { getWorkspaceId } from '../../src/server/env';
 
 const samples:PlanningSample[]=Array.from({length:3},(_,i)=>({prompt:`Select the meaning of example ${i+1}.`,choices:['A','B','C','D'],correctIndex:i,
   explanation:'This explanation is the approved style.',learningPoint:'Vocabulary',sourceIds:[],sourceNote:'AI-created example',needsReview:false}));
 const now='2026-10-23T00:00:00Z';
-const profile:Profile={id:'owner',familyId:getFamilyId(),name:'Owner',role:'student'};
+const profile:Profile={id:'owner',workspaceId:getWorkspaceId(),name:'Owner',};
 const plan:LearningPlan={id:'plan',ownerId:profile.id,title:'Words',subject:'英語',goal:'Vocabulary',difficulty:'Advanced',dailyQuestionTarget:10,sourceIds:[],sampleFirst:true,version:1,createdAt:now,updatedAt:now};
 const instructions='作問の具体的な条件。'.repeat(350).slice(0,3900)+'\n現代語訳を設問に付けない。';
 const turn:PlanningTurn={id:'turn',planId:plan.id,requestedBy:profile.id,version:2,status:'queued',message:'この形式の問題を試す',samplePreview:true,createdAt:now};
