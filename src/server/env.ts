@@ -3,6 +3,7 @@ import { z } from 'zod';
 import type { Profile } from '@/lib/types';
 import type { TokenInfo } from 'google-auth-library';
 import { ApiError, requiredEnv } from './config';
+import { assertCloudEnvironment, getAppEnvironment } from './environment';
 import { registeredAccountsSetting, workspaceIdSetting } from './legacy-settings';
 
 const memberSchema = z.object({
@@ -14,14 +15,14 @@ export type RegisteredAccount = z.infer<typeof memberSchema>;
 const SUPER_USER_EMAIL = 'takashi.oikawa@gmail.com';
 
 export function getWorkspaceId(): string {
-  return workspaceIdSetting();
+  return getAppEnvironment() === 'staging' ? requiredEnv('WORKSPACE_ID').trim() : workspaceIdSetting();
 }
 
 /** An invalid or empty allowlist must never turn the app into an open sign-up service. */
 export function getRegisteredAccounts(): RegisteredAccount[] {
   try {
     // Unknown legacy account fields are stripped and cannot confer any capability.
-    const parsed = z.array(memberSchema).min(1).max(20).parse(JSON.parse(registeredAccountsSetting() ?? ''));
+    const parsed = z.array(memberSchema).min(1).max(20).parse(JSON.parse((getAppEnvironment() === 'staging' ? process.env.REGISTERED_ACCOUNTS_JSON : registeredAccountsSetting()) ?? ''));
     if (new Set(parsed.map((member) => member.email)).size !== parsed.length
       || new Set(parsed.map((member) => member.id)).size !== parsed.length) throw new Error('Invalid allowlist');
     return parsed;
@@ -49,6 +50,7 @@ export function assertSuperUser(profile: Profile): Profile {
 }
 
 export function getAuthConfig() {
+  assertCloudEnvironment();
   const secret = requiredEnv('NEXTAUTH_SECRET');
   if (secret.length < 32) throw new ApiError(503, 'ログイン用の秘密鍵は32文字以上で設定してください。', 'INVALID_AUTH_CONFIG');
   return { clientId: requiredEnv('GOOGLE_CLIENT_ID'), clientSecret: requiredEnv('GOOGLE_CLIENT_SECRET'), secret };

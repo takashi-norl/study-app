@@ -1,5 +1,13 @@
 # Production / Staging 導入案
 
+## 実装の現在地（アプリ担当、2026-10-24）
+
+`study-app-staging` を同じ個人チームに作成しました。IDは `prj_2Ny51kBEY1Y1VyqVThuXlmALj8lA`、Node 24 / Next.jsです。両プロジェクトの `autoExposeSystemEnvs=true` を確認済みです。以下の09:29の引き継ぎ記録は、その時点の履歴として残しています。
+
+PR #9で環境の照合、外部処理の個別停止、TEST専用のPWA表示を追加しています。初回は画面確認用のデモ環境です。**専用Google認証・Drive・Sheetsが未設定なので、ログインやクラウド保存を含む結合テスト環境はまだ完成していません。** 本番の秘密設定・学習記録・原本はコピーしていません。本番公開もこの段階では行いません。
+
+利用者の指示により、原本の一括Storage移行は後回しにします。新規アップロードの一時処理・自動削除は別変更として実装し、既存の資料と学習記録には触れません。移行先の選定は [MULTI_USER_ARCHITECTURE.md](MULTI_USER_ARCHITECTURE.md)、一時処理の変更範囲は [TEMPORARY_UPLOAD_PLAN.md](TEMPORARY_UPLOAD_PLAN.md) を参照してください。
+
 ## 担当と現在地（2026-10-24 JST 更新）
 
 ユーザーの指示により、**Production / Staging の実装・アプリの改修・公開は別のアプリ担当チャットへ移管**します。教材担当チャット「問題追加対応の学習アプリ設計」は、2万語と長文・文法・その他問題の作成に専念します。教材担当はVercel設定、Google認証、画面、本番公開を変更しません。
@@ -28,7 +36,18 @@
 
 DB・Storage・ユーザー管理の推奨設計は [MULTI_USER_ARCHITECTURE.md](MULTI_USER_ARCHITECTURE.md) に整理しました。以下のGoogle保存先の分離は現行版の検証環境を作る手順です。利用者拡大の移行先は、Production/Stagingそれぞれ別のSupabase Postgres・Auth・非公開Storageです。Sheets版の環境分離だけではスケールの課題は解消しません。新基盤はまだ構築していません。
 
-APP_ENVと保存先の検証、音声・通知・Workflowの個別停止、Staging専用PWA表示も現行コードには未実装です。これらの実装と境界テストを完了してから、独立したStagingとして運用します。新基盤の契約/作成と本番切替は設計書の段階B〜Eで行います。
+APP_ENVと保存先の検証、音声・通知・Workflowの個別停止、Staging専用PWA表示はPR #9に実装しています。専用の接続設定と結合テストが終わるまでは画面確認用です。新基盤の契約/作成と本番切替は設計書の段階B〜Eで行います。
+
+### 実装済みの設定契約
+
+- 表示用 `APP_ENV` は `production` / `staging` / `local`。未知・矛盾した環境は通常アプリとして表示せずTEST扱いにします。
+- クラウド接続は既知のVercel project IDとdeployment target、`APP_ENV_BINDINGS_JSON`の照合が必須です。既存の本番だけ、`APP_ENV`とbindingが両方未設定で既知production project / production targetの場合に旧設定の互換動作を残しています。ローカルと本番projectのPreviewにこの例外は適用しません。
+- bindingは `production` と `staging` の両方を含み、それぞれ `projectId`, `workspaceId`, `googleClientId`, `driveFolderId`, `sheetsId`, `origin` を持ちます。両環境の値は異なる必要があり、現在の環境変数とも一致させます。originは末尾スラッシュなしのHTTPS originです。
+- Stagingの `authSecretSha256` は新しく作った専用 `NEXTAUTH_SECRET` のSHA-256です。有料AI、音声、通知を将来有効にする場合は、該当する `aiKeySha256` / `audioKeySha256` / `pushKeySha256` も設定します。pinは確認済みキーの差し替えを検出するもので、別アカウント・別契約であることを証明するものではありません。専用キーの発行・確認を別途行います。
+- `AI_GENERATION_ENABLED`, `AUDIO_GENERATION_ENABLED`, `PUSH_NOTIFICATIONS_ENABLED`, `WORKFLOW_EXECUTION_ENABLED` はStagingで全てfalse。開始前だけでなく、再開したWorkflowの各stepと外部provider直前でも確認します。停止中のjobは自動再送しません。
+- Vercel Workflowの既存runは開始した旧デプロイに結び付いています。新しいガードのデプロイや設定変更だけで、旧runまで即停止するとは限りません。本番で処理を止めるときは既存runの確認・取消を別途行います。今回の新Stagingには既存runはありません。
+- StagingのGoogle OAuth client IDを本番から分離し、保存先grantのaudienceと `drive.file` scopeを照合します。本番refresh tokenは使いません。個人情報を含む本番ログもコピーしません。
+- URL・cookie・manifestはStaging originに限定します。`/install` のコピー先は閲覧中のoriginで、PWA名・アイコン・常設バナー・オフライン案内はTEST表示です。本番PWAの既存IDとURLは維持します。
 
 ## 推奨構成
 

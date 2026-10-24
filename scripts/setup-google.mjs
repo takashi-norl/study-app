@@ -15,6 +15,7 @@ export const HEADERS = ['id', 'type', 'actorId', 'workspaceId', 'createdAt',
   'payload1', 'payload2', 'payload3', 'payload4', 'payload5', 'payload6', 'payload7', 'payload8'];
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const OUTPUT = resolve(ROOT, '.env.google-setup.json');
+const STAGING_OUTPUT = resolve(ROOT, '.env.google-setup.staging.json');
 const FOLDER_NAME = 'ひび学習アプリ';
 const SHEET_NAME = 'ひび学習アプリ・学習記録';
 const ALLOWED_SCOPES = new Set([...SCOPES, 'email', 'profile', 'https://www.googleapis.com/auth/userinfo.profile']);
@@ -29,7 +30,42 @@ function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
 }
 
-export function validateConfig(input) {
+function setupEnvironment(value) {
+  if (value !== 'production' && value !== 'staging') fail('環境は production または staging を指定してください。');
+  return value;
+}
+export function setupOutput(environment = 'production') {
+  return setupEnvironment(environment) === 'staging' ? STAGING_OUTPUT : OUTPUT;
+}
+function setupNames(environment) {
+  const prefix = setupEnvironment(environment) === 'staging' ? '【TEST】' : '';
+  return { folder: `${prefix}${FOLDER_NAME}`, sheet: `${prefix}${SHEET_NAME}` };
+}
+export function parseSetupArgs(args) {
+  if (args.length === 1 && args[0] === '--help') return { help: true, environment: 'production', resume: false };
+  let environment = 'production', configPath, resume = false;
+  const seen = new Set();
+  for (let index = 0; index < args.length; index++) {
+    const option = args[index];
+    if (!['--environment', '--config', '--resume'].includes(option) || seen.has(option)) fail('使い方は --help で確認してください。');
+    seen.add(option);
+    if (option === '--resume') { resume = true; continue; }
+    const value = args[++index];
+    if (!value || value.startsWith('--')) fail('使い方は --help で確認してください。');
+    if (option === '--environment') environment = setupEnvironment(value);
+    else configPath = value;
+  }
+  if (resume && configPath) fail('--resume と --config は同時に指定できません。');
+  if (environment === 'staging' && !resume && !configPath) fail('Stagingは専用の秘密設定ファイルを --config で指定してください。');
+  return { help: false, environment, resume, configPath };
+}
+
+export function validateConfig(input, environment = 'production') {
+  setupEnvironment(environment);
+  if ((environment === 'staging' && input.APP_ENV !== 'staging')
+    || (input.APP_ENV !== undefined && input.APP_ENV !== environment)) {
+    fail('設定ファイルの APP_ENV と指定した環境が一致しません。Stagingには APP_ENV=staging の専用設定を使ってください。');
+  }
   const clientId = input.GOOGLE_CLIENT_ID;
   const clientSecret = input.GOOGLE_CLIENT_SECRET;
   const ownerEmail = input.GOOGLE_DRIVE_OWNER_EMAIL?.trim().toLowerCase();
@@ -109,10 +145,11 @@ function compatibleEventHeaders(headers) {
     && HEADERS.every((name, index) => headers[index] === name || (index === 3 && headers[index] === 'familyId'));
 }
 
-export function validateSaved(input) {
+export function validateSaved(input, environment = 'production') {
+  if (setupEnvironment(input?.environment ?? 'production') !== setupEnvironment(environment)) fail('保存済みセットアップの環境が異なります。指定した環境の専用ファイルを使ってください。');
   if (input?.version !== 1 || !['authorized', 'creating-folder', 'folder-created', 'creating-sheet',
     'sheet-created', 'complete'].includes(input.phase)) fail('保存済みセットアップ情報の形式を確認してください。');
-  const config = validateConfig(input.env ?? {});
+  const config = validateConfig(input.env ?? {}, environment);
   if (typeof input.env.GOOGLE_DRIVE_REFRESH_TOKEN !== 'string' || input.env.GOOGLE_DRIVE_REFRESH_TOKEN.length < 20) {
     fail('保存済みGoogle接続の情報が不足しています。');
   }
@@ -159,21 +196,23 @@ async function checkOwner(client, config) {
 
 /** Checkpoint before each create. An unknown create outcome requires human inspection, never a blind retry. */
 export async function provisionStorage(record, request, save) {
+  validateSaved(record, record.environment ?? 'production');
+  const names = setupNames(record.environment ?? 'production');
   if (record.phase === 'creating-folder' || record.phase === 'creating-sheet') {
     fail('前回の作成結果が不明です。Google Driveで作成済みフォルダ・シートを確認してください。自動で重複作成はしません。');
   }
   if (!record.env.GOOGLE_DRIVE_FOLDER_ID) {
     record.phase = 'creating-folder'; await save(record);
     const folder = await request('https://www.googleapis.com/drive/v3/files?fields=id', { method: 'POST',
-      body: JSON.stringify({ name: FOLDER_NAME, mimeType: 'application/vnd.google-apps.folder',
-        description: '本人専用の学習教材保存先。アプリ専用。' }) });
+      body: JSON.stringify({ name: names.folder, mimeType: 'application/vnd.google-apps.folder',
+        description: record.environment === 'staging' ? 'TEST環境専用の保存先。本番の教材・記録は使用しません。' : '本人専用の学習教材保存先。アプリ専用。' }) });
     record.env.GOOGLE_DRIVE_FOLDER_ID = googleId(folder.id);
     record.phase = 'folder-created'; await save(record);
   }
   if (!record.env.GOOGLE_SHEETS_ID) {
     record.phase = 'creating-sheet'; await save(record);
     const sheet = await request('https://sheets.googleapis.com/v4/spreadsheets?fields=spreadsheetId', { method: 'POST',
-      body: JSON.stringify({ properties: { title: SHEET_NAME }, sheets: [{ properties: { title: 'Events' },
+      body: JSON.stringify({ properties: { title: names.sheet }, sheets: [{ properties: { title: 'Events' },
         data: [{ rowData: [{ values: HEADERS.map((name) => ({ userEnteredValue: { stringValue: name } })) }] }] }] }) });
     record.env.GOOGLE_SHEETS_ID = googleId(sheet.spreadsheetId);
     record.phase = 'sheet-created'; await save(record);
@@ -214,7 +253,14 @@ async function readForm(request) {
   return new URLSearchParams(data);
 }
 
-export async function startSetup(config, { output = OUTPUT, saved, log = console.log } = {}) {
+export async function startSetup(config, { environment = 'production', output = setupOutput(environment), saved, log = console.log } = {}) {
+  setupEnvironment(environment);
+  if ((environment === 'staging' && resolve(output) === OUTPUT) || (environment === 'production' && resolve(output) === STAGING_OUTPUT)) {
+    fail('別の環境の出力ファイルは使えません。環境別の専用ファイルを指定してください。');
+  }
+  if (saved) validateSaved(saved, environment);
+  const names = setupNames(environment);
+  const prefix = environment === 'staging' ? '【TEST】' : '';
   const client = oauthClient(config);
   const browserCookie = randomBytes(32).toString('base64url');
   const startToken = randomBytes(32).toString('base64url');
@@ -234,7 +280,7 @@ export async function startSetup(config, { output = OUTPUT, saved, log = console
         const ticket = await client.verifyIdToken({ idToken: tokens.id_token, audience: config.clientId });
         validateGrant(await client.getTokenInfo(tokens.access_token), ticket.getPayload(), config, nonce);
         client.setCredentials(tokens);
-        record = { version: 1, phase: 'authorized', env: { GOOGLE_CLIENT_ID: config.clientId,
+        record = { version: 1, environment, phase: 'authorized', env: { ...(environment === 'staging' ? { APP_ENV: 'staging' } : {}), GOOGLE_CLIENT_ID: config.clientId,
           GOOGLE_CLIENT_SECRET: config.clientSecret, GOOGLE_DRIVE_OWNER_EMAIL: config.ownerEmail,
           GOOGLE_DRIVE_REFRESH_TOKEN: tokens.refresh_token, GOOGLE_SHEETS_EVENTS_TAB: 'Events' } };
         await savePrivateJson(output, record, { create: true });
@@ -245,7 +291,7 @@ export async function startSetup(config, { output = OUTPUT, saved, log = console
       await provisionStorage(record, (url, options) => googleJson(client, url, options),
         (value) => savePrivateJson(output, value));
       status = 'complete';
-      log('Google保存先の設定が完了しました。秘密情報は .env.google-setup.json に保存しました。Vercelへの登録はまだ行っていません。');
+      log(`${prefix}Google保存先の設定が完了しました。接続情報は指定の秘密出力ファイルに保存しました。Vercelへの登録はまだ行っていません。`);
     } catch (error) {
       status = 'failed';
       message = error instanceof SetupError ? error.message : '接続を完了できませんでした。Googleの設定と保存済み情報を確認してください。';
@@ -260,8 +306,8 @@ export async function startSetup(config, { output = OUTPUT, saved, log = console
       if (!request.url?.startsWith('/') || request.url.startsWith('//')) { respond(response, 400, '不正なリクエストです。'); return; }
       const url = new URL(request.url, ORIGIN);
       if (request.method === 'GET' && url.pathname === '/' && !url.search) {
-        respond(response, 200, page('学習アプリのGoogle保存先を設定', `<p>保存先所有者：<strong>${escapeHtml(config.ownerEmail)}</strong></p>
-          <p>${saved ? '前回保存した専用フォルダ・記録シートの設定を確認し、残りの作業を再開します。' : `このアカウントのマイドライブに「${FOLDER_NAME}」フォルダと「${SHEET_NAME}」を新しく作成します。`}</p>
+        respond(response, 200, page(`${prefix}学習アプリのGoogle保存先を設定`, `<p>保存先所有者：<strong>${escapeHtml(config.ownerEmail)}</strong></p>
+          <p>${saved ? '前回保存した専用フォルダ・記録シートの設定を確認し、残りの作業を再開します。' : `このアカウントのマイドライブに「${names.folder}」フォルダと「${names.sheet}」を新しく作成します。`}</p>
           <p>アプリが作成したファイルだけを管理する権限（drive.file）を使います。利用者の通常ログインに保存権限は追加しません。</p>
           <p>接続情報はこのMacの秘密ファイルに保存します。Vercelへの登録・公開、AIの呼び出しは行いません。</p>
           ${status === 'ready' ? `<form method="post" action="/start"><input type="hidden" name="confirm" value="${startToken}"><button type="submit">${saved ? '保存した設定で再開する' : 'Googleで接続し、専用の保存先を作成する'}</button></form>` : '<p><a href="/status">設定状況を見る</a></p>'}`),
@@ -294,7 +340,7 @@ export async function startSetup(config, { output = OUTPUT, saved, log = console
         const body = status === 'complete' ? '<p>専用フォルダと記録シートを作成・確認しました。接続情報はこのMacに保存しました。</p><p>このページを閉じて、ターミナルで Ctrl+C を押してください。次にVercelへ環境変数を登録します。</p>'
           : status === 'failed' ? `<p>${escapeHtml(message)}</p><p>秘密情報やGoogleの応答は、このページには表示しません。</p>`
             : '<p>Googleとの接続・保存先の作成を進めています。この画面は自動更新されます。</p>';
-        respond(response, 200, page('Google保存先の設定状況', body, !finished)); return;
+        respond(response, 200, page(`${prefix}Google保存先の設定状況`, body, !finished)); return;
       }
       respond(response, 404, 'ページがありません。');
     } catch (error) {
@@ -313,20 +359,20 @@ export async function startSetup(config, { output = OUTPUT, saved, log = console
 }
 
 export async function main(args = process.argv.slice(2)) {
-  if (args.length === 1 && args[0] === '--help') {
-    console.log('node scripts/setup-google.mjs [--config /private/path/config.json | --resume]\n秘密設定は GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET / GOOGLE_DRIVE_OWNER_EMAIL。未指定時は環境変数から読み込みます。\n保存先: .env.google-setup.json（上書きしません）。接続先: http://localhost:8765/oauth/callback'); return;
+  const options = parseSetupArgs(args);
+  if (options.help) {
+    console.log('node scripts/setup-google.mjs [--environment production|staging] [--config /private/path/config.json | --resume]\n秘密設定は GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET / GOOGLE_DRIVE_OWNER_EMAIL。Stagingは APP_ENV=staging を追加した専用ファイルを --config で指定。\n保存先: production=.env.google-setup.json、staging=.env.google-setup.staging.json（上書きしません）。接続先: http://localhost:8765/oauth/callback'); return;
   }
-  if (args.length === 1 && args[0] === '--resume') {
-    const saved = await readPrivateJson(OUTPUT);
-    await startSetup(validateSaved(saved), { saved }); return;
+  const output = setupOutput(options.environment);
+  if (options.resume) {
+    const saved = await readPrivateJson(output);
+    await startSetup(validateSaved(saved, options.environment), { saved, output, environment: options.environment }); return;
   }
-  if (args.length && (args.length !== 2 || args[0] !== '--config')) fail('使い方は --help で確認してください。');
-  let input = process.env;
-  if (args.length) input = await readPrivateJson(resolve(args[1]));
-  const config = validateConfig(input);
-  try { const handle = await open(OUTPUT, 'r'); await handle.close(); fail('保存済み情報があります。--resume で再開してください。'); }
+  const input = options.configPath ? await readPrivateJson(resolve(options.configPath)) : process.env;
+  const config = validateConfig(input, options.environment);
+  try { const handle = await open(output, 'r'); await handle.close(); fail('保存済み情報があります。同じ --environment を指定し、--resume で再開してください。'); }
   catch (error) { if (error.code !== 'ENOENT') throw error; }
-  await startSetup(config);
+  await startSetup(config, { output, environment: options.environment });
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

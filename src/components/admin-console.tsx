@@ -3,6 +3,7 @@ import type { LucideIcon } from 'lucide-react';
 import { ArrowLeft, ArrowRight, BookOpen, CircleDollarSign, FileCheck2, Headphones, LayoutDashboard, LockKeyhole, MessageSquare, ShieldCheck, Upload, UserPlus } from 'lucide-react';
 import type { Profile } from '@/lib/types';
 import { CURRENT_RELEASE } from '@/lib/releases';
+import { appIdentity, isTestEnvironment } from '@/lib/app-identity';
 import { AiUsagePanel } from './ai-usage';
 import styles from '@/app/admin/page.module.css';
 
@@ -17,12 +18,14 @@ function ConsoleLink({ href, title, description, icon: Icon, label }: {
 }
 
 /** Presentation only. The /admin server page authorizes the current operator before rendering. */
-export function AdminConsole({ profile, operatorEmail }: { profile: Profile; operatorEmail?: string }) {
+export function AdminConsole({ profile, operatorEmail, environment = 'local' }: { profile: Profile; operatorEmail?: string; environment?: 'production' | 'staging' | 'local' | 'misconfigured' }) {
+  const identity = appIdentity(isTestEnvironment(environment));
+  const environmentLabel = environment === 'misconfigured' ? '環境設定の確認が必要' : environment === 'staging' ? '検証用 TEST' : environment === 'production' ? '本番' : 'ローカル';
   return <div className={styles.console}>
     <a className={styles.skipLink} href="#admin-main">運営メニューへ移動</a>
     <header className={styles.topbar}>
       <div className={styles.topbarInner}>
-        <div className={styles.brand}><span className={styles.brandMark}><ShieldCheck size={25} aria-hidden="true"/></span><div><p>ひび学習 · 運営Web</p><h1>Admin Console</h1></div></div>
+        <div className={styles.brand}><span className={styles.brandMark}><ShieldCheck size={25} aria-hidden="true"/></span><div><p>{identity.name} · 運営Web</p><h1>Admin Console</h1></div></div>
         <Link className={styles.returnLink} href="/"><ArrowLeft size={17} aria-hidden="true"/>学習アプリへ戻る</Link>
       </div>
     </header>
@@ -42,6 +45,7 @@ export function AdminConsole({ profile, operatorEmail }: { profile: Profile; ope
         <section className={styles.overview} aria-labelledby="overview-heading">
           <p className={styles.eyebrow}>運営ダッシュボード</p><h2 id="overview-heading">学ぶ人を支える、運営の入口。</h2><p>招待や感想の確認、共通教材の準備、AI利用の集計をここから。</p>
           <dl className={styles.statuses}>
+            <div className={styles.environment} data-environment={environment}><dt>表示している環境</dt><dd>{environmentLabel}</dd></div>
             <div><dt>利用形態</dt><dd>招待制テスト</dd></div>
             <div><dt>利用者への課金</dt><dd>未開始</dd></div>
             <div><dt>このアプリのバージョン</dt><dd>v{CURRENT_RELEASE.version}</dd></div>
@@ -68,7 +72,7 @@ export function AdminConsole({ profile, operatorEmail }: { profile: Profile; ope
           <AiUsagePanel profile={profile} demo={false}/>
         </section>
         <aside className={styles.privacy} aria-label="運営画面で扱う情報"><LockKeyhole size={21} aria-hidden="true"/><div><strong>個人の学習は、本人の画面で。</strong><p>このConsoleには、利用者の教材・問題・学習履歴・成績を閲覧する機能はありません。AI利用は個人別の明細を含まない全体集計です。</p></div></aside>
-        <footer className={styles.footer}><span>ひび学習 · Admin Console</span><Link href="/billing">現在の料金・支払い案内<ArrowRight size={14} aria-hidden="true"/></Link></footer>
+        <footer className={styles.footer}><span>{identity.name} · Admin Console</span><Link href="/billing">現在の料金・支払い案内<ArrowRight size={14} aria-hidden="true"/></Link></footer>
       </main>
     </div>
   </div>;

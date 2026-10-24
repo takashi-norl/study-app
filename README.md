@@ -57,7 +57,7 @@ npm ci
 npm run dev
 ```
 
-`http://127.0.0.1:3000/?demo=1` は明示的なサンプルモードです。本人だけの操作を試し、問題・履歴をブラウザに保存します。AI通信、実データの同期、運営機能は実行しません。サンプルの写真はブラウザのIndexedDBにだけ保存されます。通常の `/` は本番ログイン用で、設定不足時は実データへのアクセスを拒否します。
+`http://127.0.0.1:3000/?demo=1` は明示的なサンプルモードです。本人だけの操作を試し、問題・履歴をブラウザに保存します。AI通信、実データの同期、運営機能は実行しません。サンプルの写真はブラウザのIndexedDBにだけ保存されます。ローカルではクラウド接続を許可せずTEST表示にします。ログイン・保存の結合テストは専用Stagingで行います。
 
 ```sh
 npm test
@@ -72,12 +72,12 @@ npm run build
 
 1. VercelでNext.jsプロジェクトを登録し、Node.js 24を選びます。
 2. [Google接続の手順](docs/GOOGLE_SETUP.md)に沿って、Google OAuthと運営用保存先を設定します。
-3. `.env.example` の値をVercelの秘密設定へ登録します。秘密情報をリポジトリやチャットに貼らないでください。
+3. `.env.example` を参照し、対象環境の値をVercelへ登録します。そのままコピーせず、[環境の照合契約](docs/STAGING_PLAN.md)に従ってproject IDと `APP_ENV_BINDINGS_JSON` を設定します。既存本番の互換経路はこの文書の条件に限定されます。秘密情報をリポジトリやチャットに貼らないでください。
 4. Googleのリダイレクト先を `https://本番ドメイン/api/auth/callback/google` に設定し、`NEXTAUTH_URL` と `NEXT_PUBLIC_APP_URL` も同じ本番URLにします。
 5. `WORKSPACE_ID` に保存先の識別子を設定し、既存利用者と運営アカウントを `REGISTERED_ACCOUNTS_JSON` に `id`・`email`・`name` の形式で登録します。全員が本人の学習アカウントで、運営権限は確認済みGoogleメールとサーバー側の登録から別途判定します。空・不正・重複した登録はログインを拒否します。新しいテスト利用者は招待イベントで管理し、環境変数の変更は不要です。
 6. Claudeのキー・モデル・利用予算を決めた後に `AI_GENERATION_ENABLED=true` を設定します。初期値は `false` です。
 
-PreviewとProductionで保存先・認証情報を分けてください。環境変数変更後は再デプロイが必要です。
+Stagingは別のVercel project、Google OAuth client、保存先、署名鍵を使います。初期は外部処理の4フラグをfalseにした画面確認環境です。本番projectのPreviewや未知のprojectからクラウドへ接続することはできません。環境変数変更後は再デプロイが必要です。旧デプロイで開始済みのWorkflowを止める操作は別途必要です。
 
 既存環境のアカウントID・保存先IDは変更しないでください。旧設定の読み取りは `src/server/legacy-settings.ts` に隔離して引き継ぎます。新しい設定名を使う場合も同じIDを指定し、Sheetsの4列目の位置・値や既存イベントを書き換えません。
 

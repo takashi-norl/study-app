@@ -4,8 +4,9 @@ import { mkdtemp, chmod, stat, symlink, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { once } from 'node:events';
+import { get as httpGet } from 'node:http';
 import { HEADERS, ORIGIN, SCOPES, REDIRECT_URI, validateConfig, validateGrant, validateCallback,
-  readPrivateJson, savePrivateJson, validateSaved, provisionStorage, startSetup } from '../scripts/setup-google.mjs';
+  readPrivateJson, savePrivateJson, validateSaved, provisionStorage, startSetup, parseSetupArgs, setupOutput } from '../scripts/setup-google.mjs';
 
 const config = { clientId: '123-example.apps.googleusercontent.com', clientSecret: 'not-a-real-secret', ownerEmail: 'owner@example.com' };
 function record() {
@@ -199,6 +200,77 @@ test('localhost start page rejects hostile host/origin and requires a browser-bo
     assert.equal(forged.status, 400);
     assert.equal(forged.headers.get('referrer-policy'), 'no-referrer');
     assert.equal((await post(ORIGIN, confirm)).status, 400);
+  } finally {
+    server.close(); server.closeAllConnections(); await once(server, 'close');
+  }
+});
+
+
+test('staging is explicit, uses a distinct output and never implicitly reuses production config or resume data', async () => {
+  assert.deepEqual(parseSetupArgs([]), { help: false, environment: 'production', resume: false, configPath: undefined });
+  assert.equal(parseSetupArgs(['--resume']).environment, 'production');
+  assert.deepEqual(parseSetupArgs(['--environment', 'staging', '--config', '/private/staging.json']),
+    { help: false, environment: 'staging', resume: false, configPath: '/private/staging.json' });
+  assert.equal(parseSetupArgs(['--resume', '--environment', 'staging']).resume, true);
+  for (const args of [['--environment', 'staging'], ['--environment', 'preview'], ['--environment'], ['--config'],
+    ['--config', 'one', '--config', 'two'], ['--resume', '--config', 'one'], ['--resume', '--resume'], ['--environment', 'staging', '--environment', 'production']]) {
+    assert.throws(() => parseSetupArgs(args));
+  }
+  assert.match(setupOutput(), /\.env\.google-setup\.json$/);
+  assert.match(setupOutput('staging'), /\.env\.google-setup\.staging\.json$/);
+  assert.notEqual(setupOutput(), setupOutput('staging'));
+  assert.throws(() => validateConfig(record().env, 'staging'), /APP_ENV/);
+  assert.throws(() => validateConfig({ ...record().env, APP_ENV: 'staging' }), /APP_ENV/);
+  assert.throws(() => validateSaved(record(), 'staging'), /環境/);
+  const stage = { ...record(), environment: 'staging', env: { ...record().env, APP_ENV: 'staging' } };
+  assert.equal(validateSaved(stage, 'staging').clientId, config.clientId);
+  assert.throws(() => validateSaved(stage), /環境/);
+  assert.throws(() => validateSaved({ ...stage, environment: 'other' }, 'staging'), /環境/);
+  await assert.rejects(() => startSetup(config, { environment: 'staging', output: setupOutput() }), /別の環境/);
+  await assert.rejects(() => startSetup(config, { environment: 'production', output: setupOutput('staging') }), /別の環境/);
+  await assert.rejects(() => startSetup(config, { environment: 'staging', saved: record() }), /環境/);
+});
+
+test('staging creates TEST-only storage and keeps its environment marker through checkpoints and resume', async () => {
+  const production = record(), before = structuredClone(production);
+  const input = { ...record(), environment: 'staging', env: { ...record().env, APP_ENV: 'staging' } };
+  const writes = [], saved = [];
+  await provisionStorage(input, async (url, options = {}) => {
+    if (options.method) writes.push(JSON.parse(options.body));
+    if (url.includes('/drive/v3/files?')) return { id: 'test-folder-12345678' };
+    if (url.includes('/v4/spreadsheets?')) return { spreadsheetId: 'test-sheet-12345678' };
+    return url.includes('/values/') ? { values: [HEADERS] } : { parents: ['test-folder-12345678'] };
+  }, async value => saved.push(structuredClone(value)));
+  assert.equal(writes[0].name, '【TEST】ひび学習アプリ');
+  assert.equal(writes[1].properties.title, '【TEST】ひび学習アプリ・学習記録');
+  assert.ok(saved.length && saved.every(item => item.environment === 'staging' && item.env.APP_ENV === 'staging'));
+  assert.equal(input.phase, 'complete');
+  assert.deepEqual(production, before);
+  await provisionStorage(input, async (url, options) => {
+    assert.equal(options, undefined, 'completed TEST storage is only read');
+    return url.includes('/values/') ? { values: [HEADERS] } : { parents: ['test-folder-12345678'] };
+  }, async () => {});
+  assert.equal(validateSaved(input, 'staging').ownerEmail, config.ownerEmail);
+  let calls = 0;
+  await assert.rejects(() => provisionStorage({ ...input, env: { ...input.env, APP_ENV: 'production' } }, async () => { calls++; }, async () => { calls++; }), /APP_ENV/);
+  assert.equal(calls, 0);
+});
+
+test('staging localhost setup is visibly TEST before consent and never displays credentials', async () => {
+  const server = await startSetup(config, { environment: 'staging', log: () => {} });
+  try {
+    // A fresh connection avoids reusing a keep-alive socket from the previous localhost server.
+    const { status, html } = await new Promise((resolve, reject) => {
+      const request = httpGet(ORIGIN, { agent: false }, response => {
+        let html = ''; response.setEncoding('utf8'); response.on('data', chunk => { html += chunk; });
+        response.on('end', () => resolve({ status: response.statusCode, html })); response.on('error', reject);
+      });
+      request.on('error', reject);
+    });
+    assert.equal(status, 200);
+    assert.match(html, /【TEST】学習アプリのGoogle保存先を設定/);
+    assert.match(html, /【TEST】ひび学習アプリ・学習記録/);
+    assert.doesNotMatch(html, new RegExp(config.clientSecret));
   } finally {
     server.close(); server.closeAllConnections(); await once(server, 'close');
   }

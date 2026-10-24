@@ -1,3 +1,4 @@
+import { assertExternalEffectAllowed } from '@/server/environment';
 import { FatalError } from 'workflow';
 import type { GenerationJob,Question } from '@/lib/types';
 import { appendEvent,getFullState,getDriveFileMetadata,downloadSourceFile } from '@/server/google-store';
@@ -29,6 +30,7 @@ function sourcesFromState(input:JobInput,data:Awaited<ReturnType<typeof getFullS
 
 export async function planBatches(jobId:string) {
   'use step';
+  try { assertExternalEffectAllowed('workflow'); } catch { throw new FatalError('この環境ではバックグラウンド処理を停止しています。'); }
   const {data,events}=await getFullState();
   const input=inputFromEvents(jobId,events);
   assertGenerationAccess(data,input);
@@ -40,6 +42,7 @@ planBatches.maxRetries=1;
 
 export async function beginGeneration(jobId:string) {
   'use step';
+  try { assertExternalEffectAllowed('workflow'); } catch { throw new FatalError('この環境ではバックグラウンド処理を停止しています。'); }
   try { requireGenerationEnabled(); } catch(error) { throw new FatalError(safeGenerationError(error)); }
   const {data,events}=await getFullState();
   const job=inputFromEvents(jobId,events);
@@ -54,6 +57,7 @@ beginGeneration.maxRetries=1;
 
 export async function analyzeSource(jobId:string,sourceId:string) {
   'use step';
+  try { assertExternalEffectAllowed('workflow'); } catch { throw new FatalError('この環境ではバックグラウンド処理を停止しています。'); }
   const {data,events}=await getFullState();
   const input=inputFromEvents(jobId,events);
   const requester=assertGenerationAccess(data,input);
@@ -78,6 +82,7 @@ analyzeSource.maxRetries=0;
 
 export async function generateBatch(jobId:string,batch:number,totalBatches:number) {
   'use step';
+  try { assertExternalEffectAllowed('workflow'); } catch { throw new FatalError('この環境ではバックグラウンド処理を停止しています。'); }
   const {data,events}=await getFullState();
   const existingEvent=events.find(e=>e.id===`generation:${jobId}:batch:${batch}`);
   if(existingEvent) return {generatedCount:(existingEvent.payload as {job:GenerationJob}).job.generatedCount,added:(existingEvent.payload as {questions:Question[]}).questions.length};
@@ -111,6 +116,7 @@ generateBatch.maxRetries=0;
 
 export async function finishGeneration(jobId:string) {
   'use step';
+  try { assertExternalEffectAllowed('workflow'); } catch { throw new FatalError('この環境ではバックグラウンド処理を停止しています。'); }
   const {data,events}=await getFullState();
   const input=inputFromEvents(jobId,events);
   const job=data.jobs.find(j=>j.id===jobId);
@@ -125,6 +131,7 @@ finishGeneration.maxRetries=2;
 
 export async function failGeneration(jobId:string,message:string) {
   'use step';
+  try { assertExternalEffectAllowed('workflow'); } catch { throw new FatalError('この環境ではバックグラウンド処理を停止しています。'); }
   const {data,events}=await getFullState();
   const job=data.jobs.find(j=>j.id===jobId);
   if(!job || job.status==='review' || job.status==='failed') return;

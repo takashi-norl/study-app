@@ -4,6 +4,7 @@ import { AdminConsole } from '@/components/admin-console';
 import { requireSuperUser } from '@/server/auth';
 import { ApiError } from '@/server/config';
 import { getRegisteredAccounts } from '@/server/env';
+import { getAppEnvironment } from '@/server/environment';
 import styles from './page.module.css';
 
 export const dynamic = 'force-dynamic';
@@ -18,5 +19,5 @@ export default async function OperationsPage() {
   }
   // Only the current, already-authorized operator's account is passed to the page UI.
   const operatorEmail = getRegisteredAccounts().find(member => member.id === profile.id)?.email;
-  return <AdminConsole profile={profile} operatorEmail={operatorEmail}/>;
+  return <AdminConsole profile={profile} operatorEmail={operatorEmail} environment={getAppEnvironment()}/>;
 }

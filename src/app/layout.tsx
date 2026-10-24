@@ -1,17 +1,29 @@
 import type { Metadata, Viewport } from 'next';
+import { appIdentity, isTestEnvironment } from '@/lib/app-identity';
+import { getAppEnvironment } from '@/server/environment';
+import styles from './environment-banner.module.css';
 import './globals.css';
 
-export const metadata: Metadata = {
-  title: 'ひび学習 | 少しずつ、できるに変わる。',
-  description: '自分の教材で、今日の10問。写真・PDFから作る問題と、自分のペースの復習。',
-  manifest: '/manifest.webmanifest',
-  appleWebApp: { capable: true, statusBarStyle: 'default', title: 'ひび学習' },
-  icons: { icon: '/icon.svg', apple: '/apple-touch-icon.png' },
-  robots: { index: false, follow: false },
-};
-export const viewport: Viewport = {
-  width: 'device-width', initialScale: 1, viewportFit: 'cover', themeColor: '#f7f8f3',
-};
+export function generateMetadata(): Metadata {
+  const identity = appIdentity(isTestEnvironment(getAppEnvironment()));
+  return {
+    title: identity.staging ? { default: identity.title, template: '%s | TEST' } : identity.title,
+    description: identity.description,
+    manifest: '/manifest.webmanifest',
+    appleWebApp: { capable: true, statusBarStyle: 'default', title: identity.name },
+    icons: { icon: identity.icon, apple: identity.appleIcon },
+    robots: { index: false, follow: false },
+  };
+}
+export function generateViewport(): Viewport {
+  return { width: 'device-width', initialScale: 1, viewportFit: 'cover',
+    themeColor: appIdentity(isTestEnvironment(getAppEnvironment())).themeColor };
+}
 export default function RootLayout({children}:Readonly<{children:React.ReactNode}>) {
-  return <html lang="ja"><body>{children}</body></html>;
+  const environment = getAppEnvironment();
+  const testEnvironment = isTestEnvironment(environment);
+  return <html lang="ja"><body data-app-environment={environment} className={testEnvironment ? styles.stagingBody : undefined}>
+    {testEnvironment && <aside className={styles.banner} aria-label="検証環境"><strong>ひび学習 TEST</strong><span>{environment === 'misconfigured' ? '環境設定を確認' : '検証用の環境です'}</span></aside>}
+    {children}
+  </body></html>;
 }

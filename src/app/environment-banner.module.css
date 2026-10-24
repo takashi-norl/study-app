@@ -1,0 +1,6 @@
+.stagingBody{--environment-banner-height:calc(36px + env(safe-area-inset-top,0px));padding-top:var(--environment-banner-height)}
+.banner{position:fixed;inset:0 0 auto;z-index:1000;min-height:var(--environment-banner-height);padding:calc(8px + env(safe-area-inset-top,0px)) max(12px,env(safe-area-inset-right,0px)) 8px max(12px,env(safe-area-inset-left,0px));display:flex;align-items:center;justify-content:center;gap:12px;background:#9a4518;color:#fff8e9;font-size:12px;line-height:20px;box-sizing:border-box}
+.banner strong{font-size:12px;letter-spacing:.04em}.banner span{border-left:1px solid #e2a57e;padding-left:12px}
+.stagingBody :global(.app-shell>.sidebar){top:var(--environment-banner-height)}
+.stagingBody :global(.app-shell .topbar){top:var(--environment-banner-height)}
+@media(max-width:365px){.banner{gap:8px;font-size:11px}.banner strong{font-size:11px}.banner span{padding-left:8px}}

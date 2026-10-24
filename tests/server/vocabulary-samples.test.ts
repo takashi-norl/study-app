@@ -1,3 +1,4 @@
+import './legacy-production-runtime';
 import assert from 'node:assert/strict';
 import { mock, test, beforeEach, afterEach } from 'node:test';
 import { OAuth2Client } from 'google-auth-library';

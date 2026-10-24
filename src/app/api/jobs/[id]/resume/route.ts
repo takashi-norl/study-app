@@ -6,11 +6,13 @@ import { getFullState } from '@/server/google-store';
 import { ApiError,requireGenerationEnabled } from '@/server/config';
 import { generationWorkflow } from '@/workflows/generate';
 import { assertGenerationAccess } from '@/server/proposal-selection';
+import { assertExternalEffectAllowed } from '@/server/environment';
 export async function POST(request:Request,context:{params:Promise<{id:string}>}) { return api(async()=>{
   const {profile}=await requireProfile();
   await readJson(request,z.object({}));
   const {id}=await context.params;
   z.string().uuid().parse(id);
+  assertExternalEffectAllowed('workflow');
   requireGenerationEnabled();
   const {data}=await getFullState();
   const job=data.jobs.find(j=>j.id===id);

@@ -1,3 +1,4 @@
+import './legacy-production-runtime';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { createBoundedSourceStream, foldEvents, getSessionSnapshot, studyDataForProfile, type StudyEvent } from '../../src/server/google-store';

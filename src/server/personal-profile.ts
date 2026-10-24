@@ -5,6 +5,7 @@ import type { z } from 'zod';
 import type { Profile } from '@/lib/types';
 import { defaultPersonalPreferences, type PersonalPreferences, type PersonalProfileState, type PersonalProfileTurn } from '@/lib/personal-profile';
 import { ApiError, requiredEnv, requireGenerationEnabled } from './config';
+import { externalEffectEnabled } from './environment';
 import { appendEvents, loadEvents, type StudyEvent } from './google-store';
 import { trackedAnthropicMessage } from './ai-usage';
 import {
@@ -29,7 +30,7 @@ function profileSlot(ownerId: string, version: number): string {
 }
 function receiptId(ownerId: string, requestId: string): string { return `${profileSlot(ownerId, 0)}:${requestId}:result`; }
 function dateInJapan(date: Date | string): string { return new Intl.DateTimeFormat('sv-SE', {timeZone:'Asia/Tokyo'}).format(new Date(date)); }
-function aiAvailable(): boolean { return process.env.AI_GENERATION_ENABLED === 'true' && !!process.env.ANTHROPIC_API_KEY && !!process.env.ANTHROPIC_MODEL; }
+function aiAvailable(): boolean { return externalEffectEnabled('ai') && process.env.AI_GENERATION_ENABLED === 'true' && !!process.env.ANTHROPIC_API_KEY && !!process.env.ANTHROPIC_MODEL; }
 
 /** Profiles and conversations are private to their owner, irrespective of administrative access. */
 export function foldPersonalProfile(events: StudyEvent[], ownerId: string, now = new Date()) {

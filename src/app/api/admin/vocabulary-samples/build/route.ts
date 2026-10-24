@@ -5,6 +5,7 @@ import { requireSuperUser } from '@/server/auth';
 import { vocabularyPreview } from '@/server/vocabulary-samples';
 import { vocabularyAudioWorkflow } from '@/workflows/vocabulary-audio';
 import { api, readJson } from '@/server/http';
+import { assertExternalEffectAllowed } from '@/server/environment';
 
 async function running() {
   try {
@@ -27,6 +28,8 @@ export async function POST(request: Request) {
   return api(async () => {
     const { profile } = await requireSuperUser();
     await readJson(request, z.object({}).strict());
+    assertExternalEffectAllowed('workflow');
+    assertExternalEffectAllowed('audio');
     if (await running()) return { accepted: true };
     const preview = await vocabularyPreview(profile);
     if (!preview.audio.some(item => item.state === 'missing')) return { accepted: true };

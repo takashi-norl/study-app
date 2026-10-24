@@ -1,3 +1,4 @@
+import './legacy-production-runtime';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { requireGenerationEnabled } from '../../src/server/config';

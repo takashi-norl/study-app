@@ -10,6 +10,7 @@ import { currentApprovedProposal, generationInstructions, generationReplay, vali
 import { generationWorkflow } from '@/workflows/generate';
 import { assertQuestionEditable } from './library';
 import { assertSourceAnalysesCurrent } from './source-analysis';
+import { assertExternalEffectAllowed } from './environment';
 
 export interface GenerationRequest {
   topic: Topic; newTopic?: boolean; sourceIds: string[]; targetCount: number;
@@ -20,6 +21,7 @@ export async function resumeGenerationRequest(data: StudyData, profile: Profile,
   const previous = generationReplay(data,profile,input);
   if (!previous) return undefined;
   if (previous.job.status === 'queued') {
+    assertExternalEffectAllowed('workflow');
     requireGenerationEnabled();
     // A queued row can survive a lost dispatch response. The durable hook makes duplicate starts harmless.
     try { await start(generationWorkflow,[previous.job.id]); }
@@ -45,6 +47,7 @@ export async function requestGeneration(profile: Profile, input: GenerationReque
   const { data, events } = await getFullState();
   const previous = await resumeGenerationRequest(data,profile,{...input,title:input.topic.title});
   if (previous) return previous;
+  assertExternalEffectAllowed('workflow');
   requireGenerationEnabled();
   assertQuestionEditable(input.topic);
   if(!canAccessQuestion(input.topic,profile)) throw new ApiError(403,'この問題集にはアクセスできません。','FORBIDDEN');

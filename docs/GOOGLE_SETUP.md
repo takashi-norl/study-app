@@ -21,7 +21,7 @@ Googleの `/drive/project/…` は通常の保存フォルダとは限りませ�
    http://localhost:8765/oauth/callback
    ```
 
-   別の本番ドメインを使う場合は1行目を置換します。ローカルのアプリログインも検証する場合だけ `http://localhost:3000/api/auth/callback/google` を追加します。現在のサーバー側OAuth方式ではJavaScript originsやPlayground redirectは不要です。
+   別の本番ドメインを使う場合は1行目を置換します。現在のローカル画面はデモ専用で、クラウド接続は停止しています。接続確認は分離したStagingを使います。現在のサーバー側OAuth方式ではJavaScript originsやPlayground redirectは不要です。
 6. `GOOGLE_CLIENT_ID` と `GOOGLE_CLIENT_SECRET` を、次の秘密設定ファイルに保存します。チャットやリポジトリに貼り付けません。
 
 Externalで公開ステータスがTestingの場合、Driveを含むrefresh tokenは原則7日で期限切れになります。継続運用前にGoogle側でProductionへの切替・必要な確認を済ませ、その後に最終的な接続を取得してください。Productionでもアプリ側の既存登録・招待制限は有効です。[Googleのトークン有効期限](https://developers.google.com/identity/protocols/oauth2/)
@@ -82,7 +82,7 @@ node --test tests/setup-google.test.mjs
 
 ## 4. Vercelの環境変数
 
-`.env.google-setup.json` の `env` 内にある接続値を、明示的な操作でVercelのProduction環境へ登録し、再デプロイします。ファイル全体を表示・チャットへ貼付せず、設定画面または値を標準入力で渡すCLI操作を使ってください。必ず意図したVercelアカウント・チームを確認します。Preview環境も使う場合は、そのURLのOAuth callbackと環境変数も別途設定します。
+`.env.google-setup.json` の `env` 内にある接続値を、明示的な操作でVercelのProduction環境へ登録し、再デプロイします。ファイル全体を表示・チャットへ貼付せず、設定画面または値を標準入力で渡すCLI操作を使ってください。必ず意図したVercelアカウント・チームを確認します。本番のPreviewへ本番接続をコピーしないでください。接続確認は次の独立したStagingの手順を使います。
 
 | 名前 | 値 |
 |---|---|
@@ -121,3 +121,49 @@ Claude API・Web Push・Vercel Workflowの設定は別途必要です。Google�
 Sheetsはデータベースではありません。読み書きは保存用アカウントの割当量をアプリ全体で共有します。現在の目安では10問で約30回の読み取りと20回の書き込みに、画面更新・開始処理が加わります。毎問後の全履歴確認で競合を検出するため、履歴をキャッシュして読み飛ばすことはしていません。高速な連続練習・複数端末・頻繁な更新が重なると429が発生し得ます。既定の割当はユーザー・プロジェクト当たり毎分60回ずつで、長期に履歴が増えると全件読込みも重くなります。多人数での利用に向けたDB・ファイル保存・認証の変更は [設計文書](MULTI_USER_ARCHITECTURE.md) にまとめますが、現時点では未実装です。[Sheetsの割当量](https://developers.google.com/workspace/sheets/api/limits)
 
 問題の生成上限はアプリ内のジョブ回数・問題数上限です。API側で発生する正確な料金を保証する金額上限ではないため、Claude側でも利用上限を設定します。通信が不明な状態で終わった場合、課金済みの応答を再取得できないことがあります。
+
+
+## 6. 独立したStagingを準備する
+
+この手順は既存本番とは別の新規設定です。本番の保存先の移行・削除や、既存の接続情報のコピーは行いません。まずStagingの画面・デモだけを公開でき、Googleログインと保存は専用設定が揃うまで停止します。
+
+1. 本番とは別のGoogle Cloudプロジェクトと**新しいWeb OAuthクライアント**を作り、この資料の手順1と同じ最小権限を設定します。OAuth callbackにはStagingの固定URLの `/api/auth/callback/google` と `http://localhost:8765/oauth/callback` だけを登録します。本番OAuthクライアントを再利用しません。
+2. 本番用の秘密ファイルとは別の `.env.google-client.staging.json` に次の形式を保存し、`chmod 600` で保護します。値は新しいStagingクライアントと所有者のものにします。
+
+   ```json
+   {
+     "APP_ENV": "staging",
+     "GOOGLE_CLIENT_ID": "YOUR_STAGING_CLIENT_ID.apps.googleusercontent.com",
+     "GOOGLE_CLIENT_SECRET": "YOUR_STAGING_CLIENT_SECRET",
+     "GOOGLE_DRIVE_OWNER_EMAIL": "owner@example.com"
+   }
+   ```
+
+3. 次のコマンドで開始画面を開き、TEST表示と保存先を確認してから所有者がGoogleの同意操作を行います。Stagingでは `--config` の明示が必須です。
+
+   ```sh
+   node scripts/setup-google.mjs --environment staging --config .env.google-client.staging.json
+   ```
+
+   作成する名前は「【TEST】ひび学習アプリ」フォルダと「【TEST】ひび学習アプリ・学習記録」です。結果は **`.env.google-setup.staging.json`** に保存し、レコードにも `environment: "staging"` を記録します。本番の `.env.google-setup.json` は開かず、上書きしません。再開は次の指定に限定します。
+
+   ```sh
+   node scripts/setup-google.mjs --environment staging --resume
+   ```
+
+   保存レコードの環境が異なる場合は、Googleへ接続する前に拒否します。環境未指定の既存コマンドと既存レコードは本番用として読み継ぎます。
+
+4. Staging専用Vercelプロジェクトへ、Staging出力の接続情報・新規の `WORKSPACE_ID`・新規の `NEXTAUTH_SECRET`・StagingのURLを登録します。`REGISTERED_ACCOUNTS_JSON` も検証用アカウントだけで明示設定します（Stagingでは旧許可リストへフォールバックしません）。秘密値を本番から取得する必要はありません。`APP_ENV=staging` とし、次の機能は接続確認中すべて `false` のままにします。
+
+   ```text
+   AI_GENERATION_ENABLED=false
+   AUDIO_GENERATION_ENABLED=false
+   PUSH_NOTIFICATIONS_ENABLED=false
+   WORKFLOW_EXECUTION_ENABLED=false
+   ```
+
+5. `APP_ENV_BINDINGS_JSON` で、本番/Staging双方の `projectId`・`workspaceId`・`googleClientId`・`driveFolderId`・`sheetsId`・`origin` を固定します。これらは秘密ではない識別情報です。値は両環境で異なる必要があります。Stagingにだけ、新しい署名鍵の `authSecretSha256` を追加します。構造は [Staging計画](STAGING_PLAN.md) と `src/server/environment.ts` を参照してください。既知プロジェクト・実際の設定との一致を確認できない場合は認証・保存を停止します。
+
+設定を終えるまで、残る作業は新しいGoogle OAuthクライアントの準備と所有者本人の同意、専用保存先とbindingの登録です。このセットアップツールが自動でVercelへ値を登録したり、AI・音声・通知を有効化したりすることはありません。
+
+任意の外部機能を後から有効にする際は、専用キーと対応するpinを確認してから個別に許可します。pinは**確認したキー以外への差し替えを拒否するもの**で、提供元アカウントの独立性そのものを証明しません。Google接続は別OAuthクライアントIDと実際のtoken audience・`drive.file`権限も検証します。本番の秘密値を読む作業はこの手順に含みません。

@@ -1,4 +1,5 @@
 import 'server-only';
+import { assertExternalEffectAllowed } from './environment';
 
 export class ApiError extends Error {
   constructor(public status: number, message: string, public code = 'REQUEST_FAILED') {
@@ -17,6 +18,7 @@ export const SOURCE_MIME_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'appl
 
 export function requireGenerationEnabled() {
   if (process.env.AI_GENERATION_ENABLED !== 'true') throw new ApiError(503,'AI作問はまだ有効になっていません。利用費用の上限を確認してから管理者が有効にしてください。','AI_DISABLED');
+  assertExternalEffectAllowed('ai');
   requiredEnv('ANTHROPIC_API_KEY');
   requiredEnv('ANTHROPIC_MODEL');
 }

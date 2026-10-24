@@ -1,3 +1,4 @@
+import './legacy-production-runtime';
 import assert from 'node:assert/strict';
 import test, { beforeEach, afterEach } from 'node:test';
 import type { Session } from 'next-auth';

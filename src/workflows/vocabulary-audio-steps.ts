@@ -1,3 +1,4 @@
+import { assertExternalEffectAllowed } from '@/server/environment';
 import { FatalError } from 'workflow';
 import { getRegisteredAccounts, profileForAccount, assertSuperUser } from '@/server/env';
 import { vocabularyPreview, prepareVocabularyAudio } from '@/server/vocabulary-samples';
@@ -10,6 +11,7 @@ function profile(actorId: string) {
 }
 export async function vocabularyBuildInput(actorId: string) {
   'use step';
+  try { assertExternalEffectAllowed('workflow'); } catch { throw new FatalError('この環境ではバックグラウンド処理を停止しています。'); }
   try { return (await vocabularyPreview(profile(actorId))).audio.filter(item => item.state === 'missing').map(item => item.wordId); }
   catch { throw new FatalError('音声セットを読み込めませんでした。保存済み音声は残っています。'); }
 }
@@ -17,6 +19,7 @@ vocabularyBuildInput.maxRetries = 1;
 
 export async function buildVocabularyWord(actorId: string, wordId: string) {
   'use step';
+  try { assertExternalEffectAllowed('workflow'); } catch { throw new FatalError('この環境ではバックグラウンド処理を停止しています。'); }
   try { await prepareVocabularyAudio(profile(actorId), wordId, true); return 'ready'; }
   catch (error) {
     if (error instanceof ApiError && ['AUDIO_PENDING', 'SAMPLE_AUDIO_FAILED'].includes(error.code)) return 'reserved';
