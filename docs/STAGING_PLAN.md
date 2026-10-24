@@ -24,19 +24,25 @@
 
 作成日: 2026-10-23。これは設計案です。Vercel・Googleの設定や本番データは、この計画に合わせてまだ変更していません。
 
+## 多人数利用への接続（2026-10-24追記）
+
+DB・Storage・ユーザー管理の推奨設計は [MULTI_USER_ARCHITECTURE.md](MULTI_USER_ARCHITECTURE.md) に整理しました。以下のGoogle保存先の分離は現行版の検証環境を作る手順です。利用者拡大の移行先は、Production/Stagingそれぞれ別のSupabase Postgres・Auth・非公開Storageです。Sheets版の環境分離だけではスケールの課題は解消しません。新基盤はまだ構築していません。
+
+APP_ENVと保存先の検証、音声・通知・Workflowの個別停止、Staging専用PWA表示も現行コードには未実装です。これらの実装と境界テストを完了してから、独立したStagingとして運用します。新基盤の契約/作成と本番切替は設計書の段階B〜Eで行います。
+
 ## 推奨構成
 
 同じGitHubリポジトリを使い、同じVercelチーム内に2つのプロジェクトを置きます。コードは共有し、公開先・認証・保存先・バックグラウンド処理を分けます。現在のアプリはGoogle DriveとGoogle Sheetsのイベントログに保存する構成なので、表示上の「管理者用テスト」だけでは環境分離になりません。
 
 | | Production | Staging |
 |---|---|---|
-| 用途 | Yuseiと家族が日々使う | 変更・不具合修正を試す |
+| 用途 | 招待された学習者が日々使う | 変更・不具合修正を試す |
 | Vercelプロジェクト | 現在のstudy-app | study-app-staging（候補名） |
 | 固定URL | 現在のstudy-app-opal-eight.vercel.appを維持 | 新規プロジェクトの固定URL、作成後に確定 |
 | Gitブランチ | main | staging |
 | Google Drive | 既存の本番フォルダ | 検証専用フォルダ |
 | Google Sheets | 既存の本番記録シート | 検証専用シート |
-| Googleログイン | 現在の家族アカウント | まずTakashi、必要に応じてManagerとテスト利用者 |
+| Googleログイン | 現在の登録アカウント | まずTakashi、必要に応じて検証用アカウント |
 | 有料AI・音声 | 現行の利用制限 | 原則無効、実接続テスト時だけ少額の専用枠 |
 | 通知 | 本番端末への通知 | 送信無効、試験時は検証用購読だけ |
 | PWA | 現在の名前・アイコン | 「ひび学習 TEST」、別アイコン・常時テスト表示 |
@@ -47,10 +53,10 @@ Vercel Proには1プロジェクト内のCustom Environmentも1つ含まれま�
 
 - 有料のVercelチームに現在のプロジェクトが所属していること、Git連携状況、別チャットの未反映変更を確認します。
 - Stagingには別のGoogle OAuthクライアント、Drive所有者の接続、NEXTAUTH_SECRET、固定URLを設定します。同じ個人Googleアカウントを所有者にできますが、本番のrefresh tokenをコピーしません。
-- GOOGLE_DRIVE_FOLDER_ID / GOOGLE_SHEETS_ID / FAMILY_IDを分けます。FAMILY_IDだけ変えて同じシートを使うと、現行のログ検証で読み込みに失敗します。
+- GOOGLE_DRIVE_FOLDER_ID / GOOGLE_SHEETS_ID / WORKSPACE_IDを分けます。WORKSPACE_IDだけ変えて同じシートを使うと、現行のログ検証で読み込みに失敗します。
 - APP_ENVと許可する保存先IDの組み合わせを検証し、Stagingから本番の保存先を指定した場合は処理開始前に拒否します。2プロジェクト方式ではVercel側のtargetがどちらもproductionになり得るため、NODE_ENVやVERCEL_ENVだけで判定しません。
 - StagingのAI_GENERATION_ENABLEDはfalse。これは音声APIには適用されないため、ElevenLabsの鍵も外し、音声生成・通知・Workflow開始に個別の停止ガードを設けます。
-- 100語の音声を再生成しません。必要な見本と音声を検証フォルダへコピーし、参照するファイルIDと記録を検証専用に作り直します。実際の回答・プロフィール・通知先を丸ごとコピーしません。
+- 既存の承認済み音声を再生成しません。検証対象として選んだ共通教材と音声だけを検証フォルダへコピーし、参照するファイルIDと記録を検証専用に作り直します。実際の回答・プロフィール・通知先を丸ごとコピーしません。
 - Stagingはアプリ側のGoogle許可リストで制限します。必要に応じVercel Authenticationも加え、Googleログインの戻り先とWorkflowが保護設定と両立することを確認します。
 
 ## 開発と公開の手順
@@ -64,7 +70,7 @@ Vercel Proには1プロジェクト内のCustom Environmentも1つ含まれま�
 
 VercelのGit連携は2プロジェクトとも同じリポジトリから反応するため、ブランチごとのビルド対象を明示します。本番プロジェクトはmainのみ、Stagingはstagingを対象にします。Previewの追加は本番設定を渡さない運用を確認してから行います。
 
-コードの公開と教材のPublishは別です。Stagingで確認した教材を本番へ出す場合は、教材・問題・必要な音声だけを明示して取り込み、学習履歴やテスト用ユーザーは移しません。
+コードの公開と、運営が権利確認した共通教材のPublishは別です。利用者の私有教材を公開する機能は作りません。Stagingで確認した教材を本番へ出す場合は、教材・問題・必要な音声だけを明示して取り込み、学習履歴やテスト用ユーザーは移しません。
 
 ## 戻す手順と完了条件
 
