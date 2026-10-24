@@ -71,7 +71,7 @@ export interface StudyController {
     updateQuestion(id: string, patch: Partial<Question>): void | Promise<void>;
     publish(questionIds: string[], at?: string): void | Promise<void>;
     resetDemo(): void | Promise<void>;
-    signIn(): Promise<void>;
+    signIn(provider?: 'google' | 'apple'): Promise<void>;
     signOut(): void | Promise<void>;
     requestNotifications(): void | Promise<void>;
     exportData(): void | Promise<void>;

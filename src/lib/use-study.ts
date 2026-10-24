@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { signIn as googleSignIn, signOut as googleSignOut } from 'next-auth/react';
+import { signIn as providerSignIn, signOut as googleSignOut } from 'next-auth/react';
 import type { NewLearningPlan, StudyController, UploadStatus } from '@/components/controller';
 import type { Attempt, GenerationJob, LearningPlan, PracticeMode, PracticeSession, Profile, Question, SourceDocument, StudyData, Subject } from './types';
 import { createDemoData, normalizeDemoProfiles } from './demo-data';
@@ -548,7 +548,7 @@ export function useStudy():StudyController {
     retryAuth,refreshStatus,updatePlanTags,startPractice,beginPractice,cancelPracticeStart(){if(!lock.current)updatePracticeStart(null);},answer,nextQuestion,createTopic,uploadSources,createPlan,sendPlanningMessage,resumePlanningTurn,generateProposal,arrangeTopic,generate,resumeGeneration,retryGeneration,updateQuestion,publish,publishLibrary,requestLibraryPublication,addLibraryPlan,deliverToLearner,requestNotifications,
     finishSession(){updatePracticeStart(null);setSession(null);setSessionQuestions([]);setFeedback(null);},
     async resetDemo(){if(!demo)return;await run(async()=>{await clearLocalFiles();setData(createDemoData());updatePracticeStart(null);setSession(null);setFeedback(null);setNotice('サンプルの記録を初期状態に戻しました。');});},
-    async signIn(){if(!signingOut.current)await googleSignIn('google',{callbackUrl:'/'});},
+    async signIn(provider='google'){if(!signingOut.current)await providerSignIn(provider,{callbackUrl:'/'});},
     async signOut(){
       if(demo){location.href='/';return;}
       if(signingOut.current)return;

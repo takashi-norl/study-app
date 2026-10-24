@@ -23,6 +23,8 @@ import { PersonalProfilePanel, PersonalEncouragement } from './personal-profile'
 import { PlanningWorkNotice } from './planning-work-notice';
 import { PracticeStart } from './practice-start';
 import { AnswerReaction, AnswerEffectsSwitch } from './answer-reaction';
+import { LoginButtons } from './login-buttons';
+import type { LoginProvider } from '@/lib/login-provider';
 import { answerReaction, sessionAnswerStats, vibrateAnswer } from '@/lib/answer-reaction';
 import { answerEffectsKey, useAnswerEffects } from '@/lib/use-answer-effects';
 import { createAnswerInteraction, chooseAnswer, submitAnswer, settleAnswer, type AnswerInteraction } from '@/lib/answer-interaction';
@@ -317,15 +319,12 @@ function Settings({ c, section, setSection, onCreate, onHome, active, onLocation
 }
 
 function Login({ c }: { c: StudyController }) {
-  const [loginPending, setLoginPending] = useState(false);
+  const [loginPending, setLoginPending] = useState<LoginProvider | null>(null);
   const [loginError, setLoginError] = useState('');
-  async function submit(e: FormEvent) {
-    e.preventDefault();
+  async function submit(provider: LoginProvider) {
     if (loginPending) return;
-    setLoginPending(true); setLoginError('');
-    try { await c.actions.signIn(); } catch { setLoginError('Googleのログイン画面を開けませんでした。接続を確認して、もう一度お試しください。'); } finally { setLoginPending(false); }
+    setLoginPending(provider); setLoginError('');
+    try { await c.actions.signIn(provider); } catch { setLoginError('ログイン画面を開けませんでした。接続を確認して、もう一度お試しください。'); } finally { setLoginPending(null); }
   }
-  return <main className="login-screen"><a href="/" className="brand login-brand"><span className="brand-mark"><Sprout size={25} /></span><span>ひび学習<small>ひとつずつ、自分の力に。</small></span></a><div className="login-layout"><div className="login-intro"><p className="eyebrow">A LITTLE EVERY DAY</p><h1>今日の10問が、<br />明日の自信に。</h1><p>用意された教材も、自分の写真・PDFも。<br />小さな「わかった」を、毎日重ねよう。</p><div className="login-features"><span><CheckCircle2 size={18} />写真からつくる問題集</span><span><CheckCircle2 size={18} />忘れる前に、もう一度</span><span><CheckCircle2 size={18} />自分のペースで、個人利用</span></div><div className="login-art" aria-hidden="true"><div className="login-book"><Sprout size={45} strokeWidth={1.4} /><span>EVERY DAY,<br />A LITTLE<br />FURTHER.</span></div><span>✦</span><div className="login-note"><Check size={19} />今日も、ひとつ前へ。</div></div></div><section className="login-card"><IconBadge><BookOpen size={25} /></IconBadge><h2>おかえりなさい。</h2><p>自分のGoogleアカウントでログインしてください。</p><form onSubmit={submit}><Flash c={c} />{loginError && <p className="flash error" role="alert">{loginError}</p>}<button className="button primary full" disabled={loginPending || c.busy}>{loginPending ? <LoaderCircle className="spin" size={18} /> : <GoogleMark />}{loginPending ? 'Googleのログイン画面を開いています' : 'Googleアカウントでログイン'}<ArrowRight size={17} /></button></form><p className="login-account-note">招待されたGoogleアカウントで利用できます。初めての方は招待リンクから進んでください。</p><div className="login-divider"><span>まずは使い心地を見てみる</span></div><a className="button secondary full" href="/?demo=1">サンプルで試す<ArrowRight size={17} /></a><p className="login-demo-note">サンプル問題で、解き心地を試せます。</p></section></div><footer className="login-footer"><span>ひび学習 · 自分のペースで学ぶ、小さな学習室。</span><nav aria-label="アプリについて"><Link href="/privacy">プライバシーポリシー</Link><Link href="/terms">利用条件</Link></nav></footer></main>;
+  return <main className="login-screen"><a href="/" className="brand login-brand"><span className="brand-mark"><Sprout size={25} /></span><span>ひび学習<small>ひとつずつ、自分の力に。</small></span></a><div className="login-layout"><div className="login-intro"><p className="eyebrow">A LITTLE EVERY DAY</p><h1>今日の10問が、<br />明日の自信に。</h1><p>用意された教材も、自分の写真・PDFも。<br />小さな「わかった」を、毎日重ねよう。</p><div className="login-features"><span><CheckCircle2 size={18} />写真からつくる問題集</span><span><CheckCircle2 size={18} />忘れる前に、もう一度</span><span><CheckCircle2 size={18} />自分のペースで、個人利用</span></div><div className="login-art" aria-hidden="true"><div className="login-book"><Sprout size={45} strokeWidth={1.4} /><span>EVERY DAY,<br />A LITTLE<br />FURTHER.</span></div><span>✦</span><div className="login-note"><Check size={19} />今日も、ひとつ前へ。</div></div></div><section className="login-card"><IconBadge><BookOpen size={25} /></IconBadge><h2>おかえりなさい。</h2><p>登録した方法でログインしてください。</p><Flash c={c} />{loginError && <p className="flash error" role="alert">{loginError}</p>}<LoginButtons onSignIn={provider => void submit(provider)} pending={loginPending} disabled={c.busy} /><p className="login-account-note">招待されたアカウントで利用できます。初めての方は招待リンクから進んでください。</p><div className="login-divider"><span>まずは使い心地を見てみる</span></div><a className="button secondary full" href="/?demo=1">サンプルで試す<ArrowRight size={17} /></a><p className="login-demo-note">サンプル問題で、解き心地を試せます。</p></section></div><footer className="login-footer"><span>ひび学習 · 自分のペースで学ぶ、小さな学習室。</span><nav aria-label="アプリについて"><Link href="/privacy">プライバシーポリシー</Link><Link href="/terms">利用条件</Link></nav></footer></main>;
 }
-
-function GoogleMark() { return <svg width="17" height="17" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.6 12.2c0-.7-.1-1.4-.2-2.2H12v4.3h5.4a4.5 4.5 0 0 1-2 3v2.6h3.3c1.9-1.8 2.9-4.4 2.9-7.7ZM12 22c2.7 0 4.9-.9 6.6-2.4l-3.3-2.6c-.9.6-2 .9-3.3.9-2.6 0-4.8-1.7-5.6-4.1H3v2.7A10 10 0 0 0 12 22ZM6.4 13.8a6 6 0 0 1 0-3.6V7.5H3a10 10 0 0 0 0 9l3.4-2.7ZM12 6.1c1.5 0 2.8.5 3.8 1.5l2.9-2.9A9.5 9.5 0 0 0 12 2a10 10 0 0 0-9 5.5l3.4 2.7A6 6 0 0 1 12 6.1Z" /></svg>; }

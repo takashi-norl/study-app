@@ -34,6 +34,8 @@ const origin = z.string().url().refine(value => {
 const binding = z.object({
   projectId: identifier, workspaceId: identifier, googleClientId: identifier,
   driveFolderId: identifier, sheetsId: identifier, origin,
+  // Optional provider configuration cannot disable an otherwise valid Google login.
+  appleClientId: identifier.optional().catch(undefined),
   authSecretSha256: digest.optional(), aiKeySha256: digest.optional(), audioKeySha256: digest.optional(), pushKeySha256: digest.optional(),
 }).strict();
 const bindingsSchema = z.object({ production: binding, staging: binding }).strict();
@@ -77,6 +79,16 @@ export function assertCloudEnvironment(env: Environment = process.env): { enviro
   if (environment === 'staging' && (!current.authSecretSha256 || !env.NEXTAUTH_SECRET
     || sha256(env.NEXTAUTH_SECRET) !== current.authSecretSha256)) throw badBinding();
   return { environment, binding: current };
+}
+
+/** Apple has no legacy fallback: both environments must have reviewed, distinct Services IDs. */
+export function assertAppleEnvironment(clientId: string, env: Environment = process.env): void {
+  const context = assertCloudEnvironment(env);
+  if (!context.binding) throw badBinding();
+  const parsed = bindingsSchema.safeParse(JSON.parse(env.APP_ENV_BINDINGS_JSON ?? '{}'));
+  if (!parsed.success) throw badBinding();
+  const production = parsed.data.production.appleClientId, staging = parsed.data.staging.appleClientId;
+  if (!production || !staging || production === staging || context.binding.appleClientId !== clientId) throw badBinding();
 }
 
 const flags: Record<ExternalEffect, string> = {

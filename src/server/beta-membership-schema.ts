@@ -2,6 +2,7 @@ import 'server-only';
 import { createHash } from 'node:crypto';
 import { z } from 'zod';
 import type { Profile } from '@/lib/types';
+import type { LoginProvider } from '@/lib/login-provider';
 import type { StudyEvent } from './google-store';
 import { getWorkspaceId, getRegisteredAccounts, profileForAccount } from './env';
 
@@ -14,8 +15,13 @@ export const betaInvitationCreatedSchema = z.object({
 }).strict();
 export const betaMemberRegisteredSchema = z.object({
   invitationId: z.string().uuid(), id: memberId, email, name: z.string().trim().min(1).max(80),
-  googleSubject: z.string().min(1).max(200),
-}).strict();
+  // Existing Google records retain their shape and account IDs.
+  googleSubject: z.string().min(1).max(200).optional(),
+  authProvider: z.literal('apple').optional(),
+  authSubject: z.string().min(1).max(200).optional(),
+}).strict().refine(member => member.googleSubject
+  ? member.authProvider === undefined && member.authSubject === undefined
+  : member.authProvider === 'apple' && !!member.authSubject, 'Exactly one verified provider identity is required');
 export const betaAccessRevokedSchema = z.discriminatedUnion('kind', [
   z.object({ kind: z.literal('invitation'), id: z.string().uuid() }).strict(),
   z.object({ kind: z.literal('member'), id: memberId }).strict(),
@@ -24,6 +30,11 @@ export type BetaInvitation = z.infer<typeof betaInvitationCreatedSchema> & { cre
 export type BetaMember = z.infer<typeof betaMemberRegisteredSchema> & { createdAt: string };
 export const betaMemberId = (address: string) => `beta-${createHash('sha256').update(`${getWorkspaceId()}\0${address.trim().toLowerCase()}`).digest('hex').slice(0,40)}`;
 export const betaTokenHash = (token: string) => createHash('sha256').update(token).digest('hex');
+
+export function betaMemberIdentity(member: z.infer<typeof betaMemberRegisteredSchema>): { provider: LoginProvider; subject: string } {
+  return member.authProvider === 'apple' ? { provider: 'apple', subject: member.authSubject! }
+    : { provider: 'google', subject: member.googleSubject! };
+}
 
 /** Replay only server-authorized invitations. An invitation never grants administrative access. */
 export function foldBetaMembership(events: readonly StudyEvent[]) {
@@ -55,7 +66,9 @@ export function foldBetaMembership(events: readonly StudyEvent[]) {
         || invitation.email !== member.email || invitation.name !== member.name
         || at < Date.parse(invitation.createdAt) || at >= Date.parse(invitation.expiresAt)
         || seeds.some(seed => seed.email === member.email || seed.id === member.id)
-        || [...members.values()].some(existing => existing.email === member.email || existing.googleSubject === member.googleSubject)) continue;
+        || [...members.values()].some(existing => existing.email === member.email
+          || (betaMemberIdentity(existing).provider === betaMemberIdentity(member).provider
+            && betaMemberIdentity(existing).subject === betaMemberIdentity(member).subject))) continue;
       invitation.usedBy = member.id;
       members.set(member.id, { ...member, createdAt: event.createdAt });
     }
