@@ -1,6 +1,8 @@
-# English expansion: offline planning only
+# English expansion: content production
 
-This directory has no API client, secret access, paid call, worker hook or UI integration. It does not alter the active 7,500-word pipeline. Run the tests with:
+Current status (2026-10-24): the core 7,500 distinct words and their audio are complete. This directory now includes bounded API generation, independent editorial review, budget accounting and private asset storage. The original planning notes below describe the design; they are not authority to start an old worker. Read `/private/tmp/hibi-vocabulary-build/night-continuation.json` for the current runner, known pending batches and quality holds before continuing. Never automatically resend an uncertain request.
+
+This chat owns content production only. App/UI, Production/Staging, authentication and deployment are owned by the app chat; see [CONTENT_HANDOFF.md](../../docs/CONTENT_HANDOFF.md) and [STAGING_PLAN.md](../../docs/STAGING_PLAN.md). Do not deploy as part of a content run. Run the content tooling tests with:
 
 ```sh
 node --test scripts/english-expansion/*.test.mjs
@@ -24,7 +26,7 @@ The overall liability is `max(text usage/reservations, text cash obligations) + 
 
 The user cap remains JPY 100,000; USD 500 at the conservative planning rate of JPY 180/USD plus a 10% allowance is JPY 99,000. These are planning assumptions, not a live exchange-rate/tax quote. Observed `chargedJpy` above the assumed conversion/tax guard stops work for review. `reserveCashTopUp` returns a separate durable cash-obligation plan and never purchases anything or adds a usage call. Actual checkout amounts need tracking; automatic top-ups are not authorized.
 
-## Still required before an unattended paid expansion
+## Original design requirements (current implementation must preserve these)
 
 1. Complete/reconcile the base, including words held at the repair limit. Preserve every existing asset and billable request receipt.
 2. Add durable phase-two inventory/manifest/ledger storage, immutable raw provider responses and review receipts. Freeze the base catalog hash and maintain canonical alias/sense indexes. Link existing units instead of reauthoring them to fill quotas.
